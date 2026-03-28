@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "email-daily-summary": {
+      "version": "0.1.0",
+      "installedAt": 1774727600525
+    },
+    "notion": {
+      "version": "1.0.0",
+      "installedAt": 1774727608453
+    },
+    "google-calendar": {
+      "version": "0.1.0",
+      "installedAt": 1774727617106
+    },
+    "google-search": {
+      "version": "1.0.0",
+      "installedAt": 1774727625659
+    },
+    "notion-sync": {
+      "version": "2.5.3",
+      "installedAt": 1774727649833
+    },
+    "slack": {
+      "version": "1.0.0",
+      "installedAt": 1774727658386
+    },
+    "telegram-bot": {
+      "version": "1.0.0",
+      "installedAt": 1774727662229
+    },
+    "github-actions": {
+      "version": "1.0.0",
+      "installedAt": 1774727671608
+    },
+    "cron-scheduler": {
+      "version": "1.0.0",
+      "installedAt": 1774727675761
+    }
+  }
+}
