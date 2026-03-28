@@ -1,40 +1,39 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Jordan's Setup
 
-## What Goes Here
+- **Running on:** Railway (cloud server, Linux)
+- **Chat channel:** Telegram
+- **AI model:** OpenRouter (minimax-m2.7)
 
-Things like:
+## Email (SendGrid SMTP)
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+Scripts in `/data/workspace/tools/`:
+- `send_email.py` — Send plain emails
+- `send_calendar_invite.py` — Send calendar invites (.ics attachments)
 
-## Examples
+**Usage:** Just tell me who to email, subject, and body. I handle the rest.
 
-```markdown
-### Cameras
+**Credentials:** Stored in scripts (for now — consider moving to env vars later).
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+## Git Backup
 
-### SSH
+- **Repo:** https://github.com/jordanjayhays-cpu/openclaw-agent
+- **Token:** (stored in git remote URL — consider moving to env var)
 
-- home-server → 192.168.1.100, user: admin
+## What's Configured
 
-### TTS
+| Tool | Status | Notes |
+|------|--------|-------|
+| Email (SendGrid) | ✅ Working | send_email.py |
+| Calendar invites (.ics) | ✅ Working | send_calendar_invite.py |
+| Web search (DuckDuckGo) | ✅ Working | Built-in |
+| Image analysis | ⚠️ Limited | OpenRouter doesn't support vision |
+| Google Calendar API | ❌ Not set up | OAuth is painful |
 
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
+## Preferences
 
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+- Jordan values speed and simplicity
+- Skip the corporate fluff — just get it done
+- If something won't work, say so quickly and offer alternatives
+- Calendar workflow: I create .ics invite → email to attendees → they add to calendar
