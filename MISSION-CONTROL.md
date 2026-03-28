@@ -181,7 +181,20 @@ No posts. Just 1:1 messages. Interested?
 | Life Optimization | downloads/LIFE-OPTIMIZATION-SCIENCE-BACKED.md |
 | All Projects Next Steps | downloads/ALL-PROJECTS-NEXT-STEPS.md |
 | Organization System | downloads/ORGANIZATION-PROMPTING-SYSTEM.md |
+| Madrid Events | downloads/MADRID-EVENTS-WEEK.md |
+| Calendar Integration | downloads/CALENDAR-INTEGRATION-GUIDE.md |
+| Power User Guide | downloads/POWER-USER-OPENCLAW-GUIDE.md |
 | Jordan's Instructions | JORDAN-INSTRUCTIONS.md |
+
+## SYSTEM FILES
+| File | Purpose |
+|------|---------|
+| PREFERENCES.md | How Jordan likes things delivered |
+| SUCCESS_LOG.md | What worked |
+| FAILURE_LOG.md | What didn't work |
+| DECISIONS.md | Major decisions made |
+| MEMORY.md | Long-term memory |
+| memory/YYYY-MM-DD.md | Daily session logs |
 
 ---
 
