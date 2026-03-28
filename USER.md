@@ -5,19 +5,37 @@
 - **Pronouns:** (unknown)
 - **Timezone:** CET (Central European Time)
 - **Email:** jordan.hays@student.ie.edu (student), jordanjayhays@gmail.com (personal)
+- **YouTube:** Has his own channel — "Social Mobility" by Jordan Hays (content creator in addition to consumer)
 
 ## Context
 
 Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estudios Superiores de la Empresa). Before this, he worked in **business development**.
 
 **His big vision:** Build **3 location-independent projects** — like "digital employees" that work for him no matter where he is:
-- ✅ **Manila** — already has one established
+- ✅ **Manila** — already established and working
 - 🔄 **Mexico City** — in progress
 - 📋 **Europe** — planned next
 
 **The goal:** Achieve time freedom, location freedom, and financial freedom. Work on something wherever he goes, not be tied to a specific office or geography.
 
 **His "why":** He's investing in this program and in me (Claw) to build systems that scale beyond himself. He wants to leave with projects that work without him being physically present.
+
+## The 3 Projects
+
+### 1. PISCO (Manila) ✅ — Active Client/Work
+- **What:** Business development for a Manila-based company
+- **Role:** Finding clients in Europe & Australia, opening South Korea market
+- **Status:** Currently active
+- PISCO appears to be a B2B/services company based on the company profile format
+
+### 2. Mexico City 🔄 (In Progress)
+- Active research phase — neighborhoods, business licensing, market validation
+- Correlates with heavy Mexico travel/content consumption in 2021-2022
+- May involve Airbnb/short-term rental model (deep research in 2022)
+
+### 3. Europe 📋 (Planned)
+- Phase 3 — follows Mexico City execution
+- Not yet researched in depth
 
 ## Current Setup
 
@@ -26,12 +44,56 @@ Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estu
 - **Email:** SendGrid SMTP (working ✅)
 - **Calendar:** .ics invites via email (working ✅)
 - **Git backup:** https://github.com/jordanjayhays-cpu/openclaw-agent
+- **AI model:** OpenRouter (minimax-m2.7)
 
-## Projects
+## Who Jordan Is (From 6 Years of YouTube History)
 
-1. **Manila** — established, already working
-2. **Mexico City** — active, in progress
-3. **Europe** — planning stage
+### Intellectual Foundation
+**Stanford Sapolsky (Human Behavioral Biology) — Dec 2018** is the true origin point. Everything flows from behavioral biology, neuroscience, and the question of whether free will exists. This is the bedrock.
+
+### Interest Archetypes (Constant)
+
+**🏀 Basketball** — Never stopped watching since 2018. NBA highlights, trade rumors, player development. Celtics, Luka Doncic, Giannis, Wembanyama. Actual games, not just simulations.
+
+**🎭 Scambaiting** — Kitboga, Jim Browning, Pleasant Green, Trilogy Media, Scammer Payback. This rabbit hole has run continuously since 2021 and never fully died.
+
+**💰 Finance/Crypto** — Jake Tran, Coffeezilla, Wall Street Millennial, crypto crash coverage (FTX, Luna). Understands systems and how money works.
+
+**🤔 Philosophy** — Nietzsche, Jordan Peterson, Alex O'Connor, David Hume, Robert Sapolsky. The "meaning" question is always running underneath.
+
+### Interest Archetypes (Eras/Phases)
+
+| Era | Focus |
+|-----|-------|
+| 2018-19 | Sapolsky, entrepreneurship, fasting |
+| 2019 | Andrew Yang Gang, Mill/Bentham (campaign pushed him to source texts) |
+| 2020 | Quarantine philosophy, Kobe death, Yang collapse |
+| 2021 | IMBA prep, Mexico research, real estate exam |
+| 2022 | South America research, Airbnb business, travel mode |
+| 2024 | Video editing agency?, Cybersecurity sales?, own YouTube channel |
+
+### Current Business Explorations (2024)
+- **Video editing agency** — emerging rabbit hole (Jul 2024)
+- **Cybersecurity sales/SaaS** — emerging rabbit hole (Jul 2024)
+- **Starter Story / entrepreneurship stories** — ongoing consumption
+- **Nomad/expat business model** — continuing from 2021-2022
+
+### Comfort Content (Stable Patterns)
+- **WKUK** — Rewatching favorite episodes, comfort TV
+- **MaximBady** — Dark humor relationship takes
+- **Mystery Recapped** — Shorts as background noise
+- **Joe Rogan clips** — Knowledge/perspective platform
+
+### Media Consumption Style
+- Late-night chaotic viewing (2-3 AM pattern)
+- Video essay long-form (Vox, Johnny Harris, ColdFusion)
+- Rabbit holes that last weeks/months then resurface
+- "Drinks the algorithmic kool-aid" on emerging stories (MrBeast drama, crypto crashes)
+
+### Political Engagement
+- 2024 election was the most intense political content consumption yet
+- Consumes both sides but leans toward Shapiro/Ben Shapiro type content
+- Follows news closely, event-driven (assassination attempts, Biden dropping out)
 
 ## How to Help Jordan Best
 
@@ -40,6 +102,7 @@ Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estu
 - **Email:** Quick, professional communication
 - **Strategic:** Help him think through projects, not just execute tasks
 - **Proactive:** Surface insights about his markets, flag opportunities
+- **Content:** He's a creator now — support his YouTube work when asked
 
 ## Communication Preferences
 
@@ -50,10 +113,32 @@ Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estu
 
 ## Timeline
 
-- **7 months left** in IMBA program
+- **7 months left** in IMBA program (as of Mar 2026)
 - Goal: leave program with 3 working projects
 - Every month counts
 
 ---
 
-_Updated: 2026-03-28 — Jordan shared his big vision during our session._
+## What Jordan Is Working On (Direct Info)
+
+**Current Work (BD for PISCO):**
+- Business development for Manila-based company
+- Finding clients in Europe & Australia
+- Opening South Korea market
+
+**From YouTube Patterns (Business Explorations):**
+- **Video editing agency** — emerging interest (Jul 2024)
+- **Cybersecurity sales/SaaS** — emerging interest (Jul 2024)
+- **Starter Story / entrepreneurship stories** — ongoing consumption
+- **YouTube content** — "Social Mobility" channel, creating not just consuming
+
+**3 Projects Vision:**
+1. PISCO (Manila) — active BD work
+2. Mexico City — research phase
+3. Europe — planned
+
+**Key insight:** Jordan's business ideas multiply but don't always converge. He's still in exploration mode. PISCO/Manila is active work. Mexico City is the next concrete project.
+
+---
+
+_Updated: 2026-03-28 — Comprehensive YouTube history analysis + formalized 3 projects framework._

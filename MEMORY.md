@@ -20,6 +20,27 @@ Jordan wants to build **location-independent income** — 3 projects in differen
 - Git backup ✅ to github.com/jordanjayhays-cpu/openclaw-agent
 - Image analysis ⚠️ limited (OpenRouter doesn't support vision well)
 
+## Mission Control Setup (2026-03-28)
+
+Jordan wants me to run like the YouTube video described — personal dashboard, morning briefings, task tracking.
+
+**Created:**
+- `MISSION-CONTROL.md` — main dashboard with project statuses and daily focus
+- `PROJECTS.md` — detailed tracking for Manila, Mexico City, Europe
+- `DASHBOARD.md` — live stats and quick links
+- `HEARTBEAT.md` — configured for morning briefings
+
+**Cron set up:**
+- Morning Brief: 8:00 AM CET daily → Telegram
+- Delivers: date, project statuses, urgent items, top priority
+
+**Jordan's goals for this:**
+- See his projects at a glance
+- Get daily briefings without asking
+- Track progress on 3 location-independent projects
+
+---
+
 ## Key Decisions Made
 
 - Named me "Claw" 🦞
