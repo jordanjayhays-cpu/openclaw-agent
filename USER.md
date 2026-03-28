@@ -26,15 +26,47 @@ Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estu
 - **What:** Business development for a Manila-based overseas employment agency
 - **Role:** Finding employer clients in Europe & Australia, opening South Korea market
 - **Company:** Placewell International Services Corporation — recruits/deploys Filipino workers globally
+- **Revenue:** Paid BD — got a few clients
 
 ### 2. COMARE (Mexico City) 🔄 — Active BD Client
 - **What:** B2B maintenance services company in Mexico
 - **Clients:** Companies + multi-site commercial facilities
 - **Model:** Fixed monthly fee per client/site, 400+ service points, 10 operational bases
 - **Your role:** BD — expanding their client base / operations
+- **Status:** Planning phase — about to start
 
-### 3. Europe 📋 (Planned)
-- Phase 3 — follows Mexico City execution
+### 3. Europe 📋 — BD Expansion
+- Phase 3 — another BD client or Dealsmap 2.0
+- Target: Spanish/Portuguese/German companies needing Filipino workers or outbound services
+
+## Past Ventures
+
+| Venture | Outcome | Lesson |
+|---------|---------|--------|
+| **Dealsmap** | Failed | Wrong ICP, no pricing power, took cheap customers |
+| **Massage Pass** | Dead | Couldn't get off ground |
+| **Lex/1080 Ventures** | Past employer | Saw the model work, knows the GTM services space |
+| **1080 Ventures** | Left after 6 months | — |
+
+## BD Agent Vision
+
+**Goal:** Build "Dealsmap 2.0" — automated outbound sales machine
+- AI agents do the outreach, follow-ups, meeting booking
+- Companies pay for automated sales pipeline
+- No human SDR/BDR overhead
+
+**Target stack:**
+- Apollo.io — lead database + email sequences
+- LinkedIn Sales Navigator — research + profiling
+- Heyreach — LinkedIn outreach automation
+- Cloudtalk — cold calling / call management
+- SendGrid — email delivery
+
+**Dashboard:** Built at `/dashboard/` — web UI showing campaigns, leads, activity feed, quick command bar
+
+**"Agents building agents":** Claw (me) is the technical co-founder — I build the agent logic and orchestration
+
+## Europe 📋 (Planned)
 
 ## Current Setup
 
