@@ -22,20 +22,19 @@ Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estu
 
 ## The 3 Projects
 
-### 1. PISCO (Manila) ✅ — Active Client/Work
-- **What:** Business development for a Manila-based company
-- **Role:** Finding clients in Europe & Australia, opening South Korea market
-- **Status:** Currently active
-- PISCO appears to be a B2B/services company based on the company profile format
+### 1. PISCO (Manila) ✅ — Active BD Client
+- **What:** Business development for a Manila-based overseas employment agency
+- **Role:** Finding employer clients in Europe & Australia, opening South Korea market
+- **Company:** Placewell International Services Corporation — recruits/deploys Filipino workers globally
 
-### 2. Mexico City 🔄 (In Progress)
-- Active research phase — neighborhoods, business licensing, market validation
-- Correlates with heavy Mexico travel/content consumption in 2021-2022
-- May involve Airbnb/short-term rental model (deep research in 2022)
+### 2. COMARE (Mexico City) 🔄 — Active BD Client
+- **What:** B2B maintenance services company in Mexico
+- **Clients:** Companies + multi-site commercial facilities
+- **Model:** Fixed monthly fee per client/site, 400+ service points, 10 operational bases
+- **Your role:** BD — expanding their client base / operations
 
 ### 3. Europe 📋 (Planned)
 - Phase 3 — follows Mexico City execution
-- Not yet researched in depth
 
 ## Current Setup
 
