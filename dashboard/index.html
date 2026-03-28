@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claw Dashboard — Outbound Command Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-hover: #1a1a25;
+            --border: #2a2a3a;
+            --text-primary: #f0f0f5;
+            --text-secondary: #8888a0;
+            --accent: #00d4aa;
+            --accent-dim: #00d4aa33;
+            --warning: #ffaa00;
+            --danger: #ff4466;
+            --success: #00d4aa;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* Navigation */
+        .nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+        
+        .nav-item {
+            padding: 14px 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        
+        .nav-item:hover {
+            color: var(--text-primary);
+            background: var(--bg-hover);
+        }
+        
+        .nav-item.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+        
+        /* Main Content */
+        .main {
+            padding: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .stat-change {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .stat-change.up { color: var(--success); }
+        .stat-change.down { color: var(--danger); }
+        
+        /* Campaign Cards */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .btn {
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-dark);
+        }
+        
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+        
+        .btn-secondary {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent);
+        }
+        
+        /* Campaign Cards */
+        .campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .campaign-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+        }
+        
+        .campaign-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .campaign-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .campaign-company {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .campaign-status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .campaign-status.active {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+        
+        .campaign-status.paused {
+            background: #ffaa0033;
+            color: var(--warning);
+        }
+        
+        .campaign-status.draft {
+            background: #8888a033;
+            color: var(--text-secondary);
+        }
+        
+        .campaign-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .campaign-metric {
+            text-align: center;
+        }
+        
+        .campaign-metric-value {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        
+        .campaign-metric-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        .campaign-bar {
+            height: 6px;
+            background: var(--bg-hover);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .campaign-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+        
+        /* Lead Table */
+        .lead-table {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .lead-table-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .lead-table-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .lead-table-filters {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .filter-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            background: var(--bg-hover);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+        
+        .filter-btn.active {
+            background: var(--accent-dim);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            text-align: left;
+            padding: 12px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        td {
+            padding: 14px 20px;
+            font-size: 13px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: var(--bg-hover);
+        }
+        
+        .lead-name {
+            font-weight: 500;
+        }
+        
+        .lead-company {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+        
+        .lead-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        
+        .lead-status.new {
+            background: #4488ff33;
+            color: #4488ff;
+        }
+        
+        .lead-status.contacted {
+            background: #ffaa0033;
+            color: #ffaa00;
+        }
+        
+        .lead-status.replied {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+        
+        .lead-status.booked {
+            background: #00d4aa33;
+            color: var(--success);
+        }
+        
+        .lead-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .lead-action {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: var(--bg-hover);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .lead-action:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Activity Feed */
+        .activity-feed {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        
+        .activity-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .activity-item {
+            padding: 14px 20px;
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--bg-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        .activity-icon.email { background: #4488ff33; color: #4488ff; }
+        .activity-icon.linkedin { background: #0088cc33; color: #0088cc; }
+        .activity-icon.call { background: #00d4aa33; color: #00d4aa; }
+        .activity-icon.meeting { background: #ffaa0033; color: #ffaa00; }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-text {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
+        .activity-text strong {
+            color: var(--text-primary);
+        }
+        
+        .activity-time {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        /* Layout */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+        }
+        
+        @media (max-width: 1024px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Quick Command */
+        .quick-command {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .quick-command-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .quick-command-input {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .quick-command-input input {
+            flex: 1;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+        
+        .quick-command-input input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .quick-command-input input::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        /* Tools Status */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .tool-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--bg-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .tool-info {
+            flex: 1;
+        }
+        
+        .tool-name {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .tool-status {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        .tool-status.connected {
+            color: var(--accent);
+        }
+        
+        .tool-status.disconnected {
+            color: var(--danger);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">🦞</div>
+            <div class="logo-text">Claw <span>Dashboard</span></div>
+        </div>
+        <div class="header-status">
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Agent Active</span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-item active">Overview</div>
+        <div class="nav-item">Campaigns</div>
+        <div class="nav-item">Leads</div>
+        <div class="nav-item">Sequences</div>
+        <div class="nav-item">LinkedIn</div>
+        <div class="nav-item">Calls</div>
+        <div class="nav-item">Reports</div>
+        <div class="nav-item">Settings</div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Quick Command -->
+        <div class="quick-command">
+            <div class="quick-command-label">Quick Command</div>
+            <div class="quick-command-input">
+                <input type="text" placeholder="e.g., 'Run outreach for PISCO targeting German manufacturers' or 'Add 20 leads to COMARE campaign'">
+                <button class="btn btn-primary">Run</button>
+            </div>
+        </div>
+        
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Active Leads</div>
+                <div class="stat-value">147</div>
+                <div class="stat-change up">↑ 23 this week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Emails Sent</div>
+                <div class="stat-value">892</div>
+                <div class="stat-change up">↑ 156 this week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Reply Rate</div>
+                <div class="stat-value">12%</div>
+                <div class="stat-change up">↑ 2.3% vs last week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Meetings Booked</div>
+                <div class="stat-value">8</div>
+                <div class="stat-change up">↑ 3 this week</div>
+            </div>
+        </div>
+        
+        <!-- Tools Status -->
+        <div class="section-header">
+            <h2 class="section-title">Connected Tools</h2>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">🔍</div>
+                <div class="tool-info">
+                    <div class="tool-name">Apollo.io</div>
+                    <div class="tool-status connected">● Connected</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">💼</div>
+                <div class="tool-info">
+                    <div class="tool-name">LinkedIn Sales Nav</div>
+                    <div class="tool-status connected">● Connected</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">📧</div>
+                <div class="tool-info">
+                    <div class="tool-name">Heyreach</div>
+                    <div class="tool-status connected">● Connected</div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">📞</div>
+                <div class="tool-info">
+                    <div class="tool-name">Cloudtalk</div>
+                    <div class="tool-status disconnected">○ Not Connected</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <div>
+                <!-- Active Campaigns -->
+                <div class="section-header">
+                    <h2 class="section-title">Active Campaigns</h2>
+                    <button class="btn btn-secondary">+ New Campaign</button>
+                </div>
+                <div class="campaigns-grid">
+                    <div class="campaign-card">
+                        <div class="campaign-header">
+                            <div>
+                                <div class="campaign-name">PISCO — Europe Expansion</div>
+                                <div class="campaign-company">Placewell International Services</div>
+                            </div>
+                            <span class="campaign-status active">Active</span>
+                        </div>
+                        <div class="campaign-metrics">
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">89</div>
+                                <div class="campaign-metric-label">Targeted</div>
+                            </div>
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">42</div>
+                                <div class="campaign-metric-label">Contacted</div>
+                            </div>
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">7</div>
+                                <div class="campaign-metric-label">Replied</div>
+                            </div>
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">2</div>
+                                <div class="campaign-metric-label">Booked</div>
+                            </div>
+                        </div>
+                        <div class="campaign-bar">
+                            <div class="campaign-bar-fill" style="width: 47%;"></div>
+                        </div>
+                    </div>
+                    <div class="campaign-card">
+                        <div class="campaign-header">
+                            <div>
+                                <div class="campaign-name">COMARE — Mexico City</div>
+                                <div class="campaign-company">B2B Maintenance Services</div>
+                            </div>
+                            <span class="campaign-status draft">Planning</span>
+                        </div>
+                        <div class="campaign-metrics">
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">0</div>
+                                <div class="campaign-metric-label">Targeted</div>
+                            </div>
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">0</div>
+                                <div class="campaign-metric-label">Contacted</div>
+                            </div>
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">0</div>
+                                <div class="campaign-metric-label">Replied</div>
+                            </div>
+                            <div class="campaign-metric">
+                                <div class="campaign-metric-value">0</div>
+                                <div class="campaign-metric-label">Booked</div>
+                            </div>
+                        </div>
+                        <div class="campaign-bar">
+                            <div class="campaign-bar-fill" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Leads -->
+                <div class="section-header">
+                    <h2 class="section-title">Recent Leads</h2>
+                    <button class="btn btn-secondary">View All</button>
+                </div>
+                <div class="lead-table">
+                    <div class="lead-table-header">
+                        <div class="lead-table-title">All Leads</div>
+                        <div class="lead-table-filters">
+                            <button class="filter-btn active">All</button>
+                            <button class="filter-btn">New</button>
+                            <button class="filter-btn">Contacted</button>
+                            <button class="filter-btn">Replied</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Lead</th>
+                                <th>Company</th>
+                                <th>Campaign</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="lead-name">Maria Schmidt</div>
+                                    <div class="lead-company">HR Director</div>
+                                </td>
+                                <td>Bayer Healthcare GmbH</td>
+                                <td>PISCO — Europe</td>
+                                <td><span class="lead-status replied">● Replied</span></td>
+                                <td class="lead-actions">
+                                    <button class="lead-action">📧</button>
+                                    <button class="lead-action">💼</button>
+                                    <button class="lead-action">📞</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="lead-name">Hans Mueller</div>
+                                    <div class="lead-company">Operations Manager</div>
+                                </td>
+                                <td>Siemens AG</td>
+                                <td>PISCO — Europe</td>
+                                <td><span class="lead-status contacted">● Contacted</span></td>
+                                <td class="lead-actions">
+                                    <button class="lead-action">📧</button>
+                                    <button class="lead-action">💼</button>
+                                    <button class="lead-action">📞</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="lead-name">Ana Rodriguez</div>
+                                    <div class="lead-company">HR Manager</div>
+                                </td>
+                                <td>NH Hotels Spain</td>
+                                <td>PISCO — Europe</td>
+                                <td><span class="lead-status booked">● Meeting Booked</span></td>
+                                <td class="lead-actions">
+                                    <button class="lead-action">📧</button>
+                                    <button class="lead-action">💼</button>
+                                    <button class="lead-action">📞</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="lead-name">Carlos Mendez</div>
+                                    <div class="lead-company">Facilities Director</div>
+                                </td>
+                                <td>Grupo Púnto MX</td>
+                                <td>COMARE — MX</td>
+                                <td><span class="lead-status new">● New</span></td>
+                                <td class="lead-actions">
+                                    <button class="lead-action">📧</button>
+                                    <button class="lead-action">💼</button>
+                                    <button class="lead-action">📞</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div>
+                <!-- Activity Feed -->
+                <div class="activity-feed">
+                    <div class="activity-header">Recent Activity</div>
+                    <div class="activity-item">
+                        <div class="activity-icon email">📧</div>
+                        <div class="activity-content">
+                            <div class="activity-text">Email sent to <strong>Maria Schmidt</strong> — Bayer Healthcare</div>
+                            <div class="activity-time">2 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon linkedin">💼</div>
+                        <div class="activity-content">
+                            <div class="activity-text">InMail sent to <strong>Hans Mueller</strong> — Siemens AG</div>
+                            <div class="activity-time">18 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon meeting">📅</div>
+                        <div class="activity-content">
+                            <div class="activity-text"><strong>Meeting booked</strong> with Ana Rodriguez — NH Hotels</div>
+                            <div class="activity-time">1 hour ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon email">📧</div>
+                        <div class="activity-content">
+                            <div class="activity-text">Follow-up sent to <strong>3 leads</strong> — no response</div>
+                            <div class="activity-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon linkedin">💼</div>
+                        <div class="activity-content">
+                            <div class="activity-text"><strong>15 new leads</strong> added from Apollo research</div>
+                            <div class="activity-time">3 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Simple command handler
+        document.querySelector('.quick-command input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.trim();
+                if (command) {
+                    // Send to Telegram
+                    fetch('/api/command', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ command })
+                    });
+                    this.value = '';
+                    alert('Command sent to Claw! Check Telegram for updates.');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
