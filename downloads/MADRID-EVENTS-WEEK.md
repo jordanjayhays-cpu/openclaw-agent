@@ -1,494 +1,431 @@
 ====================================================================
 JORDAN'S MADRID EVENT WEEK — March 28 - April 6, 2026
 ====================================================================
-A week of events to propel all your projects forward
+Part 1: Events for JORDAN (personal attendance)
+Part 2: Events for PROFILE PARTNERS (represent PISCO/COMARE)
 Last updated: 2026-03-28
 
 ====================================================================
-HOW TO USE THIS LIST
+PART 1: EVENTS FOR JORDAN
 ====================================================================
 
-Events are organized by:
-- PRIORITY (high/medium/low for YOUR projects)
-- TYPE (HR, networking, startups, nomads, etc.)
-- COST (paid/free)
-- EFFORT (what you get out)
-
-Each event tagged by which projects it advances:
-- PISCO 🅿️
-- COMARE 🅲
-- DEALSMAP 🅳
-- NEW BALI 🅱️
-- NEUROTECH 🅽
-- GENERAL 🚀
-
-====================================================================
-HIGH PRIORITY — PISCO 🅿️
-====================================================================
-
-=== EVENT 1: XXIII ENCUENTRO ANUAL FORO RECURSOS HUMANOS ===
-**Date:** April 16, 2026 (next week — worth waiting for)
-**Time:** All day
-**Location:** Madrid
-**Cost:** €200-500 (paid event)
-**Priority:** 🔴 HIGH
-**Why:** This is THE HR event in Spain. Hundreds of HR directors
-from Spanish companies. Perfect for PISCO — you're literally selling
-to HR directors.
-
-**Who to find:** HR Directors from hotels, hospitals, international schools
-**Angle:** "IE Business School student working with Manila recruitment agency"
-
-Book now: fororecursoshumanos.com
+**Purpose:** Personal networking, learning, BD outreach, research
+**These are Jordan's events — attend yourself**
 
 ---
 
-=== EVENT 2: HR EVOLUTION ===
-**Date:** April 15, 2026
-**Location:** Sala Truss, Wizink Center, Madrid
-**Cost:** €150-400 (paid)
-**Priority:** 🔴 HIGH
-**Why:** HR Evolution brings together HR leaders across Spain.
-Another chance to meet HR directors. Day before Foro.
+=== HIGH PRIORITY — FOR JORDAN ===
 
-Both HR events in same week = stack them.
+EVENT 1: Digital Nomad Meetup Madrid
+📅 March 27, 2026 (TOMORROW!)
+🕐 10:00 AM - 12:00 PM
+📍 Madrid, Spain
+💰 FREE
+🎯 Project: NEW BALI 🅱️
 
-Register: hrevolution.es
+**Why go:**
+- First-hand research on digital nomads
+- Meet your target market for New Bali
+- Understand their pain points, needs, wants
+- No pitch yet — just listen and learn
 
----
-
-=== EVENT 3: FORO RECURSOS HUMANOS (23rd Annual) ===
-**Date:** April 16, 2026
-**Location:** Madrid
-**Cost:** €200-500
-**Priority:** 🔴 HIGH
-**Why:** The premier HR event in Spain. HR directors from ALL industries.
-Hotel chains, hospitals, schools all represented.
-
-Link: fororecursoshumanos.com
+**What to do:**
+- Show up, introduce yourself
+- Ask: "What brought you to Madrid?"
+- Ask: "What do you like/dislike about coworking options?"
+- Ask: "If there was a perfect nomad destination, what would it have?"
+- Take notes on everything
 
 ---
 
-=== EVENT 4: EQUIPOS & TALENTO HR EVENT ===
-**Date:** March 24, 2026
-**Location:** El Beatriz, Madrid
-**Cost:** Paid event
-**Priority:** 🟡 MEDIUM
-**Why:** Another HR networking event. If you're free this week, check if spots remain.
-Contact: equiposytalento.com/events
+EVENT 2: Impact Hub Madrid (Coworking)
+📅 Anytime this week
+📍 Calle de Arequipa, Madrid
+💰 Day pass ~€15-25 or free if you find a contact
+🎯 Project: DEALSMAP 🅳, NEW BALI 🅱️
+
+**Why go:**
+- Community of entrepreneurs, freelancers, creatives
+- Meet profile partner candidates
+- Understand what nomads/entrepreneurs need
+- Possible New Bali insights
+
+**What to do:**
+- Buy day pass
+- Work from there
+- Talk to people during breaks
+- Ask what they do, how they find clients
+- Look for decision makers
 
 ---
 
-=== EVENT 5: Entrepreneurs and Trade 2026 ===
-**Date:** March 13, 2026 (already passed)
-**Location:** Madrid
-**Cost:** Unknown
-**Note:** This already happened. Look for "Entrepreneurs and Trade 2026" 
-in other cities or next edition.
+EVENT 3: International School of Madrid (VISIT)
+📅 This week — call first
+📍 Madrid
+💰 FREE
+🎯 Project: PISCO 🅿️
 
-Link: entrepreneurstrademeet.com
+**Why go:**
+- Direct PISCO target
+- Physical visit > cold LinkedIn
+- You're in Madrid — use this advantage
 
----
-
-====================================================================
-HIGH PRIORITY — GENERAL NETWORKING 🚀
-====================================================================
-
-=== EVENT 6: Business Networking PNM (Professionals & Entrepreneurs) ===
-**Date:** April 13, 2026
-**Time:** 7:00 PM - 11:00 PM
-**Location:** Radisson RED Madrid, 123 Calle de Atocha
-**Cost:** Free or low cost
-**Priority:** 🔴 HIGH
-**Why:** "Business-oriented meetup in the capital for professionals"
-Large group (6,000+ members). Good for BD practice, networking.
-
-Who goes: Entrepreneurs, freelancers, salespeople, BD professionals
-
-Sign up: Meetup.com "Professionals & Entrepreneurs Network Madrid"
+**What to do:**
+- Call: +34 913 592 121
+- Show up with one-pager about PISCO
+- Pitch: "IE Business School student working with Manila recruitment agency"
+- Ask if they need Filipino teachers
+- Get contact info for HR decision maker
 
 ---
 
-=== EVENT 7: Startup Grind Madrid ===
-**Date:** Monthly event (check schedule)
-**Location:** Madrid
-**Cost:** Free or low cost
-**Priority:** 🟡 MEDIUM
-**Why:** Global startup community. Monthly events with founders,
-investors, tech people. Good for learning, networking.
+EVENT 4: Business Networking PNM
+📅 April 13, 2026
+🕐 7:00 PM - 11:00 PM
+📍 Radisson RED Madrid, 123 Calle de Atocha
+💰 Free or low cost
+🎯 Project: DEALSMAP 🅳
 
-Check schedule: startupgrind.com/madrid
+**Why go:**
+- 6,000+ member network
+- Entrepreneurs, freelancers, salespeople
+- Profile partner hunting ground
+- BD practice
 
----
-
-=== EVENT 8: Tech Social Madrid ===
-**Date:** Weekly events
-**Location:** Various venues in Madrid
-**Cost:** Free
-**Priority:** 🟡 MEDIUM
-**Why:** Weekly tech networking. Developers, data scientists, 
-cybersecurity, tech enthusiasts. Community vibe.
-
-Check: techsocialmadrid.com
+**What to do:**
+- Pitch: "Earn $20/month from your LinkedIn"
+- Meet 5-10 potential profile partners
+- Collect WhatsApp/contact info
+- Follow up same night on LinkedIn
 
 ---
 
-=== EVENT 9: IE Alumni Events ===
-**Date:** Ongoing — check calendar
-**Location:** IE Campus, Madrid
-**Cost:** Varies (alumni pricing)
-**Priority:** 🟡 MEDIUM
-**Why:** IE alumni network is valuable. Find alumni working in:
-- Hospitality (for PISCO)
-- Real estate/facilities (for COMARE)
-- Sales/BD (for Dealsmap)
+EVENT 5: HR Evolution
+📅 April 15, 2026
+📍 Sala Truss, Wizink Center, Madrid
+💰 €150-400
+🎯 Project: PISCO 🅿️
+
+**Why go:**
+- HR directors from across Spain
+- Hotels, hospitals, schools all represented
+- Direct access to PISCO decision makers
+
+**What to do:**
+- Register early ( cheaper)
+- Bring business cards
+- Practice pitch: "Manila recruitment agency placing Filipino hospitality/healthcare workers"
+- Collect cards, connect on LinkedIn same day
+
+---
+
+EVENT 6: XXIII Encuentro Anual Foro Recursos Humanos
+📅 April 16, 2026
+📍 Madrid
+💰 €200-500
+🎯 Project: PISCO 🅿️
+
+**Why go:**
+- THE premier HR event in Spain
+- Hundreds of HR directors
+- Perfect for PISCO
+
+**What to do:**
+- Register now (early bird pricing)
+- Full day of networking
+- Collect everything
+
+---
+
+EVENT 7: Tech Social Madrid
+📅 Weekly (check schedule)
+📍 Various venues
+💰 FREE
+🎯 Project: GENERAL 🚀
+
+**Why go:**
+- Weekly tech networking
+- Developers, data scientists, tech people
+- Low pressure, community vibe
+
+---
+
+EVENT 8: IE Alumni Events
+📅 Ongoing — check calendar
+📍 IE Campus, Madrid
+💰 Alumni pricing
+🎯 Project: ALL 🚀
+
+**Why go:**
+- Find alumni in hospitality, real estate, sales
+- Leverage IE brand
+- "IE Business School student" opens doors
 
 Calendar: ie.edu/alumni/events
 
 ---
 
-=== EVENT 10: Madrid Tech Job Fair ===
-**Date:** April 30, 2026
-**Location:** Talent Garden Madrid
-**Time:** 6:00 PM - 9:00 PM
-**Cost:** Free
-**Priority:** 🟢 LOW (for this week)
-**Why:** More tech-focused. But good for general networking.
+====================================================================
+PART 2: EVENTS FOR PROFILE PARTNERS
+====================================================================
 
-Check: techmeetups.com
+**Purpose:** Profile partners attend AS representatives of PISCO/COMARE
+**Jordan trains them, they execute — expands your reach**
 
 ---
 
-====================================================================
-HIGH PRIORITY — NEW BALI 🅱️
-====================================================================
+=== FOR PISCO PROFILE PARTNERS (Spain) ===
 
-=== EVENT 11: Digital Nomad Meetup Madrid ===
-**Date:** March 27, 2026 (TOMORROW!)
-**Time:** 10:00 AM - 12:00 PM
-**Location:** Madrid, Spain
-**Cost:** Free
-**Priority:** 🔴 HIGH
-**Why:** Direct relevance to New Bali concept. Meet digital nomads,
-understand the community, understand what they want. First-hand research.
+EVENT A1: HR Evolution — April 15
+🎯 PISCO 🅿️
 
-This is YOUR target market for New Bali. Go, observe, talk.
-
-Sign up: happeningnext.com (search "Digital Nomad Meetup Madrid")
-
----
-
-=== EVENT 12: Networking for Entrepreneurs & Digital Nomads ===
-**Date:** March 19, 2026 (already passed)
-**Location:** Madrid
-**Cost:** Unknown
-**Note:** This already happened. Look for next edition.
-
-Check: allevents.in
-
----
-
-=== EVENT 13: Madrid Urban Nomads Meetup ===
-**Date:** Ongoing monthly
-**Location:** Various venues
-**Cost:** Varies
-**Priority:** 🟡 MEDIUM
-**Why:** Group specifically for digital nomads in Madrid.
-Monthly events: workshops, networking, skill-sharing, social.
-
-Check: Meetup.com "Madrid Urban Nomads Meetup Group"
-
----
-
-====================================================================
-HIGH PRIORITY — DEALSMAP 2.0 🅳
-====================================================================
-
-=== EVENT 14: Coworking Spaces (visit/work from) ===
-**Date:** Anytime this week
-**Location:** Various
-**Cost:** Day pass €10-30 or free
-**Priority:** 🔴 HIGH
-**Why:** Coworking spaces are where:
-- Freelancers and entrepreneurs work
-- Profile partner candidates hang out
-- Dealsmap could find partners
-
-**Recommended spaces to visit:**
-
-1. **Impact Hub Madrid**
-   - madrid.impacthub.net
-   - Community of entrepreneurs, freelancers, creatives
-   - Events + coworking
-   - Great for networking with like-minded people
-
-2. **Espacio Nodo**
-   - espacionodo.es
-   - "Coworking by morning, culture by afternoon"
-   - Freelancers, entrepreneurs, creatives
-   - Workshops and events
-
-3. **WeWork (if budget allows)**
-   - Various locations
-   - Premium crowd
-   - Day pass available
-
-**Action:** Go to Impact Hub for a day. Work from there.
-Talk to people. "What do you do?" → "I'm building a BD network..."
-
----
-
-=== EVENT 15: Business Networking — PNM April ===
-**Date:** April 13, 2026
-**Time:** 7:00 PM - 11:00 PM
-**Location:** Radisson RED Madrid
-**Cost:** Free or low cost
-**Priority:** 🔴 HIGH
-**Why:** Entrepreneurs, freelancers, autónomos. Exactly the pool
-for profile partners. People looking for extra income.
-
-Sign up: Meetup.com "Professionals & Entrepreneurs Network Madrid"
-
----
-
-====================================================================
-MEDIUM PRIORITY — COMARE 🅲
-====================================================================
-
-=== EVENT 16: Property Management / Facilities Events ===
-**Date:** Ongoing
-**Cost:** Varies
-**Priority:** 🟡 MEDIUM
-**Why:** COMARE targets property managers and facilities managers.
-Look for:
-- AEGER (Asociación de Empresas de Gestión Inmobiliaria)
-- IFMA (International Facility Management Association) Spain
-- Conferences de mantenimiento
-
-**Action:** Search "asociación mantenimiento edificios Madrid"
-LinkedIn search: linkedin.com/search/results/all/?keywords=director%20instalaciones%20madrid
-
----
-
-=== EVENT 17: Real Estate / Property Events ===
-**Date:** Ongoing
-**Priority:** 🟡 MEDIUM
-**Why:** Property managers attend these events.
-Decision makers for COMARE.
-
-**Where to look:**
-- FIABCI (real estate professionals)
-- APCE (Asociación de Promotores y Constructores)
-- Real estate meetups on Meetup.com
-
----
-
-====================================================================
-MEDIUM PRIORITY — NEUROTECH 🅽
-====================================================================
-
-=== EVENT 18: Tech Events in Madrid ===
-**Date:** Ongoing
-**Location:** Eventbrite / Meetup
-**Cost:** Free or low cost
-**Priority:** 🟡 MEDIUM
-**Why:** For neurotech content. Meet people in:
-- AI/tech
-- Science communication
-- Healthcare tech
-
-**Where to check:**
-- eventbrite.com/d/spain--madrid/tech/
-- Meetup.com tech events
-- techsocialmadrid.com (weekly)
-
----
-
-=== EVENT 19: IE Symposium ===
-**Date:** April 22-24, 2026
-**Location:** IE University, Madrid
-**Cost:** Unknown (check IE alumni for pricing)
-**Priority:** 🟡 MEDIUM
-**Why:** IE's big annual event. Speakers from business, tech, science.
-Good for learning, networking, content ideas.
-
-Info: ie.edu/events or ie.edu/alumni/events
-
----
-
-====================================================================
-QUICK WINS — THIS WEEK
-====================================================================
-
-**If you have time TODAY/TOMORROW:**
-
-1. ✅ Digital Nomad Meetup — March 27 (tomorrow!)
-   - Go to this. First-hand New Bali research.
-
-2. ✅ Impact Hub Madrid — this week
-   - Buy a day pass. Work from there. Network.
-
-3. ✅ Tech Social Madrid — check this week's schedule
-   - Free weekly tech networking.
-
-**If you can plan ahead:**
-
-4. 📅 April 13 — Business Networking PNM
-5. 📅 April 15 — HR Evolution (if tickets available)
-6. 📅 April 16 — XXIII Encuentro Anual Foro Recursos Humanos
-7. 📅 April 22-24 — IE Symposium
-
----
-
-====================================================================
-THE IDEAL WEEK PLAN
-====================================================================
-
-**Monday March 30:**
-- Morning: Work from Impact Hub Madrid
-  (Network with entrepreneurs/freelancers)
-- Afternoon: Follow up on PISCO outreach
-
-**Tuesday March 31:**
-- Morning: Prepare PISCO pitch materials
-- Afternoon: Visit International School of Madrid (in person)
-
-**Wednesday April 1:**
-- Full day: Work on Dealsmap profile partner recruitment
-- Evening: Check Tech Social Madrid schedule
-
-**Thursday April 2:**
-- Morning: Research HR events — register for April 15-16 events
-- Afternoon: Follow up with Javier Estrada (NH Hotel)
-
-**Friday April 3:**
-- Morning: Work session (Dealsmap, PISCO)
-- Afternoon: Check in with COMARE friend (your inside contact)
-
-**Weekend:**
-- Rest / content creation
-- Plan for next week's events
-
----
-
-**Week of April 6-13:**
-
-**Monday April 6:**
-- Prep for HR events
-- Register for HR Evolution + Foro
-
-**Thursday April 9:**
-- Prep pitch for HR events
-
-**Friday April 10:**
-- Finalize HR event strategy
-
-**Week of April 13:**
-
-**Monday April 13:**
-- Business Networking PNM (evening) 🅳
-
-**Week of April 15:**
-
-**Wednesday April 15:**
-- HR Evolution 🅿️
-
-**Thursday April 16:**
-- XXIII Encuentro Anual Foro Recursos Humanos 🅿️
-
----
-
-====================================================================
-WHAT TO DO AT EACH EVENT
-====================================================================
-
-**At HR Events (PISCO):**
-- Find HR directors from hotels/hospitality
-- Find HR directors from international schools
-- Practice pitch: "I work with a Manila recruitment agency..."
+**Who to send:** Spanish HR professional profile partner
+**What they do:**
+- Attend as "representative of Placewell International"
+- Network with HR directors
 - Collect business cards
-- Follow up on LinkedIn same day
+- Schedule follow-up calls
+- Report back to Jordan
 
-**At Entrepreneur/Nomad Events (Dealsmap + New Bali):**
-- Meet freelancers, entrepreneurs
-- Understand their pain points
-- Pitch: "Would you earn $20/month from your LinkedIn?"
-- Find profile partner candidates
-- Understand digital nomad needs (for New Bali)
+**Talking points for partner:**
+"We place Filipino hospitality and healthcare workers in European hotels and hospitals. Do you have staffing needs?"
 
-**At Coworking Spaces:**
-- Work from there for a day
-- Talk to people during coffee breaks
-- Ask: "What do you do?" → understand their business
-- Look for decision makers who might use COMARE
+---
 
-**At IE Alumni Events:**
-- Find alumni in hospitality (NH, Iberostar, Melia)
-- Find alumni in real estate/facilities (COMARE)
-- Find alumni in BD/sales (Dealsmap partners)
-- Leverage IE brand
+EVENT A2: XXIII Encuentro Anual Foro Recursos Humanos — April 16
+🎯 PISCO 🅿️
+
+**Who to send:** Spanish profile partner with HR connections
+**What they do:**
+- Full day at the event
+- Meet HR directors from hotels/hospitals/schools
+- Share Placewell materials
+- Set up follow-up meetings
+
+---
+
+EVENT A3: Hospitality/Food Service Industry Events
+🎯 PISCO 🅿️
+
+**What to look for:**
+- Fitur (Madrid tourism fair) — January
+- Salon Gourmet — Madrid
+- Hostelco (restaurant equipment fair) — Madrid
+- FEHR (Federación Española de Hostelería) events
+
+**Where to find:**
+- linkedin.com/search: "hotelero" "evento" "Madrid"
+- aeh.es (Asociación Española de Hostelería)
+
+**Who to send:** Spanish profile partner in hospitality
+
+---
+
+EVENT A4: International School Association Events
+🎯 PISCO 🅿️
+
+**What to look for:**
+- NACAC conferences (college admissions)
+- BSME (British Schools Middle East)
+- regional school director meetings
+
+**Who to send:** Filipino or Spanish profile partner with education connections
+
+---
+
+EVENT A5: NHS / UK Healthcare Recruitment Events
+🎯 PISCO 🅿️
+
+**What to look for:**
+- NHS recruitment fairs
+- HealthInvestor events
+- UK private healthcare conferences
+
+**Who to send:** UK profile partner with healthcare connections
+
+---
+
+=== FOR COMARE PROFILE PARTNERS (Mexico) ===
+
+EVENT B1: ANEHP Events (Asociación Nacional de Hospitales Privados)
+🎯 COMARE 🅲
+
+**What:** Mexican private hospital association
+**Events:** Conferences, regional meetings
+**Who to send:** Mexican profile partner with healthcare ops connections
+
+---
+
+EVENT B2: ANTAD Events (Asociación Nacional de Tiendas de Autoservicio)
+🎯 COMARE 🅲
+
+**What:** Mexican retail association (stores like Chedraui, etc.)
+**Events:** Annual convention, regional events
+**Who to send:** Mexican profile partner with retail operations
+
+---
+
+EVENT B3: CANACO Events (Cámara Nacional de Comercio)
+🎯 COMARE 🅲
+
+**What:** Chamber of commerce events
+**Events:** Networking, sector-specific meetings
+**Who to send:** Mexican profile partner, any industry
+
+---
+
+EVENT B4: COPARMEX Events (Confederación Patronal de la República Mexicana)
+🎯 COMARE 🅲
+
+**What:** Business leaders events
+**Events:** Forums, conferences
+**Who to send:** Mexican profile partner with business connections
+
+---
+
+EVENT B5: Real Estate / Property Management Events
+🎯 COMARE 🅲
+
+**What to look for:**
+- AEV (Asociación de Empresas de Valor)
+- CNB (Cámara Nacional de la Industria de Desarrollo y Promoción de Vivienda)
+- Real estate investor events
+
+**Who to send:** Mexican profile partner with real estate/facilities connections
+
+---
+
+=== FOR DEALSMAP PROFILE PARTNERS (All regions) ===
+
+EVENT C1: Entrepreneurs & Trade Executive Meeting
+📅 March 13, 2026 (already passed — look for next)
+📍 Madrid
+🎯 DEALSMAP 🅳
+
+**What:** Conference for European entrepreneurs
+**Who to send:** European profile partner (Spain/UK)
+
+---
+
+EVENT C2: Startup Grind Monthly Events
+📅 Monthly
+📍 Madrid + global
+🎯 DEALSMAP 🅳
+
+**What:** Startup community events
+**Who to send:** Any profile partner interested in startups/tech
+
+---
+
+EVENT C3: Digital Nomad Meetups
+📅 Ongoing worldwide
+🎯 DEALSMAP 🅳, NEW BALI 🅱️
+
+**What:** Nomad community meetups
+**Who to send:** Profile partner researching nomad market
+**Note:** Could combine New Bali research + Dealsmap partner hunting
+
+---
+
+EVENT C4: Venta Natural / Freelancer Events
+📅 Ongoing
+📍 Various
+🎯 DEALSMAP 🅳
+
+**What:** Coworking, freelancer, gig economy events
+**Who to send:** Profile partner recruiting other freelancers
 
 ---
 
 ====================================================================
-ACTION LIST — WHAT TO DO NOW
+PART 3: COMBINED EVENT STRATEGY
 ====================================================================
 
-**THIS WEEK:**
+**JORDAN attends:**
+- Digital Nomad Meetup (March 27) — New Bali research
+- Impact Hub (this week) — networking
+- ISM Madrid (this week) — PISCO outreach
+- HR Evolution (April 15) — PISCO
+- Foro Recursos Humanos (April 16) — PISCO
+- Business Networking PNM (April 13) — Dealsmap
 
-□ ✅ TOMORROW: Go to Digital Nomad Meetup (March 27)
-  → Sign up: happeningnext.com
+**PROFILE PARTNERS attend (Jordan coordinates):**
+- HR events (PISCO targets) — trained partner goes
+- Hospitality events (PISCO targets) — trained partner goes
+- Mexico events (COMARE targets) — Mexican partner goes
+- Startup events (Dealsmap) — partner goes, recruits more partners
 
-□ ✅ THIS WEEK: Buy day pass at Impact Hub Madrid
-  → Go work from there 1-2 days
-  → Network with freelancers
+---
 
-□ ✅ THIS WEEK: Visit International School of Madrid
-  → Call: +34 913 592 121
-  → Go in person with pitch
+**THE SYSTEM:**
 
-□ ✅ THIS WEEK: Register for HR events (April 15-16)
-  → HR Evolution + Foro Recursos Humanos
-  → Early bird pricing if available
+1. Jordan identifies event
+2. Jordan identifies right profile partner
+3. Jordan trains partner on pitch
+4. Partner attends, networks, reports
+5. Jordan follows up with leads
 
-□ ✅ THIS WEEK: Connect with Javier Estrada (NH) on LinkedIn
-  → linkedin.com/in/javier-estrada-gomez-b5403668
-  → Mention you're in Madrid, want to meet
+---
 
-□ ✅ ONGOING: Attend Tech Social Madrid (weekly)
+**TRAINING FOR PROFILE PARTNERS:**
 
-□ ✅ ONGOING: Check IE alumni events calendar
+**For PISCO partners:**
+"Pisco/Placewell International places Filipino hospitality workers in European hotels. You're attending as our Spain representative. Your job: find HR directors who might need Filipino staff. Get their cards, set up follow-ups."
 
-**NEXT WEEK (April 6-13):**
-
-□ Register for Business Networking PNM (April 13)
-□ Continue PISCO outreach to hotel HR directors
-□ Continue COMARE ICP research
-
-**WEEK OF APRIL 15-16:**
-
-□ Attend HR Evolution (April 15)
-□ Attend XXIII Encuentro Anual (April 16)
-□ Collect cards, follow up, book meetings
+**For COMARE partners:**
+"Comare offers maintenance services for businesses with multiple locations. You're attending as our Mexico representative. Find operations directors who manage multiple locations and hate dealing with multiple vendors."
 
 ---
 
 ====================================================================
-EVENT CALENDAR SUMMARY
+ACTION PLAN
 ====================================================================
 
-| Date | Event | Priority | Project |
-|------|-------|----------|---------|
-| Mar 27 (TOMORROW) | Digital Nomad Meetup | 🔴 HIGH | New Bali 🅱️ |
-| Mar 28-Apr 6 | Impact Hub (visit days) | 🔴 HIGH | Dealsmap 🅳, New Bali 🅱️ |
-| Anytime | Visit ISM Madrid | 🔴 HIGH | PISCO 🅿️ |
-| April 13 | Business Networking PNM | 🔴 HIGH | Dealsmap 🅳 |
-| April 15 | HR Evolution | 🔴 HIGH | PISCO 🅿️ |
-| April 16 | XXIII Encuentro Anual RRHH | 🔴 HIGH | PISCO 🅿️ |
-| Ongoing | Tech Social Madrid | 🟡 MEDIUM | General 🚀 |
-| Ongoing | IE Alumni Events | 🟡 MEDIUM | All 🚀 |
-| April 22-24 | IE Symposium | 🟡 MEDIUM | Neurotech 🅽 |
-| April 30 | Madrid Tech Job Fair | 🟢 LOW | General 🚀 |
+**THIS WEEK — JORDAN:**
+□ March 27: Digital Nomad Meetup (New Bali research)
+□ This week: Impact Hub (networking)
+□ This week: Visit ISM Madrid (PISCO)
+□ Connect with Javier Estrada (NH) on LinkedIn
+
+**THIS WEEK — PARTNERS:**
+□ Identify: Spanish HR partner for HR events
+□ Identify: Mexican partner for Mexico events
+□ Start training first partner
+
+**APRIL — JORDAN:**
+□ April 13: Business Networking PNM (Dealsmap)
+□ April 15: HR Evolution (PISCO)
+□ April 16: Foro Recursos Humanos (PISCO)
+
+**APRIL — PARTNERS:**
+□ Send trained Spanish partner to HR events
+□ Mexican partner attends Mexico events
+□ Report back → Jordan follows up
+
+---
+
+====================================================================
+EVENT CALENDAR — ALL EVENTS
+====================================================================
+
+| Date | Event | For Jordan | For Partners | Project |
+|-------|-------|------------|--------------|---------|
+| Mar 27 | Digital Nomad Meetup | ✅ | ❌ | New Bali 🅱️ |
+| Mar 28-Apr 6 | Impact Hub coworking | ✅ | ❌ | Dealsmap 🅳 |
+| This week | Visit ISM Madrid | ✅ | ❌ | PISCO 🅿️ |
+| April 13 | Business Networking PNM | ✅ | ❌ | Dealsmap 🅳 |
+| April 15 | HR Evolution | ✅ | ✅ | PISCO 🅿️ |
+| April 16 | Foro Recursos Humanos | ✅ | ✅ | PISCO 🅿️ |
+| Ongoing | Tech Social Madrid | ✅ | ❌ | General 🚀 |
+| Ongoing | IE Alumni Events | ✅ | ❌ | All 🚀 |
+| Ongoing | Hospitality events | ❌ | ✅ | PISCO 🅿️ |
+| Ongoing | Mexico business events | ❌ | ✅ | COMARE 🅲 |
+| Ongoing | Startup/Nomad events | ❌ | ✅ | Dealsmap 🅳 |
+
+Legend:
+✅ = Jordan attends
+✅ = Partner attends
+❌ = Not priority
 
 ---
 
