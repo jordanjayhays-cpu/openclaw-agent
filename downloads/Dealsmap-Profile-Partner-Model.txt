@@ -1,14 +1,15 @@
 DEALSMAP 2.0 — PROFILE PARTNER MODEL
 =====================================
 "Rent" LinkedIn profiles for B2B outreach
+Realistic rates for job seekers and freelancers
 Last updated: 2026-03-28
 
 ====================================================================
 THE MODEL
 ====================================================================
 
-You pay someone $500-1,500/month to "join" your company.
-They let you use their LinkedIn profile for outreach.
+You pay someone $200-500/month to use their LinkedIn profile.
+They let you send messages from their profile to their connections.
 You control the messaging. They get passive income.
 
 When pitching to PISCO/COMARE:
@@ -16,256 +17,227 @@ When pitching to PISCO/COMARE:
 
 Why it works:
 - B2B buyers respond to in-country profiles (not cold Unknown)
-- LinkedIn accepts it (real person, real network)
-- Scalable — add profiles = expand regions
+- Real person, real network, real connections
 - No employees = no payroll, no contracts
+- Scalable — add profiles = expand regions
 
 ====================================================================
-WHAT TO TELL THEM
+WHO TO TARGET (in order of willingness to accept lower rates)
 ====================================================================
 
-"It's simple:
-- You stay at your current job
-- You let us use your LinkedIn profile to send messages on our behalf
-- We send messages WE write, from YOUR profile, to YOUR connections
-- You get paid $X/month for 10-20 hours/month of 'passive' work
-- We never post as you — only send messages
-- You can stop anytime"
+1. LinkedIn "Open to Work" people
+   - Most motivated, lowest rate acceptable
+   - Even $200/month sounds good to someone unemployed
+   - Search: "open to work" + "sales" + "[City]"
 
-Compensation ideas:
-- Base: $500-1,000/month per profile
-- Per message: $5-10 per reply received
-- Per meeting: $50-100 per meeting booked
+2. Recently laid off (tech, sales, marketing)
+   - Mass layoffs = many qualified people desperate for income
+   - Search news for "company layoffs" + target those people
+
+3. Freelancers on Upwork/Fiverr
+   - Already used to variable income
+   - Willing to accept less for steady work
+
+4. Job board applicants
+   - People who applied to jobs = actively searching
+   - Cold email them with offer
+
+5. University students/graduates
+   - Need income, flexible hours
+   - Good for entry-level ICP targets
 
 ====================================================================
-IDEAL PROFILE CRITERIA
+COMPENSATION — REALISTIC RATES
 ====================================================================
 
-Good profile partner:
-- 500+ LinkedIn connections
-- Works in: sales, business development, recruitment, HR, management
-- Has decision-maker connections in their region
-- NOT: current recruitment agency owner (conflict)
-- English or bilingual (for US/LATAM)
-- Spanish + English (for Spain/LATAM)
+Target: People looking for work = they accept lower rates
 
-Bad profile partner:
-- <100 connections (not enough reach)
-- Unemployed (will post as you, create noise)
-- Already a recruiter/sales rep (conflicts)
-- Aggressive networker (will notice if you spam)
+Option A: Flat Monthly (simplest)
+- Job seeker / unemployed: $200-400/month
+- Freelancer looking for work: $300-500/month
+- Active freelancer: $400-700/month
+- Covers: 20-30 messages per week
 
-Target demographics:
-- Mid-level professionals (5-15 years experience)
-- Age 28-45
-- Job title: Sales Manager, BD Director, HR Manager, Recruiter, Account Manager
-- Industry: Tech, Finance, Healthcare, Hospitality (matches ICPs)
+Option B: Per Message (lower risk)
+- $1-3 per message sent
+- $5 per reply received
+- $25 per meeting booked
+
+Option C: Hybrid (recommended)
+- $150-250/month base
+- $2 per message sent
+- $10 per reply received
+- $50 per meeting booked
+
+Realistic pitch to them:
+"You let me use your profile for 20 messages/week = $400/month
+ You don't do anything except approve what I send."
 
 ====================================================================
 WHERE TO FIND THEM
 ====================================================================
 
-UPWORK
-Search: "linkedin outreach", "b2b sales", "business development"
-https://www.upwork.com/freelancers/mexico
-https://www.upwork.com/freelancers/spain
-https://www.upwork.com/freelancers/usa
+LINKEDIN "OPEN TO WORK" SEARCH:
+- USA Sales: https://www.linkedin.com/search/results/people/?keywords=open%20to%20work%20sales%20usa
+- Mexico BD: https://www.linkedin.com/search/results/people/?keywords=open%20to%20work%20business%20development%20mexico
+- Spain Sales: https://www.linkedin.com/search/results/people/?keywords=open%20to%20work%20sales%20madrid
+- Recruiters: https://www.linkedin.com/search/results/people/?keywords=open%20to%20work%20recruiter
 
-FIVERR
-https://www.fiverr.com/categories/business/sales
-Search: "linkedin outreach", "cold email", "b2b lead generation"
+UPWORK FREELANCERS (lower rates):
+- Mexico: https://www.upwork.com/freelancers/mexico
+  Search: "linkedin outreach", "lead generation", "cold email", "b2b sales"
+- Spain: https://www.upwork.com/freelancers/spain
+- USA: https://www.upwork.com/freelancers/usa
 
-LINKEDIN SEARCH (manual)
-Search for: "Sales Manager" + "Mexico" + "open to work"
-Or: "Business Development" + "Madrid" + "open to opportunities"
+FIVERR MICRO JOBS:
+- https://www.fiverr.com/search/results?category=sales&query=linkedin%20outreach
+- Many offer "100 linkedin messages for $20" = $0.20/message
+- These people are desperate = very low rates
 
-HIMALAYAS.APP
-Remote workers in Mexico, Colombia, Spain looking for work:
-https://himalayas.app/talent/countries/mexico/b2b
+JOB BOARDS (people who applied = motivated):
+- Indeed Mexico: https://www.indeed.com.mx/empleos/sales
+- Jooble Spain: https://es.jooble.org/trabajo-sales
+- LinkedIn Jobs: Search "[Job Title]" + Apply = motivated applicants
 
-FREELANCER.MX
-Sales freelancers in Mexico:
-https://www.freelancer.mx/freelancers/mexico/sales
-
-JOB BOARDS
-- Jooble Spain: https://es.jooble.org/trabajo-freelance-b2b
-- Indeed Mexico: Search "ventas freelance" "LinkedIn"
+MASS LAYOFF VICTIMS (news-driven):
+- Search "laid off" + "[company]" + "[city]"
+- Recent tech layoffs (2023-2024) = many qualified sales people desperate
+- Example: "meta layoffs 2024" "amazon layoffs" "google layoffs"
 
 ====================================================================
 TARGET: 5 USA PROFILES
 ====================================================================
 
-Why USA: US companies hiring Filipino workers, US healthcare using overseas nurses
-
 Where to find:
 - Upwork freelancers (bilingual Spanish/English)
-- LinkedIn: "Sales Manager" + "New York" + open to work
-- Himalaya: US-based remote sales pros
+- LinkedIn: "open to work" + "sales" + "USA"
+- Fiverr: "linkedin outreach" sellers
 
-Profile ideas to recruit:
-1. Filipino-American in USA (connects both worlds)
-2. Healthcare recruiter in USA
-3. Tech sales manager (SDR/BDR network)
-4. Operations manager at US hospital system
-5. HR manager at US hotel chain
+Profile type wanted:
+- Filipino-American (connects both worlds)
+- Healthcare recruiter (matches PISCO healthcare ICP)
+- Tech sales SDR/BDR (networks with decision makers)
+- Operations manager at US hospital
 
-Outreach message:
-"Hi [Name], I'm building a B2B outreach network and looking for
-professionals who want to earn $500-1K/month passive income.
-You keep your job — we use your LinkedIn for outbound messages.
-Interested in a 15-min call?"
+Rates: $200-400/month (job seekers accept low)
 
 ====================================================================
 TARGET: 5 MEXICO PROFILES
 ====================================================================
 
-Why Mexico: Local BD for COMARE, connect to Mexican companies
-
 Where to find:
 - Upwork Mexico: https://www.upwork.com/freelancers/mexico
-- LinkedIn: "Director comercial" + "CDMX" + open to work
-- Freelancer.mx sales freelancers
+  Search: "ventas", "desarrollo de negocios", "linkedin"
+- LinkedIn: "open to work" + "comercial" + "CDMX"
+- Fiverr Mexico sellers
 
-Example profiles found:
+Found examples:
 - Pedro Jimenez — SaaS Sales & Automation (Mexico)
   https://mx.linkedin.com/in/pedrojh
   B2B specialist, LATAM focus
 
 - Antonio Larriva — Bilingual Sales & BD (Mexico/Canada)
   https://www.upwork.com/freelancers/~01c91a720be62c6ada
-  Qualcomm, Fortune 500 trained
+  Fortune 500 trained, Qualcomm experience
 
-Profile ideas to recruit:
-1. Commercial director at Mexican retail chain
-2. Sales manager at Mexican hospital group
-3. BD manager at Mexican bank
-4. Recruiter at Mexican staffing agency
-5. Operations manager at Mexican hotel chain
+Profile type wanted:
+- Commercial director at Mexican retail chain
+- Sales manager at Mexican hospital group
+- BD manager at Mexican bank
+- Recruiter at Mexican staffing agency
+
+Rates: $200-400/month
 
 ====================================================================
 TARGET: 5 SPAIN/EUROPE PROFILES
 ====================================================================
 
-Why Spain: PISCO hotels in Spain, Jordan is there
-
 Where to find:
 - Upwork Spain: https://www.upwork.com/freelancers/spain
-- LinkedIn: "Director comercial" + "Madrid" + open to work
-- Jooble Spain freelance B2B
+- LinkedIn: "open to work" + "comercial" + "Madrid"
+- Jooble: "ventas" "freelance" Spain
 
-Profile ideas to recruit:
-1. HR manager at NH Hotel Group (Javier Estrada network)
-2. Sales manager at Iberostar/Melia properties
-3. BD director at Spanish hospital group
-4. Recruiter at Spanish staffing agency
-5. Operations manager at Barcelo/RIU
+Profile type wanted:
+- HR manager at NH Hotel Group (knows the industry)
+- Sales manager at Iberostar/Melia properties
+- BD director at Spanish hospital group
+- Recruiter at Spanish staffing agency
 
-Bonus: Someone at Philippine Overseas Labor Office (POLEO) Spain
+Rates: $250-500/month (Spain wages slightly higher)
 
 ====================================================================
 TARGET: 5 COLOMBIA/LATAM PROFILES
 ====================================================================
 
-Why Colombia: Emerging market, Spanish-speaking, growing economy
-
 Where to find:
 - Upwork Colombia: https://www.upwork.com/freelancers/colombia
-- LinkedIn: "Gerente comercial" + "Bogota" + open to work
-- Freelancer (Colombia)
+- LinkedIn: "open to work" + "ventas" + "Bogota"
+- Freelancer.co (Colombia)
 
-Profile ideas to recruit:
-1. BD manager at Colombian hotel chain
-2. HR manager at Colombian healthcare
-3. Sales director at Colombian retail
-4. Operations manager at Colombian bank
-5. Recruitment consultant in Colombia
+Profile type wanted:
+- BD manager at Colombian hotel chain
+- HR manager at Colombian healthcare
+- Sales director at Colombian retail
+- Operations manager at Colombian bank
+
+Rates: $150-350/month (lower COL)
 
 ====================================================================
 TARGET: 5 ASIA PROFILES
 ====================================================================
 
-Why Asia: PISCO targets in Asia (schools in Bangkok, HK, Singapore)
-
 Where to find:
-- LinkedIn: "HR Manager" + "Bangkok" + open to work
-- LinkedIn: "Recruitment" + "Singapore" + open to work
+- LinkedIn: "open to work" + "HR" + "Bangkok"
+- LinkedIn: "open to work" + "recruitment" + "Singapore"
 - Upwork Asia freelancers
 
-Profile ideas to recruit:
-1. HR at ISB Bangkok (international school network)
-2. Recruiter at Singapore American School
-3. BD at Hong Kong International School
-4. Operations at Philippine international school
-5. Filipino recruiter based in Manila (connects to PISCO network)
+Profile type wanted:
+- HR at ISB Bangkok (international school network)
+- Recruiter at Singapore American School
+- BD at Hong Kong International School
+- Filipino recruiter based in Manila (connects to PISCO network)
+
+Rates: $150-300/month (lower wages in PH/Thailand)
 
 ====================================================================
-DEAL STRUCTURE — WHAT TO OFFER
+WHAT TO TELL THEM
 ====================================================================
 
-Option A: Flat Monthly Retainer
-- $500/month per profile
-- Covers 20 messages sent per week
-- Profile owner does nothing except approve messages
+Simple pitch:
+"It's simple:
+- You stay at your current job (or keep looking)
+- You let us use your LinkedIn profile to send messages
+- We write the messages, you review and send
+- You get paid $[Amount]/month for about 2-3 hours of work
+- We never post publicly — only 1:1 messages
+- You can stop anytime with 7 days notice"
 
-Option B: Usage-Based
-- $300/month base
-- $5 per message sent
-- $10 per reply received
-- $50 per meeting booked
-
-Option C: Hybrid
-- $400/month base
-- $3 per message sent
-- $10 per reply
-- Plus $50 per meeting
-
-Recommended: Option A for simplicity, switch to B if they prove active.
+Key points to emphasize:
+- No interviews needed
+- Keep your current job
+- Passive income
+- 15 minutes/day max
+- You control what gets sent
 
 ====================================================================
-LEGAL/ETHICAL CONSIDERATIONS
+OUTREACH MESSAGE TEMPLATE
 ====================================================================
 
-ToS Risk:
-- LinkedIn ToS prohibits scraping and automated messaging
-- Using real profiles is a gray area — real humans sending messages
-- Profile owner consents = you have permission
-- Don't use to spam — LinkedIn will flag if too many reports
-
-What to avoid:
-- Don't post as them (only send 1:1 messages)
-- Don't mass-message their entire network
-- Keep volume reasonable (20-30 messages/week/profile)
-- Don't message their direct connections about competing services
-
-What IS allowed:
-- You write the message, they review and send
-- Or you have them forward messages to their network
-- They're a "contractor" with a service agreement
-
-Service Agreement (simple):
-"Profile Partner Agreement
-- [Name] grants [Company] permission to send LinkedIn messages
-  from their personal profile on their behalf
-- [Company] will not post publicly or send spam
-- [Company] pays $[Amount] monthly
-- Either party can terminate with 30 days notice"
-
-====================================================================
-PITCH DECK FOR RECRUITING PROFILES
-====================================================================
-
-Subject: Earn $500-1K/month passive income — No interviews needed
+Subject: Earn $400/month from your LinkedIn — No interviews
 
 Hi [Name],
 
-I run a B2B sales network and I'm looking for professionals
-who want to earn $500-1K/month in passive income.
+I noticed you're [job title] in [City] and you might be
+looking for work.
+
+I'm building a B2B outreach network and I need people
+who want to earn $400/month passive income.
 
 Here's how it works:
 - You keep your current job
 - I write LinkedIn messages for you to send
 - You send them from YOUR profile to YOUR connections
-- I pay you $X/month for 10-20 hours of 'work'
+- You earn $400/month for about 2 hours of 'work' per week
 
 No sales calls. No interviews. Just messages.
 
@@ -275,26 +247,72 @@ Best,
 Jordan
 
 ====================================================================
-OUTREACH SCRIPT FOR LINKEDIN
+SERVICE AGREEMENT (simple)
 ====================================================================
 
-Message to recruit a profile partner:
+Profile Partner Agreement
 
-"Hi [Name], I noticed you're in [sales/BD/HR] in [City].
-I'm building a network of professionals who earn $500-1K/month
-letting us use their LinkedIn for outbound messages.
+[Name] grants [Company] permission to send LinkedIn messages
+from their personal LinkedIn profile on their behalf.
 
-You keep your job, we handle the outreach.
-Would 15 minutes for a quick call work?"
+Terms:
+- [Company] will write messages, [Name] will review and send
+- [Company] will not post publicly from [Name]'s profile
+- [Company] pays $[Amount] monthly
+- Either party can terminate with 7 days notice
+- [Name] agrees to send minimum 20 messages per week
+
+Sign: _______________ Date: _______________
+
+====================================================================
+LEGAL/ETHICAL NOTES
+====================================================================
+
+LinkedIn ToS: Gray area — real human sending messages is allowed
+- Don't mass message their entire network
+- Keep volume reasonable (20-30 per week)
+- Don't post publicly as them
+- Profile owner consents = you have permission
+
+What IS allowed:
+- You write, they review and send
+- They're a contractor, not employee
+- 1:1 messages only
+
+What NOT allowed:
+- Automated sending (against ToS)
+- Public posts as them
+- Spam to their entire network
+
+====================================================================
+PITCH FOR PISCO/COMARE CLIENTS
+====================================================================
+
+When pitching the profile network to clients:
+
+"We don't use fake profiles or bots.
+We have 5 real professionals in [Country] who let us
+use their LinkedIn to send personalized messages.
+
+They're not employees — they're partners who earn
+passive income from their network.
+
+When you hire us, these 5 people will reach out
+to decision makers in their network, from their
+real profiles, with your message.
+
+Would you trust a message from a stranger — or from
+someone in your industry who happens to work with us?"
 
 ====================================================================
 TRACKING TEMPLATE
 ====================================================================
 
-Profile Partner | Region | Connections | Rate | Start Date | Messages Sent | Replies | Meetings Booked
-----------------------------------------------------------------------------------------------------------
-[Name]           | USA    | [Number]    | $500 | [Date]     | [This week]   | [X]     | [X]
-[Name]           | Mexico | [Number]    | $600 | [Date]     | [This week]   | [X]     | [X]
+Profile Partner | Region | Conn | Rate | Start | Msgs/Sem | Replies | Meets
+-----------------------------------------------------------------------------------------
+[Name]           | USA    | 500+ | $300 | Date  | 20        | 5      | 1
+[Name]           | Mexico | 300+ | $250 | Date  | 20        | 8      | 2
+[Name]           | Spain  | 400+ | $350 | Date  | 15        | 3      | 0
 ...
 
 ====================================================================
@@ -302,14 +320,16 @@ NEXT STEPS
 ====================================================================
 
 Week 1:
-1. Post job on Upwork: "LinkedIn Profile Partner — B2B Outreach"
-2. Post on Fiverr: "Earn money letting me use your LinkedIn"
-3. Message 20 people on LinkedIn with pitch
+1. Post on Upwork: "LinkedIn Profile Partner — B2B Outreach"
+   Budget: $200-400/month per partner
+2. Post on Fiverr: "Earn money from your LinkedIn"
+3. Search LinkedIn: "open to work" + "sales" + "[target city]"
+4. Message 20 people with pitch
 
 Week 2:
-1. Screen applicants (check connections, job title, location)
+1. Screen applicants (check connections count, job title)
 2. Interview 5-10 candidates
-3. Sign 2-3 first partners
+3. Sign first 2-3 partners
 
 Week 3:
 1. Test with first messages
@@ -317,7 +337,7 @@ Week 3:
 3. Refine pitch
 
 Week 4:
-1. Scale to 5 partners
-2. Use for PISCO/COMARE outreach pitch
+1. Scale to 5 partners per region
+2. Use as sales pitch for PISCO/COMARE
 
 ====================================================================
