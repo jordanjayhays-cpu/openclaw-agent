@@ -20,7 +20,7 @@ Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estu
 
 **His "why":** He's investing in this program and in me (Claw) to build systems that scale beyond himself. He wants to leave with projects that work without him being physically present.
 
-## The 3 Projects
+## The 3 Projects + 2 Side Projects
 
 ### 1. PISCO (Manila) ✅ — Active BD Client
 - **What:** Business development for a Manila-based overseas employment agency
@@ -35,9 +35,21 @@ Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estu
 - **Your role:** BD — expanding their client base / operations
 - **Status:** Planning phase — about to start
 
-### 3. Europe 📋 — BD Expansion
-- Phase 3 — another BD client or Dealsmap 2.0
-- Target: Spanish/Portuguese/German companies needing Filipino workers or outbound services
+### 3. Google Maps Influencer Aggregation 📋 — Concept
+- **What:** Aggregate Google Maps creators → pitch businesses for local influencer coverage
+- **Model:** Businesses pay for local creator posts/check-ins to boost Google Maps presence
+- **Value prop:** "We send 20-50 local creators to your location, you get authentic local coverage"
+- **Jordan's asset:** 100M+ Google Maps views
+- **Status:** Concept stage
+
+### 4. "New Bali" — Digital Nomad Destination 📋 — Concept
+- **What:** Create a "New Bali" destination — coliving/coworking for digital nomads
+- **Model:** Find a nice/affordable place → market to nomads → partner with property owner
+- **Jordan's asset:** YouTube channel for content/demand creation
+- **Status:** Concept stage
+
+### 5. Europe 📋 (TBD)
+- Phase 3 — follows Mexico City execution
 
 ## Past Ventures
 
