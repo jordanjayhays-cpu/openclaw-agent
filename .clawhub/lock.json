@@ -36,6 +36,14 @@
     "cron-scheduler": {
       "version": "1.0.0",
       "installedAt": 1774727675761
+    },
+    "news-aggregator": {
+      "version": "1.0.3",
+      "installedAt": 1774729535334
+    },
+    "capability-evolver": {
+      "version": "1.40.0",
+      "installedAt": 1774729549751
     }
   }
 }
