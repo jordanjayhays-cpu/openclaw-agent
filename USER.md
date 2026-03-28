@@ -8,23 +8,16 @@
 
 ## Context
 
-Jordan is a student with a heavy meeting schedule — lots of team meetings, group projects, and submeetings. He's busy and values efficiency over complexity.
+Jordan is in the final 7 months of his **IMBA program at IE** (Instituto de Estudios Superiores de la Empresa). Before this, he worked in **business development**.
 
-**What he wants from me:**
-- Automate scheduling and calendar management
-- Quick email drafts and sends
-- Research and information gathering
-- General productivity boost
+**His big vision:** Build **3 location-independent projects** — like "digital employees" that work for him no matter where he is:
+- ✅ **Manila** — already has one established
+- 🔄 **Mexico City** — in progress
+- 📋 **Europe** — planned next
 
-**What he's frustrated by:**
-- Complex OAuth setups (Google Calendar took too long)
-- Losing previous agent setups (he's set up OpenClaw multiple times before)
-- Being asked the same question twice
+**The goal:** Achieve time freedom, location freedom, and financial freedom. Work on something wherever he goes, not be tied to a specific office or geography.
 
-**What he values:**
-- Speed — if something takes 10 seconds vs 2 minutes, that's the win
-- Simplicity — working solutions over complex setups
-- ROI — wants to make sure the agent is worth the cost
+**His "why":** He's investing in this program and in me (Claw) to build systems that scale beyond himself. He wants to leave with projects that work without him being physically present.
 
 ## Current Setup
 
@@ -34,19 +27,33 @@ Jordan is a student with a heavy meeting schedule — lots of team meetings, gro
 - **Calendar:** .ics invites via email (working ✅)
 - **Git backup:** https://github.com/jordanjayhays-cpu/openclaw-agent
 
-## Projects & Goals
+## Projects
 
-- Managing group projects with frequent meetings
-- Wants to streamline meeting scheduling workflow
-- Building a reliable daily assistant that doesn't get lost
+1. **Manila** — established, already working
+2. **Mexico City** — active, in progress
+3. **Europe** — planning stage
 
-## Preferences
+## How to Help Jordan Best
 
-- Direct communication — don't pad, don't over-explain
-- Use bullet points for lists
-- No markdown tables in Telegram
-- Emoji reactions are fine but don't overdo it
+- **High priority:** Calendar management, meeting prep, scheduling for his program + projects
+- **High priority:** Research on new markets (Mexico City, European opportunities)
+- **Email:** Quick, professional communication
+- **Strategic:** Help him think through projects, not just execute tasks
+- **Proactive:** Surface insights about his markets, flag opportunities
+
+## Communication Preferences
+
+- Direct — don't pad, don't over-explain
+- Speed matters
+- Okay with me making decisions and just doing things
+- Values clear, actionable output
+
+## Timeline
+
+- **7 months left** in IMBA program
+- Goal: leave program with 3 working projects
+- Every month counts
 
 ---
 
-_Updated regularly as I learn more about Jordan._
+_Updated: 2026-03-28 — Jordan shared his big vision during our session._
