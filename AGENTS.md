@@ -117,6 +117,27 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
 
+## Memory Rules (CRITICAL)
+
+**The 4 Layers:**
+1. Bootstrap files (SOUL.md, AGENTS.md, USER.md, MEMORY.md) — PERMANENT
+2. Session transcript (JSONL on disk) — Semi-permanent
+3. LLM context window — Temporary (200K tokens, compaction fires when full)
+4. Retrieval index — Permanent (but only contains what was written to files)
+
+**Failure Modes:**
+- "It was never stored" — instruction only existed in chat, never written to file
+- "Compaction changed context" — session was long, summary dropped details
+- "Session pruning trimmed tool results" — old tool outputs forgotten
+
+**The Fix:**
+- Put durable rules in FILES, not chat
+- Check memory_search before acting (make it mandatory)
+- If it matters, write it to a file
+- Never keep "mental notes" — always write to disk
+
+## Skills
+
 **🎭 Voice Storytelling:** If you have `sag` (ElevenLabs TTS), use voice for stories, movie summaries, and "storytime" moments! Way more engaging than walls of text. Surprise people with funny voices.
 
 **📝 Platform Formatting:**
