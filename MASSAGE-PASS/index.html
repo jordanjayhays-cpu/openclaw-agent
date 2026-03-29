@@ -3,203 +3,448 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massage Pass — Book Your Massage</title>
+    <title>Massage Pass — Overview</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
         
-        header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        header h1 { font-size: 28px; font-weight: 700; }
-        header .subtitle { color: #666; font-size: 14px; margin-top: 4px; }
+        /* Navigation */
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        nav .logo { font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        nav .links { display: flex; gap: 30px; }
+        nav .links a { color: #888; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+        nav .links a:hover, nav .links a.active { color: #fff; }
+        nav .tab-btn { padding: 8px 20px; background: #6366f1; color: #fff; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; }
         
-        .hero { text-align: center; padding: 60px 20px; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); }
-        .hero h2 { font-size: 36px; margin-bottom: 10px; }
-        .hero p { color: #888; font-size: 16px; }
+        /* Tabs */
+        .tabs { padding: 100px 40px 40px; display: flex; justify-content: center; gap: 20px; }
+        .tab-btn { padding: 16px 40px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: #fff; font-size: 16px; cursor: pointer; transition: all 0.2s; }
+        .tab-btn:hover { background: rgba(255,255,255,0.1); }
+        .tab-btn.active { background: #6366f1; border-color: #6366f1; }
         
-        .location-filter { text-align: center; padding: 20px; background: rgba(255,255,255,0.03); }
-        .location-filter span { color: #888; font-size: 14px; margin-right: 10px; }
-        .location-filter button { padding: 8px 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; color: #fff; font-size: 13px; cursor: pointer; margin: 4px; transition: all 0.2s; }
-        .location-filter button:hover, .location-filter button.active { background: #6366f1; border-color: #6366f1; }
+        /* Content Sections */
+        .section { display: none; padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .section.active { display: block; }
         
-        .shops { padding: 40px; max-width: 900px; margin: 0 auto; }
-        .shops h3 { font-size: 20px; margin-bottom: 20px; color: #888; }
+        /* Overview Section */
+        .overview-hero { text-align: center; padding: 60px 40px; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); border-radius: 24px; margin-bottom: 40px; }
+        .overview-hero h1 { font-size: 48px; margin-bottom: 16px; }
+        .overview-hero p { color: #888; font-size: 18px; margin-bottom: 30px; }
+        .overview-stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .overview-stat { text-align: center; }
+        .overview-stat .num { font-size: 36px; font-weight: 700; color: #6366f1; }
+        .overview-stat .label { font-size: 14px; color: #888; }
         
-        .shop-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; margin-bottom: 20px; transition: all 0.2s; }
-        .shop-card:hover { border-color: #6366f1; transform: translateY(-2px); }
+        /* Cards Grid */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+        .card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; transition: all 0.2s; }
+        .card:hover { border-color: #6366f1; transform: translateY(-2px); }
+        .card-icon { font-size: 40px; margin-bottom: 16px; }
+        .card h3 { font-size: 20px; margin-bottom: 12px; }
+        .card p { color: #888; font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+        .card-link { color: #6366f1; font-size: 14px; text-decoration: none; }
+        .card-link:hover { text-decoration: underline; }
         
-        .shop-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
-        .shop-name { font-size: 20px; font-weight: 600; }
-        .shop-distance { font-size: 12px; color: #6366f1; background: rgba(99, 102, 241, 0.1); padding: 4px 10px; border-radius: 12px; }
+        /* Customer Section */
+        .customer-hero { text-align: center; padding: 80px 40px; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); border-radius: 24px; margin-bottom: 40px; }
+        .customer-hero h1 { font-size: 56px; margin-bottom: 16px; }
+        .customer-hero p { color: #888; font-size: 20px; max-width: 600px; margin: 0 auto 30px; }
+        .customer-cta { display: inline-block; padding: 18px 40px; background: #6366f1; color: #fff; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 18px; }
+        .customer-cta:hover { background: #5558e3; }
         
-        .shop-type { font-size: 13px; color: #888; margin-bottom: 12px; }
+        .how-it-works { padding: 60px 40px; }
+        .how-it-works h2 { text-align: center; font-size: 36px; margin-bottom: 40px; }
+        .steps { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .step { display: flex; align-items: center; gap: 24px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+        .step-num { width: 60px; height: 60px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; }
+        .step h4 { font-size: 18px; margin-bottom: 4px; }
+        .step p { color: #888; font-size: 14px; }
         
-        .shop-services { margin-bottom: 16px; }
-        .service { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .service:last-child { border-bottom: none; }
-        .service-name { color: #ccc; font-size: 14px; }
-        .service-price { color: #22c55e; font-size: 14px; font-weight: 600; }
+        .pricing-preview { padding: 60px 40px; }
+        .pricing-preview h2 { text-align: center; font-size: 36px; margin-bottom: 40px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .price-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; text-align: center; }
+        .price-card.featured { border-color: #6366f1; background: rgba(99, 102, 241, 0.1); }
+        .price-name { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+        .price-amount { font-size: 48px; font-weight: 700; margin-bottom: 8px; }
+        .price-amount span { font-size: 18px; color: #888; font-weight: 400; }
+        .price-desc { color: #888; font-size: 14px; margin-bottom: 20px; }
+        .price-features { text-align: left; margin-bottom: 20px; }
+        .price-feature { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; color: #ccc; }
+        .price-feature:last-child { border-bottom: none; }
+        .price-cta { display: block; padding: 14px; background: rgba(255,255,255,0.1); border-radius: 8px; color: #fff; text-decoration: none; font-weight: 600; text-align: center; }
+        .price-card.featured .price-cta { background: #6366f1; }
         
-        .shop-actions { display: flex; gap: 12px; margin-top: 16px; }
-        .btn { flex: 1; padding: 14px 20px; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.2s; }
-        .btn-primary { background: #6366f1; color: #fff; }
-        .btn-primary:hover { background: #5558e3; }
-        .btn-whatsapp { background: #25D366; color: #fff; }
-        .btn-whatsapp:hover { background: #1fb855; }
+        .shops-preview { padding: 60px 40px; }
+        .shops-preview h2 { text-align: center; font-size: 36px; margin-bottom: 40px; }
+        .shop-cards { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .shop-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .shop-card.featured { border-left: 4px solid #22c55e; }
+        .shop-info h4 { font-size: 20px; margin-bottom: 4px; }
+        .shop-info p { color: #888; font-size: 14px; }
+        .shop-distance { background: rgba(99, 102, 241, 0.2); color: #6366f1; padding: 8px 16px; border-radius: 20px; font-size: 13px; }
         
-        .features { padding: 60px 40px; background: rgba(255,255,255,0.03); }
-        .features h3 { text-align: center; margin-bottom: 40px; font-size: 24px; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
-        .feature { text-align: center; padding: 20px; }
-        .feature-icon { font-size: 32px; margin-bottom: 10px; }
-        .feature h4 { font-size: 16px; margin-bottom: 8px; }
-        .feature p { font-size: 13px; color: #888; }
+        /* Shop Section */
+        .shop-hero { text-align: center; padding: 80px 40px; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); border-radius: 24px; margin-bottom: 40px; }
+        .shop-hero h1 { font-size: 48px; margin-bottom: 16px; }
+        .shop-hero p { color: #888; font-size: 20px; max-width: 600px; margin: 0 auto 30px; }
         
-        footer { text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .problem-solution { padding: 60px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .problem-col h3, .solution-col h3 { font-size: 24px; margin-bottom: 20px; }
+        .problem-col h3 { color: #ef4444; }
+        .solution-col h3 { color: #22c55e; }
+        .issue { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .issue h4 { font-size: 16px; margin-bottom: 4px; }
+        .issue p { color: #888; font-size: 13px; }
         
-        .comming-soon { opacity: 0.5; }
-        .comming-soon .shop-name::after { content: ' (Coming Soon)'; font-size: 12px; color: #888; font-weight: normal; }
+        .pitch-box { background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; max-width: 800px; margin: 40px auto; text-align: center; }
+        .pitch-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 16px; }
+        .pitch-text { font-size: 20px; line-height: 1.6; font-style: italic; color: #ccc; }
+        
+        .commission-model { padding: 60px 40px; text-align: center; }
+        .commission-model h2 { font-size: 36px; margin-bottom: 40px; }
+        .model-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; max-width: 500px; margin: 0 auto; }
+        .model-row { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .model-row:last-child { border-bottom: none; }
+        .model-row .label { color: #888; }
+        .model-row .value { font-weight: 600; }
+        .model-row .value.green { color: #22c55e; }
+        .model-row.total { margin-top: 16px; padding-top: 20px; border-top: 2px solid rgba(34, 197, 94, 0.3); font-size: 18px; }
+        
+        .ie-network { padding: 60px 40px; background: rgba(99, 102, 241, 0.05); border-radius: 20px; text-align: center; }
+        .ie-network h2 { font-size: 32px; margin-bottom: 30px; }
+        .ie-stats { display: flex; justify-content: center; gap: 60px; }
+        .ie-stat .num { font-size: 48px; font-weight: 700; color: #6366f1; }
+        .ie-stat .label { font-size: 14px; color: #888; }
+        
+        .contact-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; max-width: 500px; margin: 40px auto; }
+        .contact-card h3 { font-size: 20px; margin-bottom: 20px; text-align: center; }
+        .contact-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-row .label { color: #888; }
+        .contact-row .value { font-weight: 600; }
+        
+        /* Footer */
+        footer { text-align: center; padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; color: #666; font-size: 14px; }
+        
+        @media (max-width: 900px) {
+            nav { padding: 15px 20px; }
+            nav .links { display: none; }
+            .tabs { padding: 90px 20px 20px; }
+            .section { padding: 20px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .problem-solution { grid-template-columns: 1fr; }
+            .customer-hero h1 { font-size: 36px; }
+            .shop-hero h1 { font-size: 36px; }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>💆 Massage Pass</h1>
-        <div class="subtitle">Book massage near IE Business School</div>
-    </header>
+    <nav>
+        <div class="logo">💆 Massage Pass</div>
+        <div class="links">
+            <a href="#" onclick="showSection('overview')">Overview</a>
+            <a href="#" onclick="showSection('customer')">For Customers</a>
+            <a href="#" onclick="showSection('shop')">For Shops</a>
+        </div>
+        <button class="tab-btn" onclick="showSection('customer')">View as Customer →</button>
+    </nav>
     
-    <section class="hero">
-        <h2>Massage Made Easy</h2>
-        <p>Book instantly. Pay at the shop. Cancel anytime.</p>
-    </section>
-    
-    <div class="location-filter">
-        <span>Location:</span>
-        <button class="active" onclick="filterShops('all')">All</button>
-        <button onclick="filterShops('chamartin')">Chamartín (IE Area)</button>
-        <button onclick="filterShops('salamanca')">Salamanca</button>
-        <button onclick="filterShops('sol')">Sol / Center</button>
+    <!-- Overview Tab -->
+    <div class="section active" id="section-overview">
+        <div class="overview-hero">
+            <h1>Massage Pass</h1>
+            <p>Monthly massage subscriptions for IE Business School students. Book with one WhatsApp. Multiple locations.</p>
+            <div class="overview-stats">
+                <div class="overview-stat">
+                    <div class="num">2</div>
+                    <div class="label">Partner Shops</div>
+                </div>
+                <div class="overview-stat">
+                    <div class="num">3</div>
+                    <div class="label">Pricing Plans</div>
+                </div>
+                <div class="overview-stat">
+                    <div class="num">15-25</div>
+                    <div class="label">Min from IE</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="font-size: 28px; margin-bottom: 24px;">What We Built</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Landing Pages</h3>
+                <p>Professional pages for both customers and massage shops. Ready to share.</p>
+                <a href="#" class="card-link" onclick="showSection('customer')">View Customer Page →</a>
+                <a href="#" class="card-link" onclick="showSection('shop')" style="margin-left: 16px;">View Shop Page →</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <h3>Booking Flow</h3>
+                <p>4-step booking form: Choose plan → Select shop → Enter details → Confirm via WhatsApp.</p>
+                <a href="book.html" class="card-link">View Booking Form →</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Dashboards</h3>
+                <p>Jordan's commission tracker and shop performance dashboard. Real-time stats.</p>
+                <a href="dashboard-jordan.html" class="card-link">View Jordan's Dashboard →</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">📝</div>
+                <h3>Surveys</h3>
+                <p>Customer validation survey and pre-massage intake forms. Market research ready.</p>
+                <a href="survey-customer.html" class="card-link">View Customer Survey →</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Prospect List</h3>
+                <p>Shop prospect list with contact info, locations, and services. Pre-researched.</p>
+                <a href="prospects.html" class="card-link">View Prospects →</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🗂️</div>
+                <h3>Notion Sync</h3>
+                <p>All data syncs to Notion: Shops, Subscribers, Bookings, Surveys.</p>
+                <a href="https://www.notion.so/332efcda373d811cbe14c4bf4134dcf2" class="card-link" target="_blank">View Notion →</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 60px;">
+            <button class="tab-btn active" onclick="showSection('customer')" style="margin: 8px;">👤 View as Customer</button>
+            <button class="tab-btn" onclick="showSection('shop')" style="margin: 8px;">🏪 View as Shop</button>
+        </div>
     </div>
     
-    <section class="shops">
-        <h3>Available Shops</h3>
+    <!-- Customer Tab -->
+    <div class="section" id="section-customer">
+        <div class="customer-hero">
+            <h1>Massage Made Effortless</h1>
+            <p>Monthly subscriptions for massage. Book with one WhatsApp. No calling, no hassle.</p>
+            <a href="landing-customer.html" class="customer-cta" target="_blank">View Full Landing Page →</a>
+        </div>
         
-        <!-- Mayoac -->
-        <div class="shop-card" data-location="chamartin">
-            <div class="shop-header">
-                <div class="shop-name">Mayoac</div>
-                <div class="shop-distance">🚶 12 min from IE</div>
-            </div>
-            <div class="shop-type">💆 Massage & Wellness · Appointment Only</div>
-            
-            <div class="shop-services">
-                <div class="service">
-                    <span class="service-name">60 min Massage</span>
-                    <span class="service-price">€40</span>
+        <div class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h4>Choose Your Plan</h4>
+                        <p>Basic, Premium, or Unlimited. Pick what fits your needs.</p>
+                    </div>
                 </div>
-                <div class="service">
-                    <span class="service-name">90 min Massage</span>
-                    <span class="service-price">€55</span>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h4>Book via WhatsApp</h4>
+                        <p>Message us. We handle the booking with the shop.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="shop-actions">
-                <a href="https://wa.me/34600000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20massage%20at%20Mayoac" class="btn btn-whatsapp" target="_blank">
-                    📱 Book via WhatsApp
-                </a>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h4>Show Up & Relax</h4>
+                        <p>Pay at the shop. Enjoy your massage.</p>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <!-- The Fix Room -->
-        <div class="shop-card" data-location="salamanca">
-            <div class="shop-header">
-                <div class="shop-name">The Fix Room</div>
-                <div class="shop-distance">🚶 18 min from IE</div>
-            </div>
-            <div class="shop-type">🔧 Sports Recovery & Massage</div>
-            
-            <div class="shop-services">
-                <div class="service">
-                    <span class="service-name">60 min Session</span>
-                    <span class="service-price">€35</span>
+        <div class="pricing-preview">
+            <h2>Simple Pricing</h2>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-name">Basic</div>
+                    <div class="price-amount">€120<span>/mo</span></div>
+                    <div class="price-desc">4 visits per month</div>
+                    <div class="price-features">
+                        <div class="price-feature">✓ 4 massages/month</div>
+                        <div class="price-feature">✓ All partner shops</div>
+                        <div class="price-feature">✓ WhatsApp booking</div>
+                    </div>
+                    <a href="book.html" class="price-cta">Get Started</a>
                 </div>
-                <div class="service">
-                    <span class="service-name">90 min Session</span>
-                    <span class="service-price">€50</span>
+                <div class="price-card featured">
+                    <div class="price-name">Premium</div>
+                    <div class="price-amount">€200<span>/mo</span></div>
+                    <div class="price-desc">8 visits per month</div>
+                    <div class="price-features">
+                        <div class="price-feature">✓ 8 massages/month</div>
+                        <div class="price-feature">✓ Priority booking</div>
+                        <div class="price-feature">✓ All partner shops</div>
+                    </div>
+                    <a href="book.html" class="price-cta">Get Started</a>
                 </div>
-            </div>
-            
-            <div class="shop-actions">
-                <a href="https://wa.me/34600000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20session%20at%20The%20Fix%20Room" class="btn btn-whatsapp" target="_blank">
-                    📱 Book via WhatsApp
-                </a>
+                <div class="price-card">
+                    <div class="price-name">Unlimited</div>
+                    <div class="price-amount">€350<span>/mo</span></div>
+                    <div class="price-desc">Unlimited visits</div>
+                    <div class="price-features">
+                        <div class="price-feature">✓ Unlimited</div>
+                        <div class="price-feature">✓ Priority booking</div>
+                        <div class="price-feature">✓ All partner shops</div>
+                    </div>
+                    <a href="book.html" class="price-cta">Contact Us</a>
+                </div>
             </div>
         </div>
         
-        <!-- Coming Soon -->
-        <div class="shop-card comming-soon" data-location="chamartin">
-            <div class="shop-header">
-                <div class="shop-name">Spot 3</div>
-                <div class="shop-distance">Coming Soon</div>
+        <div class="shops-preview">
+            <h2>Partner Shops</h2>
+            <div class="shop-cards">
+                <div class="shop-card featured">
+                    <div class="shop-info">
+                        <h4>⭐ Mayoac</h4>
+                        <p>Plaza Castilla · Massage only · Est. 2002</p>
+                    </div>
+                    <div class="shop-distance">15-20 min from IE</div>
+                </div>
+                <div class="shop-card">
+                    <div class="shop-info">
+                        <h4>The Fix Room</h4>
+                        <p>Calle Quiñones, Centro · Deep tissue specialist</p>
+                    </div>
+                    <div class="shop-distance">25 min from IE</div>
+                </div>
             </div>
-            <div class="shop-type">📍 Chamartín area</div>
-            <p style="color: #666; font-size: 14px; margin-top: 10px;">Want your shop listed? <a href="mailto:jordan@massagepass.com" style="color: #6366f1;">Contact us</a></p>
         </div>
         
-        <div class="shop-card comming-soon" data-location="sol">
-            <div class="shop-header">
-                <div class="shop-name">Spot 4</div>
-                <div class="shop-distance">Coming Soon</div>
-            </div>
-            <div class="shop-type">📍 Sol / Center area</div>
+        <div style="text-align: center; padding: 40px;">
+            <a href="landing-customer.html" class="customer-cta" target="_blank">View Full Customer Page →</a>
         </div>
-    </section>
+    </div>
     
-    <section class="features">
-        <h3>Why Massage Pass?</h3>
-        <div class="features-grid">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h4>Instant Booking</h4>
-                <p>Book in 30 seconds via WhatsApp</p>
+    <!-- Shop Tab -->
+    <div class="section" id="section-shop">
+        <div class="shop-hero">
+            <h1>More Customers.<br>Guaranteed Revenue.</h1>
+            <p>We send you pre-qualified customers from IE Business School. You focus on massage.</p>
+            <a href="landing-shop.html" class="customer-cta" target="_blank">View Full Shop Page →</a>
+        </div>
+        
+        <div class="problem-solution">
+            <div class="problem-col">
+                <h3>The Problem</h3>
+                <div class="issue">
+                    <h4>📵 Phone Tag</h4>
+                    <p>Customers hate calling. They don't book at all.</p>
+                </div>
+                <div class="issue">
+                    <h4>📅 Empty Chairs</h4>
+                    <p>Slow weeks = no revenue.</p>
+                </div>
+                <div class="issue">
+                    <h4>💸 Payment Chasing</h4>
+                    <p>Invoicing and chasing payments manually.</p>
+                </div>
             </div>
-            <div class="feature">
-                <div class="feature-icon">💳</div>
-                <h4>Pay at Shop</h4>
-                <p>No prepayment needed</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📍</div>
-                <h4>Near You</h4>
-                <p>Curated shops near IE</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🤝</div>
-                <h4>Trusted Quality</h4>
-                <p>Vetted shops only</p>
+            <div class="solution-col">
+                <h3>The Solution</h3>
+                <div class="issue">
+                    <h4>✅ We Handle Booking</h4>
+                    <p>Customers message us. We coordinate appointments.</p>
+                </div>
+                <div class="issue">
+                    <h4>✅ Steady Customers</h4>
+                    <p>5-10 new customers every month.</p>
+                </div>
+                <div class="issue">
+                    <h4>✅ Direct Payment</h4>
+                    <p>Customers pay you directly. No invoicing.</p>
+                </div>
             </div>
         </div>
-    </section>
+        
+        <div class="pitch-box">
+            <div class="pitch-label">The Pitch</div>
+            <p class="pitch-text">"Hi! I'm at IE Business School. I have students who want monthly massages but hate booking. I send you 5-10 customers/month. You get paid per customer, guaranteed. Interested?"</p>
+        </div>
+        
+        <div class="commission-model">
+            <h2>Commission Model</h2>
+            <div class="model-box">
+                <div class="model-row">
+                    <span class="label">Customer pays your shop</span>
+                    <span class="value">€60/visit</span>
+                </div>
+                <div class="model-row">
+                    <span class="label">Your shop keeps</span>
+                    <span class="value green">€45 (75%)</span>
+                </div>
+                <div class="model-row">
+                    <span class="label">Massage Pass commission</span>
+                    <span class="value">€15 (25%)</span>
+                </div>
+                <div class="model-row total">
+                    <span class="label">If 8 customers/month</span>
+                    <span class="value green">You earn €360</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ie-network">
+            <h2>The IE Business School Network</h2>
+            <div class="ie-stats">
+                <div class="ie-stat">
+                    <div class="num">5,000+</div>
+                    <div class="label">Students</div>
+                </div>
+                <div class="ie-stat">
+                    <div class="num">100+</div>
+                    <div class="label">Countries</div>
+                </div>
+                <div class="ie-stat">
+                    <div class="num">Monthly</div>
+                    <div class="label">Subscription Model</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-card">
+            <h3>Contact Jordan</h3>
+            <div class="contact-row">
+                <span class="label">Name</span>
+                <span class="value">Jordan Hays</span>
+            </div>
+            <div class="contact-row">
+                <span class="label">Location</span>
+                <span class="value">IE Business School, Chamartín</span>
+            </div>
+            <div class="contact-row">
+                <span class="label">WhatsApp</span>
+                <span class="value">+34 600 000 000</span>
+            </div>
+            <div class="contact-row">
+                <span class="label">Email</span>
+                <span class="value">jordan@massagepass.com</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center; padding: 40px;">
+            <a href="landing-shop.html" class="customer-cta" target="_blank">View Full Shop Page →</a>
+        </div>
+    </div>
     
     <footer>
-        <p>Massage Pass — Part of Jordan's Ventures</p>
-        <p style="margin-top: 8px;"><a href="mailto:jordan@massagepass.com" style="color: #6366f1;">Partner with us</a></p>
+        <p>💆 Massage Pass · Madrid · Part of Jordan's Ventures</p>
+        <p style="margin-top: 8px;">IE Business School: Calle Maria de Molina, 11 (Chamartín)</p>
     </footer>
     
     <script>
-        function filterShops(location) {
-            // Update buttons
-            document.querySelectorAll('.location-filter button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
             
-            // Filter cards
-            document.querySelectorAll('.shop-card').forEach(card => {
-                if (location === 'all' || card.dataset.location === location) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            // Show selected section
+            document.getElementById('section-' + section).classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('nav .links a').forEach(el => el.classList.remove('active'));
+            const link = document.querySelector(`nav .links a[onclick="showSection('${section}')"]`);
+            if (link) link.classList.add('active');
         }
     </script>
 </body>
