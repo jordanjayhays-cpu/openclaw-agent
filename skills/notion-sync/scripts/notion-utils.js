@@ -122,7 +122,7 @@ function checkApiKey() {
       console.error('Usage (pick one):');
       console.error('  node scripts/<script>.js --token-file ~/.notion-token [args]');
       console.error('  echo "$NOTION_API_KEY" | node scripts/<script>.js --token-stdin [args]');
-      console.error('  NOTION_API_KEY=ntn_... node scripts/<script>.js [args]');
+      console.error('  NOTION_API_KEY=NOTION_TOKEN_PLACEHOLDER... node scripts/<script>.js [args]');
       console.error('');
       console.error('Default: if ~/.notion-token exists, it is used automatically.');
       console.error('');
