@@ -1,0 +1,11 @@
+{
+  "children": [
+    {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content": "Payment Mechanics"}}]}},
+    {"object": "block", "type": "callout", "callout": {"rich_text": [{"text": {"content": "Jordan handles ZERO payments. Shops pay Jordan monthly."}}]}},
+    {"object": "block", "type": "numbered_list_item", "numbered_list_item": {"rich_text": [{"text": {"content": "Customer pays shop directly (cash/card)"}}]}},
+    {"object": "block", "type": "numbered_list_item", "numbered_list_item": {"rich_text": [{"text": {"content": "Shop tracks Jordan customers"}}]}},
+    {"object": "block", "type": "numbered_list_item", "numbered_list_item": {"rich_text": [{"text": {"content": "End of month: Shop pays Jordan 20-25% via Wise"}}]}},
+    {"object": "block", "type": "heading_3", "heading_3": {"rich_text": [{"text": {"content": "Example"}}]}},
+    {"object": "block", "type": "paragraph", "paragraph": {"rich_text": [{"text": {"content": "EUR 60 visit: Shop gets EUR 45, Jordan gets EUR 15"}}]}}
+  ]
+}
