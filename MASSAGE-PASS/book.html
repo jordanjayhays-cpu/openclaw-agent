@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Massage — Massage Pass</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        header { background: #0a0a0a; padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        header h1 { font-size: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+        
+        .step { display: none; }
+        .step.active { display: block; }
+        
+        .step-content { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; margin-bottom: 20px; }
+        
+        .step h2 { font-size: 24px; margin-bottom: 20px; }
+        .step p { color: #888; margin-bottom: 20px; }
+        
+        .plan-options { display: flex; flex-direction: column; gap: 12px; }
+        .plan-option { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; cursor: pointer; transition: all 0.2s; }
+        .plan-option:hover { border-color: #6366f1; }
+        .plan-option.selected { border-color: #6366f1; background: rgba(99, 102, 241, 0.1); }
+        .plan-name { font-weight: 600; }
+        .plan-price { color: #22c55e; font-weight: 700; }
+        
+        .shop-options { display: flex; flex-direction: column; gap: 12px; }
+        .shop-option { padding: 20px; background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; cursor: pointer; transition: all 0.2s; }
+        .shop-option:hover { border-color: #6366f1; }
+        .shop-option.selected { border-color: #6366f1; background: rgba(99, 102, 241, 0.1); }
+        .shop-name { font-weight: 600; margin-bottom: 4px; }
+        .shop-info { font-size: 13px; color: #888; }
+        
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 14px; color: #888; margin-bottom: 8px; }
+        input, select, textarea { width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: #fff; font-size: 16px; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #6366f1; }
+        textarea { resize: vertical; min-height: 80px; }
+        
+        .btn { width: 100%; padding: 16px; background: #6366f1; border: none; border-radius: 12px; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .btn:hover { background: #5558e3; }
+        .btn-secondary { background: rgba(255,255,255,0.1); margin-top: 10px; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+        
+        .progress { display: flex; gap: 8px; margin-bottom: 30px; }
+        .progress-step { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; }
+        .progress-step.active { background: #6366f1; }
+        .progress-step.done { background: #22c55e; }
+        
+        .summary { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .summary-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .summary-row:last-child { border-bottom: none; }
+        .summary-label { color: #888; }
+        .summary-value { font-weight: 600; }
+        
+        .success { display: none; text-align: center; padding: 60px 20px; }
+        .success.show { display: block; }
+        .success h2 { color: #22c55e; font-size: 28px; margin-bottom: 16px; }
+        .success p { color: #888; margin-bottom: 20px; }
+        .success .checkmark { font-size: 64px; margin-bottom: 20px; }
+        
+        .whatsapp-preview { background: rgba(37, 211, 102, 0.1); border: 1px solid rgba(37, 211, 102, 0.3); border-radius: 12px; padding: 16px; margin-top: 20px; }
+        .whatsapp-preview .label { font-size: 12px; color: #888; margin-bottom: 8px; }
+        .whatsapp-preview .message { background: #fff; color: #000; padding: 12px; border-radius: 8px; font-size: 14px; }
+        
+        footer { text-align: center; padding: 40px; color: #666; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>💆 Massage Pass</h1>
+    </header>
+    
+    <div class="container">
+        <div class="progress">
+            <div class="progress-step active" id="prog1"></div>
+            <div class="progress-step" id="prog2"></div>
+            <div class="progress-step" id="prog3"></div>
+            <div class="progress-step" id="prog4"></div>
+        </div>
+        
+        <!-- Step 1: Choose Plan -->
+        <div class="step active" id="step1">
+            <div class="step-content">
+                <h2>Choose Your Plan</h2>
+                <p>Select a monthly subscription that fits your needs.</p>
+                
+                <div class="plan-options">
+                    <div class="plan-option" onclick="selectPlan('basic', '120', '4 visits/month')">
+                        <div>
+                            <div class="plan-name">Basic</div>
+                            <div style="font-size: 13px; color: #888;">4 visits per month</div>
+                        </div>
+                        <div class="plan-price">€120/mo</div>
+                    </div>
+                    
+                    <div class="plan-option" onclick="selectPlan('premium', '200', '8 visits/month')">
+                        <div>
+                            <div class="plan-name">Premium</div>
+                            <div style="font-size: 13px; color: #888;">8 visits per month</div>
+                        </div>
+                        <div class="plan-price">€200/mo</div>
+                    </div>
+                    
+                    <div class="plan-option" onclick="selectPlan('unlimited', '350', 'Unlimited visits')">
+                        <div>
+                            <div class="plan-name">Unlimited</div>
+                            <div style="font-size: 13px; color: #888;">Unlimited visits per month</div>
+                        </div>
+                        <div class="plan-price">€350/mo</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn" id="step1Next" onclick="nextStep(1)" disabled>Continue</button>
+        </div>
+        
+        <!-- Step 2: Choose Shop -->
+        <div class="step" id="step2">
+            <div class="step-content">
+                <h2>Choose Your Shop</h2>
+                <p>Select a massage shop near IE Business School.</p>
+                
+                <div class="shop-options">
+                    <div class="shop-option" onclick="selectShop('Mayoac', 'Plaza Castilla, 15-20 min from IE')">
+                        <div class="shop-name">⭐ Mayoac</div>
+                        <div class="shop-info">Plaza Castilla · 15-20 min from IE · Massage only · Est. 2002</div>
+                    </div>
+                    
+                    <div class="shop-option" onclick="selectShop('The Fix Room', 'Calle Quiñones, Centro, 25 min from IE')">
+                        <div class="shop-name">The Fix Room</div>
+                        <div class="shop-info">Calle Quiñones, Centro · 25 min from IE · Deep tissue specialist</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn" id="step2Next" onclick="nextStep(2)" disabled>Continue</button>
+            <button class="btn btn-secondary" onclick="prevStep(2)">Back</button>
+        </div>
+        
+        <!-- Step 3: Your Details -->
+        <div class="step" id="step3">
+            <div class="step-content">
+                <h2>Your Details</h2>
+                <p>Tell us about yourself so we can book your appointment.</p>
+                
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="firstName" placeholder="Jane">
+                </div>
+                
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="lastName" placeholder="Smith">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="jane@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone / WhatsApp</label>
+                    <input type="tel" id="phone" placeholder="+34 600 000 000">
+                </div>
+                
+                <div class="form-group">
+                    <label>Preferred Day</label>
+                    <select id="day">
+                        <option value="">Select day...</option>
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Preferred Time</label>
+                    <select id="time">
+                        <option value="">Select time...</option>
+                        <option value="morning">Morning (9am - 12pm)</option>
+                        <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                        <option value="evening">Evening (5pm - 8pm)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Notes (optional)</label>
+                    <textarea id="notes" placeholder="Any preferences or special requests..."></textarea>
+                </div>
+            </div>
+            
+            <button class="btn" id="step3Next" onclick="nextStep(3)">Review Booking</button>
+            <button class="btn btn-secondary" onclick="prevStep(3)">Back</button>
+        </div>
+        
+        <!-- Step 4: Confirm -->
+        <div class="step" id="step4">
+            <div class="step-content">
+                <h2>Confirm Your Booking</h2>
+                <p>Review your details below.</p>
+                
+                <div class="summary" id="summary">
+                    <!-- Filled by JS -->
+                </div>
+                
+                <div class="whatsapp-preview">
+                    <div class="label">We'll send this to your WhatsApp:</div>
+                    <div class="message" id="whatsappMessage">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="submitBooking()">Confirm Booking</button>
+            <button class="btn btn-secondary" onclick="prevStep(4)">Back</button>
+        </div>
+        
+        <!-- Success -->
+        <div class="success" id="success">
+            <div class="checkmark">✅</div>
+            <h2>Booking Submitted!</h2>
+            <p>We'll contact you shortly to confirm your appointment.</p>
+            <p style="font-size: 14px; color: #666;">Check your WhatsApp for confirmation.</p>
+        </div>
+    </div>
+    
+    <footer>
+        💆 Massage Pass · Madrid · Part of Jordan's Ventures
+    </footer>
+    
+    <script>
+        // Booking data
+        let booking = {
+            plan: null,
+            planPrice: null,
+            planDesc: null,
+            shop: null,
+            shopLocation: null,
+            firstName: null,
+            lastName: null,
+            email: null,
+            phone: null,
+            day: null,
+            time: null,
+            notes: null
+        };
+        
+        let currentStep = 1;
+        
+        function selectPlan(plan, price, desc) {
+            booking.plan = plan;
+            booking.planPrice = price;
+            booking.planDesc = desc;
+            
+            document.querySelectorAll('.plan-option').forEach(el => el.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            document.getElementById('step1Next').disabled = false;
+        }
+        
+        function selectShop(shop, location) {
+            booking.shop = shop;
+            booking.shopLocation = location;
+            
+            document.querySelectorAll('.shop-option').forEach(el => el.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            document.getElementById('step2Next').disabled = false;
+        }
+        
+        function nextStep(from) {
+            // Validate
+            if (from === 1 && !booking.plan) return;
+            if (from === 2 && !booking.shop) return;
+            if (from === 3) {
+                booking.firstName = document.getElementById('firstName').value;
+                booking.lastName = document.getElementById('lastName').value;
+                booking.email = document.getElementById('email').value;
+                booking.phone = document.getElementById('phone').value;
+                booking.day = document.getElementById('day').value;
+                booking.time = document.getElementById('time').value;
+                booking.notes = document.getElementById('notes').value;
+                
+                if (!booking.firstName || !booking.email || !booking.day || !booking.time) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                updateSummary();
+            }
+            
+            // Update progress
+            document.getElementById('prog' + from).classList.remove('active');
+            document.getElementById('prog' + from).classList.add('done');
+            document.getElementById('prog' + (from + 1)).classList.add('active');
+            
+            // Show next step
+            document.getElementById('step' + from).classList.remove('active');
+            document.getElementById('step' + (from + 1)).classList.add('active');
+            
+            currentStep = from + 1;
+        }
+        
+        function prevStep(from) {
+            document.getElementById('prog' + from).classList.remove('active');
+            document.getElementById('prog' + (from - 1)).classList.remove('done');
+            document.getElementById('prog' + (from - 1)).classList.add('active');
+            
+            document.getElementById('step' + from).classList.remove('active');
+            document.getElementById('step' + (from - 1)).classList.add('active');
+            
+            currentStep = from - 1;
+        }
+        
+        function updateSummary() {
+            const summary = `
+                <div class="summary-row">
+                    <span class="summary-label">Plan</span>
+                    <span class="summary-value">${booking.plan.charAt(0).toUpperCase() + booking.plan.slice(1)} - €${booking.planPrice}/mo</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Shop</span>
+                    <span class="summary-value">${booking.shop}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Name</span>
+                    <span class="summary-value">${booking.firstName} ${booking.lastName}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Email</span>
+                    <span class="summary-value">${booking.email}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">Preferred</span>
+                    <span class="summary-value">${booking.day} ${booking.time}</span>
+                </div>
+            `;
+            document.getElementById('summary').innerHTML = summary;
+            
+            const whatsapp = `Hi! I'd like to book a massage.
+
+Name: ${booking.firstName} ${booking.lastName}
+Plan: ${booking.plan.charAt(0).toUpperCase() + booking.plan.slice(1)} (€${booking.planPrice}/mo)
+Shop: ${booking.shop}
+Preferred: ${booking.day} ${booking.time}
+${booking.notes ? 'Notes: ' + booking.notes : ''}
+
+Thanks!`;
+            document.getElementById('whatsappMessage').innerText = whatsapp;
+        }
+        
+        async function submitBooking() {
+            // Save to localStorage (Notion sync pending)
+            const bookings = JSON.parse(localStorage.getItem('massage_pass_bookings') || '[]');
+            booking.submittedAt = new Date().toISOString();
+            booking.id = Date.now();
+            bookings.push(booking);
+            localStorage.setItem('massage_pass_bookings', JSON.stringify(bookings));
+            
+            // Show success
+            document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+            document.getElementById('success').classList.add('show');
+            
+            // Open WhatsApp
+            const message = encodeURIComponent(document.getElementById('whatsappMessage').innerText);
+            window.open(`https://wa.me/34600000000?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
