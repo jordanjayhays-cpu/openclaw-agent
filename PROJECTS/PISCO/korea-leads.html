@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PISCO — South Korea Leads</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 24px; display: flex; align-items: center; gap: 12px; }
+        .badge { background: rgba(239, 68, 68, 0.2); color: #ef4444; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        
+        .hero { padding: 60px 40px; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); text-align: center; }
+        .hero h2 { font-size: 48px; margin-bottom: 16px; }
+        .hero p { color: #888; font-size: 18px; max-width: 600px; margin: 0 auto 30px; }
+        .hero-flags { font-size: 48px; margin-bottom: 20px; }
+        
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 30px 40px; background: rgba(255,255,255,0.02); }
+        .stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; text-align: center; }
+        .stat .num { font-size: 36px; font-weight: 700; color: #ef4444; }
+        .stat .label { font-size: 12px; color: #888; margin-top: 4px; text-transform: uppercase; }
+        
+        .main { padding: 40px; max-width: 1200px; margin: 0 auto; }
+        
+        .section-title { font-size: 20px; color: #888; margin: 40px 0 20px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Contact Card */
+        .contact-card { background: rgba(255,255,255,0.05); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 20px; padding: 30px; margin-bottom: 40px; }
+        .contact-card h3 { font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .contact-item { display: flex; flex-direction: column; gap: 4px; }
+        .contact-item .label { font-size: 11px; color: #666; text-transform: uppercase; }
+        .contact-item .value { font-size: 15px; }
+        .contact-item a { color: #6366f1; text-decoration: none; }
+        .contact-item a:hover { text-decoration: underline; }
+        
+        /* Outreach Box */
+        .outreach-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; margin-bottom: 40px; }
+        .outreach-box h3 { font-size: 18px; margin-bottom: 16px; }
+        .outreach-message { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
+        .outreach-actions { margin-top: 20px; display: flex; gap: 12px; }
+        .btn { padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; border: none; }
+        .btn-primary { background: #6366f1; color: #fff; }
+        .btn-whatsapp { background: #25D366; color: #fff; }
+        .btn:hover { opacity: 0.9; }
+        
+        /* Industry Cards */
+        .industry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .industry-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; }
+        .industry-card.high { border-left: 4px solid #ef4444; }
+        .industry-card.medium { border-left: 4px solid #f59e0b; }
+        .industry-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .industry-card h4 { font-size: 18px; }
+        .demand-badge { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-weight: 600; }
+        .demand-badge.high { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .demand-badge.medium { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .industry-card p { color: #888; font-size: 13px; line-height: 1.5; }
+        
+        /* Company List */
+        .company-section { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; margin-top: 20px; }
+        .company-section h4 { font-size: 16px; margin-bottom: 16px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .company-list { display: flex; flex-direction: column; gap: 12px; }
+        .company-item { display: flex; justify-content: space-between; align-items: center; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 8px; }
+        .company-item .name { font-weight: 600; }
+        .company-item .type { font-size: 12px; color: #888; }
+        .company-item .status { font-size: 12px; padding: 4px 10px; border-radius: 12px; background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .company-item.research { opacity: 0.6; }
+        
+        /* Next Steps */
+        .next-steps { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; margin-top: 40px; }
+        .next-steps h3 { font-size: 20px; margin-bottom: 20px; }
+        .step-list { display: flex; flex-direction: column; gap: 12px; }
+        .step { display: flex; align-items: center; gap: 16px; padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 8px; }
+        .step-num { width: 30px; height: 30px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+        .step.done { opacity: 0.5; }
+        .step.done .step-num { background: #22c55e; }
+        .step-text { flex: 1; }
+        .step-text .title { font-weight: 600; margin-bottom: 2px; }
+        .step-text .desc { font-size: 13px; color: #888; }
+        
+        footer { padding: 40px; text-align: center; color: #666; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌏 PISCO — South Korea <span class="badge">HIGH PRIORITY</span></h1>
+        <div style="color: #888; font-size: 14px;">EPS Entry Point</div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-flags">🇰🇷 → 🇵🇭</div>
+        <h2>Filipino Workers for Korean Employers</h2>
+        <p>Employment Permit System (EPS) — Government-to-government hiring program for Filipino workers in South Korea.</p>
+    </section>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="num">4</div>
+            <div class="label">Industries</div>
+        </div>
+        <div class="stat">
+            <div class="num">1</div>
+            <div class="label">Contact Ready</div>
+        </div>
+        <div class="stat">
+            <div class="num">0</div>
+            <div class="label">Companies Researched</div>
+        </div>
+        <div class="stat">
+            <div class="num">5</div>
+            <div class="label">Next Steps</div>
+        </div>
+    </div>
+    
+    <div class="main">
+        
+        <!-- Contact Card -->
+        <div class="contact-card">
+            <h3>👤 Primary Contact: Dohun Kim</h3>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Company</span>
+                    <span class="value">Placewell International</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Telegram</span>
+                    <span class="value"><a href="https://t.me/doh1200" target="_blank">@doh1200</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">WhatsApp</span>
+                    <span class="value"><a href="https://wa.me/821023746080" target="_blank">+82 10 2374 6080</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Email</span>
+                    <span class="value"><a href="mailto:dohun@placewellinternational.io">dohun@placewellinternational.io</a></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Outreach Message -->
+        <div class="outreach-box">
+            <h3>📝 Outreach Message to Dohun Kim</h3>
+            <div class="outreach-message">Hi Dohun! 👋
+
+Jordan here from PISCO — we connect Filipino workers with employment opportunities abroad.
+
+I understand Placewell is working on South Korea entry. I'd love to explore how we can work together.
+
+What I can do:
+• Source qualified Filipino candidates for your Korean employer clients
+• Handle EPS processing support
+• Manage employer relationships on the ground
+
+What I need from you:
+• List of Korean companies currently hiring
+• Specific job requirements and quotas
+• Your commission structure
+
+Would you be open to a quick call this week?
+
+Best,
+Jordan</div>
+            <div class="outreach-actions">
+                <a href="https://wa.me/821023746080" class="btn btn-whatsapp" target="_blank">📱 WhatsApp</a>
+                <a href="https://t.me/doh1200" class="btn btn-primary" target="_blank">💬 Telegram</a>
+            </div>
+        </div>
+        
+        <!-- Industries -->
+        <h3 class="section-title">🏭 Target Industries (EPS)</h3>
+        <div class="industry-grid">
+            <div class="industry-card high">
+                <div class="industry-header">
+                    <h4>Manufacturing</h4>
+                    <span class="demand-badge high">HIGH DEMAND</span>
+                </div>
+                <p>Auto parts, electronics, machinery. Largest sector for foreign workers. Major companies + SME suppliers.</p>
+            </div>
+            <div class="industry-card high">
+                <div class="industry-header">
+                    <h4>Construction</h4>
+                    <span class="demand-badge high">HIGH DEMAND</span>
+                </div>
+                <p>Major worker shortage. Infrastructure projects nationwide. Often hires through agencies.</p>
+            </div>
+            <div class="industry-card medium">
+                <div class="industry-header">
+                    <h4>Agriculture</h4>
+                    <span class="demand-badge medium">MEDIUM</span>
+                </div>
+                <p>Seasonal workers through Nonghyup cooperatives. Rural areas, farming communities.</p>
+            </div>
+            <div class="industry-card medium">
+                <div class="industry-header">
+                    <h4>Fisheries</h4>
+                    <span class="demand-badge medium">MEDIUM</span>
+                </div>
+                <p>Coastal processing plants. Processing and packaging facilities.</p>
+            </div>
+        </div>
+        
+        <!-- Companies to Research -->
+        <div class="company-section">
+            <h4>🔍 Korean Companies to Research</h4>
+            <p style="color: #888; font-size: 14px; margin-bottom: 20px;">Research pending. These are initial targets based on industry knowledge.</p>
+            
+            <div class="company-list">
+                <div class="company-item research">
+                    <div>
+                        <div class="name">Hyundai Motor Group (Suppliers)</div>
+                        <div class="type">Manufacturing · Auto parts</div>
+                    </div>
+                    <span class="status">🔬 Research Needed</span>
+                </div>
+                <div class="company-item research">
+                    <div>
+                        <div class="name">Samsung Electronics (Contractors)</div>
+                        <div class="type">Manufacturing · Electronics</div>
+                    </div>
+                    <span class="status">🔬 Research Needed</span>
+                </div>
+                <div class="company-item research">
+                    <div>
+                        <div class="name">Hyundai Engineering & Construction</div>
+                        <div class="type">Construction · Infrastructure</div>
+                    </div>
+                    <span class="status">🔬 Research Needed</span>
+                </div>
+                <div class="company-item research">
+                    <div>
+                        <div class="name">Nonghyup (Agricultural Cooperatives)</div>
+                        <div class="type">Agriculture · Farming</div>
+                    </div>
+                    <span class="status">🔬 Research Needed</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Next Steps -->
+        <div class="next-steps">
+            <h3>✅ Next Steps</h3>
+            <div class="step-list">
+                <div class="step done">
+                    <div class="step-num">✓</div>
+                    <div class="step-text">
+                        <div class="title">Contact Dohun Kim</div>
+                        <div class="desc">Get list of Korean employers from Placewell</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        <div class="title">Get employer list from Dohun</div>
+                        <div class="desc">Korean companies currently hiring Filipino workers</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text">
+                        <div class="title">Research decision makers</div>
+                        <div class="desc">HR directors, foreign worker managers at target companies</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-text">
+                        <div class="title">Build lead list</div>
+                        <div class="desc">Companies + contacts + outreach status</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <div class="step-text">
+                        <div class="title">Draft outreach to Korean companies</div>
+                        <div class="desc">Email/LinkedIn messages to decision makers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <footer>
+        <p>🌏 PISCO South Korea · EPS Entry Point · Updated: March 2026</p>
+    </footer>
+</body>
+</html>

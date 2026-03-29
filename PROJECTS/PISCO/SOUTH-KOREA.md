@@ -55,9 +55,10 @@ Help Filipino workers navigate EPS + find Korean employers.
 
 ## Contact: Dohun Kim
 
-- **Source:** Jordan mentioned via Telegram
-- **Role:** TBD (recruiter? employer? agency?)
-- **Status:** Not yet contacted
+- **Telegram:** @doh1200
+- **WhatsApp:** +82 10 2374 6080
+- **Email:** dohun@placewellinternational.io
+- **Role:** Placewell International (partner company)
 
 ---
 
