@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 School Dashboard — Jordan's IMBA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 24px; display: flex; align-items: center; gap: 12px; }
+        .badge { background: rgba(99, 102, 241, 0.2); color: #6366f1; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 30px 40px; background: rgba(255,255,255,0.02); }
+        .stat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; text-align: center; }
+        .stat .num { font-size: 36px; font-weight: 700; }
+        .stat .label { font-size: 12px; color: #888; margin-top: 4px; text-transform: uppercase; }
+        .stat.red .num { color: #ef4444; }
+        .stat.yellow .num { color: #f59e0b; }
+        .stat.green .num { color: #22c55e; }
+        .stat.blue .num { color: #3b82f6; }
+        
+        .main { display: grid; grid-template-columns: 1fr 400px; gap: 30px; padding: 30px 40px; }
+        
+        .tasks-section h2 { font-size: 18px; color: #888; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .task-list { display: flex; flex-direction: column; gap: 12px; }
+        .task { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; transition: all 0.2s; }
+        .task:hover { border-color: #6366f1; }
+        .task.high { border-left: 4px solid #ef4444; }
+        .task.medium { border-left: 4px solid #f59e0b; }
+        .task.low { border-left: 4px solid #3b82f6; }
+        .task-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .task-name { font-size: 16px; font-weight: 600; }
+        .task-priority { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-weight: 600; }
+        .task-priority.high { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .task-priority.medium { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .task-priority.low { background: rgba(59,130,246,0.2); color: #3b82f6; }
+        .task-meta { display: flex; gap: 16px; font-size: 13px; color: #666; }
+        .task-meta span { display: flex; align-items: center; gap: 6px; }
+        
+        .sidebar h3 { font-size: 16px; color: #888; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .notion-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .notion-card h4 { font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .notion-card p { color: #888; font-size: 13px; margin-bottom: 12px; }
+        .notion-link { display: inline-flex; align-items: center; gap: 6px; color: #6366f1; font-size: 13px; text-decoration: none; }
+        .notion-link:hover { text-decoration: underline; }
+        
+        .research-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+        .research-card h4 { font-size: 14px; margin-bottom: 10px; color: #22c55e; }
+        .research-card ul { list-style: none; }
+        .research-card li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: #ccc; }
+        .research-card li:last-child { border-bottom: none; }
+        .research-card .icon { margin-right: 8px; }
+        
+        .links-section { margin-top: 20px; }
+        .link-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .link-item:last-child { border-bottom: none; }
+        .link-item a { color: #6366f1; text-decoration: none; font-size: 14px; }
+        .link-item a:hover { text-decoration: underline; }
+        
+        footer { padding: 30px 40px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; text-align: center; color: #666; font-size: 13px; }
+        
+        @media (max-width: 900px) {
+            .main { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 School Dashboard <span class="badge">IMBA · IE Business School</span></h1>
+        <div style="color: #888; font-size: 14px;">Calle Maria de Molina, 11 (Chamartín)</div>
+    </header>
+    
+    <div class="stats">
+        <div class="stat red">
+            <div class="num">2</div>
+            <div class="label">High Priority</div>
+        </div>
+        <div class="stat yellow">
+            <div class="num">3</div>
+            <div class="label">In Progress</div>
+        </div>
+        <div class="stat green">
+            <div class="num">1</div>
+            <div class="label">Done This Week</div>
+        </div>
+        <div class="stat blue">
+            <div class="num">7</div>
+            <div class="label">Weeks Left</div>
+        </div>
+    </div>
+    
+    <div class="main">
+        <div class="tasks-section">
+            <h2>📋 Tasks</h2>
+            
+            <div class="task-list">
+                <div class="task high">
+                    <div class="task-header">
+                        <div class="task-name">Research: Notion for school workgroups</div>
+                        <div class="task-priority high">HIGH</div>
+                    </div>
+                    <div class="task-meta">
+                        <span>📚 IMBA</span>
+                        <span>⏰ Due: This week</span>
+                    </div>
+                </div>
+                
+                <div class="task medium">
+                    <div class="task-header">
+                        <div class="task-name">Set up Notion workspace for group project</div>
+                        <div class="task-priority medium">MEDIUM</div>
+                    </div>
+                    <div class="task-meta">
+                        <span>📚 IMBA</span>
+                        <span>⏰ Due: Next week</span>
+                    </div>
+                </div>
+                
+                <div class="task low">
+                    <div class="task-header">
+                        <div class="task-name">Organize course materials by subject</div>
+                        <div class="task-priority low">LOW</div>
+                    </div>
+                    <div class="task-meta">
+                        <span>📚 All Courses</span>
+                        <span>⏰ Ongoing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <h3>📚 Notion Databases</h3>
+            
+            <div class="notion-card">
+                <h4>🎓 School Tasks</h4>
+                <p>Tasks database for IMBA assignments and projects</p>
+                <a href="https://www.notion.so/332e087b-824c-8154-a9cf-cef589c022df" class="notion-link" target="_blank">→ Open in Notion</a>
+            </div>
+            
+            <div class="notion-card">
+                <h4>📝 Class Notes</h4>
+                <p>Course notes and materials</p>
+                <a href="#" class="notion-link" target="_blank">→ Open in Notion</a>
+            </div>
+            
+            <div class="research-card">
+                <h4>🔍 Research: Notion for Workgroups</h4>
+                <ul>
+                    <li><span class="icon">📌</span> Create shared workspace</li>
+                    <li><span class="icon">📌</span> Set up database per course</li>
+                    <li><span class="icon">📌</span> Create task templates</li>
+                    <li><span class="icon">📌</span> Add group members</li>
+                    <li><span class="icon">📌</span> Set up calendar sync</li>
+                </ul>
+            </div>
+            
+            <div class="links-section">
+                <h3 style="font-size: 14px; color: #666; margin-bottom: 12px;">Useful Links</h3>
+                <div class="link-item">
+                    <span>🎓</span>
+                    <a href="https://www.ie.edu" target="_blank">IE Business School</a>
+                </div>
+                <div class="link-item">
+                    <span>📚</span>
+                    <a href="https://online.ie.edu" target="_blank">IE Online Campus</a>
+                </div>
+                <div class="link-item">
+                    <span>💬</span>
+                    <a href="#" target="_blank">IMBA Slack/Teams</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🎓 Jordan's IMBA Dashboard · 7 months remaining · Updated: March 2026</p>
+    </footer>
+</body>
+</html>
