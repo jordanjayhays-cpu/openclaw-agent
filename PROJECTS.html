@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan's Projects — Live Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; padding: 40px; }
+        h1 { font-size: 42px; font-weight: 700; margin-bottom: 10px; }
+        .subtitle { color: #666; font-size: 16px; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+        .card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .card-title { font-size: 22px; font-weight: 600; }
+        .status { font-size: 12px; padding: 4px 12px; border-radius: 20px; font-weight: 600; text-transform: uppercase; }
+        .status.active { background: rgba(74,222,128,0.2); color: #4ade80; }
+        .status.planning { background: rgba(245,158,11,0.2); color: #f59e0b; }
+        .status.blocked { background: rgba(239,68,68,0.2); color: #ef4444; }
+        .status.waiting { background: rgba(99,102,241,0.2); color: #818cf8; }
+        .section { margin-bottom: 20px; }
+        .section-title { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .section-content { font-size: 15px; color: #ccc; line-height: 1.6; }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 16px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+        .progress-fill.green { background: #4ade80; }
+        .progress-fill.yellow { background: #f59e0b; }
+        .progress-fill.blue { background: #3b82f6; }
+        .progress-fill.purple { background: #a855f7; }
+        .task-list { list-style: none; }
+        .task { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .task:last-child { border-bottom: none; }
+        .task-check { width: 18px; height: 18px; border-radius: 4px; margin-right: 12px; border: 2px solid rgba(255,255,255,0.2); flex-shrink: 0; }
+        .task-check.done { background: #4ade80; border-color: #4ade80; }
+        .task-check.todo { border-color: rgba(255,255,255,0.3); }
+        .task-text { font-size: 14px; color: #ccc; }
+        .task-text.done { text-decoration: line-through; color: #666; }
+        .money { font-size: 36px; font-weight: 700; margin-top: 12px; }
+        .money.green { color: #4ade80; }
+        .money.yellow { color: #f59e0b; }
+        .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+        .tag.bd { background: rgba(59,130,246,0.2); color: #60a5fa; }
+        .tag.research { background: rgba(168,85,247,0.2); color: #c084fc; }
+        .tag.content { background: rgba(236,72,153,0.2); color: #f472b6; }
+        .tag.tech { background: rgba(34,211,238,0.2); color: #22d3ee; }
+        .blocker { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 8px; padding: 12px; margin-top: 12px; }
+        .blocker-title { color: #ef4444; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+        .blocker-text { color: #fca5a5; font-size: 13px; }
+        .footer { margin-top: 40px; text-align: center; color: #444; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+<h1>Jordan's Projects</h1>
+<p class="subtitle">Live dashboard — Updated: March 29, 2026</p>
+
+<div class="grid">
+
+    <!-- PISCO -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">PISCO</span>
+            <span class="status active">Active</span>
+        </div>
+        <div class="section">
+            <div class="section-title">What</div>
+            <div class="section-content">Business development for Placewell International — Filipino workers for Spanish hotels</div>
+        </div>
+        <div class="section">
+            <div class="section-title">ICP</div>
+            <div class="section-content">
+                <span class="tag bd">Hotels</span>
+                <span class="tag bd">Spain</span>
+                <span class="tag research">NH, Iberostar, Melia, Room Mate</span>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Status</div>
+            <ul class="task-list">
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Research complete (252 hotels)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Pitch deck built (2 versions)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Email sequence ready (10 emails)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">CRM system built</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Email account setup</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">First emails sent</span>
+                </li>
+            </ul>
+        </div>
+        <div class="blocker">
+            <div class="blocker-title">⚠️ BLOCKED</div>
+            <div class="blocker-text">Need: Jordan@placewellinternational.io email setup. Jordan setting up SendGrid domain.</div>
+        </div>
+        <div class="section">
+            <div class="section-title">Potential</div>
+            <div class="money green">$5K-15K/month</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill green" style="width: 60%"></div>
+        </div>
+    </div>
+
+    <!-- COMARE -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">COMARE</span>
+            <span class="status planning">Planning</span>
+        </div>
+        <div class="section">
+            <div class="section-title">What</div>
+            <div class="section-content">B2B maintenance services — gym maintenance in Mexico City</div>
+        </div>
+        <div class="section">
+            <div class="section-title">ICP</div>
+            <div class="section-content">
+                <span class="tag bd">Gyms</span>
+                <span class="tag bd">Mexico City</span>
+                <span class="tag research">Smart Fit, Body Tech, Kraken</span>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Status</div>
+            <ul class="task-list">
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">ICP chosen: GYMS</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Money map built ($44-78K savings)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">200 prospects researched</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Email template ready</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Start after PISCO emails begin</span>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">Starts</div>
+            <div class="section-content">After PISCO first emails sent</div>
+        </div>
+        <div class="section">
+            <div class="section-title">Potential</div>
+            <div class="money yellow">$3K-10K/month</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill yellow" style="width: 50%"></div>
+        </div>
+    </div>
+
+    <!-- POD (Ego Death) -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">EGO DEATH POD</span>
+            <span class="status waiting">Ready</span>
+        </div>
+        <div class="section">
+            <div class="section-title">What</div>
+            <div class="section-content">Consciousness work + AI — not coaching, not therapy. 5 founding members, $47/month.</div>
+        </div>
+        <div class="section">
+            <div class="section-title">Status</div>
+            <ul class="task-list">
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Philosophy framework built</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Launch kit ready</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Outreach messages (10 variations)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Send to 5 people</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">First members onboarded</span>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">Potential</div>
+            <div class="money yellow">$235/month (5 members)</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill purple" style="width: 60%"></div>
+        </div>
+    </div>
+
+    <!-- AI CONTENT AGENCY -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">AI CONTENT AGENCY</span>
+            <span class="status planning">Concept</span>
+        </div>
+        <div class="section">
+            <div class="section-title">What</div>
+            <div class="section-content">AI generates content for hospitality hotels — blog, Instagram, LinkedIn</div>
+        </div>
+        <div class="section">
+            <div class="section-title">Status</div>
+            <ul class="task-list">
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Market research (AI content agencies)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Validated: $0-$20K/month possible</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Decide: pursue or skip</span>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">Potential</div>
+            <div class="money green">$5K-20K/month</div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill blue" style="width: 30%"></div>
+        </div>
+    </div>
+
+    <!-- CLAW (Me) -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">🦞 CLAW (ME)</span>
+            <span class="status active">Always Active</span>
+        </div>
+        <div class="section">
+            <div class="section-title">What</div>
+            <div class="section-content">Jordan's AI agent. Research, execute, automate, improve.</div>
+        </div>
+        <div class="section">
+            <div class="section-title">Working On</div>
+            <ul class="task-list">
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Pitch deck system</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Email automation</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">Self-improvement loop</span>
+                </li>
+                <li class="task">
+                    <div class="task-check done"></div>
+                    <span class="task-text done">LESSONS.md log</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Visual dashboard (this)</span>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">Skills Installed</div>
+            <div class="section-content">
+                <span class="tag tech">Felo Search (needs key)</span>
+                <span class="tag tech">Capability Evolver</span>
+                <span class="tag tech">Google Drive</span>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill green" style="width: 75%"></div>
+        </div>
+    </div>
+
+    <!-- BLOCKERS -->
+    <div class="card">
+        <div class="card-header">
+            <span class="card-title">⚠️ BLOCKERS</span>
+            <span class="status blocked">Action Needed</span>
+        </div>
+        <div class="section">
+            <div class="section-title">From Jordan</div>
+            <ul class="task-list">
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Set up placewellinternational.io email</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Get Felo API key (free)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Share IMBA content (Google Doc)</span>
+                </li>
+                <li class="task">
+                    <div class="task-check todo"></div>
+                    <span class="task-text">Decide on DistroKid use case</span>
+                </li>
+            </ul>
+        </div>
+        <div class="section">
+            <div class="section-title">From Me</div>
+            <div class="section-content">Everything else is built and ready.</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    🦞 Claw — Always working. Jordan is the bottleneck.<br>
+    Last updated: March 29, 2026 | Auto-updates on commit
+</div>
+
+</body>
+</html>
