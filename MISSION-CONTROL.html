@@ -58,6 +58,11 @@
         .card-project.newbali { background: rgba(34,197,94,0.2); color: #4ade80; }
         .card-project.claw { background: rgba(34,211,238,0.2); color: #22d3ee; }
         .card-project.system { background: rgba(107,114,128,0.2); color: #9ca3af; }
+        .card-project.dealsmap { background: rgba(249,115,22,0.2); color: #f97316; }
+        .card-project.neurotech { background: rgba(168,85,247,0.2); color: #a855f7; }
+        .card-project.failed { background: rgba(107,114,128,0.2); color: #6b7280; }
+        .card-project.dead { background: rgba(107,114,128,0.2); color: #6b7280; }
+        .card-project.ai-content { background: rgba(236,72,153,0.2); color: #f472b6; }
         .card-meta { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #666; }
         .card-priority { display: flex; align-items: center; gap: 4px; }
         .card-priority.high { color: #ef4444; }
@@ -713,7 +718,52 @@
             description: 'Validated concept: $0-20K/month possible. AI agents generating content for businesses (blogs, social media, ads). Jordan hasn\'t decided to pursue yet.',
             action: 'Research AI content agency model. Jordan to decide priority.'
         }
-    };
+    
+
+        'task-dealsmap': {
+            title: 'Dealsmap 2.0 — BD Automation',
+            project: '🤖 BD AUTOMATION',
+            status: 'Goal',
+            priority: 'High',
+            owner: 'Jordan',
+            deadline: 'TBD',
+            blockers: [],
+            description: 'Jordan's goal: Build "Dealsmap 2.0" — automated outbound sales machine. AI agents do outreach, follow-ups, meeting booking. Companies pay for automated sales pipeline. Model: Apollo.io + LinkedIn Sales Nav + Heyreach + Cloudtalk.',
+            action: 'Research AI outbound tools. Jordan to decide when to start.'
+        },
+        'task-neurotech': {
+            title: 'Neurotech YouTube/Newsletter',
+            project: '🧠 NEUROTECH',
+            status: 'Active',
+            priority: 'Medium',
+            owner: 'Jordan',
+            deadline: 'Ongoing',
+            blockers: ['Script #1 ready - needs filming'],
+            description: 'YouTube/newsletter covering neurotech, longevity, consciousness. 5 pillars: Neuralink, Longevity, Psychedelics, AI+Brain, Biohacking. Script #1 ready. Intro filmed. Content strategy done.',
+            action: 'Film Neurotech Video #1. Script ready at downloads/NEUROTECH-VIDEO-1-SCRIPT.md'
+        },
+        'task-dealsmap-past': {
+            title: 'Dealsmap (Past)',
+            project: '❌ FAILED',
+            status: 'Done',
+            priority: 'None',
+            owner: 'Jordan',
+            deadline: '2024',
+            blockers: [],
+            description: 'Jordan's first attempt at automated outbound. Failed due to: Wrong ICP, no pricing power, took cheap customers. Lesson learned.',
+            action: 'Remember: Wrong ICP kills. Use Dealsmap as reference for what NOT to do.'
+        },
+        'task-massage-pass': {
+            title: 'Massage Pass Manila (Past)',
+            project: '❌ DEAD',
+            status: 'Done',
+            priority: 'None',
+            owner: 'Jordan',
+            deadline: '2024',
+            blockers: [],
+            description: 'Jordan tried to build massage aggregation in Manila. Couldn't get off ground. Dead project.',
+            action: 'Move on. Not worth reviving.'
+        },};
     
     function openModal(taskId) {
         const task = tasks[taskId];
