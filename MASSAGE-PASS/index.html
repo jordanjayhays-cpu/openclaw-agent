@@ -12,66 +12,58 @@
         nav .logo { font-size: 20px; font-weight: 700; }
         nav .switch { color: #888; font-size: 14px; }
         nav .switch a { color: #6366f1; text-decoration: none; }
-        nav .switch a:hover { text-decoration: underline; }
         
         header { padding: 120px 40px 80px; text-align: center; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); }
-        header h1 { font-size: 64px; font-weight: 800; margin-bottom: 16px; }
-        header .tagline { font-size: 24px; color: #888; margin-bottom: 40px; }
+        header h1 { font-size: 56px; font-weight: 800; margin-bottom: 16px; }
+        header .tagline { font-size: 22px; color: #888; margin-bottom: 40px; }
         header .location { display: inline-block; background: rgba(99, 102, 241, 0.2); color: #6366f1; padding: 10px 24px; border-radius: 20px; font-size: 14px; }
         
-        .cta-section { text-align: center; padding: 60px 40px; }
-        .cta-section h2 { font-size: 32px; margin-bottom: 16px; }
-        .cta-section p { color: #888; margin-bottom: 30px; font-size: 18px; }
-        .btn { display: inline-block; padding: 18px 40px; background: #6366f1; color: #fff; border-radius: 12px; text-decoration: none; font-size: 18px; font-weight: 600; }
-        .btn:hover { background: #5558e3; }
-        
-        .how { padding: 80px 40px; background: rgba(255,255,255,0.02); }
-        .how h2 { text-align: center; font-size: 36px; margin-bottom: 50px; }
-        .steps { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
-        .step { display: flex; align-items: center; gap: 24px; }
-        .step-num { width: 60px; height: 60px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0; }
-        .step h4 { font-size: 20px; margin-bottom: 4px; }
-        .step p { color: #888; font-size: 15px; }
-        
-        .pricing { padding: 80px 40px; }
-        .pricing h2 { text-align: center; font-size: 36px; margin-bottom: 50px; }
-        .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
-        .plan { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; text-align: center; }
-        .plan.featured { border-color: #6366f1; background: rgba(99, 102, 241, 0.1); }
-        .plan-name { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-        .plan-price { font-size: 48px; font-weight: 700; margin-bottom: 8px; }
-        .plan-price span { font-size: 18px; color: #888; font-weight: 400; }
-        .plan-desc { color: #888; font-size: 14px; margin-bottom: 20px; }
-        .plan-features { text-align: left; margin-bottom: 20px; }
-        .plan-feature { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+        .how { padding: 80px 40px; }
+        .how h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+        .steps { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .step { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+        .step-num { width: 50px; height: 50px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0; }
+        .step h4 { font-size: 18px; margin-bottom: 4px; }
+        .step p { color: #888; font-size: 14px; }
         
         .shops { padding: 80px 40px; background: rgba(255,255,255,0.02); }
-        .shops h2 { text-align: center; font-size: 36px; margin-bottom: 50px; }
-        .shop-list { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-        .shop { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; display: flex; justify-content: space-between; align-items: center; }
+        .shops h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+        .shop-list { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .shop { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; }
         .shop.featured { border-left: 4px solid #22c55e; }
-        .shop-name { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
-        .shop-info { color: #888; font-size: 14px; }
-        .shop-distance { background: rgba(99, 102, 241, 0.2); color: #6366f1; padding: 8px 16px; border-radius: 20px; font-size: 13px; }
+        .shop-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .shop-name { font-size: 22px; font-weight: 700; }
+        .shop-badge { background: rgba(34, 197, 94, 0.2); color: #22c55e; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .shop-location { color: #888; font-size: 14px; margin-bottom: 8px; }
+        .shop-services { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .service-tag { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 8px; font-size: 12px; color: #ccc; }
+        .shop-price { color: #22c55e; font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+        .whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; background: #25D366; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .whatsapp-btn:hover { background: #1fb855; }
         
-        footer { text-align: center; padding: 60px 40px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 60px; color: #666; font-size: 14px; }
+        .footer-cta { padding: 80px 40px; text-align: center; }
+        .footer-cta h2 { font-size: 28px; margin-bottom: 16px; }
+        .footer-cta p { color: #888; margin-bottom: 30px; }
         
-        @media (max-width: 900px) {
-            header h1 { font-size: 42px; }
-            .plans { grid-template-columns: 1fr; }
+        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 13px; }
+        
+        @media (max-width: 600px) {
+            header h1 { font-size: 36px; }
+            nav { padding: 15px 20px; }
+            .how, .shops, .footer-cta { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo">💆 Massage Pass</div>
-        <div class="switch">For Shops: <a href="shop.html">View Shop Page →</a></div>
+        <div class="switch">For Shops: <a href="shop.html">View →</a></div>
     </nav>
     
     <header>
-        <h1>Massage Made Effortless</h1>
-        <p class="tagline">Monthly subscriptions for massage. Book with one WhatsApp.</p>
-        <span class="location">📍 Near IE Business School, Madrid</span>
+        <h1>Book a Massage<br>in Madrid</h1>
+        <p class="tagline">Easy booking via WhatsApp. No apps, no phone calls.</p>
+        <span class="location">📍 Near IE Business School, Chamartín</span>
     </header>
     
     <section class="how">
@@ -80,62 +72,23 @@
             <div class="step">
                 <div class="step-num">1</div>
                 <div>
-                    <h4>Choose Your Plan</h4>
-                    <p>Basic (4 visits), Premium (8 visits), or Unlimited.</p>
+                    <h4>Pick a Shop</h4>
+                    <p>Choose from our vetted partner shops near IE.</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">2</div>
                 <div>
-                    <h4>Book via WhatsApp</h4>
-                    <p>Message us. We handle the booking with the shop.</p>
+                    <h4>Message Us on WhatsApp</h4>
+                    <p>Tell us which shop and when you want to come.</p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">3</div>
                 <div>
-                    <h4>Show Up & Relax</h4>
-                    <p>Pay at the shop. We handle the rest.</p>
+                    <h4>Show Up</h4>
+                    <p>We confirm your booking. You pay at the shop.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="pricing">
-        <h2>Simple Pricing</h2>
-        <div class="plans">
-            <div class="plan">
-                <div class="plan-name">Basic</div>
-                <div class="plan-price">€120<span>/mo</span></div>
-                <div class="plan-desc">4 visits per month</div>
-                <div class="plan-features">
-                    <div class="plan-feature">✓ 4 massages/month</div>
-                    <div class="plan-feature">✓ All partner shops</div>
-                    <div class="plan-feature">✓ WhatsApp booking</div>
-                </div>
-                <a href="book.html" class="btn" style="width: 100%;">Get Started</a>
-            </div>
-            <div class="plan featured">
-                <div class="plan-name">Premium</div>
-                <div class="plan-price">€200<span>/mo</span></div>
-                <div class="plan-desc">8 visits per month</div>
-                <div class="plan-features">
-                    <div class="plan-feature">✓ 8 massages/month</div>
-                    <div class="plan-feature">✓ Priority booking</div>
-                    <div class="plan-feature">✓ All partner shops</div>
-                </div>
-                <a href="book.html" class="btn" style="width: 100%;">Get Started</a>
-            </div>
-            <div class="plan">
-                <div class="plan-name">Unlimited</div>
-                <div class="plan-price">€350<span>/mo</span></div>
-                <div class="plan-desc">Unlimited visits</div>
-                <div class="plan-features">
-                    <div class="plan-feature">✓ Unlimited massages</div>
-                    <div class="plan-feature">✓ Priority booking</div>
-                    <div class="plan-feature">✓ All partner shops</div>
-                </div>
-                <a href="book.html" class="btn" style="width: 100%;">Contact Us</a>
             </div>
         </div>
     </section>
@@ -144,26 +97,46 @@
         <h2>Partner Shops</h2>
         <div class="shop-list">
             <div class="shop featured">
-                <div>
+                <div class="shop-header">
                     <div class="shop-name">⭐ Mayoac</div>
-                    <div class="shop-info">Plaza Castilla · Massage only · Est. 2002</div>
+                    <div class="shop-badge">TOP PICK</div>
                 </div>
-                <div class="shop-distance">15-20 min from IE</div>
+                <div class="shop-location">📍 Plaza Castilla · 15-20 min from IE</div>
+                <div class="shop-services">
+                    <span class="service-tag">Deep Tissue</span>
+                    <span class="service-tag">Swedish</span>
+                    <span class="service-tag">Sports</span>
+                </div>
+                <div class="shop-price">From €40 per session</div>
+                <a href="https://wa.me/34600000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20massage%20at%20Mayoac" class="whatsapp-btn" target="_blank">
+                    📱 Book via WhatsApp
+                </a>
             </div>
+            
             <div class="shop">
-                <div>
+                <div class="shop-header">
                     <div class="shop-name">The Fix Room</div>
-                    <div class="shop-info">Calle Quiñones, Centro · Deep tissue specialist</div>
                 </div>
-                <div class="shop-distance">25 min from IE</div>
+                <div class="shop-location">📍 Calle Quiñones, Centro · 25 min from IE</div>
+                <div class="shop-services">
+                    <span class="service-tag">Deep Tissue</span>
+                    <span class="service-tag">Sports Massage</span>
+                    <span class="service-tag">Trigger Points</span>
+                </div>
+                <div class="shop-price">From €35 per session</div>
+                <a href="https://wa.me/34600000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20session%20at%20The%20Fix%20Room" class="whatsapp-btn" target="_blank">
+                    📱 Book via WhatsApp
+                </a>
             </div>
         </div>
     </section>
     
-    <section class="cta-section">
-        <h2>Ready to Get Started?</h2>
-        <p>Message us on WhatsApp. We'll have you booked in minutes.</p>
-        <a href="https://wa.me/34600000000" class="btn" target="_blank">📱 Message on WhatsApp</a>
+    <section class="footer-cta">
+        <h2>Questions?</h2>
+        <p>Message us on WhatsApp. We respond within minutes.</p>
+        <a href="https://wa.me/34600000000" class="whatsapp-btn" target="_blank" style="max-width: 300px; margin: 0 auto;">
+            📱 Message Us
+        </a>
     </section>
     
     <footer>
