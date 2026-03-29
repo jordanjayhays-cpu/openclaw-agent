@@ -48,6 +48,10 @@
     "felo-search": {
       "version": "1.0.0",
       "installedAt": 1774776745462
+    },
+    "google-drive-integration": {
+      "version": "1.0.3",
+      "installedAt": 1774779672685
     }
   }
 }
