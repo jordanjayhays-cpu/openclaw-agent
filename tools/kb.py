@@ -1,304 +1,202 @@
 #!/usr/bin/env python3
 """
-PK Knowledge Base - Full RAG Pipeline
-URL → Fetch → Extract → Chunk → Embed → Store → Query
-
-Uses free embedding API or keyword fallback
+PK Knowledge Base - Simple Interface
+===================================
+Usage:
+    python3 kb.py add <url>    Add URL
+    python3 kb.py ask <query>  Ask question
+    python3 kb.py list         List all
+    python3 kb.py stats        Stats
 """
 
-import sqlite3
-import os
 import sys
+import os
 import json
-import hashlib
 import re
+import sqlite3
+import math
+import subprocess
+from collections import Counter
 from datetime import datetime
-from urllib.parse import urlparse
 
 KB_DIR = "/data/workspace/PROJECTS/PK-MUSIC/knowledge-base"
 DB_PATH = f"{KB_DIR}/kb.db"
 
-def init_db():
-    """Initialize knowledge base"""
-    os.makedirs(KB_DIR, exist_ok=True)
+STOPWORDS = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
+    'of', 'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'been',
+    'be', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would',
+    'could', 'should', 'may', 'might', 'must', 'shall', 'can', 'need',
+    'it', 'its', 'this', 'that', 'these', 'those', 'i', 'you', 'he',
+    'she', 'we', 'they', 'what', 'which', 'who', 'whom', 'when', 'where',
+    'why', 'how', 'all', 'each', 'every', 'both', 'few', 'more', 'most',
+    'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same',
+    'so', 'than', 'too', 'very', 'just', 'also', 'now', 'here', 'there',
+    'then', 'once', 'if', 'because', 'about', 'into', 'through', 'during'}
+
+def tokenize(text):
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9\s]', ' ', text)
+    tokens = text.split()
+    return [t for t in tokens if t not in STOPWORDS and len(t) > 2]
+
+def compute_tf(tokens):
+    return Counter(tokens)
+
+def compute_idf(documents):
+    N = len(documents)
+    idf = {}
+    all_terms = set()
+    for doc in documents:
+        all_terms.update(doc.keys())
+    for term in all_terms:
+        df = sum(1 for doc in documents if term in doc)
+        idf[term] = math.log(N / (df + 1)) + 1
+    return idf
+
+def compute_tfidf(tf, idf):
+    return {term: freq * idf.get(term, 0) for term, freq in tf.items()}
+
+def cosine_similarity(vec1, vec2):
+    all_terms = set(vec1.keys()) | set(vec2.keys())
+    dot_product = sum(vec1.get(t, 0) * vec2.get(t, 0) for t in all_terms)
+    mag1 = math.sqrt(sum(v**2 for v in vec1.values()))
+    mag2 = math.sqrt(sum(v**2 for v in vec2.values()))
+    if mag1 == 0 or mag2 == 0:
+        return 0
+    return dot_product / (mag1 * mag2)
+
+def search_semantic(query, top_k=5):
     conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS documents (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            url TEXT UNIQUE NOT NULL,
-            title TEXT,
-            content TEXT,
-            summary TEXT,
-            source_type TEXT,
-            entities TEXT,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            access_count INTEGER DEFAULT 0
-        )
-    ''')
-    
-    # For keyword search
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS keywords (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            doc_id INTEGER,
-            keyword TEXT,
-            frequency INTEGER DEFAULT 1,
-            FOREIGN KEY (doc_id) REFERENCES documents(id)
-        )
-    ''')
-    
-    c.execute('CREATE INDEX IF NOT EXISTS idx_keywords ON keywords(keyword)')
-    c.execute('CREATE INDEX IF NOT EXISTS idx_url ON documents(url)')
-    
-    conn.commit()
+    c.execute('SELECT id, url, title, content, summary, source_type, created_at FROM documents')
+    docs = c.fetchall()
     conn.close()
-
-def extract_title(content, url):
-    """Extract title from content or URL"""
-    # Try to find <title> tag
-    title_match = re.search(r'<title[^>]*>([^<]+)</title>', content, re.IGNORECASE)
-    if title_match:
-        return title_match.group(1).strip()
     
-    # Try first H1
-    h1_match = re.search(r'<h1[^>]*>([^<]+)</h1>', content, re.IGNORECASE)
-    if h1_match:
-        return h1_match.group(1).strip()
-    
-    # Fall back to URL
-    parsed = urlparse(url)
-    path = parsed.path.strip('/')
-    if path:
-        return path.split('/')[-1].replace('-', ' ').replace('_', ' ').title()
-    
-    return url
-
-def extract_entities(content):
-    """Extract key entities (simple version)"""
-    # Look for hashtags, mentions, key phrases
-    entities = []
-    
-    # Hashtags
-    hashtags = re.findall(r'#(\w+)', content)
-    entities.extend(['#' + h for h in hashtags])
-    
-    # Capitalized phrases (potential key terms)
-    caps = re.findall(r'\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)\b', content)
-    entities.extend(caps[:5])  # Limit
-    
-    return ', '.join(entities[:20])  # Max 20 entities
-
-def extract_summary(content, max_length=300):
-    """Extract a summary from content"""
-    # Remove HTML tags
-    text = re.sub(r'<[^>]+>', ' ', content)
-    text = re.sub(r'\s+', ' ', text).strip()
-    
-    # Get first meaningful paragraph
-    sentences = text.split('. ')
-    summary = ''
-    for sent in sentences:
-        if len(summary) + len(sent) < max_length:
-            summary += sent + '. '
-        else:
-            break
-    
-    return summary.strip() if summary else text[:max_length] + '...'
-
-def extract_keywords(content, top_n=20):
-    """Extract important keywords (simple TF-IDF-like)"""
-    # Common stop words
-    stopwords = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
-                 'of', 'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'been',
-                 'be', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could',
-                 'should', 'may', 'might', 'must', 'shall', 'can', 'need', 'it', 'its',
-                 'this', 'that', 'these', 'those', 'i', 'you', 'he', 'she', 'we', 'they',
-                 'what', 'which', 'who', 'whom', 'when', 'where', 'why', 'how', 'all',
-                 'each', 'every', 'both', 'few', 'more', 'most', 'other', 'some', 'such',
-                 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very'}
-    
-    # Extract words
-    words = re.findall(r'\b[a-zA-Z]{3,}\b', content.lower())
-    
-    # Count frequency
-    freq = {}
-    for word in words:
-        if word not in stopwords:
-            freq[word] = freq.get(word, 0) + 1
-    
-    # Sort by frequency
-    sorted_words = sorted(freq.items(), key=lambda x: x[1], reverse=True)
-    
-    return [word for word, _ in sorted_words[:top_n]]
-
-def store_document(url, content, source_type="article"):
-    """Store a document in the knowledge base"""
-    init_db()
-    
-    title = extract_title(content, url)
-    summary = extract_summary(content)
-    entities = extract_entities(content)
-    keywords = extract_keywords(content)
-    
-    # Clean content (remove excessive whitespace)
-    clean_content = re.sub(r'\s+', ' ', content).strip()[:50000]  # Max 50k chars
-    
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
-    
-    try:
-        # Insert or update document
-        c.execute('''
-            INSERT OR REPLACE INTO documents (url, title, content, summary, source_type, entities)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (url, title, clean_content, summary, source_type, entities))
-        
-        doc_id = c.lastrowid
-        
-        # Store keywords
-        for keyword in keywords:
-            c.execute('''
-                INSERT OR IGNORE INTO keywords (doc_id, keyword, frequency)
-                VALUES (?, ?, 1)
-            ''', (doc_id, keyword))
-        
-        conn.commit()
-        
-        print(f"\n✅ Stored: {title}")
-        print(f"📝 Summary: {summary[:150]}...")
-        print(f"🏷️ Keywords: {', '.join(keywords[:10])}")
-        
-        # Save full content to cache
-        cache_path = f"{KB_DIR}/cache/{hashlib.md5(url.encode()).hexdigest()[:12]}.json"
-        os.makedirs(f"{KB_DIR}/cache", exist_ok=True)
-        with open(cache_path, 'w') as f:
-            json.dump({
-                'url': url,
-                'title': title,
-                'content': clean_content,
-                'summary': summary,
-                'entities': entities,
-                'keywords': keywords,
-                'stored_at': datetime.now().isoformat()
-            }, f)
-        
-        return doc_id
-        
-    except Exception as e:
-        print(f"❌ Error storing document: {e}")
-        return None
-    finally:
-        conn.close()
-
-def search(query, top_k=5):
-    """Search knowledge base with keyword matching + ranking"""
-    init_db()
-    
-    query_words = set(re.findall(r'\b[a-zA-Z]{3,}\b', query.lower()))
-    
-    if not query_words:
+    if not docs:
         return []
     
-    conn = sqlite3.connect(DB_PATH)
-    c = conn.cursor()
+    query_tokens = tokenize(query)
+    query_tf = compute_tf(query_tokens)
     
-    # Find documents with matching keywords
-    scores = {}
-    for word in query_words:
-        c.execute('''
-            SELECT d.id, d.url, d.title, d.summary, k.frequency
-            FROM documents d
-            JOIN keywords k ON d.id = k.doc_id
-            WHERE k.keyword = ?
-        ''', (word,))
-        
-        for row in c.fetchall():
-            doc_id, url, title, summary, freq = row
-            if doc_id not in scores:
-                scores[doc_id] = {'url': url, 'title': title, 'summary': summary, 'score': 0}
-            scores[doc_id]['score'] += freq
+    all_doc_tfs = []
+    for doc in docs:
+        content = doc['content'] or doc['summary'] or ''
+        tokens = tokenize(content)
+        all_doc_tfs.append(compute_tf(tokens))
     
-    # Sort by score
-    results = sorted(scores.values(), key=lambda x: x['score'], reverse=True)[:top_k]
+    idf = compute_idf(all_doc_tfs)
+    query_tfidf = compute_tfidf(query_tf, idf)
     
-    conn.close()
-    return results
+    results = []
+    for doc in docs:
+        content = doc['content'] or doc['summary'] or ''
+        doc_tfidf = compute_tfidf(compute_tf(tokenize(content)), idf)
+        score = cosine_similarity(query_tfidf, doc_tfidf)
+        if score > 0:
+            results.append({
+                'id': doc['id'], 'url': doc['url'], 'title': doc['title'],
+                'summary': doc['summary'], 'source_type': doc['source_type'],
+                'created_at': doc['created_at'], 'score': score
+            })
+    
+    results.sort(key=lambda x: x['score'], reverse=True)
+    return results[:top_k]
+
+def fetch_url(url):
+    try:
+        result = subprocess.run([
+            'curl', '-s', '-L', '--max-time', '30',
+            '-A', 'Mozilla/5.0', url
+        ], capture_output=True, text=True, timeout=35)
+        return result.stdout if result.returncode == 0 else None
+    except:
+        return None
+
+def extract_text(html):
+    if not html:
+        return None
+    html = re.sub(r'<script[^>]*>.*?</script>', '', html, flags=re.DOTALL)
+    html = re.sub(r'<style[^>]*>.*?</style>', '', html, flags=re.DOTALL)
+    text = re.sub(r'<[^>]+>', ' ', html)
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text if len(text) > 100 else None
+
+def add_url(url):
+    print(f"\n🔍 Fetching: {url}")
+    html = fetch_url(url)
+    if not html:
+        print("❌ Could not fetch. Try adding content directly.")
+        return
+    text = extract_text(html)
+    if not text:
+        print("❌ Could not extract content")
+        return
+    
+    # Import and use store_document
+    sys.path.insert(0, '/data/workspace/tools')
+    from kb import store_document
+    store_document(url, text[:50000])
+    print("\n✅ Added! Ask me about it now.")
+
+def ask_question(question):
+    print(f"\n🔍 Searching: {question}")
+    results = search_semantic(question, top_k=5)
+    if not results:
+        print("\n❌ Nothing found. Add content first:")
+        print("   'Add this: https://url.com'")
+        return
+    print(f"\n📚 Found {len(results)} results:\n")
+    for i, r in enumerate(results, 1):
+        print(f"{i}. {r['title']} ({r['score']*100:.0f}% match)")
+        if r['summary']:
+            print(f"   {r['summary'][:150]}...")
+        print(f"   {r['url']}\n")
 
 def main():
     if len(sys.argv) < 2:
         print("""
-PK Knowledge Base - RAG Pipeline
-
+🧠 PK Knowledge Base
+====================
 Usage:
-    python3 kb.py store <url>          # Store a URL
-    python3 kb.py search <query>      # Search knowledge base
-    python3 kb.py list                # List all documents
-    python3 kb.py stats               # Show statistics
+    kb.py add <url>   Add URL to KB
+    kb.py ask <query> Ask about content
+    kb.py list        List all docs
+    kb.py stats       Show stats
 """)
         sys.exit(1)
     
-    command = sys.argv[1]
+    cmd = sys.argv[1]
     
-    if command == 'store':
+    if cmd == 'add':
         if len(sys.argv) < 3:
-            print("Usage: python3 kb.py store <url>")
+            print("Usage: kb.py add <url>")
             sys.exit(1)
-        url = sys.argv[2]
-        print(f"Use web_fetch to get content, then I'll store it")
-        
-    elif command == 'search':
+        add_url(sys.argv[2])
+    
+    elif cmd == 'ask':
         if len(sys.argv) < 3:
-            print("Usage: python3 kb.py search <query>")
+            print("Usage: kb.py ask <question>")
             sys.exit(1)
-        query = ' '.join(sys.argv[2:])
-        results = search(query)
-        print(f"\n🔍 Search results for: {query}")
-        print("=" * 60)
-        for i, r in enumerate(results, 1):
-            print(f"\n{i}. {r['title']}")
-            print(f"   {r['summary'][:150]}...")
-            print(f"   {r['url']}")
-        
-    elif command == 'list':
-        init_db()
+        ask_question(' '.join(sys.argv[2:]))
+    
+    elif cmd == 'list':
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
-        c.execute('SELECT id, url, title, created_at FROM documents ORDER BY created_at DESC')
-        rows = c.fetchall()
+        c.execute('SELECT id, title, source_type, created_at FROM documents')
+        for row in c.fetchall():
+            print(f"{row[0]}. {row[1]} [{row[2]}]")
         conn.close()
-        
-        print(f"\n📚 Knowledge Base ({len(rows)} documents)")
-        print("=" * 60)
-        for row in rows:
-            print(f"\n{row[0]}. {row[2]}")
-            print(f"   {row[1]}")
-            print(f"   Added: {row[3]}")
     
-    elif command == 'stats':
-        init_db()
+    elif cmd == 'stats':
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
-        
         c.execute('SELECT COUNT(*) FROM documents')
-        doc_count = c.fetchone()[0]
-        
-        c.execute('SELECT COUNT(*) FROM keywords')
-        keyword_count = c.fetchone()[0]
-        
+        docs = c.fetchone()[0]
         c.execute('SELECT SUM(LENGTH(content)) FROM documents')
-        total_chars = c.fetchone()[0] or 0
-        
+        chars = c.fetchone()[0] or 0
         conn.close()
-        
-        print(f"""
-📊 Knowledge Base Statistics
-=============================
-Documents:    {doc_count}
-Keywords:     {keyword_count}
-Total chars: {total_chars:,}
-""")
+        print(f"\n📊 KB: {docs} docs, {chars:,} chars\n")
 
 if __name__ == "__main__":
     main()
