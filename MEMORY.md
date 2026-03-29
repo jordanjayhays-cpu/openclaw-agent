@@ -55,6 +55,9 @@ Jordan wants me to run like the YouTube video described — personal dashboard, 
 - Gets frustrated with complex setup processes
 - Values speed above all
 - Will push back if something doesn't serve him
+- **WANTS ME TO REACH OUT FIRST** — Don't wait for him to ask
+- **Message him when I find something worth his time**
+- **"Respond to yourself if needed"** — Jordan wants me to initiate
 
 ## Lessons Learned
 

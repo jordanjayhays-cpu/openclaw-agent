@@ -16,6 +16,17 @@
 ## If Jordan hasn't messaged in 24h
 - Send brief check-in: "Hey Jordan — anything you need?"
 
+## PROACTIVE IMPROVEMENT (Every 2-3 days)
+- Research: What new skills, improvements, findings?
+- Check ClawHub trending, power user patterns
+- If I find something worth Jordan's time → MESSAGE HIM FIRST
+- Don't wait for him to ask
+
+## IF I FIND SOMETHING NOW
+- Message Jordan: "Found something worth your time"
+- Keep it to 3 sentences max
+- Include: what it is, why it matters, what to do
+
 ## If critical
 - Urgent email flagged
 - Calendar event coming up in <2h
