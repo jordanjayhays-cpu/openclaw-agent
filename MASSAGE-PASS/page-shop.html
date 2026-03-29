@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Pass — For Massage Shops</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 60px 40px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        header h1 { font-size: 48px; margin-bottom: 16px; }
+        header .tagline { font-size: 20px; color: #888; }
+        
+        .hero { text-align: center; padding: 80px 40px; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); }
+        .hero h2 { font-size: 36px; margin-bottom: 20px; }
+        .hero p { color: #888; font-size: 18px; max-width: 600px; margin: 0 auto 30px; }
+        .pitch { background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 16px; padding: 30px; max-width: 600px; margin: 0 auto; }
+        .pitch p { font-size: 18px; line-height: 1.6; color: #ccc; font-style: italic; }
+        .pitch-cta { margin-top: 20px; }
+        .pitch-cta a { color: #6366f1; text-decoration: none; font-weight: 600; }
+        
+        .problem { padding: 60px 40px; }
+        .problem h2 { text-align: center; margin-bottom: 40px; font-size: 28px; }
+        .problem-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .problem-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; }
+        .problem-card h4 { color: #ef4444; margin-bottom: 8px; font-size: 16px; }
+        .problem-card p { color: #888; font-size: 14px; }
+        
+        .solution { padding: 60px 40px; background: rgba(255,255,255,0.03); }
+        .solution h2 { text-align: center; margin-bottom: 40px; font-size: 28px; }
+        .solution-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; }
+        .solution-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; }
+        .solution-card h4 { color: #22c55e; margin-bottom: 8px; font-size: 16px; }
+        .solution-card p { color: #888; font-size: 14px; }
+        
+        .model { padding: 60px 40px; }
+        .model h2 { text-align: center; margin-bottom: 40px; font-size: 28px; }
+        .model-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px; max-width: 600px; margin: 0 auto; }
+        .model-box h3 { font-size: 20px; margin-bottom: 20px; text-align: center; }
+        .model-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .model-row:last-child { border-bottom: none; }
+        .model-row .label { color: #888; }
+        .model-row .value { font-weight: 600; }
+        .model-row .value.green { color: #22c55e; }
+        
+        .ie-network { padding: 60px 40px; background: rgba(255,255,255,0.03); }
+        .ie-network h2 { text-align: center; margin-bottom: 20px; font-size: 28px; }
+        .ie-network p { text-align: center; color: #888; max-width: 500px; margin: 0 auto 30px; }
+        .stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat .num { font-size: 48px; font-weight: 700; color: #6366f1; }
+        .stat .label { font-size: 14px; color: #888; }
+        
+        .cta-section { padding: 80px 40px; text-align: center; }
+        .cta-section h2 { font-size: 32px; margin-bottom: 16px; }
+        .cta-section p { color: #888; margin-bottom: 30px; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 16px 32px; border-radius: 30px; font-size: 16px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+        .btn-primary { background: #6366f1; color: #fff; }
+        .btn-primary:hover { background: #5558e3; }
+        .btn-whatsapp { background: #25D366; color: #fff; }
+        .btn-whatsapp:hover { background: #1fb855; }
+        
+        .contact-info { padding: 40px; background: rgba(255,255,255,0.05); border-radius: 16px; max-width: 500px; margin: 30px auto 0; }
+        .contact-info h4 { margin-bottom: 16px; font-size: 16px; }
+        .contact-row { display: flex; justify-content: space-between; padding: 8px 0; }
+        .contact-row .label { color: #888; font-size: 14px; }
+        .contact-row .value { font-size: 14px; }
+        
+        footer { text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏪 Massage Pass</h1>
+        <p class="tagline">For Massage Shops</p>
+    </header>
+    
+    <section class="hero">
+        <h2>More Customers.<br>Zero Booking Hassle.</h2>
+        <p>We send you pre-paid customers. You focus on massage.</p>
+        
+        <div class="pitch">
+            <p>"Hi! I am at IE Business School. I have 100+ classmates who want monthly massages but hate booking. I send you 5-10 customers/month on a bulk rate. You get paid upfront regardless of usage. Interested?"</p>
+            <div class="pitch-cta">
+                <a href="https://wa.me/34600000000">📱 Pitch us on WhatsApp →</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="problem">
+        <h2>The Problem We Solve</h2>
+        <div class="problem-cards">
+            <div class="problem-card">
+                <h4>📵 Phone Tag</h4>
+                <p>Customers hate calling to book. They don't book at all.</p>
+            </div>
+            <div class="problem-card">
+                <h4>📅 No Online Presence</h4>
+                <p>Appointment only = lost customers who find you online.</p>
+            </div>
+            <div class="problem-card">
+                <h4>💸 Inconsistent Revenue</h4>
+                <p>Slow weeks mean empty chairs and lost income.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="solution">
+        <h2>The Massage Pass Solution</h2>
+        <div class="solution-cards">
+            <div class="solution-card">
+                <h4>✅ We Handle Booking</h4>
+                <p>Customers message us. We coordinate with you. No phone calls.</p>
+            </div>
+            <div class="solution-card">
+                <h4>✅ Guaranteed Customers</h4>
+                <p>We send you 5-10 customers/month on your agreed bulk rate.</p>
+            </div>
+            <div class="solution-card">
+                <h4>✅ Upfront Payment</h4>
+                <p>Customers pay us monthly. You get paid regardless of their usage.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="model">
+        <h2>How It Works</h2>
+        <div class="model-box">
+            <h3>Commission Model</h3>
+            <div class="model-row">
+                <span class="label">Customer pays Massage Pass</span>
+                <span class="value">€100/month</span>
+            </div>
+            <div class="model-row">
+                <span class="label">You get per visit (4 visits)</span>
+                <span class="value green">€75/visit</span>
+            </div>
+            <div class="model-row">
+                <span class="label">Massage Pass commission</span>
+                <span class="value">20-25%</span>
+            </div>
+            <div class="model-row">
+                <span class="label">You receive monthly</span>
+                <span class="value green">Via Wise</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="ie-network">
+        <h2>The IE Business School Network</h2>
+        <p>IE has 5,000+ students from 100+ countries. Many have disposable income and want wellness services.</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="num">5,000+</div>
+                <div class="label">IE Students</div>
+            </div>
+            <div class="stat">
+                <div class="num">100+</div>
+                <div class="label">Countries</div>
+            </div>
+            <div class="stat">
+                <div class="num">Monthly</div>
+                <div class="label">Subscription Model</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <h2>Ready to Partner?</h2>
+        <p>Let's chat. No commitment required.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/34600000000" class="btn btn-whatsapp">📱 WhatsApp Us</a>
+            <a href="mailto:jordan@massagepass.com" class="btn btn-primary">✉️ Email Us</a>
+        </div>
+        <div class="contact-info">
+            <h4>Or reach Jordan directly:</h4>
+            <div class="contact-row">
+                <span class="label">Name</span>
+                <span class="value">Jordan Hays</span>
+            </div>
+            <div class="contact-row">
+                <span class="label">Location</span>
+                <span class="value">IE Business School, Chamartín</span>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>💆 Massage Pass · Part of Jordan's Ventures</p>
+        <p style="margin-top: 8px;">IE Business School: Calle Maria de Molina, 11 (Chamartín)</p>
+    </footer>
+</body>
+</html>
