@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "project": "COMARE",
+  "description": "CRM tracking for COMARE gym maintenance outreach in Mexico City",
+  "created": "2026-03-29",
+  "icp": {
+    "ideal_customer": "Mid-size gym chains in Mexico City",
+    "characteristics": [
+      "3+ locations or 500+ members",
+      "Franchise model (Smart Fit, Body Tech, Kraken)",
+      "Independent gyms with expansion plans",
+      "High-end boutique fitness studios"
+    ],
+    "pain_points": [
+      "Reactive maintenance = expensive emergency calls",
+      "Equipment downtime = member complaints",
+      "High member churn from equipment failures",
+      "Fragmented maintenance vendors"
+    ],
+    "budget": "$2,000-5,000/month for maintenance contract"
+  },
+  "prospects": [
+    {
+      "id": 1,
+      "name": "Smart Fit Mexico",
+      "title": "Operations",
+      "company": "Smart Fit",
+      "company_type": "Gym Chain",
+      "priority": 1,
+      "locations": "80-100 new locations in 2026",
+      "source": "COMARE research",
+      "email": "find via corporate",
+      "status": "prospect",
+      "last_contact": null,
+      "next_action": "Identify decision maker",
+      "action_required_by": "Jordan",
+      "action_required": true,
+      "notes": "80-100 new locations = massive opportunity. Low-cost model = cost efficiency critical. COMARE's fixed monthly fee = perfect fit.",
+      "email_sent": false,
+      "responded": false,
+      "follow_ups_sent": 0,
+      "deal_value_estimate": 5000
+    },
+    {
+      "id": 2,
+      "name": "Body Tech",
+      "title": "Facilities",
+      "company": "Body Tech",
+      "company_type": "Gym Chain",
+      "priority": 2,
+      "locations": "Multiple CDMX locations",
+      "source": "COMARE research",
+      "email": "find via corporate",
+      "status": "prospect",
+      "last_contact": null,
+      "next_action": "Identify decision maker",
+      "action_required_by": "Jordan",
+      "action_required": true,
+      "notes": "High-end gym model = premium maintenance expectations. Good fit for COMARE.",
+      "email_sent": false,
+      "responded": false,
+      "follow_ups_sent": 0,
+      "deal_value_estimate": 4000
+    },
+    {
+      "id": 3,
+      "name": "Kraken Fitness",
+      "title": "Operations",
+      "company": "Kraken Fitness",
+      "company_type": "Gym Chain",
+      "priority": 3,
+      "locations": "CDMX locations",
+      "source": "COMARE research",
+      "email": "find via corporate",
+      "status": "prospect",
+      "last_contact": null,
+      "next_action": "Identify decision maker",
+      "action_required_by": "Jordan",
+      "action_required": true,
+      "notes": "Expansion mode = new maintenance setup needed. Perfect timing.",
+      "email_sent": false,
+      "responded": false,
+      "follow_ups_sent": 0,
+      "deal_value_estimate": 3000
+    }
+  ],
+  "email_template": {
+    "subject": "Quick question about {company}'s equipment maintenance",
+    "body": "Hi {name},\n\nI'm Jordan — working with a gym maintenance company in Mexico City.\n\nMost gyms we work with spend $3,000-5,000/month on reactive maintenance. Equipment breaks, they scramble to fix it.\n\nThe cost isn't just the repair:\n- Member complaints when equipment doesn't work\n- Cancellations when it happens repeatedly\n- Staff time managing the chaos\n\nWe handle all maintenance for a fixed monthly fee. Members never see a broken machine.\n\nWould a 15-minute call this week make sense?\n\nBest,\nJordan\n+34 612 22 38 79",
+    "follow_up_1": "Re: {subject}",
+    "follow_up_2": "Re: Re: {subject}"
+  },
+  "money_map": {
+    "problem": "Gyms spend $3,000-5,000/month reactive maintenance",
+    "true_cost_breakdown": "Emergency calls: $500/month avg, Equipment degradation: $3,000/year, Member churn: $5,000/year",
+    "total_true_cost": "$44,000-78,000/year",
+    "comare_solution": "Fixed monthly fee = predictable, Preventive maintenance prevents emergencies",
+    "savings": "$20,000+/year + peace of mind"
+  },
+  "pipeline_summary": {
+    "total_prospects": 200,
+    "identified": 3,
+    "action_required_count": 3,
+    "action_required_by": "Jordan",
+    "cold": 0,
+    "contacted": 0,
+    "qualified": 0,
+    "proposal": 0,
+    "negotiation": 0,
+    "won": 0
+  },
+  "next_actions": {
+    "urgent": [
+      {
+        "prospect_id": 1,
+        "prospect_name": "Smart Fit Mexico",
+        "action": "Research decision maker, build email",
+        "deadline": "2026-04-01",
+        "days_past_due": 0
+      }
+    ],
+    "upcoming": []
+  },
+  "last_updated": "2026-03-29T09:56:00Z"
+}

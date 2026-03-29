@@ -44,6 +44,10 @@
     "capability-evolver": {
       "version": "1.40.0",
       "installedAt": 1774729549751
+    },
+    "felo-search": {
+      "version": "1.0.0",
+      "installedAt": 1774776745462
     }
   }
 }

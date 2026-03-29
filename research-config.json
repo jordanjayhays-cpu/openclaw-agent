@@ -1,0 +1,51 @@
+{
+  "research_agent": {
+    "name": "self-improvement-digest",
+    "schedule": "30 8 * * 1-5",
+    "sources": {
+      "blogs": [
+        {
+          "name": "Anthropic Engineering",
+          "url": "https://www.anthropic.com/engineering",
+          "search_terms": ["tool use", "agents", "prompt engineering", "multi-agent", "memory"]
+        },
+        {
+          "name": "Simon Willison",
+          "url": "https://simonwillison.net/",
+          "search_terms": ["llm", "agents", "prompt injection", "tools", "automation"]
+        }
+      ],
+      "hacker_news": {
+        "enabled": true,
+        "keywords": ["openclaw", "ai agent", "prompt injection", "llm tools", "autonomous agent"],
+        "min_points": 50,
+        "max_results": 10
+      },
+      "github_trending": {
+        "enabled": true,
+        "languages": ["TypeScript", "Python", "Go"],
+        "topics": ["ai-agent", "llm", "autonomous-agents", "mcp"],
+        "max_results": 15
+      },
+      "clawhub": {
+        "enabled": true,
+        "top_skills": 5
+      }
+    },
+    "comparison_files": [
+      "/data/workspace/AGENTS.md",
+      "/data/workspace/TOOLS.md",
+      "/data/workspace/LESSONS.md"
+    ],
+    "output": {
+      "log_file": "/data/workspace/experiments/improvements.json",
+      "briefing": true,
+      "briefing_channel": "telegram"
+    },
+    "filters": {
+      "min_relevance_score": 7,
+      "exclude_already_known": true,
+      "max_briefing_items": 3
+    }
+  }
+}
