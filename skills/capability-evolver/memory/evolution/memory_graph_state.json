@@ -1,0 +1,51 @@
+{
+  "last_action": {
+    "action_id": "act_1774785906335_02217d39",
+    "signal_key": "memory_missing|session_logs_missing|user_missing",
+    "signals": [
+      "memory_missing",
+      "user_missing",
+      "session_logs_missing"
+    ],
+    "mutation_id": "mut_1774785906334",
+    "mutation_category": "innovate",
+    "mutation_risk_level": "medium",
+    "personality_key": "rigor=0.7|creativity=0.3|verbosity=0.3|risk_tolerance=0.4|obedience=0.9",
+    "personality_state": {
+      "type": "PersonalityState",
+      "rigor": 0.7,
+      "creativity": 0.35,
+      "verbosity": 0.25,
+      "risk_tolerance": 0.4,
+      "obedience": 0.85
+    },
+    "gene_id": null,
+    "gene_category": null,
+    "hypothesis_id": "hyp_1774785906334_081f4814",
+    "capsules_used": [
+      "capsule_1770477654236"
+    ],
+    "had_error": false,
+    "created_at": "2026-03-29T12:05:06.335Z",
+    "outcome_recorded": false,
+    "baseline_observed": {
+      "agent": "main",
+      "session_scope": null,
+      "drift_enabled": false,
+      "review_mode": false,
+      "dry_run": false,
+      "system_health": "Uptime: 48.8h | Node: v22.22.2 | Agent RSS: 55.3MB | Disk: 25% (1444.0G free) | Node Processes: 2 | Integrations: Nominal",
+      "mood": "Mood: Unknown",
+      "scan_ms": 11,
+      "memory_size_bytes": 0,
+      "recent_error_count": 0,
+      "node": "v22.22.2",
+      "platform": "linux",
+      "cwd": "/data/workspace/skills/capability-evolver",
+      "evidence": {
+        "recent_session_tail": "[NO SESSION LOGS FOUND]",
+        "today_log_tail": "[MISSING] /data/workspace/skills/capability-evolver/memory/2026-03-29.md"
+      }
+    }
+  }
+}
