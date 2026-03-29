@@ -54,6 +54,7 @@
         .card-project.comare { background: rgba(168,85,247,0.2); color: #c084fc; }
         .card-project.pod { background: rgba(244,114,182,0.2); color: #f472b6; }
         .card-project.pkmusic { background: rgba(139,92,246,0.2); color: #a78bfa; }
+        .card-project.pkproject { background: rgba(236,72,153,0.2); color: #f472b6; }
         .card-project.newbali { background: rgba(34,197,94,0.2); color: #4ade80; }
         .card-project.claw { background: rgba(34,211,238,0.2); color: #22d3ee; }
         .card-project.system { background: rgba(107,114,128,0.2); color: #9ca3af; }
@@ -178,6 +179,22 @@
                 <div class="card-meta">
                     <span class="card-priority low">🟢 Low</span>
                     <span>Next week</span>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('task-pk-music')">
+                <div class="card-project pkproject">🎵 PK MUSIC</div>
+                <div class="card-title">PK Music — Philosophy King album strategy</div>
+                <div class="card-meta">
+                    <span class="card-priority medium">🟡 Medium</span>
+                    <span>Planning</span>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('task-new-bali')">
+                <div class="card-project newbali">🌴 NEW BALI</div>
+                <div class="card-title">New Bali — Digital nomad destination</div>
+                <div class="card-meta">
+                    <span class="card-priority low">🟢 Low</span>
+                    <span>Future</span>
                 </div>
             </div>
         </div>
@@ -616,6 +633,28 @@
             blockers: [],
             description: '100-PROJECTS-TO-STEAL.md — From service businesses to AI agencies. Scientific research report ranked top 5.',
             action: 'View at /downloads/100-PROJECTS-TO-STEAL.md'
+        },
+        'task-pk-music': {
+            title: 'PK Music — Philosophy King',
+            project: '🎵 PK MUSIC',
+            status: 'Active',
+            priority: 'Medium',
+            owner: 'Jordan',
+            deadline: 'Ongoing',
+            blockers: [],
+            description: 'Jordan\'s philosophical hip-hop project. 60+ tracks in Google Drive including: All I Know, Altered States of Faith, Bayanihan, Breaking the Chains, Burnout Society. Music distributed via DistroKid. Philosophy King brand.',
+            action: 'View tracks: https://drive.google.com/drive/folders/1UxU0JKTV0jO1K5qzVeZYFpl1x-WLC8p5'
+        },
+        'task-new-bali': {
+            title: 'New Bali — Digital Nomad Destination',
+            project: '🌴 NEW BALI',
+            status: 'Concept',
+            priority: 'Low',
+            owner: 'Jordan',
+            deadline: 'TBD',
+            blockers: [],
+            description: 'Create a "New Bali" destination — coliving/coworking for digital nomads. Find nice/affordable place → market to nomads → partner with property owner. Jordan has YouTube channel for content/demand creation.',
+            action: 'Research potential destinations. No action yet.'
         }
     };
     
