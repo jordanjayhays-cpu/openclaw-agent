@@ -278,6 +278,14 @@
             <span class="column-count">3</span>
         </div>
         <div class="column-cards">
+            <div class="card" onclick="openModal('task-pisco-south-korea')">
+                <div class="card-project pisco">🌏 SOUTH KOREA</div>
+                <div class="card-title">PISCO → South Korea entry</div>
+                <div class="card-meta">
+                    <span class="card-priority high">🔴 HIGH</span>
+                    <span>New priority</span>
+                </div>
+            </div>
             <div class="card" onclick="openModal('task-pisco-emails')">
                 <div class="card-project pisco">PISCO</div>
                 <div class="card-title">Approve first PISCO email send</div>
@@ -469,6 +477,17 @@
             blockers: ['Waiting for email setup'],
             description: '10 emails ready to send. 3 decision makers identified: Javier (NH HQ), Miriam (NH Madrid), Yolanda (Room Mate).',
             action: 'Reply YES to send, or specify which contact(s)'
+        },
+        'task-pisco-south-korea': {
+            title: 'PISCO → South Korea Entry',
+            project: '🌏 SOUTH KOREA',
+            status: 'Research',
+            priority: 'High',
+            owner: 'Jordan',
+            deadline: 'Jordan has contact',
+            blockers: ['Need contact name and role', 'Need client companies'],
+            description: 'Jordan has one person who can help + potential clients. EPS allows Filipino workers in manufacturing, construction, agriculture. PISCO role: Help navigate EPS process + find Korean employers. Commission per placement.',
+            action: 'Get contact info. Jordan to provide name/role of contact.'
         },
         'task-imba-content': {
             title: 'Share IMBA course content',
