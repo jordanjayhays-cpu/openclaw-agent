@@ -186,6 +186,22 @@
                     <span>Next week</span>
                 </div>
             </div>
+            <div class="card" onclick="openModal('task-massage-pass')">
+                <div class="card-project pkproject">💆 MASSAGE PASS</div>
+                <div class="card-title">Massage Pass Madrid — Active</div>
+                <div class="card-meta">
+                    <span class="card-priority high">🔴 High</span>
+                    <span>Domain task</span>
+                </div>
+            </div>
+            <div class="card" onclick="openModal('task-domain')">
+                <div class="card-project pkproject">🌐 massagepass.com</div>
+                <div class="card-title">Buy massagepass.com domain</div>
+                <div class="card-meta">
+                    <span class="card-priority high">🔴 URGENT</span>
+                    <span>Owner found</span>
+                </div>
+            </div>
             <div class="card" onclick="openModal('task-pk-music')">
                 <div class="card-project pkproject">🎵 PK MUSIC</div>
                 <div class="card-title">PK Music — Philosophy King album strategy</div>
@@ -754,15 +770,26 @@
             action: 'Remember: Wrong ICP kills. Use Dealsmap as reference for what NOT to do.'
         },
         'task-massage-pass': {
-            title: 'Massage Pass Manila',
+            title: 'Massage Pass Madrid',
             project: '💆 MASSAGE PASS',
-            status: 'Concept',
+            status: 'Active',
             priority: 'High',
             owner: 'Jordan',
-            deadline: 'TBD',
-            blockers: ['Need business model clarification'],
-            description: 'Massage aggregation service in Manila. One pass, multiple locations. Landed page exists. Needs: business model, pricing, partnership with massage shops.',
-            action: 'Clarify business model. How does it make money? Flat fee per pass? Commission?'
+            deadline: 'ASAP',
+            blockers: [],
+            description: 'Massage subscription service. Users pay monthly, get X visits at partner shops. Option A: Jordan pays shops bulk, users pay Jordan. Now in Madrid. Shops found: Unna Life, The Fix Room. IE Business School area target.',
+            action: 'Pitch shops in Madrid. Draft: "I send 5-10 customers/month, you give bulk rate."'
+        },
+        'task-domain': {
+            title: 'Buy massagepass.com domain',
+            project: '🌐 DOMAIN',
+            status: 'URGENT',
+            priority: 'High',
+            owner: 'Jordan',
+            deadline: '2027-05-24',
+            blockers: ['Need to contact owner'],
+            description: 'Owner: Mens Fantasies Inc. (San Mateo, CA). Registrar: Dynadot. Contact form: dynadot.com/domain/contact-request?domain=massagepass.com. Phone: +1.6505854708.',
+            action: 'Send email to owner: https://www.dynadot.com/domain/contact-request?domain=massagepass.com'
         },};
     
     function openModal(taskId) {

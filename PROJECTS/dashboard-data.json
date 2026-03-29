@@ -1,0 +1,51 @@
+{
+  "last_synced": "2026-03-29T12:59:31.929696",
+  "knowledge_bases": {
+    "general": {
+      "docs": 1
+    },
+    "pk_music": {
+      "docs": 7
+    }
+  },
+  "massage_pass": {
+    "subscribers": 0,
+    "shops": 0,
+    "transactions": 0
+  },
+  "projects": {
+    "pisco": {
+      "status": "active"
+    },
+    "comare": {
+      "status": "research"
+    },
+    "ego_death_pod": {
+      "status": "ready"
+    },
+    "pk_music": {
+      "status": "active"
+    },
+    "neurotech": {
+      "status": "active"
+    },
+    "massage_pass": {
+      "status": "concept"
+    },
+    "google_maps": {
+      "status": "concept"
+    },
+    "new_bali": {
+      "status": "concept"
+    },
+    "video_agency": {
+      "status": "interest"
+    },
+    "cybersecurity": {
+      "status": "interest"
+    },
+    "ai_content": {
+      "status": "concept"
+    }
+  }
+}
