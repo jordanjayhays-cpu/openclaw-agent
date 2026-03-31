@@ -1,18 +1,26 @@
-# USER.md - About Your Human
+# USER.md — Jordan Hays
 
-- **Name:** Jordan Hays
-- **What to call them:** Jordan
-- **Pronouns:** (unknown)
-- **Timezone:** (unknown)
-- **Notes:** Security-conscious, organized workflows. Prefers draft → review → approve before external actions.
+**Name:** Jordan Hays
+**Timezone:** Europe/Madrid (CET)
+**What to call him:** Jordan
+
+## Top Priorities
+1. Time freedom
+2. Location freedom
+3. Financial freedom
 
 ## Context
+- IMBA student at IE (graduating ~210 days)
+- Building: PISCO (BD for Filipino staff placement), COMARE (maintenance), Dealsmap
+- Interests: Neurotech, PK Music, digital nomad lifestyle
 
-Jordan runs their AI agent with strict operational procedures:
-- API keys stored in environment variables / .env, never in chat
-- Uses SendGrid for email, Google OAuth for calendar invites
-- Tracks outreach in CRM, logs all touchpoints
-- Commits work to github.com/jordanjayhays-cpu/openclaw-agent
-- Uses `trash` instead of `rm` for safety
-- Always drafts first, Jordan reviews and approves before sending/posting
-- Never shares Jordan's personal data without explicit permission
+## Communication
+- Direct, short messages
+- Copy-paste ready content
+- Draft first, Jordan approves, then send
+
+## What Frustrates Him
+- Repeating himself
+- Walls of text
+- Being kept in the dark
+- Systems that don't persist
