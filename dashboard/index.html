@@ -913,6 +913,57 @@
     </main>
     
     <script>
+        // Gateway token — fetched from /api/config which reads OPENCLAW_GATEWAY_TOKEN
+        let gatewayToken = null;
+        let gatewaySocket = null;
+
+        async function loadGatewayToken() {
+            try {
+                const res = await fetch('/api/config');
+                if (!res.ok) throw new Error('config endpoint returned ' + res.status);
+                const data = await res.json();
+                gatewayToken = data.gatewayToken || null;
+                if (gatewayToken) {
+                    console.log('[Gateway] Token loaded — connecting...');
+                    connectGateway();
+                } else {
+                    console.warn('[Gateway] No token in config response');
+                }
+            } catch (err) {
+                console.error('[Gateway] Failed to load token:', err.message);
+            }
+        }
+
+        function connectGateway() {
+            if (!gatewayToken) return;
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = wsProtocol + '//' + location.host + '/gateway?token=' + encodeURIComponent(gatewayToken);
+            gatewaySocket = new WebSocket(wsUrl);
+
+            gatewaySocket.addEventListener('open', () => {
+                console.log('[Gateway] WebSocket connected');
+            });
+
+            gatewaySocket.addEventListener('message', (event) => {
+                try {
+                    const msg = JSON.parse(event.data);
+                    console.log('[Gateway] Message:', msg);
+                } catch (_) {}
+            });
+
+            gatewaySocket.addEventListener('error', (err) => {
+                console.error('[Gateway] WebSocket error:', err);
+            });
+
+            gatewaySocket.addEventListener('close', (event) => {
+                console.warn('[Gateway] WebSocket closed (code=' + event.code + ') — will retry in 5s');
+                setTimeout(connectGateway, 5000);
+            });
+        }
+
+        // Load token and connect to gateway on page load
+        loadGatewayToken();
+
         // Simple command handler
         document.querySelector('.quick-command input').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
