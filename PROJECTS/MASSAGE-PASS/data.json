@@ -1,6 +1,37 @@
 {
+  "name": "Massage Pass",
+  "tagline": "The membership for massage lovers",
+  "website": "massagepass.com",
+  "domain_status": "needs purchase",
+  "shops": [
+    {
+      "name": "Mayoac",
+      "location": "Chamartín, Madrid",
+      "contact": "",
+      "status": "interested",
+      "rate_per_visit": 0,
+      "normal_rate": 0
+    },
+    {
+      "name": "The Fix Room",
+      "location": "Salamanca, Madrid", 
+      "contact": "",
+      "status": "interested",
+      "rate_per_visit": 0,
+      "normal_rate": 0
+    }
+  ],
   "subscribers": [],
-  "shops": [],
   "transactions": [],
-  "last_updated": "2026-03-29"
+  "revenue_share": {
+    "shop": 75,
+    "jordan": 20,
+    "platform": 5
+  },
+  "integrations": {
+    "stripe": "pending",
+    "calendly": "pending",
+    "notion": "pending"
+  },
+  "last_updated": "2026-03-31"
 }
