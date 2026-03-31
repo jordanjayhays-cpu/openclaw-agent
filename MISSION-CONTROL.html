@@ -401,6 +401,10 @@
             margin-bottom: 32px;
         }
         
+        @media (max-width: 900px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+        }
+        
         @media (max-width: 768px) {
             .stats-row { grid-template-columns: repeat(2, 1fr); }
         }
@@ -543,8 +547,8 @@
         <div class="stats-row">
             <div class="stat-card">
                 <div class="stat-label">Active Projects</div>
-                <div class="stat-value accent">6</div>
-                <div class="stat-sub">PISCO, COMARE, Dealsmap, Massage Pass, PK Music, Neurotech</div>
+                <div class="stat-value accent">8</div>
+                <div class="stat-sub">PISCO, COMARE, Dealsmap, PK Music, Massage Pass, Neurotech, New Bali, Maps</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">PISCO Outreach Ready</div>
@@ -559,7 +563,7 @@
             <div class="stat-card">
                 <div class="stat-label">Top Blocker</div>
                 <div class="stat-value" style="font-size: 20px;">🔐</div>
-                <div class="stat-sub">Email API key exposed in repo — needs cleanup</div>
+                <div class="stat-sub">SendGrid API key needs rotation + Railway env var</div>
             </div>
         </div>
         
@@ -681,6 +685,44 @@
                     <div class="project-task">
                         <div class="task-priority low"></div>
                         <span style="font-size: 13px;">Decide: expand social mobility or new channel?</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-emoji">🏝️</div>
+                    <span class="project-status-badge concept">Concept</span>
+                </div>
+                <div class="project-name">New Bali</div>
+                <div class="project-desc">Coliving/coworking destination in Philippines — digital nomad market</div>
+                <div class="project-tasks">
+                    <div class="project-task">
+                        <div class="task-priority medium"></div>
+                        <span style="font-size: 13px;">Research Philippines locations: Cebu, Bohol, Siargao, Palawan</span>
+                    </div>
+                    <div class="project-task">
+                        <div class="task-priority low"></div>
+                        <span style="font-size: 13px;">Compare cost vs Bali, digital nomad visa status</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-emoji">📍</div>
+                    <span class="project-status-badge concept">Concept</span>
+                </div>
+                <div class="project-name">Google Maps Influencer</div>
+                <div class="project-desc">Aggregate Google Maps creators → pitch businesses for coverage</div>
+                <div class="project-tasks">
+                    <div class="project-task">
+                        <div class="task-priority medium"></div>
+                        <span style="font-size: 13px;">Research: How do Maps creators monetize?</span>
+                    </div>
+                    <div class="project-task">
+                        <div class="task-priority low"></div>
+                        <span style="font-size: 13px;">Find aggregator platforms or build own</span>
                     </div>
                 </div>
             </div>
@@ -908,7 +950,7 @@
         </div>
         
         <div class="footer">
-            Claw 🦞 — Jordan's AI agent — IE IMBA · 7 months remaining · 3 location-independent projects in progress
+            Claw 🦞 — Jordan's AI agent — IE IMBA · 7 months remaining · 8 active projects
         </div>
     </main>
     
