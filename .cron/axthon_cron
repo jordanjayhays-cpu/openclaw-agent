@@ -1,0 +1,5 @@
+# Axton Auto-Save Cron
+# Add to crontab: crontab -e
+# Runs auto-save every 15 minutes
+
+*/15 * * * * cd /data/workspace && bash tools/auto_save.sh >> logs/cron.log 2>&1

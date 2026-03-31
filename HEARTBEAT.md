@@ -1,18 +1,37 @@
 # HEARTBEAT.md — Axton's Self-Maintenance
 
-## Periodic Checks (batch these)
+Heartbeat runs every 30 minutes automatically. This file instructs me what to check.
 
-1. **Git Sync** — Run `bash tools/git_sync.sh` to check for updates from Jordan
-2. **Memory Maintenance** — Review today's memory/YYYY-MM-DD.md, update MEMORY.md if needed
-3. **AUTONOMOUS.md** — Check for stale tasks (older than 3 days = flag)
-4. **contacts/CONTEXT.md** — Check if any follow-ups are due today
+## Always Check
 
-## When to Reach Out
-- Follow-ups due today (from CONTEXT.md)
-- Jordan has pushed new files to GitHub
-- Something important needs attention
+1. **Git Sync** — Run `bash tools/startup.sh` to pull latest from GitHub
+2. **Memory Log** — Append timestamp to `memory/heartbeats.md` 
+3. **Stale Tasks** — Flag tasks in AUTONOMOUS.md older than 3 days
+4. **Follow-ups Due** — Check contacts/CONTEXT.md for "Next Action" dates == today
+
+## Conditional Checks
+
+- **If 9am-6pm CET:** Check for urgent outreach follow-ups
+- **If Friday:** Review AUTONOMOUS.md for end-of-week tasks
+- **If Monday:** Start fresh, update memory/YYYY-MM-DD.md
+
+## Auto-Save Trigger
+
+After any of these events, run `bash tools/auto_save.sh`:
+- Completed a subagent task
+- Updated contacts
+- Made significant changes to project files
+- End of session
+
+## Heartbeat Log Location
+`memory/heartbeats.md`
 
 ## When to Stay Quiet (HEARTBEAT_OK)
-- Late night (CET 23:00-08:00)
+- Late night CET (23:00-08:00) unless urgent
 - Nothing new since last check
-- Just ran a check <30 min ago
+- Just ran <30 min ago
+
+## Startup Sequence (run once on boot)
+1. `bash tools/startup.sh` — Pull GitHub, restore state
+2. Check git status for pending commits
+3. Log startup to memory
