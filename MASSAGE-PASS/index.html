@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Pass — Madrid</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        nav .logo { font-size: 20px; font-weight: 700; }
+        nav .switch { color: #888; font-size: 14px; }
+        nav .switch a { color: #6366f1; text-decoration: none; }
+        
+        header { padding: 120px 40px 80px; text-align: center; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); }
+        header h1 { font-size: 56px; font-weight: 800; margin-bottom: 16px; }
+        header .tagline { font-size: 22px; color: #888; margin-bottom: 40px; }
+        header .location { display: inline-block; background: rgba(99, 102, 241, 0.2); color: #6366f1; padding: 10px 24px; border-radius: 20px; font-size: 14px; }
+        
+        .how { padding: 80px 40px; }
+        .how h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+        .steps { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .step { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+        .step-num { width: 50px; height: 50px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; flex-shrink: 0; }
+        .step h4 { font-size: 18px; margin-bottom: 4px; }
+        .step p { color: #888; font-size: 14px; }
+        
+        .shops { padding: 80px 40px; background: rgba(255,255,255,0.02); }
+        .shops h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+        .shop-list { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .shop { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; }
+        .shop.featured { border-left: 4px solid #22c55e; }
+        .shop-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .shop-name { font-size: 22px; font-weight: 700; }
+        .shop-badge { background: rgba(34, 197, 94, 0.2); color: #22c55e; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .shop-location { color: #888; font-size: 14px; margin-bottom: 8px; }
+        .shop-services { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .service-tag { background: rgba(255,255,255,0.05); padding: 6px 14px; border-radius: 8px; font-size: 12px; color: #ccc; }
+        .shop-price { color: #22c55e; font-size: 16px; font-weight: 600; margin-bottom: 16px; }
+        .whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; background: #25D366; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .whatsapp-btn:hover { background: #1fb855; }
+        
+        .footer-cta { padding: 80px 40px; text-align: center; }
+        .footer-cta h2 { font-size: 28px; margin-bottom: 16px; }
+        .footer-cta p { color: #888; margin-bottom: 30px; }
+        
+        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 13px; }
+        
+        @media (max-width: 600px) {
+            header h1 { font-size: 36px; }
+            nav { padding: 15px 20px; }
+            .how, .shops, .footer-cta { padding: 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">💆 Massage Pass</div>
+        <div class="switch">For Shops: <a href="shop.html">View →</a></div>
+    </nav>
+    
+    <header>
+        <h1>Book a Massage<br>in Madrid</h1>
+        <p class="tagline">Easy booking via WhatsApp. No apps, no phone calls.</p>
+        <span class="location">📍 Near IE Business School, Chamartín</span>
+    </header>
+    
+    <section class="how">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div>
+                    <h4>Pick a Shop</h4>
+                    <p>Choose from our vetted partner shops near IE.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div>
+                    <h4>Message Us on WhatsApp</h4>
+                    <p>Tell us which shop and when you want to come.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div>
+                    <h4>Show Up</h4>
+                    <p>We confirm your booking. You pay at the shop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="shops">
+        <h2>Partner Shops</h2>
+        <div class="shop-list">
+            <div class="shop featured">
+                <div class="shop-header">
+                    <div class="shop-name">⭐ Mayoac</div>
+                    <div class="shop-badge">TOP PICK</div>
+                </div>
+                <div class="shop-location">📍 Plaza Castilla · 15-20 min from IE</div>
+                <div class="shop-services">
+                    <span class="service-tag">Deep Tissue</span>
+                    <span class="service-tag">Swedish</span>
+                    <span class="service-tag">Sports</span>
+                </div>
+                <div class="shop-price">From €40 per session</div>
+                <a href="https://wa.me/34600000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20massage%20at%20Mayoac" class="whatsapp-btn" target="_blank">
+                    📱 Book via WhatsApp
+                </a>
+            </div>
+            
+            <div class="shop">
+                <div class="shop-header">
+                    <div class="shop-name">The Fix Room</div>
+                </div>
+                <div class="shop-location">📍 Calle Quiñones, Centro · 25 min from IE</div>
+                <div class="shop-services">
+                    <span class="service-tag">Deep Tissue</span>
+                    <span class="service-tag">Sports Massage</span>
+                    <span class="service-tag">Trigger Points</span>
+                </div>
+                <div class="shop-price">From €35 per session</div>
+                <a href="https://wa.me/34600000000?text=Hi%2C%20I%27d%20like%20to%20book%20a%20session%20at%20The%20Fix%20Room" class="whatsapp-btn" target="_blank">
+                    📱 Book via WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="footer-cta">
+        <h2>Questions?</h2>
+        <p>Message us on WhatsApp. We respond within minutes.</p>
+        <a href="https://wa.me/34600000000" class="whatsapp-btn" target="_blank" style="max-width: 300px; margin: 0 auto;">
+            📱 Message Us
+        </a>
+    </section>
+    
+    <footer>
+        <p>💆 Massage Pass · Madrid · Part of Jordan's Ventures</p>
+        <p style="margin-top: 8px;">IE Business School: Calle Maria de Molina, 11 (Chamartín)</p>
+    </footer>
+</body>
+</html>

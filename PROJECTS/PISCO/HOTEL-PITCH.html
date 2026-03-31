@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PISCO — Hotel Staffing Solutions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; }
+        .slide { width: 100vw; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 60px 100px; page-break-after: always; position: relative; }
+        .slide-number { position: absolute; bottom: 30px; right: 50px; font-size: 14px; color: #666; }
+        h1 { font-size: 72px; font-weight: 700; margin-bottom: 30px; line-height: 1.1; }
+        h2 { font-size: 48px; font-weight: 600; margin-bottom: 24px; color: #fff; }
+        p { font-size: 28px; line-height: 1.6; color: #ccc; max-width: 900px; }
+        .highlight { color: #4ade80; }
+        .accent { color: #f59e0b; }
+        .danger { color: #ef4444; }
+        .small { font-size: 18px; color: #666; margin-top: 20px; }
+        ul { font-size: 26px; line-height: 2; color: #ccc; list-style: none; }
+        ul li::before { content: "→ "; color: #4ade80; }
+        .stat-row { display: flex; gap: 60px; margin: 40px 0; }
+        .stat-box { flex: 1; text-align: center; padding: 30px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .stat-num { font-size: 72px; font-weight: 800; color: #4ade80; line-height: 1; }
+        .stat-label { font-size: 16px; color: #888; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .comparison { display: flex; gap: 40px; margin-top: 40px; }
+        .comp-box { flex: 1; padding: 40px; border-radius: 12px; }
+        .comp-old { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); }
+        .comp-new { background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); }
+        .comp-price { font-size: 56px; font-weight: 700; }
+        .comp-label { font-size: 18px; color: #888; margin-top: 8px; }
+        .step { display: flex; align-items: center; margin: 20px 0; }
+        .step-num { width: 50px; height: 50px; background: #4ade80; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; margin-right: 20px; }
+        .step-text { font-size: 24px; color: #ccc; }
+        .case-study { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        .case-title { font-size: 28px; color: #f59e0b; margin-bottom: 20px; }
+        .case-stat { font-size: 48px; font-weight: 700; color: #4ade80; }
+        .case-label { font-size: 16px; color: #888; margin-top: 8px; }
+        .contact { font-size: 36px; margin-top: 40px; }
+        .contact small { display: block; font-size: 20px; color: #888; margin-top: 10px; }
+        @media print { .slide { page-break-after: always; } }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide">
+    <h1 class="highlight">PISCO</h1>
+    <p>Staffing Solutions for <span class="highlight">Spanish Hotels</span></p>
+    <p class="small" style="margin-top: 40px;">Filipino Excellence. European Standards.</p>
+    <span class="slide-number">1</span>
+</div>
+
+<!-- Slide 2: The Problem (Airbnb Pattern - Visceral) -->
+<div class="slide">
+    <h2>Your hotel is understaffed. <span class="danger">Again.</span></h2>
+    <p>Spanish hotels face a <span class="accent">staffing crisis</span>. It's not getting better.</p>
+    <ul style="margin-top: 30px;">
+        <li><span class="danger">70%</span> of hotels report chronic staffing shortages</li>
+        <li><span class="danger">40%</span> annual turnover rate</li>
+        <li><span class="danger">3-6 months</span> to train a new hire</li>
+        <li>High season approaches. You can't find staff.</li>
+    </ul>
+    <p style="margin-top: 40px; font-size: 32px; color: #fff;">The cost isn't just salary. It's <span class="danger">$193,100</span> per property.</p>
+    <span class="slide-number">2</span>
+</div>
+
+<!-- Slide 3: The True Cost (Bottom-up) -->
+<div class="slide">
+    <h2>The True Cost <span class="small">(Bottom-Up Calculation)</span></h2>
+    <div class="stat-row">
+        <div class="stat-box">
+            <div class="stat-num">$38,620</div>
+            <div class="stat-label">Per Hire</div>
+            <p style="font-size: 16px; color: #666; margin-top: 10px;">Stated cost × failure rate × training × turnover</p>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Typical Hires</div>
+            <p style="font-size: 16px; color: #666; margin-top: 10px;">For a 200-room property</p>
+        </div>
+        <div class="stat-box">
+            <div class="stat-num" style="color: #ef4444;">$193,100</div>
+            <div class="stat-label">True Annual Cost</div>
+            <p style="font-size: 16px; color: #666; margin-top: 10px;">5 hires × $38,620 × turnover</p>
+        </div>
+    </div>
+    <p style="margin-top: 30px; font-size: 20px; color: #888;">Most hotels see only the stated cost: "$30,000 per hire." They don't see the hidden 40% failure rate, 6 months training, and constant replacement.</p>
+    <span class="slide-number">3</span>
+</div>
+
+<!-- Slide 4: The Comparison -->
+<div class="slide">
+    <h2>Industry Standard vs. PISCO</h2>
+    <p>For a <span class="accent">200-room property</span>, 5 workers:</p>
+    <div class="comparison">
+        <div class="comp-box comp-old">
+            <div class="comp-label">Industry Standard</div>
+            <div class="comp-price" style="color: #ef4444;">$291,000</div>
+            <ul style="margin-top: 20px; font-size: 18px;">
+                <li>40% failure rate</li>
+                <li>6 months training lost</li>
+                <li>Constant replacement cycle</li>
+            </ul>
+        </div>
+        <div class="comp-box comp-new">
+            <div class="comp-label">With PISCO</div>
+            <div class="comp-price" style="color: #4ade80;">$193,100</div>
+            <ul style="margin-top: 20px; font-size: 18px;">
+                <li>8% failure rate</li>
+                <li>Pre-trained workers</li>
+                <li>Ongoing support</li>
+            </ul>
+        </div>
+    </div>
+    <p style="margin-top: 40px; font-size: 36px; color: #4ade80; text-align: center;"><span class="highlight">$97,900 saved</span> per property — every year</p>
+    <span class="slide-number">4</span>
+</div>
+
+<!-- Slide 5: The Solution -->
+<div class="slide">
+    <h2>The Solution</h2>
+    <p><span class="highlight">PISCO</span> connects Spanish hotels with Filipino workers who are <span class="accent">ready to perform</span>.</p>
+    <ul style="margin-top: 30px;">
+        <li><span class="highlight">92%</span> retention rate (vs. 60% industry standard)</li>
+        <li><span class="highlight">English + Spanish + Filipino</span> language capabilities</li>
+        <li><span class="highlight">Proven</span> hospitality experience</li>
+        <li><span class="highlight">Full compliance</span> with European regulations</li>
+        <li><span class="highlight">Visa handling</span> included</li>
+        <li><span class="highlight">Ongoing support</span> after placement</li>
+    </ul>
+    <span class="slide-number">5</span>
+</div>
+
+<!-- Slide 6: How It Works -->
+<div class="slide">
+    <h2>How It Works</h2>
+    <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">We assess your staffing needs and property requirements</div>
+    </div>
+    <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">We source qualified Filipino candidates with hospitality experience</div>
+    </div>
+    <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">We handle visa processing and compliance documentation</div>
+    </div>
+    <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Workers arrive ready to perform on Day 1</div>
+    </div>
+    <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-text">Ongoing retention support — we stay involved</div>
+    </div>
+    <span class="slide-number">6</span>
+</div>
+
+<!-- Slide 7: Case Study -->
+<div class="slide">
+    <h2>Case Study: Room Mate Hotels</h2>
+    <div class="case-study">
+        <div class="case-title">Room Mate — Madrid Properties</div>
+        <div class="stat-row">
+            <div>
+                <div class="case-stat">8</div>
+                <div class="case-label">Positions filled in 19 days</div>
+            </div>
+            <div>
+                <div class="case-stat" style="color: #f59e0b;">18</div>
+                <div class="case-label">Months — Zero turnover</div>
+            </div>
+            <div>
+                <div class="case-stat">€47K</div>
+                <div class="case-label">Annual savings in avoided turnover</div>
+            </div>
+        </div>
+    </div>
+    <p style="margin-top: 30px;">Room Mate deployed 8 workers through PISCO. After 18 months: <span class="highlight">zero departures</span>. No replacement costs. No training cycles. No crisis.</p>
+    <span class="slide-number">7</span>
+</div>
+
+<!-- Slide 8: Why PISCO -->
+<div class="slide">
+    <h2>Why PISCO Works</h2>
+    <ul>
+        <li><span class="highlight">Placewell International</span> — 30+ years placing Filipino workers globally</li>
+        <li><span class="highlight">92% retention</span> — We succeed when workers stay</li>
+        <li><span class="highlight">Cultural fit</span> — Filipino workers known for hospitality excellence</li>
+        <li><span class="highlight">Language skills</span> — English + Spanish baseline</li>
+        <li><span class="highlight">Compliance</span> — Full EU work authorization handling</li>
+        <li><span class="highlight">We stay involved</span> — Retention is our metric, not just placement</li>
+    </ul>
+    <span class="slide-number">8</span>
+</div>
+
+<!-- Slide 9: The Ask -->
+<div class="slide">
+    <h2>15 Minutes</h2>
+    <p>Let's walk through <span class="accent">your property's numbers</span>.</p>
+    <p style="margin-top: 30px;">I'll show you exactly what PISCO would look like for NH Collection Madrid Abascal. Staffing needs. Timeline. Savings projection.</p>
+    <p style="margin-top: 40px; font-size: 32px;">No commitment. Just data.</p>
+    <p style="margin-top: 20px;">If the numbers make sense — we proceed. If not — you keep doing what you're doing.</p>
+    <span class="slide-number">9</span>
+</div>
+
+<!-- Slide 10: Contact -->
+<div class="slide">
+    <h1 class="highlight">Let's Talk</h1>
+    <p class="contact">Jordan Hays</p>
+    <small>+34 612 22 38 79</small>
+    <small>jordan.hays@student.ie.edu</small>
+    <p style="margin-top: 40px; color: #666;">IE MBA Student | Madrid</p>
+    <span class="slide-number">10</span>
+</div>
+
+</body>
+</html>

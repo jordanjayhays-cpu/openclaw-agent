@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner With Us — Massage Pass</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        nav .logo { font-size: 20px; font-weight: 700; }
+        nav .switch { color: #888; font-size: 14px; }
+        nav .switch a { color: #6366f1; text-decoration: none; }
+        
+        header { padding: 120px 40px 80px; text-align: center; background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0a 100%); }
+        header h1 { font-size: 48px; font-weight: 800; margin-bottom: 16px; line-height: 1.1; }
+        header h1 span { color: #22c55e; }
+        header .tagline { font-size: 22px; color: #888; max-width: 600px; margin: 0 auto 30px; }
+        
+        .pitch-box { background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; max-width: 700px; margin: 0 auto 40px; }
+        .pitch-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 16px; }
+        .pitch-text { font-size: 22px; line-height: 1.6; font-style: italic; color: #fff; }
+        
+        .stats { display: flex; justify-content: center; gap: 60px; padding: 60px 40px; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat .num { font-size: 48px; font-weight: 800; color: #6366f1; }
+        .stat .label { font-size: 14px; color: #888; }
+        
+        .how { padding: 80px 40px; background: rgba(255,255,255,0.02); }
+        .how h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+        .steps { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .step { display: flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; }
+        .step-icon { width: 50px; height: 50px; background: rgba(34, 197, 94, 0.1); border: 2px solid rgba(34, 197, 94, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+        .step h4 { font-size: 18px; margin-bottom: 4px; }
+        .step p { color: #888; font-size: 14px; }
+        
+        .problem-solution { padding: 80px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+        .col h3 { font-size: 24px; margin-bottom: 20px; }
+        .col.problem h3 { color: #ef4444; }
+        .col.solution h3 { color: #22c55e; }
+        .issue { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px; margin-bottom: 12px; }
+        .issue h4 { font-size: 16px; margin-bottom: 4px; }
+        .issue p { color: #888; font-size: 13px; }
+        
+        .ie-network { padding: 80px 40px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%); text-align: center; }
+        .ie-network h2 { font-size: 32px; margin-bottom: 30px; }
+        .ie-stats { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        .ie-stat .num { font-size: 48px; font-weight: 800; background: linear-gradient(135deg, #6366f1 0%, #22c55e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .ie-stat .label { font-size: 14px; color: #888; }
+        
+        .contact { padding: 80px 40px; text-align: center; }
+        .contact h2 { font-size: 32px; margin-bottom: 16px; }
+        .contact p { color: #888; margin-bottom: 30px; }
+        .contact-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; max-width: 400px; margin: 0 auto; }
+        .contact-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .contact-row:last-child { border-bottom: none; }
+        .contact-row .label { color: #888; }
+        .contact-row .value { font-weight: 600; }
+        .whatsapp-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding: 18px 40px; background: #25D366; color: #fff; border-radius: 12px; text-decoration: none; font-size: 18px; font-weight: 600; }
+        .whatsapp-btn:hover { background: #1fb855; }
+        
+        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #666; font-size: 13px; }
+        
+        @media (max-width: 900px) {
+            header h1 { font-size: 36px; }
+            .problem-solution { grid-template-columns: 1fr; }
+            .stats { gap: 30px; }
+            .ie-stats { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">💆 Massage Pass</div>
+        <div class="switch">For Customers: <a href="index.html">View →</a></div>
+    </nav>
+    
+    <header>
+        <h1>More Customers.<br><span>Guaranteed.</span></h1>
+        <p class="tagline">We send you customers. You focus on massage. No booking hassle.</p>
+        
+        <div class="pitch-box">
+            <div class="pitch-label">The Pitch</div>
+            <p class="pitch-text">"Hi! I'm at IE Business School. I have students who want massages but hate calling. I send them to you. You get more customers. Interested?"</p>
+        </div>
+    </header>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="num">5,000+</div>
+            <div class="label">IE Students</div>
+        </div>
+        <div class="stat">
+            <div class="num">100+</div>
+            <div class="label">Countries</div>
+        </div>
+        <div class="stat">
+            <div class="num">15-20</div>
+            <div class="label">Min from IE</div>
+        </div>
+    </div>
+    
+    <section class="how">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon">🤝</div>
+                <div>
+                    <h4>Partner Up</h4>
+                    <p>We agree on how customers find you and how we track referrals.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-icon">📱</div>
+                <div>
+                    <h4>Customers Message Us</h4>
+                    <p>Students message on WhatsApp wanting to book at your shop.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-icon">💆</div>
+                <div>
+                    <h4>Customer Visits You</h4>
+                    <p>We coordinate the appointment. Customer pays you directly.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-icon">💰</div>
+                <div>
+                    <h4>Monthly Commission</h4>
+                    <p>At the end of the month, you send us a small commission via Wise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="problem-solution">
+        <div class="col problem">
+            <h3>The Problem</h3>
+            <div class="issue">
+                <h4>📵 Lost Customers</h4>
+                <p>Customers find you, see "appointment only," and move on.</p>
+            </div>
+            <div class="issue">
+                <h4>📅 Empty Chairs</h4>
+                <p>Slow weeks mean no revenue.</p>
+            </div>
+            <div class="issue">
+                <h4>💸 Inconsistent Flow</h4>
+                <p>No way to predict how many customers come in.</p>
+            </div>
+        </div>
+        <div class="col solution">
+            <h3>The Solution</h3>
+            <div class="issue">
+                <h4>✅ We Handle Booking</h4>
+                <p>Customers message us. We coordinate with you.</p>
+            </div>
+            <div class="issue">
+                <h4>✅ Steady Customers</h4>
+                <p>We send you students who want regular massage.</p>
+            </div>
+            <div class="issue">
+                <h4>✅ Direct Payment</h4>
+                <p>Customer pays you at the shop. No invoicing.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="ie-network">
+        <h2>The IE Business School Network</h2>
+        <div class="ie-stats">
+            <div class="ie-stat">
+                <div class="num">5,000+</div>
+                <div class="label">Active Students</div>
+            </div>
+            <div class="ie-stat">
+                <div class="num">100+</div>
+                <div class="label">Countries Represented</div>
+            </div>
+            <div class="ie-stat">
+                <div class="num">IE</div>
+                <div class="label">Top Business School</div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact">
+        <h2>Let's Talk</h2>
+        <p>No commitment. Just a conversation about how we can help your business.</p>
+        
+        <div class="contact-card">
+            <div class="contact-row">
+                <span class="label">Name</span>
+                <span class="value">Jordan Hays</span>
+            </div>
+            <div class="contact-row">
+                <span class="label">Location</span>
+                <span class="value">IE Business School, Chamartín</span>
+            </div>
+            <div class="contact-row">
+                <span class="label">WhatsApp</span>
+                <span class="value">+34 600 000 000</span>
+            </div>
+            <div class="contact-row">
+                <span class="label">Email</span>
+                <span class="value">jordan@massagepass.com</span>
+            </div>
+        </div>
+        
+        <a href="https://wa.me/34600000000" class="whatsapp-btn" target="_blank">
+            📱 Message on WhatsApp
+        </a>
+    </section>
+    
+    <footer>
+        <p>💆 Massage Pass · Madrid · Part of Jordan's Ventures</p>
+    </footer>
+</body>
+</html>

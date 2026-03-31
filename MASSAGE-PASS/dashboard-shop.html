@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayoac — Partner Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 24px; font-weight: 700; }
+        header .subtitle { color: #666; font-size: 14px; }
+        
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: 0 auto; }
+        
+        .stat-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; }
+        .stat-card .label { font-size: 13px; color: #888; margin-bottom: 8px; }
+        .stat-card .value { font-size: 32px; font-weight: 700; }
+        .stat-card .sub { font-size: 12px; color: #666; margin-top: 4px; }
+        .stat-card.green .value { color: #22c55e; }
+        .stat-card.purple .value { color: #6366f1; }
+        .stat-card.blue .value { color: #3b82f6; }
+        
+        .section { padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .section h2 { font-size: 20px; margin-bottom: 20px; color: #888; }
+        
+        .bookings { background: rgba(255,255,255,0.03); border-radius: 16px; overflow: hidden; }
+        .booking-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .booking-item:last-child { border-bottom: none; }
+        .booking-avatar { width: 40px; height: 40px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+        .booking-info { flex: 1; }
+        .booking-info .name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+        .booking-info .details { font-size: 12px; color: #888; }
+        .booking-amount { font-weight: 600; color: #22c55e; }
+        .booking-status { font-size: 11px; padding: 4px 10px; border-radius: 12px; }
+        .booking-status.upcoming { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .booking-status.completed { background: rgba(34, 197, 94, 0.1); color: #22c55e; }
+        
+        .setup-banner { background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 16px; padding: 24px; margin: 40px; }
+        .setup-banner h3 { font-size: 18px; margin-bottom: 8px; }
+        .setup-banner p { color: #888; font-size: 14px; margin-bottom: 16px; }
+        .setup-banner button { padding: 12px 24px; background: #6366f1; border: none; border-radius: 8px; color: #fff; font-weight: 600; cursor: pointer; }
+        
+        .commission-info { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px; margin-top: 20px; }
+        .commission-info h4 { font-size: 14px; margin-bottom: 12px; color: #888; }
+        .commission-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .commission-row:last-child { border-bottom: none; }
+        .commission-row .label { color: #ccc; }
+        .commission-row .value { font-weight: 600; }
+        .commission-row .value.green { color: #22c55e; }
+        .commission-row.total { font-size: 16px; padding-top: 12px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.1); }
+        
+        footer { text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>🏪 Mayoac</h1>
+            <div class="subtitle">Partner Dashboard</div>
+        </div>
+        <div>
+            <span style="font-size: 12px; color: #6366f1;">Massage Pass Partner</span>
+        </div>
+    </header>
+    
+    <div class="stats">
+        <div class="stat-card green">
+            <div class="label">Revenue This Month</div>
+            <div class="value">€0</div>
+            <div class="sub">0 visits</div>
+        </div>
+        <div class="stat-card purple">
+            <div class="label">New Customers</div>
+            <div class="value">0</div>
+            <div class="sub">From Massage Pass</div>
+        </div>
+        <div class="stat-card blue">
+            <div class="label">Upcoming Bookings</div>
+            <div class="value">0</div>
+            <div class="sub">Next 7 days</div>
+        </div>
+        <div class="stat-card">
+            <div class="label">Commission to Jordan</div>
+            <div class="value">€0</div>
+            <div class="sub">Due on 1st</div>
+        </div>
+    </div>
+    
+    <div class="setup-banner">
+        <h3>⚡ Complete Your Setup</h3>
+        <p>Connect your calendar to accept online bookings. Customers can't book yet until this is done.</p>
+        <button>Connect Calendar →</button>
+    </div>
+    
+    <div class="section">
+        <h2>Recent Bookings</h2>
+        <div class="bookings">
+            <div class="booking-item" style="opacity: 0.5;">
+                <div class="booking-avatar">?</div>
+                <div class="booking-info">
+                    <div class="name">No bookings yet</div>
+                    <div class="details">Complete setup to start accepting bookings</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Commission Summary</h2>
+        <div class="commission-info">
+            <h4>This Month's Breakdown</h4>
+            <div class="commission-row">
+                <span class="label">Customer payments received</span>
+                <span class="value">€0</span>
+            </div>
+            <div class="commission-row">
+                <span class="label">Massage Pass fee (0%)</span>
+                <span class="value green">€0</span>
+            </div>
+            <div class="commission-row">
+                <span class="label">Jordan's commission (25%)</span>
+                <span class="value">€0</span>
+            </div>
+            <div class="commission-row total">
+                <span class="label">You receive</span>
+                <span class="value green">€0</span>
+            </div>
+        </div>
+        <p style="color: #666; font-size: 13px; margin-top: 16px;">Commission paid monthly via Wise. Jordan's IBAN will be added soon.</p>
+    </div>
+    
+    <footer>
+        <p>Mayoac · Powered by Massage Pass</p>
+        <p style="margin-top: 8px;"><a href="#" style="color: #6366f1;">Settings</a> · <a href="#" style="color: #6366f1;">Help</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Pass — Prospect List</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        header h1 { font-size: 28px; font-weight: 700; }
+        header .subtitle { color: #666; font-size: 14px; margin-top: 4px; }
+        
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; padding: 30px 40px; background: rgba(255,255,255,0.02); }
+        .stat { text-align: center; }
+        .stat .num { font-size: 32px; font-weight: 700; color: #6366f1; }
+        .stat .label { font-size: 12px; color: #888; margin-top: 4px; }
+        
+        .filters { padding: 20px 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+        .filters span { color: #888; font-size: 14px; }
+        .filter-btn { padding: 8px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: #fff; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+        .filter-btn:hover, .filter-btn.active { background: #6366f1; border-color: #6366f1; }
+        
+        .prospects { padding: 20px 40px; max-width: 1400px; margin: 0 auto; }
+        
+        .shop-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; margin-bottom: 20px; transition: all 0.2s; }
+        .shop-card:hover { border-color: #6366f1; }
+        .shop-card.priority-high { border-left: 4px solid #ef4444; }
+        .shop-card.priority-medium { border-left: 4px solid #f59e0b; }
+        .shop-card.priority-low { border-left: 4px solid #4ade80; }
+        
+        .shop-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+        .shop-name { font-size: 20px; font-weight: 600; }
+        .shop-badges { display: flex; gap: 8px; }
+        .badge { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-weight: 600; }
+        .badge.priority { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .badge.status { background: rgba(34, 197, 94, 0.2); color: #4ade80; }
+        .badge.new { background: rgba(99, 102, 241, 0.2); color: #6366f1; }
+        
+        .shop-location { font-size: 14px; color: #888; margin-bottom: 16px; }
+        .shop-location strong { color: #fff; }
+        
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 16px; }
+        .contact-item { display: flex; flex-direction: column; gap: 4px; }
+        .contact-item .label { font-size: 11px; color: #666; text-transform: uppercase; }
+        .contact-item .value { font-size: 14px; }
+        .contact-item a { color: #6366f1; text-decoration: none; }
+        .contact-item a:hover { text-decoration: underline; }
+        
+        .shop-services { margin-bottom: 16px; }
+        .service-tag { display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; font-size: 12px; margin: 4px 4px 4px 0; }
+        
+        .shop-notes { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; }
+        .shop-notes .label { font-size: 11px; color: #666; text-transform: uppercase; margin-bottom: 8px; }
+        .shop-notes p { font-size: 13px; color: #ccc; line-height: 1.5; }
+        
+        .shop-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; border: none; transition: all 0.2s; }
+        .btn-primary { background: #6366f1; color: #fff; }
+        .btn-primary:hover { background: #5558e3; }
+        .btn-whatsapp { background: #25D366; color: #fff; }
+        .btn-whatsapp:hover { background: #1fb855; }
+        .btn-email { background: rgba(255,255,255,0.1); color: #fff; }
+        .btn-email:hover { background: rgba(255,255,255,0.15); }
+        
+        .section-title { font-size: 18px; color: #888; margin: 40px 0 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        
+        footer { text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎯 Massage Pass — Prospect List</h1>
+        <div class="subtitle">Massage shops near IE Business School · Updated: March 2026</div>
+    </header>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="num">6</div>
+            <div class="label">Total Prospects</div>
+        </div>
+        <div class="stat">
+            <div class="num">2</div>
+            <div class="label">Priority High</div>
+        </div>
+        <div class="stat">
+            <div class="num">2</div>
+            <div class="label">Contacted</div>
+        </div>
+        <div class="stat">
+            <div class="num">1</div>
+            <div class="label">Signed Up</div>
+        </div>
+        <div class="stat">
+            <div class="num">4</div>
+            <div class="label">Not Contacted</div>
+        </div>
+    </div>
+    
+    <div class="filters">
+        <span>Filter:</span>
+        <button class="filter-btn active" onclick="filterShops('all')">All (6)</button>
+        <button class="filter-btn" onclick="filterShops('chamartin')">Chamartín (3)</button>
+        <button class="filter-btn" onclick="filterShops('salamanca')">Salamanca (1)</button>
+        <button class="filter-btn" onclick="filterShops('center')">Center (1)</button>
+        <button class="filter-btn" onclick="filterShops('chamberi')">Chamberí (1)</button>
+        <button class="filter-btn" onclick="filterShops('not-contacted')">Not Contacted (4)</button>
+    </div>
+    
+    <div class="prospects">
+        
+        <!-- MAYOAC — PRIORITY 1 -->
+        <div class="shop-card priority-high" data-area="chamartin" data-contacted="yes">
+            <div class="shop-header">
+                <div class="shop-name">Mayoac ⭐</div>
+                <div class="shop-badges">
+                    <span class="badge status">✓ Partner</span>
+                    <span class="badge priority">HIGH PRIORITY</span>
+                </div>
+            </div>
+            <div class="shop-location">
+                <strong>📍 Address:</strong> Chamartín (exact address needed)<br>
+                <strong>🚶 Distance from IE:</strong> ~12 min walk
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Phone</span>
+                    <span class="value">Needed</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">WhatsApp</span>
+                    <span class="value">Needed</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Email</span>
+                    <span class="value">Needed</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Website</span>
+                    <span class="value"><a href="#" target="_blank">None found</a></span>
+                </div>
+            </div>
+            <div class="shop-services">
+                <span class="service-tag">Massage</span>
+                <span class="service-tag">Wellness</span>
+                <span class="service-tag">Appointment Only</span>
+            </div>
+            <div class="shop-notes">
+                <div class="label">Notes</div>
+                <p>Already discussed with Jordan. Needs follow-up. Rates: €40/visit (60min), €55/90min. 25% commission agreed in principle. Need to get contact details and set up Calendly.</p>
+            </div>
+            <div class="shop-actions">
+                <button class="btn btn-primary">📅 Set Up Calendly</button>
+                <button class="btn btn-whatsapp">📱 WhatsApp Follow-up</button>
+            </div>
+        </div>
+        
+        <!-- THE FIX ROOM — PRIORITY HIGH -->
+        <div class="shop-card priority-high" data-area="center" data-contacted="no">
+            <div class="shop-header">
+                <div class="shop-name">The Fix Room</div>
+                <div class="shop-badges">
+                    <span class="badge new">NEW FIND</span>
+                    <span class="badge priority">HIGH PRIORITY</span>
+                </div>
+            </div>
+            <div class="shop-location">
+                <strong>📍 Address:</strong> C. de Quiñones, 13, local, Centro, 28015 Madrid<br>
+                <strong>🚶 Distance from IE:</strong> ~25 min (not walkable, need transport)
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Phone</span>
+                    <span class="value">+34 XXX XXX XXX</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">WhatsApp</span>
+                    <span class="value">Via phone</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Email</span>
+                    <span class="value"><a href="mailto:info@thefixroom.com">info@thefixroom.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Website</span>
+                    <span class="value"><a href="https://thefixroom.com" target="_blank">thefixroom.com</a></span>
+                </div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Fresha</span>
+                    <span class="value"><a href="https://www.fresha.com/lvp/the-fix-room-calle-de-la-cruz-madrid-157A41" target="_blank">Book on Fresha</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">TripAdvisor</span>
+                    <span class="value"><a href="https://www.tripadvisor.com/Attraction_Review-g187514-d8353434-Reviews-The_Fix_Room-Madrid.html" target="_blank">View</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Yelp</span>
+                    <span class="value"><a href="https://www.yelp.com/biz/the-fix-room-madrid" target="_blank">View</a></span>
+                </div>
+            </div>
+            <div class="shop-services">
+                <span class="service-tag">Deep Tissue</span>
+                <span class="service-tag">Sports Massage</span>
+                <span class="service-tag">Trigger Points</span>
+                <span class="service-tag">Anti-stress</span>
+                <span class="service-tag">By Appointment Only</span>
+            </div>
+            <div class="shop-notes">
+                <div class="label">Notes</div>
+                <p>Well-reviewed (4.9 on Cybo). Specializes in therapeutic massage. Near Malasaña, not ideal for IE students but good as secondary option. Appointment only - call/email first. Prices: ~€35-50/hour estimated.</p>
+            </div>
+            <div class="shop-actions">
+                <a href="mailto:info@thefixroom.com" class="btn btn-email">✉️ Email Pitch</a>
+                <a href="https://wa.me/34XXXXXXXXX" class="btn btn-whatsapp">📱 WhatsApp</a>
+            </div>
+        </div>
+        
+        <h3 class="section-title">🔴 Not Yet Contacted</h3>
+        
+        <!-- ESENZIA CHAMARTÍN -->
+        <div class="shop-card priority-high" data-area="chamartin" data-contacted="no">
+            <div class="shop-header">
+                <div class="shop-name">Esenzia Chamartín</div>
+                <div class="shop-badges">
+                    <span class="badge new">NEW FIND</span>
+                    <span class="badge priority">HIGH PRIORITY</span>
+                </div>
+            </div>
+            <div class="shop-location">
+                <strong>📍 Address:</strong> C. de Caleruega (Condado de Treviño), 18, 28033 Madrid<br>
+                <strong>🚶 Distance from IE:</strong> ~15 min walk (very close!)
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Phone</span>
+                    <span class="value">+34 656 31 21 08</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">WhatsApp</span>
+                    <span class="value">+34 656 31 21 08</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Email</span>
+                    <span class="value"><a href="https://www.esenziachamartin.es/" target="_blank">Via website</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Website</span>
+                    <span class="value"><a href="https://www.esenziachamartin.es/" target="_blank">esenziachamartin.es</a></span>
+                </div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Booksy</span>
+                    <span class="value"><a href="https://booksy.com/es-es/153839_esenzia-chamartim_medicina-estetica_53009_madrid" target="_blank">Booksy</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Fresha</span>
+                    <span class="value"><a href="https://www.fresha.com/lvp/esenzia-chamartin-calle-del-condado-de-trevino-madrid-6QN7eE" target="_blank">Fresha</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Reviews</span>
+                    <span class="value">4.9 ⭐</span>
+                </div>
+            </div>
+            <div class="shop-services">
+                <span class="service-tag">Massage</span>
+                <span class="service-tag">Beauty</span>
+                <span class="service-tag">Aesthetics</span>
+                <span class="service-tag">Wellness</span>
+            </div>
+            <div class="shop-notes">
+                <div class="label">Notes</div>
+                <p>5-star reviews. Very close to IE. Has Booksy and Fresha integration. Massage + beauty + aesthetics. Good candidate for partnership. Phone/WhatsApp direct: +34 656 31 21 08.</p>
+            </div>
+            <div class="shop-actions">
+                <a href="https://wa.me/34656312108" class="btn btn-whatsapp">📱 WhatsApp Pitch</a>
+                <a href="tel:+34656312108" class="btn btn-primary">📞 Call</a>
+            </div>
+        </div>
+        
+        <!-- THE NOOK MADRID -->
+        <div class="shop-card priority-medium" data-area="chamberi" data-contacted="no">
+            <div class="shop-header">
+                <div class="shop-name">The Nook Madrid</div>
+                <div class="shop-badges">
+                    <span class="badge new">NEW FIND</span>
+                    <span class="badge priority">MEDIUM PRIORITY</span>
+                </div>
+            </div>
+            <div class="shop-location">
+                <strong>📍 Address:</strong> Calle Zurbarán, 10, Madrid 28010 (Chamberí)<br>
+                <strong>🚶 Distance from IE:</strong> ~20 min walk
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Phone</span>
+                    <span class="value">+34 911 48 14 74</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Email</span>
+                    <span class="value"><a href="https://www.thenookmadrid.com/" target="_blank">Via website</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Website</span>
+                    <span class="value"><a href="https://www.thenookmadrid.com/" target="_blank">thenookmadrid.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Yelp</span>
+                    <span class="value"><a href="https://www.yelp.com/biz/the-nook-madrid" target="_blank">4.8 ⭐</a></span>
+                </div>
+            </div>
+            <div class="shop-services">
+                <span class="service-tag">Quiromasajes</span>
+                <span class="service-tag">Ritual Therapies</span>
+                <span class="service-tag">Couple's Massage</span>
+                <span class="service-tag">Wellness</span>
+            </div>
+            <div class="shop-notes">
+                <div class="label">Notes</div>
+                <p>Focus on "masaje como parte integral del bienestar." Individual + 2-person sessions. Quiromasajes and ritual therapies. Chamberí location, decent distance from IE. Could work as secondary partner.</p>
+            </div>
+            <div class="shop-actions">
+                <a href="tel:+34911481474" class="btn btn-primary">📞 Call</a>
+                <a href="https://www.thenookmadrid.com/" class="btn btn-email" target="_blank">🌐 Website</a>
+            </div>
+        </div>
+        
+        <!-- UNNA LIFE -->
+        <div class="shop-card priority-medium" data-area="chamberi" data-contacted="no">
+            <div class="shop-header">
+                <div class="shop-name">Unna Life</div>
+                <div class="shop-badges">
+                    <span class="badge new">NEW FIND</span>
+                    <span class="badge priority">MEDIUM PRIORITY</span>
+                </div>
+            </div>
+            <div class="shop-location">
+                <strong>📍 Address:</strong> Calle El Españoleto, S/N, Madrid (Chamberí/Almagro)<br>
+                <strong>🚶 Distance from IE:</strong> ~25 min (too far for IE students)</div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="label">Phone</span>
+                    <span class="value">+34 910 22 50 07</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Facebook</span>
+                    <span class="value"><a href="https://www.facebook.com/UnnaLife/" target="_blank">Facebook</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Treatwell</span>
+                    <span class="value"><a href="https://www.treatwell.es/establecimiento/unna-life/" target="_blank">Treatwell</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">Website</span>
+                    <span class="value"><a href="https://www.numad.es/unna-life-yoga-meditacion-ayurveda-y-mas-madrid/" target="_blank">numad.es</a></span>
+                </div>
+            </div>
+            <div class="shop-services">
+                <span class="service-tag">Yoga</span>
+                <span class="service-tag">Meditation</span>
+                <span class="service-tag">Ayurveda</span>
+                <span class="service-tag">Lymphatic Massage</span>
+                <span class="service-tag">Detox</span>
+            </div>
+            <div class="shop-notes">
+                <div class="label">Notes</div>
+                <p>More wellness/retreat focused. Yoga + meditation + ayurveda. Lymphatic massage specialty. Treatwell listing. Location too far from IE for primary focus. Good for expansion later.</p>
+            </div>
+            <div class="shop-actions">
+                <a href="tel:+34910225007" class="btn btn-primary">📞 Call</a>
+                <a href="https://www.treatwell.es/establecimiento/unna-life/" class="btn btn-email" target="_blank">📅 Treatwell</a>
+            </div>
+        </div>
+        
+        <!-- SPOT 6 — TBD -->
+        <div class="shop-card priority-low" data-area="chamartin" data-contacted="no">
+            <div class="shop-header">
+                <div class="shop-name">Need 1 More (Chamartín)</div>
+                <div class="shop-badges">
+                    <span class="badge priority">RESEARCH NEEDED</span>
+                </div>
+            </div>
+            <div class="shop-location">
+                <strong>📍 Target Area:</strong> Chamartín near IE Business School<br>
+                <strong>🚶 Distance from IE:</strong> &lt;15 min walk
+            </div>
+            <div class="shop-notes">
+                <div class="label">Research Needed</div>
+                <p>Find 1 more massage spot in Chamartín within walking distance of IE. Check Treatwell/Fresha for "masaje Chamartín" or "spa near Santiago Bernabéu."</p>
+            </div>
+            <div class="shop-actions">
+                <a href="https://www.treatwell.es/establecimientos/tratamiento-masaje-relajante/oferta-tipo-local/en-chamartin-madrid-es/" class="btn btn-primary" target="_blank">🔍 Search Treatwell</a>
+                <a href="https://www.fresha.com/lp/en/tt/spa-packages/in/es-madrid/chamart%C3%ADn" class="btn btn-email" target="_blank">🔍 Search Fresha</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <footer>
+        <p>Massage Pass Prospect List · IE Business School Area · March 2026</p>
+        <p style="margin-top: 8px;">Found 6 prospects · Need 1 more for Chamartín coverage</p>
+    </footer>
+    
+    <script>
+        function filterShops(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('.shop-card').forEach(card => {
+                const area = card.dataset.area;
+                const contacted = card.dataset.contacted;
+                
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else if (filter === 'not-contacted') {
+                    card.style.display = contacted === 'no' ? 'block' : 'none';
+                } else {
+                    card.style.display = area === filter ? 'block' : 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

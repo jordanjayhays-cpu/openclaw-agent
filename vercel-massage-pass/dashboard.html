@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="data-workspace">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Pass — Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #fff; min-height: 100vh; }
+        
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); padding: 20px 40px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+        header h1 { font-size: 24px; font-weight: 700; }
+        header .subtitle { color: #666; font-size: 14px; }
+        
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 40px; max-width: 1400px; margin: 0 auto; }
+        .stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; text-align: center; }
+        .stat-value { font-size: 36px; font-weight: 700; color: #6366f1; }
+        .stat-label { color: #888; font-size: 14px; margin-top: 8px; }
+        
+        .section { padding: 0 40px 40px; max-width: 1400px; margin: 0 auto; }
+        .section h2 { font-size: 20px; margin-bottom: 20px; color: #888; }
+        
+        .shops { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        .shop-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; }
+        .shop-card h3 { font-size: 18px; margin-bottom: 12px; }
+        .shop-card .meta { color: #888; font-size: 14px; margin-bottom: 8px; }
+        .shop-card .status { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .status.lead { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .status.active { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .status.pending { background: rgba(251, 146, 60, 0.2); color: #fb923c; }
+        
+        .bookings { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; overflow: hidden; }
+        .booking-row { display: grid; grid-template-columns: 1fr 1fr 1fr 100px 100px; padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center; }
+        .booking-row.header { background: rgba(255,255,255,0.03); font-weight: 600; color: #888; font-size: 12px; text-transform: uppercase; }
+        .booking-row:last-child { border-bottom: none; }
+        
+        .loading { text-align: center; padding: 40px; color: #888; }
+        .error { text-align: center; padding: 40px; color: #ef4444; }
+        
+        footer { text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>💆 Massage Pass Dashboard</h1>
+            <div class="subtitle">Jordan's Platform</div>
+        </div>
+        <div>
+            <a href="platform.html" style="color: #6366f1; text-decoration: none; font-size: 14px;">View Shop Landing Page →</a>
+        </div>
+    </header>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-value" id="total-shops">-</div>
+            <div class="stat-label">Partner Shops</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="total-bookings">-</div>
+            <div class="stat-label">Total Bookings</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="total-revenue">€-</div>
+            <div class="stat-label">Est. Revenue</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" id="jordan-earnings">€-</div>
+            <div class="stat-label">Jordan's Commission</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Shops</h2>
+        <div class="shops" id="shops-list">
+            <div class="loading">Loading shops...</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Recent Bookings</h2>
+        <div class="bookings">
+            <div class="booking-row header">
+                <div>Customer</div>
+                <div>Shop</div>
+                <div>Date</div>
+                <div>Amount</div>
+                <div>Commission</div>
+            </div>
+            <div id="bookings-list">
+                <div class="loading">Loading bookings...</div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        Massage Pass Dashboard — Data synced from Notion
+    </footer>
+    
+    <script>
+        const NOTION_TOKEN = 'NOTION_TOKEN_PLACEHOLDER';
+        const SHOPS_DB = '332efcda-373d-8102-9657-d9b2b70e857e';
+        const BOOKINGS_DB = '332efcda-373d-8106-87e8-d401db4674df';
+        
+        async function queryDatabase(databaseId) {
+            const response = await fetch(`https://api.notion.com/v1/databases/${databaseId}/query`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${NOTION_TOKEN}`,
+                    'Notion-Version': '2022-06-28',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ page_size: 100 })
+            });
+            return response.json();
+        }
+        
+        function extractText(properties, key) {
+            if (!properties[key]) return '-';
+            const prop = properties[key];
+            if (prop.type === 'title') return prop.title?.map(t => t.plain_text).join('') || '-';
+            if (prop.type === 'rich_text') return prop.rich_text?.map(t => t.plain_text).join('') || '-';
+            if (prop.type === 'select') return prop.select?.name || '-';
+            if (prop.type === 'number') return prop.number || 0;
+            if (prop.type === 'date') return prop.date?.start || '-';
+            return '-';
+        }
+        
+        async function loadData() {
+            try {
+                // Load shops
+                const shopsResponse = await queryDatabase(SHOPS_DB);
+                const shops = shopsResponse.results || [];
+                
+                let activeShops = 0;
+                let totalRevenue = 0;
+                
+                const shopsHtml = shops.map(shop => {
+                    const name = extractText(shop.properties, 'Name');
+                    const status = extractText(shop.properties, 'Status');
+                    const address = extractText(shop.properties, 'Address');
+                    const phone = extractText(shop.properties, 'Phone');
+                    
+                    if (status === 'Active') {
+                        activeShops++;
+                        // Assume 5 bookings/month average, €50/booking, 20% commission
+                        totalRevenue += 5 * 50;
+                    }
+                    
+                    return `
+                        <div class="shop-card">
+                            <h3>${name}</h3>
+                            <div class="meta">${address || 'No address'}</div>
+                            <div class="meta">${phone || 'No phone'}</div>
+                            <span class="status ${status?.toLowerCase() || 'lead'}">${status || 'Unknown'}</span>
+                        </div>
+                    `;
+                }).join('');
+                
+                document.getElementById('shops-list').innerHTML = shopsHtml || '<div class="error">No shops yet</div>';
+                document.getElementById('total-shops').textContent = shops.length;
+                document.getElementById('total-revenue').textContent = `€${totalRevenue}`;
+                document.getElementById('jordan-earnings').textContent = `€${Math.round(totalRevenue * 0.2)}`;
+                
+                // Load bookings
+                const bookingsResponse = await queryDatabase(BOOKINGS_DB);
+                const bookings = bookingsResponse.results || [];
+                
+                const bookingsHtml = bookings.slice(0, 10).map(booking => {
+                    const customer = extractText(booking.properties, 'Customer');
+                    const shop = extractText(booking.properties, 'Shop');
+                    const date = extractText(booking.properties, 'Date');
+                    const amount = extractText(booking.properties, 'Amount');
+                    const commission = Math.round((amount || 0) * 0.2);
+                    
+                    return `
+                        <div class="booking-row">
+                            <div>${customer}</div>
+                            <div>${shop}</div>
+                            <div>${date}</div>
+                            <div>€${amount}</div>
+                            <div style="color: #22c55e;">€${commission}</div>
+                        </div>
+                    `;
+                }).join('');
+                
+                document.getElementById('bookings-list').innerHTML = bookingsHtml || '<div class="loading">No bookings yet</div>';
+                document.getElementById('total-bookings').textContent = bookings.length;
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('shops-list').innerHTML = '<div class="error">Error loading data</div>';
+                document.getElementById('bookings-list').innerHTML = '<div class="error">Error loading data</div>';
+            }
+        }
+        
+        loadData();
+        setInterval(loadData, 60000); // Refresh every minute
+    </script>
+</body>
+</html>
