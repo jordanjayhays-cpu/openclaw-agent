@@ -33,19 +33,22 @@
         }
         
         .header {
-            background: var(--bg-card);
+            background: linear-gradient(135deg, #111118 0%, #0a0a0f 100%);
             border-bottom: 1px solid var(--border);
-            padding: 0 32px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 24px 40px;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         
-        .header-left {
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header-main {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -55,9 +58,9 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
         
         .logo span { color: var(--accent); }
@@ -65,7 +68,7 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 16px;
         }
         
         .agent-status {
@@ -74,6 +77,10 @@
             gap: 8px;
             font-size: 13px;
             color: var(--text-dim);
+            background: var(--bg-card);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
         }
         
         .agent-dot {
@@ -98,50 +105,79 @@
         .main {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 32px;
+            padding: 32px 40px;
         }
         
-        .date-banner {
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.15), rgba(0, 212, 170, 0.02));
+            border: 1px solid rgba(0, 212, 170, 0.25);
+            border-radius: 16px;
+            padding: 24px 32px;
             margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
         
-        .date-banner h1 {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+        .hero-emoji {
+            font-size: 48px;
+        }
+        
+        .hero-content h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 4px;
         }
         
-        .date-banner p {
-            color: var(--text-dim);
+        .hero-content p {
             font-size: 14px;
+            color: var(--text-dim);
+        }
+        
+        .hero-meta {
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .hero-meta .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+        
+        .hero-meta .value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
         }
         
         .priority-alert {
-            background: linear-gradient(135deg, rgba(0, 212, 170, 0.08), rgba(0, 212, 170, 0.02));
-            border: 1px solid rgba(0, 212, 170, 0.2);
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.12), rgba(255, 71, 87, 0.04));
+            border: 1px solid rgba(255, 71, 87, 0.25);
             border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 32px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
             display: flex;
             align-items: center;
             gap: 16px;
         }
         
         .priority-alert-icon {
-            font-size: 32px;
+            font-size: 28px;
             flex-shrink: 0;
         }
         
         .priority-alert-content h3 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             margin-bottom: 4px;
-            color: var(--accent);
+            color: var(--red);
         }
         
         .priority-alert-content p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-dim);
         }
         
@@ -511,55 +547,57 @@
 </head>
 <body>
     <header class="header">
-        <div class="header-left">
-            <div class="logo">
-                <span style="font-size: 24px;">🦞</span>
-                <span>Mission <span>Control</span></span>
+        <div class="header-top">
+            <div class="header-main">
+                <div class="logo">🦞 <span>Mission Control</span></div>
             </div>
-        </div>
-        <div class="header-right">
-            <div class="agent-status">
-                <div class="agent-dot"></div>
-                <span>Claw Active</span>
+            <div class="header-right">
+                <div class="agent-status">
+                    <div class="agent-dot"></div>
+                    <span>Claw Active</span>
+                </div>
+                <div class="header-time" id="header-time">--:-- UTC</div>
             </div>
-            <div class="header-time" id="header-time">--:-- UTC</div>
         </div>
     </header>
     
     <main class="main">
-        <div class="date-banner">
-            <h1 id="date-heading">Tuesday, March 31, 2026</h1>
-            <p>Jordan's operations hub — 7 months until IE IMBA completion</p>
+        <div class="hero-banner">
+            <div class="hero-emoji">🦞</div>
+            <div class="hero-content">
+                <h1>Jordan's Operations Hub</h1>
+                <p>IE IMBA · 7 months remaining · Building freedom</p>
+            </div>
+            <div class="hero-meta">
+                <div class="label">Today</div>
+                <div class="value" id="date-display">Mar 31</div>
+            </div>
         </div>
         
         <div class="priority-alert">
-            <div class="priority-alert-icon">🌏</div>
+            <div class="priority-alert-icon">🎯</div>
             <div class="priority-alert-content">
-                <h3>New Priority: PISCO South Korea</h3>
-                <p>EPS Employment Permit System — Filipino workers in Korean manufacturing, construction, agriculture. Contact: Dohun Kim</p>
+                <h3>Hot: Javier Estrada — NH Hotel Group</h3>
+                <p>Follow up TODAY · Case studies ready · Email drafted</p>
             </div>
         </div>
         
         <div class="stats-row">
             <div class="stat-card">
-                <div class="stat-label">Active Projects</div>
-                <div class="stat-value accent">6</div>
-                <div class="stat-sub">PISCO, COMARE, Dealsmap, Massage Pass, PK Music, Neurotech</div>
+                <div class="stat-value accent">8</div>
+                <div class="stat-label">Projects</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">PISCO Outreach Ready</div>
-                <div class="stat-value">756</div>
-                <div class="stat-sub">Messages built, 0 sent — waiting on email setup</div>
+                <div class="stat-value yellow">3</div>
+                <div class="stat-label">Hot Leads</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">COMARE Prospects</div>
-                <div class="stat-value">200</div>
-                <div class="stat-sub">ICP decision pending — Pharmacy vs Restaurant vs Medical</div>
+                <div class="stat-value blue">756</div>
+                <div class="stat-label">Emails Ready</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Top Blocker</div>
-                <div class="stat-value" style="font-size: 20px;">🔐</div>
-                <div class="stat-sub">Email API key exposed in repo — needs cleanup</div>
+                <div class="stat-value red">1</div>
+                <div class="stat-label">Decision Blocked</div>
             </div>
         </div>
         
@@ -1105,10 +1143,8 @@
 </div>
 
 <footer>
-
-<footer>
     <div>
-        <span class="status-dot active"></span> Axton is autonomous
+        <span class="status-dot active"></span> Claw is autonomous
         | Last updated: March 31, 2026
     </div>
     <div>
@@ -1128,7 +1164,9 @@
         
         const now = new Date();
         const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        document.getElementById('date-heading').textContent = dateStr;
+        if (document.getElementById('date-heading')) document.getElementById('date-heading').textContent = dateStr;
+        const shortDate = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        if (document.getElementById('date-display')) document.getElementById('date-display').textContent = shortDate;
         
         document.querySelectorAll('.task-checkbox').forEach(cb => {
             cb.addEventListener('click', () => {
