@@ -6,6 +6,36 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Sync OPENCLAW_GATEWAY_TOKEN to /data/openclaw.json so the gateway and
+// Control UI always share the same token, even across restarts.
+const OPENCLAW_CONFIG_FILE = '/data/openclaw.json';
+const GATEWAY_TOKEN = process.env.OPENCLAW_GATEWAY_TOKEN || null;
+
+function syncGatewayToken() {
+    if (!GATEWAY_TOKEN) {
+        console.warn('[CONFIG] OPENCLAW_GATEWAY_TOKEN is not set — gateway token sync skipped');
+        return;
+    }
+    try {
+        let config = {};
+        if (fs.existsSync(OPENCLAW_CONFIG_FILE)) {
+            try {
+                config = JSON.parse(fs.readFileSync(OPENCLAW_CONFIG_FILE, 'utf8'));
+            } catch (_) {
+                config = {};
+            }
+        }
+        config.gatewayToken = GATEWAY_TOKEN;
+        fs.mkdirSync(path.dirname(OPENCLAW_CONFIG_FILE), { recursive: true });
+        fs.writeFileSync(OPENCLAW_CONFIG_FILE, JSON.stringify(config, null, 2));
+        console.log('[CONFIG] Gateway token synced to', OPENCLAW_CONFIG_FILE);
+    } catch (err) {
+        console.error('[CONFIG] Failed to write openclaw.json:', err.message);
+    }
+}
+
+syncGatewayToken();
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
@@ -111,6 +141,24 @@ app.post('/api/campaigns', (req, res) => {
     const campaignsFile = path.join(__dirname, 'campaigns.json');
     fs.writeFileSync(campaignsFile, JSON.stringify(req.body, null, 2));
     res.json({ success: true });
+});
+
+// API: Expose gateway config to the Control UI
+// Returns the gateway token so the UI can authenticate its WebSocket connection.
+app.get('/api/config', (req, res) => {
+    let fileToken = null;
+    if (fs.existsSync(OPENCLAW_CONFIG_FILE)) {
+        try {
+            const config = JSON.parse(fs.readFileSync(OPENCLAW_CONFIG_FILE, 'utf8'));
+            fileToken = config.gatewayToken || null;
+        } catch (_) {}
+    }
+    // Prefer the live env var; fall back to whatever is persisted in openclaw.json
+    const token = GATEWAY_TOKEN || fileToken;
+    if (!token) {
+        return res.status(503).json({ error: 'Gateway token not configured' });
+    }
+    res.json({ gatewayToken: token });
 });
 
 app.listen(PORT, () => {
