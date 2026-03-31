@@ -27,3 +27,8 @@ cd /home/openclaw/.openclaw/workspace/openclaw-agent
 if [ -f PROJECTS/PISCO/OUTREACH-PROGRESS.md ]; then
   grep -E "^\|" PROJECTS/PISCO/OUTREACH-PROGRESS.md | head -10
 fi
+
+# ============================================
+# CRON ENTRY (add to crontab -e):
+# 0 7 * * 1-5 /home/openclaw/.openclaw/workspace/openclaw-agent/cron/morning-briefing.sh
+# ============================================
