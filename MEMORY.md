@@ -53,6 +53,17 @@ _Created: 2026-03-31_
 - LinkedIn blocks automated scraping — use Yahoo search + direct URL guessing as workaround
 - Subagents work well for parallel research — use them more
 - Always commit significant changes to GitHub same day
+- Git history diverged between workspace (agent files) and remote (old project files) — need to force push when syncing agent setup
+- Git push fails without GitHub auth — need to add token or SSH key to enable auto-push
+
+## Self-Sustaining System (built Mar 31)
+- `tools/startup.sh` — Pull GitHub on boot, restore state
+- `tools/auto_save.sh` — Commit + push after significant changes (push may fail without auth)
+- `tools/heartbeat_check.sh` — Does useful work (sync, stale tasks, follow-ups)
+- `HEARTBEAT.md` — Instructions for periodic self-maintenance
+- `RESCUE.md` — One-command recovery: `git pull origin main`
+- `memory/YYYY-MM-DD.md` — Daily session logs
+- Cron template at `.cron/axthon_cron` (15-min auto-save)
 
 ---
 

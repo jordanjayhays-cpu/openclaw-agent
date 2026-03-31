@@ -47,12 +47,26 @@ _Live dashboard. Last updated: 2026-03-31_
 
 ---
 
-## 🤖 Axton's System
+## 🤖 Axton's Self-Sustaining System
 
-**Subagents:** Can spawn parallel research agents
-**Memory:** Daily logs + long-term MEMORY.md
-**Git sync:** Pulls from github.com/jordanjayhays-cpu/openclaw-agent
-**Heartbeat:** Periodic self-checks enabled
+**Git sync:** github.com/jordanjayhays-cpu/openclaw-agent
+- Commits: 3 ahead of remote (pending auth)
+- Push auth: ❌ Needs GitHub token
+
+**Auto-Save Tools:**
+- `tools/startup.sh` — Pull GitHub + restore state on boot
+- `tools/auto_save.sh` — Commit + push after significant changes
+- `tools/heartbeat_check.sh` — Does useful work on timer
+
+**Memory System:**
+- Daily logs: `memory/YYYY-MM-DD.md`
+- Long-term: `MEMORY.md`
+- Rescue: `RESCUE.md` (one-command recovery)
+
+**Recovery (on reset):**
+```bash
+cd /data/workspace && git pull origin main
+```
 
 ---
 
