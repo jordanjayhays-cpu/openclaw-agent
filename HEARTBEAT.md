@@ -1,7 +1,7 @@
 # HEARTBEAT.md — Mexico City Timezone
 
 ## Timezone
-Mexico City (America/Mexico_City) — UTC-5 in April (no DST)
+Madrid (Europe/Madrid) — UTC+2 in summer (DST started March 30)
 
 ## Heartbeat Schedule
 Run every 30 minutes, **9am–11pm CDMX only**.
