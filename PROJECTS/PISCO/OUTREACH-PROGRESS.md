@@ -127,6 +127,19 @@
 
 ---
 
+## NEW HOT LEADS — Added 2026-04-01
+
+| # | Hotel | Contact | Title | Email | Confidence | Status |
+|---|-------|---------|-------|-------|------------|--------|
+| A | Meliá Hotels International | Lola Chamorro López | Global Head of TA & Employer Branding | lola.chamorro@melia.com | Medium | READY |
+| B | Barceló Hotel Group | Mª Carmen Oliver Molina | Group HR Director | mariaoliver.molina@barcelo.com | Medium | READY |
+| C | Palladium Hotel Group | Patricia Jaén de la Vega | Corporate Talent & Culture Director | patricia.jaen@palladiumhotelgroup.com | LOW | VERIFY FIRST |
+| D | Barceló Hotels & Resorts | Virginia Garrido | Directora RRHH Málaga | virginia.garrido@barcelo.com | Medium | READY |
+
+**Note:** Patricia's email is pattern-guessed — verify with Hunter.io or LinkedIn before sending.
+
+---
+
 ## NOTES
 
 - Jordan is in Madrid — in-person visits possible for Room Mate, NH Madrid properties
@@ -136,5 +149,5 @@
 
 ---
 
-**Last Updated:** 2026-03-29 00:45 UTC
-**Jordan wakes up to:** 756 ready-to-send messages across 252 hotels
+**Last Updated:** 2026-04-01 09:59 UTC
+**Jordan wakes up to:** 756 ready-to-send messages across 252 hotels + 4 new hot leads (emails just found)

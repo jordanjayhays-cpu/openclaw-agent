@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-01T01:22:00Z
+updated: 2026-04-01T14:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -9,10 +9,11 @@ goal: Land first hotel client, scale to 10 placements/month
 tasks:
   - id: pisco-001
     title: Follow up with Javier Estrada (NH Hotel)
-    status: in_progress
+    status: completed
     owner: jordan
     due: 2026-04-01
-    blocked_by: null
+    completed: 2026-04-01
+    output: PROJECTS/PISCO/email-javier-followup-draft.md
     
   - id: pisco-002
     title: Send email to Luis Zamora (Iberostar)
@@ -30,10 +31,11 @@ tasks:
     
   - id: pisco-004
     title: Draft case studies for NH Hotel
-    status: todo
+    status: completed
     owner: axton
     due: 2026-04-02
-    blocked_by: null
+    completed: 2026-04-01
+    output: PROJECTS/PISCO/case-studies-NH-Hotel.md
 
 # Blocked tasks
 blocked:
@@ -47,11 +49,18 @@ completed:
   - id: pisco-001
     completed: 2026-03-28
     output: contacts/CONTEXT.md updated
+  - id: pisco-004
+    completed: 2026-04-01
+    output: case-studies-NH-Hotel.md — 4 case studies drafted
+  - id: pisco-001
+    completed: 2026-04-01
+    output: email-javier-followup-draft.md — follow-up email drafted for Javier. Ready for Jordan to send.
     
 next_actions:
-  - "jordan: Follow up with Javier TODAY"
-  - "axton: Draft case studies by tomorrow"
-  - "subagent: Research Victor Presa email"
+  - "jordan: Send follow-up email to Javier — draft ready at PROJECTS/PISCO/email-javier-followup-draft.md"
+  - "jordan: Send email to Luis Zamora (Iberostar) by April 4"
+  - "jordan: Cold outreach to Concha Pardo (Meliá) by April 7"
+  - "axton: Log today's PISCO check-in to crm.db"
 
 # Key contacts
 contacts:

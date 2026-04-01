@@ -34,10 +34,11 @@ tasks:
     
   - id: mp-003
     title: Build landing page (GitHub Pages)
-    status: todo
+    status: done
     owner: axton
     due: 2026-04-05
     blocked_by: mp-002
+    note: "Draft complete — PROJECTS/MASSAGE-PASS/landing-page.html"
     
   - id: mp-004
     title: Set up Notion databases (Shops, Subscribers, Bookings)

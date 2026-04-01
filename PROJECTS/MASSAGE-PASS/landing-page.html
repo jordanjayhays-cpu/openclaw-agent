@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Pass — Unlimited Massages. One Subscription.</title>
+    <meta name="description" content="Massage Pass is a membership platform that gives you unlimited access to premium massage clinics across Madrid. Plans from €49/month.">
+    <style>
+        :root {
+            --pink: #ec4899;
+            --orange: #f97316;
+            --dark: #0a0a0a;
+            --card: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --text: #f5f5f5;
+            --muted: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10,10,10,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-weight: 700; font-size: 18px; }
+        .logo span { color: var(--pink); }
+        nav a { color: var(--muted); text-decoration: none; font-size: 14px; margin-left: 24px; transition: color 0.2s; }
+        nav a:hover { color: var(--text); }
+        nav .btn-nav { background: var(--pink); color: #fff !important; padding: 8px 20px; border-radius: 50px; font-weight: 600; margin-left: 24px; }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(236,72,153,0.15) 0%, transparent 60%);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(236,72,153,0.15);
+            border: 1px solid rgba(236,72,153,0.3);
+            color: var(--pink);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 540px;
+            margin-bottom: 40px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+        .btn-secondary {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--muted); }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 64px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-num { font-size: 28px; font-weight: 700; color: var(--pink); }
+        .hero-stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+        /* HOW IT WORKS */
+        .section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--pink);
+            margin-bottom: 16px;
+        }
+        .section h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .section-intro { color: var(--muted); font-size: 17px; max-width: 540px; margin-bottom: 56px; }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+        .audience-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        .audience-card h3 { font-size: 22px; margin-bottom: 8px; }
+        .audience-card .subtitle { color: var(--pink); font-size: 14px; font-weight: 600; margin-bottom: 32px; }
+        .audience-card ul { list-style: none; }
+        .audience-card li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+        }
+        .audience-card li:last-child { border-bottom: none; }
+        .audience-card .check { color: #4ade80; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+        /* HOW IT WORKS STEPS */
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+        .step {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+        }
+        .step-num {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .step h4 { font-size: 16px; margin-bottom: 8px; }
+        .step p { font-size: 14px; color: var(--muted); }
+
+        /* PRICING */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+        .plan {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            position: relative;
+        }
+        .plan.featured {
+            border-color: var(--pink);
+            background: linear-gradient(160deg, rgba(236,72,153,0.08), rgba(249,115,22,0.04));
+        }
+        .plan-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            padding: 4px 16px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .plan h3 { font-size: 20px; margin-bottom: 4px; }
+        .plan .price { font-size: 44px; font-weight: 800; margin: 16px 0; }
+        .plan .price span { font-size: 16px; color: var(--muted); font-weight: 400; }
+        .plan .price .euro { font-size: 22px; }
+        .plan ul { list-style: none; margin-bottom: 28px; }
+        .plan li { padding: 8px 0; font-size: 14px; color: var(--muted); display: flex; gap: 8px; }
+        .plan li .check { color: #4ade80; }
+        .plan li .x { color: #444; }
+
+        /* SHOPS */
+        .shops-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .shop-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .shop-card .shop-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .shop-card .shop-area { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+        .shop-tag { display: inline-block; background: rgba(236,72,153,0.15); color: var(--pink); padding: 3px 10px; border-radius: 50px; font-size: 11px; font-weight: 600; }
+
+        /* WAITLIST FORM */
+        .form-section {
+            background: linear-gradient(160deg, rgba(236,72,153,0.06), rgba(249,115,22,0.03));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 60px;
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .form-section h2 { margin-bottom: 8px; }
+        .form-section p { color: var(--muted); margin-bottom: 36px; font-size: 15px; }
+
+        .waitlist-form { display: flex; flex-direction: column; gap: 12px; }
+        .form-row { display: flex; gap: 12px; flex-wrap: wrap; }
+        .form-group { flex: 1; min-width: 200px; }
+        .form-group label { display: block; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; text-align: left; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: var(--text);
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--pink); }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group select option { background: #1a1a1a; }
+        .btn-submit { background: linear-gradient(135deg, var(--pink), var(--orange)); color: #fff; padding: 16px; border-radius: 10px; font-size: 16px; font-weight: 700; border: none; cursor: pointer; width: 100%; transition: opacity 0.2s; }
+        .btn-submit:hover { opacity: 0.88; }
+        .form-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .form-success .big-check { font-size: 64px; margin-bottom: 16px; }
+        .form-success h3 { font-size: 24px; margin-bottom: 8px; }
+        .form-success p { color: var(--muted); }
+
+        /* SHOPS FORM */
+        .shop-cta-section { text-align: center; }
+        .shop-cta-section p { max-width: 480px; margin: 0 auto 32px; color: var(--muted); }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+        }
+        .faq-item h4 { font-size: 16px; margin-bottom: 8px; }
+        .faq-item p { font-size: 14px; color: var(--muted); }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            border-radius: 24px;
+            padding: 64px 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .cta-banner h2 { font-size: clamp(24px, 4vw, 36px); margin-bottom: 12px; }
+        .cta-banner p { opacity: 0.9; margin-bottom: 32px; font-size: 17px; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+            text-align: center;
+            color: #444;
+            font-size: 13px;
+        }
+        footer a { color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="logo">Massage<span>Pass</span></div>
+    <div>
+        <a href="#how-it-works">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#shops">Shops</a>
+        <a href="#join" class="btn-nav">Join Waitlist</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">🚀 Launching in Madrid — April 2026</div>
+    <h1>
+        Unlimited Massages.<br>
+        <span class="gradient">One Subscription.</span>
+    </h1>
+    <p>
+        A membership that gives you access to premium massage clinics across Madrid — for a flat monthly fee. No queues. No markups. Just book and go.
+    </p>
+    <div class="hero-actions">
+        <a href="#join" class="btn-primary">Join the Waitlist</a>
+        <a href="#how-it-works" class="btn-secondary">How it works</a>
+    </div>
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <div class="hero-stat-num">2</div>
+            <div class="hero-stat-label">Partner Clinics</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-num">0</div>
+            <div class="hero-stat-label">Subscribers</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-num">€49</div>
+            <div class="hero-stat-label">From / Month</div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+    <div class="section-label">How It Works</div>
+    <h2>Simple for everyone</h2>
+    <p class="section-intro">Massage Pass connects subscribers with premium clinics. No confusing vouchers. No per-visit drama.</p>
+
+    <div class="two-col">
+        <div class="audience-card">
+            <h3>💆 For Subscribers</h3>
+            <p class="subtitle">Premium massages. Unlimited convenience.</p>
+            <ul>
+                <li><span class="check">✓</span> Browse verified clinics in Madrid</li>
+                <li><span class="check">✓</span> Book any time — no phone calls needed</li>
+                <li><span class="check">✓</span> Fixed monthly price, no surprise charges</li>
+                <li><span class="check">✓</span> Access to clinics in Chamartín, Salamanca & more</li>
+                <li><span class="check">✓</span> Pause or cancel anytime</li>
+            </ul>
+        </div>
+        <div class="audience-card">
+            <h3>🏪 For Clinic Owners</h3>
+            <p class="subtitle">Guaranteed foot traffic. Zero marketing cost.</p>
+            <ul>
+                <li><span class="check">✓</span> We send you paying customers monthly</li>
+                <li><span class="check">✓</span> You set your availability windows</li>
+                <li><span class="check">✓</span> Get paid per confirmed booking</li>
+                <li><span class="check">✓</span> No marketing spend required</li>
+                <li><span class="check">✓</span> Dashboard to manage your bookings</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- STEPS -->
+<section class="section" style="padding-top: 0;">
+    <div class="section-label">The Process</div>
+    <h2>From signup to massage in 3 steps</h2>
+    <p class="section-intro">Both subscribers and clinics follow the same simple flow.</p>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <h4>Sign up free</h4>
+            <p>Join the waitlist as a subscriber or register your clinic. No commitment yet.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <h4>Choose your plan</h4>
+            <p>Subscribers pick a membership tier. Clinics confirm their availability windows.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <h4>Book & enjoy</h4>
+            <p>Browse clinics, request bookings, get confirmed. Show up and relax.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+    <div style="text-align: center;">
+        <div class="section-label">Pricing</div>
+        <h2>Simple, transparent pricing</h2>
+        <p class="section-intro" style="margin: 0 auto 48px;">No hidden fees. Cancel anytime. Launch pricing locked in for early members.</p>
+    </div>
+
+    <div class="pricing-grid">
+        <div class="plan">
+            <h3>Essential</h3>
+            <div class="price"><span class="euro">€</span>49<span>/mo</span></div>
+            <ul>
+                <li><span class="check">✓</span> 4 massage visits/month</li>
+                <li><span class="check">✓</span> Access to 2 clinics</li>
+                <li><span class="check">✓</span> Online booking</li>
+                <li><span class="check">✓</span> Email support</li>
+                <li><span class="x">✗</span> Priority scheduling</li>
+                <li><span class="x">✗</span> Premium treatments</li>
+            </ul>
+            <a href="#join" class="btn-primary" style="display: block; text-align: center;">Join Waitlist</a>
+        </div>
+
+        <div class="plan featured">
+            <div class="plan-badge">Most Popular</div>
+            <h3>Premium</h3>
+            <div class="price"><span class="euro">€</span>89<span>/mo</span></div>
+            <ul>
+                <li><span class="check">✓</span> Unlimited massage visits</li>
+                <li><span class="check">✓</span> All partner clinics</li>
+                <li><span class="check">✓</span> Priority booking windows</li>
+                <li><span class="check">✓</span> Premium treatments included</li>
+                <li><span class="check">✓</span> Priority support</li>
+                <li><span class="check">✓</span> Guest passes (1/month)</li>
+            </ul>
+            <a href="#join" class="btn-primary" style="display: block; text-align: center;">Join Waitlist</a>
+        </div>
+
+        <div class="plan">
+            <h3>Clinic Partners</h3>
+            <div class="price">Custom</div>
+            <ul>
+                <li><span class="check">✓</span> Steady stream of members</li>
+                <li><span class="check">✓</span> 75% per booking (you keep)</li>
+                <li><span class="check">✓</span> Set your own availability</li>
+                <li><span class="check">✓</span> Booking dashboard</li>
+                <li><span class="check">✓</span> No marketing costs</li>
+                <li><span class="check">✓</span> Revenue analytics</li>
+            </ul>
+            <a href="#clinic-join" class="btn-secondary" style="display: block; text-align: center;">Register Your Clinic</a>
+        </div>
+    </div>
+</section>
+
+<!-- SHOPS -->
+<section class="section" id="shops">
+    <div style="text-align: center;">
+        <div class="section-label">Partner Clinics</div>
+        <h2>Where you'll be massaged</h2>
+        <p class="section-intro" style="margin: 0 auto 48px;">Every clinic is vetted. Every therapist is qualified. We only work with places we'd send our own families.</p>
+    </div>
+
+    <div class="shops-grid">
+        <div class="shop-card">
+            <div class="shop-name">Mayoac</div>
+            <div class="shop-area">Chamartín, Madrid</div>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Premium massage and wellness center specializing in therapeutic and relaxation treatments.</p>
+            <span class="shop-tag">Therapeutic</span>
+            <span class="shop-tag">Wellness</span>
+        </div>
+        <div class="shop-card">
+            <div class="shop-name">The Fix Room</div>
+            <div class="shop-area">Salamanca, Madrid</div>
+            <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Sports and recovery-focused massage therapy. Preferred by athletes and professionals.</p>
+            <span class="shop-tag">Sports Recovery</span>
+            <span class="shop-tag">Deep Tissue</span>
+        </div>
+    </div>
+</section>
+
+<!-- WAITLIST FORM — SUBSCRIBERS -->
+<section class="section" id="join">
+    <div class="form-section">
+        <div id="form-content">
+            <div class="section-label" style="display: block; text-align: center;">Subscriber Waitlist</div>
+            <h2 style="text-align: center;">Be first in line</h2>
+            <p>Join the waitlist and get early access + <strong>1 month free</strong> when we launch. No spam. Unsubscribe anytime.</p>
+
+            <form class="waitlist-form" id="subscriber-form" action="#" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" placeholder="María" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" placeholder="García" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="maria@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone (WhatsApp preferred)</label>
+                    <input type="tel" name="phone" placeholder="+34 600 000 000">
+                </div>
+                <div class="form-group">
+                    <label>Interested Plan</label>
+                    <select name="plan">
+                        <option value="essential">Essential — €49/month</option>
+                        <option value="premium" selected>Premium — €89/month</option>
+                        <option value="undecided">Not sure yet</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Neighbourhood (for clinic recommendations)</label>
+                    <input type="text" name="neighbourhood" placeholder="Chamartín, Salamanca, etc.">
+                </div>
+                <button type="submit" class="btn-submit">Join the Waitlist →</button>
+                <p class="form-note">🔒 We don't share your data. You'll only hear from us about Massage Pass.</p>
+            </form>
+        </div>
+
+        <div class="form-success" id="form-success">
+            <div class="big-check">✅</div>
+            <h3>You're on the list!</h3>
+            <p>We'll email you when we launch in Madrid. Tell a friend — they'll thank you.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CLINIC FORM -->
+<section class="section" id="clinic-join">
+    <div class="form-section shop-cta-section">
+        <div class="section-label" style="display: block; text-align: center;">Clinic Partners</div>
+        <h2 style="text-align: center;">Own a massage clinic?</h2>
+        <p>Massage Pass brings you paying members every month. You set your availability. We handle the bookings. No upfront cost.</p>
+
+        <form class="waitlist-form" id="clinic-form" action="#" method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Clinic Name</label>
+                    <input type="text" name="clinic_name" placeholder="The Fix Room" required>
+                </div>
+                <div class="form-group">
+                    <label>Contact Name</label>
+                    <input type="text" name="contact_name" placeholder="Your name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="hello@clinic.com" required>
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" name="phone" placeholder="+34 600 000 000">
+            </div>
+            <div class="form-group">
+                <label>Address / Neighbourhood</label>
+                <input type="text" name="address" placeholder="Salamanca, Madrid">
+            </div>
+            <div class="form-group">
+                <label>Average massage rate (€)</label>
+                <input type="number" name="rate" placeholder="80">
+            </div>
+            <div class="form-group">
+                <label>Anything else we should know?</label>
+                <textarea name="notes" placeholder="Opening hours, specialties, capacity..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Register My Clinic →</button>
+            <p class="form-note">We review all applications and respond within 48 hours.</p>
+        </form>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+    <div class="section-label">FAQ</div>
+    <h2>Common questions</h2>
+    <div style="max-width: 640px;">
+        <div class="faq-item">
+            <h4>When does Massage Pass launch?</h4>
+            <p>We're targeting April 2026 in Madrid. Early subscribers will get founding member pricing locked in for life.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Is this available outside Madrid?</h4>
+            <p>Not yet. We're starting with our first 2 partner clinics in Chamartín and Salamanca. Expansion depends on demand — tell us where you want it!</p>
+        </div>
+        <div class="faq-item">
+            <h4>How does the clinic get paid?</h4>
+            <p>Massage Pass retains 25% per booking to cover platform costs and growth. The clinic receives 75% directly. We pay weekly.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Can I pause my subscription?</h4>
+            <p>Yes. You can pause for up to 2 months per year at no charge. Your membership tier is preserved.</p>
+        </div>
+        <div class="faq-item">
+            <h4>What if I don't use all my visits?</h4>
+            <p>Essential plan visits reset monthly. Unused Premium visits don't roll over — but with unlimited, you don't need to worry.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How do I know a clinic is good quality?</h4>
+            <p>We vet every clinic before onboarding. We check qualifications, hygiene, and customer reviews. Bad clinics don't last on the platform.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="section" style="padding-top: 0;">
+    <div class="cta-banner">
+        <h2>Ready to never stress about booking a massage again?</h2>
+        <p>Join 0 others on the waitlist. First 20 members get 1 month free.</p>
+        <a href="#join" class="btn-primary" style="background: #fff; color: #ec4899;">Join the Waitlist — It's Free</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p><strong>Massage Pass</strong> — Madrid, 2026</p>
+    <p style="margin-top: 8px;">Built by Jordan Hays &nbsp;·&nbsp; <a href="#join">Join Waitlist</a> &nbsp;·&nbsp; <a href="#clinic-join">Register Your Clinic</a></p>
+    <p style="margin-top: 8px; color: #333;">Not an official product yet. For demonstration purposes.</p>
+</footer>
+
+<script>
+    // Simple form handler — shows success state
+    function setupForm(formId) {
+        const form = document.getElementById(formId);
+        if (!form) return;
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = form.querySelector('.btn-submit');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            // Simulate async submit (replace with real endpoint)
+            setTimeout(function() {
+                document.getElementById('form-content').style.display = 'none';
+                document.getElementById('form-success').style.display = 'block';
+            }, 1200);
+        });
+    }
+    setupForm('subscriber-form');
+</script>
+
+</body>
+</html>
