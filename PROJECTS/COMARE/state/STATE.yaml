@@ -1,0 +1,58 @@
+# COMARE — State File
+project: COMARE
+updated: 2026-04-01T01:22:00Z
+
+# Goals
+goal: Land first 10 clients in Mexico City
+
+# ICP Decision (BLOCKER)
+icp_decision:
+  status: pending
+  options:
+    - Pharmacy: Farmacias Similares, del Ahorro, Guadalajara, Yza, Benavides
+    - Restaurant: El Diclo, Toks, Sanborns, KFC, McDonald's
+    - Medical: Star Medica, Grupo Angeles, hospitals, dental chains
+  recommendation: Pharmacy (biggest footprint, owner accessible)
+  decision_needed_by: 2026-04-05
+
+# Tasks
+tasks:
+  - id: comare-001
+    title: "DECISION: Pick ICP (Pharmacy vs Restaurant vs Medical)"
+    status: blocked
+    owner: jordan
+    due: 2026-04-05
+    blocked_by: icp_decision
+
+  - id: comare-002
+    title: Build prospect list for chosen ICP
+    status: todo
+    owner: axton
+    due: 2026-04-07
+    blocked_by: comare-001
+
+  - id: comare-003
+    title: Draft outreach sequence for chosen ICP
+    status: todo
+    owner: axton
+    due: 2026-04-08
+    blocked_by: comare-002
+
+# Completed
+completed: []
+
+# Key contacts
+contacts:
+  - name: Dr. Víctor González Herrera (Dr. Simi)
+    company: Farmacias Similares
+    warmth: warm
+    type: owner
+    notes: Forbes Top 20 Leaders, public figure
+
+# Metrics
+metrics:
+  prospects_identified: 200
+  icp_decided: false
+  contacts_reached: 0
+  meetings: 0
+  clients: 0

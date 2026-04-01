@@ -1,0 +1,50 @@
+# NEUROTECH — State File
+project: NEUROTECH
+updated: 2026-04-01T01:22:00Z
+
+# Goals
+goal: Launch YouTube channel, reach 10K subscribers, establish thought leadership
+
+# Tasks
+tasks:
+  - id: neuro-001
+    title: 'Write Video 1 script: "The New Space Race"'
+    status: todo
+    owner: jordan
+    due: 2026-04-07
+    blocked_by: null
+    
+  - id: neuro-002
+    title: Film Video 1
+    status: todo
+    owner: jordan
+    due: 2026-04-10
+    blocked_by: neuro-001
+    
+  - id: neuro-003
+    title: Decide: Expand social mobility or new channel?
+    status: todo
+    owner: jordan
+    due: 2026-04-05
+    blocked_by: null
+
+# Content themes
+content_themes:
+  - Neurotech
+  - Longevity
+  - Consciousness
+  - AI + brain interfaces
+
+# Video ideas
+video_ideas:
+  - "The New Space Race" (ready to film)
+  - AI companions
+  - Bryan Johnson Blueprint breakdown
+  - Neuralink updates
+
+# Channel
+channel:
+  name: TBD
+  platform: YouTube
+  subscribers: 0
+  status: not_launched

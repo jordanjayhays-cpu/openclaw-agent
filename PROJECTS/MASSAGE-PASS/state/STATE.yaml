@@ -1,0 +1,116 @@
+# MASSAGE PASS — State File
+project: MASSAGE-PASS
+updated: 2026-04-01T01:22:00Z
+
+# Goals
+goal: Launch MVP, get first 5 shops signed, first 20 subscribers
+
+# Model
+model:
+  type: marketplace
+  sides:
+    - shops: list services, accept bookings, get paid
+    - subscribers: pay membership, book massages
+  revenue_share:
+    shop: 75
+    platform: 20
+    jordan: 5
+
+# Tasks
+tasks:
+  - id: mp-001
+    title: "BUY DOMAIN: massagepass.com"
+    status: todo
+    owner: jordan
+    due: 2026-04-07
+    blocked_by: null
+    
+  - id: mp-002
+    title: Set up Notion API for backend
+    status: todo
+    owner: jordan
+    due: 2026-04-03
+    blocked_by: null
+    
+  - id: mp-003
+    title: Build landing page (GitHub Pages)
+    status: todo
+    owner: axton
+    due: 2026-04-05
+    blocked_by: mp-002
+    
+  - id: mp-004
+    title: Set up Notion databases (Shops, Subscribers, Bookings)
+    status: todo
+    owner: axton
+    due: 2026-04-05
+    blocked_by: mp-002
+    
+  - id: mp-005
+    title: Build shop signup form → Notion
+    status: todo
+    owner: axton
+    due: 2026-04-06
+    blocked_by: mp-004
+    
+  - id: mp-006
+    title: Build subscriber waitlist form
+    status: todo
+    owner: axton
+    due: 2026-04-06
+    blocked_by: mp-004
+    
+  - id: mp-007
+    title: Onboard first 2 shops (Mayoac, The Fix Room)
+    status: todo
+    owner: jordan
+    due: 2026-04-14
+    blocked_by: mp-003, mp-005
+
+# Shops
+shops:
+  - name: Mayoac
+    location: Chamartín, Madrid
+    status: interested
+    contact: null
+    rate_per_visit: null
+    normal_rate: null
+    
+  - name: The Fix Room
+    location: Salamanca, Madrid
+    status: interested
+    contact: null
+    rate_per_visit: null
+    normal_rate: null
+
+# Subscribers
+subscribers: []
+
+# Booking flow (MVP)
+booking_flow:
+  step1: Subscriber browses shops on landing page
+  step2: Subscriber requests booking (form → Notion)
+  step3: Email sent to shop for confirmation
+  step4: Shop confirms → Email to subscriber
+  step5: Visit happens → Log in Notion
+
+# Integrations (MVP = manual)
+integrations:
+  notion:
+    status: pending
+    token_needed: true
+  stripe:
+    status: future
+    note: "Add when subscriber volume justifies"
+  calendly:
+    status: future
+    note: "Add when shop volume justifies"
+
+# Metrics
+metrics:
+  shops_target: 5
+  shops_signed: 0
+  subscribers_target: 20
+  subscribers_signed: 0
+  bookings_total: 0
+  revenue_total: 0

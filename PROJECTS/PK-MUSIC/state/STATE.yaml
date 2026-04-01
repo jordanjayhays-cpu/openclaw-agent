@@ -1,0 +1,53 @@
+# PK MUSIC — State File
+project: PK-MUSIC
+updated: 2026-04-01T01:22:00Z
+
+# Goals
+goal: Release 10 tracks, build catalog, establish Philosophy King brand
+
+# Tasks
+tasks:
+  - id: pk-001
+    title: Generate "Memento Mori" in Suno
+    status: todo
+    owner: jordan
+    due: 2026-04-05
+    blocked_by: null
+    
+  - id: pk-002
+    title: Build catalog.json
+    status: todo
+    owner: axton
+    due: 2026-04-10
+    blocked_by: null
+    
+  - id: pk-003
+    title: Upload tracks to DistroKid
+    status: todo
+    owner: jordan
+    due: 2026-04-15
+    blocked_by: pk-002
+
+# Tracks
+tracks:
+  total_in_drive: 60
+  ready_for_upload: 0
+  uploaded: 0
+
+# Key tracks
+key_tracks:
+  - All I Know
+  - Altered States of Faith
+  - Memento Mori (pending)
+
+# Platforms
+platforms:
+  spotify: pending
+  apple_music: pending
+  amazon_music: pending
+  distroKid: pending
+
+# Distribution
+distribution:
+  distributor: DistroKid
+  status: not_started

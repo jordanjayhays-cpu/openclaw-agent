@@ -1,0 +1,77 @@
+# PISCO — State File
+project: PISCO
+updated: 2026-04-01T01:22:00Z
+
+# Goals
+goal: Land first hotel client, scale to 10 placements/month
+
+# Tasks (append-only, update status as you go)
+tasks:
+  - id: pisco-001
+    title: Follow up with Javier Estrada (NH Hotel)
+    status: in_progress
+    owner: jordan
+    due: 2026-04-01
+    blocked_by: null
+    
+  - id: pisco-002
+    title: Send email to Luis Zamora (Iberostar)
+    status: todo
+    owner: jordan
+    due: 2026-04-04
+    blocked_by: null
+    
+  - id: pisco-003
+    title: Cold outreach to Concha Pardo (Meliá)
+    status: todo
+    owner: jordan
+    due: 2026-04-07
+    blocked_by: null
+    
+  - id: pisco-004
+    title: Draft case studies for NH Hotel
+    status: todo
+    owner: axton
+    due: 2026-04-02
+    blocked_by: null
+
+# Blocked tasks
+blocked:
+  - id: pisco-005
+    title: Start South Korea outreach
+    status: blocked
+    reason: Need EPS pathway research first
+
+# Completed (append only)
+completed:
+  - id: pisco-001
+    completed: 2026-03-28
+    output: contacts/CONTEXT.md updated
+    
+next_actions:
+  - "jordan: Follow up with Javier TODAY"
+  - "axton: Draft case studies by tomorrow"
+  - "subagent: Research Victor Presa email"
+
+# Key contacts
+contacts:
+  - name: Javier Estrada
+    company: NH Hotel Group
+    warmth: hot
+    last_contact: 2026-03-28
+  - name: Luis Zamora
+    company: Iberostar
+    warmth: warm
+    last_contact: 2026-03-28
+  - name: Concha Pardo
+    company: Meliá Hotels
+    warmth: cold
+    last_contact: null
+
+# Metrics
+metrics:
+  prospects_identified: 252
+  contacts_reached: 6
+  responses: 1
+  meetings: 0
+  clients: 0
