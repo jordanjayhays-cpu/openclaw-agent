@@ -1,5 +1,5 @@
 # Overnight Work Queue
-**Last updated: 2026-04-01 05:58 UTC**
+**Last updated: 2026-04-01 21:59 UTC**
 
 ## Queue (top = do first)
 
@@ -13,16 +13,24 @@
 
    ✅ **DONE — 2026-04-01 09:59 UTC**
    - Added all 4 to pisco-crm.json (IDs 5–8)
-   - Lola: lola.chamorro@melia.com (medium confidence, RocketReach/theorg.com)
+   - Lola: lola.chamorrolopez@melia.com ⚠️ LOW — pattern-inferred from LinkedIn URL, NOT confirmed. Alt: lola.chamorro@melia.com. Verify before sending.
    - Carmen: mariaoliver.molina@barcelo.com (medium confidence, RocketReach pattern)
    - Patricia: patricia.jaen@palladiumhotelgroup.com (LOW confidence — verify before sending, pattern-guessed)
    - Virginia: virginia.garrido@barcelo.com (medium confidence, RocketReach confirmed)
 
 2. **[HIGH] Find emails for existing PISCO targets**
-   - Concha Pardo (NH Hotels)
-   - Gabriel Cánaves (NH Hotels)
-   - Yolanda de la Plaza (Room Mate)
-   - Javier Estrada (NH Hotels)
+   - Concha Pardo (~~NH Hotels~~ → **Meliá Hotels**, HR Director Madrid)
+   - Gabriel Cánaves (~~NH Hotels~~ → **Meliá Hotels**, Chief HR Officer)
+   - Yolanda de la Plaza (Room Mate, HRBP)
+   - Javier Estrada (NH Hotels Spain, Director RRHH)
+
+   ✅ **DONE — 2026-04-01 21:59 UTC**
+   - All 4 found, added to pisco-crm.json (IDs 1, 3, 9, 10)
+   - Javier Estrada: javier.estrada@nh-hotels.com (LOW, pattern-inferred; NH now Minor Hotels but still uses @nh-hotels.com domain)
+   - Yolanda de la Plaza: y.delaplaza@room-matehotels.com (LOW — Room Mate format confirmed as [first_initial].[last]@room-matehotels.com by RocketReach)
+   - Concha Pardo: concha.pardo@melia.com (LOW, pattern-inferred from Lola Chamorro's email; CORRECTION: actually at Meliá not NH Hotels)
+   - Gabriel Cánaves: gabriel.canaves@melia.com (LOW, pattern-inferred; CORRECTION: actually at Meliá not NH Hotels; top-level decision maker)
+   - **⚠️ All LOW confidence — verify with Hunter.io or LinkedIn Sales Navigator before sending**
 
 3. **[MED] Find HR contacts at Riu Hotels + Iberostar**
    - Competitors already flagged in web-research

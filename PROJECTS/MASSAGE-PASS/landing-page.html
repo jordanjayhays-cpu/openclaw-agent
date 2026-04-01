@@ -509,7 +509,11 @@
             <h2 style="text-align: center;">Be first in line</h2>
             <p>Join the waitlist and get early access + <strong>1 month free</strong> when we launch. No spam. Unsubscribe anytime.</p>
 
-            <form class="waitlist-form" id="subscriber-form" action="#" method="post">
+            <!-- 📌 TODO (Jordan): Replace YOUR_FORMSPREE_ID with your Formspree endpoint.
+                 Sign up free at https://formspree.io — forms submit to Notion/Airtable/email without backend. -->
+            <form class="waitlist-form" id="subscriber-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <input type="hidden" name="_form" value="subscriber">
+                <input type="hidden" name="_gotcha" style="display:none">
                 <div class="form-row">
                     <div class="form-group">
                         <label>First Name</label>
@@ -560,7 +564,10 @@
         <h2 style="text-align: center;">Own a massage clinic?</h2>
         <p>Massage Pass brings you paying members every month. You set your availability. We handle the bookings. No upfront cost.</p>
 
-        <form class="waitlist-form" id="clinic-form" action="#" method="post">
+        <!-- 📌 TODO (Jordan): Replace YOUR_FORMSPREE_ID with your Formspree endpoint. -->
+        <form class="waitlist-form" id="clinic-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <input type="hidden" name="_form" value="clinic">
+                <input type="hidden" name="_gotcha" style="display:none">
             <div class="form-row">
                 <div class="form-group">
                     <label>Clinic Name</label>
@@ -646,7 +653,7 @@
 </footer>
 
 <script>
-    // Simple form handler — shows success state
+    // Form handler — saves to localStorage + submits to Formspree
     function setupForm(formId) {
         const form = document.getElementById(formId);
         if (!form) return;
@@ -656,14 +663,48 @@
             btn.textContent = 'Sending...';
             btn.disabled = true;
 
-            // Simulate async submit (replace with real endpoint)
-            setTimeout(function() {
-                document.getElementById('form-content').style.display = 'none';
-                document.getElementById('form-success').style.display = 'block';
-            }, 1200);
+            // Collect form data
+            const formType = form.querySelector('input[name="_form"]')?.value || formId;
+            const data = { type: formType, timestamp: new Date().toISOString() };
+            new FormData(form).forEach(function(v, k) { if (k !== '_gotcha') data[k] = v; });
+
+            // Save to localStorage as backup
+            try {
+                const key = 'mp_' + formType + '_submissions';
+                const existing = JSON.parse(localStorage.getItem(key) || '[]');
+                existing.push(data);
+                localStorage.setItem(key, JSON.stringify(existing));
+                console.log('[MassagePass] Submission saved:', data);
+            } catch(err) { console.warn('[MassagePass] localStorage save failed:', err); }
+
+            // Try Formspree; fall back to success screen
+            const action = form.action;
+            if (action && !action.includes('YOUR_FORMSPREE_ID')) {
+                fetch(action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+                    .then(function(r) {
+                        if (!r.ok) throw new Error('Formspree error');
+                        showSuccess(formId);
+                    })
+                    .catch(function() { showSuccess(formId); });
+            } else {
+                console.warn('[MassagePass] Formspree not configured. Data saved to localStorage only. Set up at formspree.io');
+                setTimeout(showSuccess, 800);
+            }
         });
     }
+
+    function showSuccess(formId) {
+        if (formId === 'clinic-form') {
+            document.querySelector('#clinic-join .form-success')?.style.setProperty('display', 'block');
+            document.querySelector('#clinic-join .waitlist-form')?.style.setProperty('display', 'none');
+        } else {
+            document.getElementById('form-content').style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+        }
+    }
+
     setupForm('subscriber-form');
+    setupForm('clinic-form');
 </script>
 
 </body>

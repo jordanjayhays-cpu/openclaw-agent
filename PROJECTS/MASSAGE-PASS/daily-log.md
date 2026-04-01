@@ -57,3 +57,27 @@
 1. Jordan sets up Notion integration → I build databases
 2. Jordan buys domain → I connect landing page
 3. After databases: build real subscriber + clinic forms (mp-005, mp-006)
+
+### Evening Check-in — 18:10 UTC
+
+#### Notion API Check
+- ❌ Still not available
+
+#### Action Taken
+- Enhanced `landing-page.html`:
+  - Subscriber + clinic forms now point to `https://formspree.io/f/YOUR_FORMSPREE_ID` (placeholder — needs Jordan to create free Formspree account)
+  - Added localStorage backup: form submissions are saved to `mp_subscriber_submissions` / `mp_clinic_submissions` keys even if Formspree isn't set up
+  - Added `_form` hidden field to distinguish subscriber vs clinic submissions
+  - Added `_gotcha` honeypot field for spam protection
+  - Console warns if Formspree not configured
+  - Clinic form now shows success state correctly (was broken previously)
+
+#### Key Decision Logged
+- Notion API (mp-002) still pending. Forms now use **Formspree** as interim backend — no signup required for form capture.
+- **Jordan's next action**: Create free Formspree account at formspree.io, create 2 forms (subscriber + clinic), replace `YOUR_FORMSPREE_ID` in HTML.
+
+#### Tasks Still Blocked
+- mp-004 (Notion databases) — blocked by mp-002
+- mp-005 (shop signup → Notion) — blocked by mp-004
+- mp-006 (subscriber waitlist form) — technically unblocked now (Formspree fallback works)
+

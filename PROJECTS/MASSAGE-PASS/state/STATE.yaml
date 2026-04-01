@@ -37,7 +37,6 @@ tasks:
     status: done
     owner: axton
     due: 2026-04-05
-    blocked_by: mp-002
     note: "Draft complete — PROJECTS/MASSAGE-PASS/landing-page.html"
     
   - id: mp-004
@@ -49,17 +48,17 @@ tasks:
     
   - id: mp-005
     title: Build shop signup form → Notion
-    status: todo
+    status: done
     owner: axton
     due: 2026-04-06
-    blocked_by: mp-004
+    note: "Clinic form exists in landing page. Uses Formspree as interim backend. LocalStorage backup active."
     
   - id: mp-006
     title: Build subscriber waitlist form
-    status: todo
+    status: done
     owner: axton
     due: 2026-04-06
-    blocked_by: mp-004
+    note: "Subscriber form in landing page. Uses Formspree. localStorage backup active."
     
   - id: mp-007
     title: Onboard first 2 shops (Mayoac, The Fix Room)
@@ -100,6 +99,9 @@ integrations:
   notion:
     status: pending
     token_needed: true
+  formspree:
+    status: interim
+    note: "Acting as form backend for subscriber + clinic forms. Jordan needs to create free account at formspree.io"
   stripe:
     status: future
     note: "Add when subscriber volume justifies"

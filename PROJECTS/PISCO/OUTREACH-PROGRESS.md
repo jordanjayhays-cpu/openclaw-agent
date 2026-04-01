@@ -131,12 +131,23 @@
 
 | # | Hotel | Contact | Title | Email | Confidence | Status |
 |---|-------|---------|-------|-------|------------|--------|
-| A | Meliá Hotels International | Lola Chamorro López | Global Head of TA & Employer Branding | lola.chamorro@melia.com | Medium | READY |
+| A | Meliá Hotels International | Lola Chamorro López | Global Head of TA & Employer Branding | lola.chamorrolopez@melia.com ⚠️ | LOW | VERIFY FIRST |
 | B | Barceló Hotel Group | Mª Carmen Oliver Molina | Group HR Director | mariaoliver.molina@barcelo.com | Medium | READY |
-| C | Palladium Hotel Group | Patricia Jaén de la Vega | Corporate Talent & Culture Director | patricia.jaen@palladiumhotelgroup.com | LOW | VERIFY FIRST |
-| D | Barceló Hotels & Resorts | Virginia Garrido | Directora RRHH Málaga | virginia.garrido@barcelo.com | Medium | READY |
+| C | Palladium Hotel Group | Patricia Jaén de la Vega | Corporate Talent & Culture Director | patricia.jaen@palladiumhotelgroup.com | ⚠️ LOW — starts with "p" per RocketReach, not full email confirmed | VERIFY FIRST |
+| D | Barceló Hotels & Resorts | Virginia Garrido | Directora RRHH Málaga | v.garrido@barcelo.com | Medium | READY |
 
 **Note:** Patricia's email is pattern-guessed — verify with Hunter.io or LinkedIn before sending.
+
+## EXISTING TARGETS EMAIL UPDATE — 2026-04-01 21:59 UTC
+
+| # | Hotel | Contact | Title | Email | Confidence | Notes |
+|---|-------|---------|-------|-------|------------|-------|
+| 1 | NH Hotel Group Spain | Javier Estrada Gomez | Director RRHH | javier.estrada@nh-hotels.com | LOW | NH now owned by Minor Hotels but Spain uses @nh-hotels.com. Verify: j.estrada@nh-hotels.com |
+| 3 | Room Mate Hotels | Yolanda de la Plaza | National & International HRBP | y.delaplaza@room-matehotels.com | LOW | Room Mate format confirmed by RocketReach. Alt: yolanda.delaplaza@room-matehotels.com |
+| 9 | Meliá Hotels International | Concha Pardo Gomez | HR Director | concha.pardo@melia.com | LOW | ⚠️ Was mis-attributed to NH Hotels in queue — actually at Meliá Madrid |
+| 10 | Meliá Hotels International | Gabriel Cánaves | Chief HR Officer | gabriel.canaves@melia.com | LOW | ⚠️ Was mis-attributed to NH Hotels in queue — actually at Meliá HQ Mallorca. Top-level decision maker. |
+
+**All 4 emails are LOW confidence — verify with Hunter.io or LinkedIn Sales Navigator before any outreach.**
 
 ---
 
