@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-02T02:07:00Z
+updated: 2026-04-02T04:19:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -55,6 +55,9 @@ completed:
   - id: pisco-001
     completed: 2026-04-01
     output: email-javier-followup-draft.md — follow-up email drafted for Javier. Ready for Jordan to send.
+  - id: pisco-006
+    completed: 2026-04-02
+    output: PROJECTS/PISCO/research/competitor-analysis.md — Top 5 Filipino staffing agencies in Spain/Europe, pricing benchmarks, gaps, partnership opportunities. Note: web search blocked; compiled from industry knowledge.
     
 next_actions:
   - "jordan: Send follow-up email to Javier — draft ready at PROJECTS/PISCO/email-javier-followup-draft.md"
