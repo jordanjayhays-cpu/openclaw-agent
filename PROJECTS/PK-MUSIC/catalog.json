@@ -1,16 +1,170 @@
 {
+  "project": "PK-MUSIC",
+  "last_updated": "2026-04-02T03:12:00Z",
+  "catalog_status": "in_progress",
+
+  "artist": "Philosophy King",
+  "label": "Philosophy King Records",
+  "genre_tags": ["philosophical hip-hop", "conscious rap", "lo-fi", "epic rap"],
+  "youtube_channel": "https://music.youtube.com/channel/UCST1Tzuraa0CSR4o3RkVIMw",
+
   "tracks": [
     {
-      "name": "Pleasure vs Purpose",
+      "id": "pk-001",
+      "title": "Pleasure vs Purpose",
       "album": "The Anxious Generation",
-      "concept": "The tension between hedonism and meaningful living. Epicureanism vs Stoicism. Nietzsche, Jordan Peterson, Viktor Frankl, Sapolsky dopamine research.",
-      "references": "",
-      "added": "2026-03-29T12:19:41.778357",
-      "content_ready": false,
-      "suno_brief": false,
+      "duration": null,
+      "style": "conscious rap",
       "status": "RELEASED",
-      "released": "2026-03-29T12:20:11.203094"
+      "released_date": "2026-03-29",
+      "distroKid_uploaded": false,
+      "spotify": "pending",
+      "apple_music": "pending",
+      "youtube_music": "pending",
+      "concept": "Tension between hedonism and meaningful living. Epicureanism vs Stoicism. Nietzsche, Jordan Peterson, Viktor Frankl, Sapolsky dopamine research.",
+      "notes": "First release. YouTube Music only so far."
+    },
+    {
+      "id": "pk-002",
+      "title": "All I Know",
+      "album": "TBD",
+      "duration": null,
+      "style": "conscious rap / lo-fi",
+      "status": "READY_FOR_UPLOAD",
+      "target_release": null,
+      "distroKid_uploaded": false,
+      "spotify": "pending",
+      "apple_music": "pending",
+      "youtube_music": "pending",
+      "concept": "Known track in drive. Needs metadata tagging and upload.",
+      "notes": "Confirm audio quality, add ID3 tags, prepare cover art."
+    },
+    {
+      "id": "pk-003",
+      "title": "Altered States of Faith",
+      "album": "TBD",
+      "duration": null,
+      "style": "conscious rap / philosophical",
+      "status": "READY_FOR_UPLOAD",
+      "target_release": null,
+      "distroKid_uploaded": false,
+      "spotify": "pending",
+      "apple_music": "pending",
+      "youtube_music": "pending",
+      "concept": "Known track in drive. Philosophical themes around faith and consciousness.",
+      "notes": "Confirm audio quality, add ID3 tags, prepare cover art."
+    },
+    {
+      "id": "pk-004",
+      "title": "Memento Mori",
+      "album": "TBD",
+      "duration": null,
+      "style": "TBD",
+      "status": "PENDING_GENERATION",
+      "target_release": null,
+      "distroKid_uploaded": false,
+      "spotify": "pending",
+      "apple_music": "pending",
+      "youtube_music": "pending",
+      "concept": "Pending generation in Suno. Deadline: 2026-04-05.",
+      "notes": "Owner: jordan. Brief exists in suno-brief-20260329 files."
+    },
+    {
+      "id": "pk-005",
+      "title": "Track 5",
+      "album": "TBD",
+      "duration": null,
+      "style": "TBD",
+      "status": "IN_DRIVE_UNREVIEWED",
+      "target_release": null,
+      "distroKid_uploaded": false,
+      "spotify": "pending",
+      "apple_music": "pending",
+      "youtube_music": "pending",
+      "concept": "In drive (60 total tracks). Needs review and selection.",
+      "notes": "Need to scan drive for next 6 best candidates."
     }
   ],
-  "last_updated": "2026-03-29T12:19:41.778387"
+
+  "release_schedule": {
+    " cadence": "1 track per week",
+    "total_planned": 10,
+    "schedule": [
+      {"week": 1,  "track_id": "pk-002", "title": "All I Know",              "planned_date": "2026-04-11", "status": "scheduled"},
+      {"week": 2,  "track_id": "pk-003", "title": "Altered States of Faith", "planned_date": "2026-04-18", "status": "scheduled"},
+      {"week": 3,  "track_id": "pk-004", "title": "Memento Mori",            "planned_date": "2026-04-25", "status": "scheduled"},
+      {"week": 4,  "track_id": "pk-005", "title": "Track 5",                 "planned_date": "2026-05-02", "status": "TBD"},
+      {"week": 5,  "track_id": "pk-006", "title": "Track 6",                 "planned_date": "2026-05-09", "status": "TBD"},
+      {"week": 6,  "track_id": "pk-007", "title": "Track 7",                 "planned_date": "2026-05-16", "status": "TBD"},
+      {"week": 7,  "track_id": "pk-008", "title": "Track 8",                 "planned_date": "2026-05-23", "status": "TBD"},
+      {"week": 8,  "track_id": "pk-009", "title": "Track 9",                 "planned_date": "2026-05-30", "status": "TBD"},
+      {"week": 9,  "track_id": "pk-010", "title": "Track 10",               "planned_date": "2026-06-06", "status": "TBD"},
+      {"week": 10, "track_id": "pk-011", "title": "Bonus / B-sides",        "planned_date": "2026-06-13", "status": "TBD"}
+    ]
+  },
+
+  "distrokid": {
+    "distributor": "DistroKid",
+    "status": "not_started",
+    "website": "https://distrokid.com",
+    "pricing": {
+      "individual": {
+        "name": "Musician",
+        "price_monthly": "$12.99/month",
+        "price_annual": "$139/year",
+        "features": [
+          "Unlimited uploads",
+          "Spotify, Apple Music, Amazon Music, TikTok, YouTube Music & more",
+          "100% royalties keep",
+          "Lyrics distribution",
+          "YouTube Content ID"
+        ]
+      },
+      "publisher": {
+        "name": "Musician + Publisher",
+        "price_monthly": "$22.99/month",
+        "price_annual": "$229/year",
+        "additional": "IPA collection (publishing royalties)"
+      }
+    },
+    "upload_process": [
+      "1. Create DistroKid account at distrokid.com",
+      "2. Add artist/band name",
+      "3. Upload audio file (WAV or MP3, 44.1kHz+ recommended)",
+      "4. Add cover art (3000x3000px JPG, no explicit content)",
+      "5. Enter track metadata (title, artists, ISRC if available, genre)",
+      "6. Select release date (recommended: Friday, 12:00 AM UTC)",
+      "7. Select stores (Spotify, Apple Music, Amazon, YouTube Music minimum)",
+      "8. Pay and submit",
+      "9. Typical processing: 1-5 business days"
+    ],
+    "requirements": [
+      "Audio file: WAV or high-quality MP3 (320kbps)",
+      "Cover art: 3000x3000px JPG, max 25MB",
+      "No explicit nudity on cover art (Spotify/Apple policy)",
+      "You must own rights to the music",
+      "ISRC codes: auto-generated by DistroKid (free)",
+      "No sample clearance needed if generated via Suno (you own output)"
+    ]
+  },
+
+  "release_timing": {
+    "best_day": "Friday",
+    "best_time": "12:00 AM UTC (midnight Friday)",
+    "why_friday": "Spotify/Apple Music weekly charts reset on Friday. Music released Friday appears in New Music Friday playlists.",
+    "alternatives": {
+      "thursday": "US Eastern time release (for US charts)",
+      "avoid": "Monday-Wednesday (lowest engagement mid-week)"
+    },
+    "lead_time": "DistroKid needs 1-5 days to process. Submit at least 2 weeks before planned release."
+  },
+
+  "discord_announcement_template": {
+    "description": "Template for Discord release announcements in Philosophy King community",
+    "channels": ["#music-releases", "#philosophy-king"],
+    "format": {
+      "type": "embed",
+      "fields": ["Title", "Concept", "Where to Listen", "Why It Matters"]
+    }
+  }
 }

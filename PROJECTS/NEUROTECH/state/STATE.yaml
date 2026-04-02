@@ -1,6 +1,6 @@
 # NEUROTECH — State File
 project: NEUROTECH
-updated: 2026-04-01T01:22:00Z
+updated: 2026-04-02T03:12:00Z
 
 # Goals
 goal: Launch YouTube channel, reach 10K subscribers, establish thought leadership
@@ -35,12 +35,156 @@ content_themes:
   - Consciousness
   - AI + brain interfaces
 
-# Video ideas
-video_ideas:
-  - "The New Space Race" (ready to film)
-  - AI companions
-  - Bryan Johnson Blueprint breakdown
-  - Neuralink updates
+# Content calendar (10 videos)
+content_calendar:
+  - video_id: v001
+    title: "The New Space Race: Neurotech's Final Frontier"
+    hook: "It's not just NASA anymore — Silicon Valley is racing to upload your brain"
+    target_date: 2026-04-20
+    status: script_ready
+    thumbnail:
+      text_overlay: "THE NEW SPACE RACE"
+      colors: "Deep space black + neon cyan + electric orange"
+      imagery: "Futuristic brain merged with rocket silhouette against starfield"
+      style: "High contrast, cinematic, dark sci-fi"
+    
+  - video_id: v002
+    title: "AI Companions: Your Brain's New Best Friend"
+    hook: "Replika, Pi, and others want to be your AI companion — but what does that do to your mind?"
+    target_date: 2026-05-04
+    status: concept
+    thumbnail:
+      text_overlay: "AI COMPANIONS?" 
+      colors: "Warm purple + soft pink + teal accent"
+      imagery: "Human silhouette with glowing AI face overlay, split-screen effect"
+      style: "Intimate but slightly unsettling, dual-tone"
+
+  - video_id: v003
+    title: "I Tried Bryan Johnson's Blueprint for 30 Days"
+    hook: "The billionaire's anti-aging protocol — what actually happens to your brain"
+    target_date: 2026-05-18
+    status: concept
+    thumbnail:
+      text_overlay: "BRYAN JOHNSON'S BLUEPRINT"
+      colors: "Clinical white + vibrant green + gold"
+      imagery: "Before/after brain scan split, data dashboards, Bryan Johnson photo"
+      style: "Clinical, authoritative, trustworthy"
+
+  - video_id: v004
+    title: "Neuralink Update: First 100 Days"
+    hook: "What the first Neuralink patients can actually do now — and what's next"
+    target_date: 2026-06-01
+    status: concept
+    thumbnail:
+      text_overlay: "NEURALINK: FIRST 100 DAYS"
+      colors: "Black + neon blue + white"
+      imagery: "Neuralink chip on brain, glowing electrodes, clinical lighting"
+      style: "Clean sci-fi, clean typography, dramatic"
+
+  - video_id: v005
+    title: "Brain Computer Interfaces: Explained in 10 Minutes"
+    hook: "Neuralink is just one piece — the full picture of how your brain talks to machines"
+    target_date: 2026-06-15
+    status: concept
+    thumbnail:
+      text_overlay: "BCIs EXPLAINED"
+      colors: "Dark blue + cyan circuit patterns"
+      imagery: "Brain with circuit board overlay, glowing neural pathways"
+      style: "Educational but premium, animated feel"
+
+  - video_id: v006
+    title: "Can You Upload Your Consciousness?"
+    hook: "The science behind mind uploading — and why it's closer than you think"
+    target_date: 2026-06-29
+    status: concept
+    thumbnail:
+      text_overlay: "UPLOAD YOUR CONSCIOUSNESS?"
+      colors: "Deep purple + electric blue + magenta"
+      imagery: "Human head transforming into digital data cloud"
+      style: "Mind-bending, psychedelic, high curiosity"
+
+  - video_id: v007
+    title: "The Ethics of Editing Your Brain"
+    hook: "Cognitive enhancement, memory erasure, mood control — who decides?"
+    target_date: 2026-07-13
+    status: concept
+    thumbnail:
+      text_overlay: "EDITING YOUR BRAIN"
+      colors: "Red + black + white warning"
+      imagery: "Brain with edit icon (pencil/pen), biohazard-adjacent imagery"
+      style: "Provocative, editorial, serious"
+
+  - video_id: v008
+    title: "Psychedelics Meet Neurotech: The New Mental Health Frontier"
+    hook: "Microdosing, brain implants, and the race to cure depression"
+    target_date: 2026-07-27
+    status: concept
+    thumbnail:
+      text_overlay: "PSYCHEDELICS × NEUROTECH"
+      colors: "Deep orange + purple + dark background"
+      imagery: "Brain scan + mushroom/fractal imagery combined"
+      style: "Bold fusion, high contrast, controversial"
+
+  - video_id: v009
+    title: "Smart Drugs vs. Brain Implants: What's Actually Working?"
+    hook: "Nootropics, neurofeedback, implants — I reviewed the actual science"
+    target_date: 2026-08-10
+    status: concept
+    thumbnail:
+      text_overlay: "SMART DRUGS vs BRAIN IMPLANTS"
+      colors: "Electric green + black + white"
+      imagery: "Split brain: pill on one side, chip on the other"
+      style: "Vs format, clean comparison, bold typography"
+
+  - video_id: v010
+    title: "The Next Billionaire Is Building a Neurotech Empire"
+    hook: "The investors, startups, and technologies quietly reshaping what it means to be human"
+    target_date: 2026-08-24
+    status: concept
+    thumbnail:
+      text_overlay: "THE NEUROTECH EMPIRE"
+      colors: "Gold + black + dark blue"
+      imagery: "Globe with neural network overlay, billionaire silhouettes"
+      style: "Ambition, scale, premium documentary feel"
+
+# Thumbnail design system
+thumbnail_system:
+  primary_colors:
+    - Deep space black (#0a0a0f)
+    - Electric cyan (#00d4ff)
+    - Neon purple (#b967ff)
+    - Magenta (#ff00aa)
+  accent_colors:
+    - Warning red (#ff3333)
+    - Gold (#ffd700)
+    - Clinical green (#00ff88)
+  common_elements:
+    - Brain imagery (MRI, CT scans, illustrated)
+    - Circuit board patterns
+    - AI face overlays
+    - Neon glow effects
+    - Dark atmospheric backgrounds
+  text_rules:
+    - Max 3-5 words visible
+    - ALL CAPS primary text
+    - High contrast against background
+    - Font: bold sans-serif (Impact-style or Roboto Black)
+    - Leave top 15% clear (YouTube UI)
+
+# Competitor analysis
+competitors:
+  - channel: "Veritasium"
+    style: "Single host, authority voice, real experiments, cinematic"
+    thumbnail: "Clean face close-up, dramatic location, minimal text"
+  - channel: "Kurzgesagt"
+    style: "Animated, colorful, educational, bold statements"
+    thumbnail: "Illustrated characters, bright palette, iconic style"
+  - channel: "MrBeast Science"
+    style: "High production, stunts, entertainment-first"
+    thumbnail: "Extreme expressions, bright colors, chaos"
+  - channel: "Neuralink (official)"
+    style: "Clinical, technical, Elon association"
+    thumbnail: "Clean logos, chip imagery, white/blue"
 
 # Channel
 channel:

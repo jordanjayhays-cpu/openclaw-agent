@@ -1,6 +1,6 @@
 # PK MUSIC — State File
 project: PK-MUSIC
-updated: 2026-04-01T01:22:00Z
+updated: 2026-04-02T03:13:00Z
 
 # Goals
 goal: Release 10 tracks, build catalog, establish Philosophy King brand
@@ -9,45 +9,88 @@ goal: Release 10 tracks, build catalog, establish Philosophy King brand
 tasks:
   - id: pk-001
     title: Generate "Memento Mori" in Suno
-    status: todo
+    status: blocked
     owner: jordan
     due: 2026-04-05
-    blocked_by: null
-    
+    note: "SONG EXISTS - remove this task"
+
   - id: pk-002
     title: Build catalog.json
-    status: todo
+    status: done
     owner: axton
-    due: 2026-04-10
+    completed: 2026-04-02
     blocked_by: null
-    
+
   - id: pk-003
     title: Upload tracks to DistroKid
     status: todo
     owner: jordan
     due: 2026-04-15
-    blocked_by: pk-002
+    blocked_by: null
+
+  - id: pk-004
+    title: Scan 60-track drive for best next candidates
+    status: todo
+    owner: jordan
+    due: 2026-04-07
+    blocked_by: null
+
+  - id: pk-005
+    title: Create DistroKid account
+    status: done
+    owner: jordan
+    completed: 2026-04-02
+    note: "Account already exists"
 
 # Tracks
 tracks:
   total_in_drive: 60
-  ready_for_upload: 0
+  ready_for_upload: 2
   uploaded: 0
+
+# Catalog Status
+catalog:
+  status: updated
+  file: PROJECTS/PK-MUSIC/catalog.json
+  tracks_tracked: 5
+  released: 1
+  ready_for_upload: 2
+  pending_generation: 1
+  unreviewed: 1
 
 # Key tracks
 key_tracks:
-  - All I Know
-  - Altered States of Faith
-  - Memento Mori (pending)
+  - All I Know (READY - upload Apr 11)
+  - Altered States of Faith (READY - upload Apr 18)
+  - Memento Mori (READY - upload Apr 25)
+
+# Release Schedule
+release_schedule:
+  cadence: "1 track per week"
+  day: Friday
+  time: "12:00 AM UTC"
+  start_date: "2026-04-11"
+  end_date: "2026-06-13"
 
 # Platforms
 platforms:
   spotify: pending
   apple_music: pending
   amazon_music: pending
+  youtube_music: "https://music.youtube.com/channel/UCST1Tzuraa0CSR4o3RkVIMw"
   distroKid: pending
 
 # Distribution
 distribution:
   distributor: DistroKid
+  website: https://distrokid.com
+  plan: Musician
+  cost_monthly: "$12.99/month"
+  cost_annual: "$139/year"
   status: not_started
+  upload_process: "See PROJECTS/PK-MUSIC/catalog.json"
+  requirements:
+    - "Audio: WAV or 320kbps MP3"
+    - "Cover art: 3000x3000px JPG"
+    - "Processing time: 1-5 business days"
+    - "Submit 2 weeks before release"

@@ -1,49 +1,49 @@
 # TEAM STATUS — All Projects Live
 
-_Last updated: 2026-04-01 02:06 UTC_
+_Last updated: 2026-04-02 03:11 UTC_
 
 ## PISCO 🔥
 - **Status:** Active outreach
-- **Today:** Follow up Javier (HOT), Email Luis Zamora
-- **Progress:** 6 contacts, 1 hot, 1 warm
+- **Today:** Email Javier case studies, Email Luis Zamora (Apr 4)
+- **Progress:** 12 contacts, case studies ready
 - **Blocker:** None
-- **Agent:** Working (researching new contacts)
+- **Emails drafted:** ✅ Javier follow-up, ✅ Luis follow-up
 
-## COMARE ⏸️
-- **Status:** Waiting on ICP decision
-- **Today:** ICP decision needed
-- **Progress:** 200 prospects ready
-- **Blocker:** Jordan needs to pick: Pharmacy vs Restaurant vs Medical
-- **Agent:** Waiting
+## COMARE 🆕
+- **Status:** ICP DECIDED — Pharmacies
+- **Today:** Building prospect list + outreach sequence
+- **Progress:** Agent running
+- **Blocker:** None
 
-## MASSAGE-PASS 🆕
+## MASSAGE-PASS 🏗️
 - **Status:** Building MVP
-- **Today:** Landng page draft
-- **Progress:** 2 shops interested
+- **Today:** Landing page + Notion prep
+- **Progress:** Landing page drafted
 - **Blocker:** Notion API needed
-- **Agent:** Ready to build
 
-## PK-MUSIC 💤
-- **Status:** Waiting on Jordan
-- **Today:** Generate track via Suno
-- **Progress:** 60+ tracks in Drive
-- **Blocker:** Jordan action needed
-- **Agent:** Ready
+## PK MUSIC 🎵
+- **Status:** Building catalog
+- **Today:** Organize tracks, DistroKid research, release schedule
+- **Progress:** Agent running
+- **Blocker:** Jordan needs to generate "Memento Mori" via Suno
 
-## NEUROTECH 💤
-- **Status:** Waiting on Jordan
-- **Today:** Film Video 1
-- **Progress:** Script ready
-- **Blocker:** Jordan action needed
-- **Agent:** Ready
-
-## Today's Decisions Needed
-
-1. **COMARE ICP** — Pharmacy, Restaurant, or Medical?
-2. **MASSAGE-PASS** — Jordan to provide Notion API
-3. **PK-MUSIC** — Jordan to generate "Memento Mori" via Suno
-4. **NEUROTECH** — Jordan to film Video 1
+## NEUROTECH 🧠
+- **Status:** Building content calendar
+- **Today:** 10 video ideas, thumbnail research
+- **Progress:** Agent running
+- **Blocker:** Jordan needs to film Video 1
 
 ---
 
-_Last full team sync: 2026-04-01 02:06 UTC_
+## Decisions Made Today
+1. ✅ COMARE ICP = Pharmacies
+2. ✅ No LinkedIn scraping (too hard)
+3. ✅ Keep building until Jordan is bottleneck
+
+## Emails Ready for Approval
+- [ ] Javier Estrada — case studies (ready now)
+- [ ] Luis Zamora — follow up (Apr 4)
+
+---
+
+_Last full team sync: 2026-04-02 03:11 UTC_
