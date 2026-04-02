@@ -1,45 +1,68 @@
 # COMARE — State File
 project: COMARE
-updated: 2026-04-01T01:22:00Z
+updated: 2026-04-02T03:12:00Z
 
 # Goals
 goal: Land first 10 clients in Mexico City
 
-# ICP Decision (BLOCKER)
+# ICP Decision — PHARMACY
 icp_decision:
-  status: pending
-  options:
-    - Pharmacy: Farmacias Similares, del Ahorro, Guadalajara, Yza, Benavides
-    - Restaurant: El Diclo, Toks, Sanborns, KFC, McDonald's
-    - Medical: Star Medica, Grupo Angeles, hospitals, dental chains
-  recommendation: Pharmacy (biggest footprint, owner accessible)
-  decision_needed_by: 2026-04-05
+  status: decided
+  chosen: Pharmacy
+  rationale: "10,700+ units across chains, owner-accessible (Dr. Simi), rapid expansion in 2026 (Farmacias del Ahorro: 200 new stores, Farmacias Similares: expanding into Colombia), high foot traffic, maintenance needs are recurring"
+
+# ICP Breakdown
+icp_pharmacy:
+  primary_targets:
+    - Farmacias Similares (Dr. Simi): ~10,700 units, LATAM's largest
+    - Farmacias del Ahorro: ~2,000 units, 200 new stores planned for 2026
+    - Farmacias Guadalajara: leading in sales/coverage
+    - Yza / Benavides
+  key_contact_types:
+    - District/Regional Managers
+    - Operations Directors
+    - Franchise Owners (Franquiciatarios)
+    - Expansion/Real Estate teams
+  entry_point: Operations/District managers (not HQ gatekeepers)
+  why_now: Farmacias del Ahorro announced 200 new stores in 2026; Farmacias Similares expanding into Colombia — both signal active growth/opportunity
 
 # Tasks
 tasks:
   - id: comare-001
     title: "DECISION: Pick ICP (Pharmacy vs Restaurant vs Medical)"
-    status: blocked
-    owner: jordan
-    due: 2026-04-05
-    blocked_by: icp_decision
+    status: completed
+    completed_date: 2026-04-02
+    resolution: Pharmacy chosen
 
   - id: comare-002
     title: Build prospect list for chosen ICP
-    status: todo
+    status: in_progress
     owner: axton
     due: 2026-04-07
-    blocked_by: comare-001
 
   - id: comare-003
     title: Draft outreach sequence for chosen ICP
-    status: todo
+    status: in_progress
     owner: axton
     due: 2026-04-08
-    blocked_by: comare-002
+
+  - id: comare-004
+    title: Identify decision makers for Farmacias del Ahorro (Mexico City)
+    status: todo
+    owner: axton
+    due: 2026-04-03
+
+  - id: comare-005
+    title: Identify decision makers for Farmacias Similares (Mexico City)
+    status: todo
+    owner: axton
+    due: 2026-04-03
 
 # Completed
-completed: []
+completed:
+  - date: 2026-04-02
+    task: ICP decision made — Pharmacy chosen over Restaurant/Medical
+    notes: Farmacias del Ahorro (200 new stores 2026), Farmacias Similares (10,700+ units, LATAM #1), rapid expansion cycle = high maintenance opportunity
 
 # Key contacts
 contacts:
@@ -47,12 +70,46 @@ contacts:
     company: Farmacias Similares
     warmth: warm
     type: owner
-    notes: Forbes Top 20 Leaders, public figure
+    notes: Forbes Top 20 Leaders, public figure, HQ-level
+
+  - name: Gabriel Zavala
+    company: Farmacias del Ahorro
+    warmth: warm
+    type: Director General Adjunto de Operaciones
+    notes: Announced 200 new stores in 2026, speaks publicly on expansion
+    source: eleconomista.com.mx
+
+  - name: Maximiliano Leonardo Winkler
+    company: Farmacias del Ahorro
+    warmth: warm
+    type: Director Ejecutivo de Operaciones
+    notes: Led new Interlomas concept store launch, innovation focus
+    source: eleconomista.com.mx
+
+  - name: Juan Manuel Zepeda Aguilar
+    company: Farmacias Similares
+    warmth: cold
+    type: Director
+    linkedin: https://mx.linkedin.com/in/juan-manuel-zepeda-aguilar-9984799b
+    location: Ciudad de México
+    notes: 38 LinkedIn contacts at company
+    source: LinkedIn search
 
 # Metrics
 metrics:
   prospects_identified: 200
-  icp_decided: false
+  icp_decided: true
+  icp: Pharmacy
   contacts_reached: 0
   meetings: 0
   clients: 0
+
+# Outreach
+outreach_sequence:
+  status: drafted
+  sequence_length: 3
+  target: Pharmacy district/ops managers
+  channels:
+    - LinkedIn outreach
+    - Email (direct where available)
+  draft_date: 2026-04-02
