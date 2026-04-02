@@ -81,3 +81,58 @@
 - mp-005 (shop signup → Notion) — blocked by mp-004
 - mp-006 (subscriber waitlist form) — technically unblocked now (Formspree fallback works)
 
+
+### Night Check-in — 22:10 UTC
+- **Source:** MASSAGE-PASS Check-in cron
+- **Time:** 22:10 UTC
+
+#### Notion API Check
+- ❌ Still not available — `~/.config/notion/api_key` not found, no notion token in workspace env
+
+#### Landing Page Status
+- ✅ Landing page (`landing-page.html`) is fully built and complete
+- ✅ Forms (subscriber waitlist + clinic registration) are in place with Formspree placeholder + localStorage backup
+- Ready to deploy to GitHub Pages
+
+#### No Action Taken
+- Landing page complete from earlier check-ins
+- Notion API still requires Jordan to set up (mp-002)
+- Nothing new to build until mp-002 is unblocked
+
+#### Blockers
+- **mp-002** (Notion API): Jordan needs to create Notion integration + store token
+- **mp-004** (Notion databases): Blocked by mp-002
+- **mp-001** (Buy domain): Still todo — Jordan, due 2026-04-07
+
+---
+
+## 2026-04-02 — Thursday
+
+### Cron Trigger
+- **Source:** MASSAGE-PASS Check-in cron
+- **Time:** 02:10 UTC
+
+### Notion API Check
+- ❌ Still NOT AVAILABLE — no token found
+- mp-002 still pending (Jordan's action required)
+- mp-004 still blocked
+
+### Action Taken
+- **Landing page enhancements** (mp-003 iteration):
+  - ✅ FAQ upgraded to **interactive accordion** — cleaner UX, one question visible at a time
+  - ✅ Added **live countdown timer** to April 1, 2026 launch date in hero section
+  - ✅ Added **trust bar** below FAQ — "cancel anytime / vetted therapists / secure payments / book in seconds"
+  - ✅ Added **mobile responsiveness** fixes for forms, pricing grid, countdown
+  - All changes backward-compatible, no breaking changes
+
+### What Changed
+- `landing-page.html` — new CSS + JS added (accordion, countdown, trust bar, mobile fixes)
+
+### Still Blocked
+- mp-002 → mp-004 → mp-005/mp-006 (forms → Notion)
+
+### What Jordan Needs
+1. Set up Notion API token → unblocks mp-004 → I build databases automatically
+2. Create Formspree account (formspree.io) → replace `YOUR_FORMSPREE_ID` in landing page → live form submissions
+3. Buy domain (due 2026-04-07)
+

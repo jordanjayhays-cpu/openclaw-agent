@@ -291,13 +291,84 @@
         .shop-cta-section { text-align: center; }
         .shop-cta-section p { max-width: 480px; margin: 0 auto 32px; color: var(--muted); }
 
-        /* FAQ */
+        /* FAQ ACCORDION */
+        .faq-list { max-width: 640px; }
         .faq-item {
             border-bottom: 1px solid var(--border);
-            padding: 24px 0;
         }
-        .faq-item h4 { font-size: 16px; margin-bottom: 8px; }
-        .faq-item p { font-size: 14px; color: var(--muted); }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text);
+            padding: 20px 0;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+            gap: 16px;
+        }
+        .faq-question:hover { color: var(--pink); }
+        .faq-question .arrow { transition: transform 0.3s; font-size: 12px; flex-shrink: 0; }
+        .faq-item.open .faq-question { color: var(--pink); }
+        .faq-item.open .arrow { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s;
+        }
+        .faq-item.open .faq-answer { max-height: 200px; }
+        .faq-answer p { font-size: 14px; color: var(--muted); padding-bottom: 20px; }
+
+        /* TRUST SECTION */
+        .trust-bar {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin: 48px 0;
+        }
+        .trust-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+        .trust-item .icon { font-size: 20px; }
+
+        /* COUNTDOWN */
+        .countdown {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+        .countdown-unit { text-align: center; min-width: 72px; }
+        .countdown-num {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        .countdown-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+        /* MOBILE FORM FIXES */
+        @media (max-width: 600px) {
+            .form-row { flex-direction: column; }
+            .form-group { min-width: 100%; }
+            .countdown { gap: 16px; }
+            .countdown-num { font-size: 28px; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .form-section { padding: 36px 20px; }
+            .trust-bar { gap: 16px; }
+            .hero-stats { gap: 24px; }
+        }
 
         /* CTA BANNER */
         .cta-banner {
@@ -360,6 +431,24 @@
         <div class="hero-stat">
             <div class="hero-stat-num">€49</div>
             <div class="hero-stat-label">From / Month</div>
+        </div>
+    </div>
+    <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+            <div class="countdown-num" id="cd-days">--</div>
+            <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-unit">
+            <div class="countdown-num" id="cd-hours">--</div>
+            <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-unit">
+            <div class="countdown-num" id="cd-mins">--</div>
+            <div class="countdown-label">Mins</div>
+        </div>
+        <div class="countdown-unit">
+            <div class="countdown-num" id="cd-secs">--</div>
+            <div class="countdown-label">Secs</div>
         </div>
     </div>
 </section>
@@ -608,33 +697,61 @@
 <section class="section">
     <div class="section-label">FAQ</div>
     <h2>Common questions</h2>
-    <div style="max-width: 640px;">
+    <div class="faq-list">
         <div class="faq-item">
-            <h4>When does Massage Pass launch?</h4>
-            <p>We're targeting April 2026 in Madrid. Early subscribers will get founding member pricing locked in for life.</p>
+            <button class="faq-question">
+                When does Massage Pass launch?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer"><p>We're targeting April 2026 in Madrid. Early subscribers will get founding member pricing locked in for life.</p></div>
         </div>
         <div class="faq-item">
-            <h4>Is this available outside Madrid?</h4>
-            <p>Not yet. We're starting with our first 2 partner clinics in Chamartín and Salamanca. Expansion depends on demand — tell us where you want it!</p>
+            <button class="faq-question">
+                Is this available outside Madrid?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer"><p>Not yet. We're starting with our first 2 partner clinics in Chamartín and Salamanca. Expansion depends on demand — tell us where you want it!</p></div>
         </div>
         <div class="faq-item">
-            <h4>How does the clinic get paid?</h4>
-            <p>Massage Pass retains 25% per booking to cover platform costs and growth. The clinic receives 75% directly. We pay weekly.</p>
+            <button class="faq-question">
+                How does the clinic get paid?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer"><p>Massage Pass retains 25% per booking to cover platform costs and growth. The clinic receives 75% directly. We pay weekly.</p></div>
         </div>
         <div class="faq-item">
-            <h4>Can I pause my subscription?</h4>
-            <p>Yes. You can pause for up to 2 months per year at no charge. Your membership tier is preserved.</p>
+            <button class="faq-question">
+                Can I pause my subscription?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer"><p>Yes. You can pause for up to 2 months per year at no charge. Your membership tier is preserved.</p></div>
         </div>
         <div class="faq-item">
-            <h4>What if I don't use all my visits?</h4>
-            <p>Essential plan visits reset monthly. Unused Premium visits don't roll over — but with unlimited, you don't need to worry.</p>
+            <button class="faq-question">
+                What if I don't use all my visits?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer"><p>Essential plan visits reset monthly. Unused Premium visits don't roll over — but with unlimited, you don't need to worry.</p></div>
         </div>
         <div class="faq-item">
-            <h4>How do I know a clinic is good quality?</h4>
-            <p>We vet every clinic before onboarding. We check qualifications, hygiene, and customer reviews. Bad clinics don't last on the platform.</p>
+            <button class="faq-question">
+                How do I know a clinic is good quality?
+                <span class="arrow">▼</span>
+            </button>
+            <div class="faq-answer"><p>We vet every clinic before onboarding. We check qualifications, hygiene, and customer reviews. Bad clinics don't last on the platform.</p></div>
         </div>
     </div>
 </section>
+
+<!-- TRUST BAR -->
+<div class="section" style="padding-top: 0;">
+    <div class="trust-bar">
+        <div class="trust-item"><span class="icon">🔒</span> No commitment — cancel anytime</div>
+        <div class="trust-item"><span class="icon">✓</span> Vetted, qualified therapists</div>
+        <div class="trust-item"><span class="icon">💳</span> Secure payments via Stripe</div>
+        <div class="trust-item"><span class="icon">📅</span> Book in seconds, not minutes</div>
+    </div>
+</div>
 
 <!-- CTA BANNER -->
 <div class="section" style="padding-top: 0;">
@@ -653,6 +770,42 @@
 </footer>
 
 <script>
+    // COUNTDOWN TIMER — targets April 1, 2026
+    (function() {
+        const launch = new Date('2026-04-01T00:00:00Z').getTime();
+        const els = {
+            days: document.getElementById('cd-days'),
+            hours: document.getElementById('cd-hours'),
+            mins: document.getElementById('cd-mins'),
+            secs: document.getElementById('cd-secs')
+        };
+        function tick() {
+            const now = Date.now();
+            const diff = Math.max(0, launch - now);
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff % 86400000) / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+            if (els.days) els.days.textContent = String(d).padStart(2, '0');
+            if (els.hours) els.hours.textContent = String(h).padStart(2, '0');
+            if (els.mins) els.mins.textContent = String(m).padStart(2, '0');
+            if (els.secs) els.secs.textContent = String(s).padStart(2, '0');
+        }
+        if (els.days) { tick(); setInterval(tick, 1000); }
+    })();
+
+    // FAQ ACCORDION
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+            // Toggle current
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+
     // Form handler — saves to localStorage + submits to Formspree
     function setupForm(formId) {
         const form = document.getElementById(formId);
