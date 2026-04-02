@@ -1,39 +1,43 @@
 {
   "last_run": {
-    "run_id": "run_1774969965285",
-    "created_at": "2026-03-31T15:12:45.297Z",
+    "run_id": "run_1775104920609",
+    "created_at": "2026-04-02T04:42:00.622Z",
     "parent_event_id": null,
-    "selected_gene_id": null,
+    "selected_gene_id": "gene_gep_repair_from_errors",
     "selected_capsule_id": null,
     "selector": {
-      "selected": null,
+      "selected": "gene_gep_repair_from_errors",
       "reason": [
-        "no matching gene found; new gene may be required",
-        "signals: user_feature_request, user_feature_request:add a section with additional Spain hotel LinkedIn profiles found: [TOOL, capability_gap",
+        "signals match gene.signals_match",
+        "signals: log_error, user_feature_request, user_feature_request:**ASSISTANT**: The evolver cron is set to fire in 21 hours but I need to verify it's configured correctly. The env var issue might break it. Let me f, capability_gap",
         "memory_graph: memory_prefer:gene_gep_repair_from_errors",
         "drift_intensity: 0.577"
       ],
-      "alternatives": []
+      "alternatives": [
+        "gene_tool_integrity"
+      ]
     },
     "signals": [
+      "log_error",
       "user_feature_request",
-      "user_feature_request:add a section with additional Spain hotel LinkedIn profiles found: [TOOL",
+      "user_feature_request:**ASSISTANT**: The evolver cron is set to fire in 21 hours but I need to verify it's configured correctly. The env var issue might break it. Let me f",
       "capability_gap"
     ],
     "mutation": {
       "type": "Mutation",
-      "id": "mut_1774969965283",
-      "category": "innovate",
+      "id": "mut_1775104920607",
+      "category": "repair",
       "trigger_signals": [
+        "log_error",
         "user_feature_request",
-        "user_feature_request:add a section with additional Spain hotel LinkedIn profiles found: [TOOL",
+        "user_feature_request:**ASSISTANT**: The evolver cron is set to fire in 21 hours but I need to verify it's configured correctly. The env var issue might break it. Let me f",
         "capability_gap"
       ],
-      "target": "behavior:protocol",
-      "expected_effect": "explore new strategy combinations to escape local optimum",
-      "risk_level": "medium"
+      "target": "gene:gene_gep_repair_from_errors",
+      "expected_effect": "reduce runtime errors, increase stability, and lower failure rate",
+      "risk_level": "low"
     },
-    "mutation_id": "mut_1774969965283",
+    "mutation_id": "mut_1775104920607",
     "personality_state": {
       "type": "PersonalityState",
       "rigor": 0.7,
@@ -52,31 +56,21 @@
     "reused_source_node": null,
     "reused_chain_id": null,
     "baseline_untracked": [
-      "PROJECTS/PISCO/email-drafts-ready.md",
-      "PROJECTS/PISCO/pisco-crm-ready.md",
-      "assets/gep/candidates.jsonl",
-      "assets/gep/capsules.json",
-      "assets/gep/events.jsonl",
-      "assets/gep/failed_capsules.json",
-      "assets/gep/genes.json",
-      "assets/gep/genes.jsonl",
-      "memory/evolution/memory_graph.jsonl",
-      "memory/evolution/memory_graph_state.json",
-      "memory/evolution/personality_state.json",
-      "memory/evolution/question_generator_state.json",
-      "memory/skills_list_cache.json",
-      "skills/capability-evolver/memory/evolution/evolution_state.json",
-      "skills/capability-evolver/memory/evolution/question_generator_state.json"
+      "memory/evolution/evolution_state.json",
+      "startup-machine/ACQUISITION-ENGINE.md",
+      "startup-machine/DECISION-MAKERS.md",
+      "startup-machine/OPERATIONS-MANUAL.md",
+      "tools/run-evolvers.sh"
     ],
-    "baseline_git_head": "3e6a6197db106004ba285538fb98dbfa3e772e88",
+    "baseline_git_head": "e3b495b6fd87f0326865afac54fc74ccd4cf7d09",
     "blast_radius_estimate": {
       "files": 12,
       "lines": 960
     },
     "strategy_policy": {
-      "name": "balanced",
-      "label": "Balanced",
-      "description": "Normal operation. Steady growth with stability.",
+      "name": "early-stabilize",
+      "label": "Early Stabilization",
+      "description": "First cycles. Prioritize fixing existing issues before innovating.",
       "forceInnovate": false,
       "cautiousExecution": false,
       "highRiskGene": false,
@@ -84,7 +78,7 @@
       "failureStreak": 0,
       "blastRadiusMaxFiles": 12,
       "directives": [
-        "Base strategy: Balanced (Normal operation. Steady growth with stability.)",
+        "Base strategy: Early Stabilization (First cycles. Prioritize fixing existing issues before innovating.)",
         "Target max files for this cycle: 12."
       ]
     },
