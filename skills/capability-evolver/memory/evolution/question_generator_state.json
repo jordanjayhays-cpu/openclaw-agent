@@ -1,6 +1,8 @@
 {
-  "lastAskedAt": "2026-03-31T15:12:36.509Z",
+  "lastAskedAt": "2026-04-02T03:51:28.556Z",
   "recentQuestions": [
-    "User requested a feature that may benefit from community solutions: **ASSISTANT**: Now let me add a section with additional Spain hotel LinkedIn profiles found: [TOOL: edit] -- Are there existing implementations or best practices for this?"
+    "User requested a feature that may benefit from community solutions: **ASSISTANT**: Now let me add a section with additional Spain hotel LinkedIn profiles found: [TOOL: edit] -- Are there existing implementations or best practices for this?",
+    "Recurring error in evolution cycle that auto-repair cannot resolve: LLM ERROR] 400 Reasoning is mandatory for this endpoint and cannot be disabled. **USER**: Read HEART -- What approaches or patches have worked for similar issues?",
+    "User requested a feature that may benefit from community solutions: **ASSISTANT**: Okay, read the evolver. Here's the situation: **What it does:** - Analyzes my runtime history and memory files - Identifies failures/pa -- Are there existing implementations or best practices for this?"
   ]
 }
