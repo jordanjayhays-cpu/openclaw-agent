@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage Pass — Book Your First Massage</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 600px;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 32px;
+      color: #a3a3a3;
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 0%, #a3a3ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sub {
+      font-size: 18px;
+      color: #888;
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+    .form-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .form-card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .input-row {
+      display: flex;
+      gap: 12px;
+    }
+    input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+    }
+    input[type="email"]:focus {
+      border-color: rgba(255,255,255,0.4);
+    }
+    button {
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: none;
+      background: #fff;
+      color: #0d0d0d;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    button:hover {
+      transform: scale(1.03);
+    }
+    .success {
+      display: none;
+      margin-top: 16px;
+      color: #4ade80;
+      font-size: 15px;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #444;
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 36px; }
+      .input-row { flex-direction: column; }
+      button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="badge">Launching April 2026</div>
+    <h1>Book Your<br>First Massage</h1>
+    <p class="sub">On-demand massage therapy. Premium clinics across Madrid. Book in seconds, same-day availability.</p>
+
+    <div class="form-card">
+      <p>Claim your first session. Priority access for early members.</p>
+      <form id="waitlistForm" onsubmit="handleSubmit(event)">
+        <div class="input-row">
+          <input type="email" id="email" placeholder="Your email address" required>
+          <button type="submit">Book Your First Massage</button>
+        </div>
+        <div class="success" id="successMsg">You're in. We'll reach out to schedule your first massage.</div>
+      </form>
+    </div>
+
+    <div class="footer">No commitment. No spam. Just your first massage.</div>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      document.getElementById('waitlistForm').querySelector('.input-row').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      // TODO: wire to actual email collection endpoint
+      console.log('Email captured:', email);
+    }
+  </script>
+</body>
+</html>
