@@ -37,6 +37,9 @@
 - [ ] Follow up PISCO prospects — **12 days overdue**
 - [ ] Buy MASSAGE-PASS domain
 - [ ] Decide COMARE ICP
+- [x] Build PISCO follow-up tracker system (Apr 16) → PROJECTS/PISCO/follow-up-tracker.md
+- [x] Draft COMARE case study (Apr 16) → PROJECTS/COMARE/case-study.md
+- [x] Refresh PK-MUSIC catalog (Apr 16) → release schedule corrected, next 10 tracks added
 
 ## 🚨 OVERDUE — PISCO Outreach (Apr 1–7 window missed)
 | Prospect | Was Due | Days Overdue |
@@ -56,7 +59,7 @@
 ## Backlog
 - Research NH Hotel expansion plans
 - Build COMARE prospect list (after ICP decision)
-- Set up WhatsApp community "The Middle Way"
+- Set up WhatsApp community “The Middle Way”
 - Film Neurotech Video #1 script
 - Onboard first 2 MASSAGE-PASS shops (Mayoac, The Fix Room)
 
@@ -78,5 +81,5 @@
 2. Log completed tasks to memory/tasks-log.md
 3. Update project states when things change
 4. Never lose track of pending Jordan decisions
-5. If Jordan says "do it" → execute without asking
+5. If Jordan says “do it” → execute without asking
 6. **PISCO emails are the #1 priority — don't let them stall again**

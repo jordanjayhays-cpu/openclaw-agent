@@ -48,3 +48,14 @@ Updated cron restart block to:
 ### Still Monitoring
 - 8 failed crons will be retried on next self-heal cycle (15m)
 - Subagent stale-session detection still uses `openclaw sessions list` + grep which may not catch all subagent types
+
+## 2026-04-16 — 11:47 UTC (Self-Heal Cron)
+
+**Failures detected:** 2
+- Evening Pulse cron (ab165c9e-776c-432e-9d1b-34eb64f4c8f5) — **FIXED:** restarted successfully
+- Overnight Builder cron (633147d5-bc09-4bfe-b828-cc88f4da59b5) — **FIXED:** restarted successfully
+
+**Auto-fixes applied:** 2/2
+**Manual intervention needed:** None
+
+---
