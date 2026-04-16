@@ -17,9 +17,16 @@ FAILED_CRONS=$(openclaw cron list 2>&1 | grep "error" | wc -l)
 if [ "$FAILED_CRONS" -gt 0 ]; then
     echo "⚠️ $FAILED_CRONS failed cron(s) detected"
     # Re-run failed crons
-    openclaw cron list 2>&1 | grep "error" | while read line; do
-        # Extract cron ID and re-trigger
-        echo "Attempting to restart: $line"
+    openclaw cron list 2>&1 | grep " error " | while read line; do
+        JOB_ID=$(echo "$line" | awk '{print $1}')
+        JOB_NAME=$(echo "$line" | awk '{print $2, $3}')
+        echo "Restarting: $JOB_NAME ($JOB_ID)"
+        openclaw cron run "$JOB_ID" 2>&1
+        if [ $? -eq 0 ]; then
+            echo "✓ $JOB_NAME restarted"
+        else
+            echo "✗ $JOB_NAME restart failed"
+        fi
     done
     ((FAILURES++))
 fi

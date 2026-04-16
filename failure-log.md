@@ -29,3 +29,22 @@ These failed with `error` status but the script couldn't re-trigger them properl
 ### Action Required
 
 The cron re-trigger logic in `tools/self_heal.sh` only echoes "Attempting to restart" but doesn't execute `openclaw cron run`. Need to fix the script to properly re-trigger failed crons.
+
+---
+
+## 2026-04-16 — 10:32 UTC (Self-Heal Cron)
+
+**Status:** ✅ FIXED
+
+### Root Cause
+`tools/self_heal.sh` parsed failed cron lines correctly but only printed "Attempting to restart" without calling `openclaw cron run <jobId>`.
+
+### Fix Applied
+Updated cron restart block to:
+1. Extract job ID (first field of `openclaw cron list` output)
+2. Call `openclaw cron run "$JOB_ID"` for each errored cron
+3. Log success/failure per cron
+
+### Still Monitoring
+- 8 failed crons will be retried on next self-heal cycle (15m)
+- Subagent stale-session detection still uses `openclaw sessions list` + grep which may not catch all subagent types
