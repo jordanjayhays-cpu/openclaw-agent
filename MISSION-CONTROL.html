@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         :root {
             --bg: #0a0a0f;
             --bg-card: #111118;
@@ -22,588 +21,157 @@
             --yellow: #ffbe0b;
             --green: #00d4aa;
             --blue: #3a86ff;
+            --purple: #a855f7;
         }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            line-height: 1.5;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #111118 0%, #0a0a0f 100%);
-            border-bottom: 1px solid var(--border);
-            padding: 24px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .header-main {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.5; }
+        .header { background: linear-gradient(135deg, #111118 0%, #0a0a0f 100%); border-bottom: 1px solid var(--border); padding: 24px 40px; position: sticky; top: 0; z-index: 100; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
         .logo span { color: var(--accent); }
-        
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .agent-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--text-dim);
-            background: var(--bg-card);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-        }
-        
-        .agent-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        
-        .header-time {
-            font-size: 13px;
-            color: var(--text-dim);
-            font-variant-numeric: tabular-nums;
-        }
-        
-        .main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 32px 40px;
-        }
-        
-        .hero-banner {
-            background: linear-gradient(135deg, rgba(0, 212, 170, 0.15), rgba(0, 212, 170, 0.02));
-            border: 1px solid rgba(0, 212, 170, 0.25);
-            border-radius: 16px;
-            padding: 24px 32px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .hero-emoji {
-            font-size: 48px;
-        }
-        
-        .hero-content h1 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 4px;
-        }
-        
-        .hero-content p {
-            font-size: 14px;
-            color: var(--text-dim);
-        }
-        
-        .hero-meta {
-            margin-left: auto;
-            text-align: right;
-        }
-        
-        .hero-meta .label {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            letter-spacing: 1px;
-        }
-        
-        .hero-meta .value {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        .priority-alert {
-            background: linear-gradient(135deg, rgba(255, 71, 87, 0.12), rgba(255, 71, 87, 0.04));
-            border: 1px solid rgba(255, 71, 87, 0.25);
-            border-radius: 16px;
-            padding: 20px 24px;
-            margin-bottom: 28px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .priority-alert-icon {
-            font-size: 28px;
-            flex-shrink: 0;
-        }
-        
-        .priority-alert-content h3 {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: var(--red);
-        }
-        
-        .priority-alert-content p {
-            font-size: 13px;
-            color: var(--text-dim);
-        }
-        
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 24px;
-        }
-        
-        @media (max-width: 1100px) {
-            .grid { grid-template-columns: 1fr; }
-        }
-        
-        .section-title {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: var(--text-dim);
-        }
-        
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-        }
-        
-        .card-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .card-body { padding: 24px; }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-        
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            position: relative;
-            transition: border-color 0.2s, transform 0.2s;
-        }
-        
-        .project-card:hover {
-            border-color: rgba(0, 212, 170, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .project-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-        
-        .project-emoji {
-            font-size: 28px;
-        }
-        
-        .project-status-badge {
-            font-size: 10px;
-            font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .project-status-badge.active {
-            background: var(--accent-dim);
-            color: var(--accent);
-        }
-        
-        .project-status-badge.planning {
-            background: rgba(58, 134, 255, 0.12);
-            color: var(--blue);
-        }
-        
-        .project-status-badge.blocked {
-            background: rgba(255, 71, 87, 0.12);
-            color: var(--red);
-        }
-        
-        .project-status-badge.waiting {
-            background: rgba(255, 190, 11, 0.12);
-            color: var(--yellow);
-        }
-        
-        .project-status-badge.concept {
-            background: rgba(107, 107, 128, 0.2);
-            color: var(--text-dim);
-        }
-        
-        .project-name {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        
-        .project-desc {
-            font-size: 12px;
-            color: var(--text-dim);
-            margin-bottom: 16px;
-        }
-        
-        .project-tasks {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .project-task {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 13px;
-        }
-        
-        .task-priority {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-top: 5px;
-            flex-shrink: 0;
-        }
-        
+        .header-right { display: flex; align-items: center; gap: 16px; }
+        .agent-status { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); background: var(--bg-card); padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); }
+        .agent-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        .header-time { font-size: 13px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+        .main { max-width: 1400px; margin: 0 auto; padding: 32px 40px; }
+        .hero-banner { background: linear-gradient(135deg, rgba(0, 212, 170, 0.15), rgba(0, 212, 170, 0.02)); border: 1px solid rgba(0, 212, 170, 0.25); border-radius: 16px; padding: 24px 32px; margin-bottom: 32px; display: flex; align-items: center; gap: 20px; }
+        .hero-emoji { font-size: 48px; }
+        .hero-content h1 { font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+        .hero-content p { font-size: 14px; color: var(--text-dim); }
+        .hero-meta { margin-left: auto; text-align: right; }
+        .hero-meta .label { font-size: 11px; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1px; }
+        .hero-meta .value { font-size: 18px; font-weight: 700; color: var(--accent); }
+        .section-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-dim); margin-bottom: 16px; }
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
+        @media (max-width: 768px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+        .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-dim); margin-bottom: 8px; }
+        .stat-value { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+        .stat-value.accent { color: var(--accent); }
+        .stat-sub { font-size: 12px; color: var(--text-dim); }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; position: relative; transition: border-color 0.2s, transform 0.2s; }
+        .project-card:hover { border-color: rgba(0, 212, 170, 0.3); transform: translateY(-2px); }
+        .project-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .project-emoji { font-size: 28px; }
+        .project-status-badge { font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .project-status-badge.active { background: var(--accent-dim); color: var(--accent); }
+        .project-status-badge.planning { background: rgba(58, 134, 255, 0.12); color: var(--blue); }
+        .project-status-badge.blocked { background: rgba(255, 71, 87, 0.12); color: var(--red); }
+        .project-status-badge.waiting { background: rgba(255, 190, 11, 0.12); color: var(--yellow); }
+        .project-status-badge.concept { background: rgba(107, 107, 128, 0.2); color: var(--text-dim); }
+        .project-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .project-desc { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; }
+        .project-tasks { display: flex; flex-direction: column; gap: 8px; }
+        .project-task { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+        .task-priority { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
         .task-priority.high { background: var(--red); }
         .task-priority.medium { background: var(--yellow); }
         .task-priority.low { background: var(--green); }
-        
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-bottom: 24px; }
+        .card-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .card-body { padding: 24px; }
         .task-list { display: flex; flex-direction: column; }
-        
-        .task-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.15s;
-        }
-        
+        .task-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
         .task-item:last-child { border-bottom: none; }
         .task-item:hover { background: var(--bg-card-hover); margin: 0 -24px; padding: 14px 24px; }
-        
-        .task-checkbox {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid var(--border);
-            flex-shrink: 0;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-        
+        .task-checkbox { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
         .task-checkbox:hover { border-color: var(--accent); }
         .task-checkbox.done { background: var(--accent); border-color: var(--accent); }
-        
         .task-content { flex: 1; }
-        
-        .task-title {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-        
+        .task-title { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
         .task-title.done { text-decoration: line-through; color: var(--text-dim); }
-        
-        .task-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            color: var(--text-dim);
-        }
-        
-        .task-project {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-        
+        .task-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dim); }
+        .task-project { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
         .task-project.pisco { background: rgba(0, 212, 170, 0.1); color: var(--accent); }
         .task-project.comare { background: rgba(58, 134, 255, 0.1); color: var(--blue); }
         .task-project.massage { background: rgba(255, 71, 87, 0.1); color: var(--red); }
         .task-project.pk { background: rgba(255, 190, 11, 0.1); color: var(--yellow); }
         .task-project.system { background: rgba(107, 107, 128, 0.2); color: var(--text-dim); }
-        
-        .task-due {
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-        
+        .task-due { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
         .task-due.today { background: rgba(255, 71, 87, 0.1); color: var(--red); }
         .task-due.this-week { background: rgba(255, 190, 11, 0.1); color: var(--yellow); }
         .task-due.next-week { background: rgba(0, 212, 170, 0.1); color: var(--accent); }
-        
-        .blocker-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
+        .blocker-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border); }
         .blocker-item:last-child { border-bottom: none; }
-        
-        .blocker-icon {
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-        
+        .blocker-icon { font-size: 18px; flex-shrink: 0; }
         .blocker-content { flex: 1; }
-        
-        .blocker-title {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        
-        .blocker-meta {
-            font-size: 12px;
-            color: var(--text-dim);
-        }
-        
-        .blocker-project {
-            font-size: 11px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 8px;
-        }
-        
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-        
-        @media (max-width: 768px) {
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-        
-        .stat-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-dim);
-            margin-bottom: 8px;
-        }
-        
-        .stat-value {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 4px;
-        }
-        
-        .stat-value.accent { color: var(--accent); }
-        
-        .stat-sub {
-            font-size: 12px;
-            color: var(--text-dim);
-        }
-        
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-        
-        .quick-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        
-        .quick-action {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 8px;
-            background: var(--bg-card-hover);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            color: inherit;
-        }
-        
-        .quick-action:hover {
-            border-color: var(--accent);
-            background: var(--accent-dim);
-        }
-        
-        .quick-action-icon {
-            font-size: 24px;
-        }
-        
-        .quick-action-label {
-            font-size: 11px;
-            font-weight: 600;
-            text-align: center;
-            color: var(--text-dim);
-        }
-        
+        .blocker-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .blocker-meta { font-size: 12px; color: var(--text-dim); }
+        .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .quick-action { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px; background: var(--bg-card-hover); border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; }
+        .quick-action:hover { border-color: var(--accent); background: var(--accent-dim); }
+        .quick-action-icon { font-size: 24px; }
+        .quick-action-label { font-size: 11px; font-weight: 600; text-align: center; color: var(--text-dim); }
         .resource-list { display: flex; flex-direction: column; gap: 8px; }
-        
-        .resource-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            background: var(--bg-card-hover);
-            border-radius: 8px;
-            font-size: 13px;
-            color: var(--text-dim);
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-        
+        .resource-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--bg-card-hover); border-radius: 8px; font-size: 13px; color: var(--text-dim); transition: all 0.2s; text-decoration: none; }
         .resource-item:hover { color: var(--accent); background: var(--accent-dim); }
         .resource-item-icon { font-size: 14px; }
-        
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 8px 0;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 32px;
-            color: var(--text-dim);
-            font-size: 12px;
-        }
+        .divider { height: 1px; background: var(--border); margin: 8px 0; }
+        .grid { display: grid; grid-template-columns: 1fr 380px; gap: 24px; }
+        @media (max-width: 1100px) { .grid { grid-template-columns: 1fr; } }
+        .sidebar { display: flex; flex-direction: column; gap: 24px; }
+        .footer { text-align: center; padding: 32px; color: var(--text-dim); font-size: 12px; }
+        .system-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 12px; }
+        .system-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 13px; }
+        .system-icon { font-size: 16px; }
+        .system-icon.ok { color: var(--accent); }
+        .system-icon.warn { color: var(--yellow); }
+        .system-icon.error { color: var(--red); }
+        .evolver-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); color: var(--accent); padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+        .evolver-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="header-top">
-            <div class="header-main">
-                <div class="logo">🦞 <span>Mission Control</span></div>
-            </div>
+            <div class="logo">🦞 <span>Mission Control</span></div>
             <div class="header-right">
+                <div class="evolver-badge">Self-improving</div>
                 <div class="agent-status">
                     <div class="agent-dot"></div>
-                    <span>Claw Active</span>
+                    <span>Axton Active</span>
                 </div>
                 <div class="header-time" id="header-time">--:-- UTC</div>
             </div>
         </div>
     </header>
-    
+
     <main class="main">
         <div class="hero-banner">
             <div class="hero-emoji">🦞</div>
             <div class="hero-content">
                 <h1>Jordan's Operations Hub</h1>
-                <p>IE IMBA · 7 months remaining · Building freedom</p>
+                <p>IE IMBA · ~6 months remaining · Building freedom</p>
             </div>
             <div class="hero-meta">
                 <div class="label">Today</div>
-                <div class="value" id="date-display">Mar 31</div>
+                <div class="value" id="date-display">Apr 16</div>
             </div>
         </div>
-        
-        <div class="priority-alert">
-            <div class="priority-alert-icon">🎯</div>
-            <div class="priority-alert-content">
-                <h3>Hot: Javier Estrada — NH Hotel Group</h3>
-                <p>Follow up TODAY · Case studies ready · Email drafted</p>
-            </div>
-        </div>
-        
+
         <div class="stats-row">
             <div class="stat-card">
                 <div class="stat-value accent">8</div>
                 <div class="stat-label">Projects</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value yellow">3</div>
-                <div class="stat-label">Hot Leads</div>
+                <div class="stat-value" style="color: var(--blue);">3</div>
+                <div class="stat-label">CRON Active</div>
+                <div class="stat-sub">Morning, Evolver, Research</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value blue">756</div>
+                <div class="stat-value" style="color: var(--yellow);">756</div>
                 <div class="stat-label">Emails Ready</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value red">1</div>
-                <div class="stat-label">Decision Blocked</div>
+                <div class="stat-value" style="color: var(--purple);">3</div>
+                <div class="stat-label">Self-Improve Projects</div>
+                <div class="stat-sub">New built Apr 2</div>
             </div>
         </div>
-        
-        <div class="section-header">
-            <div class="section-title">Projects</div>
-        </div>
+
+        <div class="section-title">Projects — Apr 16, 2026</div>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-card-header">
@@ -613,59 +181,26 @@
                 <div class="project-name">PISCO</div>
                 <div class="project-desc">BD for Placewell International — Filipino workers for Spain/UK hotels + South Korea</div>
                 <div class="project-tasks">
-                    <div class="project-task">
-                        <div class="task-priority high"></div>
-                        <span style="font-size: 13px;">Fix exposed SendGrid API key in repo</span>
-                    </div>
-                    <div class="project-task">
-                        <div class="task-priority high"></div>
-                        <span style="font-size: 13px;">Approve first PISCO email send</span>
-                    </div>
-                    <div class="project-task">
-                        <div class="task-priority medium"></div>
-                        <span style="font-size: 13px;">Research South Korea EPS pathway</span>
-                    </div>
+                    <div class="project-task"><div class="task-priority high"></div><span style="font-size: 13px;">Follow up with hot leads</span></div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Send first outreach batch</span></div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Research South Korea EPS pathway</span></div>
                 </div>
             </div>
-            
+
             <div class="project-card">
                 <div class="project-card-header">
                     <div class="project-emoji">🔧</div>
-                    <span class="project-status-badge waiting">Waiting</span>
+                    <span class="project-status-badge active">Active — GYMS ICP</span>
                 </div>
                 <div class="project-name">COMARE</div>
-                <div class="project-desc">BD for COMARE — B2B maintenance services, Mexico City</div>
+                <div class="project-desc">BD for COMARE — B2B maintenance services, Mexico City · ICP: Gyms</div>
                 <div class="project-tasks">
-                    <div class="project-task">
-                        <div class="task-priority high"></div>
-                        <span style="font-size: 13px;">Pick ICP: Pharmacy vs Restaurant vs Medical</span>
-                    </div>
-                    <div class="project-task">
-                        <div class="task-priority medium"></div>
-                        <span style="font-size: 13px;">Start COMARE outreach after PISCO emails</span>
-                    </div>
+                    <div class="project-task"><div class="task-priority high"></div><span style="font-size: 13px;">Query Notion CRM — pipeline status</span></div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Add Smart Fit decision-makers to CRM</span></div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Draft gym outreach messages</span></div>
                 </div>
             </div>
-            
-            <div class="project-card">
-                <div class="project-card-header">
-                    <div class="project-emoji">💆</div>
-                    <span class="project-status-badge blocked">Blocked</span>
-                </div>
-                <div class="project-name">Massage Pass</div>
-                <div class="project-desc">Platform for massage shops — Stripe + Calendly, 20% revenue share</div>
-                <div class="project-tasks">
-                    <div class="project-task">
-                        <div class="task-priority high"></div>
-                        <span style="font-size: 13px;">Buy massagepass.com domain (owner found)</span>
-                    </div>
-                    <div class="project-task">
-                        <div class="task-priority medium"></div>
-                        <span style="font-size: 13px;">Get shop signups live</span>
-                    </div>
-                </div>
-            </div>
-            
+
             <div class="project-card">
                 <div class="project-card-header">
                     <div class="project-emoji">🤝</div>
@@ -674,17 +209,24 @@
                 <div class="project-name">Dealsmap 2.0</div>
                 <div class="project-desc">Profile partner model — rent LinkedIn profiles for B2B outreach</div>
                 <div class="project-tasks">
-                    <div class="project-task">
-                        <div class="task-priority medium"></div>
-                        <span style="font-size: 13px;">Post on Upwork: Profile Partner offer</span>
-                    </div>
-                    <div class="project-task">
-                        <div class="task-priority medium"></div>
-                        <span style="font-size: 13px;">Target 15 partners: 5 Spain + 5 UK + 5 Asia</span>
-                    </div>
+                    <div class="project-task"><div class="task-priority high"></div><span style="font-size: 13px;">Post on Upwork: Profile Partner offer</span></div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Target 15 partners: 5 Spain + 5 UK + 5 Asia</span></div>
                 </div>
             </div>
-            
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-emoji">💆</div>
+                    <span class="project-status-badge blocked">Blocked</span>
+                </div>
+                <div class="project-name">Massage Pass</div>
+                <div class="project-desc">Platform for massage shops — Stripe + Calendly, 20% revenue share</div>
+                <div class="project-tasks">
+                    <div class="project-task"><div class="task-priority high"></div><span style="font-size: 13px;">Buy massagepass.com domain</span></div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Get shop signups live</span></div>
+                </div>
+            </div>
+
             <div class="project-card">
                 <div class="project-card-header">
                     <div class="project-emoji">🎵</div>
@@ -693,17 +235,11 @@
                 <div class="project-name">PK Music</div>
                 <div class="project-desc">Philosophy King — AI music via Suno, Discord distribution</div>
                 <div class="project-tasks">
-                    <div class="project-task">
-                        <div class="task-priority medium"></div>
-                        <span style="font-size: 13px;">Generate more tracks via Suno workflow</span>
-                    </div>
-                    <div class="project-task">
-                        <div class="task-priority low"></div>
-                        <span style="font-size: 13px;">Build catalog.json up</span>
-                    </div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Generate more tracks via Suno workflow</span></div>
+                    <div class="project-task"><div class="task-priority low"></div><span style="font-size: 13px;">Build catalog.json up</span></div>
                 </div>
             </div>
-            
+
             <div class="project-card">
                 <div class="project-card-header">
                     <div class="project-emoji">🧠</div>
@@ -712,34 +248,62 @@
                 <div class="project-name">Neurotech Content</div>
                 <div class="project-desc">YouTube/newsletter on neurotech, longevity, consciousness</div>
                 <div class="project-tasks">
-                    <div class="project-task">
-                        <div class="task-priority medium"></div>
-                        <span style="font-size: 13px;">Write Video 1 script: "The New Space Race"</span>
-                    </div>
-                    <div class="project-task">
-                        <div class="task-priority low"></div>
-                        <span style="font-size: 13px;">Decide: expand social mobility or new channel?</span>
-                    </div>
+                    <div class="project-task"><div class="task-priority medium"></div><span style="font-size: 13px;">Write Video 1 script: "The New Space Race"</span></div>
+                    <div class="project-task"><div class="task-priority low"></div><span style="font-size: 13px;">Decide: expand social mobility or new channel?</span></div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-emoji">🏝️</div>
+                    <span class="project-status-badge concept">Concept</span>
+                </div>
+                <div class="project-name">New Bali</div>
+                <div class="project-desc">Philippines coliving/coworking concept</div>
+                <div class="project-tasks">
+                    <div class="project-task"><div class="task-priority low"></div><span style="font-size: 13px;">Validate concept, secure property</span></div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="project-emoji">📍</div>
+                    <span class="project-status-badge concept">Concept</span>
+                </div>
+                <div class="project-name">Maps</div>
+                <div class="project-desc">Google Maps Influencer aggregation</div>
+                <div class="project-tasks">
+                    <div class="project-task"><div class="task-priority low"></div><span style="font-size: 13px;">Research influencer aggregation model</span></div>
                 </div>
             </div>
         </div>
-        
+
         <div class="grid">
             <div>
-                <div class="card" style="margin-bottom: 24px;">
+                <div class="card">
                     <div class="card-header">
-                        <div class="section-title">Today's Tasks</div>
-                        <span style="font-size: 12px; color: var(--text-dim);">March 31, 2026</span>
+                        <div class="section-title">This Week's Priorities</div>
+                        <span style="font-size: 12px; color: var(--text-dim);">Apr 16–22, 2026</span>
                     </div>
                     <div class="card-body" style="padding-top: 8px;">
                         <div class="task-list">
                             <div class="task-item">
                                 <div class="task-checkbox"></div>
                                 <div class="task-content">
-                                    <div class="task-title">Set up placewellinternational.io email</div>
+                                    <div class="task-title">Query Notion COMARE CRM — get pipeline status</div>
                                     <div class="task-meta">
-                                        <span class="task-project pisco">🌏 PISCO</span>
+                                        <span class="task-project comare">🔧 COMARE</span>
                                         <span class="task-due today">Today</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="task-item">
+                                <div class="task-checkbox"></div>
+                                <div class="task-content">
+                                    <div class="task-title">Post Upwork for Dealsmap 2.0</div>
+                                    <div class="task-meta">
+                                        <span class="task-project system">🤝 Dealsmap</span>
+                                        <span class="task-due this-week">This week</span>
                                     </div>
                                 </div>
                             </div>
@@ -749,24 +313,14 @@
                                     <div class="task-title">Buy massagepass.com domain</div>
                                     <div class="task-meta">
                                         <span class="task-project massage">💆 Massage Pass</span>
-                                        <span class="task-due today">Today</span>
+                                        <span class="task-due this-week">This week</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="task-item">
                                 <div class="task-checkbox"></div>
                                 <div class="task-content">
-                                    <div class="task-title">Fix exposed API keys in GitHub repo</div>
-                                    <div class="task-meta">
-                                        <span class="task-project system">🤖 System</span>
-                                        <span class="task-due today">Urgent</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-checkbox"></div>
-                                <div class="task-content">
-                                    <div class="task-title">Approve first PISCO email send</div>
+                                    <div class="task-title">Follow up PISCO hot leads (Javier, Luis)</div>
                                     <div class="task-meta">
                                         <span class="task-project pisco">🌏 PISCO</span>
                                         <span class="task-due this-week">This week</span>
@@ -776,64 +330,47 @@
                             <div class="task-item">
                                 <div class="task-checkbox"></div>
                                 <div class="task-content">
-                                    <div class="task-title">Pick COMARE ICP (Pharmacy vs Restaurant vs Medical)</div>
+                                    <div class="task-title">Generate 10 PK Music tracks via Suno</div>
                                     <div class="task-meta">
-                                        <span class="task-project comare">🔧 COMARE</span>
-                                        <span class="task-due this-week">This week</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="task-item">
-                                <div class="task-checkbox"></div>
-                                <div class="task-content">
-                                    <div class="task-title">Send Ego Death Pod outreach to 5 people</div>
-                                    <div class="task-meta">
-                                        <span class="task-project system">🤖 System</span>
-                                        <span class="task-due this-week">This week</span>
+                                        <span class="task-project pk">🎵 PK Music</span>
+                                        <span class="task-due next-week">Next week</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="section-title">Blockers — Waiting on Jordan</div>
                     </div>
                     <div class="card-body" style="padding-top: 8px;">
                         <div class="blocker-item">
-                            <div class="blocker-icon">🔐</div>
+                            <div class="blocker-icon">💰</div>
                             <div class="blocker-content">
-                                <div class="blocker-title">SendGrid API key exposed in repo<span class="blocker-project" style="background: rgba(255,71,87,0.1); color: var(--red);">System</span></div>
-                                <div class="blocker-meta">Remove .env from git history, rotate key, set up proper env vars</div>
+                                <div class="blocker-title">massagepass.com domain purchase</div>
+                                <div class="blocker-meta">Owner found — Jordan needs to complete purchase</div>
                             </div>
                         </div>
                         <div class="blocker-item">
                             <div class="blocker-icon">📧</div>
                             <div class="blocker-content">
-                                <div class="blocker-title">placewellinternational.io email setup<span class="blocker-project pisco">🌏 PISCO</span></div>
-                                <div class="blocker-meta">Domain connected — need SMTP credentials to enable outreach</div>
+                                <div class="blocker-title">SendGrid email sending</div>
+                                <div class="blocker-meta">API key may be exposed — needs rotation and SMTP setup</div>
                             </div>
                         </div>
                         <div class="blocker-item">
                             <div class="blocker-icon">🎯</div>
                             <div class="blocker-content">
-                                <div class="blocker-title">COMARE ICP decision<span class="blocker-project comare">🔧 COMARE</span></div>
-                                <div class="blocker-meta">Pharmacy (3,000 stores) vs Restaurant (fast) vs Medical (high value)</div>
-                            </div>
-                        </div>
-                        <div class="blocker-item">
-                            <div class="blocker-icon">💰</div>
-                            <div class="blocker-content">
-                                <div class="blocker-title">massagepass.com domain purchase<span class="blocker-project massage">💆 Massage Pass</span></div>
-                                <div class="blocker-meta">Owner found — needs Jordan to complete purchase</div>
+                                <div class="blocker-title">PISCO first email send approval</div>
+                                <div class="blocker-meta">Ready to send — Jordan reviews and approves</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="sidebar">
                 <div class="card">
                     <div class="card-header">
@@ -841,318 +378,106 @@
                     </div>
                     <div class="card-body">
                         <div class="quick-actions">
-                            <div class="quick-action" onclick="sendCommand('Run PISCO Top 20 Day 1 outreach')">
-                                <div class="quick-action-icon">📧</div>
-                                <div class="quick-action-label">Fire PISCO Emails</div>
-                            </div>
-                            <div class="quick-action" onclick="sendCommand('Build COMARE ICP recommendation')">
-                                <div class="quick-action-icon">🔍</div>
-                                <div class="quick-action-label">Research COMARE ICP</div>
-                            </div>
-                            <div class="quick-action" onclick="sendCommand('Check project statuses')">
+                            <div class="quick-action" onclick="sendCommand('Query COMARE CRM pipeline')">
                                 <div class="quick-action-icon">📊</div>
-                                <div class="quick-action-label">Status Check</div>
+                                <div class="quick-action-label">COMARE Pipeline</div>
                             </div>
-                            <div class="quick-action" onclick="sendCommand('Upgrade dashboard')">
-                                <div class="quick-action-icon">🚀</div>
-                                <div class="quick-action-label">Upgrade Dashboard</div>
+                            <div class="quick-action" onclick="sendCommand('Run PISCO outreach')">
+                                <div class="quick-action-icon">📧</div>
+                                <div class="quick-action-label">PISCO Emails</div>
+                            </div>
+                            <div class="quick-action" onclick="sendCommand('What are my top 3 priorities today?')">
+                                <div class="quick-action-icon">🎯</div>
+                                <div class="quick-action-label">Top Priorities</div>
+                            </div>
+                            <div class="quick-action" onclick="sendCommand('Run evolver now')">
+                                <div class="quick-action-icon">🧬</div>
+                                <div class="quick-action-label">Run Evolver</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="section-title">Key Files</div>
                     </div>
                     <div class="card-body" style="padding-top: 12px;">
                         <div class="resource-list">
-                            <a href="downloads/PISCO-COMPLETE-PACKAGE.md" class="resource-item">
-                                <span class="resource-item-icon">📦</span>
-                                PISCO Complete Package
-                            </a>
-                            <a href="downloads/COMARE-COMPLETE-PACKAGE.md" class="resource-item">
-                                <span class="resource-item-icon">🔧</span>
-                                COMARE Complete Package
-                            </a>
                             <a href="PROJECTS/PISCO/OUTREACH-MACHINE.md" class="resource-item">
                                 <span class="resource-item-icon">📧</span>
-                                PISCO Outreach Machine
+                                PISCO Outreach Machine (756 messages)
                             </a>
-                            <a href="downloads/POD-LAUNCH-KIT.md" class="resource-item">
-                                <span class="resource-item-icon">🎁</span>
-                                Pod Launch Kit
+                            <a href="docs/comare.html" class="resource-item">
+                                <span class="resource-item-icon">🔧</span>
+                                COMARE Intelligence Bible
                             </a>
-                            <a href="downloads/Neurotech-Content-Strategy.md" class="resource-item">
-                                <span class="resource-item-icon">🧠</span>
-                                Neurotech Strategy
+                            <a href="startup-machine/ACQUISITION-ENGINE.md" class="resource-item">
+                                <span class="resource-item-icon">📈</span>
+                                Acquisition Engine
+                            </a>
+                            <a href="AMERICAN_BEST_PRACTICES.md" class="resource-item">
+                                <span class="resource-item-icon">🇺🇸</span>
+                                American Best Practices
+                            </a>
+                            <a href="startup-machine/EXTERNAL-RESEARCH.md" class="resource-item">
+                                <span class="resource-item-icon">🔍</span>
+                                External Research (hermes-agent, etc.)
                             </a>
                             <div class="divider"></div>
                             <a href="MEMORY.md" class="resource-item">
                                 <span class="resource-item-icon">🧠</span>
                                 Long-term Memory
                             </a>
-                            <a href="JORDAN-INSTRUCTIONS.md" class="resource-item">
+                            <a href="AUTONOMOUS.md" class="resource-item">
                                 <span class="resource-item-icon">📋</span>
-                                Jordan's Instructions
+                                Goals & Backlog
                             </a>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <div class="card-header">
                         <div class="section-title">System Status</div>
                     </div>
                     <div class="card-body" style="padding-top: 8px;">
-                        <div class="blocker-item">
-                            <div class="blocker-icon">✅</div>
-                            <div class="blocker-content">
-                                <div class="blocker-title">Email (SendGrid)</div>
-                                <div class="blocker-meta">Configured — key exposed, needs fix</div>
-                            </div>
+                        <div class="system-card">
+                            <div class="system-item"><span class="system-icon ok">✅</span><span>Memory system — active</span></div>
+                            <div class="system-item"><span class="system-icon ok">✅</span><span>Morning briefing cron — 9am Madrid</span></div>
+                            <div class="system-item"><span class="system-icon ok">✅</span><span>Nightly evolver — 4am Madrid</span></div>
+                            <div class="system-item"><span class="system-icon ok">✅</span><span>Overnight research — 5am Madrid</span></div>
+                            <div class="system-item"><span class="system-icon ok">✅</span><span>Notion CRM — COMARE live</span></div>
+                            <div class="system-item"><span class="system-icon ok">✅</span><span>Git backup — github.com/jordanjayhays-cpu</span></div>
+                            <div class="system-item"><span class="system-icon warn">⚠️</span><span>SendGrid — key needs rotation</span></div>
+                            <div class="system-item"><span class="system-icon warn">⚠️</span><span>FTS5 session search — not built</span></div>
                         </div>
-                        <div class="blocker-item">
-                            <div class="blocker-icon">✅</div>
-                            <div class="blocker-content">
-                                <div class="blocker-title">Calendar (.ics)</div>
-                                <div class="blocker-meta">Working — no native Google OAuth</div>
-                            </div>
-                        </div>
-                        <div class="blocker-item">
-                            <div class="blocker-icon">✅</div>
-                            <div class="blocker-content">
-                                <div class="blocker-title">Git Backup</div>
-                                <div class="blocker-meta">github.com/jordanjayhays-cpu/openclaw-agent</div>
-                            </div>
-                        </div>
-                        <div class="blocker-item">
-                            <div class="blocker-icon">⚠️</div>
-                            <div class="blocker-content">
-                                <div class="blocker-title">Image Analysis</div>
-                                <div class="blocker-meta">Limited — OpenRouter vision support weak</div>
-                            </div>
-                        </div>
-                        <div class="blocker-item">
-                            <div class="blocker-icon">✅</div>
-                            <div class="blocker-content">
-                                <div class="blocker-title">Dashboard</div>
-                                <div class="blocker-meta">Live at openclaw-agent-flame.vercel.app</div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="section-title">Self-Improvement (Built Apr 2)</div>
+                    </div>
+                    <div class="card-body" style="padding-top: 8px;">
+                        <div class="system-item"><span class="system-icon ok">🧬</span><span>Capability Evolver — nightly at 4am</span></div>
+                        <div class="system-item"><span class="system-icon ok">📝</span><span>Self-diagnostic engine — built</span></div>
+                        <div class="system-item"><span class="system-icon ok">📚</span><span>Prompt library — auto-capture working</span></div>
+                        <div class="system-item"><span class="system-icon ok">🔍</span><span>Session indexer — 11pm daily</span></div>
+                        <div class="system-item"><span class="system-icon ok">🛠️</span><span>Skill forger — weekly</span></div>
+                        <div class="system-item"><span class="system-icon ok">🌐</span><span>Weekly skill scout — Monday 10am</span></div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="footer">
-            Claw 🦞 — Jordan's AI agent — IE IMBA · 7 months remaining · 3 location-independent projects in progress
-        </div>
-    <div class="kanban">
-    
-    <!-- HOT / FOLLOW UP -->
-    <div class="column in-progress">
-        <div class="column-header">
-            <span class="column-title">🔥 Hot Leads</span>
-            <span class="column-count">2</span>
-        </div>
-        <div class="column-cards">
-            <div class="card">
-                <div class="card-project pisco">PISCO</div>
-                <div class="card-title">Javier Estrada — NH Hotel Group</div>
-                <div class="card-meta">
-                    <span class="card-priority high">🔥 HOT</span>
-                    <span>Follow up TODAY</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project pisco">PISCO</div>
-                <div class="card-title">Luis Zamora — Iberostar (CHRO)</div>
-                <div class="card-meta">
-                    <span class="card-priority medium">Follow up Apr 4</span>
-                    <span>Email ready</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- PISCO OUTREACH -->
-    <div class="column todo">
-        <div class="column-header">
-            <span class="column-title">📋 PISCO Outreach</span>
-            <span class="column-count">4</span>
-        </div>
-        <div class="column-cards">
-            <div class="card">
-                <div class="card-project pisco">PISCO</div>
-                <div class="card-title">Concha Pardo — Meliá Hotels</div>
-                <div class="card-meta">
-                    <span>HR Director Madrid</span>
-                    <a href="https://www.linkedin.com/in/conchapardo" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project pisco">PISCO</div>
-                <div class="card-title">Gabriel Cánaves — Meliá Hotels</div>
-                <div class="card-meta">
-                    <span>Global Head HR</span>
-                    <a href="https://www.linkedin.com/in/gabriel-canaves" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project pisco">PISCO</div>
-                <div class="card-title">Yolanda de la Plaza — Room Mate</div>
-                <div class="card-meta">
-                    <span>HR/Management</span>
-                    <a href="https://www.linkedin.com/in/yolanda-delaplaza" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project pisco">PISCO</div>
-                <div class="card-title">Patricia Jaén — Meliá Hotels</div>
-                <div class="card-meta">
-                    <span>Talent Branding Director</span>
-                    <span>Find URL</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- DECISION NEEDED -->
-    <div class="column blocked">
-        <div class="column-header">
-            <span class="column-title">⏳ Decision Needed</span>
-            <span class="column-count">1</span>
-        </div>
-        <div class="column-cards">
-            <div class="card">
-                <div class="card-project comare">COMARE</div>
-                <div class="card-title">Pick ICP: Pharmacy OR Restaurant?</div>
-                <div class="card-meta">
-                    <span class="card-priority high">🔴 DECISION</span>
-                    <span>Blocking</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- PROJECTS -->
-    <div class="column todo">
-        <div class="column-header">
-            <span class="column-title">🚀 Projects</span>
-            <span class="column-count">8</span>
-        </div>
-        <div class="column-cards">
-            <div class="card">
-                <div class="card-project pisco">🌏 PISCO</div>
-                <div class="card-title">Filipino staff for Europe/South Korea</div>
-                <div class="card-meta">
-                    <span class="card-priority high">Active</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project comare">🔧 COMARE</div>
-                <div class="card-title">B2B maintenance Mexico City</div>
-                <div class="card-meta">
-                    <span class="card-priority medium">ICP decision pending</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project dealsmap">🤝 DEALSMAP 2.0</div>
-                <div class="card-title">Profile partner model</div>
-                <div class="card-meta">
-                    <span class="card-priority low">To Do</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project neurotech">🧠 NEUROTECH</div>
-                <div class="card-title">YouTube/newsletter</div>
-                <div class="card-meta">
-                    <span class="card-priority low">To Do</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project pk">🎵 PK MUSIC</div>
-                <div class="card-title">Philosophy King — AI music</div>
-                <div class="card-meta">
-                    <span class="card-priority medium">Active</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project massage">💆 MASSAGE PASS</div>
-                <div class="card-title">Platform for massage shops</div>
-                <div class="card-meta">
-                    <span class="card-priority high">Domain blocked</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project newbali">🏝️ NEW BALI</div>
-                <div class="card-title">Philippines coliving/coworking</div>
-                <div class="card-meta">
-                    <span class="card-priority low">Concept</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project system">📍 MAPS</div>
-                <div class="card-title">Google Maps Influencer</div>
-                <div class="card-meta">
-                    <span class="card-priority low">Concept</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- SYSTEM -->
-    <div class="column done">
-        <div class="column-header">
-            <span class="column-title">🤖 System</span>
-            <span class="column-count">Done</span>
-        </div>
-        <div class="column-cards">
-            <div class="card">
-                <div class="card-project system">SYSTEM</div>
-                <div class="card-title">Morning Briefing cron — 8 AM CET</div>
-                <div class="card-meta">
-                    <span>✅ ACTIVE</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project system">SYSTEM</div>
-                <div class="card-title">Evening Pulse cron — 6 PM CET</div>
-                <div class="card-meta">
-                    <span>✅ ACTIVE</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project system">SYSTEM</div>
-                <div class="card-title">GitHub sync — AUTO-SAVE</div>
-                <div class="card-meta">
-                    <span>✅ READY</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-project system">SYSTEM</div>
-                <div class="card-title">Subagents — PARALLEL RESEARCH</div>
-                <div class="card-meta">
-                    <span>✅ WORKING</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</div>
 
-<footer>
-    <div>
-        <span class="status-dot active"></span> Claw is autonomous
-        | Last updated: March 31, 2026
-    </div>
-    <div>
-        <a href="https://github.com/jordanjayhays-cpu/openclaw-agent" target="_blank">GitHub</a>
-    </div>
-</footer>
-</main>
-    
+        <div class="footer">
+            🦞 Axton — Jordan's AI agent · IE IMBA · ~6 months remaining · Building freedom
+            <br>
+            Last updated: April 16, 2026 · Self-improving since Apr 2, 2026
+        </div>
+    </main>
+
     <script>
         function updateClock() {
             const now = new Date();
@@ -1161,28 +486,25 @@
         }
         updateClock();
         setInterval(updateClock, 1000);
-        
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-        if (document.getElementById('date-heading')) document.getElementById('date-heading').textContent = dateStr;
-        const shortDate = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        const shortDate = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
         if (document.getElementById('date-display')) document.getElementById('date-display').textContent = shortDate;
-        
+
         document.querySelectorAll('.task-checkbox').forEach(cb => {
             cb.addEventListener('click', () => {
                 cb.classList.toggle('done');
                 const title = cb.nextElementSibling.querySelector('.task-title');
-                title.classList.toggle('done');
+                if (title) title.classList.toggle('done');
             });
         });
-        
+
         function sendCommand(cmd) {
             const msg = 'Command: ' + cmd;
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(msg);
-                alert('Command copied: ' + cmd + '\n\nPaste this in Telegram to execute.');
+                alert('Command copied: ' + cmd + '\n\nPaste in Telegram to execute.');
             } else {
-                alert('Command: ' + cmd + '\n\nPaste this in Telegram to execute.');
+                alert('Command: ' + cmd + '\n\nPaste in Telegram to execute.');
             }
         }
     </script>
