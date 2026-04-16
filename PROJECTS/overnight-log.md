@@ -92,3 +92,35 @@
 2026-04-16 11:04 - Overnight builder started
 2026-04-16 11:04 - Overnight builder ran again (duplicate invocation)
 **Status:** No-op — queue unchanged, all actionable tasks blocked. Awaiting Jordan's queue refresh.
+
+---
+
+## Sprint — 2026-04-16 (Morning Run)
+
+**Run time:** 2026-04-16 11:18 UTC (daytime run — not overnight)
+**Queue status:** STALE — last updated 2026-04-01, 15 days old
+
+### Findings
+
+**Overnight queue is empty of actionable items.** All HIGH tasks completed Apr 1. Remaining MED tasks blocked:
+
+1. **Task 3 (Riu/Iberostar contacts):** Luis Zamora already found → gabriel.canaves@melia.com. Riu HR email blocked by bot detection on web search.
+2. **Task 4 (PISCO follow-up):** All outreach stalled — ZERO emails sent from 756 ready-to-send drafts.
+
+### CRITICAL FINDING: PISCO Outreach Stalled
+
+| Prospect | Follow-up Due | Days Overdue |
+|----------|--------------|--------------|
+| Javier Estrada (NH) | Mar 31 | 16 days |
+| Luis Zamora (Iberostar) | Apr 4 | 12 days |
+| All 10 CRM contacts | Apr 1-7 | 9-15 days |
+
+**Root cause:** No email sending tool configured. All 10 CRM contacts have `email_sent: false`. Email drafts exist in `email-drafts-ready.md` but never sent.
+
+### Actions Taken This Run
+- Attempted competitor research for MASSAGE-PASS via web search → blocked by bot detection
+- Attempted Treatwell web fetch → minimal content returned
+- No autonomous builds possible tonight — all tasks require Jordan decisions or email tools
+
+### Morning Briefing Delivered
+See `PROJECTS/morning-briefing-2026-04-16.md`

@@ -1,7 +1,8 @@
 # PISCO — Competitor Intel
 
 > Last updated: 2026-04-02
-> ⚠️ Note: Web search blocked at time of creation. Fill in manually or retry with `felo-search` skill.
+> ⚠️ Note: Web search blocked at time of creation. FELO_API_KEY expired Apr 16.
+> Fill in manually when tools are available.
 
 ---
 

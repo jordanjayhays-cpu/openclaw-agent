@@ -1,5 +1,5 @@
 # AUTONOMOUS.md — Jordan's Goals & Backlog
-# Last updated: 2026-03-31
+# Last updated: 2026-04-16 (stale refresh)
 
 ## North Star
 - Build location-independent income
@@ -13,18 +13,17 @@
 - **Neurotech:** 10,000 YouTube subscribers
 - **PK:** 20 songs released
 
-## This Month (March 2026)
-- [ ] Land first PISCO client
-- [x] Research decision makers
-- [x] Build outreach materials
-- [ ] Decide COMARE ICP
+## This Month (April 2026)
+- [ ] Land first PISCO client ← **#1 PRIORITY**
+- [x] Research decision makers (Apr 1)
+- [x] Build outreach materials (Apr 1)
+- [x] Find emails for PISCO hot leads (Apr 1)
+- [ ] Decide COMARE ICP (pharmacies OR restaurants)
 - [ ] Post Upwork for Dealsmap
 - [ ] Release first PK song
 - [ ] Film Neurotech Video #1
-- [x] Bot bootstrap + memory setup (March 31)
-- [x] Found PISCO LinkedIn contacts (Javier, Yolanda, new Victor Presa)
-- [x] Spawned subagents to find missing LinkedIns (March 31)
-- [x] Built self-sustaining system (auto_save, startup, heartbeat_check) (March 31)
+- [ ] Buy MASSAGE-PASS domain (massagepass.com)
+- [ ] Set up Notion API for MASSAGE-PASS backend
 
 ## System Setup (completed Mar 31)
 - [x] Created tools/startup.sh, tools/auto_save.sh, tools/heartbeat_check.sh
@@ -33,37 +32,43 @@
 - [x] Git remote configured (push auth pending)
 - [x] Heartbeat ran successfully
 
-## This Week (Week of Mar 31)
-- [ ] Send 20 PISCO messages (hotel outreach)
-- [ ] Find emails for Concha Pardo, Gabriel Cánaves, Yolanda de la Plaza, Patricia Jaén
-- [ ] Follow up with Javier Estrada (today: Mar 31)
-- [ ] Follow up with Luis Zamora (by Apr 4)
-- [ ] Decide COMARE ICP (PHARMACIES OR RESTAURANTS)
-- [ ] Post Upwork for Dealsmap
-- [ ] Release first PK song
-- [ ] Film Neurotech Video #1
+## This Week (Week of Apr 14)
+- [ ] Send first PISCO email batch (Javier, Luis, Yolanda) — **16 days overdue**
+- [ ] Follow up PISCO prospects — **12 days overdue**
+- [ ] Buy MASSAGE-PASS domain
+- [ ] Decide COMARE ICP
+
+## 🚨 OVERDUE — PISCO Outreach (Apr 1–7 window missed)
+| Prospect | Was Due | Days Overdue |
+|----------|---------|--------------|
+| Javier Estrada (NH) | Mar 31 | 16 |
+| Luis Zamora (Iberostar) | Apr 4 | 12 |
+| Yolanda de la Plaza (Room Mate) | Apr 1 | 15 |
+| All 10 CRM contacts | Apr 1-7 | 9-15 |
+
+**Status:** ZERO emails sent from 756 ready-to-send drafts. All `email_sent: false` in CRM.
 
 ## Pending Jordan Decisions
 - **COMARE ICP:** Pharmacies OR Restaurants OR Medical OR Gyms
 - **New Bali location:** Bohol OR Dumaguete OR Siargao
-- **PK music:** Generate "Memento Mori" in Suno
+- **PK music:** Generate and release first song on Suno
 
-## Backlog (New items go here)
+## Backlog
 - Research NH Hotel expansion plans
 - Build COMARE prospect list (after ICP decision)
-- Generate PK "Memento Mori" in Suno (3 cultural versions)
-- Film Neurotech Video #1 script
 - Set up WhatsApp community "The Middle Way"
+- Film Neurotech Video #1 script
+- Onboard first 2 MASSAGE-PASS shops (Mayoac, The Fix Room)
 
 ## Current Revenue
-- PISCO: $0 (seeking first client)
+- PISCO: $0 (seeking first client) — outreach stalled
 - COMARE: $0 (planning phase)
 - Dealsmap: $0 (not launched)
 - PK Music: $0 (not released)
 - Neurotech: $0 (not monetized)
 
 ## Jordan's Constraints
-- 7 months left in IMBA program
+- 7 months left in IMBA program (~210 days to graduation)
 - Time is precious — focus on revenue-generating activities
 - Need to graduate with 3 working projects
 - No budget for paid tools (yet)
@@ -74,3 +79,4 @@
 3. Update project states when things change
 4. Never lose track of pending Jordan decisions
 5. If Jordan says "do it" → execute without asking
+6. **PISCO emails are the #1 priority — don't let them stall again**
