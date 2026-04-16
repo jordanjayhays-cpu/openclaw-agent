@@ -13,19 +13,30 @@ TYPE=$2
 
 if [ -z "$PROJECT" ] || [ -z "$TYPE" ]; then
     echo "Usage: agent_factory.sh [PROJECT] [TYPE]"
-    echo "Types: researcher, outreach, builder, analyst, creator"
+    echo ""
+    echo "Types:"
+    echo "  RESEARCHERS:   market_researcher, lead_researcher, content_researcher,"
+    echo "                 tech_researcher, opportunity_researcher"
+    echo "  CREATORS:      email_creator, social_creator, script_creator,"
+    echo "                 copy_creator, song_creator"
+    echo "  EXECUTORS:     outreach_executor, content_scheduler, data_collector,"
+    echo "                 report_builder, pipeline_builder"
+    echo "  ANALYSTS:      crm_analyst, experiment_analyst, content_analyst,"
+    echo "                 revenue_analyst, market_analyst"
     echo ""
     echo "Examples:"
-    echo "  agent_factory.sh piscoskills researcher"
-    echo "  agent_factory.sh comare outreach"
-    echo "  agent_factory.sh massagpass builder"
+    echo "  agent_factory.sh pisco market_researcher"
+    echo "  agent_factory.sh pisco lead_researcher"
+    echo "  agent_factory.sh pk-music song_creator"
+    echo "  agent_factory.sh comare crm_analyst"
     exit 1
 fi
 
 echo "Spawning $TYPE agent for $PROJECT..."
 
-# Read template
-TEMPLATE="TEAM/TEMPLATES/$(echo $TYPE | tr '[:lower:]' '[:upper:]').md"
+# Read template (handle underscore naming convention)
+TEMPLATE_NAME=$(echo "$TYPE" | tr '[:lower:]' '[:upper:]' | sed 's/_/-/g')
+TEMPLATE="TEAM/TEMPLATES/${TEMPLATE_NAME}.md"
 
 if [ ! -f "$TEMPLATE" ]; then
     echo "ERROR: Template $TEMPLATE not found"
