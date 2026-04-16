@@ -1,4 +1,89 @@
-# PISCO Daily Log — 2026-04-01
+# PISCO Daily Log — 2026-04-16
+
+## Date: Thursday, April 16, 2026
+
+---
+
+## Actions Taken (14:07 UTC)
+
+### Task Executed: pisco-002 — Luis Zamora (Iberostar) Outreach Draft
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Draft complete — awaiting Jordan approval to send
+- **Output:** `PROJECTS/PISCO/outreach-luis-zamora.md`
+
+#### What I Did:
+- Reviewed existing draft in `email-drafts-ready.md` (original target: April 4)
+- Luis Zamora is 12 days overdue — summer staffing window now critical
+- Refreshed draft with updated urgency angle: "April is the window for summer staffing. Miss it now, and you're competing for the same overstretched local pool in June."
+- Converted costs to EUR (original was in USD) — €100K savings figure
+- Iberostar's €1B expansion through 2028 + 95 nationalities framing kept
+
+#### Draft Highlights:
+- Subject: "Quick question about Iberostar's staffing approach"
+- Key stat: ~€100,000 savings per 200-room property/year
+- CTA: 15-minute call this week
+- Tone: Consultative, scale-focused (CHRO-level conversation)
+
+---
+
+## CRM Activity (14:09 UTC)
+- **Logged:** Activity ID 4 — outreach_draft_created for Luis Zamora (contact_id: 2)
+- **Contact updated:** Luis Zamora — last_contact → 2026-04-16, next_action → "Send outreach email — draft ready"
+- **Database:** `crm.db` — contacts + activities tables updated
+
+---
+
+## State Updates
+- `STATE.yaml` updated:
+  - pisco-002 status → `pending_approval` (owner: jordan)
+  - output → `PROJECTS/PISCO/outreach-luis-zamora.md`
+  - note → "12 days overdue. Draft refreshed with summer urgency. Jordan to send."
+- `next_actions` updated: Luis Zamora now shows draft path
+
+---
+
+## Pending Actions (Jordan)
+
+### 🔥 URGENT — Overdue
+| Task | Prospect | Due | Status |
+|------|---------|-----|--------|
+| pisco-002 | Luis Zamora (Iberostar) | April 4 | **12 days overdue** — draft ready |
+| pisco-003 | Concha Pardo (Meliá) | April 7 | **9 days overdue** — needs outreach |
+
+### 📋 Drafts Ready for Jordan to Send
+| Prospect | Draft File |
+|----------|-----------|
+| Javier Estrada (NH) | `email-javier-followup-draft.md` |
+| Luis Zamora (Iberostar) | `outreach-luis-zamora.md` (NEW) |
+
+---
+
+## Metrics Snapshot
+| Metric | Value |
+|--------|-------|
+| Prospects identified | 252 |
+| Contacts reached | 6 |
+| Responses | 1 |
+| Meetings | 0 |
+| Clients | 0 |
+
+**Note:** Metrics unchanged. No new responses or meetings logged.
+
+---
+
+## Priority for Next Session
+1. Jordan: Send Luis Zamora outreach (`outreach-luis-zamora.md`) — NOW URGENT
+2. Jordan: Send Javier Estrada follow-up (`email-javier-followup-draft.md`)
+3. Jordan/Axton: Execute pisco-003 (Concha Pardo cold outreach) — 9 days overdue
+4. Axton: Unblock pisco-005 — research South Korea EPS pathway
+
+---
+
+*Log updated: 2026-04-16 14:09 UTC by PISCO Agent (Axton)*
+
+---
+
+
 
 ## Date: Wednesday, April 1, 2026
 

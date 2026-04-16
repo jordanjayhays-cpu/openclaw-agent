@@ -17,10 +17,12 @@ tasks:
     
   - id: pisco-002
     title: Send email to Luis Zamora (Iberostar)
-    status: todo
+    status: pending_approval
     owner: jordan
     due: 2026-04-04
     blocked_by: null
+    output: PROJECTS/PISCO/outreach-luis-zamora.md
+    note: "12 days overdue. Draft refreshed with summer urgency. Jordan to send."
     
   - id: pisco-003
     title: Cold outreach to Concha Pardo (Meliá)
@@ -61,9 +63,9 @@ completed:
     
 next_actions:
   - "jordan: Send follow-up email to Javier — draft ready at PROJECTS/PISCO/email-javier-followup-draft.md"
-  - "jordan: Send email to Luis Zamora (Iberostar) by April 4"
+  - "jordan: Send email to Luis Zamora (Iberostar) — draft refreshed at PROJECTS/PISCO/outreach-luis-zamora.md (12 days overdue)"
   - "jordan: Cold outreach to Concha Pardo (Meliá) by April 7"
-  - "axton: Log today's PISCO check-in to crm.db"
+  - "axton: Consider pisco-003 (Meliá cold outreach) — Concha Pardo is 9 days overdue"
 
 # Key contacts
 contacts:

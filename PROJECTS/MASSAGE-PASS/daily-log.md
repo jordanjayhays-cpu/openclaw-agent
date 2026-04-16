@@ -171,3 +171,42 @@ mp-002 (Notion API token) → unblocks → mp-004 (databases) → unblocks → m
 3. **Create Formspree account** → replace `YOUR_FORMSPREE_ID` in `landing-page.html` → live form submissions
 
 ### No Further Action From Me Until Jordan Completes Above
+
+---
+
+## 2026-04-16 — Thursday (14:10 UTC)
+
+### Cron Trigger
+- **Source:** MASSAGE-PASS Check-in cron
+- **Time:** 14:10 UTC
+
+### Notion API Check
+- ❌ NOT AVAILABLE — `~/.config/notion/api_key` not found
+- mp-002 still pending (Jordan's action required)
+- mp-004 (Notion databases) still blocked by mp-002
+
+### Action Taken
+- Created `notion-db-schema.md` — full schema specs for all 3 databases (Shops, Subscribers, Bookings), ready to execute the moment Jordan provides API token + parent page ID
+- Created `shop-outreach.md` — email templates for onboarding Mayoac + The Fix Room
+
+### Files Created This Session
+- `PROJECTS/MASSAGE-PASS/notion-db-schema.md` — Notion database schemas (3 databases)
+- `PROJECTS/MASSAGE-PASS/shop-outreach.md` — shop onboarding email templates
+
+### Current Blocker Chain
+```
+mp-001 (domain: massagepass.com)  — Jordan, 9 days overdue
+mp-002 (Notion API token)        — Jordan, 13 days overdue
+    ↓
+mp-004 (Notion databases)        — blocked by mp-002
+    ↓
+mp-005, mp-006 (forms → Notion)  — blocked by mp-004
+    ↓
+mp-008 (booking confirmation)    — blocked by mp-002
+```
+
+### What Jordan Needs (in priority order)
+1. **Buy domain** — `massagepass.com` (9 days overdue)
+2. **Set up Notion API** — create integration at notion.so/my-integrations, store token in `~/.config/notion/api_key`, give me parent page ID
+3. **Shop outreach** — send emails to Mayoac + The Fix Room (templates in `shop-outreach.md`)
+
