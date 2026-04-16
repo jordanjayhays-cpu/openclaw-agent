@@ -168,3 +168,38 @@ All actionable items completed or properly blocked (require Jordan/API input).
 
 *Log entry: 2026-04-16 13:03 UTC*
 2026-04-16 13:33 - Overnight builder started
+
+---
+
+## Run: 2026-04-16 13:35 UTC (midday run)
+
+### Completed
+1. **PK-MUSIC Suno Brief Generator — Enhanced** — Generated 5 new Suno briefs for upcoming tracks:
+   - `suno-brief-20260416-1335-memento-mori.md` — pk-004 (Stoic death meditation)
+   - `suno-brief-20260416-1336-ubuntu.md` — pk-005 (African communal philosophy)
+   - `suno-brief-20260416-1337-burnout-society.md` — pk-006 (Byung-Chul Han's achievement disease)
+   - `suno-brief-20260416-1338-sisyphus-happy.md` — pk-007 (Camus's absurd hero)
+   - `suno-brief-20260416-1339-waste-no-more-time.md` — pk-008 (Seneca's urgency)
+   
+   Each brief includes: philosophical framework, full Suno prompt (style/mood/BPM/instruments/ref artists), lyrics angles per verse/chorus/bridge/outro, production notes, release checklist, and twitter teaser copy.
+
+2. **PK-MUSIC DistroKid Upload Checklist** — `distrokid-upload-checklist.md`
+   - One-time setup steps for DistroKid account
+   - Per-track upload checklist
+   - Current overdue queue (pk-002, pk-003)
+   - 6-week release calendar with submit-by dates
+   - Cover art guide + troubleshooting
+
+### Blocked (Still Needs Jordan)
+- Email tool not configured → PISCO follow-ups can't be sent
+- No Hunter.io account → Lola, Patricia, Concha, Gabriel emails unverified
+- MASSAGE-PASS competitor research → web search blocked (use felo-search or provide API key)
+- DistroKid account setup → Jordan's action needed before any uploads work
+- PISCO domain purchase → Jordan's action
+
+### Notes
+- Queue is mostly complete or blocked. Brief generator was already built (Apr 16 morning) — enhanced with 5 more track briefs.
+- PISCO follow-up tracker is complete and accurate.
+- MASSAGE-PASS research is the main gap — recommend using felo-search skill for competitor analysis.
+
+2026-04-16 13:39 - Overnight builder started

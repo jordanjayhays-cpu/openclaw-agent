@@ -16,7 +16,7 @@
 
 ### MEDIUM PRIORITY
 - [x] **COMARE case study document** — ✅ DONE Apr 16 — see case-study.md
-- [ ] **PK-MUSIC Suno workflow** — pk-workflow.md exists, could enhance with AI brief generator
+- [x] **PK-MUSIC Suno workflow** — ✅ DONE Apr 16 — 5 new briefs generated: pk-004 through pk-008 (see suno-brief-20260416-*.md + distrokid-upload-checklist.md)
 - [ ] **PISCO email verification** — try Hunter.io or similar for low-confidence CRM emails
 
 ### LOW PRIORITY
