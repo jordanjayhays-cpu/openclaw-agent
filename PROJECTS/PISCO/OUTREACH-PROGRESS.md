@@ -160,5 +160,27 @@
 
 ---
 
-**Last Updated:** 2026-04-01 09:59 UTC
-**Jordan wakes up to:** 756 ready-to-send messages across 252 hotels + 4 new hot leads (emails just found)
+**Last Updated:** 2026-04-16 11:33 UTC
+**Status: ⚠️ STALE — Outreach stalled since Apr 1. All drafts ready, ZERO emails sent. Action needed from Jordan.**
+
+## CURRENT SITUATION (Apr 16)
+
+### Outreach Status
+- **756 email drafts ready to send** (completed Mar 29)
+- **0 emails actually sent** — email tool not configured
+- **All follow-ups overdue:**
+  - Javier Estrada follow-up: was due Mar 31 → 16 days overdue
+  - Luis Zamora follow-up: was due Apr 4 → 12 days overdue
+  - All 4 new hot leads (Lola Chamorro, Patricia Jaén, Concha Pardo, Gabriel Cánaves): need email verification before sending
+
+### Blockers
+1. **Email sending tool** — no email API configured (Gmail/Outlook/SendGrid)
+2. **Email verification** — all 10 CRM contacts marked LOW confidence — need Hunter.io or similar
+3. **Web search blocked** — bot detection preventing competitor research
+
+### Jordan's Critical Path
+1. Set up email tool (email-daily-summary skill has Gmail integration — ask Axton to configure)
+2. Verify CRM emails via Hunter.io (~$50/month starter plan)
+3. Approve first batch send — Javier + Luis Zamora follow-ups (most overdue)
+
+**Last Updated:** 2026-04-16 11:33 UTC

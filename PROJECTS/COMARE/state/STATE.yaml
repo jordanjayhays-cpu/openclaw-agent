@@ -1,6 +1,6 @@
 # COMARE — State File
 project: COMARE
-updated: 2026-04-02T03:12:00Z
+updated: 2026-04-16T11:33:00Z
 
 # Goals
 goal: Land first 10 clients in Mexico City
@@ -36,27 +36,43 @@ tasks:
 
   - id: comare-002
     title: Build prospect list for chosen ICP
-    status: in_progress
+    status: stale_in_progress
     owner: axton
     due: 2026-04-07
+    note: "⚠️ 9 days past due — was in_progress since Apr 2. Web search blocked by bot detection."
+    blockers:
+      - Web search blocked by bot detection (no Google Search API configured)
+      - Needs Jordan to enable web search API or provide leads
 
   - id: comare-003
-    title: Draft outreach sequence for chosen ICP
-    status: in_progress
+    title: Draft outreach sequence for Pharmacy ICP
+    status: stale_in_progress
     owner: axton
     due: 2026-04-08
+    note: "⚠️ 8 days past due — sequence drafted Apr 2 but needs review"
+    blockers:
+      - Cannot identify contacts without working web search
+      - Outreach sequence in OUTREACH-PHARMACY.md needs Jordan review
 
   - id: comare-004
     title: Identify decision makers for Farmacias del Ahorro (Mexico City)
-    status: todo
+    status: overdue
     owner: axton
     due: 2026-04-03
+    overdue_by_days: 13
+    blockers:
+      - Web search blocked
+      - Gabriel Zavala and Maximiliano Winkler identified as warm contacts from Apr 2 research
 
   - id: comare-005
     title: Identify decision makers for Farmacias Similares (Mexico City)
-    status: todo
+    status: overdue
     owner: axton
     due: 2026-04-03
+    overdue_by_days: 13
+    blockers:
+      - Web search blocked
+      - Dr. Víctor González Herrera (owner) + Juan Manuel Zepeda Aguilar identified
 
 # Completed
 completed:
