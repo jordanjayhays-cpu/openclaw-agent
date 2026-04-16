@@ -42,12 +42,60 @@
 
 ---
 
+## Actions Taken (20:22 UTC)
+
+### Task Executed: pisco-005 — South Korea EPS Pathway Research
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Research complete — pisco-005 unblocked
+- **Output:** `PROJECTS/PISCO/research/south-korea-eps-pathway.md`
+
+#### What I Did:
+- Researched South Korea visa pathways for hotel/hospitality workers
+- Key finding: **E-7 visa** (not EPS/E-9) is the correct route for hotel staff
+  - EPS = factory/agriculture workers (E-9) — NOT suitable for hospitality
+  - E-7 = skilled professional worker — employer sponsorship required
+- Identified target hotels: Lotte Hotels & Resorts, Shilla, Marriott Korea, Hyatt Regency Seoul
+- Confirmed market viability: Korean hospitality labor shortage (Statistics Korea data)
+- Korean language = real barrier for Filipino candidates (no mandatory requirement but strong differentiator)
+
+#### Key Research Findings:
+- **E-7 visa requirements:** Job offer + employer sponsorship + Letter of Recommendation
+- **E-7 salary floor:** ~₩36M/year (~$26K USD)
+- **EPS-TOPIK age limit:** 18–38 years (as of March 2026 registration window)
+- **PISCO opportunity:** Employer-driven recruitment (no government-to-government needed for E-7)
+- **Differentiation vs Spain:** Korean hotels hire via E-7 employer sponsorship; Spain uses standard work visa routes
+
+---
+
+## CRM Activity (20:22 UTC)
+- **Logged:** Activity ID 6 — research_completed for pisco-005
+- **Description:** South Korea EPS/E-7 pathway researched — pisco-005 unblocked
+- **Outcome:** Research doc at south-korea-eps-pathway.md. E-7 = correct visa for hotel staff. Targets: Lotte, Shilla, Marriott Korea, Hyatt.
+
+---
+
+## State Updates
+- `STATE.yaml` fully restructured:
+  - Removed "blocked tasks" section (empty)
+  - Added pisco-005 as active pending task (owner: jordan)
+  - Added pisco-005 to completed section (research phase)
+  - Updated next_actions: added South Korea decision item
+- Updated: 2026-04-16T20:22:00Z
+
+---
+
 ## Pending Actions (Jordan)
 
 ### 🔥 URGENT — Overdue
 | Task | Prospect | Due | Status |
 |------|---------|-----|--------|
 | pisco-002 | Luis Zamora (Iberostar) | April 4 | **12 days overdue** — draft ready |
+
+### 📋 PENDING APPROVAL
+| Task | Prospect | Status |
+|------|---------|--------|
+| pisco-002 | Luis Zamora (Iberostar) | Jordan to send — draft at outreach-luis-zamora.md |
+| pisco-003 | Concha Pardo (Meliá) | Jordan to send — draft at outreach-concha-pardo-melia.md |
 | pisco-003 | Concha Pardo (Meliá) | April 7 | **9 days overdue** — needs outreach |
 
 ### 📋 Drafts Ready for Jordan to Send

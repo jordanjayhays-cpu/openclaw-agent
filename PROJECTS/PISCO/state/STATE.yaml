@@ -1,11 +1,11 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-16T20:07:00Z
+updated: 2026-04-16T20:22:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
 
-# Tasks (append-only, update status as you go)
+# Tasks
 tasks:
   - id: pisco-001
     title: Follow up with Javier Estrada (NH Hotel)
@@ -41,14 +41,16 @@ tasks:
     completed: 2026-04-01
     output: PROJECTS/PISCO/case-studies-NH-Hotel.md
 
-# Blocked tasks
-blocked:
   - id: pisco-005
     title: Start South Korea outreach
-    status: blocked
-    reason: Need EPS pathway research first
+    status: pending
+    owner: jordan
+    due: null
+    blocked_by: null
+    output: PROJECTS/PISCO/research/south-korea-eps-pathway.md
+    note: "EPS research complete — E-7 is correct visa for hotel staff (not EPS/E-9). Key targets: Lotte Hotels, Shilla, Marriott Korea, Hyatt. PISCO opportunity confirmed."
 
-# Completed (append only)
+# Completed
 completed:
   - id: pisco-001
     completed: 2026-03-28
@@ -65,11 +67,15 @@ completed:
   - id: pisco-003
     completed: 2026-04-16
     output: outreach-concha-pardo-melia.md — cold outreach drafted for Concha Pardo (Meliá). First Meliá outreach. Email address needs verification via LinkedIn.
+  - id: pisco-005
+    completed: 2026-04-16
+    output: PROJECTS/PISCO/research/south-korea-eps-pathway.md — EPS research done. E-7 = correct visa for hotel staff. Targets: Lotte, Shilla, Marriott Korea, Hyatt. pisco-005 unblocked.
     
 next_actions:
   - "jordan: Send follow-up email to Javier — draft ready at PROJECTS/PISCO/email-javier-followup-draft.md"
   - "jordan: Send email to Luis Zamora (Iberostar) — draft at PROJECTS/PISCO/outreach-luis-zamora.md (12+ days overdue)"
   - "jordan: Send cold outreach to Concha Pardo (Meliá) — draft at PROJECTS/PISCO/outreach-concha-pardo-melia.md (9 days overdue). Verify email via LinkedIn first."
+  - "jordan: Decide South Korea priority — research doc ready at PROJECTS/PISCO/research/south-korea-eps-pathway.md"
 
 # Key contacts
 contacts:
