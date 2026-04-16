@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-02T04:19:00Z
+updated: 2026-04-16T20:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -26,10 +26,12 @@ tasks:
     
   - id: pisco-003
     title: Cold outreach to Concha Pardo (Meliá)
-    status: todo
+    status: pending_approval
     owner: jordan
     due: 2026-04-07
-    blocked_by: null
+    completed: 2026-04-16
+    output: PROJECTS/PISCO/outreach-concha-pardo-melia.md
+    note: "9 days overdue. First Meliá outreach drafted. Draft ready at outreach-concha-pardo-melia.md"
     
   - id: pisco-004
     title: Draft case studies for NH Hotel
@@ -60,12 +62,14 @@ completed:
   - id: pisco-006
     completed: 2026-04-02
     output: PROJECTS/PISCO/research/competitor-analysis.md — Top 5 Filipino staffing agencies in Spain/Europe, pricing benchmarks, gaps, partnership opportunities. Note: web search blocked; compiled from industry knowledge.
+  - id: pisco-003
+    completed: 2026-04-16
+    output: outreach-concha-pardo-melia.md — cold outreach drafted for Concha Pardo (Meliá). First Meliá outreach. Email address needs verification via LinkedIn.
     
 next_actions:
   - "jordan: Send follow-up email to Javier — draft ready at PROJECTS/PISCO/email-javier-followup-draft.md"
-  - "jordan: Send email to Luis Zamora (Iberostar) — draft refreshed at PROJECTS/PISCO/outreach-luis-zamora.md (12 days overdue)"
-  - "jordan: Cold outreach to Concha Pardo (Meliá) by April 7"
-  - "axton: Consider pisco-003 (Meliá cold outreach) — Concha Pardo is 9 days overdue"
+  - "jordan: Send email to Luis Zamora (Iberostar) — draft at PROJECTS/PISCO/outreach-luis-zamora.md (12+ days overdue)"
+  - "jordan: Send cold outreach to Concha Pardo (Meliá) — draft at PROJECTS/PISCO/outreach-concha-pardo-melia.md (9 days overdue). Verify email via LinkedIn first."
 
 # Key contacts
 contacts:

@@ -260,3 +260,87 @@
 ---
 
 *Log updated: 2026-04-02 02:07 UTC by PISCO Agent (Axton)*
+
+---
+
+## Date: Thursday, April 16, 2026 — Evening Session
+
+## Actions Taken (20:08 UTC)
+
+### Task Executed: pisco-003 — Cold Outreach Draft for Concha Pardo (Meliá)
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Draft complete — awaiting Jordan approval
+- **Output:** `PROJECTS/PISCO/outreach-concha-pardo-melia.md`
+
+#### What I Did:
+- Reviewed STATE.yaml — pisco-003 (Concha Pardo/Meliá) was 9 days overdue (due April 7)
+- Checked CRM: Concha Pardo is contact_id 3, warmth=cold, no prior outreach
+- Reviewed INTELLIGENCE-BIBLE.md: Meliá has 350+ hotels, €2B revenue, premium focus
+- Drafted personalized cold outreach email (Meliá scale, 92% retention angle, 15-min CTA)
+- **Email address needs verification via LinkedIn before sending**
+
+#### Key Points in Draft:
+- Subject: "Quick question about Meliá's staffing approach"
+- Meliá specific framing: 350+ hotels, 51 new signings in 2025, premium/luxury focus
+- Money message: ~€97,900 annual savings per 200-room property
+- PISCO value props: 50 years experience, 92% retention, Filipino workers
+- CTA: 15-minute call
+
+---
+
+## CRM Activity (20:09 UTC)
+- **Activity logged:** ID 5 — outreach_draft for Concha Pardo (contact_id: 3)
+- **Contact updated:** Concha Pardo — next_action → "Cold outreach drafted April 16 — email pending send"
+- **Database:** `crm.db` — contacts + activities tables updated
+
+---
+
+## State Updates (20:09 UTC)
+- `STATE.yaml` updated:
+  - pisco-003 status → `pending_approval`
+  - completed timestamp → 2026-04-16
+  - output → `outreach-concha-pardo-melia.md`
+  - note → "9 days overdue. First Meliá outreach drafted."
+  - STATE.yaml `updated` timestamp → 2026-04-16T20:07:00Z
+- `completed` section appended with pisco-003 entry
+- `next_actions` updated: all 3 Jordan tasks now have draft file paths
+
+---
+
+## Pending Actions (Jordan)
+
+### 🔥 URGENT — All Overdue
+| Task | Prospect | Due | Days Overdue | Draft |
+|------|---------|-----|-------------|-------|
+| pisco-002 | Luis Zamora (Iberostar) | April 4 | 12 days | `outreach-luis-zamora.md` |
+| pisco-003 | Concha Pardo (Meliá) | April 7 | 9 days | `outreach-concha-pardo-melia.md` (NEW) |
+| pisco-001 | Javier Estrada (NH) | April 1 | 15 days | `email-javier-followup-draft.md` |
+
+### 📋 All Drafts Ready to Send
+| Prospect | Draft File | Note |
+|----------|-----------|------|
+| Javier Estrada (NH) | `email-javier-followup-draft.md` | Follow-up with case studies |
+| Luis Zamora (Iberostar) | `outreach-luis-zamora.md` | CHRO-level, €100K savings angle |
+| Concha Pardo (Meliá) | `outreach-concha-pardo-melia.md` | First Meliá outreach — verify email via LinkedIn |
+
+---
+
+## Metrics Snapshot (unchanged)
+| Metric | Value |
+|--------|-------|
+| Prospects identified | 252 |
+| Contacts reached | 6 |
+| Responses | 1 |
+| Meetings | 0 |
+| Clients | 0 |
+
+---
+
+## Priority for Next Session
+1. Jordan: Send all 3 pending emails — all drafts are ready
+2. Jordan: Verify Concha Pardo email via LinkedIn before sending Meliá outreach
+3. Axton: Unblock pisco-005 — research South Korea EPS pathway
+
+---
+
+*Log updated: 2026-04-16 20:09 UTC by PISCO Agent (Axton)*
