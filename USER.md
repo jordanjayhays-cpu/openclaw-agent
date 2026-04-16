@@ -13,6 +13,7 @@
 - IMBA student at IE (graduating ~210 days)
 - Building: PISCO (BD for Filipino staff placement), COMARE (maintenance), Dealsmap
 - Interests: Neurotech, PK Music, digital nomad lifestyle
+- **Primary Calendar:** Google Calendar
 
 ## Communication
 - Direct, short messages

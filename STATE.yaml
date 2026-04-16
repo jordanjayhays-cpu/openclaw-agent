@@ -1,0 +1,23 @@
+# STATE.yaml — Calendar Integration
+
+calendar:
+  connected: false
+  refresh_token_obtained: false
+  last_check: null
+  setup_step: "pending_oauth"
+
+google_cal_oauth:
+  client_id: "263558923582-r1jhdom4aeg9gooja5mvmt7du6o82i36.apps.googleusercontent.com"
+  client_secret_set: true  # stored in openclaw secrets
+  refresh_token_set: false  # needs to be obtained via OAuth flow
+  calendar_id: "primary"
+
+tools_created:
+  - tools/calendar_check.sh
+  - tools/calendar_prep.sh
+  - tools/calendar_block.sh
+
+next_action: >
+  Run `python3 tools/google_oauth.py` to obtain refresh token,
+  then store with `openclaw secret set GOOGLE_REFRESH_TOKEN <token>`.
+  After that, run `bash tools/calendar_check.sh` to verify.

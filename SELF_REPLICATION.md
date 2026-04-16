@@ -212,13 +212,17 @@ WEEK 4: System runs itself
 
 - [x] SOUL.md system (identity)
 - [x] STATE.yaml system (project state)
-- [x] Multi-agent spawning
+- [x] Multi-agent spawning (openclaw session spawn)
 - [x] TEMPLATES/ directory (RESEARCHER, OUTREACH, BUILDER, ANALYST, CREATOR)
 - [x] Spawn permissions documented
+- [x] Agent templates (10 templates in TEAM/TEMPLATES/)
+- [x] agent_team.sh (RESEARCHER→ANALYST→EXECUTOR pipeline)
+- [x] multi_layer_spawn.sh (L0→L1→L2→L3 recursive)
+- [x] shared_memory.sh (file-based agent communication)
+- [x] agent_overseer.sh (monitor workers, restart if needed)
 - [ ] Self-improvement loop active (Sunday soul updates)
-- [x] Agent → spawns → agent pattern
 - [ ] Weekly soul update (improve my SOUL.md)
-- [ ] Agent factory script (tools/agent_factory.sh)
+- [ ] Agent factory script (tools/agent_factory.sh — exists, needs testing)
 
 ---
 

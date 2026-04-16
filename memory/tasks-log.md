@@ -21,3 +21,14 @@
 ---
 
 _Append only — never edit existing entries_
+
+### 2026-04-16
+- ✅ TASK-OVERNIGHT-001: Build LeadPulse mini-app MVP
+  - **What:** Single-file warm outreach tracker (Kanban + streak + follow-ups)
+  - **Stack:** Vanilla JS + Tailwind CDN + LocalStorage, single HTML file
+  - **Deployed:** Local preview via python server (port 8080)
+  - **Deploy blocked:** Vercel token invalid, no Netlify/Surge CLI
+  - **Location:** PROJECTS/overnight-builds/2026-04-16/
+  - **Files:** index.html (30KB), README.md, PROJECT.md
+  - **Seed data:** 5 real PISCO leads pre-loaded (Javier, Yolanda, Lola, Carmen, Gabriel)
+  - **Features:** Kanban board, add/edit/delete leads, follow-up scheduler, warm streak counter, CSV export, `N` keyboard shortcut

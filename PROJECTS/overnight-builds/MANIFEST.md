@@ -1,1 +1,2 @@
 - **2026-04-02**: A mini CRM for tracking freelance clients and invoices
+- **2026-04-16**: LeadPulse — a warm outreach tracker with Kanban, follow-up scheduler, and daily streak counter (single HTML file, LocalStorage-backed)

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadPulse — Warm Outreach Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            pulse: { 50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 500: '#f97316', 600: '#ea580c', 700: '#c2410c' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', system-ui, sans-serif; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #1e293b; }
+    ::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+    .kanban-card { transition: all 0.15s ease; }
+    .kanban-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.25); }
+    .pipeline-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .status-cold { background: #64748b; }
+    .status-warm { background: #f97316; }
+    .status-hot { background: #ef4444; }
+    .status-booked { background: #8b5cf6; }
+    .streak-glow { box-shadow: 0 0 20px rgba(249,115,22,0.5); }
+    @keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(249,115,22,0.5); } 70% { box-shadow: 0 0 0 12px rgba(249,115,22,0); } 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0); } }
+    .streak-badge { animation: pulse-ring 1.5s ease-out infinite; }
+    @keyframes slide-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .animate-slide { animation: slide-in 0.3s ease-out; }
+    .overlay { backdrop-filter: blur(4px); }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-orange-500 rounded-xl flex items-center justify-center font-black text-white text-sm">LP</div>
+        <div>
+          <h1 class="text-lg font-bold text-white">LeadPulse</h1>
+          <p class="text-xs text-slate-400">Warm Outreach Tracker</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <!-- Streak Badge -->
+        <div id="streakBadge" class="flex items-center gap-2 bg-orange-500/10 border border-orange-500/30 rounded-xl px-3 py-1.5">
+          <span class="text-xl">🔥</span>
+          <div>
+            <div id="streakCount" class="text-orange-400 font-bold text-sm leading-none">0</div>
+            <div class="text-[10px] text-slate-400">day streak</div>
+          </div>
+        </div>
+        <!-- Stats -->
+        <div class="hidden md:flex items-center gap-4 text-xs">
+          <div class="text-center">
+            <div id="totalLeads" class="font-bold text-white text-lg">0</div>
+            <div class="text-slate-400">leads</div>
+          </div>
+          <div class="w-px h-8 bg-slate-700"></div>
+          <div class="text-center">
+            <div id="hotCount" class="font-bold text-red-400 text-lg">0</div>
+            <div class="text-slate-400">hot</div>
+          </div>
+          <div class="w-px h-8 bg-slate-700"></div>
+          <div class="text-center">
+            <div id="dueToday" class="font-bold text-orange-400 text-lg">0</div>
+            <div class="text-slate-400">due today</div>
+          </div>
+        </div>
+        <!-- Actions -->
+        <div class="flex items-center gap-2">
+          <button onclick="exportCSV()" class="text-slate-400 hover:text-white px-3 py-1.5 rounded-lg text-sm border border-slate-600 hover:border-slate-500 transition">Export CSV</button>
+          <button onclick="openAddModal()" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl font-semibold text-sm transition flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Add Lead
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FILTER BAR -->
+  <div class="bg-slate-800/50 border-b border-slate-700/50">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3 overflow-x-auto">
+      <span class="text-xs text-slate-400 font-medium whitespace-nowrap">FILTER:</span>
+      <button onclick="setFilter('all')" id="filter-all" class="filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-orange-500 text-white whitespace-nowrap">All</button>
+      <button onclick="setFilter('cold')" id="filter-cold" class="filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300 hover:bg-slate-600 whitespace-nowrap">Cold</button>
+      <button onclick="setFilter('warm')" id="filter-warm" class="filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300 hover:bg-slate-600 whitespace-nowrap">Warm</button>
+      <button onclick="setFilter('hot')" id="filter-hot" class="filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300 hover:bg-slate-600 whitespace-nowrap">Hot</button>
+      <button onclick="setFilter('booked')" id="filter-booked" class="filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300 hover:bg-slate-600 whitespace-nowrap">Booked</button>
+      <div class="flex-1"></div>
+      <input id="searchInput" oninput="renderPipeline()" type="text" placeholder="Search leads..." class="bg-slate-800 border border-slate-600 rounded-lg px-3 py-1 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-orange-500 w-40">
+    </div>
+  </div>
+
+  <!-- KANBAN BOARD -->
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <!-- COLD -->
+      <div class="bg-slate-800/50 rounded-2xl p-4 border border-slate-700/50">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <span class="pipeline-dot status-cold"></span>
+            <h2 class="font-bold text-slate-300">Cold</h2>
+          </div>
+          <span id="count-cold" class="bg-slate-700 text-slate-300 text-xs font-bold px-2 py-0.5 rounded-lg">0</span>
+        </div>
+        <div id="col-cold" class="space-y-2 min-h-[200px]"></div>
+      </div>
+
+      <!-- WARM -->
+      <div class="bg-slate-800/50 rounded-2xl p-4 border border-orange-500/20">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <span class="pipeline-dot status-warm"></span>
+            <h2 class="font-bold text-orange-300">Warm</h2>
+          </div>
+          <span id="count-warm" class="bg-orange-500/20 text-orange-300 text-xs font-bold px-2 py-0.5 rounded-lg">0</span>
+        </div>
+        <div id="col-warm" class="space-y-2 min-h-[200px]"></div>
+      </div>
+
+      <!-- HOT -->
+      <div class="bg-slate-800/50 rounded-2xl p-4 border border-red-500/20">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <span class="pipeline-dot status-hot"></span>
+            <h2 class="font-bold text-red-300">Hot</h2>
+          </div>
+          <span id="count-hot" class="bg-red-500/20 text-red-300 text-xs font-bold px-2 py-0.5 rounded-lg">0</span>
+        </div>
+        <div id="col-hot" class="space-y-2 min-h-[200px]"></div>
+      </div>
+
+      <!-- BOOKED / WON -->
+      <div class="bg-slate-800/50 rounded-2xl p-4 border border-purple-500/20">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <span class="pipeline-dot status-booked"></span>
+            <h2 class="font-bold text-purple-300">Booked</h2>
+          </div>
+          <span id="count-booked" class="bg-purple-500/20 text-purple-300 text-xs font-bold px-2 py-0.5 rounded-lg">0</span>
+        </div>
+        <div id="col-booked" class="space-y-2 min-h-[200px]"></div>
+      </div>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="hidden text-center py-20">
+      <div class="text-6xl mb-4">📬</div>
+      <h3 class="text-xl font-bold text-slate-300 mb-2">No leads yet</h3>
+      <p class="text-slate-500 mb-6">Add your first lead to start tracking your outreach pipeline</p>
+      <button onclick="openAddModal()" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold transition">Add Your First Lead</button>
+    </div>
+  </main>
+
+  <!-- ADD / EDIT MODAL -->
+  <div id="modal" class="fixed inset-0 z-50 hidden overlay bg-black/60 flex items-center justify-center p-4">
+    <div class="bg-slate-800 rounded-2xl w-full max-w-md border border-slate-700 shadow-2xl animate-slide">
+      <div class="flex items-center justify-between p-5 border-b border-slate-700">
+        <h3 id="modalTitle" class="text-lg font-bold">Add New Lead</h3>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white text-2xl leading-none">&times;</button>
+      </div>
+      <form id="leadForm" onsubmit="saveLead(event)" class="p-5 space-y-4">
+        <input type="hidden" id="leadId">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-slate-400 font-medium block mb-1">Name *</label>
+            <input id="fName" required class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="Javier Estrada">
+          </div>
+          <div>
+            <label class="text-xs text-slate-400 font-medium block mb-1">Company *</label>
+            <input id="fCompany" required class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="NH Hotels">
+          </div>
+        </div>
+        <div>
+          <label class="text-xs text-slate-400 font-medium block mb-1">Email</label>
+          <input id="fEmail" type="email" class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500" placeholder="javier@nh-hotels.com">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-slate-400 font-medium block mb-1">Status *</label>
+            <select id="fStatus" required class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+              <option value="cold">Cold</option>
+              <option value="warm">Warm</option>
+              <option value="hot">Hot</option>
+              <option value="booked">Booked</option>
+              <option value="won">Won</option>
+              <option value="lost">Lost</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs text-slate-400 font-medium block mb-1">Source</label>
+            <input id="fSource" class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-orange-500" placeholder="LinkedIn, referral...">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs text-slate-400 font-medium block mb-1">Next Follow-up</label>
+            <input id="fFollowup" type="date" class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+          </div>
+          <div>
+            <label class="text-xs text-slate-400 font-medium block mb-1">Confidence</label>
+            <select id="fConfidence" class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="text-xs text-slate-400 font-medium block mb-1">Notes</label>
+          <textarea id="fNotes" rows="2" class="w-full bg-slate-700 border border-slate-600 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-orange-500 resize-none" placeholder="Initial research notes, conversation context..."></textarea>
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button type="button" onclick="closeModal()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-300 py-2.5 rounded-xl font-semibold text-sm transition">Cancel</button>
+          <button type="submit" class="flex-1 bg-orange-500 hover:bg-orange-600 text-white py-2.5 rounded-xl font-semibold text-sm transition">Save Lead</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRM MODAL -->
+  <div id="deleteModal" class="fixed inset-0 z-50 hidden overlay bg-black/60 flex items-center justify-center p-4">
+    <div class="bg-slate-800 rounded-2xl w-full max-w-sm border border-slate-700 shadow-2xl animate-slide p-6 text-center">
+      <div class="text-5xl mb-3">🗑️</div>
+      <h3 class="text-lg font-bold mb-2">Delete Lead?</h3>
+      <p class="text-slate-400 text-sm mb-5">This cannot be undone.</p>
+      <div class="flex gap-3">
+        <button onclick="closeDeleteModal()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-slate-300 py-2.5 rounded-xl font-semibold text-sm transition">Cancel</button>
+        <button onclick="confirmDelete()" class="flex-1 bg-red-500 hover:bg-red-600 text-white py-2.5 rounded-xl font-semibold text-sm transition">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-800 border border-slate-600 rounded-xl px-4 py-3 text-sm font-medium shadow-2xl translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <span id="toastIcon" class="mr-2"></span><span id="toastMsg"></span>
+  </div>
+
+<script>
+// ============ DATA ============
+const STORAGE_KEY = 'leadpulse_leads_v1';
+let leads = [];
+let currentFilter = 'all';
+let deleteTargetId = null;
+
+// ============ INIT ============
+function init() {
+  load();
+  renderPipeline();
+  updateStats();
+  checkStreak();
+  // Keyboard shortcut: 'N' to add new lead
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'n' && !e.ctrlKey && !e.metaKey && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      openAddModal();
+    }
+  });
+}
+
+// ============ PERSISTENCE ============
+function save() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+}
+
+function load() {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (raw) {
+    try { leads = JSON.parse(raw); } catch(e) { leads = []; }
+  } else {
+    // Seed with sample PISCO data for demo
+    leads = [
+      { id: generateId(), name: 'Javier Estrada', company: 'NH Hotels Spain', email: 'javier.estrada@nh-hotels.com', status: 'warm', source: 'LinkedIn', followup: getTodayPlus(3), confidence: 'low', notes: 'Director RRHH. Follow up with case studies.', createdAt: new Date().toISOString(), lastActivity: new Date().toISOString() },
+      { id: generateId(), name: 'Yolanda de la Plaza', company: 'Room Mate Hotels', email: 'y.delaplaza@room-matehotels.com', status: 'cold', source: 'Web research', followup: getTodayPlus(7), confidence: 'low', notes: 'HRBP at Room Mate. Verify email.', createdAt: new Date().toISOString(), lastActivity: new Date().toISOString() },
+      { id: generateId(), name: 'Lola Chamorro', company: 'Meliá Hotels', email: 'lola.chamorro@melia.com', status: 'hot', source: 'LinkedIn', followup: getTodayPlus(1), confidence: 'medium', notes: 'Global Head of TA. Very responsive on LinkedIn.', createdAt: new Date().toISOString(), lastActivity: new Date().toISOString() },
+      { id: generateId(), name: 'Carmen Oliver', company: 'Barceló Hotel Group', email: 'mariaoliver.molina@barcelo.com', status: 'warm', source: 'RocketReach', followup: getTodayPlus(5), confidence: 'medium', notes: 'HR Director. Good pattern for outreach.', createdAt: new Date().toISOString(), lastActivity: new Date().toISOString() },
+      { id: generateId(), name: 'Gabriel Cánaves', company: 'Meliá Hotels', email: 'gabriel.canaves@melia.com', status: 'booked', source: 'IE Network', followup: getTodayPlus(0), confidence: 'high', notes: 'Chief HR Officer. Meeting scheduled for next week.', createdAt: new Date().toISOString(), lastActivity: new Date().toISOString() },
+    ];
+    save();
+  }
+}
+
+// ============ HELPERS ============
+function generateId() {
+  return 'lp_' + Date.now() + '_' + Math.random().toString(36).slice(2,7);
+}
+
+function getTodayPlus(days) {
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  return d.toISOString().split('T')[0];
+}
+
+function todayStr() {
+  return new Date().toISOString().split('T')[0];
+}
+
+function isToday(dateStr) {
+  return dateStr === todayStr();
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const diff = Math.round((d - today) / 86400000);
+  if (diff === 0) return 'Today';
+  if (diff === 1) return 'Tomorrow';
+  if (diff === -1) return 'Yesterday';
+  if (diff < -1) return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+function confidenceColor(conf) {
+  if (conf === 'high') return 'text-green-400';
+  if (conf === 'medium') return 'text-yellow-400';
+  return 'text-slate-400';
+}
+
+function statusLabel(status) {
+  const map = { cold: 'Cold', warm: 'Warm', hot: 'Hot', booked: 'Booked', won: 'Won', lost: 'Lost' };
+  return map[status] || status;
+}
+
+// ============ RENDER ============
+function renderPipeline() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = leads.filter(l => {
+    const matchesFilter = currentFilter === 'all' || l.status === currentFilter;
+    const matchesSearch = !search || l.name.toLowerCase().includes(search) || l.company.toLowerCase().includes(search) || (l.email && l.email.includes(search));
+    return matchesFilter && matchesSearch;
+  });
+
+  const cols = { cold: [], warm: [], hot: [], booked: [] };
+  filtered.forEach(l => {
+    if (['cold','warm','hot','booked'].includes(l.status)) cols[l.status].push(l);
+    else if (l.status === 'won' || l.status === 'lost') cols['booked'].push(l);
+  });
+
+  const today = todayStr();
+  document.getElementById('count-cold').textContent = cols.cold.length;
+  document.getElementById('count-warm').textContent = cols.warm.length;
+  document.getElementById('count-hot').textContent = cols.hot.length;
+  document.getElementById('count-booked').textContent = cols.booked.length;
+
+  for (const [status, items] of Object.entries(cols)) {
+    const el = document.getElementById('col-' + status);
+    if (items.length === 0) {
+      el.innerHTML = '<div class="text-slate-600 text-xs text-center py-8 italic">No leads</div>';
+    } else {
+      el.innerHTML = items.map(l => renderCard(l, today)).join('');
+    }
+  }
+
+  // Empty state
+  const emptyEl = document.getElementById('emptyState');
+  if (leads.length === 0) {
+    emptyEl.classList.remove('hidden');
+  } else {
+    emptyEl.classList.add('hidden');
+  }
+}
+
+function renderCard(l, today) {
+  const isDue = l.followup && l.followup <= today && ['cold','warm','hot'].includes(l.status);
+  const isPast = l.followup && l.followup < today && !isDue;
+
+  let followupHtml = '';
+  if (l.followup) {
+    if (isDue) {
+      followupHtml = `<div class="mt-2 flex items-center gap-1 text-orange-400 text-xs font-semibold">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Due ${formatDate(l.followup)}
+      </div>`;
+    } else if (isPast) {
+      followupHtml = `<div class="mt-2 flex items-center gap-1 text-red-400/60 text-xs">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Overdue: ${formatDate(l.followup)}
+      </div>`;
+    } else {
+      followupHtml = `<div class="mt-2 flex items-center gap-1 text-slate-500 text-xs">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Follow-up: ${formatDate(l.followup)}
+      </div>`;
+    }
+  }
+
+  return `
+  <div class="kanban-card bg-slate-700/60 rounded-xl p-3 border border-slate-600/40 cursor-pointer ${isDue ? 'border-orange-500/40 ring-1 ring-orange-500/20' : ''}" onclick="openEditModal('${l.id}')">
+    <div class="flex items-start justify-between gap-2">
+      <div class="min-w-0">
+        <div class="font-semibold text-sm text-white truncate">${escapeHtml(l.name)}</div>
+        <div class="text-xs text-slate-400 truncate">${escapeHtml(l.company)}</div>
+        ${l.email ? `<div class="text-xs text-slate-500 truncate mt-0.5">${escapeHtml(l.email)}</div>` : ''}
+      </div>
+      <div class="flex flex-col items-end gap-1 flex-shrink-0">
+        <span class="text-xs ${confidenceColor(l.confidence)}">${l.confidence}</span>
+        ${l.source ? `<span class="text-[10px] text-slate-500 bg-slate-600 px-1.5 py-0.5 rounded truncate max-w-[80px]">${escapeHtml(l.source)}</span>` : ''}
+      </div>
+    </div>
+    ${followupHtml}
+    ${l.notes ? `<div class="mt-2 text-xs text-slate-500 line-clamp-2 italic">${escapeHtml(l.notes)}</div>` : ''}
+    <div class="mt-2 flex items-center justify-between">
+      <button onclick="event.stopPropagation(); openDeleteModal('${l.id}')" class="text-slate-500 hover:text-red-400 text-xs transition p-1">🗑️</button>
+      <button onclick="event.stopPropagation(); moveStatus('${l.id}', 'warm')" class="text-xs text-slate-500 hover:text-orange-400 transition">→ Warm</button>
+    </div>
+  </div>`;
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ============ STATS ============
+function updateStats() {
+  document.getElementById('totalLeads').textContent = leads.length;
+  document.getElementById('hotCount').textContent = leads.filter(l => l.status === 'hot').length;
+  const today = todayStr();
+  const due = leads.filter(l => l.followup === today && ['cold','warm','hot'].includes(l.status)).length;
+  document.getElementById('dueToday').textContent = due;
+}
+
+// ============ STREAK ============
+function checkStreak() {
+  const streakKey = 'leadpulse_streak_v1';
+  const lastDate = localStorage.getItem(streakKey + '_last');
+  const count = parseInt(localStorage.getItem(streakKey + '_count') || '0');
+  const today = todayStr();
+
+  if (lastDate === today) {
+    setStreak(count);
+  } else {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toISOString().split('T')[0];
+    if (lastDate === yesterdayStr) {
+      // streak continues
+      localStorage.setItem(streakKey + '_last', today);
+      const newCount = count + 1;
+      localStorage.setItem(streakKey + '_count', newCount);
+      setStreak(newCount);
+    } else {
+      // streak broken
+      localStorage.setItem(streakKey + '_last', today);
+      localStorage.setItem(streakKey + '_count', '0');
+      setStreak(0);
+    }
+  }
+}
+
+function bumpStreak() {
+  const streakKey = 'leadpulse_streak_v1';
+  const today = todayStr();
+  const last = localStorage.getItem(streakKey + '_last');
+  if (last === today) return; // already bumped today
+  const count = parseInt(localStorage.getItem(streakKey + '_count') || '0');
+  localStorage.setItem(streakKey + '_last', today);
+  localStorage.setItem(streakKey + '_count', count + 1);
+  setStreak(count + 1);
+}
+
+function setStreak(n) {
+  const el = document.getElementById('streakCount');
+  const badge = document.getElementById('streakBadge');
+  el.textContent = n;
+  if (n >= 3) badge.classList.add('streak-badge');
+  else badge.classList.remove('streak-badge');
+}
+
+// ============ CRUD ============
+function openAddModal() {
+  document.getElementById('modalTitle').textContent = 'Add New Lead';
+  document.getElementById('leadForm').reset();
+  document.getElementById('leadId').value = '';
+  document.getElementById('fFollowup').value = getTodayPlus(3);
+  document.getElementById('modal').classList.remove('hidden');
+}
+
+function openEditModal(id) {
+  const l = leads.find(x => x.id === id);
+  if (!l) return;
+  document.getElementById('modalTitle').textContent = 'Edit Lead';
+  document.getElementById('leadId').value = l.id;
+  document.getElementById('fName').value = l.name;
+  document.getElementById('fCompany').value = l.company;
+  document.getElementById('fEmail').value = l.email || '';
+  document.getElementById('fStatus').value = l.status;
+  document.getElementById('fSource').value = l.source || '';
+  document.getElementById('fFollowup').value = l.followup || '';
+  document.getElementById('fConfidence').value = l.confidence || 'medium';
+  document.getElementById('fNotes').value = l.notes || '';
+  document.getElementById('modal').classList.remove('hidden');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.add('hidden');
+}
+
+function saveLead(e) {
+  e.preventDefault();
+  const id = document.getElementById('leadId').value;
+  const data = {
+    name: document.getElementById('fName').value.trim(),
+    company: document.getElementById('fCompany').value.trim(),
+    email: document.getElementById('fEmail').value.trim(),
+    status: document.getElementById('fStatus').value,
+    source: document.getElementById('fSource').value.trim(),
+    followup: document.getElementById('fFollowup').value,
+    confidence: document.getElementById('fConfidence').value,
+    notes: document.getElementById('fNotes').value.trim(),
+    lastActivity: new Date().toISOString()
+  };
+
+  if (id) {
+    // Edit
+    const idx = leads.findIndex(x => x.id === id);
+    if (idx !== -1) {
+      leads[idx] = { ...leads[idx], ...data };
+    }
+    showToast('✏️ Lead updated');
+  } else {
+    // Add
+    data.id = generateId();
+    data.createdAt = new Date().toISOString();
+    leads.unshift(data);
+    bumpStreak();
+    showToast('✅ Lead added — streak +1!');
+  }
+
+  save();
+  closeModal();
+  renderPipeline();
+  updateStats();
+}
+
+function openDeleteModal(id) {
+  deleteTargetId = id;
+  document.getElementById('deleteModal').classList.remove('hidden');
+}
+
+function closeDeleteModal() {
+  deleteTargetId = null;
+  document.getElementById('deleteModal').classList.add('hidden');
+}
+
+function confirmDelete() {
+  if (deleteTargetId) {
+    leads = leads.filter(l => l.id !== deleteTargetId);
+    save();
+    renderPipeline();
+    updateStats();
+    showToast('🗑️ Lead deleted');
+  }
+  closeDeleteModal();
+}
+
+function moveStatus(id, newStatus) {
+  const idx = leads.findIndex(x => x.id === id);
+  if (idx !== -1) {
+    leads[idx].status = newStatus;
+    leads[idx].lastActivity = new Date().toISOString();
+    save();
+    renderPipeline();
+    updateStats();
+    showToast(`→ Moved to ${statusLabel(newStatus)}`);
+  }
+}
+
+function setFilter(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-700 text-slate-300 hover:bg-slate-600 whitespace-nowrap';
+  });
+  const activeBtn = document.getElementById('filter-' + filter);
+  if (activeBtn) {
+    if (filter === 'all') activeBtn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-orange-500 text-white whitespace-nowrap';
+    else if (filter === 'warm') activeBtn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/20 text-orange-300 whitespace-nowrap';
+    else if (filter === 'hot') activeBtn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-red-500/20 text-red-300 whitespace-nowrap';
+    else if (filter === 'booked') activeBtn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/20 text-purple-300 whitespace-nowrap';
+    else activeBtn.className = 'filter-btn px-3 py-1 rounded-full text-xs font-semibold bg-slate-600 text-slate-300 whitespace-nowrap';
+  }
+  renderPipeline();
+}
+
+// ============ EXPORT ============
+function exportCSV() {
+  if (leads.length === 0) { showToast('📭 No leads to export'); return; }
+  const headers = ['Name', 'Company', 'Email', 'Status', 'Source', 'Follow-up', 'Confidence', 'Notes', 'Created'];
+  const rows = leads.map(l => [
+    `"${l.name}"`, `"${l.company}"`, `"${l.email||''}"`, `"${l.status}"`, `"${l.source||''}"`,
+    `"${l.followup||''}"`, `"${l.confidence||''}"`, `"${(l.notes||'').replace(/"/g,'""')}"`, `"${l.createdAt||''}"`
+  ]);
+  const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `leadpulse_export_${todayStr()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('📄 CSV exported!');
+}
+
+// ============ TOAST ============
+let toastTimeout;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const [icon, ...rest] = msg.split(' ');
+  document.getElementById('toastIcon').textContent = icon;
+  document.getElementById('toastMsg').textContent = rest.join(' ');
+  toast.classList.remove('translate-y-20', 'opacity-0');
+  toast.classList.add('translate-y-0', 'opacity-100');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove('translate-y-0', 'opacity-100');
+    toast.classList.add('translate-y-20', 'opacity-0');
+  }, 2500);
+}
+
+// ============ BOOT ============
+init();
+</script>
+</body>
+</html>
