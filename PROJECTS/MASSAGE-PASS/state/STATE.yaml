@@ -86,18 +86,20 @@ tasks:
 # Shops
 shops:
   - name: Mayoac
-    location: Chamartín, Madrid
+    location: Chamartín (Plaza Castilla), Madrid
     status: interested
-    contact: null
+    contact: null  # No direct contact found — check yelp.ca/biz/mayoac-madrid, visit in person
     rate_per_visit: null
     normal_rate: null
+    note: "Established 2002. Yelp: yelp.ca/biz/mayoac-madrid"
     
   - name: The Fix Room
-    location: Salamanca, Madrid
+    location: Centro, Madrid (C. de Quiñones, 13, local, 28015)
     status: interested
-    contact: null
+    contact: "+34 622 21 77 37 / thefixroom.com"
     rate_per_visit: null
     normal_rate: null
+    note: "Phone found online. By appointment only. Therapists: Agustín, Lourdes."
 
 # Subscribers
 subscribers: []

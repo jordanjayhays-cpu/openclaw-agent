@@ -208,5 +208,15 @@ mp-008 (booking confirmation)    — blocked by mp-002
 ### What Jordan Needs (in priority order)
 1. **Buy domain** — `massagepass.com` (9 days overdue)
 2. **Set up Notion API** — create integration at notion.so/my-integrations, store token in `~/.config/notion/api_key`, give me parent page ID
-3. **Shop outreach** — send emails to Mayoac + The Fix Room (templates in `shop-outreach.md`)
+### Shop Outreach Research (14:18 UTC)
+- ✅ Researched Mayoac + The Fix Room online
+- **The Fix Room**: Found real contact info — address C. de Quiñones 13, Centro, Madrid; phone +34 622 21 77 37; website thefixroom.com
+- **Mayoac**: Found Yelp listing (yelp.ca/biz/mayoac-madrid) — established 2002, near Plaza Castilla. No direct contact found yet.
+- Updated `shop-outreach.md` with real phone/address for The Fix Room
+- Jordan can now call The Fix Room directly (+34 622 21 77 37) instead of just emailing
+
+### Jordan's Priority Actions (Updated)
+1. **Call The Fix Room** — +34 622 21 77 37 (found real phone number!)
+2. **Buy domain** — massagepass.com (9 days overdue)
+3. **Set up Notion API** — store token in `~/.config/notion/api_key`, give parent page ID → I build databases automatically
 

@@ -2,8 +2,23 @@
 
 ## Context
 Two target shops:
-- **Mayoac** — Chamartín, Madrid — status: interested
-- **The Fix Room** — Salamanca, Madrid — status: interested
+- **Mayoac** — Chamartín (Plaza Castilla), Madrid — status: interested
+- **The Fix Room** — Centro, Madrid — status: interested
+
+## Contact Intel (found online)
+
+### Mayoac
+- **Location hint:** Plaza Castilla, Madrid (Chamartín)
+- **Yelp:** yelp.ca/biz/mayoac-madrid
+- **Note:** Established 2002, "los mejores masajes de plza castilla"
+- **Contact:** None found yet — Jordan should search Google Maps for "Mayoac massage Madrid" or visit in person
+
+### The Fix Room
+- **Address:** C. de Quiñones, 13, local, Centro, Madrid 28015
+- **Phone:** +34 622 21 77 37
+- **Website:** thefixroom.com
+- **Therapists:** Agustín, Lourdes
+- **Booking:** By appointment only — call or email first
 
 ---
 
