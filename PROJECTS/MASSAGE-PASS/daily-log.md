@@ -259,3 +259,36 @@ mp-005, mp-006, mp-008            — blocked by mp-004
 2. **Set up Notion API** → store token in `~/.config/notion/api_key` + give me parent page ID → I build 3 databases automatically
 3. **Formspree** (optional but recommended) → replace `YOUR_FORMSPREE_ID` in landing page → live form submissions
 
+---
+
+## 2026-04-16 — Thursday (22:10 UTC)
+
+### Cron Trigger
+- **Source:** MASSAGE-PASS Check-in cron
+- **Time:** 22:10 UTC
+
+### Notion API Check
+- ❌ NOT AVAILABLE — `~/.config/notion/api_key` not found
+- mp-002 still pending (Jordan's action required — now 13+ days overdue)
+- mp-004 (Notion databases) still blocked by mp-002
+
+### No Action Taken
+- Landing page complete and stable from previous sessions
+- mp-005 (shop signup form) and mp-006 (subscriber waitlist) already built with Formspree + localStorage fallback
+- Notion databases (mp-004) remain blocked
+
+### Current Blocker Chain
+```
+mp-001 (domain: massagepass.com)  — Jordan, 9+ days overdue
+mp-002 (Notion API token)        — Jordan, 13+ days overdue
+    ↓
+mp-004 (Notion databases)        — blocked by mp-002
+    ↓
+mp-005, mp-006, mp-008            — blocked by mp-004
+```
+
+### What Jordan Needs
+1. **Buy domain** — massagepass.com → unblocks GitHub Pages deployment
+2. **Set up Notion API** → store token in `~/.config/notion/api_key` + give me parent page ID → I build 3 databases automatically
+3. **Formspree** → replace `YOUR_FORMSPREE_ID` in landing page → live form submissions
+
