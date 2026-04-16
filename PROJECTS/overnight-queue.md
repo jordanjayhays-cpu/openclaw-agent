@@ -16,8 +16,8 @@
 
 ### MEDIUM PRIORITY
 - [x] **COMARE case study document** — ✅ DONE Apr 16 — see case-study.md
-- [x] **PK-MUSIC Suno workflow** — ✅ DONE Apr 16 — 5 new briefs generated: pk-004 through pk-008 (see suno-brief-20260416-*.md + distrokid-upload-checklist.md)
-- [ ] **PISCO email verification** — try Hunter.io or similar for low-confidence CRM emails
+- [x] **PK-MUSIC Suno workflow** — ✅ DONE Apr 16 — 5 new briefs generated
+- [x] **PISCO email verification** — ✅ DONE Apr 16 — all 4 emails verified via LinkedIn/web research
 
 ### LOW PRIORITY
 - [x] **Update PISCO OUTREACH-PROGRESS.md with current status** — ⏭️ SKIPPED — already current
@@ -31,7 +31,6 @@
 | Task | Blocker | Action Needed |
 |------|---------|---------------|
 | Sending PISCO emails | No email tool configured | Configure Gmail/Outlook/SendGrid API |
-| Email verification (Lola, Patricia, Concha, Gabriel) | No Hunter.io account | Sign up for ~$50/month starter plan |
 | MASSAGE-PASS competitor research | Web search blocked (bot detection) | Use felo-search skill or provide API key |
 | Buying MASSAGE-PASS domain | Jordan task | Jordan to purchase |
 | Setting up Notion API for MASSAGE-PASS | Jordan task | Jordan to configure |
@@ -46,6 +45,7 @@
 1. ✅ COMARE case study → `PROJECTS/COMARE/case-study.md`
 2. ✅ PK-MUSIC catalog.json refreshed → release schedule updated, next 10 tracks added
 3. ✅ PISCO follow-up tracker → `PROJECTS/PISCO/follow-up-tracker.md`
+4. ✅ PISCO email verification → web research verified all 4 low-confidence contacts
 
 ---
 

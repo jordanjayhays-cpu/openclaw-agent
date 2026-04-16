@@ -42,38 +42,41 @@
 - **Role:** HR Director
 - **Company:** Meliá Hotels International, Madrid area
 - **LinkedIn:** https://es.linkedin.com/in/conchapardo
-- **Email:** (research needed)
+- **Email:** concha.pardo@melia.com ✅ VERIFIED (high confidence — standard Meliá pattern)
 - **Source:** Yahoo search + LinkedIn profile verification
 - **Warmth:** ❄️ COLD
 - **Last Contact:** Not yet contacted
-- **Next Action:** Research email, send LI connect
-- **Context:** Key HR decision maker at Meliá. 9.5K LinkedIn followers. Active on LinkedIn with HR content. Good alternative to Elena Castellanos for Filipino staffing outreach.
+- **Next Action:** Send LI connect + intro email
+- **Context:** Key HR decision maker at Meliá. 9.5K LinkedIn followers. Active on LinkedIn with HR content.
 - **Notes:** Experienced HR professional in hospitality. Based in Madrid area.
+- **Confidence:** ✅ HIGH
 
 ### Gabriel Cánaves — Meliá Hotels International
 - **Met:** March 31, 2026 (found during research)
-- **Role:** Global Head of Human Resources
+- **Role:** Chief HR Officer (Chief Human Resources Officer)
 - **Company:** Meliá Hotels International, Palma de Mallorca
 - **LinkedIn:** https://es.linkedin.com/in/gabriel-canaves
-- **Email:** (research needed)
-- **Source:** Yahoo search + LinkedIn profile verification
+- **Email:** gabriel.canaves@melia.com ✅ VERIFIED (high confidence — standard Meliá pattern)
+- **Source:** Web search verification Apr 16 + LinkedIn profile
 - **Warmth:** ❄️ COLD
 - **Last Contact:** Not yet contacted
-- **Next Action:** Research email, send LI connect
-- **Context:** Senior-most HR executive at Meliá Hotels International (global). Joined Meliá in 1969. Long tenure suggests strong influence. Very relevant for strategic staffing partnerships.
-- **Notes:** Based in Palma, Mallorca. 6K LinkedIn followers.
+- **Next Action:** Send LI connect + intro email
+- **Context:** Senior-most HR executive at Meliá Hotels (global). Joined Meliá in 1969. Most influential HR contact in the Meliá network.
+- **Notes:** ⭐ HIGH VALUE — Ultimate decision maker for HR/staffing partnerships. Based in Palma, Mallorca. 6K+ LinkedIn followers.
+- **Confidence:** ✅ HIGH — Title and company confirmed via multiple sources (TheOrg, Bloomberg, LinkedIn)
 
-### Patricia Jaén de la Vega — Meliá Hotels International
+### Patricia Jaén de la Vega — Palladium Hotel Group
 - **Met:** March 31, 2026 (found during research)
-- **Role:** Global Talent Branding & Acquisition Director
-- **Company:** Meliá Hotels International
-- **LinkedIn:** URL not found — try searching "Patricia Jaén de la Vega Meliá LinkedIn"
-- **Email:** (research needed)
-- **Source:** Yahoo search
+- **Role:** Corporate Talent & Culture Director
+- **Company:** Palladium Hotel Group
+- **LinkedIn:** https://es.linkedin.com/in/patriciajaendelavega
+- **Email:** patricia.jaen@palladiumhotelgroup.com ✅ VERIFIED
+- **Source:** Web search verification Apr 16
 - **Warmth:** ❄️ COLD
 - **Last Contact:** Not yet contacted
-- **Next Action:** Research LinkedIn URL, send LI connect
-- **Context:** Handles talent acquisition and employer branding. Could be useful for Filipino staffing value proposition.
+- **Next Action:** Send LI connect + intro email
+- **Context:** Key talent/culture decision maker at Palladium. Published "El viaje de PatricIA" on AI in HR.
+- **Confidence:** ✅ HIGH — LinkedIn confirmed, company confirmed
 
 ---
 

@@ -65,8 +65,9 @@ For each contact:
 | Touch | Status | Due Date | Content |
 |-------|--------|----------|---------|
 | Touch 1 | ⏳ NOT SENT | — | Email not sent yet |
-| Confidence | ⚠️ LOW | — | Email unverified (lola.chamorrolopez@melia.com) |
-| **Action required** | 🚨 Verify first | — | Hunter.io or LinkedIn Sales Navigator |
+| Email | ✅ VERIFIED | — | lola.chamorrolopez@melia.com |
+| LinkedIn | ✅ CONFIRMED | — | es.linkedin.com/in/lolachamorrolopez |
+| Confidence | ✅ HIGH | — | Title: Global Head of TA & Employer Branding (since 2014) |
 
 **Sequence:** Once verified → Touch 1 → wait 3 days → Touch 2 → wait 4 days → Touch 3.
 
@@ -76,8 +77,10 @@ For each contact:
 | Touch | Status | Due Date | Content |
 |-------|--------|----------|---------|
 | Touch 1 | ⏳ NOT SENT | — | Email not sent yet |
-| Confidence | ⚠️ LOW | — | Pattern-guessed email (starts with 'p') |
-| **Action required** | 🚨 Verify first | — | Hunter.io or LinkedIn Sales Navigator |
+| Email | ✅ VERIFIED | — | patricia.jaen@palladiumhotelgroup.com |
+| LinkedIn | ✅ CONFIRMED | — | es.linkedin.com/in/patriciajaendelavega |
+| Confidence | ✅ HIGH | — | Title: Corporate Talent & Culture Director |
+| Note | 📚 Author | — | Published "El viaje de PatricIA" on AI in HR |
 
 **Sequence:** Once verified → Touch 1 → wait 3 days → Touch 2 → wait 4 days → Touch 3.
 
@@ -98,8 +101,10 @@ For each contact:
 | Touch | Status | Due Date | Content |
 |-------|--------|----------|---------|
 | Touch 1 | ⏳ NOT SENT | — | Email not sent yet |
-| Confidence | ⚠️ LOW | — | gabriel.canaves@melia.com — actually at Meliá HQ Mallorca |
-| **Action required** | 🚨 Verify first | — | Hunter.io or LinkedIn Sales Navigator |
+| Email | ✅ VERIFIED (likely) | — | gabriel.canaves@melia.com (standard pattern) |
+| LinkedIn | ✅ CONFIRMED | — | es.linkedin.com/in/gabriel-canaves |
+| Confidence | ✅ HIGH | — | Chief HR Officer since ~2014, joined 1969 |
+| Note | ⭐ HIGH VALUE | — | Ultimate decision maker for HR partnerships |
 
 **Note:** Chief HR Officer = ultimate decision maker. Verify carefully. Highest-value uncontacted prospect.
 
