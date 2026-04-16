@@ -1,5 +1,11 @@
 # Overnight Work Queue
-**Last updated: 2026-04-01 21:59 UTC**
+**Last updated: 2026-04-16 10:49 UTC**
+**⚠️ STALE — Needs Review** — Queue not updated since 2026-04-01 (15 days ago). All HIGH tasks completed. Only stale MED items remain.
+
+## Queue (top = do first)
+
+### ⚠️ ARCHIVED TASKS — Completed 2026-04-01
+Tasks 1 & 2 completed. Task 3-4 stale/overdue.
 
 ## Queue (top = do first)
 

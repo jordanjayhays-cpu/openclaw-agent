@@ -62,3 +62,30 @@
 **Blockers noted:**
 - All 4 emails are unconfirmed — verify with Hunter.io or LinkedIn Sales Navigator before any outreach
 - Recommend verifying Javier Estrada via corporate.minor-hotels.com directory or direct LinkedIn message
+2026-04-16 10:49 - Overnight builder started
+
+---
+
+## Sprint — 2026-04-16
+
+### Task: Process overnight queue (Tasks 3 & 4)
+**Status:** ⚠️ QUEUE STALE — all Tasks 1 & 2 completed Apr 1
+**Started:** 2026-04-16 10:49 UTC
+
+**Finding:** Queue has not been updated since 2026-04-01. All HIGH items are already DONE. Only two MED items remain:
+
+**Task 3: Find HR contacts at Riu Hotels + Iberostar**
+- Luis Zamora confirmed as CHRO at Iberostar — luis.zamora@iberostar.com (already in CRM)
+- Riu Hotels HR contact: NO confirmed email found. jobs@riu.com generic only. LinkedIn search blocked by bot detection.
+- Recommendation: Jordan should verify Riu HR via LinkedIn manually or set up Google Search API
+
+**Task 4: Follow up on PISCO outreach (Javier Estrada, Luis Zamora)**
+- Javier Estrada follow-up was due Mar 31 — 16 days overdue
+- Luis Zamora follow-up was due Apr 4 — 12 days overdue
+- All action_required=true in CRM — needs Jordan approval to send
+- No email tool / Hunter.io configured — cannot send autonomously
+
+**Blockers:**
+- All web search tools hitting bot detection (DuckDuckGo, Google Search not configured, Felo Search not configured)
+- No email sending capability without Jordan approval
+- Queue file is 15 days stale — recommend Jordan review and refresh
