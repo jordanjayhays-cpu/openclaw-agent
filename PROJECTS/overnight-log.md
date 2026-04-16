@@ -194,7 +194,6 @@ Queue fully processed. All actionable items already completed in prior runs.
 
 ---
 
-## 2026-04-16 — Early Afternoon Run (Axton)
 
 **Trigger:** Cron (13:03 UTC)
 **Time:** 13:03 UTC
@@ -257,3 +256,28 @@ Queue fully processed. All autonomous tasks completed in prior runs. Updated STA
 
 *Log entry: 2026-04-16 17:58 UTC*
 2026-04-16 13:39 - Overnight builder started
+
+---
+
+## 2026-04-16 — Night Run (Axton)
+
+**Trigger:** Overnight cron
+**Time:** 2026-04-16 21:58 UTC
+
+### Status: No new work available
+
+Queue fully processed. All actionable tasks completed in prior runs:
+- COMARE case study ✅
+- PK-MUSIC Suno briefs (5 new generated) ✅
+- PK-MUSIC catalog refresh ✅
+- PISCO follow-up tracker ✅
+- PISCO email verification (all 4 verified) ✅
+
+Remaining items all require Jordan's direct action:
+- MASSAGE-PASS competitor research — attempted via felo-search but FELO_API_KEY not configured
+- PISCO email send — no email tool configured
+- Domain purchase, Notion API, DistroKid setup — Jordan tasks
+
+**No changes made.**
+
+*Log entry: 2026-04-16 21:58 UTC*
