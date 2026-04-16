@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0f0f23}
+.calc{background:#16213e;padding:1.5rem;border-radius:16px}
+.display{background:#0f3460;color:#fff;font-size:2rem;text-align:right;padding:1rem;border-radius:8px;margin-bottom:1rem;min-width:260px;overflow:hidden}
+.btns{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+button{padding:1.2rem;font-size:1.3rem;border:none;border-radius:8px;cursor:pointer;background:#1a1a3e;color:#fff}
+button:hover{background:#2a2a4e}
+button.op{background:#e94560}
+button.eq{background:#22c55e}
+</style>
+</head>
+<body>
+<div class="calc">
+<div class="display" id="display">0</div>
+<div class="btns">
+<button onclick="c()">C</button><button onclick="del()">Del</button><button onclick="op('%')">%</button><button class="op" onclick="op('/')">/</button>
+<button onclick="num(7)">7</button><button onclick="num(8)">8</button><button onclick="num(9)">9</button><button class="op" onclick="op('*')">*</button>
+<button onclick="num(4)">4</button><button onclick="num(5)">5</button><button onclick="num(6)">6</button><button class="op" onclick="op('-')">-</button>
+<button onclick="num(1)">1</button><button onclick="num(2)">2</button><button onclick="num(3)">3</button><button class="op" onclick="op('+')">+</button>
+<button onclick="num(0)" style="grid-column:span 2">0</button><button onclick="dot()">.</button><button class="eq" onclick="eq()">=</button>
+</div></div>
+<script>
+var d='',last='';
+var display=document.getElementById('display');
+function num(n){d+=n;update()}
+function op(o){d+=o;last=o;update()}
+function c(){d='';update()}
+function del(){d=d.slice(0,-1);update()}
+function dot(){if(d.indexOf('.')<0){d+='.';update()}}
+function eq(){try{d=String(eval(d));update()}catch(e){d='Error';update()}}
+function update(){display.textContent=d||'0'}
+</script>
+</body>
+</html>

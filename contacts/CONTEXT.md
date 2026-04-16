@@ -155,3 +155,13 @@
 - ❄️ WARM — Responded, interested
 - 🔥 HOT — Active conversation, meeting likely
 - 🔥🔥🔥 BLAZING — Meeting booked, deal closing
+
+## Enriched Lead: John Smith
+- Company: TechCorp
+- Email:    📧 Finding email...
+John.Smith@techcorp.com
+- LinkedIn:    🔗 Searching LinkedIn...
+https://www.linkedin.com/in/john-smith
+- Score: 7/10
+- Decision Maker: NO
+- Enriched: 2026-04-02

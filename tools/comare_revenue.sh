@@ -81,11 +81,13 @@ update_status() {
     success "Client $id → $status"
 }
 
-# Revenue calculator
+# Revenue calculator (uses awk instead of bc)
 calculate_revenue() {
-    local clients="$1"
-    local monthly=$(echo "$clients * $MONTHLY_RETAINER" | bc)
-    local annual=$(echo "$monthly * 12" | bc)
+    local clients="${1:-0}"
+    local monthly=$(awk "BEGIN {printf \"%.0f\", $clients * $MONTHLY_RETAINER}")
+    local annual=$(awk "BEGIN {printf \"%.0f\", $clients * $MONTHLY_RETAINER * 12}")
+    local to_target=$(awk "BEGIN {printf \"%.0f\", $TARGET_ANNUAL - $clients * $MONTHLY_RETAINER * 12}")
+    local progress=$(awk "BEGIN {printf \"%.1f\", $clients * $MONTHLY_RETAINER * 12 * 100 / $TARGET_ANNUAL}")
     
     echo ""
     echo "═══════════════════════════════════════════"
@@ -94,19 +96,25 @@ calculate_revenue() {
     echo "  Clients:     $clients"
     echo "  Monthly:     \$$monthly"
     echo "  Annual:      \$$annual"
-    echo "  To target:   $(echo "$TARGET_ANNUAL - $annual" | bc) to go"
-    echo "  Progress:    $(echo "scale=1; $annual * 100 / $TARGET_ANNUAL" | bc)%"
+    echo "  To target:   \$$to_target to go"
+    echo "  Progress:    ${progress}%"
     echo "═══════════════════════════════════════════"
     echo ""
 }
 
 # Milestone tracker
 update_milestones() {
-    local client_count=$(grep -c "ACTIVE" "$TRACKER" 2>/dev/null || echo 0)
+    local client_count=$(grep -c "ACTIVE" "$TRACKER" 2>/dev/null || true)
     
-    sed -i 's/- \[ \] First client/- [']"$( [[ $client_count -ge 1 ]] && echo 'x' || echo ' ' )"'] First client/' "$TRACKER" 2>/dev/null
-    sed -i 's/- \[ \] 5 clients/- [']"$( [[ $client_count -ge 5 ]] && echo 'x' || echo ' ' )"'] 5 clients/' "$TRACKER" 2>/dev/null
-    sed -i 's/- \[ \] 10 clients/- [']"$( [[ $client_count -ge 10 ]] && echo 'x' || echo ' ' )"'] 10 clients/' "$TRACKER" 2>/dev/null
+    if [[ "$client_count" -ge 1 ]]; then
+        sed -i 's/- \[ \] First client/- [x] First client/' "$TRACKER" 2>/dev/null
+    fi
+    if [[ "$client_count" -ge 5 ]]; then
+        sed -i 's/- \[ \] 5 clients/- [x] 5 clients/' "$TRACKER" 2>/dev/null
+    fi
+    if [[ "$client_count" -ge 10 ]]; then
+        sed -i 's/- \[ \] 10 clients/- [x] 10 clients/' "$TRACKER" 2>/dev/null
+    fi
 }
 
 # Log service
@@ -165,29 +173,30 @@ daily_report() {
     echo "═══════════════════════════════════════════"
     echo ""
     
-    local client_count=$(grep -c "ACTIVE" "$TRACKER" 2>/dev/null || echo 0)
-    local monthly=$(echo "$client_count * $MONTHLY_RETAINER" | bc)
-    local annual=$(echo "$monthly * 12" | bc)
+    local client_count=$(grep -c "ACTIVE" "$TRACKER" 2>/dev/null || true)
+    local monthly=$(awk "BEGIN {printf \"%.0f\", $client_count * $MONTHLY_RETAINER}")
+    local annual=$(awk "BEGIN {printf \"%.0f\", $client_count * $MONTHLY_RETAINER * 12}")
+    local gap=$(awk "BEGIN {printf \"%.0f\", $TARGET_ANNUAL - $client_count * $MONTHLY_RETAINER * 12}")
     
     echo "📊 CLIENT METRICS"
     echo "  Active clients: $client_count / $TARGET_CLIENTS"
     echo "  Monthly revenue: \$$monthly"
     echo "  Annual revenue: \$$annual"
-    echo "  Target gap: \$$(echo "$TARGET_ANNUAL - $annual" | bc)"
+    echo "  Target gap: \$$gap"
     echo ""
     
     echo "🎯 MILESTONES"
-    if [[ $client_count -ge 1 ]]; then
+    if [[ "$client_count" -ge 1 ]]; then
         echo "  ✅ First client achieved!"
     else
         echo "  ⬜ First client (MVP)"
     fi
-    if [[ $client_count -ge 5 ]]; then
+    if [[ "$client_count" -ge 5 ]]; then
         echo "  ✅ 5 clients (\$30K/year)"
     else
         echo "  ⬜ 5 clients (\$30K/year)"
     fi
-    if [[ $client_count -ge 10 ]]; then
+    if [[ "$client_count" -ge 10 ]]; then
         echo "  ✅ 10 clients (\$60K/year)"
     else
         echo "  ⬜ 10 clients (\$60K/year)"

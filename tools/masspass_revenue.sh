@@ -172,9 +172,9 @@ daily_report() {
     echo "═══════════════════════════════════════════"
     echo ""
     
-    local sub_count=$(grep -c "ACTIVE" "$TRACKER" 2>/dev/null || echo 0)
-    local waitlist_count=$(grep -c "NO" "$WAITLIST" 2>/dev/null || echo 0)
-    local shops_count=$(grep -c "ACTIVE" "$DATA_DIR/shops/shops.md" 2>/dev/null || echo 0)
+    local sub_count=$(grep -c "ACTIVE" "$TRACKER" 2>/dev/null || true)
+    local waitlist_count=$(grep -c "NO" "$WAITLIST" 2>/dev/null || true)
+    local shops_count=$(grep -c "ACTIVE" "$DATA_DIR/shops/shops.md" 2>/dev/null || true)
     
     echo "📊 FUNNEL STATUS"
     echo "  Waitlist: $waitlist_count"

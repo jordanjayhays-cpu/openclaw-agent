@@ -216,9 +216,9 @@ daily_report() {
     if [[ -f "$LEADS" ]]; then
         echo "📋 LEAD SUMMARY"
         local total=$(grep -c "|" "$LEADS" | tail -1)
-        local new=$(grep -c "\[ \] NEW" "$LEADS" 2>/dev/null || echo 0)
-        local warm=$(grep -c "\[W\]" "$LEADS" 2>/dev/null || echo 0)
-        local hot=$(grep -c "\[H\]" "$LEADS" 2>/dev/null || echo 0)
+        local new=$(grep -c "\[ \] NEW" "$LEADS" 2>/dev/null || true)
+        local warm=$(grep -c "\[W\]" "$LEADS" 2>/dev/null || true)
+        local hot=$(grep -c "\[H\]" "$LEADS" 2>/dev/null || true)
         echo "  Total leads: $total"
         echo "  New: $new | Warm: $warm | Hot: $hot"
         echo ""

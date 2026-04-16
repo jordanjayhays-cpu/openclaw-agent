@@ -265,8 +265,8 @@ list_contracts() {
     else
         find "$CONTRACTS_DIR" -name "log.md" -exec grep -l "CONTRACT-" {} \; 2>/dev/null | while read log; do
             local proj=$(echo "$log" | cut -d'/' -f6)
-            local pending=$(grep -c "PENDING" "$log" 2>/dev/null || echo "0")
-            local signed=$(grep -c "SIGNED" "$log" 2>/dev/null || echo "0")
+            local pending=$(grep -c "PENDING" "$log" 2>/dev/null || true)
+            local signed=$(grep -c "SIGNED" "$log" 2>/dev/null || true)
             echo "📁 $proj: $pending pending, $signed signed"
         done
     fi

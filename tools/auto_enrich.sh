@@ -25,15 +25,12 @@ find_linkedin() {
     local name="$1"
     local company="$2"
     
-    # Check for LinkedIn search tool
     if command -v linkedin-search &>/dev/null; then
         linkedin-search "$name" "$company" 2>/dev/null
     elif [[ -f "$API_CONFIG" ]]; then
         source "$API_CONFIG"
-        # Would use LinkedIn API or scraping service
         echo ""
     else
-        # Manual search URL generation
         local encoded_name=$(echo "$name" | sed 's/ /%20/g')
         echo "https://www.linkedin.com/search/results/all/?keywords=$encoded_name%20$company"
     fi
@@ -44,17 +41,12 @@ find_email() {
     local name="$1"
     local company="$2"
     
-    # Check for email finding service
     if command -v hunter &>/dev/null; then
         hunter find "$name" "$company" 2>/dev/null
-    elif command -v emailhunter &>/dev/null; then
-        emailhunter "$name" "$company" 2>/dev/null
     elif [[ -f "$API_CONFIG" ]]; then
         source "$API_CONFIG"
-        # Would use NeverBounce, Hunter.io, or similar
         echo ""
     else
-        # Placeholder pattern
         local first=$(echo "$name" | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]')
         local last=$(echo "$name" | cut -d' ' -f2 | tr '[:upper:]' '[:lower:]')
         local domain=$(echo "$company" | sed 's/ /./g' | tr '[:upper:]' '[:lower:]')
@@ -66,18 +58,13 @@ find_email() {
 find_company_info() {
     local company="$1"
     
-    # Check for company lookup service
     if command -v clearbit &>/dev/null; then
         clearbit company "$company" 2>/dev/null
     elif [[ -f "$API_CONFIG" ]]; then
         source "$API_CONFIG"
-        # Would use Clearbit, ZoomInfo, or similar
         echo ""
     else
-        # Basic info placeholders
-        cat << EOF
-{"company":"$company","industry":"","size":"","revenue":"","website":""}
-EOF
+        echo "{\"company\":\"$company\",\"industry\":\"\",\"size\":\"\",\"revenue\":\"\",\"website\":\"\"}"
     fi
 }
 
@@ -88,31 +75,26 @@ enrich_lead() {
     
     log "Enriching lead: $name"
     
-    # Read lead data
-    local name company website phone source
-    read -r name company website phone source < <(head -1 "$lead_file" | tr ',' ' ')
+    local name_val company_val website_val phone_val source_val
+    IFS=',' read -r name_val company_val website_val phone_val source_val < <(head -1 "$lead_file")
     
-    # Find LinkedIn
-    local linkedin=$(find_linkedin "$name" "$company")
+    local linkedin=$(find_linkedin "$name_val" "$company_val")
     log "  LinkedIn: $linkedin"
     
-    # Find Email
-    local email=$(find_email "$name" "$company")
+    local email=$(find_email "$name_val" "$company_val")
     log "  Email: $email"
     
-    # Find Company Info
-    local company_info=$(find_company_info "$company")
+    local company_info=$(find_company_info "$company_val")
     log "  Company: $company_info"
     
-    # Create enriched record
     local enriched_file="${ENRICHED_DIR}/${name}_$(date '+%Y%m%d').json"
     cat > "$enriched_file" << EOF
 {
-    "name": "$name",
-    "company": "$company",
-    "website": "$website",
-    "phone": "$phone",
-    "source": "$source",
+    "name": "$name_val",
+    "company": "$company_val",
+    "website": "$website_val",
+    "phone": "$phone_val",
+    "source": "$source_val",
     "enriched": {
         "linkedin": "$linkedin",
         "email": "$email",
@@ -128,4 +110,59 @@ EOF
 
 # === UPDATE CRM ===
 update_crm() {
-    local
+    local enriched_file="$1"
+    
+    if [[ ! -f "$CRM_FILE" ]]; then
+        touch "$CRM_FILE"
+    fi
+    
+    local name=$(jq -r '.name' "$enriched_file" 2>/dev/null || grep -o '"name": "[^"]*"' "$enriched_file" | cut -d'"' -f4)
+    local email=$(jq -r '.enriched.email' "$enriched_file" 2>/dev/null || echo "")
+    local linkedin=$(jq -r '.enriched.linkedin' "$enriched_file" 2>/dev/null || echo "")
+    local company=$(jq -r '.company' "$enriched_file" 2>/dev/null || grep -o '"company": "[^"]*"' "$enriched_file" | cut -d'"' -f4)
+    
+    # Append to CRM (CSV format)
+    echo "$name,$company,,$email,$linkedin,,warm,$(date '+%Y-%m-%d')" >> "$CRM_FILE"
+    log "Updated CRM: $name"
+}
+
+# === PROCESS LEADS ===
+process_leads() {
+    local batch="${1:-10}"
+    local count=0
+    
+    log "=== Starting lead enrichment (max $batch) ==="
+    
+    for lead_file in "$LEADS_DIR"/*.csv 2>/dev/null; do
+        [[ -f "$lead_file" ]] || continue
+        
+        enrich_lead "$lead_file" | while read -r enriched_file; do
+            update_crm "$enriched_file"
+        done
+        
+        ((count++))
+        [[ $count -ge $batch ]] && break
+    done
+    
+    log "=== Enrichment complete: $count leads processed ==="
+}
+
+# === MAIN ===
+case "${1:-run}" in
+    run)
+        process_leads "${2:-10}"
+        ;;
+    enrich)
+        [[ -n "${2:-}" ]] && enrich_lead "$2"
+        ;;
+    status)
+        log "=== Enrichment Status ==="
+        log "Leads directory: $LEADS_DIR"
+        log "Files to process: $(ls "$LEADS_DIR"/*.csv 2>/dev/null | wc -l)"
+        log "Enriched today: $(ls "$ENRICHED_DIR"/*$(date '+%Y%m%d')*.json 2>/dev/null | wc -l)"
+        ;;
+    *)
+        echo "Usage: $0 {run|status} [batch_size]"
+        exit 1
+        ;;
+esac

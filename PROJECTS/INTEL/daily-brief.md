@@ -1,12 +1,11 @@
 # Daily Intel Brief
-Generated: 2026-04-02 04:40 UTC
+Generated: 2026-04-02 04:43 UTC
 
 ---
 
 ## Quick Summary
 
-**0
-5 ideas** | **3 trends** | **1 actionable**
+**12 ideas** | **3 trends** | **1 actionable**
 
 ---
 
@@ -36,8 +35,7 @@ Generated: 2026-04-02 04:40 UTC
 
 ## Files Generated
 
--  — Reddit intel
--  — Twitter intel  
--  — All ideas scored
--  — Trend analysis
-
+- `reddit-daily.md` — Reddit intel
+- `twitter-daily.md` — Twitter intel
+- `ideas-queue.md` — All ideas scored
+- `trends.md` — Trend analysis
