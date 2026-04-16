@@ -106,3 +106,16 @@ Updated cron restart block to:
 - **Issue:** 1 stale subagent session
 - **Fix:** Auto-terminated stale session
 - **Status:** ✅ Resolved
+
+### 2026-04-16 16:17 UTC
+- **Issue:** 1 failed cron (Evening Pulse)
+- **Fix:** Restarted via cron API
+- **Status:** ✅ Resolved
+
+- **Issue:** Uncommitted changes in workspace
+- **Fix:** Auto-committed and pushed via git_sync
+- **Status:** ✅ Resolved
+
+- **Issue:** 1 stale subagent session detected
+- **Fix:** Attempted cleanup (session already gone at listing)
+- **Status:** ⚠️ Could not verify — no stale sessions found at check time
