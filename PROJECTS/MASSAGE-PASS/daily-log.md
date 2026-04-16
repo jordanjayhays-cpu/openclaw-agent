@@ -220,3 +220,42 @@ mp-008 (booking confirmation)    — blocked by mp-002
 2. **Buy domain** — massagepass.com (9 days overdue)
 3. **Set up Notion API** — store token in `~/.config/notion/api_key`, give parent page ID → I build databases automatically
 
+---
+
+## 2026-04-16 — Thursday (18:10 UTC)
+
+### Cron Trigger
+- **Source:** MASSAGE-PASS Check-in cron
+- **Time:** 18:10 UTC
+
+### Notion API Check
+- ❌ NOT AVAILABLE — `~/.config/notion/api_key` not found
+- mp-002 still pending (Jordan's action required — 13 days overdue)
+- mp-004 (Notion databases) still blocked by mp-002
+
+### Action Taken
+- Fixed `landing-page.html`:
+  - **Countdown bug fixed**: Launch date (April 1, 2026) has passed. Countdown timer now auto-hides and shows a "🎉 Live in Madrid" badge instead of displaying 00/00/00/00.
+  - Hero badge updated from "Launching in Madrid — April 2026" → "✅ Live in Madrid — April 2026"
+  - Both changes are backward-compatible (CSS handles show/hide logic in JS)
+
+### Landing Page Status
+- ✅ Complete and ready to deploy
+- ✅ Forms (subscriber + clinic) working with Formspree placeholder + localStorage fallback
+- ✅ Countdown now shows "Live" state correctly
+
+### Current Blocker Chain
+```
+mp-001 (domain: massagepass.com)  — Jordan, 9+ days overdue
+mp-002 (Notion API token)        — Jordan, 13+ days overdue
+    ↓
+mp-004 (Notion databases)        — blocked by mp-002
+    ↓
+mp-005, mp-006, mp-008            — blocked by mp-004
+```
+
+### What Jordan Needs (same as 14:10)
+1. **Buy domain** — massagepass.com → unblocks GitHub Pages deployment
+2. **Set up Notion API** → store token in `~/.config/notion/api_key` + give me parent page ID → I build 3 databases automatically
+3. **Formspree** (optional but recommended) → replace `YOUR_FORMSPREE_ID` in landing page → live form submissions
+
