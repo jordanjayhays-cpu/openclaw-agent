@@ -136,3 +136,38 @@
 2. Create Formspree account (formspree.io) → replace `YOUR_FORMSPREE_ID` in landing page → live form submissions
 3. Buy domain (due 2026-04-07)
 
+
+---
+
+## 2026-04-16 — Thursday
+
+### Cron Trigger
+- **Source:** MASSAGE-PASS Check-in cron
+- **Time:** 10:10 UTC
+
+### Notion API Check
+- ❌ NOT AVAILABLE — `~/.config/notion/api_key` not found, no notion token in workspace env
+- mp-002 still pending (Jordan's action required — create Notion integration at notion.so/my-integrations)
+- mp-004 (Notion databases) still blocked by mp-002
+
+### Action Taken
+- ✅ Landing page already complete from earlier check-ins (`landing-page.html`)
+- ✅ mp-005 (shop signup form) and mp-006 (subscriber waitlist form) already built with Formspree + localStorage fallback
+- No new builds needed — system is in holding pattern waiting on mp-002
+
+### ⚠️ Overdue Task
+- **mp-001 (Buy domain: massagepass.com)** — was due **2026-04-07**, now 9 days overdue
+  - Jordan needs to buy the domain to unblock hosting/deployment
+
+### Current Blocker Chain
+```
+mp-001 (domain) → unblocks → hosting deployment
+mp-002 (Notion API token) → unblocks → mp-004 (databases) → unblocks → mp-005, mp-006 (real form → Notion)
+```
+
+### What Jordan Needs (Priority Order)
+1. **Buy domain** `massagepass.com` — 9 days overdue, unblocks deployment
+2. **Set up Notion API** → store token in `~/.config/notion/api_key` → I auto-build 3 databases (Shops, Subscribers, Bookings)
+3. **Create Formspree account** → replace `YOUR_FORMSPREE_ID` in `landing-page.html` → live form submissions
+
+### No Further Action From Me Until Jordan Completes Above
