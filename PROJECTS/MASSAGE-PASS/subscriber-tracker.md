@@ -1,39 +1,90 @@
-# Massage Pass — Madrid
+# MASSAGE-PASS — Subscriber Tracker
 
-## Model
-- Users pay monthly membership
-- Get discounted visits at partner massage shops
-- 20% rev share to Jordan, 75% to shop, 5% platform
+> Last updated: 2026-04-17 (by Axton)
 
-## Partner Shops
-
-| Shop | Location | Status | Rate | Normal |
-|------|----------|--------|------|--------|
-| Mayoac | Chamartín | Interested | TBD | TBD |
-| The Fix Room | Salamanca | Interested | TBD | TBD |
-
-## Revenue Share
-- Shop: 75%
-- Jordan: 20%
-- Platform: 5%
-
-## Integrations (pending)
-- Stripe: Payment processing
-- Calendly: Booking system
-- Notion: Shop/subscriber tracking
-
-## To Do
-- [ ] Buy massagepass.com domain
-- [ ] Get first shop signup live
-- [ ] Set up Stripe split payments
-- [ ] Set up Calendly integration
-- [ ] Launch subscriber signup
-
-## Quick Commands
-**Log subscriber:** "Add: [name], [email], [plan]"
-**Log visit:** "Visit: [name], [shop], [date]"
-**Add shop:** "Shop: [name], [location], [contact]"
+## Revenue Share (verified 2026-04-17)
+- **Shop:** 75%
+- **Jordan:** 20%
+- **Platform:** 5%
 
 ---
 
-*Last updated: 2026-03-31*
+## Active Subscribers
+
+*(None yet — launch pending)*
+
+| Name | Email | Plan | Join Date | Status | Notes |
+|------|-------|------|-----------|--------|-------|
+
+---
+
+## Waitlist
+
+*(None yet — landing page live)*
+
+| Name | Email | Source | Date Added | Follow-up Sent? |
+|------|-------|--------|------------|-----------------|
+
+---
+
+## Subscriber Acquisition Funnel
+
+```
+Landing Page Visit
+       ↓
+  Waitlist Signup        ← need analytics pixel
+       ↓
+  Plan Selection
+       ↓
+  Payment Setup (Stripe) ← blocked: Stripe pending
+       ↓
+  Active Subscriber
+       ↓
+  First Booking          ← blocked: Notion API pending
+       ↓
+  Recurring Visits
+```
+
+---
+
+## Plan Options
+
+| Plan | Price | Visits | Notes |
+|------|-------|--------|-------|
+| Basic | €49/mo | 2 massages/mo | Entry level |
+| Premium | €89/mo | Unlimited | Founding member tier |
+
+---
+
+## Next Actions (Jordan)
+
+- [ ] Set up Stripe account for payments
+- [ ] Connect Notion API for subscriber tracking
+- [ ] Add Google Analytics / conversion pixel to landing page
+- [ ] Review subscriber data weekly
+
+---
+
+## Quick Commands (for Jordan)
+
+Add waitlist subscriber:
+```
+Name: [name]
+Email: [email]  
+Source: [Landing Page / Referral / Other]
+```
+
+Log subscriber upgrade:
+```
+Upgrade: [email] → Premium
+```
+
+Log cancellation:
+```
+Cancel: [email]
+Reason: [optional]
+```
+
+---
+
+*Owner: Jordan Hays | Next review: weekly*

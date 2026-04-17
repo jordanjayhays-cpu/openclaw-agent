@@ -316,3 +316,41 @@ All autonomous tasks completed in prior runs. Nothing new to build.
 **No changes made.**
 
 *Log entry: 2026-04-16 23:03 UTC*
+
+---
+
+## 2026-04-17 — Early AM Run (Axton)
+
+**Trigger:** Overnight cron
+**Time:** 2026-04-17 01:58 UTC
+
+### Status: No new work available
+
+Queue fully processed. All actionable tasks completed or properly blocked (require Jordan/API input).
+
+### Work Completed (offline improvements)
+
+✅ **MASSAGE-PASS revenue share corrected** — Fixed data inconsistency across 2 files:
+- `state/STATE.yaml`: Corrected `jordan: 5% → 20%`, `platform: 20% → 5%` (was backwards)
+- `data.json`: Added verification note confirming `shop 75% | jordan 20% | platform 5%`
+- Source verified vs `subscriber-tracker.md` and `shop-outreach.md`
+
+✅ **Subscriber tracker enhanced** — Rewrote `subscriber-tracker.md`:
+- Added verified revenue share table
+- Added subscriber acquisition funnel (step-by-step from landing page → active member)
+- Added plan options table (Basic €49/mo, Premium €89/mo)
+- Added quick command reference for Jordan's weekly reviews
+
+✅ **Shop outreach email improved** — Updated `shop-outreach.md` Email Template 1:
+- Added subscriber count placeholder
+- Clarified "75% revenue share" is verified standard rate
+
+### Blockers Still Active (Needs Jordan)
+- MASSAGE-PASS: domain purchase (massagepass.com) — 9 days overdue
+- MASSAGE-PASS: Notion API token — 13 days overdue
+- MASSAGE-PASS: First shop onboarding (Mayoac + The Fix Room) — 2 days overdue
+- MASSAGE-PASS: Competitor research — web search blocked (FELO_API_KEY not configured)
+- PISCO: Email send tool not configured
+- PK-MUSIC: DistroKid account not set up (pk-002, pk-003 still overdue)
+
+*Log entry: 2026-04-17 01:58 UTC*

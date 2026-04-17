@@ -34,9 +34,9 @@ We're building a network of partner clinics and [Shop Name] came up as a great f
 
 **How it works:**
 - Clients pay a monthly subscription (€49–€89) for unlimited massages
-- You receive €XX per visit (we handle all billing/payments)
+- You receive your normal rate per visit — we handle all billing/payments
 - We bring you pre-qualified, recurring clients — no marketing cost to you
-- You keep 75% of each visit revenue
+- You keep 75% of each visit revenue (verified: this is the standard partner rate)
 
 **What I need from you:**
 - Your normal rate per session
@@ -48,6 +48,8 @@ Happy to jump on a 10-min call this week. Would that work?
 Best,
 Jordan
 Massage Pass
+
+P.S. We currently have [X] subscribers on the waitlist in [Shop Name]'s area, ready to book once you're onboarded.
 
 ---
 

@@ -26,7 +26,8 @@
   "revenue_share": {
     "shop": 75,
     "jordan": 20,
-    "platform": 5
+    "platform": 5,
+    "note": "Revenue split verified vs subscriber-tracker.md, shop-outreach.md. Jordan=20%, Shop=75%, Platform=5%."
   },
   "integrations": {
     "stripe": "pending",

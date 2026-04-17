@@ -49,6 +49,35 @@
 
 ---
 
+---
+
+## 2026-04-17 — Early AM Run (Axton)
+
+**Time:** 2026-04-17 01:58 UTC
+
+### Work Completed
+
+✅ **MASSAGE-PASS revenue share corrected** — Fixed data inconsistency across 2 files:
+- `state/STATE.yaml`: Corrected `jordan: 5% → 20%`, `platform: 20% → 5%` (was backwards)
+- `data.json`: Added verification note confirming `shop 75% | jordan 20% | platform 5%`
+- Source verified vs `subscriber-tracker.md` and `shop-outreach.md`
+
+✅ **Subscriber tracker enhanced** — Rewrote `subscriber-tracker.md`:
+- Added verified revenue share table
+- Added subscriber acquisition funnel (step-by-step from landing page → active member)
+- Added plan options table (Basic €49/mo, Premium €89/mo)
+- Added quick command reference for Jordan's weekly reviews
+
+✅ **Shop outreach email improved** — Updated `shop-outreach.md` Email Template 1:
+- Added subscriber count placeholder (with area for Jordan to fill in)
+- Clarified "75% revenue share" is verified standard rate
+- Minor copy improvements
+
+### Queue Status
+All autonomous tasks completed or blocked. Nothing new actionable.
+
+*Log entry: 2026-04-17 01:58 UTC*
+
 *
-*Last updated: 2026-04-16 21:58 UTC
+*Last updated: 2026-04-17 01:58 UTC
 *Log: PROJECTS/overnight-log.md*

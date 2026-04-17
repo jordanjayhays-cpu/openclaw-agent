@@ -2,6 +2,10 @@
 project: MASSAGE-PASS
 updated: 2026-04-16T11:33:00Z
 
+# Revenue Share (verified 2026-04-17)
+# shop 75% | jordan 20% | platform 5%
+# Corrected from erroneous platform 20% / jordan 5% split
+
 # Goals
 goal: Launch MVP, get first 5 shops signed, first 20 subscribers
 
@@ -13,8 +17,8 @@ model:
     - subscribers: pay membership, book massages
   revenue_share:
     shop: 75
-    platform: 20
-    jordan: 5
+    jordan: 20
+    platform: 5
 
 # Tasks
 tasks:
