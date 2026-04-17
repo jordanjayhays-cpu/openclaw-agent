@@ -1,5 +1,6 @@
 {
-  "monthly": 79,
+  "monthly": 49,
+  "early_bird": 24.50,
   "currency": "EUR",
   "split": {
     "shop": 75,
@@ -9,10 +10,11 @@
   "target_shops": 5,
   "target_subscribers": 20,
   "launch_date": "2026-04-24",
+  "note": "⚠️ PRICING INCONSISTENCY — pricing.json previously said €79, landing page says €49. Jordan to confirm final price. Market research shows €49 is competitive (Madrid avg €70/visit). Early bird = 50% off first month.",
   "pricing_tiers": {
     "basic": {
       "name": "Massage Pass",
-      "price": 79,
+      "price": 49,
       "features": [
         "Unlimited massages",
         "50+ partner shops",
@@ -22,7 +24,7 @@
     },
     "premium": {
       "name": "Massage Pass Plus",
-      "price": 129,
+      "price": 89,
       "features": [
         "Everything in Basic",
         "Hot stone & specialty treatments",

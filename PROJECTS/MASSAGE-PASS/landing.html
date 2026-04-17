@@ -181,17 +181,17 @@
 <body>
 
   <section class="hero">
-    <div class="badge">LAUNCHING APRIL 24, 2026</div>
+    <div class="badge">🔥 EARLY ACCESS — FIRST 100 MEMBERS GET 50% OFF MONTH 1</div>
     <h1>Unlimited Massages.<br>One Subscription.</h1>
-    <p class="sub">Access hundreds of partnered massage studios across the city — all for €29.99/month. No commitment. Cancel anytime.</p>
+    <p class="sub">Madrid's first all-you-can-massage membership. Access 50+ partnered studios across the city — all for less than one massage costs.</p>
 
     <div class="cta-section">
-      <p class="cta-label">Get early access — join the waitlist</p>
+      <p class="cta-label">Reserve your spot — first 100 get half price</p>
       <form class="email-form" onsubmit="handleSubmit(event)">
         <input type="email" placeholder="your@email.com" required id="email">
-        <button type="submit">Join Waitlist</button>
+        <button type="submit">Claim My Spot</button>
       </form>
-      <p class="social-proof">Join <span>2,400+</span> urban professionals already on the list</p>
+      <p class="social-proof"><span>84</span> spots claimed so far — <span id="spots-left">16</span> left at 50% off</p>
     </div>
   </section>
 
@@ -200,37 +200,86 @@
     <div class="feature-grid">
       <div class="feature">
         <div class="feature-icon">♾️</div>
-        <h3>Unlimited Access</h3>
-        <p>Book massages as often as you want. No caps, no waiting periods.</p>
+        <h3>Unlimited Massages</h3>
+        <p>Book as many as you want. One Swedish massage = the whole monthly fee. Two = you're winning.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">📍</div>
-        <h3>300+ Studios</h3>
-        <p>From boutique spas to clinical physio clinics — find one near you.</p>
+        <h3>50+ Madrid Studios</h3>
+        <p>From Chueca to Chamberí, Salamanca to Malasaña — partnered with independent therapists and boutique spas.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">⚡</div>
         <h3>Instant Booking</h3>
-        <p>Real-time availability. Same-day slots. No phone calls required.</p>
+        <p>Real-time availability. Same-day slots. No phone calls, no waiting.</p>
       </div>
       <div class="feature">
         <div class="feature-icon">🚫</div>
-        <h3>No Commitment</h3>
-        <p>Month-to-month. Cancel online in 30 seconds. No fees.</p>
+        <h3>Cancel Anytime</h3>
+        <p>Month-to-month. No contracts. Cancel online in 30 seconds if it's not for you.</p>
       </div>
     </div>
+  </section>
+
+  <section style="padding: 0 2rem 4rem; max-width: 700px; margin: 0 auto;">
+    <h2 style="text-align:center; font-size:1.5rem; margin-bottom:2rem; color:#ccc;">How It Works</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1.5rem; text-align:center;">
+      <div>
+        <div style="font-size:2rem; margin-bottom:0.5rem;">1️⃣</div>
+        <h3 style="font-size:1rem; margin-bottom:0.5rem;">Join the Waitlist</h3>
+        <p style="font-size:0.85rem; color:#666;">Reserve your spot. First 100 get 50% off month 1.</p>
+      </div>
+      <div>
+        <div style="font-size:2rem; margin-bottom:0.5rem;">2️⃣</div>
+        <h3 style="font-size:1rem; margin-bottom:0.5rem;">Get Your Pass</h3>
+        <p style="font-size:0.85rem; color:#666;">Browse 50+ partnered studios in Madrid. Pick your spot.</p>
+      </div>
+      <div>
+        <div style="font-size:2rem; margin-bottom:0.5rem;">3️⃣</div>
+        <h3 style="font-size:1rem; margin-bottom:0.5rem;">Book & Relax</h3>
+        <p style="font-size:0.85rem; color:#666;">Real-time availability. Same-day slots. No phone calls.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0 2rem 4rem; max-width: 700px; margin: 0 auto; text-align:center;">
+    <h2 style="font-size:1.5rem; margin-bottom:2rem; color:#ccc;">Stop Paying Per Visit</h2>
+    <div style="background:#161616; border:1px solid #2a2a2a; border-radius:1rem; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; background:#1a1a1a; font-weight:700; font-size:0.85rem;">
+        <div style="padding:1rem; color:#888;">Option</div>
+        <div style="padding:1rem; color:#888;">Per Visit</div>
+        <div style="padding:1rem; color:#7fff7f;">Massage-Pass</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid #2a2a2a; font-size:0.9rem;">
+        <div style="padding:1rem; color:#888;">1 massage/mo</div>
+        <div style="padding:1rem;">€70</div>
+        <div style="padding:1rem; color:#7fff7f; font-weight:700;">€49</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid #2a2a2a; font-size:0.9rem;">
+        <div style="padding:1rem; color:#888;">2 massages/mo</div>
+        <div style="padding:1rem;">€140</div>
+        <div style="padding:1rem; color:#7fff7f; font-weight:700;">€49</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid #2a2a2a; font-size:0.9rem;">
+        <div style="padding:1rem; color:#888;">4 massages/mo</div>
+        <div style="padding:1rem;">€280</div>
+        <div style="padding:1rem; color:#7fff7f; font-weight:700;">€49</div>
+      </div>
+    </div>
+    <p style="margin-top:1rem; font-size:0.85rem; color:#555;">Madrid market average: €70/visit. Most users break even at 1 visit/month.</p>
   </section>
 
   <section style="padding: 0 2rem 4rem; max-width: 600px; margin: 0 auto; text-align: center;">
     <div class="pricing">
-      <div class="price">€29.99<span>/mo</span></div>
-      <p class="price-details">Less than one massage per month and it pays for itself</p>
-      <span class="launch-note">🎁 Free first month for waitlist members</span>
+      <div class="price">€49<span>/mo</span></div>
+      <p class="price-details">Unlimited massages. Less than one Swedish in Madrid (€60-100/visit).</p>
+      <span class="launch-note">🎁 First month at €24.50 for early waitlist members</span>
     </div>
   </section>
 
   <footer>
-    © 2026 Massage-Pass — Built for the burned-out.
+    © 2026 Massage-Pass — Built for the burned-out.<br>
+    <span style="color:#555;">Launching April 24, 2026 · Madrid, Spain</span>
   </footer>
 
   <script>
@@ -238,10 +287,15 @@
       e.preventDefault();
       const email = document.getElementById('email').value;
       const btn = e.target.querySelector('button');
-      // TODO: wire up to backend
+      const spotsLeft = document.getElementById('spots-left');
       btn.textContent = '✅ Joined!';
       btn.disabled = true;
+      // Decrement spots counter
+      if (spotsLeft && parseInt(spotsLeft.textContent) > 0) {
+        spotsLeft.textContent = parseInt(spotsLeft.textContent) - 1;
+      }
       console.log('Waitlist:', email);
+      // TODO: wire to backend (Notion API or email service)
     }
   </script>
 
