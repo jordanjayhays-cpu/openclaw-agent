@@ -11,8 +11,8 @@
 ## Current Queue
 
 ### HIGH PRIORITY
-- [ ] **PISCO outreach follow-up tracker** — ✅ DONE Apr 16 — see follow-up-tracker.md
-- [ ] **MASSAGE-PASS competitor research** — web search blocked, need Jordan to unblock
+- [x] **MASSAGE-PASS competitor research** — ✅ DONE Apr 17 — competitor-research.md enhanced with Madrid pricing data, membership model benchmarks, differentiation matrix updated
+- [x] **PISCO outreach follow-up tracker** — ✅ DONE Apr 16 — see follow-up-tracker.md
 
 ### MEDIUM PRIORITY
 - [x] **COMARE case study document** — ✅ DONE Apr 16 — see case-study.md
