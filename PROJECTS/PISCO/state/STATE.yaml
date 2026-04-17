@@ -51,6 +51,14 @@ tasks:
     output: PROJECTS/PISCO/outreach-dohun-kim-south-korea.md
     note: "Dohun Kim outreach drafted. Telegram/WhatsApp/email ready. Jordan to send. Contact: @doh1200 / +82 10 2374 6080 / dohun@placewellinternational.io. Best send time: morning KST (12am-2am UTC)."
 
+  - id: pisco-007
+    title: Create competitor one-pager for sales calls
+    status: completed
+    owner: axton
+    due: 2026-04-17
+    completed: 2026-04-17
+    output: PROJECTS/PISCO/competitor-one-pager.md
+
 # Completed
 completed:
   - id: pisco-001
