@@ -84,3 +84,18 @@
 - PK MUSIC release offset now -6 days (Apr 11 release = 6 days ago).
 - MASSAGE-PASS landing page variants being created.
 - No experiment statuses changed.
+
+---
+
+## Run: 2026-04-17 19:22
+
+- EXP-001: Javier follow-up due; Luis Zamora open rate untracked
+- EXP-002: Landing page exists; variant B CTA being created
+- EXP-003: Ready for filming
+- EXP-004: Days until first release: -6 (already passed Apr 11 — measure streams)
+- EXP-005: Waiting on Jordan ICP approval for LinkedIn
+
+**Action items surfaced:**
+- PK MUSIC first release (Apr 11) data needs stream measurement
+- MASSAGE-PASS landing page needs to go live for A/B test
+- EXP-001: Send Javier follow-up
