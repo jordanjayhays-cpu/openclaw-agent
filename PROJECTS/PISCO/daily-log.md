@@ -458,3 +458,28 @@
 ---
 
 *Log updated: 2026-04-17 02:07 UTC by PISCO Agent (Axton)*
+
+## 2026-04-17 — Morning Check-in
+
+**Time:** 08:07 UTC
+
+### Status Summary
+- **pisco-002** (Luis Zamora / Iberostar): Draft ready, 12 days overdue. Jordan to send.
+- **pisco-003** (Concha Pardo / Meliá): Draft ready, 9 days overdue. Jordan to send.
+- **pisco-005** (Dohun Kim / South Korea): Draft ready. Jordan to send (best: KST morning = 12am-2am UTC).
+
+### CRM Activity Logged
+- Luis Zamora: outreach_draft_ready activity recorded. Next action: Jordan sends.
+
+### PISCO Metrics
+| Metric | Value |
+|--------|-------|
+| Prospects identified | 252 |
+| Contacts reached | 6 |
+| Responses | 1 |
+| Meetings | 0 |
+| Clients | 0 |
+
+### Priority This Session
+Get Jordan to send: Luis Zamora (Iberostar), Concha Pardo (Meliá), Dohun Kim (South Korea).
+
