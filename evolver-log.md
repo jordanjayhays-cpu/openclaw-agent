@@ -1,5 +1,16 @@
 # Evolver Log
 
+## 2026-04-17 — Run #8 (07:22 UTC)
+
+### Run Summary
+- EXP-001: Running. Javier follow-up due. No new tracking data.
+- EXP-002: Still blocked — landing page not built.
+- EXP-003: Ready. Awaiting filming.
+- EXP-004: First release Apr 11 completed. Measure first-week streams.
+- EXP-005: Ready. Waiting on Jordan ICP approval.
+
+---
+
 ## 2026-04-16 — Run #7 (15:23 UTC)
 
 ### Run Summary
