@@ -99,3 +99,10 @@
 - PK MUSIC first release (Apr 11) data needs stream measurement
 - MASSAGE-PASS landing page needs to go live for A/B test
 - EXP-001: Send Javier follow-up
+
+## 2026-04-17 23:22 UTC
+- EXP-001: Javier follow-up due; Luis Zamora email sent Apr 4 — open rates untracked
+- EXP-002: Landing page exists; variant B CTA being created
+- EXP-003: Ready for filming
+- EXP-004: First release Apr 11 — streams unmeasured (days until: -6 means past due)
+- EXP-005: Waiting on Jordan ICP approval
