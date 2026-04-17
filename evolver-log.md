@@ -72,3 +72,15 @@
 - All experiments stable, no changes needed
 
 ---
+
+## 2026-04-17 15:22 — Run #4
+- EXP-001: Running. Javier follow-up due. Luis Zamora email sent Apr 4.
+- EXP-002: Landing page exists, testing variants.
+- EXP-003: Ready for filming.
+- EXP-004: First release Apr 11 completed, measure first-week streams.
+- EXP-005: Waiting for Jordan ICP approval.
+
+### Notes
+- PK MUSIC release offset now -6 days (Apr 11 release = 6 days ago).
+- MASSAGE-PASS landing page variants being created.
+- No experiment statuses changed.
