@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-16T20:22:00Z
+updated: 2026-04-17T02:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -43,12 +43,13 @@ tasks:
 
   - id: pisco-005
     title: Start South Korea outreach
-    status: pending
+    status: pending_approval
     owner: jordan
     due: null
     blocked_by: null
-    output: PROJECTS/PISCO/research/south-korea-eps-pathway.md
-    note: "EPS research complete — E-7 is correct visa for hotel staff (not EPS/E-9). Key targets: Lotte Hotels, Shilla, Marriott Korea, Hyatt. PISCO opportunity confirmed."
+    completed: 2026-04-17
+    output: PROJECTS/PISCO/outreach-dohun-kim-south-korea.md
+    note: "Dohun Kim outreach drafted. Telegram/WhatsApp/email ready. Jordan to send. Contact: @doh1200 / +82 10 2374 6080 / dohun@placewellinternational.io. Best send time: morning KST (12am-2am UTC)."
 
 # Completed
 completed:
@@ -72,10 +73,10 @@ completed:
     output: PROJECTS/PISCO/research/south-korea-eps-pathway.md — EPS research done. E-7 = correct visa for hotel staff. Targets: Lotte, Shilla, Marriott Korea, Hyatt. pisco-005 unblocked.
     
 next_actions:
+  - "jordan: Send outreach to Dohun Kim (South Korea) — Telegram/WhatsApp/email ready at PROJECTS/PISCO/outreach-dohun-kim-south-korea.md (BEST: morning KST = 12am-2am UTC)"
   - "jordan: Send follow-up email to Javier — draft ready at PROJECTS/PISCO/email-javier-followup-draft.md"
   - "jordan: Send email to Luis Zamora (Iberostar) — draft at PROJECTS/PISCO/outreach-luis-zamora.md (12+ days overdue)"
   - "jordan: Send cold outreach to Concha Pardo (Meliá) — draft at PROJECTS/PISCO/outreach-concha-pardo-melia.md (9 days overdue). Verify email via LinkedIn first."
-  - "jordan: Decide South Korea priority — research doc ready at PROJECTS/PISCO/research/south-korea-eps-pathway.md"
 
 # Key contacts
 contacts:
@@ -91,6 +92,11 @@ contacts:
     company: Meliá Hotels
     warmth: cold
     last_contact: null
+  - name: Dohun Kim
+    company: Placewell International (Korea)
+    warmth: warm
+    last_contact: 2026-04-17
+    note: "EPS partner in Korea. Key bridge to Korean hotel employers."
 
 # Metrics
 metrics:
