@@ -1,0 +1,208 @@
+{
+  "schema": "sessions_fts_v1",
+  "built": "2026-04-16T21:02:02.030Z",
+  "count": 30,
+  "fields": [
+    "session_key",
+    "date",
+    "content",
+    "tokens"
+  ],
+  "entries": [
+    {
+      "session_key": "0c01163d-1c3f-4eeb-aa3b-b1c9878357ca",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "0f108551-6b7e-401c-991f-b9edb91b91e8",
+      "date": "2026-04-15",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "287235af-b71c-40e3-9037-cba6c7cfa9ce",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "2aec9b49-86fc-4e6c-b676-f9b5c6ad8015",
+      "date": "2026-04-16",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "31a4c389-d6fd-4949-b86e-46d9cb81225c",
+      "date": "2026-04-16",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "3b8a152b-5d99-479f-8d5b-dab8f17f5238",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "3e3213be-8c74-4c6b-9670-029dc059d452",
+      "date": "2026-04-16",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "488fd3cc-a708-4300-adb8-409d0be60e8f",
+      "date": "2026-03-31",
+      "content": "Turn yielded.\n\n[Context: The previous turn ended intentionally via sessions_yield while waiting for a follow-up event.] Turn yielded.\n\n[Context: The previous turn ended intentionally via sessions_yield while waiting for a follow-up event.] Turn yielded.\n\n[Context: The previous turn ended intentionally via sessions_yield while waiting for a follow-up event.]",
+      "tokens": [
+        "turn",
+        "yielded.",
+        "[context:",
+        "the",
+        "previous",
+        "ended",
+        "intentionally",
+        "via",
+        "sessions_yield",
+        "while",
+        "waiting",
+        "for",
+        "follow-up",
+        "event.]"
+      ]
+    },
+    {
+      "session_key": "51665540-17de-4f5e-a771-eb9e069f8d0f",
+      "date": "2026-03-31",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "5b9bb204-b7c4-4538-af7f-c2123c57b2bb",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "5bedea88-c879-4b02-953c-88340270c656",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "656210fa-af60-4422-a9ce-05801727ef2f",
+      "date": "2026-03-31",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "6d6ff65d-05e6-4c68-9001-ff231dfab125",
+      "date": "2026-03-31",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "6ff5e160-3a4b-4ebe-99b1-f9f4dcec9ee6",
+      "date": "2026-03-31",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "743684e6-5141-40ef-8758-8100450409de",
+      "date": "2026-04-13",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "8875cd0b-d460-4d41-8a1d-59b38d6711cf",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "8ad7e138-1d3f-4725-8166-c0b8c22fc232",
+      "date": "2026-04-16",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "92fe4804-9d44-4494-9006-7975bbaa0af5",
+      "date": "2026-04-16",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "93c365d4-efa4-42af-897a-9d83c7021f75",
+      "date": "2026-03-31",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "b3a079f8-4786-4873-8e05-7ac5fcfa2fee",
+      "date": "2026-04-16",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "bc252d7b-67c0-4c94-933c-0c82723375f2",
+      "date": "2026-04-02",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "bc3f083b-9f8a-4d63-88be-bc120b30a217",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "d775d6d8-abef-4918-8d6f-b8a5a38e65e3",
+      "date": "2026-03-31",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "dda84a9d-23ea-48ed-ab9d-ab8b138279be",
+      "date": "2026-04-06",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "deada5b9-e927-4c18-b7fb-cb9b5e24e494",
+      "date": "2026-04-02",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "dec39fba-de71-4629-ad6f-ea9015c1c25b",
+      "date": "2026-03-31",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "e0db03f5-d0d2-4683-8ea0-799c3d0398ff",
+      "date": "2026-04-02",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "e5051a3d-6c15-4a93-9f27-88344090513c",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "e68d60eb-6c8d-4e09-9c7c-5839f00c07d2",
+      "date": "2026-04-16",
+      "content": "",
+      "tokens": []
+    },
+    {
+      "session_key": "ecae3591-97fc-4a0d-be59-c77123ffa70a",
+      "date": "2026-04-01",
+      "content": "",
+      "tokens": []
+    }
+  ]
+}
