@@ -378,3 +378,38 @@ mp-008 (booking confirmation)    — blocked by mp-002
 - Shops signed: 0 / target: 5
 - Subscribers: 0 / target: 20
 - Bookings: 0
+
+---
+
+## 2026-04-17 — Friday (10:18 UTC)
+
+### Cron Trigger
+- **Source:** MASSAGE-PASS Check-in cron
+- **Time:** 10:18 UTC
+
+### Notion API Check
+- ❌ NOT AVAILABLE — `~/.config/notion/api_key` not found
+- mp-002 still pending (Jordan's action required — 14 days overdue)
+- mp-004 (Notion databases) still blocked by mp-002
+
+### No Action Taken
+- Landing page (`landing-page.html`) complete and stable since 2026-04-04
+- mp-003 ✅, mp-005 ✅, mp-006 ✅ all done
+- Nothing new to build until mp-002 unblocks
+
+### Current Blocker Chain
+- mp-001 (domain: massagepass.com) — Jordan, 10+ days overdue
+- mp-002 (Notion API token) — Jordan, 14+ days overdue → blocks mp-004
+- mp-004 (Notion databases) — blocked by mp-002
+- mp-007 (onboard shops) — blocked by mp-001, mp-002
+- mp-008 (booking confirmation) — blocked by mp-002
+
+### What Jordan Needs
+1. **Buy domain** — massagepass.com → GitHub Pages deployment
+2. **Set up Notion API** → token in `~/.config/notion/api_key` + parent page ID → I build 3 databases automatically
+3. **Formspree** → replace `YOUR_FORMSPREE_ID` in landing page → live form submissions
+
+### Metrics (unchanged)
+- Shops signed: 0 / target: 5
+- Subscribers: 0 / target: 20
+- Bookings: 0
