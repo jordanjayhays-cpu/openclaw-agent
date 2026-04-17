@@ -1,14 +1,14 @@
-# TASK QUEUE — 2026-04-16
+# TASK QUEUE — 2026-04-17
 
-## Today's Auto-Generated Tasks (from AUTONOMOUS.md)
+## Today's Tasks (Auto-Generated @ 05:30 UTC)
 
-1. **[PISCO]** Follow up with Javier Estrada (case studies ready since Apr 1)
-2. **[COMARE]** Decide ICP — Pharmacies vs Restaurants vs Medical vs Gyms
-3. **[PK MUSIC]** Review All I Know for DistroKid upload + generate 2nd track
-4. **[NEUROTECH]** Decide YouTube channel name + film Video 1 script
-5. **[DEALSMAP]** Post Upwork job to find 50 profile partners
+- [ ] Send Javier Estrada follow-up email (16 days overdue — draft ready at email-javier-followup-draft.md)
+- [ ] Send Luis Zamora outreach email (12 days overdue — draft ready at outreach-luis-zamora.md)
+- [ ] Send Concha Pardo cold outreach (9 days overdue — draft ready at outreach-concha-pardo-melia.md, verify email first)
+- [ ] Decide COMARE ICP (pharmacies OR restaurants)
+- [ ] Post 3 Philosophy King tweets (queue updated in twitter-queue.md)
 
 ---
 
-_High-priority executed: PK Twitter queue updated, CRM logged_
-_Generated: 2026-04-16 10:51 UTC by Auto Task Generator_
+_Priority: PISCO outreach > COMARE ICP > PK Twitter_
+_Generated: 2026-04-17 05:30 UTC by Auto Task Generator_

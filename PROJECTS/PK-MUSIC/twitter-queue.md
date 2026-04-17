@@ -358,3 +358,27 @@ Tweet 50 (2026-04-16):
 Amor Fati is the move.
 But you gotta choose what kind of death you're willing to die first."
 #AmorFati #Stoicism
+=== NEW TWEETS ===
+
+---
+Tweet 1 (2026-04-17):
+"Memento Mori isn't about death.
+It's about remembering you're alive enough to lose things.
+Run towards the loss. That's where the life is."
+#philosophy #MementoMori
+
+---
+Tweet 2 (2026-04-17):
+"Ubuntu: I am because we are.
+Capitalism: I am despite we are.
+Pick your civilization."
+#Ubuntu #philosophy
+
+---
+Tweet 3 (2026-04-17):
+"The Stoics had it almost right.
+Amor Fati is the move.
+But you gotta choose what kind of death you're willing to die first."
+#AmorFati #Stoicism
+
+
