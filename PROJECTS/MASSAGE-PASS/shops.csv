@@ -1,0 +1,11 @@
+name,city,address,type,rating,therapists,price_range,availability
+Zen Spa Madrid,Madrid,"Calle Gran Via 25",spa,4.5,4,"€60-90/hour",Mon-Sat 9-21
+The Fix Room,Madrid,"Calle Fuencarral 88",sports massage,4.7,3,"€50-80/hour",Mon-Sat 10-20
+Relax & Unwind,Barcelona,"Rambla Catalunya 42",relaxation,4.3,5,"€55-85/hour",Mon-Sun 10-22
+Massage Lab,Barcelona,"Carrer de Arago 156",holistic,4.6,2,"€65-95/hour",Tue-Sat 11-19
+Spa Natural,Madrid,"Calle Serrano 34",medical,4.4,3,"€70-100/hour",Mon-Fri 9-17
+Body Works,Barcelona,"Carrer de Muntaner 78",sports,4.8,4,"€55-75/hour",Mon-Sat 10-21
+Tranquil Touch,Madrid,"Calle Alcala 112",swedish,4.2,3,"€45-70/hour",Mon-Sat 10-20
+Heal Zone,Barcelona,"Carrer de Enric Granados 67",deep tissue,4.5,2,"€60-90/hour",Tue-Sat 11-20
+Serenity Spa,Madrid,"Calle Ortega y Gasset 12",luxury,4.9,6,"€80-120/hour",Mon-Sun 10-21
+Pure Massage,Barcelona,"Carrer de Provenca 203",thai,4.4,3,"€50-80/hour",Mon-Sat 11-21

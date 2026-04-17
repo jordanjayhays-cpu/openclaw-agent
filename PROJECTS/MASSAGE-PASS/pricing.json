@@ -1,0 +1,34 @@
+{
+  "monthly": 79,
+  "currency": "EUR",
+  "split": {
+    "shop": 75,
+    "platform": 5,
+    "Jordan": 20
+  },
+  "target_shops": 5,
+  "target_subscribers": 20,
+  "launch_date": "2026-04-24",
+  "pricing_tiers": {
+    "basic": {
+      "name": "Massage Pass",
+      "price": 79,
+      "features": [
+        "Unlimited massages",
+        "50+ partner shops",
+        "All massage types",
+        "No contracts"
+      ]
+    },
+    "premium": {
+      "name": "Massage Pass Plus",
+      "price": 129,
+      "features": [
+        "Everything in Basic",
+        "Hot stone & specialty treatments",
+        "Priority booking",
+        "Concierge support"
+      ]
+    }
+  }
+}
