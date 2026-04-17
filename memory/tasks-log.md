@@ -22,6 +22,12 @@
 
 _Append only — never edit existing entries_
 
+### 2026-04-17
+- ⏳ EVENING-PULSE-001: Evening check-in (5:03 PM UTC)
+  - **Status:** Message delivery blocked (cron session, tree-visibility restriction)
+  - **Questions not asked:** "What did you accomplish today?" / "What's blocking you?"
+  - **Note:** Jordan will see on next interaction
+
 ### 2026-04-16
 - ✅ TASK-OVERNIGHT-001: Build LeadPulse mini-app MVP
   - **What:** Single-file warm outreach tracker (Kanban + streak + follow-ups)
