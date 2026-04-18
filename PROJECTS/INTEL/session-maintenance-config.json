@@ -1,0 +1,11 @@
+{
+  "// Session maintenance prevents unbounded session store growth": "",
+  "// Add to ~/.openclaw/openclaw.json under 'session':",
+  "session": {
+    "maintenance": {
+      "mode": "enforce",
+      "pruneAfter": "24h",
+      "maxEntries": 100
+    }
+  }
+}
