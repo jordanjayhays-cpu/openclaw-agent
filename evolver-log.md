@@ -163,3 +163,25 @@
 - EXP-002: Get landing page live for A/B test
 - EXP-004: Measure first-week streams from Apr 11 release
 - EXP-005: Awaiting Jordan ICP approval
+
+---
+
+## 2026-04-18 23:22 UTC — Run #10
+
+### Run Summary
+- EXP-001: Running. Javier follow-up due. No email tracking data yet.
+- EXP-002: Landing page exists. Variant B CTA being created.
+- EXP-003: Ready for filming.
+- EXP-004: First release Apr 11 completed — measure first-week streams.
+- EXP-005: Waiting for Jordan ICP approval.
+
+### Actions Taken
+- Ran evolver.sh check
+- Logged run to evolver-log.md
+
+### Insights
+- PISCO: Javier follow-up due. Track open rates when sent.
+- MASSAGE-PASS: Need landing page live for A/B test.
+- PK MUSIC: Release schedule set, measure first-week streams.
+- COMARE: LinkedIn vs Email test ready to launch.
+
