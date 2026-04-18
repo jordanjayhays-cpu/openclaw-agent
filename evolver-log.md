@@ -185,3 +185,20 @@
 - PK MUSIC: Release schedule set, measure first-week streams.
 - COMARE: LinkedIn vs Email test ready to launch.
 
+
+---
+## Run: 2026-04-18 23:35 UTC
+
+**Status:** All experiments stable. No new data collected this run.
+
+**Experiment States:**
+- EXP-001: Running (Javier follow-up due)
+- EXP-002: Pending (landing page staging)
+- EXP-003: Ready to film
+- EXP-004: First release Apr 11 — stream data pending
+- EXP-005: Pending Jordan ICP approval
+
+**Action Items:**
+- Javier follow-up for PISCO
+- COMARE ICP approval needed
+- MASSAGE-PASS landing page to staging
