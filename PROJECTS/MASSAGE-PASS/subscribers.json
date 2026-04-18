@@ -1,0 +1,19 @@
+{
+  "updated": "2026-04-18",
+  "total": 0,
+  "by_source": {
+    "landing_page": 0,
+    "waitlist_form": 0,
+    "referral": 0
+  },
+  "by_status": {
+    "waitlist": 0,
+    "founding_member": 0,
+    "active": 0,
+    "paused": 0,
+    "cancelled": 0
+  },
+  "founding_spots_total": 100,
+  "founding_spots_remaining": 100,
+  "members": []
+}

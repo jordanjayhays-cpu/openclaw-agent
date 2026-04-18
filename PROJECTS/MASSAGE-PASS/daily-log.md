@@ -214,6 +214,87 @@ Created `PROJECTS/MASSAGE-PASS/landing.html`:
 *Logged by Axton at 22:10 UTC*
 ---
 
+---
+
+## 2026-04-18 (Saturday — Evening Check-in, 3rd pass)
+
+**Agent:** MASSAGE-PASS Check-in
+**Time:** 18:50 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24 (6 days away)
+- Notion API → NOT SET (integration still not configured by Jordan)
+- Built autonomous deliverables:
+
+### New Files Created
+
+**1. `launch-emails.md`** (6KB)
+Full 5-email send sequence with actual send calendar (Apr 21-26):
+- Email 1 (Apr 21): Waitlist teaser — personal tone, reactivation
+- Email 2 (Apr 22): Early access offer — 24hr window, scarcity
+- Email 3 (Apr 24): Launch day blast — full announcement
+- Email 4 (Apr 24): Evening follow-up — social proof + urgency
+- Email 5 (Apr 26): Founding member close — final push before price goes up
+- Includes ConvertKit/Mailgun merge field notes, unsubscribe requirements
+- **All emails are drafts — Jordan must review and approve before sending**
+
+**2. `social-launch.md`** (3.5KB)
+Platform-specific social posts for Twitter/X, LinkedIn, Instagram, Facebook:
+- 5 Twitter posts across launch window (Apr 21-26)
+- 2 LinkedIn posts (pre-launch + launch day)
+- Instagram story series + 1 feed post
+- Facebook launch post
+- All copy is draft — Jordan reviews and posts manually
+
+**3. `subscriber-tracker.md`**
+Instructions for JSON-based subscriber tracking (until Notion is wired):
+- Schema for `subscribers.json`
+- Manual add/export commands
+- Founding member spot tracking (100 limit)
+- Weekly sync instructions for Jordan
+
+**4. `subscribers.json`**
+Empty template — ready for Jordan to populate from Formspree exports weekly
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md` — just needs Jordan's page ID
+
+### Launch Countdown (6 days — April 24)
+
+Blockers for Jordan (sorted by urgency):
+1. **Formspree** — create account, replace `YOUR_FORM_ID` in landing-final.html
+2. **Domain** — not purchased yet (massagepass.io or similar)
+3. **Pricing sign-off** — €49/€89 shown in landing page, needs Jordan lock-in
+4. **Notion** — integration + parent page ID
+5. **Review `launch-emails.md`** — approve or edit before Apr 21 send date
+
+### Files Now in Project
+- `landing-final.html` — primary landing page (600+ lines)
+- `landing-prelaunch.html` — alternate variant
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email send sequence (NEW)
+- `social-launch.md` — social posts for Twitter/LinkedIn/IG/FB (NEW)
+- `subscribers.json` — empty subscriber tracker template (NEW)
+- `subscriber-tracker.md` — instructions for manual tracking (NEW)
+- `notion-db-schema.md` — Notion DB schemas (ready to build)
+- `LAUNCH-CHECKLIST.md` — full launch checklist
+
+### Flagged for Jordan
+
+⚠️ `launch-emails.md` ready to send — Jordan reviews and approves all 5 emails before first send (Apr 21)
+⚠️ `social-launch.md` — copy ready, Jordan posts manually to each platform
+⚠️ 6 days to launch — Formspree + domain are the fastest blockers
+⚠️ Notion integration still needed for subscriber/shop/booking databases
+⚠️ Founding member pricing (€24.50/mo) expires Apr 26 — sequence is built to drive that urgency
+
+---
+*Logged by Axton at 18:50 UTC*
+
+---
+
 **Agent:** MASSAGE-PASS Check-in (Axton)
 **Time:** 02:10 UTC
 
