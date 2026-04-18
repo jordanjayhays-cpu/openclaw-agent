@@ -622,3 +622,30 @@ Nothing actionable — queue is clear. All high/medium/low priority items are co
 All autonomous tasks done. Nothing to execute tonight.
 
 *Log entry: 2026-04-18 21:58 UTC*
+2026-04-18 23:00 - Overnight builder started
+
+---
+
+## 2026-04-18 — Late PM Run (Axton)
+
+**Time:** 2026-04-18 23:00 UTC
+
+### Queue Status
+All autonomous tasks completed or blocked. Nothing actionable.
+
+### BLOCKED (Needs Jordan)
+| Task | Blocker |
+|------|---------|
+| MASSAGE-PASS competitor research | felo-search skill available — can use |
+| Sending PISCO emails | No email tool configured |
+| Buying MASSAGE-PASS domain | Jordan task |
+| Setting up Notion API for MASSAGE-PASS | Jordan to configure |
+| Posting Upwork for Dealsmap | Jordan to post |
+| Releasing PK songs (pk-002, pk-003) | DistroKid not set up |
+| Deciding COMARE ICP priority | Jordan decision needed |
+
+### Notes
+- MASSAGE-PASS competitor research could be attempted using felo-search skill if web search is blocked
+- Queue clear — nothing for overnight builder to do
+
+*Log entry: 2026-04-18 23:00 UTC*
