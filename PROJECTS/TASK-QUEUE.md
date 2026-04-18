@@ -1,14 +1,30 @@
-# TASK QUEUE — 2026-04-17
+# TASK QUEUE — 2026-04-18
 
-## Today's Tasks (Auto-Generated @ 05:30 UTC)
+## Today's Tasks (Auto-Generated)
 
-- [ ] Send Javier Estrada follow-up email (16 days overdue — draft ready at email-javier-followup-draft.md)
-- [ ] Send Luis Zamora outreach email (12 days overdue — draft ready at outreach-luis-zamora.md)
-- [ ] Send Concha Pardo cold outreach (9 days overdue — draft ready at outreach-concha-pardo-melia.md, verify email first)
-- [ ] Decide COMARE ICP (pharmacies OR restaurants)
-- [ ] Post 3 Philosophy King tweets (queue updated in twitter-queue.md)
+
+- [ ] Send Javier Estrada follow-up email (case studies ready)
+- [ ] Send Luis Zamora email (due Apr 4)
+- [ ] Research 3 new hotel HR contacts (NH, Meliá, Barceló)
+
+# COMARE tasks  
+- [ ] Send LinkedIn DM to Gabriel Zavala (Farmacias del Ahorro)
+- [ ] Research Farmacias Similares expansion plans
+
+# MASSAGE-PASS tasks
+- [ ] Deploy landing page to Vercel
+- [ ] Set up email capture (Mailchimp/ConvertKit)
+
+# PK MUSIC tasks
+- [ ] Review All I Know for DistroKid upload
+- [ ] Post 3 Philosophy King tweets
+
+# NEUROTECH tasks
+- [ ] Decide channel name
+- [ ] Create thumbnail for Video 1
+
 
 ---
 
-_Priority: PISCO outreach > COMARE ICP > PK Twitter_
-_Generated: 2026-04-17 05:30 UTC by Auto Task Generator_
+_Generated: 2026-04-18 07:30 AM CET_
+_Execute in priority order. Log completions._
