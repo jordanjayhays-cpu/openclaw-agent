@@ -821,3 +821,41 @@ Get Jordan to send: Luis Zamora (Iberostar), Concha Pardo (Meliá), Dohun Kim (S
 ---
 
 *Log updated: 2026-04-18 14:15 UTC by PISCO Agent (Axton)*
+
+---
+
+## Actions Taken (20:07 UTC)
+
+### Task Executed: pisco-002 — Luis Zamora Outreach Refreshed
+- **Owner:** Jordan (pending send)
+- **Status:** ✅ Refreshed — draft ready to send
+- **Output:** `PROJECTS/PISCO/outreach-luis-zamora.md`
+
+#### What I Did:
+- Reviewed original draft (created April 16, 14 days overdue)
+- Pulled fresh Iberostar intelligence from INTELLIGENCE-BIBLE.md:
+  - €1B expansion, 95 nationalities, 40,000 employees, 70th anniversary 2025, €5.1B revenue
+  - Luis Zamora: CHRO Iberostar Group — luis.zamora@iberostar.com
+- Refreshed the email:
+  - Updated money math from 200-room to 500-room all-inclusive (Iberostar's actual scale)
+  - Added €232K waste figure vs €200K+ savings per resort annually
+  - Added 70th anniversary context (service quality paramount now)
+  - Kept April summer staffing urgency (current timing)
+  - Subject line unchanged — still strong
+
+#### CRM Activity:
+- Logged `outreach_refreshed` activity for contact_id 2 (Luis Zamora) in `crm.db`
+- Task pisco-002 status confirmed `pending_approval`
+
+#### State:
+- `STATE.yaml` — pisco-002 already had correct status/note; no changes needed
+
+#### Jordan — Action Required:
+- **Email:** luis.zamora@iberostar.com
+- **Subject:** Quick question about Iberostar's staffing approach
+- **Draft:** `PROJECTS/PISCO/outreach-luis-zamora.md` — copy-paste ready
+- **Note:** 14 days overdue — Iberostar's €1B expansion makes this timely
+
+---
+
+*Log updated: 2026-04-18 20:07 UTC by PISCO Agent (Axton)*
