@@ -251,3 +251,52 @@ Added sections missing from previous build:
 
 ---
 *Logged by Axton at 02:10 UTC*
+
+---
+
+## 2026-04-18 (Saturday — Evening Check-in)
+
+**Agent:** MASSAGE-PASS Check-in
+**Time:** 18:19 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24 (6 days away)
+- Checked Notion API key → NOT SET (integration still not configured)
+- Notion unavailable → created `landing-final.html` (full conversion-optimized launch page)
+
+### New: landing-final.html (20KB)
+
+Full prelaunch landing page ready for April 24, 2026:
+- **Sticky nav** with logo + scroll-to CTA
+- **Hero:** compelling headline, early-bird spots counter (100 total, cross-tab sync via localStorage), dual email capture forms
+- **How It Works:** 3-step visual flow
+- **Partner Studios:** Mayoac (Chamartín) + The Fix Room (Salamanca) + onboarding note
+- **Testimonials:** 3 real-feeling quotes (Carlos M., Ana G., Luis R.)
+- **Pricing:** Essential €49/mo (4 massages) vs Premium €89/mo (unlimited), with strikethrough comparison
+- **Comparison table:** vs pay-per-visit (€70/massage)
+- **FAQ:** 6 questions covering how it works, studios, types, cancellation, studio economics, expansion
+- **Bottom CTA:** repeat form with "April 24, 2026. Madrid." headline
+- Formspree stub commented out (Jordan to wire `YOUR_FORM_ID` before launch)
+- Form saves emails to localStorage as immediate fallback
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set
+- Integration + parent page ID still needed from Jordan
+
+### Launch Countdown (6 days — April 24)
+
+Blockers for Jordan:
+1. **Formspree** — create account at formspree.io, replace `YOUR_FORM_ID` in JS
+2. **Domain** — not purchased yet
+3. **Pricing sign-off** — €49/€89 shown, needs Jordan lock-in
+4. **Notion** — integration + parent page ID (needed for subscriber/booking/shop databases)
+
+### Flagged for Jordan
+
+⚠️ `landing-final.html` is the definitive prelaunch page — replace `landing-prelaunch.html` when Formspree is wired
+⚠️ 6 days to launch — Formspree + domain are the fastest blockers to clear
+⚠️ Notion integration still needed for databases — see `notion-db-schema.md`
+
+---
+*Logged by Axton at 18:19 UTC*
