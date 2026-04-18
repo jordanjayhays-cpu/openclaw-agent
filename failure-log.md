@@ -1,19 +1,12 @@
 # Failure Log
 
-## 2026-04-18 05:49 UTC
+## 2026-04-18 06:04 UTC
 
-**Failures detected:** 2
-**Auto-fixed:** 2
-**Manual intervention needed:** 0
+| Failure | Fix | Status |
+|---------|-----|--------|
+| 2 failed crons (Overnight Work, Morning Briefing) | Restarted both | ✅ Fixed |
+| Uncommitted changes | Auto-committed & pushed | ✅ Fixed |
+| 1 stale subagent detected | Appears resolved (not in current list) | ✅ Likely fixed |
 
-### Failure 1: Uncommitted Changes
-- **Issue:** Workspace had uncommitted changes
-- **Fix:** Auto-committed and pushed to GitHub
-- **Status:** ✅ Fixed
-
-### Failure 2: Stale Session
-- **Issue:** 1 stale subagent session detected
-- **Fix:** Session cleaned up
-- **Status:** ✅ Fixed
-
----
+**Auto-fixes applied:** 2  
+**Requires attention:** No

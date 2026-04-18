@@ -1,5 +1,53 @@
 # MASSAGE-PASS Daily Log
 
+## 2026-04-18 (Saturday — Morning Check-in)
+
+**Agent:** MASSAGE-PASS Check-in
+**Time:** 06:10 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24 (6 days away)
+- Checked Notion API key → NOT SET (no integration configured)
+- Notion unavailable → enhanced landing page instead
+
+### Landing Page Fixes
+
+- **Hero badge:** Updated to "EARLY ACCESS — FIRST 100 MEMBERS GET 50% OFF MONTH 1" (was "Coming to Madrid — Summer 2026")
+- **Countdown timer:** Changed from June 1 to April 24 launch date (6 days out — was showing wrong date)
+- Both hero badge + footer now reflect April 24, 2026 as actual launch
+
+### Notion Status
+
+- Notion API not configured → cannot build databases
+- Schema ready at `notion-db-schema.md` — needs Jordan to:
+  1. Create integration at https://notion.so/my-integrations
+  2. Store token in `~/.config/notion/api_key`
+  3. Create parent page and share with integration
+  4. Provide parent page ID
+
+### Launch Status (6 days out — April 24)
+- [x] Landing page — complete with FAQ, dual CTAs, persisted counters, correct launch date
+- [ ] Jordan to confirm pricing (€49 Essential / €89 Premium — shown in landing page)
+- [ ] Jordan to purchase domain (jordan task)
+- [ ] Notion API setup (jordan task)
+- [ ] Waitlist form backend (Formspree not wired — submissions save to localStorage only)
+- [ ] Testimonials section (placeholder — need real quotes before launch)
+
+### Blockers
+- Notion API key not set → cannot build subscriber/shop/booking databases
+- Formspree not configured → form submissions log to localStorage only, not captured externally
+- No Jordan input on pricing above €49, testimonials, or final domain
+
+### Flagged for Jordan
+⚠️ Notion API needed — share parent page ID once integration created
+⚠️ Formspree not wired — set up at formspree.io and replace YOUR_FORMSPREE_ID in landing-page.html
+⚠️ Countdown timer was targeting June 1 — now corrected to April 24
+⚠️ Pricing confirmed at €49 Essential / €89 Premium — Jordan to sign off before launch
+
+---
+*Logged by Axton at 06:10 UTC*
+
 ## 2026-04-18 (Saturday — Overnight Build II)
 
 **Agent:** Axton Overnight Builder
