@@ -146,3 +146,20 @@
 - EXP-003: Ready for filming
 - EXP-004: First release Apr 11 — stream measurement pending
 - EXP-005: Waiting on Jordan ICP approval
+
+---
+
+## Run: 2026-04-18 07:22 UTC
+
+**Status:** Complete
+
+**Findings:**
+- EXP-001: Javier follow-up due. No tracking data yet.
+- EXP-002: Landing page exists, variant B created
+- EXP-004: First release (Apr 11) days until = -7 — data pending review
+
+**Next Actions:**
+- EXP-001: Send Javier follow-up, track open rates
+- EXP-002: Get landing page live for A/B test
+- EXP-004: Measure first-week streams from Apr 11 release
+- EXP-005: Awaiting Jordan ICP approval
