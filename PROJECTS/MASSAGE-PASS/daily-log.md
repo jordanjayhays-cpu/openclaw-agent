@@ -48,6 +48,54 @@
 ---
 *Logged by Axton at 06:10 UTC*
 
+---
+
+## 2026-04-18 (Saturday — 10:10 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in
+**Time:** 10:10 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24 (6 days away)
+- Checked Notion API key → NOT SET (integration still not configured)
+- Notion unavailable → created `landing-prelaunch.html` (9KB clean prelaunch page)
+
+### New: landing-prelaunch.html
+
+Clean, conversion-focused prelaunch page targeting the April 24 launch:
+- Single-column layout, dark theme, modern typography
+- Hero with waitlist email capture (Formspree placeholder — replace YOUR_FORM_ID)
+- Badge: "Launching April 24, 2026"
+- Dual-plan pricing display (€49 Basic / €89 Premium)
+- Social proof section with partner studios
+- FAQ section (5 questions)
+- Second CTA at bottom with repeat form
+- Form submission JS handles success state inline
+
+### Notion Status (unchanged)
+
+- Notion API not configured — still blocked
+- Schema ready at `notion-db-schema.md`
+- Needs Jordan: integration + parent page ID
+
+### Launch Countdown (6 days)
+
+Priority items before April 24:
+- [ ] Notion API setup (Jordan task — integration + parent page ID)
+- [ ] Domain purchase (jordan task)
+- [ ] Formspree backend wiring (replace YOUR_FORM_ID in landing-prelaunch.html)
+- [ ] Jordan pricing sign-off
+- [ ] Testimonials (placeholder only)
+
+### Flagged for Jordan
+
+⚠️ Notion integration still needed — see `notion-db-schema.md` for step-by-step
+⚠️ Formspree ID needs replacing in `landing-prelaunch.html` before launch
+⚠️ Domain not yet purchased
+
+---
+*Logged by Axton at 10:10 UTC*
 ## 2026-04-18 (Saturday — Overnight Build II)
 
 **Agent:** Axton Overnight Builder

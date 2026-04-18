@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage Pass — Unlimited massages. One subscription.</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .hero {
+      text-align: center;
+      padding: 120px 20px 80px;
+      background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      color: #a0a0a0;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, #999 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 20px;
+      color: #888;
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+    .waitlist-form {
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+    }
+    .waitlist-form input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-form input:focus {
+      border-color: rgba(255,255,255,0.4);
+    }
+    .waitlist-form input::placeholder {
+      color: #555;
+    }
+    .waitlist-form button {
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none;
+      background: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .waitlist-form button:hover {
+      opacity: 0.9;
+    }
+    .success-msg {
+      display: none;
+      color: #4ade80;
+      margin-top: 16px;
+      font-size: 15px;
+    }
+    .social-proof {
+      padding: 60px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .social-proof h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .social-proof p {
+      color: #666;
+      margin-bottom: 32px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .feature {
+      background: #0f0f0f;
+      padding: 32px;
+      text-align: left;
+    }
+    .feature h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .feature p {
+      font-size: 14px;
+      color: #666;
+    }
+    .pricing {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .pricing h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .plan {
+      background: #141414;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 36px 32px;
+      width: 280px;
+    }
+    .plan.featured {
+      border-color: rgba(255,255,255,0.3);
+      background: #1a1a1a;
+    }
+    .plan h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    .plan .price {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .plan .price span {
+      font-size: 16px;
+      font-weight: 400;
+      color: #666;
+    }
+    .plan ul {
+      list-style: none;
+      margin: 20px 0 0;
+      text-align: left;
+    }
+    .plan li {
+      font-size: 14px;
+      color: #888;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .plan li::before {
+      content: '✓';
+      color: #4ade80;
+      font-weight: 600;
+    }
+    .cta-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+    }
+    .cta-section h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      color: #666;
+      margin-bottom: 28px;
+    }
+    .faq {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    .faq h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 36px;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 0;
+    }
+    .faq-item h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      font-size: 14px;
+      color: #666;
+    }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: #444;
+      font-size: 13px;
+    }
+    @media (max-width: 500px) {
+      .waitlist-form { flex-direction: column; }
+      .plans { flex-direction: column; align-items: center; }
+      .plan { width: 100%; max-width: 320px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">Launching April 24, 2026</div>
+  <h1>Massage on demand.<br>One subscription.</h1>
+  <p>Unlimited monthly massages at top studios across Madrid. Cancel anytime.</p>
+  
+  <form class="waitlist-form" id="waitlistForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="email" name="email" placeholder="your@email.com" required>
+    <button type="submit">Join Waitlist</button>
+  </form>
+  <div class="success-msg" id="successMsg">You're on the list. We'll be in touch. ✓</div>
+</div>
+
+<div class="social-proof">
+  <h2>Launching in Madrid</h2>
+  <p>Partner studios confirmed in Chamartín & Salamanca</p>
+  <div class="features">
+    <div class="feature">
+      <h3>✓ 2 Partner Studios</h3>
+      <p>Mayoac (Chamartín) + The Fix Room (Salamanca) — more joining monthly</p>
+    </div>
+    <div class="feature">
+      <h3>✓ Fixed Monthly Rate</h3>
+      <p>No surprise fees. Book your massage, show up, relax.</p>
+    </div>
+    <div class="feature">
+      <h3>✓ Revenue Share</h3>
+      <p>75% goes to the studio. We handle the tech, they focus on massage.</p>
+    </div>
+  </div>
+</div>
+
+<div class="pricing">
+  <h2>Simple pricing</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>Basic</h3>
+      <div class="price">€49 <span>/mo</span></div>
+      <ul>
+        <li>4 massages / month</li>
+        <li>Access to all partner studios</li>
+        <li>Easy booking & management</li>
+      </ul>
+    </div>
+    <div class="plan featured">
+      <h3>Premium ★</h3>
+      <div class="price">€89 <span>/mo</span></div>
+      <ul>
+        <li>Unlimited massages</li>
+        <li>Priority booking slots</li>
+        <li>All Premium partner studios</li>
+        <li>Pause up to 2 weeks / year</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="faq">
+  <h2>FAQ</h2>
+  <div class="faq-item">
+    <h3>How does it work?</h3>
+    <p>Subscribe → Book a slot at any partner studio → Show up and enjoy. No credits, no limits on visits (Premium).</p>
+  </div>
+  <div class="faq-item">
+    <h3>Which studios are included?</h3>
+    <p>Launching with Mayoac (Chamartín) and The Fix Room (Salamanca). We're actively onboarding more every week.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I pause my subscription?</h3>
+    <p>Premium subscribers can pause up to 2 weeks per year. Basic is month-to-month — cancel anytime.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How do studios benefit?</h3>
+    <p>Studios get guaranteed recurring revenue and new clients. We handle bookings, payments, and marketing. They focus on delivering great massages.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is this available outside Madrid?</h3>
+    <p>Madrid first. We're building the playbook here — expansion comes after launch.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Ready when you are.</h2>
+  <p>April 24, 2026 — Madrid launch</p>
+  <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="email" name="email" placeholder="your@email.com" required>
+    <button type="submit">Join Waitlist</button>
+  </form>
+</div>
+
+<footer>
+  &copy; 2026 Massage Pass · <a href="mailto:hello@massagepass.com" style="color:inherit">hello@massagepass.com</a>
+</footer>
+
+<script>
+  document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    const msg = document.getElementById('successMsg');
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      if (r.ok) {
+        form.style.display = 'none';
+        msg.style.display = 'block';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
