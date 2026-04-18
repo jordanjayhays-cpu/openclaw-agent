@@ -56,6 +56,10 @@
     "self-improving-agent": {
       "version": "3.0.16",
       "installedAt": 1776496007864
+    },
+    "proactive-agent": {
+      "version": "3.1.0",
+      "installedAt": 1776496021720
     }
   }
 }
