@@ -46,7 +46,108 @@
 ⚠️ Pricing confirmed at €49 Essential / €89 Premium — Jordan to sign off before launch
 
 ---
-*Logged by Axton at 06:10 UTC*
+*Logged by Axton at 22:35 UTC*
+
+---
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 02:10 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (not available)
+- Notion unavailable → enhanced `landing.html` instead
+
+### Landing Page Upgrades (2nd night run)
+
+Added sections missing from previous build:
+- **FAQ accordion** (5 questions): studios covered, massage types, cancellation policy, how to book, studio suggestions
+- **2nd CTA section** at bottom with duplicate form (prelaunch → "Claim My Spot" repeat form)
+- **Dual-form wiring:** Both hero form + bottom form now wire to `handleSubmit()` with localStorage counters
+- **localStorage persistence:** Spots counter now survives page refresh (claimed count, spots left)
+- **Success messages:** Form submission shows "✅ You're on the list!" confirmation inline, disables input/button
+
+### Launch Status (6 days out — April 24)
+- [x] Landing page — complete with FAQ, dual CTAs, persisted counters
+- [ ] Jordan to confirm pricing (€49/mo confirmed in landing page — pending his sign-off)
+- [ ] Jordan to purchase domain (jordan task)
+- [ ] Jordan to set up Notion API (integration + parent page ID needed)
+- [ ] Backend waitlist connection (Formspree, Supabase, or Notion — pending)
+- [ ] Testimonials section (placeholder — need real quotes before launch)
+
+### Blockers
+- Notion API key not set → cannot build databases
+- No backend for waitlist form submissions → emails not being captured yet
+- No Jordan input on pricing above €49, testimonials, or final domain
+
+### Flagged for Jordan
+⚠️ Notion API needed to build subscriber/shop/booking databases — share parent page ID once integration created
+⚠️ Waitlist form currently logs to console only — needs backend (Formspree or Supabase recommended prelaunch)
+
+---
+*Logged by Axton at 02:10 UTC*
+
+---
+
+## 2026-04-18 (Saturday — 10:35 PM UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 22:35 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24 (6 days away)
+- Checked Notion API key → NOT SET (integration still not configured by Jordan)
+- Notion unavailable → focused on launch prep output
+
+### New File: `LAUNCH-COUNTDOWN.md`
+
+Day-by-day sprint plan for 6 days to April 24:
+- **Day 6 (Tonight):** Studio outreach email draft
+- **Day 5 (Sun):** Domain + Formspree + pricing sign-off
+- **Day 4 (Mon):** Notion setup + email review
+- **Day 3 (Tue):** Email 1 + social teaser
+- **Day 2 (Wed):** Email 2 + studio DMs
+- **Day 1 (Thu):** Final checks + Email 3 + social launch + Product Hunt
+- **Launch Day (Fri 24):** Go live
+- **Post-launch (Sat 25/Sun 26):** Follow-up emails + close founding member pricing
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md` — just needs Jordan to create integration and share a page
+
+### Launch Status (6 days — April 24)
+
+Blockers for Jordan (sorted by urgency):
+1. **Formspree** — create account at formspree.io, replace `YOUR_FORM_ID` in landing-final.html + waitlist-handler.js
+2. **Domain** — not purchased yet (massagepass.io or similar)
+3. **Pricing sign-off** — €49/€89 shown in landing page, needs Jordan lock-in
+4. **Notion** — integration + parent page ID (needed for subscriber/shop/booking databases)
+5. **Review `launch-emails.md`** — approve or edit before first send on Apr 21
+
+### Files in Project (as of 22:35 UTC)
+- `landing-final.html` — primary landing page
+- `landing-prelaunch.html` — alternate variant
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email send sequence
+- `social-launch.md` — social posts for all platforms
+- `subscribers.json` — empty subscriber tracker
+- `subscriber-tracker.md` — manual tracking instructions
+- `notion-db-schema.md` — DB schemas ready to build
+- `LAUNCH-CHECKLIST.md` — full launch checklist
+- `LAUNCH-COUNTDOWN.md` — day-by-day sprint (NEW)
+
+### Flagged for Jordan
+
+⚠️ 6 days to launch — Formspree + domain are the fastest blockers to clear tonight
+⚠️ Notion integration still needed — schema ready, just needs Jordan to create integration + share page
+⚠️ `LAUNCH-COUNTDOWN.md` has the full sprint plan — review to see what's coming each day
+⚠️ First launch email (Apr 21) needs Jordan's approval — `launch-emails.md` is ready to review
+
+---
+*Logged by Axton at 22:35 UTC*
 
 ---
 
