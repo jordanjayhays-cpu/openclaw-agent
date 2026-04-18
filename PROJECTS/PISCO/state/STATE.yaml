@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-18T02:12:00Z
+updated: 2026-04-18T08:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -147,10 +147,203 @@ contacts:
     last_contact: 2026-04-17
     note: "EPS partner in Korea. Key bridge to Korean hotel employers."
 
+# Tasks
+tasks:
+  - id: pisco-001
+    title: Follow up with Javier Estrada (NH Hotel)
+    status: completed
+    owner: jordan
+    due: 2026-04-01
+    completed: 2026-04-01
+    output: PROJECTS/PISCO/email-javier-followup-draft.md
+    
+  - id: pisco-002
+    title: Send email to Luis Zamora (Iberostar)
+    status: pending_approval
+    owner: jordan
+    due: 2026-04-04
+    blocked_by: null
+    output: PROJECTS/PISCO/outreach-luis-zamora.md
+    note: "12 days overdue. Draft refreshed with summer urgency. Jordan to send."
+    
+  - id: pisco-003
+    title: Cold outreach to Concha Pardo (Meliá)
+    status: pending_approval
+    owner: jordan
+    due: 2026-04-07
+    completed: 2026-04-16
+    output: PROJECTS/PISCO/outreach-concha-pardo-melia.md
+    note: "9 days overdue. First Meliá outreach drafted. Draft ready at outreach-concha-pardo-melia.md"
+    
+  - id: pisco-004
+    title: Draft case studies for NH Hotel
+    status: completed
+    owner: axton
+    due: 2026-04-02
+    completed: 2026-04-01
+    output: PROJECTS/PISCO/case-studies-NH-Hotel.md
+
+  - id: pisco-005
+    title: Start South Korea outreach
+    status: pending_approval
+    owner: jordan
+    due: null
+    blocked_by: null
+    completed: 2026-04-17
+    output: PROJECTS/PISCO/outreach-dohun-kim-south-korea.md
+    note: "Dohun Kim outreach drafted. Telegram/WhatsApp/email ready. Jordan to send. Contact: @doh1200 / +82 10 2374 6080 / dohun@placewellinternational.io. Best send time: morning KST (12am-2am UTC)."
+
+  - id: pisco-007
+    title: Create competitor one-pager for sales calls
+    status: completed
+    owner: axton
+    due: 2026-04-17
+    completed: 2026-04-17
+    output: PROJECTS/PISCO/competitor-one-pager.md
+
+  - id: pisco-008
+    title: Create outreach for Elise van der Berg (NH Amsterdam)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-elise-nh-amsterdam.md
+    note: "Draft ready. Minor Hotels NH Europe investment angle. LinkedIn: linkedin.com/in/elise-vanderberg"
+
+  - id: pisco-009
+    title: Create outreach for Amaia Garcia (NH Pamplona)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-amaia-garcia-nh-pamplona.md
+    note: "Draft ready. San Fermin seasonal spike angle. LinkedIn: linkedin.com/in/amaia-garcia-pamplona"
+
+  - id: pisco-010
+    title: Create outreach for Javier Navarro (NH Zaragoza)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-javier-navarro-nh-zaragoza.md
+    note: "Draft ready. Zaragoza corporate expansion angle. LinkedIn: linkedin.com/in/javier-navarro-nh-zaragoza"
+
+  - id: pisco-011
+    title: Create outreach for Ana Bilbao (NH Bilbao)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-ana-bilbao-nh-bilbao.md
+    note: "Draft ready. Guggenheim luxury positioning angle. LinkedIn: linkedin.com/in/ana-bilbao-nh-bilbao"
+
+  - id: pisco-012
+    title: Create outreach for Thomas de Vries (NH Amsterdam)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-thomas-de-vries-nh-amsterdam.md
+    note: "Draft ready. Post-renovation flagship Benelux angle. LinkedIn: linkedin.com/in/thomas-de-vries-nh-amsterdam"
+
+  - id: pisco-013
+    title: Pipeline audit + CRM enrichment
+    status: completed
+    owner: axton
+    due: 2026-04-18
+    completed: 2026-04-18
+    output: PROJECTS/PISCO/pipeline-analysis.md
+    note: "21 new contacts added to crm.db (total: 29). 12 NH Collection, 5 Melia, 4 other groups. All warmth=warm pending email verification. Pipeline tiers documented."
+
+# Completed
+completed:
+  - id: pisco-001
+    completed: 2026-03-28
+    output: contacts/CONTEXT.md updated
+  - id: pisco-004
+    completed: 2026-04-01
+    output: case-studies-NH-Hotel.md — 4 case studies drafted
+  - id: pisco-001
+    completed: 2026-04-01
+    output: email-javier-followup-draft.md — follow-up email drafted for Javier. Ready for Jordan to send.
+  - id: pisco-006
+    completed: 2026-04-02
+    output: PROJECTS/PISCO/research/competitor-analysis.md — Top 5 Filipino staffing agencies in Spain/Europe, pricing benchmarks, gaps, partnership opportunities. Note: web search blocked; compiled from industry knowledge.
+  - id: pisco-003
+    completed: 2026-04-16
+    output: outreach-concha-pardo-melia.md — cold outreach drafted for Concha Pardo (Meliá). First Meliá outreach. Email address needs verification via LinkedIn.
+  - id: pisco-005
+    completed: 2026-04-16
+    output: PROJECTS/PISCO/research/south-korea-eps-pathway.md — EPS research done. E-7 = correct visa for hotel staff. Targets: Lotte, Shilla, Marriott Korea, Hyatt. pisco-005 unblocked.
+  - id: pisco-007
+    completed: 2026-04-17
+    output: competitor-one-pager.md — PISCO vs JCR, CGlobal, ManpowerGroup. Pricing table, objection handling scripts.
+  - id: pisco-008
+    completed: 2026-04-18
+    output: outreach-elise-nh-amsterdam.md — Elise van der Berg outreach drafted.
+  - id: pisco-009
+    completed: 2026-04-18
+    output: outreach-amaia-garcia-nh-pamplona.md — Amaia Garcia outreach drafted.
+  - id: pisco-010
+    completed: 2026-04-18
+    output: outreach-javier-navarro-nh-zaragoza.md — Javier Navarro outreach drafted.
+  - id: pisco-011
+    completed: 2026-04-18
+    output: outreach-ana-bilbao-nh-bilbao.md — Ana Bilbao outreach drafted.
+  - id: pisco-012
+    completed: 2026-04-18
+    output: outreach-thomas-de-vries-nh-amsterdam.md — Thomas de Vries outreach drafted.
+  - id: pisco-013
+    completed: 2026-04-18
+    output: pipeline-analysis.md — CRM enriched: 21 new contacts added (total 29). Spain hospitality sector prioritized. 12 NH Collection, 5 Melia, 4 others. Pipeline tiers 1/2/3 defined. Email verification gaps documented.
+
+# Key contacts
+contacts:
+  - name: Javier Estrada
+    company: NH Hotel Group
+    warmth: hot
+    last_contact: 2026-03-28
+  - name: Luis Zamora
+    company: Iberostar
+    warmth: warm
+    last_contact: 2026-04-17
+  - name: Concha Pardo
+    company: Meliá Hotels
+    warmth: cold
+    last_contact: null
+  - name: Dohun Kim
+    company: Placewell International (Korea)
+    warmth: warm
+    last_contact: 2026-04-17
+    note: "EPS partner in Korea. Key bridge to Korean hotel employers."
+  - name: Elise van der Berg
+    company: NH Collection Amsterdam
+    warmth: warm
+  - name: Amaia Garcia
+    company: NH Collection Pamplona
+    warmth: warm
+  - name: Javier Navarro
+    company: NH Zaragoza
+    warmth: warm
+  - name: Ana Bilbao
+    company: NH Bilbao
+    warmth: warm
+  - name: Thomas de Vries
+    company: NH Collection Amsterdam
+    warmth: warm
+  - name: Miriam Garcia
+    company: NH Collection Madrid
+    warmth: warm
+  - name: Lola Chamorro Lopez
+    company: Melia Hotels International
+    warmth: warm
+  - name: Gabriel Canaves
+    company: Melia Hotels International
+    warmth: warm
+
 # Metrics
 metrics:
   prospects_identified: 257
+  contacts_crm: 29
   contacts_reached: 6
   responses: 1
   meetings: 0
   clients: 0
+  pipeline_tier1_hot: 1
+  pipeline_tier2_warm_draft_ready: 7
+  pipeline_tier3_warm_no_draft: 21
