@@ -1,6 +1,6 @@
 # MASSAGE-PASS Daily Log
 
-## 2026-04-18 (Saturday — Overnight Build)
+## 2026-04-18 (Saturday — Overnight Build II)
 
 **Agent:** Axton Overnight Builder
 **Time:** 23:01 UTC
@@ -66,3 +66,42 @@ Created `PROJECTS/MASSAGE-PASS/landing.html`:
 
 ---
 *Logged by Axton at 22:10 UTC*
+---
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 02:10 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (not available)
+- Notion unavailable → enhanced `landing.html` instead
+
+### Landing Page Upgrades (2nd night run)
+
+Added sections missing from previous build:
+- **FAQ accordion** (5 questions): studios covered, massage types, cancellation policy, how to book, studio suggestions
+- **2nd CTA section** at bottom with duplicate form (prelaunch → "Claim My Spot" repeat form)
+- **Dual-form wiring:** Both hero form + bottom form now wire to `handleSubmit()` with localStorage counters
+- **localStorage persistence:** Spots counter now survives page refresh (claimed count, spots left)
+- **Success messages:** Form submission shows "✅ You're on the list!" confirmation inline, disables input/button
+
+### Launch Status (6 days out — April 24)
+- [x] Landing page — complete with FAQ, dual CTAs, persisted counters
+- [ ] Jordan to confirm pricing (€49/mo confirmed in landing page — pending his sign-off)
+- [ ] Jordan to purchase domain (jordan task)
+- [ ] Jordan to set up Notion API (integration + parent page ID needed)
+- [ ] Backend waitlist connection (Formspree, Supabase, or Notion — pending)
+- [ ] Testimonials section (placeholder — need real quotes before launch)
+
+### Blockers
+- Notion API key not set → cannot build databases
+- No backend for waitlist form submissions → emails not being captured yet
+- No Jordan input on pricing above €49, testimonials, or final domain
+
+### Flagged for Jordan
+⚠️ Notion API needed to build subscriber/shop/booking databases — share parent page ID once integration created
+⚠️ Waitlist form currently logs to console only — needs backend (Formspree or Supabase recommended prelaunch)
+
+---
+*Logged by Axton at 02:10 UTC*

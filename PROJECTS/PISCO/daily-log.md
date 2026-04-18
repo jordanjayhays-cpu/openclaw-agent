@@ -591,3 +591,55 @@ Get Jordan to send: Luis Zamora (Iberostar), Concha Pardo (Meliá), Dohun Kim (S
 ---
 
 *Log updated: 2026-04-17 20:07 UTC by PISCO Agent (Axton)*
+
+---
+
+## Date: Saturday, April 18, 2026
+
+## Actions Taken (02:07–02:12 UTC)
+
+### Task Executed: pisco-008/009/010/011/012 — New NH Outreach Drafts
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ 5 drafts complete — awaiting Jordan approval to send
+- **Source:** PROSPECTS-200.md — next tier NH Collection properties
+
+#### What I Did:
+- Reviewed PROSPECTS-200.md for next-tier NH contacts with decision-maker names and LinkedIn search strings
+- Identified 5 warm/warm-ish NH contacts to pursue:
+  1. **Elise van der Berg** — HR Manager, NH Collection Barbizon Palace, Amsterdam
+  2. **Amaia Garcia** — RRHH, NH Collection Pamplona
+  3. **Javier Navarro** — HR Manager, NH Zaragoza
+  4. **Ana Bilbao** — Director of HR, NH Gran Hotel Domine Bilbao
+  5. **Thomas de Vries** — HR Director, NH Collection Krasnapolsky Amsterdam
+- Created personalized outreach drafts for all 5 contacts using property-specific news/angles
+- Added all 5 contacts to crm.db (contacts table — id 4-8)
+- Logged 7 activities to crm.db (activities table)
+- Updated STATE.yaml: added pisco-008 to pisco-012 tasks, updated metrics (prospects_identified: 252→257), updated next_actions
+- Updated state timestamp to 2026-04-18T02:12:00Z
+
+#### Outreach Drafts Created:
+| File | Contact | Angle |
+|---|---|---|
+| outreach-elise-nh-amsterdam.md | Elise van der Berg | Minor Hotels NH Europe investment + Schiphol multilingual need |
+| outreach-amaia-garcia-nh-pamplona.md | Amaia Garcia | San Fermin seasonal demand spike |
+| outreach-javier-navarro-nh-zaragoza.md | Javier Navarro | Zaragoza corporate expansion 2025 |
+| outreach-ana-bilbao-nh-bilbao.md | Ana Bilbao | Guggenheim luxury positioning |
+| outreach-thomas-de-vries-nh-amsterdam.md | Thomas de Vries | Post-renovation flagship Benelux |
+
+#### CRM Updates:
+- contacts: 5 new rows added (ids 4-8)
+- activities: 7 new rows logged including outreach draft confirmations
+
+#### Metrics:
+- prospects_identified: 252 → 257 (+5)
+- contacts_reached: 6 (unchanged)
+- responses: 1 (unchanged)
+
+#### Pending Jordan Action:
+- Send 5 new NH outreach emails (drafts ready)
+- Send outreach to Dohun Kim (South Korea) — morning KST window (12am-2am UTC)
+- Send Luis Zamora outreach (12+ days overdue)
+- Send Concha Pardo outreach (9 days overdue)
+- Send Javier follow-up
+
+**Time spent: ~8 minutes**

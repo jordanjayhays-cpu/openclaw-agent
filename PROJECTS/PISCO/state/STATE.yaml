@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-17T20:07:00Z
+updated: 2026-04-18T02:12:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -59,6 +59,46 @@ tasks:
     completed: 2026-04-17
     output: PROJECTS/PISCO/competitor-one-pager.md
 
+  - id: pisco-008
+    title: Create outreach for Elise van der Berg (NH Amsterdam)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-elise-nh-amsterdam.md
+    note: "Draft ready. Minor Hotels NH Europe investment angle. LinkedIn: linkedin.com/in/elise-vanderberg"
+
+  - id: pisco-009
+    title: Create outreach for Amaia Garcia (NH Pamplona)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-amaia-garcia-nh-pamplona.md
+    note: "Draft ready. San Fermin seasonal spike angle. LinkedIn: linkedin.com/in/amaia-garcia-pamplona"
+
+  - id: pisco-010
+    title: Create outreach for Javier Navarro (NH Zaragoza)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-javier-navarro-nh-zaragoza.md
+    note: "Draft ready. Zaragoza corporate expansion angle. LinkedIn: linkedin.com/in/javier-navarro-nh-zaragoza"
+
+  - id: pisco-011
+    title: Create outreach for Ana Bilbao (NH Bilbao)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-ana-bilbao-nh-bilbao.md
+    note: "Draft ready. Guggenheim luxury positioning angle. LinkedIn: linkedin.com/in/ana-bilbao-nh-bilbao"
+
+  - id: pisco-012
+    title: Create outreach for Thomas de Vries (NH Amsterdam)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-thomas-de-vries-nh-amsterdam.md
+    note: "Draft ready. Post-renovation flagship Benelux angle. LinkedIn: linkedin.com/in/thomas-de-vries-nh-amsterdam"
+
 # Completed
 completed:
   - id: pisco-001
@@ -85,6 +125,7 @@ next_actions:
   - "jordan: Send follow-up email to Javier — draft ready at PROJECTS/PISCO/email-javier-followup-draft.md"
   - "jordan: Send email to Luis Zamora (Iberostar) — draft at PROJECTS/PISCO/outreach-luis-zamora.md (12+ days overdue)"
   - "jordan: Send cold outreach to Concha Pardo (Meliá) — draft at PROJECTS/PISCO/outreach-concha-pardo-melia.md (9 days overdue). Verify email via LinkedIn first."
+  - "jordan: Send 5 new NH outreach emails — drafts at PROJECTS/PISCO/outreach-elise-nh-amsterdam.md, outreach-amaia-garcia-nh-pamplona.md, outreach-javier-navarro-nh-zaragoza.md, outreach-ana-bilbao-nh-bilbao.md, outreach-thomas-de-vries-nh-amsterdam.md"
 
 # Key contacts
 contacts:
@@ -108,7 +149,7 @@ contacts:
 
 # Metrics
 metrics:
-  prospects_identified: 252
+  prospects_identified: 257
   contacts_reached: 6
   responses: 1
   meetings: 0

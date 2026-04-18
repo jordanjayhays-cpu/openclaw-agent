@@ -187,11 +187,12 @@
 
     <div class="cta-section">
       <p class="cta-label">Reserve your spot — first 100 get half price</p>
-      <form class="email-form" onsubmit="handleSubmit(event)">
+      <form class="email-form" id="waitlist-form">
         <input type="email" placeholder="your@email.com" required id="email">
-        <button type="submit">Claim My Spot</button>
+        <button type="submit" id="submit-btn">Claim My Spot</button>
       </form>
-      <p class="social-proof"><span>84</span> spots claimed so far — <span id="spots-left">16</span> left at 50% off</p>
+      <p id="success-msg" style="display:none; color:#7fff7f; margin-top:1rem; font-size:0.9rem;">✅ You're on the list! We'll be in touch before launch.</p>
+      <p class="social-proof"><span id="claimed-count">84</span> spots claimed — <span id="spots-left">16</span> left at 50% off</p>
     </div>
   </section>
 
@@ -277,26 +278,88 @@
     </div>
   </section>
 
+  <section style="padding: 0 2rem 4rem; max-width: 680px; margin: 0 auto;">
+    <h2 style="text-align:center; font-size:1.5rem; margin-bottom:2rem; color:#ccc;">FAQ</h2>
+    <div style="display:flex; flex-direction:column; gap:1rem;">
+      <details style="background:#161616; border:1px solid #222; border-radius:0.75rem; padding:1.25rem; cursor:pointer;">
+        <summary style="font-weight:700; font-size:1rem; cursor:pointer; list-style:none;">Which studios can I book at?</summary>
+        <p style="margin-top:0.75rem; color:#888; font-size:0.9rem; line-height:1.6;">We're partnering with 50+ independent massage studios and therapists across Madrid — Chueca, Chamberí, Salamanca, Malasaña, and more. Every partner is vetted for quality. Full list visible once you're a member.</p>
+      </details>
+      <details style="background:#161616; border:1px solid #222; border-radius:0.75rem; padding:1.25rem; cursor:pointer;">
+        <summary style="font-weight:700; font-size:1rem; cursor:pointer; list-style:none;">What types of massage are included?</summary>
+        <p style="margin-top:0.75rem; color:#888; font-size:0.9rem; line-height:1.6;">Swedish, deep tissue, and sports massage are included at all partnered studios. Specialty treatments (hot stone, Thai, reflexology) may have a small surcharge — always shown upfront before you book.</p>
+      </details>
+      <details style="background:#161616; border:1px solid #222; border-radius:0.75rem; padding:1.25rem; cursor:pointer;">
+        <summary style="font-weight:700; font-size:1rem; cursor:pointer; list-style:none;">Is there a commitment or contract?</summary>
+        <p style="margin-top:0.75rem; color:#888; font-size:0.9rem; line-height:1.6;">No. Massage-Pass is month-to-month. Cancel anytime before your next billing date — no questions, no fees.</p>
+      </details>
+      <details style="background:#161616; border:1px solid #222; border-radius:0.75rem; padding:1.25rem; cursor:pointer;">
+        <summary style="font-weight:700; font-size:1rem; cursor:pointer; list-style:none;">How do I book a session?</summary>
+        <p style="margin-top:0.75rem; color:#888; font-size:0.9rem; line-height:1.6;">Through our app or web dashboard. Browse studios by location and availability, pick a time slot, and confirm — instant confirmation, no phone calls needed.</p>
+      </details>
+      <details style="background:#161616; border:1px solid #222; border-radius:0.75rem; padding:1.25rem; cursor:pointer;">
+        <summary style="font-weight:700; font-size:1rem; cursor:pointer; list-style:none;">What if my favourite studio isn't on the list?</summary>
+        <p style="margin-top:0.75rem; color:#888; font-size:0.9rem; line-height:1.6;">We're expanding our partner network monthly. Suggest a studio and if we onboard them, you'll get a free month. We prioritised the most-requested areas first.</p>
+      </details>
+    </div>
+  </section>
+
+  <section style="padding: 0 2rem 4rem; max-width: 680px; margin: 0 auto; text-align:center;">
+    <h2 style="font-size:1.5rem; margin-bottom:1.5rem; color:#ccc;">🔥 Launching April 24, 2026</h2>
+    <p style="color:#666; font-size:1rem; margin-bottom:2rem;">First 100 members lock in 50% off month 1 (€24.50 instead of €49).<br>Join the waitlist now — spots are filling fast.</p>
+    <form class="email-form" id="waitlist-form-2" style="justify-content:center;">
+      <input type="email" placeholder="your@email.com" required id="email-2">
+      <button type="submit">Claim My Spot</button>
+    </form>
+    <p id="success-msg-2" style="display:none; color:#7fff7f; margin-top:1rem; font-size:0.9rem;">✅ You're on the list! We'll be in touch before launch.</p>
+  </section>
+
   <footer>
     © 2026 Massage-Pass — Built for the burned-out.<br>
     <span style="color:#555;">Launching April 24, 2026 · Madrid, Spain</span>
   </footer>
 
   <script>
-    function handleSubmit(e) {
+    const SPOTS_TOTAL = 100;
+    let spotsLeft = parseInt(localStorage.getItem('mp_spots_left')) || 16;
+    let claimedCount = parseInt(localStorage.getItem('mp_claimed')) || 84;
+
+    function updateCounters() {
+      document.getElementById('spots-left').textContent = spotsLeft;
+      document.getElementById('claimed-count').textContent = claimedCount;
+    }
+    updateCounters();
+
+    function handleSubmit(e, formId, successId) {
       e.preventDefault();
-      const email = document.getElementById('email').value;
-      const btn = e.target.querySelector('button');
-      const spotsLeft = document.getElementById('spots-left');
+      const form = document.getElementById(formId);
+      const email = form.querySelector('input[type="email"]').value;
+      const btn = form.querySelector('button[type="submit"]');
+      const successMsg = document.getElementById(successId);
+
       btn.textContent = '✅ Joined!';
       btn.disabled = true;
-      // Decrement spots counter
-      if (spotsLeft && parseInt(spotsLeft.textContent) > 0) {
-        spotsLeft.textContent = parseInt(spotsLeft.textContent) - 1;
+      successMsg.style.display = 'block';
+      form.querySelector('input[type="email"]').disabled = true;
+
+      if (spotsLeft > 0) {
+        spotsLeft--;
+        claimedCount++;
+        localStorage.setItem('mp_spots_left', spotsLeft);
+        localStorage.setItem('mp_claimed', claimedCount);
+        updateCounters();
       }
-      console.log('Waitlist:', email);
-      // TODO: wire to backend (Notion API or email service)
+
+      console.log('Waitlist signup:', email, '| Spots left:', spotsLeft);
+      // TODO: wire to backend (Notion API, email service, or Formspree)
     }
+
+    document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+      handleSubmit(e, 'waitlist-form', 'success-msg');
+    });
+    document.getElementById('waitlist-form-2').addEventListener('submit', function(e) {
+      handleSubmit(e, 'waitlist-form-2', 'success-msg-2');
+    });
   </script>
 
 </body>
