@@ -96,6 +96,56 @@ Priority items before April 24:
 
 ---
 *Logged by Axton at 10:10 UTC*
+
+---
+
+## 2026-04-18 (Saturday — 14:10 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in
+**Time:** 14:10 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24 (6 days away)
+- Checked Notion API key → NOT SET (integration still not configured)
+- Notion unavailable → Created two new files instead
+
+### New Files Created
+
+**1. `waitlist-handler.js`** (4.6KB)
+Reusable form handler for all landing pages:
+- Wires to Formspree (`YOUR_FORMSPREE_FORM_ID` placeholder — Jordan to replace)
+- Falls back to localStorage if Formspree not configured
+- Cross-tab counter sync (spots claimed updates across all open tabs)
+- Proper loading/success/error states
+- Usage: add `<script src="waitlist-handler.js">` + form class `mp-waitlist-form`
+
+**2. `LAUNCH-CHECKLIST.md`**
+Single view of what's done vs. what Jordan needs to do before April 24:
+- ✅ Done items clearly listed
+- ⚠️ Must-do-before-launch: Formspree, pricing sign-off, domain, Notion setup
+- 🔜 Post-launch: booking flow, Stripe, testimonials, email sequence
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set
+- Integration + parent page ID still needed from Jordan
+
+### Launch Countdown (6 days — April 24)
+
+Priority blockers for Jordan:
+1. **Formspree** — create free account, replace ID in `waitlist-handler.js`
+2. **Pricing sign-off** — €49/€89 confirmed in landing page, needs Jordan lock-in
+3. **Domain** — not purchased yet
+4. **Notion** — integration + parent page ID
+
+### Flagged for Jordan
+
+⚠️ `waitlist-handler.js` created — replace `YOUR_FORMSPREE_FORM_ID` before launch to capture real emails
+⚠️ `LAUNCH-CHECKLIST.md` has the full picture — review it to see what's blocking vs. what's done
+⚠️ 6 days to launch — Formspree and pricing are the two fastest blockers to clear
+
+---
+*Logged by Axton at 14:10 UTC*
 ## 2026-04-18 (Saturday — Overnight Build II)
 
 **Agent:** Axton Overnight Builder

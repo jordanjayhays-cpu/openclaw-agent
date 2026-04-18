@@ -745,3 +745,51 @@ Get Jordan to send: Luis Zamora (Iberostar), Concha Pardo (Meliá), Dohun Kim (S
 ---
 
 *Log updated: 2026-04-18 08:07 UTC by PISCO Agent (Axton)*
+
+---
+
+## Date: Saturday, April 18, 2026
+
+## Actions Taken (14:15 UTC)
+
+### Task Executed: pisco-014/015/016 — 3 More Outreach Drafts Created
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Drafts complete — awaiting Jordan approval to send
+- **Outputs:**
+  - `PROJECTS/PISCO/outreach-miriam-garcia-nh-madrid-abascal.md`
+  - `PROJECTS/PISCO/outreach-lola-chamorro-melia-global-head-ta.md`
+  - `PROJECTS/PISCO/outreach-luis-sousa-nh-portugal.md`
+
+#### What I Did:
+- Identified 3 warm contacts in CRM without drafted outreach (no existing outreach-*.md file)
+- Selected from high-value segment: corporate-level HR/TA at Meliá (Lola), Minor Hotels Portugal expansion lead (Luis Sousa), Madrid flagship property (Miriam)
+- Cross-referenced each against OUTREACH-MACHINE.md strategic angles
+- Created personalized cold outreach for each using property/company-specific hooks:
+  - **Miriam García** → Minor Hotels expansion signal + NH Collection Madrid premium tier
+  - **Lola Chamorro López** → Global Head of TA pitch, 92% retention vs 40% industry avg
+  - **Luis Sousa** → Portugal expansion 2026, NH Collection Lisbon/Algarve, record Portugal tourism
+
+#### Draft Highlights:
+- Miriam: Minor Hotels investing in NH Europe 2026 angle — warm, consultative
+- Lola: 350+ Meliá hotels, 63% premium/luxury focus, retention math for global TA — authoritative, scale-focused
+- Luis Sousa: Portugal tourism records + Minor Hotels expansion 2026 — regional + strategic
+
+#### CRM Activity:
+- Logged 3 outreach_drafted activities in `crm.db` (contacts 9, 21, 22)
+- Updated last_contact for Miriam García, Lola Chamorro López, Luis Sousa → 2026-04-18T14:10:00Z
+
+#### State Updates:
+- `STATE.yaml` updated: pisco-014/015/016 marked completed
+- pisco-017 added: Gabriel Cánaves outreach draft (pending — email needs LinkedIn verification)
+- metrics pipeline_tier2_warm_draft_ready: 10 (up from 7)
+- metrics pipeline_tier3_warm_no_draft: 18 (down from 21)
+
+#### Jordan — Ready to Send:
+1. `outreach-miriam-garcia-nh-madrid-abascal.md`
+2. `outreach-lola-chamorro-melia-global-head-ta.md`
+3. `outreach-luis-sousa-nh-portugal.md`
+(All 3 drafted today, 2026-04-18)
+
+---
+
+*Log updated: 2026-04-18 14:15 UTC by PISCO Agent (Axton)*
