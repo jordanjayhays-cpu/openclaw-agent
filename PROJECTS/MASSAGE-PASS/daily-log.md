@@ -300,3 +300,37 @@ Blockers for Jordan:
 
 ---
 *Logged by Axton at 18:19 UTC*
+
+---
+
+## 2026-04-18 (Saturday — Evening Check-in, 2nd pass)
+
+**Agent:** MASSAGE-PASS Check-in
+**Time:** 18:34 UTC
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24 (6 days away)
+- Checked Notion API key → NOT SET (integration still not configured)
+- Notion unavailable → logged and confirmed `landing-final.html` is the definitive prelaunch page
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set
+- Integration + parent page ID still needed from Jordan
+
+### Launch Countdown (6 days — April 24)
+
+Blockers for Jordan:
+1. **Formspree** — create account at formspree.io, replace `YOUR_FORM_ID` in JS
+2. **Domain** — not purchased yet
+3. **Pricing sign-off** — €49/€89 shown, needs Jordan lock-in
+4. **Notion** — integration + parent page ID (needed for subscriber/booking/shop databases)
+
+### Flagged for Jordan
+
+⚠️ 6 days to launch — Formspree + domain are the fastest blockers to clear
+⚠️ Notion integration still needed for databases — see `notion-db-schema.md`
+⚠️ Pricing confirmed at €49 Essential / €89 Premium — needs Jordan sign-off
+
+---
+*Logged by Axton at 18:34 UTC*
