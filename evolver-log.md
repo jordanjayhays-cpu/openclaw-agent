@@ -106,3 +106,21 @@
 - EXP-003: Ready for filming
 - EXP-004: First release Apr 11 — streams unmeasured (days until: -6 means past due)
 - EXP-005: Waiting on Jordan ICP approval
+
+---
+
+**Run:** 2026-04-18 03:22 UTC
+
+**Checks:**
+- EXP-001: Javier follow-up due. Open rate data pending.
+- EXP-002: Landing page exists. Variant B being created.
+- EXP-003: Ready for filming.
+- EXP-004: First release Apr 11 complete — measure first-week streams.
+- EXP-005: Waiting for Jordan ICP approval.
+
+**Insights:**
+- PISCO: Javier follow-up due. Track open rates when sent.
+- MASSAGE-PASS: Need landing page live for A/B test.
+- PK MUSIC: Release schedule set, measure first-week streams.
+- COMARE: LinkedIn vs Email test ready to launch.
+
