@@ -202,3 +202,16 @@
 - Javier follow-up for PISCO
 - COMARE ICP approval needed
 - MASSAGE-PASS landing page to staging
+
+## 2026-04-19 — Run #9 (06:01 UTC)
+
+### Run Summary
+- Weekly review generated (memory/weekly-review-2026-04-19.md)
+- Template created; Jordan to fill in status details
+
+### Actions Taken
+- Ran tools/weekly_review.sh → created weekly review file
+
+### Notes
+- Review template ready — awaiting Jordan input on completed tasks, project statuses, and experiment updates
+
