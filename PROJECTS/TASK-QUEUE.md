@@ -1,30 +1,30 @@
-# TASK QUEUE — 2026-04-18
+# TASK QUEUE — 2026-04-19
 
 ## Today's Tasks (Auto-Generated)
 
+### 🚨 OVERDUE — PISCO Outreach (Top Priority)
+- [ ] Send Javier Estrada follow-up email (16 days overdue — case study ready)
+- [ ] Send Luis Zamora email (12 days overdue)
+- [ ] Send Yolanda de la Plaza email (15 days overdue)
+- [ ] Update CRM: mark email_sent: true for prospects contacted
 
-- [ ] Send Javier Estrada follow-up email (case studies ready)
-- [ ] Send Luis Zamora email (due Apr 4)
-- [ ] Research 3 new hotel HR contacts (NH, Meliá, Barceló)
+### COMARE
+- [ ] Make ICP decision: Pharmacies OR Restaurants OR Medical OR Gyms
+- [ ] Draft outreach to top 5 prospects (post-ICP)
 
-# COMARE tasks  
-- [ ] Send LinkedIn DM to Gabriel Zavala (Farmacias del Ahorro)
-- [ ] Research Farmacias Similares expansion plans
+### MASSAGE-PASS
+- [ ] Buy MASSAGE-PASS domain (massagepass.com)
+- [ ] Set up Notion API for backend
 
-# MASSAGE-PASS tasks
-- [ ] Deploy landing page to Vercel
-- [ ] Set up email capture (Mailchimp/ConvertKit)
+### PK MUSIC
+- [ ] Generate first PK song via Suno
+- [ ] Release All I Know on DistroKid
 
-# PK MUSIC tasks
-- [ ] Review All I Know for DistroKid upload
-- [ ] Post 3 Philosophy King tweets
-
-# NEUROTECH tasks
-- [ ] Decide channel name
-- [ ] Create thumbnail for Video 1
-
+### NEUROTECH
+- [ ] Film Video #1 (decision: choose channel name)
+- [ ] Create thumbnail template
 
 ---
 
-_Generated: 2026-04-18 07:30 AM CET_
+_Generated: 2026-04-19 05:30 UTC_
 _Execute in priority order. Log completions._
