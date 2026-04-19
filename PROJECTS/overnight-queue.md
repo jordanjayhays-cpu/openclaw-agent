@@ -95,6 +95,19 @@ All autonomous tasks completed or blocked. Nothing new actionable.
 - [x] **pk-010 "Wabi-Sabi"** — ✅ DONE Apr 19 — suno-brief-20260419-2159-wabi-sabi.md
 - [x] **catalog.json updated** — pk-009 + pk-010 notes/concepts refreshed
 
+---
+
+## 2026-04-19 — Late Night Run (Axton) — Continued
+
+### PISCO Spain Hotel Expansion Update
+- [x] **Research supplement created** — `PROJECTS/PISCO/research/spain-hotels-update-2026-04.md`
+  - Marriott Spain: 4,500 new beds (2024-2026), Moxy Barcelona open, Princesa Plaza Madrid 2025, The Palace luxury collection renovated
+  - Hilton Spain: DoubleTree Madrid Principe de Vergara signing (late 2026)
+  - Accor Spain: Arantxa Balson new CHRO May 2026, Fernando Martins (Mediterranean TA)
+  - Macro confirmed: 70% Spanish hotels can't find staff, structural shortage worsening
+- [x] **Competitor intel refreshed** — Web search blocked; used Hosteltur fetch for Marriott data
+- [x] **All remaining blocked tasks assessed** — No unblocked autonomous work found
+
 *Queue status: All autonomous tasks completed or blocked. Nothing new actionable.*
 
-*Log entry: 2026-04-19 21:58 UTC*
+*Log entry: 2026-04-19 22:21 UTC*

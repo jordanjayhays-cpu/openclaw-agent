@@ -762,3 +762,23 @@ All autonomous tasks completed or blocked. Nothing new actionable.
 ✅ **Reviewed queue** — All tasks completed or blocked. No action needed.
 
 *Log entry: 2026-04-19 22:05 UTC*
+
+---
+
+## 2026-04-19 — Late Night Run (Axton) — Continued
+**Time:** 2026-04-19 22:21 UTC
+
+### PISCO Spain Hotel Expansion Update
+✅ **Research supplement created** — `PROJECTS/PISCO/research/spain-hotels-update-2026-04.md`
+- Marriott Spain: 4,500 new beds (2024-2026), Moxy Barcelona open (414 rooms), Princesa Plaza Madrid 2025, The Palace Luxury Collection renovated
+- Hilton Spain: DoubleTree Madrid Principe de Vergara signing (late 2026)
+- Accor Spain: Arantxa Balson new CHRO May 2026, Fernando Martins (Mediterranean TA)
+- Macro confirmed: 70% Spanish hotels can't find staff, structural shortage worsening
+- Competitor intel refreshed via Hosteltur fetch (web search bot-blocked)
+
+### Notes
+- All remaining projects (COMARE, MASSAGE-PASS, PK-MUSIC) have all tasks completed or blocked
+- No email tool available, no FELO_API_KEY, no Notion API configured
+- PISCO intelligence bible supplemented with latest expansion data for Jordan's outreach
+
+*Log entry: 2026-04-19 22:21 UTC*
