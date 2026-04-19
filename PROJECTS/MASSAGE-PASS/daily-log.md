@@ -516,3 +516,75 @@ Blockers for Jordan:
 
 ---
 *Logged by Axton at 18:34 UTC*
+
+---
+
+## 2026-04-19 (Sunday — 02:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 02:35 UTC | 5 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Notion API key → NOT SET (integration still not configured by Jordan)
+- Notion unavailable → built `landing-standalone.html` (fully self-contained deployable page)
+
+### New: landing-standalone.html (488 lines, ~21KB)
+
+**Zero-dependency standalone landing page** — deployable immediately to any host (Netlify, Vercel, GitHub Pages, Nginx, etc.):
+
+**What's inside:**
+- Countdown timer to April 24, 2026 (live, ticking every second)
+- Founding spots bar (87 claimed, 13 left at 50% off — localStorage persisted across refreshes)
+- Two waitlist forms (hero + bottom CTA), both with localStorage fallback
+- How It Works (3-step visual)
+- Partner studios grid (50+ across Madrid: Chueca, Chamberí, Salamanca, Malasaña, Retiro, Moncloa, Centro)
+- Pricing: Essential €49/mo vs Premium €89/mo (with founding member 50% off callout)
+- Pay-per-visit comparison (€280/mo vs €49/mo — saves €231+/mo)
+- FAQ accordion (5 questions)
+- Cross-tab spots counter sync via localStorage
+- Fully responsive (mobile-first)
+- **No external CDN, no Google Fonts, no external JS — one pure HTML file**
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md`
+
+### Launch Countdown — Day 5 (Sunday, today)
+Per LAUNCH-COUNTDOWN.md — today's Jordan tasks:
+- [ ] Purchase domain (massagepass.io or similar)
+- [ ] Set up Formspree, replace `YOUR_FORM_ID` in landing-final.html + waitlist-handler.js
+- [ ] Confirm pricing — €49 Essential / €89 Premium
+
+### Launch Status (5 days — April 24)
+- [x] Landing pages — final + standalone (both production-ready, zero external deps)
+- [ ] Jordan: purchase domain + wire Formspree
+- [ ] Jordan: confirm pricing
+- [ ] Jordan: create Notion integration + share parent page ID
+- [ ] Jordan: review + approve `launch-emails.md` before first send (Apr 21)
+
+### Files in Project
+- `landing-final.html` — primary landing page (600+ lines, feature-rich)
+- `landing-standalone.html` — zero-dep standalone (488 lines, deploy-now)
+- `landing-prelaunch.html` — alternate variant
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email send sequence (needs Jordan approval)
+- `social-launch.md` — social posts for all platforms (needs Jordan posting)
+- `subscribers.json` — empty subscriber tracker template
+- `subscriber-tracker.md` — manual tracking instructions
+- `notion-db-schema.md` — DB schemas ready to build (needs API key)
+- `LAUNCH-CHECKLIST.md` — full launch checklist
+- `LAUNCH-COUNTDOWN.md` — day-by-day sprint
+
+### Flagged for Jordan
+
+⚠️ **5 days to launch** — domain + Formspree are still the fastest blockers
+⚠️ `landing-standalone.html` is ready to deploy NOW — single HTML file, no dependencies. Can be uploaded directly to Netlify Drop or GitHub Pages
+⚠️ Notion integration needed for databases — schema ready, just needs Jordan to create integration + share page
+⚠️ `launch-emails.md` needs approval before first send (Apr 21 — 2 days away)
+⚠️ `LAUNCH-COUNTDOWN.md` Day 6 (today) still has studio outreach email draft pending
+
+---
+*Logged by Axton at 02:35 UTC*

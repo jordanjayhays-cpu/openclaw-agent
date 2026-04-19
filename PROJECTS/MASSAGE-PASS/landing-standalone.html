@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASSAGE-PASS — Unlimited Massages. Madrid.</title>
+  <meta name="description" content="Unlimited monthly massages at 50+ studios across Madrid. €49/month. Founding members: 50% off Month 1.">
+  <meta property="og:title" content="MASSAGE-PASS — Unlimited Massages. Madrid.">
+  <meta property="og:description" content="Unlimited monthly massages at 50+ studios across Madrid. €49/month.">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0a0a0a; --surface: #141414; --border: rgba(255,255,255,0.1);
+      --text: #fff; --muted: #888; --accent: #4ade80; --accent2: #fb923c;
+      --radius: 14px;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+      min-height: 100vh; -webkit-font-smoothing: antdling;
+    }
+    a { color: var(--accent); text-decoration: none; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 32px; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px); z-index: 100;
+    }
+    .logo { font-size: 17px; font-weight: 800; letter-spacing: -0.4px; }
+    .logo span { color: var(--accent); }
+    .nav-badge {
+      background: rgba(74,222,128,0.12); color: var(--accent);
+      font-size: 11px; font-weight: 600; padding: 5px 12px;
+      border-radius: 20px; letter-spacing: 0.5px; border: 1px solid rgba(74,222,128,0.25);
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 720px; margin: 0 auto; padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block; background: rgba(251,146,60,0.12);
+      color: var(--accent2); font-size: 12px; font-weight: 700;
+      padding: 6px 16px; border-radius: 20px; letter-spacing: 0.8px;
+      text-transform: uppercase; margin-bottom: 24px;
+      border: 1px solid rgba(251,146,60,0.25);
+    }
+    h1 {
+      font-size: clamp(36px, 6vw, 58px); font-weight: 800;
+      line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: 18px; color: var(--muted); margin-bottom: 36px;
+      max-width: 520px; margin-left: auto; margin-right: auto;
+    }
+
+    /* COUNTDOWN */
+    .countdown-wrap {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-bottom: 28px;
+    }
+    .countdown-label { font-size: 13px; color: var(--muted); }
+    .countdown { display: flex; gap: 6px; }
+    .cd-unit {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 14px; text-align: center; min-width: 52px;
+    }
+    .cd-num { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); }
+    .cd-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* SPOTS */
+    .spots-bar-wrap { margin-bottom: 32px; }
+    .spots-text { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .spots-text span { color: var(--accent2); font-weight: 700; }
+    .spots-bar {
+      height: 6px; background: var(--surface); border-radius: 3px;
+      overflow: hidden; border: 1px solid var(--border);
+    }
+    .spots-fill {
+      height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 3px; transition: width 0.5s ease;
+    }
+
+    /* FORM */
+    .form-wrap { display: flex; gap: 8px; max-width: 460px; margin: 0 auto 12px; }
+    .email-input {
+      flex: 1; background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 13px 16px; font-size: 15px;
+      color: var(--text); outline: none; transition: border-color 0.2s;
+    }
+    .email-input::placeholder { color: var(--muted); }
+    .email-input:focus { border-color: var(--accent); }
+    .submit-btn {
+      background: var(--accent); color: #000; border: none;
+      border-radius: var(--radius); padding: 13px 24px; font-size: 15px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .submit-btn:hover { opacity: 0.88; }
+    .submit-btn:active { transform: scale(0.97); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .form-note { font-size: 12px; color: var(--muted); }
+    .form-note span { color: var(--accent); }
+    .success-msg {
+      display: none; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3);
+      color: var(--accent); border-radius: var(--radius); padding: 14px 20px;
+      font-size: 14px; font-weight: 600; margin-top: 12px;
+    }
+
+    /* HOW IT WORKS */
+    .section { max-width: 720px; margin: 0 auto; padding: 64px 24px; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+      letter-spacing: -0.8px; margin-bottom: 48px;
+    }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 20px; text-align: center;
+    }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(74,222,128,0.12); color: var(--accent);
+      font-size: 15px; font-weight: 800; display: flex;
+      align-items: center; justify-content: center; margin: 0 auto 14px;
+      border: 1px solid rgba(74,222,128,0.25);
+    }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--muted); }
+
+    /* STUDIOS */
+    .studios-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .studios-grid {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+    }
+    .studio-tag {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 20px; padding: 7px 16px; font-size: 13px;
+      color: var(--muted);
+    }
+    .studio-tag span { color: var(--text); font-weight: 600; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 600px; margin: 0 auto; }
+    .plan {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 22px;
+    }
+    .plan.popular { border-color: var(--accent); position: relative; }
+    .popular-badge {
+      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #000; font-size: 10px; font-weight: 800;
+      padding: 3px 12px; border-radius: 10px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .plan-name { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 8px; }
+    .plan-price { font-size: 38px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px; }
+    .plan-price span { font-size: 16px; color: var(--muted); font-weight: 400; }
+    .plan-price .old { font-size: 18px; color: var(--muted); text-decoration: line-through; font-weight: 400; }
+    .plan-desc { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+    .plan-features { list-style: none; }
+    .plan-features li { font-size: 13px; color: var(--muted); padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+    .plan-features li::before { content: '✓'; color: var(--accent); font-weight: 700; }
+
+    /* COMPARISON */
+    .comparison { max-width: 500px; margin: 0 auto; }
+    .compare-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row .label { color: var(--muted); }
+    .compare-row .val { font-weight: 700; }
+    .compare-row .val.no { color: #f87171; }
+    .compare-row .val.yes { color: var(--accent); }
+
+    /* FAQ */
+    .faq-list { max-width: 600px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--text);
+      font-size: 15px; font-weight: 600; padding: 18px 0; text-align: left;
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq-q::after { content: '+'; font-size: 20px; color: var(--muted); transition: transform 0.2s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a { display: none; font-size: 14px; color: var(--muted); padding: 0 0 18px; line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* BOTTOM CTA */
+    .bottom-cta { text-align: center; background: var(--surface); border-top: 1px solid var(--border); }
+    .launch-date { font-size: 13px; color: var(--muted); margin-bottom: 20px; letter-spacing: 0.5px; }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 32px 24px; font-size: 12px; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .steps { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .form-wrap { flex-direction: column; }
+      .submit-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">MASSAGE<span>PASS</span></div>
+  <div class="nav-badge">Apr 24, 2026</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">EARLY ACCESS — FIRST 100 GET 50% OFF MONTH 1</div>
+  <h1>Unlimited Massages.<br><em>One Subscription.</em></h1>
+  <p class="hero-sub">Madrid's first all-you-can-massage membership. Access 50+ studios across the city — Chueca, Chamberí, Salamanca, Malasaña — for €49/month.</p>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-wrap">
+    <span class="countdown-label">Launch in</span>
+    <div class="countdown">
+      <div class="cd-unit"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">Days</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-h">—</div><div class="cd-lbl">Hrs</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-m">—</div><div class="cd-lbl">Min</div></div>
+      <div class="cd-unit"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">Sec</div></div>
+    </div>
+  </div>
+
+  <!-- SPOTS -->
+  <div class="spots-bar-wrap">
+    <div class="spots-text"><span id="claimed">87</span> founding spots claimed · <span id="left">13</span> left at 50% off</div>
+    <div class="spots-bar"><div class="spots-fill" id="spots-fill" style="width:87%"></div></div>
+  </div>
+
+  <!-- FORM -->
+  <form class="form-wrap" id="waitlistForm" onsubmit="return handleSubmit(event)">
+    <input class="email-input" type="email" id="emailInput" placeholder="your@email.com" required>
+    <button class="submit-btn" type="submit" id="submitBtn">Claim My Spot</button>
+  </form>
+  <div class="form-note">No spam. Launch updates only. <span>50% off Month 1</span> for founding members.</div>
+  <div class="success-msg" id="successMsg">✅ You're on the list! Check your inbox for confirmation.</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="section-label">How It Works</div>
+  <div class="section-title">Three steps to stress-free.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Join MASSAGE-PASS</h3>
+      <p>Pick your plan. Founding members lock in 50% off Month 1 — never this cheap again after launch.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Get Your Digital Pass</h3>
+      <p>Instant access. Browse all 50+ partner studios, see real-time availability, and book in seconds.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Book & Relax</h3>
+      <p>Show up. Get massaged. Repeat. No limits, no top-ups, no friction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STUDIOS -->
+<section class="section studios-section">
+  <div class="section-label" style="text-align:center">Partner Studios</div>
+  <div class="section-title" style="text-align:center;font-size:clamp(22px,3vw,30px);margin-bottom:28px">50+ studios across Madrid</div>
+  <div class="studios-grid">
+    <div class="studio-tag"><span>Chueca</span> · 12 studios</div>
+    <div class="studio-tag"><span>Chamberí</span> · 9 studios</div>
+    <div class="studio-tag"><span>Salamanca</span> · 8 studios</div>
+    <div class="studio-tag"><span>Malasaña</span> · 10 studios</div>
+    <div class="studio-tag"><span>Retiro</span> · 7 studios</div>
+    <div class="studio-tag"><span>Moncloa</span> · 6 studios</div>
+    <div class="studio-tag"><span>Centro</span> · 11 studios</div>
+    <div class="studio-tag" style="color:var(--accent)">+ more coming</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="section-label">Pricing</div>
+  <div class="section-title">Simple, transparent.</div>
+  <div class="pricing-grid">
+    <div class="plan">
+      <div class="plan-name">Essential</div>
+      <div class="plan-price"><span class="old">€70</span> €49<span>/mo</span></div>
+      <div class="plan-desc">Best value for regular massage</div>
+      <ul class="plan-features">
+        <li>Unlimited massages</li>
+        <li>50+ partner studios</li>
+        <li>All massage types</li>
+        <li>Instant digital pass</li>
+        <li>Easy rebooking</li>
+      </ul>
+    </div>
+    <div class="plan popular">
+      <div class="popular-badge">Most Popular</div>
+      <div class="plan-name">Premium</div>
+      <div class="plan-price"><span class="old">€89</span> €89<span>/mo</span></div>
+      <div class="plan-desc">Priority access + premium studios</div>
+      <ul class="plan-features">
+        <li>Everything in Essential</li>
+        <li>Premium studio network</li>
+        <li>Priority booking</li>
+        <li>Extended sessions</li>
+        <li>Guest passes (2/mo)</li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:24px">
+    <p style="font-size:13px;color:var(--muted)">Founding members get <span style="color:var(--accent2);font-weight:700">50% off Month 1</span> — price locks in after.</p>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section" style="padding-top:0">
+  <div class="section-label">vs. The Alternative</div>
+  <div class="comparison">
+    <div class="compare-row">
+      <span class="label">Pay per visit (avg Madrid)</span>
+      <span class="val">€70/session</span>
+    </div>
+    <div class="compare-row">
+      <span class="label">4 visits/month</span>
+      <span class="val no">€280/mo</span>
+    </div>
+    <div class="compare-row">
+      <span class="label">MASSAGE-PASS Essential</span>
+      <span class="val yes">€49/mo unlimited</span>
+    </div>
+    <div class="compare-row">
+      <span class="label">Your savings</span>
+      <span class="val yes">€231+/month</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-label">FAQ</div>
+  <div class="section-title">Questions, answered.</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which studios are included?</button>
+      <div class="faq-a">50+ studios across Madrid including Chueca, Chamberí, Salamanca, Malasaña, Retiro, Moncloa and Centro. We partner with independent and chain massage studios — all vetted for quality. Premium plan includes access to our exclusive premium network.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What types of massage can I book?</button>
+      <div class="faq-a">Swedish, deep tissue, sports, Shiatsu, and Thai massage — all included. Specific types vary by studio and availability. Our app shows all available types at each studio in real time.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I cancel anytime?</button>
+      <div class="faq-a">Yes. Monthly subscription, cancel any time from your account. No cancellation fees, no questions asked. Your access continues until the end of your billing period.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I book a session?</button>
+      <div class="faq-a">After subscribing, you'll get instant access to our web app. Browse studios by location and type, see real-time availability, and book in two taps. You'll receive a confirmation and reminder.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is this available outside Madrid?</button>
+      <div class="faq-a">Madrid is our launch city. We're planning Barcelona, Valencia, and Seville for Q3 2026. Join the waitlist and be first to know when we expand.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="section bottom-cta">
+  <div class="launch-date">APRIL 24, 2026 · MADRID</div>
+  <h2 style="font-size:clamp(28px,5vw,44px);font-weight:800;letter-spacing:-1px;margin-bottom:12px">Ready to feel better?</h2>
+  <p style="color:var(--muted);font-size:16px;margin-bottom:32px">Founding member pricing closes after launch.</p>
+  <form class="form-wrap" id="waitlistFormBottom" onsubmit="return handleSubmit(event, 'bottom')" style="max-width:460px">
+    <input class="email-input" type="email" placeholder="your@email.com" required>
+    <button class="submit-btn" type="submit">Join the Waitlist</button>
+  </form>
+  <div class="success-msg" id="successMsgBottom">✅ You're in! We'll be in touch before launch.</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>MASSAGE-PASS · Launching April 24, 2026 · Madrid, Spain</p>
+  <p style="margin-top:6px">Questions? hello@massagepass.io</p>
+</footer>
+
+<script>
+  // ── COUNTDOWN ──────────────────────────────────────────
+  const LAUNCH = new Date('2026-04-24T00:00:00Z').getTime();
+  function tick() {
+    const now = Date.now();
+    const diff = LAUNCH - now;
+    if (diff <= 0) {
+      document.getElementById('cd-d').textContent = '0';
+      document.getElementById('cd-h').textContent = '0';
+      document.getElementById('cd-m').textContent = '0';
+      document.getElementById('cd-s').textContent = '0';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = d;
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ── SPOTS COUNTER ──────────────────────────────────────
+  const TOTAL = 100;
+  const storageKey = 'mp_claimed';
+  function getClaimed() { return parseInt(localStorage.getItem(storageKey) || '87'); }
+  function setClaimed(n) {
+    localStorage.setItem(storageKey, n);
+    document.getElementById('claimed').textContent = n;
+    document.getElementById('left').textContent = TOTAL - n;
+    document.getElementById('spots-fill').style.width = (n / TOTAL * 100) + '%';
+  }
+  setClaimed(getClaimed());
+
+  // ── FAQ ACCORDION ──────────────────────────────────────
+  function toggleFaq(btn) {
+    btn.parentElement.classList.toggle('open');
+  }
+
+  // ── FORM HANDLER ───────────────────────────────────────
+  function handleSubmit(e, formId) {
+    e.preventDefault();
+    const form = formId === 'bottom'
+      ? document.getElementById('waitlistFormBottom')
+      : document.getElementById('waitlistForm');
+    const emailInput = form.querySelector('input[type="email"]');
+    const btn = form.querySelector('button[type="submit"]');
+    const successEl = formId === 'bottom'
+      ? document.getElementById('successMsgBottom')
+      : document.getElementById('successMsg');
+    const email = emailInput.value.trim();
+    if (!email) return false;
+
+    // Animate button
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
+
+    // Increment spots
+    const claimed = getClaimed();
+    if (claimed < TOTAL) setClaimed(claimed + 1);
+
+    // Save to localStorage
+    const key = 'mp_waitlist';
+    const list = JSON.parse(localStorage.getItem(key) || '[]');
+    if (!list.includes(email)) list.push(email);
+    localStorage.setItem(key, JSON.stringify(list));
+    console.log('[MASSAGE-PASS] Waitlist:', list);
+
+    // Simulate async submit (Formspree would go here)
+    setTimeout(() => {
+      form.style.display = 'none';
+      successEl.style.display = 'block';
+      // Cross-tab sync
+      window.name = 'mp_claimed:' + getClaimed();
+    }, 600);
+
+    return false;
+  }
+
+  // Cross-tab claimed count sync
+  window.addEventListener('storage', function(e) {
+    if (e.key === storageKey) setClaimed(parseInt(e.newValue || getClaimed()));
+  });
+</script>
+
+</body>
+</html>
