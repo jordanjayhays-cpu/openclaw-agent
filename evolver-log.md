@@ -1,5 +1,26 @@
 # Evolver Log
 
+## 2026-04-19 — Run #9 (07:22 UTC)
+
+### Run Summary
+- EXP-001: Running. Javier follow-up due. No email tracking data yet.
+- EXP-002: Landing page exists. Variant B with different CTA being created.
+- EXP-003: Ready for filming.
+- EXP-004: First release Apr 11 data pending. Days-until calculation shows -8 (date check needed).
+- EXP-005: Ready. Waiting on Jordan ICP approval.
+
+### Actions Taken
+- Ran evolver.sh diagnostic
+- Updated active-experiments.md timestamp to 2026-04-19
+
+### Next Steps
+- PISCO: Send Javier follow-up when ready, implement email tracking
+- MASSAGE-PASS: Verify landing page live, test A/B variants
+- PK MUSIC: Verify Apr 11 release stream data
+- COMARE: Get Jordan ICP approval to begin LinkedIn test
+
+---
+
 ## 2026-04-17 — Run #8 (07:22 UTC)
 
 ### Run Summary
