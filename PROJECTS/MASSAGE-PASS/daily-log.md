@@ -932,3 +932,25 @@ Per LAUNCH-COUNTDOWN.md — today's Jordan tasks:
 
 ---
 *Logged by Axton at 14:35 UTC*
+
+## 2026-04-19 — MASSAGE-PASS Check-in
+
+**Time:** 18:35 UTC
+
+**Notion API:** ❌ No key at `~/.config/notion/api_key` — blocked. Jordan needs to create integration + share parent page.
+
+**Action taken:** Built `landing-prelaunch-v2.html` — standalone, no dependencies.
+- Live countdown timer (ticks every second to Apr 24 00:00 UTC)
+- Cross-tab spots counter (localStorage sync, starts at 84 claimed / 16 remaining)
+- Two CTA forms (hero + bottom), each with success state
+- Cleaner urgency flow: 3-step how-it-works, pricing, studio cards, FAQ
+- Fully responsive
+- Formspree placeholder noted in JS comment (Jordan needs to add form ID)
+
+**Landing pages in directory:**
+- `landing-final.html` — previous version
+- `landing-prelaunch-v2.html` — **current recommended version** (live countdown, better urgency)
+
+**Status:** Prelaunch ready. 5 days to launch.
+- Blockers still owned by Jordan: domain purchase, Formspree setup, pricing sign-off, Notion API
+
