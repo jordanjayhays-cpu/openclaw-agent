@@ -31,6 +31,8 @@
 **Done today:**
 - [x] Studio outreach email v2 — broader zone version for Chueca, Chamberí, Malasaña, Centro (shop-outreach-v2.md)
 - [x] Instagram visual assets brief — 4 asset types with Canva specs + copy (ig-visual-brief.md)
+- [x] Email setup guide — ConvertKit/Mailgun/Beehiiv comparison + setup steps (email-setup-guide.md)
+- [x] Product Hunt submission draft — ready to post launch day (product-hunt-submission.md)
 
 **Can do:**
 - [ ] Review and finalize outreach email to studio partners
@@ -134,4 +136,4 @@
 2. **Sun/Mon:** Confirm pricing, create Notion integration
 3. **Tue:** Review launch emails before first send (Apr 21)
 
-*Last updated: 2026-04-19 02:49 UTC*
+*Last updated: 2026-04-19 10:35 UTC*

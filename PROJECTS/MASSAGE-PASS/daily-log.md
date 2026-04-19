@@ -1,5 +1,93 @@
 # MASSAGE-PASS Daily Log
 
+## 2026-04-19 (Sunday — 10:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 10:35 UTC | 5 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (still not configured by Jordan)
+- Notion unavailable → built `product-hunt-submission.md` (Product Hunt launch draft)
+
+### New Deliverable Created
+
+**`product-hunt-submission.md`** (NEW — 3.7KB)
+Product Hunt launch day submission draft — scheduled for April 24 (launch day):
+- Tagline: max 120 chars, punchy and specific
+- Description: problem → solution → how it works → launch offer
+- Extended sections: who it's for, Madrid market context
+- Topic tags: wellness, health, subscription, madrid, self-care
+- Optimal post timing: 6–8am PDT / 3–5pm CET on launch day
+- First-comment template with founding member stats
+- Full Jordan action checklist (account, domain, timing, first comment)
+
+**Why this matters:** Product Hunt is scheduled Day 1 post-launch but a good submission draft is the difference between posting and not posting. Jordan just needs to fill in 5 minutes of his info and post.
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md`
+
+### LAUNCH-COUNTDOWN Status
+- Day 5 (today) — Jordan's tasks: domain, Formspree, pricing sign-off
+- Day 5 autonomous items done: outreach v2 ✅, IG brief ✅, email setup guide ✅ (all done 06:35), Product Hunt draft ✅ (this check-in)
+- Email 1 goes out Apr 21 (in 2 days) — email platform setup guide ready: `email-setup-guide.md`
+- ConvertKit recommended — free, 5-min setup, easiest for beginners
+
+### Launch Status (5 days — April 24)
+- [x] Landing pages — final + standalone (both production-ready, zero external deps)
+- [x] Studio outreach — v1 (Mayoac/Fix Room) + v2 (all other zones)
+- [x] IG visual brief — 4 assets fully specified
+- [x] Launch emails — 5-email sequence drafted in launch-emails.md
+- [x] Email setup guide — platform comparison + setup steps
+- [x] Product Hunt submission draft — ready to post on launch day
+- [ ] Jordan: purchase domain
+- [ ] Jordan: set up Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: set up email platform (ConvertKit/Mailgun/Beehiiv)
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: create Notion integration + give parent page ID
+- [ ] Jordan: review + approve launch-emails.md before Apr 21 send
+
+### Blockers (Jordan to resolve — sorted by urgency)
+1. **Domain** — not purchased
+2. **Formspree** — not wired (waitlist form not capturing emails)
+3. **Email platform** — not set up (emails start Apr 21) ← NEW GAP
+4. **Pricing sign-off** — €49/€89 needs Jordan lock-in
+5. **Notion API** — integration + parent page ID
+
+### Files in Project
+- `landing-final.html` — primary landing page (600+ lines)
+- `landing-standalone.html` — zero-dep standalone (488 lines, deploy-now)
+- `landing-prelaunch.html` — alternate variant
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email send sequence (needs Jordan approval)
+- `social-launch.md` — social posts for all platforms
+- `email-setup-guide.md` — email platform setup (ConvertKit/Mailgun/Beehiiv)
+- `ig-visual-brief.md` — IG assets brief
+- `shop-outreach.md` — v1 outreach
+- `shop-outreach-v2.md` — v2 outreach
+- `product-hunt-submission.md` — PH launch day submission draft ← NEW
+- `subscribers.json` — empty subscriber tracker
+- `subscriber-tracker.md` — manual tracking instructions
+- `notion-db-schema.md` — DB schemas ready to build
+- `LAUNCH-COUNTDOWN.md` — day-by-day sprint
+- `LAUNCH-CHECKLIST.md` — full launch checklist
+
+### Flagged for Jordan
+
+⚠️ **5 days to launch** — domain + Formspree are fastest blockers (can be done tonight)
+⚠️ **Email 1 goes out Apr 21 (in 2 days)** — email platform setup guide ready: `email-setup-guide.md`
+⚠️ **ConvertKit recommended** — free, 5-min setup, easiest for beginners
+⚠️ `launch-emails.md` still needs Jordan's approval before first send
+⚠️ `product-hunt-submission.md` ready — Jordan fills in 5 min of info and posts on launch day
+⚠️ Notion integration still needed — schema ready, just needs Jordan to create integration + share page
+
+---
+*Logged by Axton at 10:35 UTC*
+
+
 ## 2026-04-19 (Sunday — 06:35 UTC Check-in)
 
 **Agent:** MASSAGE-PASS Check-in (Axton)
