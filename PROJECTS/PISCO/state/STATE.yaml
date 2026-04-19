@@ -148,6 +148,14 @@ tasks:
     output: PROJECTS/PISCO/outreach-patricia-jaen-palladium-hotel-group.md
     note: "Butler-class service + group expansion angle. Corp Talent Director level. Email confidence LOW — verify via LinkedIn first."
 
+  - id: pisco-023
+    title: Create outreach for Jon Martinez (NH Collection Victoria San Sebastián)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-jon-martinez-nh-san-sebastian.md
+    note: "Created autonomously 2026-04-19. San Sebastián Michelin gastronomy tourism angle. Jordan to send — verify email via LinkedIn first."
+
   - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Ana Martinez (NH Barcelona Gran Via) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Carmen Sellés (Melia Benidorm) — draft ready, verify email via LinkedIn first"
@@ -229,7 +237,7 @@ metrics:
   meetings: 0
   clients: 0
   pipeline_tier1_hot: 1
-  pipeline_tier2_warm_draft_ready: 15
+  pipeline_tier2_warm_draft_ready: 16
   pipeline_tier3_warm_no_draft: 13
 
 # Completed
