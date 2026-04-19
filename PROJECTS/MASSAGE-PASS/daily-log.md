@@ -846,3 +846,89 @@ Per LAUNCH-COUNTDOWN.md — today's Jordan tasks:
 
 ---
 *Logged by Axton at 02:35 UTC*
+
+## 2026-04-19 (Sunday — 14:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 14:35 UTC | 5 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Notion API key → NOT SET (integration still not configured by Jordan)
+- Notion unavailable → created 2 new autonomous deliverables
+
+### New Deliverables Created
+
+**1. `landing-teaser.html`** (NEW — ~8KB)
+Scarcity/urgency-focused launch teaser page — distinct from existing full landing pages:
+- Live countdown to April 24 (ticking, hours included)
+- Pulsing "16 spots left" urgency bar with red accent
+- Single focused CTA ("Claim Spot")
+- Side-by-side pricing strip (Essential €49 / Premium €89 with strikethrough)
+- Minimal, distraction-free — drives one action: email capture
+- Zero external dependencies — pure HTML/JS
+- Fully responsive
+
+**2. `notion-setup-walkthrough.md`** (NEW — ~2.2KB)
+Step-by-step guide for Jordan to unblock Notion:
+- Step 1: Create integration at notion.so/my-integrations (~3 min)
+- Step 2: Store token in ~/.config/notion/api_key
+- Step 3: Create parent page, share with integration, copy page ID
+- Step 4: Message Axton with token + page ID
+- Explains what each of the 3 databases does and why it matters before launch
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- `notion-db-schema.md` has full schemas ready
+- `notion-setup-walkthrough.md` now has clear step-by-step for Jordan ← NEW
+
+### LAUNCH-COUNTDOWN Status — Day 5 (Sunday)
+Per LAUNCH-COUNTDOWN.md — today's Jordan tasks:
+- [ ] Purchase domain
+- [ ] Set up Formspree + replace `YOUR_FORM_ID`
+- [ ] Confirm pricing €49/€89
+- [ ] Notion integration setup ← Jordan can now use notion-setup-walkthrough.md
+
+### Launch Status (5 days — April 24)
+- [x] Landing pages — final ✅ + standalone ✅ + teaser ✅ (3 variants)
+- [x] Notion setup walkthrough — for Jordan
+- [ ] Jordan: purchase domain
+- [ ] Jordan: set up Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: Notion integration + share parent page ID
+
+### Blockers (Jordan to resolve — sorted by urgency)
+1. **Domain** — not purchased
+2. **Formspree** — not wired (emails not being captured)
+3. **Email platform** — not set up (Email 1 goes out Apr 21 — 2 days)
+4. **Pricing sign-off** — €49/€89 needs Jordan lock-in
+5. **Notion API** — use `notion-setup-walkthrough.md` (10 min setup)
+
+### Files in Project
+- `landing-final.html` — primary full-featured page
+- `landing-standalone.html` — zero-dep standalone
+- `landing-teaser.html` — urgency/scarcity teaser variant ← NEW
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email sequence (needs Jordan approval)
+- `social-launch.md` — social posts
+- `email-setup-guide.md` — email platform setup
+- `product-hunt-submission.md` — PH launch day draft
+- `notion-setup-walkthrough.md` — step-by-step Notion setup ← NEW
+- `notion-db-schema.md` — DB schemas (ready when API is wired)
+- `shop-outreach.md` + `shop-outreach-v2.md` — studio outreach
+- `ig-visual-brief.md` — IG assets brief
+- `subscribers.json` — empty tracker
+- `LAUNCH-COUNTDOWN.md` + `LAUNCH-CHECKLIST.md` — project management
+
+### Flagged for Jordan
+
+⚠️ **Email 1 goes out Apr 21 (in 2 days)** — email platform still not set up
+⚠️ **Notion setup** — use `notion-setup-walkthrough.md` (~10 min, then Axton builds all 3 DBs)
+⚠️ `landing-teaser.html` — new urgency variant, consider using as primary A/B test
+⚠️ Founding member pricing closes Apr 26 — urgency built into all copy
+⚠️ `launch-emails.md` still needs Jordan's approval before first send
+
+---
+*Logged by Axton at 14:35 UTC*
