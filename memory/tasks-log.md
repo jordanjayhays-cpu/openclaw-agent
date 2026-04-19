@@ -38,3 +38,11 @@ _Append only — never edit existing entries_
   - **Files:** index.html (30KB), README.md, PROJECT.md
   - **Seed data:** 5 real PISCO leads pre-loaded (Javier, Yolanda, Lola, Carmen, Gabriel)
   - **Features:** Kanban board, add/edit/delete leads, follow-up scheduler, warm streak counter, CSV export, `N` keyboard shortcut
+- ✅ TASK-OVERNIGHT-002: Build CommitmentClock mini-app MVP
+  - **What:** Daily accountability tracker with win rate and streaks
+  - **Stack:** Vanilla JS + CSS, single HTML file (~14KB), LocalStorage
+  - **Deployed:** No deployment (no Netlify/Vercel token available)
+  - **Location:** PROJECTS/overnight-builds/2026-04-19/
+  - **Files:** index.html (14KB), README.md
+  - **Features:** Daily commitments with check-off, win rate %, day/week streaks, auto-categorization (work/health/project/life), day navigation (← →), stats dashboard (done/wr/missed), delete on hover
+  - **Deploy blocked:** No Netlify/Vercel/ Surge CLI or tokens found

@@ -1,2 +1,3 @@
 - **2026-04-02**: A mini CRM for tracking freelance clients and invoices
 - **2026-04-16**: LeadPulse — a warm outreach tracker with Kanban, follow-up scheduler, and daily streak counter (single HTML file, LocalStorage-backed)
+- **2026-04-19**: CommitmentClock — daily accountability tracker with win rate, day/week streaks, auto-categorization (work/health/project/life), and day navigation (single HTML file, LocalStorage-backed)
