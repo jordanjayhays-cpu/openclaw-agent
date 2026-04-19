@@ -1,6 +1,6 @@
 # MASSAGE-PASS — Launch Countdown
 
-**Launch:** April 24, 2026 | **Days remaining:** 6
+**Launch:** April 24, 2026 | **Days remaining:** 5
 
 ---
 
@@ -8,7 +8,7 @@
 
 ---
 
-### DAY 6 — Sat Apr 18 ✅ (current)
+### DAY 6 — Sat Apr 18 ✅
 
 **Done:**
 - Landing page (landing-final.html) — complete, conversion-optimized
@@ -17,18 +17,20 @@
 - Social posts draft (social-launch.md, all platforms)
 - Subscriber tracker + JSON template
 - Notion DB schemas ready (waiting on API key)
-
-**Tonight:**
-- [ ] Create outreach email to studio partners (Chueca, Chamberí, Malasaña, Salamanca zones)
+- Studio outreach email v1 (shop-outreach.md, Mayoac + Fix Room)
 
 ---
 
-### DAY 5 — Sun Apr 19
+### DAY 5 — Sun Apr 19 (TODAY)
 
-**Must do:**
-- [ ] Jordan: Purchase domain (massagepass.io or similar)
-- [ ] Jordan: Set up Formspree, replace `YOUR_FORM_ID` in landing-final.html + waitlist-handler.js
-- [ ] Jordan: Confirm pricing — €49 Essential / €89 Premium
+**Must do (Jordan):**
+- [ ] Purchase domain (massagepass.io or similar)
+- [ ] Set up Formspree, replace `YOUR_FORM_ID` in landing-final.html + waitlist-handler.js
+- [ ] Confirm pricing — €49 Essential / €89 Premium
+
+**Done today:**
+- [x] Studio outreach email v2 — broader zone version for Chueca, Chamberí, Malasaña, Centro (shop-outreach-v2.md)
+- [x] Instagram visual assets brief — 4 asset types with Canva specs + copy (ig-visual-brief.md)
 
 **Can do:**
 - [ ] Review and finalize outreach email to studio partners
@@ -132,4 +134,4 @@
 2. **Sun/Mon:** Confirm pricing, create Notion integration
 3. **Tue:** Review launch emails before first send (Apr 21)
 
-*Last updated: 2026-04-18 22:35 UTC*
+*Last updated: 2026-04-19 02:49 UTC*

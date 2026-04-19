@@ -1,5 +1,88 @@
 # MASSAGE-PASS Daily Log
 
+## 2026-04-19 (Sunday — 02:49 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 02:49 UTC | 5 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (integration still not configured by Jordan)
+- Notion unavailable → built 2 autonomous deliverables instead
+
+### Deliverables Created
+
+**1. `shop-outreach-v2.md`** (NEW)
+Broader studio outreach email for zones not covered by v1:
+- Email version targeting Chueca, Chamberí, Malasaña, Salamanca, Retiro, Moncloa
+- WhatsApp/DM version for Instagram/Facebook outreach
+- Cleaner framing than v1 — focuses on recurring clients, zero marketing cost, 75% revenue share
+- Includes placeholder for Jordan's phone number to fill in
+
+**2. `ig-visual-brief.md`** (NEW)
+Instagram visual assets brief — 4 asset types, fully specified for Canva/Figma:
+- Asset 1: Hero feed post (1080×1350, bold 2-word headline + pricing)
+- Asset 2: 5-slide founding member carousel (problem → solution → CTA)
+- Asset 3: 3-story pack (countdown, founder voice, pricing reveal)
+- Asset 4: Launch day post (celebratory, green accent)
+- Brand colors, font guidance, hashtag set included
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md`
+
+### LAUNCH-COUNTDOWN Updated
+- Day 6 (Apr 18) marked ✅ — outreach v1 done
+- Day 5 (Apr 19, today) updated — Jordan's blockers listed clearly
+- Day 5 autonomous items done (outreach v2, IG brief)
+
+### Launch Status (5 days — April 24)
+- [x] Landing page — landing-final.html (production-ready, needs Formspree ID)
+- [x] Studio outreach — v1 (Mayoac/Fix Room) + v2 (all other zones)
+- [x] IG visual brief — 4 assets fully specified
+- [ ] Jordan: purchase domain
+- [ ] Jordan: set up Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: create Notion integration + give parent page ID
+- [ ] Jordan: review + approve launch-emails.md before Apr 21 send
+
+### Blockers (Jordan to resolve)
+1. **Domain** — not purchased
+2. **Formspree** — not wired
+3. **Pricing sign-off** — €49/€89 needs Jordan lock-in
+4. **Notion API** — integration + parent page ID
+
+### Files in Project
+- `landing-final.html` — primary landing page (646 lines)
+- `landing-standalone.html` — zero-dep standalone variant
+- `waitlist-handler.js` — reusable form handler
+- `shop-outreach.md` — v1 outreach (Mayoac + Fix Room)
+- `shop-outreach-v2.md` — v2 outreach (all other zones) ← NEW
+- `ig-visual-brief.md` — IG assets brief ← NEW
+- `launch-emails.md` — 5-email send sequence (needs Jordan approval)
+- `social-launch.md` — social posts for all platforms
+- `subscribers.json` — empty subscriber tracker
+- `subscriber-tracker.md` — manual tracking instructions
+- `notion-db-schema.md` — DB schemas ready to build
+- `LAUNCH-COUNTDOWN.md` — day-by-day sprint (updated)
+- `LAUNCH-CHECKLIST.md` — full launch checklist
+
+### Flagged for Jordan
+
+⚠️ **5 days to launch** — domain + Formspree are the fastest blockers (can be done tonight)
+⚠️ `shop-outreach-v2.md` ready to use — fill in Jordan's phone number before sending
+⚠️ `ig-visual-brief.md` — can hand directly to a Canva designer or build in Canva tonight
+⚠️ Notion integration still needed — schema ready, just needs Jordan to create integration + share page
+⚠️ **Email 1 goes out Apr 21** — `launch-emails.md` needs Jordan approval before then
+⚠️ Founding member pricing (50% off) closes Apr 26 — urgency built into all copy
+
+---
+*Logged by Axton at 02:49 UTC*
+
+
+
 ## 2026-04-18 (Saturday — Morning Check-in)
 
 **Agent:** MASSAGE-PASS Check-in
