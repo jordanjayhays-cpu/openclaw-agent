@@ -257,3 +257,10 @@
 - PK MUSIC: Release schedule set, measure first-week streams.
 - COMARE: LinkedIn vs Email test ready to launch.
 
+
+## 2026-04-19 15:22 UTC
+- PISCO: Javier follow-up due. Luis Zamora email Apr 4 tracked.
+- MASSAGE-PASS: Variant B CTA created. Landing page needs to be live.
+- PK MUSIC: Release Apr 11, first-week streams data pending.
+- COMARE: LinkedIn/Email test waiting on Jordan ICP approval.
+- EXP-004 days until first release: -8 (release happened, needs data review)
