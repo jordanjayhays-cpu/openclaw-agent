@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-18T14:19:00Z
+updated: 2026-04-19T02:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -107,7 +107,17 @@ tasks:
     output: PROJECTS/PISCO/outreach-gabriel-canaves-melia-chro.md
     note: "Created autonomously. CHRO-level group impact angle. 51-hotel expansion signal. 92% retention pitch. Email needs verification via LinkedIn first. Jordan to send."
 
-# Next Actions (Jordan)
+  - id: pisco-018
+    title: Create outreach for Carmen Rodriguez (NH Collection Sevilla)
+    status: completed
+    owner: axton
+    due: 2026-04-19
+    completed: 2026-04-19
+    output: PROJECTS/PISCO/outreach-carmen-rodriguez-nh-sevilla.md
+    note: "Created autonomously. Record tourism Seville 2025/2026 angle. Seville hit record arrivals 2025. Year-round demand. Jordan to send — verify email via LinkedIn first."
+
+  - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
+
 next_actions:
   - "jordan: Send 8 outreach emails this week — all drafts ready at PROJECTS/PISCO/"
   - "jordan: Send email to Luis Zamora (Iberostar) — 14 days overdue at outreach-luis-zamora.md"
@@ -116,6 +126,7 @@ next_actions:
   - "jordan: Send 5 NH outreach emails — Elise, Amaia, Javier, Ana, Thomas"
   - "jordan: Send 3 new drafts — Miriam, Lola, Luis Sousa (just created)"
   - "jordan: Send to Gabriel Cánaves (Meliá CHRO) — verify email via LinkedIn first"
+  - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
 
 # Key contacts
 contacts:
@@ -182,8 +193,8 @@ metrics:
   meetings: 0
   clients: 0
   pipeline_tier1_hot: 1
-  pipeline_tier2_warm_draft_ready: 10
-  pipeline_tier3_warm_no_draft: 18
+  pipeline_tier2_warm_draft_ready: 11
+  pipeline_tier3_warm_no_draft: 17
 
 # Completed
 completed:
@@ -235,3 +246,6 @@ completed:
   - id: pisco-017
     completed: 2026-04-18
     output: outreach-gabriel-canaves-melia-chro.md
+  - id: pisco-018
+    completed: 2026-04-19
+    output: outreach-carmen-rodriguez-nh-sevilla.md
