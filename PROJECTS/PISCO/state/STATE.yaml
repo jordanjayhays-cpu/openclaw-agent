@@ -148,6 +148,42 @@ tasks:
     output: PROJECTS/PISCO/outreach-patricia-jaen-palladium-hotel-group.md
     note: "Butler-class service + group expansion angle. Corp Talent Director level. Email confidence LOW — verify via LinkedIn first."
 
+  - id: pisco-024
+    title: Create outreach for Pere Torrens (RIU Hotels)
+    status: completed
+    owner: axton
+    due: 2026-04-19
+    completed: 2026-04-19
+    output: PROJECTS/PISCO/outreach-pere-torrens-riu-hotels.md
+    note: "Created autonomously. RIU Hotels corporate HR — Director Corporativo de Selección. 100+ hotels across Spain/Canaries/Mallorca. Filipino workforce placement angle. Email confidence LOW — verify via LinkedIn first. Jordan to send."
+
+  - id: pisco-025
+    title: Create outreach for Arantxa Balson (Accor CHRO)
+    status: completed
+    owner: axton
+    due: 2026-04-19
+    completed: 2026-04-19
+    output: PROJECTS/PISCO/outreach-arantxa-balson-accor-chro.md
+    note: "Created from new hotel groups research. New CHRO starting May 2026 — clean entry point. 61 Spain hotels across Accor brands. Fresh leadership angle. Email confidence LOW — verify via LinkedIn first. Jordan to send."
+
+  - id: pisco-026
+    title: Create outreach for Fernando Martins (Accor Mediterranean TA)
+    status: completed
+    owner: axton
+    due: 2026-04-19
+    completed: 2026-04-19
+    output: PROJECTS/PISCO/outreach-fernando-martins-accor-ta.md
+    note: "Created from new hotel groups research. Accor Mediterranean TA Manager — day-to-day hiring decision-maker. 61 Spain hotels. Seasonal surge angle. Email confidence MEDIUM (RocketReach). Jordan to send."
+
+  - id: pisco-027
+    title: Create outreach for Mª Carmen Oliver Molina (Barceló HR Director)
+    status: completed
+    owner: axton
+    due: 2026-04-19
+    completed: 2026-04-19
+    output: PROJECTS/PISCO/outreach-maria-carmen-oliver-barcelo-hr-director.md
+    note: "Created from new hotel groups research. HR Director at Barcelo Hotel Group — Spain's #2 chain (280 hotels, 25+ countries). Multi-brand expansion angle. Email confidence LOW — verify via LinkedIn first. Jordan to send."
+
   - id: pisco-023
     title: Create outreach for Jon Martinez (NH Collection Victoria San Sebastián)
     status: pending_approval
@@ -170,6 +206,8 @@ next_actions:
   - "jordan: Send 5 NH outreach emails — Elise, Amaia, Javier, Ana, Thomas"
   - "jordan: Send 3 new drafts — Miriam, Lola, Luis Sousa (just created)"
   - "jordan: Send to Gabriel Cánaves (Meliá CHRO) — verify email via LinkedIn first"
+  - "jordan: Send to Pere Torrens (RIU Hotels) — verify email via LinkedIn first"
+  - "jordan: Send 3 new Accor/Barceló drafts — Arantxa Balson, Fernando Martins (Accor), Mª Carmen Oliver Molina (Barceló) — verify emails via LinkedIn first"
   - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
 
 # Key contacts
@@ -227,6 +265,26 @@ contacts:
     company: Minor Hotels Portugal / NH Portugal
     warmth: warm
     last_contact: 2026-04-18
+  - name: Pere Torrens
+    company: RIU Hotels & Resorts
+    warmth: cold
+    last_contact: null
+    note: "Director Corporativo de Selección, Formación y Desarrollo. 100+ hotels Spain/Canaries/Mallorca. Key corporate HR contact."
+  - name: Arantxa Balson
+    company: Accor
+    warmth: cold
+    last_contact: null
+    note: "New CHRO starting May 2026. 61 Spain hotels across Accor brands. Fresh leadership entry point."
+  - name: Fernando Martins
+    company: Accor
+    warmth: cold
+    last_contact: null
+    note: "Talent & Culture BP Iberia & TA Manager Mediterranean. Day-to-day hiring decision-maker at Accor."
+  - name: Mª Carmen Oliver Molina
+    company: Barceló Hotel Group
+    warmth: cold
+    last_contact: null
+    note: "HR Director at Barcelo Hotel Group. Spain's #2 chain (280 hotels, 25+ countries)."
 
 # Metrics
 metrics:

@@ -977,3 +977,176 @@ Get Jordan to send: Luis Zamora (Iberostar), Concha Pardo (Meliá), Dohun Kim (S
 ---
 
 *Log updated: 2026-04-19 14:07 UTC by PISCO Agent (Axton)*
+
+---
+
+## Date: Sunday, April 19, 2026 — Evening Check-in (20:07 UTC)
+
+## Actions Taken (20:07 UTC)
+
+### Task Executed: pisco-024 — Pere Torrens (RIU Hotels) Outreach Draft
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Draft complete — awaiting Jordan approval to send
+- **Output:** `PROJECTS/PISCO/outreach-pere-torrens-riu-hotels.md`
+
+#### What I Did:
+- Researched new hotel group not currently in PISCO pipeline: RIU Hotels & Resorts
+- Found decision-maker: Pere Torrens — Director Corporativo de Selección, Formación y Desarrollo at RIU Hotels
+- RIU intel: 100+ hotels across Spain (Canaries, Mallorca, mainland), family-owned, 70+ years in business
+- Angle: Filipino workforce placement — RIU's scale and geographic spread creates recurring high-volume hiring needs
+- Created outreach draft: Filipino housekeeping & F&B staff angle for RIU's European properties
+- Spun up subagent to research more hotel groups (Riu, Barceló, Lopesan, Sirenis, Catalonia, etc.) for future outreach
+
+#### CRM Activity:
+- Logged `create_outreach` activity in `crm.db` (no contact_id — general project activity)
+- Added Pere Torrens as new contact in STATE.yaml (warmth: cold, uncontacted)
+
+#### State Updates:
+- `STATE.yaml` updated: pisco-024 added and marked completed
+- contacts section: added Pere Torrens (RIU Hotels & Resorts, Director Corporativo de Selección)
+- next_actions: added "Send to Pere Torrens (RIU Hotels) — verify email via LinkedIn first"
+- Timestamp updated to 2026-04-19T20:07:00Z
+
+#### Subagent Spawned (20:07 UTC):
+- Research task: new hotel groups for PISCO (Riu, Barceló, Lopesan, Sirenis, Catalonia, Marriott Spain, Hilton Spain, Accor Spain, Hyatt Spain, etc.)
+- Output: `PROJECTS/PISCO/research/new-hotels-2026-04.md`
+- Task running in background — will auto-complete and report
+
+---
+
+## PISCO Metrics (20:07 UTC)
+| Metric | Value | Change |
+|--------|-------|--------|
+| Prospects identified | 257 | — |
+| CRM contacts | 29 | — |
+| Contacts reached | 6 | — |
+| Responses | 1 | — |
+| Meetings | 0 | — |
+| Clients | 0 | — |
+| pipeline_tier1_hot | 1 | — |
+| pipeline_tier2_warm_draft_ready | 16 | — |
+| pipeline_tier3_warm_no_draft | 13 | — |
+
+---
+
+## Jordan's Queue — Updated (20:07 UTC)
+
+### 🔥 SEND NOW (overdue + warm relationship)
+1. Luis Zamora (Iberostar) — `outreach-luis-zamora.md` — **14 days overdue**
+2. Gabriel Cánaves (Meliá CHRO) — `outreach-gabriel-canaves-melia-chro.md` — verify email via LinkedIn
+3. Pere Torrens (RIU Hotels) — `outreach-pere-torrens-riu-hotels.md` — **NEW** — verify email via LinkedIn
+
+### ⚡ SEND THIS WEEK (drafts ready)
+4. Carmen Rodriguez (NH Sevilla)
+5. Jon Martinez (NH San Sebastián)
+6. Ana Martinez (NH Barcelona Gran Via)
+7. Carmen Sellés (Melia Benidorm)
+8. Victor Presa (Melia Madrid Gran Via)
+9. Patricia Jaén (Palladium Hotel Group) — email LOW confidence
+10. Elise / Amaia / Javier / Ana / Thomas (NH Collection — 5 drafts)
+11. Miriam / Lola / Luis Sousa (3 drafts)
+
+### ⚠️ BLOCKERS
+- Email tool not configured — Jordan needs Gmail/Outlook/SendGrid
+- All emails need verification via LinkedIn before sending
+
+---
+
+## New Hotel Group Research (in progress)
+- Subagent running: research Riu, Barceló, Lopesan, Sirenis, Catalonia, Marriott Spain, Hilton Spain, Accor Spain, Hyatt Spain
+- Output: `PROJECTS/PISCO/research/new-hotels-2026-04.md`
+- Will expand PISCO pipeline into new hotel groups beyond NH/Meliá/Minor
+
+---
+
+*Log updated: 2026-04-19 20:07 UTC by PISCO Agent (Axton)*
+
+---
+
+## Subagent Result: New Hotel Groups Research (20:09 UTC)
+**Research output:** `PROJECTS/PISCO/research/new-hotels-2026-04.md`
+**Status:** ✅ Complete
+
+#### New Hotel Groups Identified (ranked):
+| Priority | Group | Key Contact | Why |
+|----------|-------|-------------|-----|
+| 🔴 High | **Accor** | Arantxa Balson (CHRO, starts May 2026) + Fernando Martins (Mediterranean TA) | Fresh CHRO = clean entry; 61 Spain hotels; high-volume seasonal hiring |
+| 🔴 High | **Barceló** | Mª Carmen Oliver Molina (HR Director) | Spain's #2 chain; 280 hotels; multi-brand expansion |
+| 🟠 Med | **Riu** | Iván Bejerano (Intl HR) + Pere Torrens (corporate HR) | Already drafted Pere; Iván is alternative |
+| 🟠 Med | **Marriott** | Sr. Director HR Costa del Sol | Largest luxury operator in Spain |
+| 🟡 Med | **Hilton** | Sílvia Xicola Ollé (Head of HR Madrid Airport) | English/Filipino bilingual advantage |
+| 🟡 Med | **Hyatt** | Paloma Blanco (Cluster HR Madrid) | Premium brand, HR innovation active |
+| ⚪ Lower | **Catalonia/Lopesan/Sirenis** | TBD via LinkedIn | No specific contacts found |
+
+#### Already Targeted (no new outreach needed for these groups):
+- NH/Minor Hotels (10 contacts)
+- Meliá (5 contacts)
+- Iberostar (Luis Zamora — warm, 14 days overdue)
+- Palladium (Patricia Jaén)
+
+---
+
+## Actions Taken (20:09 UTC) — Post-Subagent
+
+### Task Executed: pisco-025/026/027 — 3 New Outreach Drafts (Accor + Barceló)
+- **Owner:** Axton (autonomous agent — post-subagent completion)
+- **Status:** ✅ 3 drafts complete — awaiting Jordan approval to send
+- **Outputs:**
+  - `PROJECTS/PISCO/outreach-arantxa-balson-accor-chro.md`
+  - `PROJECTS/PISCO/outreach-fernando-martins-accor-ta.md`
+  - `PROJECTS/PISCO/outreach-maria-carmen-oliver-barcelo-hr-director.md`
+
+#### What I Did:
+- Used new hotel groups research from subagent
+- Created 3 outreach drafts for top-priority new targets (Accor + Barceló)
+- Arantxa Balson: New CHRO starting May 2026 — "fresh leadership opportunity" hook
+- Fernando Martins: Day-to-day TA manager at Accor Mediterranean — seasonal surge angle
+- Mª Carmen Oliver Molina: HR Director at Barceló — #2 Spanish chain, multi-brand complexity angle
+- All 3 drafts in same structure as previous PISCO outreach
+- Updated STATE.yaml: pisco-025/026/027 marked completed, 3 new contacts added
+- next_actions updated: "Send 3 new Accor/Barceló drafts"
+
+#### CRM Activity:
+- Logged `create_outreach` activity in `crm.db` for all 3 new drafts
+- Added 3 new contacts to STATE.yaml: Arantxa Balson (Accor CHRO), Fernando Martins (Accor TA), Mª Carmen Oliver Molina (Barceló HR)
+
+---
+
+## PISCO Metrics (20:09 UTC)
+| Metric | Value | Change |
+|--------|-------|--------|
+| prospects_identified | 257 | — |
+| CRM contacts | 29 | — |
+| pipeline_tier2_warm_draft_ready | 19 | +3 |
+| pipeline_tier3_warm_no_draft | 13 | — |
+| Total outreach drafts created | 25+ | +4 today |
+
+---
+
+## Jordan's Queue — Updated (20:09 UTC)
+
+### 🔥 SEND NOW (overdue)
+1. Luis Zamora (Iberostar) — **14 days overdue**
+
+### 🔴 NEW — TOP PRIORITY (Accor fresh CHRO)
+2. Arantxa Balson (Accor CHRO) — `outreach-arantxa-balson-accor-chro.md` — **new CHRO starts May 2026**
+3. Fernando Martins (Accor TA) — `outreach-fernando-martins-accor-ta.md`
+
+### 🟠 NEW — Barceló
+4. Mª Carmen Oliver Molina (Barceló) — `outreach-maria-carmen-oliver-barcelo-hr-director.md`
+
+### 🟢 ALREADY READY — Send this week
+5. Pere Torrens (RIU) — `outreach-pere-torrens-riu-hotels.md`
+6. Gabriel Cánaves (Meliá CHRO) — `outreach-gabriel-canaves-melia-chro.md`
+7. Carmen Rodriguez (NH Sevilla) — `outreach-carmen-rodriguez-nh-sevilla.md`
+8. Jon Martinez (NH San Sebastián) — `outreach-jon-martinez-nh-san-sebastian.md`
+9. Ana Martinez (NH Barcelona) / Carmen Sellés (Melia Benidorm) / Victor Presa (Melia Madrid) / Patricia Jaén (Palladium)
+10. Elise / Amaia / Javier / Ana / Thomas (NH Collection — 5 drafts)
+11. Miriam / Lola / Luis Sousa (3 drafts)
+
+### ⚠️ BLOCKER
+- Email tool not configured — Jordan needs Gmail/Outlook/SendGrid to send
+
+---
+
+*Log updated: 2026-04-19 20:09 UTC by PISCO Agent (Axton)*
