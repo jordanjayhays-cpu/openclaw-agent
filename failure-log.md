@@ -325,3 +325,7 @@
 
 **Auto-fixes applied:** 2  
 **Requires attention:** No
+## 2026-04-19 10:19 UTC
+- Stale subagent session → cleaned up automatically
+- Uncommitted changes → auto-committed (1f92c32)
+
