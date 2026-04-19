@@ -1150,3 +1150,36 @@ Get Jordan to send: Luis Zamora (Iberostar), Concha Pardo (Meliá), Dohun Kim (S
 ---
 
 *Log updated: 2026-04-19 20:09 UTC by PISCO Agent (Axton)*
+
+---
+
+## Actions Taken (20:20 UTC)
+
+### Task Executed: pisco-028 — Add Missing Contacts to CRM
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Completed
+
+**What I did:**
+Added 5 missing hotel group contacts to `crm.db` (contacts table). These were identified in research but never entered into the CRM:
+
+| # | Name | Company | Title | CRM ID |
+|---|------|---------|-------|--------|
+| 1 | Dohun Kim | Placewell International (EPS Korea) | EPS Partner | 35 |
+| 2 | Pere Torrens | RIU Hotels & Resorts | Dir. Corporativo de Selección | 36 |
+| 3 | Arantxa Balson | Accor | CHRO (starts May 2026) | 37 |
+| 4 | Fernando Martins | Accor | TA Manager Mediterranean | 38 |
+| 5 | Mª Carmen Oliver Molina | Barceló Hotel Group | HR Director | 39 |
+
+- Logged activity: `prospect_added` for each contact
+- Logged task `pisco-028` in `crm.db tasks` table
+- Updated `STATE.yaml` — metrics.contacts_crm: 29→34
+
+**Jordan's CRM now has 34 contacts** (was 29).
+
+---
+
+## Jordan's Queue — Updated (20:20 UTC)
+
+*Same as above — no new items. Arantxa Balson / Fernando Martins / Mª Carmen Oliver Molina now also in CRM for tracking.*
+
+*Log updated: 2026-04-19 20:20 UTC by PISCO Agent (Axton)*

@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-19T08:07:00Z
+updated: 2026-04-19T20:20:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -192,6 +192,15 @@ tasks:
     output: PROJECTS/PISCO/outreach-jon-martinez-nh-san-sebastian.md
     note: "Created autonomously 2026-04-19. San Sebastián Michelin gastronomy tourism angle. Jordan to send — verify email via LinkedIn first."
 
+  - id: pisco-028
+    title: Add missing contacts to CRM (research sweep)
+    status: completed
+    owner: axton
+    due: 2026-04-19
+    completed: 2026-04-19
+    output: crm.db contacts table
+    note: "Added 5 missing contacts: Dohun Kim (EPS partner), Pere Torrens (RIU Hotels), Arantxa Balson (Accor CHRO), Fernando Martins (Accor TA), Mª Carmen Oliver Molina (Barceló HR). CRM now 34 contacts."
+
   - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Ana Martinez (NH Barcelona Gran Via) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Carmen Sellés (Melia Benidorm) — draft ready, verify email via LinkedIn first"
@@ -289,7 +298,7 @@ contacts:
 # Metrics
 metrics:
   prospects_identified: 257
-  contacts_crm: 29
+  contacts_crm: 34
   contacts_reached: 6
   responses: 1
   meetings: 0
@@ -363,3 +372,7 @@ completed:
   - id: pisco-022
     completed: 2026-04-19
     output: outreach-patricia-jaen-palladium-hotel-group.md
+  - id: pisco-028
+    completed: 2026-04-19
+    output: crm.db contacts table
+    note: "Added 5 missing contacts: Dohun Kim, Pere Torrens, Arantxa Balson, Fernando Martins, Mª Carmen Oliver Molina. CRM: 29→34."
