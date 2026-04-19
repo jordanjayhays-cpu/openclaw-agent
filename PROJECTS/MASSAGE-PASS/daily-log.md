@@ -9,6 +9,101 @@
 
 - Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
 - Checked Notion API key → NOT SET (still not configured by Jordan)
+- Notion unavailable → built `analytics.html` (launch command center)
+
+### New Deliverable Created
+
+**`analytics.html`** (REBUILT — 17KB)
+Launch Command Center dashboard — live, self-updating:
+- Live countdown to April 24 (ticking every second, days/hours/mins/secs)
+- Waitlist signups stat (0 — Formspree not wired, shows correctly)
+- Founding spots tracker (100 left → updates with real subscriber data)
+- Launch readiness score (22% — based on 5 open blockers)
+- Founding member progress bar (localStorage-synced with landing pages)
+- Critical blockers panel: domain, Formspree, email platform, pricing, Notion — each with owner, time estimate, and action link
+- Deliverables done grid: 13 autonomous items marked ✅
+- Email sequence timeline: all 5 emails with Apr 21-26 send dates and approval status
+- Fully responsive, dark theme, pure HTML/JS — no external deps
+
+**Why this matters:** Jordan has a single place to see what's done, what's blocking, and how many days are left. He can open this on his phone and know exactly where things stand.
+
+### Notion Status (unchanged — Jordan needs to act)
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md`
+
+### LAUNCH-COUNTDOWN Status
+- Day 5 (today) — Jordan's tasks: domain, Formspree, email platform, pricing sign-off
+- Day 5 autonomous items done: outreach v2 ✅, IG brief ✅, email setup guide ✅, Product Hunt draft ✅ (06:35), analytics dashboard ✅ (this check-in)
+- Email 1 goes out Apr 21 (in 2 days) — email platform setup guide ready: `email-setup-guide.md`
+- ConvertKit recommended — free, 5-min setup, easiest for beginners
+
+### Launch Status (5 days — April 24)
+- [x] Landing pages — final + standalone + teaser + prelaunch-v2 (4 variants)
+- [x] Studio outreach — v1 (Mayoac/Fix Room) + v2 (all other zones)
+- [x] IG visual brief — 4 assets fully specified
+- [x] Launch emails — 5-email sequence drafted in launch-emails.md
+- [x] Email setup guide — platform comparison + setup steps
+- [x] Product Hunt submission draft — ready to post on launch day
+- [x] Analytics command center — live dashboard (analytics.html) ← NEW
+- [ ] Jordan: purchase domain
+- [ ] Jordan: set up Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: set up email platform (ConvertKit/Mailgun/Beehiiv)
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: create Notion integration + give parent page ID
+- [ ] Jordan: review + approve launch-emails.md before Apr 21 send
+
+### Blockers (Jordan to resolve — sorted by urgency)
+1. **Domain** — not purchased
+2. **Formspree** — not wired (waitlist form not capturing emails)
+3. **Email platform** — not set up (emails start Apr 21) ← CRITICAL GAP
+4. **Pricing sign-off** — €49/€89 needs Jordan lock-in
+5. **Notion API** — integration + parent page ID
+
+### Files in Project
+- `landing-final.html` — primary landing page (600+ lines)
+- `landing-standalone.html` — zero-dep standalone (488 lines, deploy-now)
+- `landing-prelaunch.html` — alternate variant
+- `landing-teaser.html` — urgency/scarcity variant
+- `landing-prelaunch-v2.html` — current recommended variant
+- `analytics.html` — launch command center dashboard ← NEW (rebuilt)
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email send sequence (needs Jordan approval)
+- `social-launch.md` — social posts for all platforms
+- `email-setup-guide.md` — email platform setup (ConvertKit/Mailgun/Beehiiv)
+- `product-hunt-submission.md` — PH launch day submission draft
+- `notion-setup-walkthrough.md` — Notion setup steps for Jordan
+- `ig-visual-brief.md` — IG assets brief
+- `shop-outreach.md` — v1 outreach
+- `shop-outreach-v2.md` — v2 outreach
+- `subscribers.json` — empty subscriber tracker
+- `subscriber-tracker.md` — manual tracking instructions
+- `notion-db-schema.md` — DB schemas ready to build
+- `LAUNCH-COUNTDOWN.md` — day-by-day sprint
+- `LAUNCH-CHECKLIST.md` — full launch checklist
+
+### Flagged for Jordan
+
+⚠️ **5 days to launch** — domain + Formspree + email platform are fastest blockers (can all be done tonight)
+⚠️ **Email 1 goes out Apr 21 (in 2 days)** — email platform setup guide ready: `email-setup-guide.md`
+⚠️ **ConvertKit recommended** — free, 5-min setup, easiest for beginners
+⚠️ `launch-emails.md` still needs Jordan's approval before first send
+⚠️ `product-hunt-submission.md` ready — Jordan fills in 5 min of info and posts on launch day
+⚠️ Notion integration still needed — schema ready, just needs Jordan to create integration + share page
+⚠️ **`analytics.html` live** — bookmark this: it shows countdown, blockers, and what's done in one view
+
+---
+*Logged by Axton at 10:35 UTC*
+
+## 2026-04-19 (Sunday — 10:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 10:35 UTC | 5 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (still not configured by Jordan)
 - Notion unavailable → built `product-hunt-submission.md` (Product Hunt launch draft)
 
 ### New Deliverable Created
