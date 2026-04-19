@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-19T02:07:00Z
+updated: 2026-04-19T08:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -116,7 +116,43 @@ tasks:
     output: PROJECTS/PISCO/outreach-carmen-rodriguez-nh-sevilla.md
     note: "Created autonomously. Record tourism Seville 2025/2026 angle. Seville hit record arrivals 2025. Year-round demand. Jordan to send — verify email via LinkedIn first."
 
+  - id: pisco-019
+    title: Create outreach for Ana Martinez (NH Collection Barcelona Gran Via)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-ana-martinez-nh-barcelona-gran-via.md
+    note: "Rooftop terrace renovation + Barcelona MICE boom angle. Verify email via LinkedIn first."
+
+  - id: pisco-020
+    title: Create outreach for Carmen Sellés (Melia Benidorm)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-carmen-selles-melia-benidorm.md
+    note: "Costa Blanca premium shift + Melia brand upgrade angle. Verify email via LinkedIn first."
+
+  - id: pisco-021
+    title: Create outreach for Victor Presa (Melia Madrid Gran Via)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-victor-presa-melia-madrid-gran-via.md
+    note: "Capital flagship + Madrid MICE demand angle. Verify email via LinkedIn first."
+
+  - id: pisco-022
+    title: Create outreach for Patricia Jaén de la Vega (Palladium Hotel Group)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-patricia-jaen-palladium-hotel-group.md
+    note: "Butler-class service + group expansion angle. Corp Talent Director level. Email confidence LOW — verify via LinkedIn first."
+
   - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
+  - "jordan: Send to Ana Martinez (NH Barcelona Gran Via) — draft ready, verify email via LinkedIn first"
+  - "jordan: Send to Carmen Sellés (Melia Benidorm) — draft ready, verify email via LinkedIn first"
+  - "jordan: Send to Victor Presa (Melia Madrid Gran Via) — draft ready, verify email via LinkedIn first"
+  - "jordan: Send to Patricia Jaén de la Vega (Palladium Hotel Group) — email LOW confidence, verify via LinkedIn first"
 
 next_actions:
   - "jordan: Send 8 outreach emails this week — all drafts ready at PROJECTS/PISCO/"
@@ -193,8 +229,8 @@ metrics:
   meetings: 0
   clients: 0
   pipeline_tier1_hot: 1
-  pipeline_tier2_warm_draft_ready: 11
-  pipeline_tier3_warm_no_draft: 17
+  pipeline_tier2_warm_draft_ready: 15
+  pipeline_tier3_warm_no_draft: 13
 
 # Completed
 completed:
@@ -249,3 +285,15 @@ completed:
   - id: pisco-018
     completed: 2026-04-19
     output: outreach-carmen-rodriguez-nh-sevilla.md
+  - id: pisco-019
+    completed: 2026-04-19
+    output: outreach-ana-martinez-nh-barcelona-gran-via.md
+  - id: pisco-020
+    completed: 2026-04-19
+    output: outreach-carmen-selles-melia-benidorm.md
+  - id: pisco-021
+    completed: 2026-04-19
+    output: outreach-victor-presa-melia-madrid-gran-via.md
+  - id: pisco-022
+    completed: 2026-04-19
+    output: outreach-patricia-jaen-palladium-hotel-group.md
