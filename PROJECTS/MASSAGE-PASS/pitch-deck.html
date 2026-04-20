@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MASSAGE-PASS — Pitch Deck</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0f1117;
+      --surface:   #1a1d27;
+      --surface2:  #242836;
+      --border:    #2e3347;
+      --green:     #4CAF50;
+      --green-dim: #3d8b40;
+      --green-glow:rgba(76,175,80,0.15);
+      --text:      #e8eaf0;
+      --muted:     #8892a4;
+      --white:     #ffffff;
+      --red:       #e57373;
+      --amber:     #ffb74d;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* ── DECK CONTAINER ───────────────────────────── */
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── SLIDES ───────────────────────────────────── */
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 80px;
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.5s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+      overflow-y: auto;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+    .slide.exit-left {
+      transform: translateX(-60px);
+      opacity: 0;
+    }
+
+    /* ── NAVIGATION ───────────────────────────────── */
+    .nav-bar {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      z-index: 100;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 10px 20px;
+      backdrop-filter: blur(12px);
+    }
+    .nav-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--text);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-btn:hover { background: var(--green); border-color: var(--green); color: var(--white); }
+    .nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .nav-btn:disabled:hover { background: var(--surface2); border-color: var(--border); color: var(--text); }
+
+    .slide-counter {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      min-width: 44px;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+
+    .dot-nav {
+      display: flex;
+      gap: 6px;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .dot.active { background: var(--green); transform: scale(1.3); }
+
+    /* ── PROGRESS BAR ─────────────────────────────── */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--green);
+      z-index: 200;
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ── LOGO MARK ────────────────────────────────── */
+    .logo-mark {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    /* ── SLIDE HEADER ─────────────────────────────── */
+    .slide-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .slide-title {
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .slide-subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      color: var(--muted);
+      text-align: center;
+      max-width: 640px;
+      line-height: 1.5;
+    }
+    .slide-divider {
+      width: 48px; height: 3px;
+      background: var(--green);
+      border-radius: 2px;
+      margin: 20px auto;
+    }
+
+    /* ── CARDS / BOXES ────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      flex: 1;
+      min-width: 0;
+    }
+    .card-green {
+      background: linear-gradient(135deg, rgba(76,175,80,0.12), rgba(76,175,80,0.04));
+      border-color: rgba(76,175,80,0.35);
+    }
+
+    .stat-number {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--green);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .feature-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .feature-tag .icon { color: var(--green); }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+    .check-list li::before {
+      content: '✓';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px; height: 20px;
+      min-width: 20px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .cross-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cross-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .cross-list li::before {
+      content: '✗';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px; height: 18px;
+      min-width: 18px;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 0.65rem;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* ── GRID LAYOUTS ────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; max-width: 900px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; max-width: 960px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; max-width: 960px; }
+    .grid-2-3 { display: grid; grid-template-columns: 2fr 3fr; gap: 24px; width: 100%; max-width: 960px; align-items: start; }
+
+    /* ── TABLE ───────────────────────────────────── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: none; }
+    .tbl-green { color: var(--green); font-weight: 700; }
+    .tbl-red   { color: var(--red); }
+    .tbl-amber { color: var(--amber); }
+
+    /* ── BADGE ────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 20px;
+      padding: 4px 12px;
+    }
+
+    /* ── TITLE SLIDE ──────────────────────────────── */
+    .title-slide {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .title-logo {
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--green) 0%, #81C784 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .title-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+    .title-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .title-meta strong { color: var(--text); font-weight: 600; }
+
+    /* ── PRICING CARD ─────────────────────────────── */
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      flex: 1;
+    }
+    .pricing-card.featured {
+      border-color: var(--green);
+      background: linear-gradient(180deg, rgba(76,175,80,0.1) 0%, var(--surface) 100%);
+    }
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: 16px; right: -28px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 4px 40px;
+      transform: rotate(45deg);
+    }
+    .pricing-tier-name {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--white);
+    }
+    .pricing-period {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 4px;
+      margin-bottom: 20px;
+    }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+    .pricing-features li {
+      font-size: 0.85rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pricing-features li .icon { color: var(--green); font-size: 0.8rem; }
+
+    /* ── TEAM SLIDE ──────────────────────────────── */
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      flex: 1;
+    }
+    .team-avatar {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dim));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .team-name { font-size: 1.2rem; font-weight: 700; color: var(--white); }
+    .team-role { font-size: 0.8rem; font-weight: 600; color: var(--green); letter-spacing: 0.05em; }
+    .team-bio  { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── ASK SLIDE ───────────────────────────────── */
+    .ask-slide {
+      text-align: center;
+    }
+    .ask-amount {
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .ask-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .ask-uses {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 28px;
+    }
+    .ask-use {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ask-use .pct { color: var(--green); font-weight: 700; }
+
+    /* ── TAM CIRCLE ──────────────────────────────── */
+    .tam-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .tam-ring {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .tam-som {
+      width: 160px; height: 160px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 1.1rem;
+    }
+    .tam-sam {
+      position: absolute;
+      width: 260px; height: 260px;
+      background: rgba(76,175,80,0.15);
+      border: 2px solid rgba(76,175,80,0.4);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .tam-tam {
+      position: absolute;
+      width: 370px; height: 370px;
+      background: rgba(76,175,80,0.06);
+      border: 1px solid rgba(76,175,80,0.2);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── MARKET SLIDE ────────────────────────────── */
+    .market-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      width: 100%;
+    }
+    .market-row .label { font-size: 0.8rem; color: var(--muted); min-width: 80px; }
+    .market-row .val { font-size: 1.1rem; font-weight: 700; color: var(--white); flex: 1; }
+    .market-row .sub { font-size: 0.75rem; color: var(--green); font-weight: 600; }
+
+    /* ── FINANCIALS TABLE ─────────────────────────── */
+    .fin-table-wrap { width: 100%; overflow-x: auto; }
+    .fin-table { width: 100%; font-size: 0.88rem; }
+    .fin-table .total-row td {
+      border-top: 2px solid var(--green);
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ── CTA BUTTON ──────────────────────────────── */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.03em;
+    }
+    .cta-btn:hover { background: var(--green-dim); transform: translateY(-2px); }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 768px) {
+      .slide { padding: 40px 24px 80px; justify-content: flex-start; padding-top: 60px; }
+      .grid-2, .grid-2-3 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: 1fr 1fr; }
+      .tam-ring { transform: scale(0.75); }
+      .nav-bar { bottom: 16px; padding: 8px 14px; }
+    }
+
+    /* ── PRINT ───────────────────────────────────── */
+    @media print {
+      body { overflow: visible; }
+      .deck { position: static; overflow: visible; }
+      .slide {
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: all;
+        page-break-after: always;
+        height: 100vh;
+        border-bottom: 2px solid var(--green);
+      }
+      .nav-bar, .progress-bar, .dot-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="deck" id="deck">
+
+  <!-- ═══════════════════════════════════════════ SLIDE 1 — TITLE ══ -->
+  <div class="slide title-slide active" data-slide="1">
+    <div class="logo-mark" style="margin-bottom:28px;">MASSAGE-PASS</div>
+    <div class="title-logo">MASSAGE-PASS</div>
+    <p class="title-tagline">The membership for massage lovers</p>
+    <div class="slide-divider"></div>
+    <div class="title-meta">
+      <strong>Jordan Hays</strong>
+      <span>Founder &amp; CEO</span>
+      <span style="margin-top:4px;">IE IMBA — Spring 2026</span>
+      <span style="color:var(--green); font-size:0.85rem;">April 2026</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 2 — PROBLEM ══ -->
+  <div class="slide" data-slide="2">
+    <div class="slide-label">The Problem</div>
+    <h2 class="slide-title">Urban professionals<br>are suffering in silence</h2>
+    <p class="slide-subtitle">The massage market is broken for the people who need it most</p>
+    <div class="slide-divider"></div>
+    <div class="grid-3" style="max-width:900px; margin-top:8px;">
+      <div class="card card-green" style="text-align:center;">
+        <div class="stat-number">73%</div>
+        <div class="stat-label">of urban professionals report chronic back or neck pain (WHO 2023)</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="color:var(--amber);">15+ min</div>
+        <div class="stat-label">average time to book a massage across multiple apps and calls</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="color:var(--red);">€70+</div>
+        <div class="stat-label">average cost per session in Madrid — with no membership benefit</div>
+      </div>
+    </div>
+    <div style="max-width:760px; margin-top:20px;">
+      <div class="card">
+        <div class="grid-2">
+          <div>
+            <p style="font-weight:700; color:var(--white); margin-bottom:12px;">Pain Points</p>
+            <ul class="cross-list">
+              <li>Fragmented therapist schedules — no unified booking</li>
+              <li>Pay full price per visit — no loyalty, no consistency</li>
+              <li>Therapist quality is inconsistent and unverified</li>
+              <li>No subscription model in the Spanish market</li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-weight:700; color:var(--white); margin-bottom:12px;">Market Context</p>
+            <ul class="cross-list">
+              <li>Global massage therapy market: $47.3B → $73.6B by 2028</li>
+              <li>Wellness subscription services growing 34% YoY</li>
+              <li>Spain has no mass-market massage membership option</li>
+              <li>ClassPass exited Spain — market left wide open</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 3 — SOLUTION ══ -->
+  <div class="slide" data-slide="3">
+    <div class="slide-label">The Solution</div>
+    <h2 class="slide-title">One subscription.<br>Unlimited bookings. Zero friction.</h2>
+    <p class="slide-subtitle">MASSAGE-PASS aggregates Madrid's best massage studios into a single membership</p>
+    <div class="slide-divider"></div>
+    <div class="grid-2-3" style="max-width:960px; margin-top:8px; align-items:stretch;">
+      <div class="card card-green" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+        <div style="font-size:4rem; margin-bottom:12px;">🧘</div>
+        <p style="font-size:1.3rem; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:8px;">Book in<br>under 60 seconds</p>
+        <p style="font-size:0.9rem; color:var(--muted);">Web or mobile — no phone calls, no waiting</p>
+        <div style="margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+          <span class="badge">50+ Studios</span>
+          <span class="badge">All Massage Types</span>
+          <span class="badge">Madrid-First</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="card">
+          <p style="font-weight:700; color:var(--green); margin-bottom:8px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">How It Works</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <span style="background:var(--green); color:white; width:22px; height:22px; min-width:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">1</span>
+              <div><strong style="color:var(--white);">Subscribe</strong><br><span style="font-size:0.85rem; color:var(--muted);">Choose Basic (€49/mo) or Premium (€89/mo)</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <span style="background:var(--green); color:white; width:22px; height:22px; min-width:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">2</span>
+              <div><strong style="color:var(--white);">Book</strong><br><span style="font-size:0.85rem; color:var(--muted);">Select studio, type, time — confirmed instantly</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <span style="background:var(--green); color:white; width:22px; height:22px; min-width:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700;">3</span>
+              <div><strong style="color:var(--white);">Relax</strong><br><span style="font-size:0.85rem; color:var(--muted);">Show up. We handle therapist payment &amp; scheduling.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <p style="font-weight:700; color:var(--green); margin-bottom:10px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Key Features</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="feature-tag"><span class="icon">✓</span>Unlimited bookings (plan tiers)</span>
+            <span class="feature-tag"><span class="icon">✓</span>50+ partner studios network</span>
+            <span class="feature-tag"><span class="icon">✓</span>Swedish, Deep Tissue, Thai &amp; more</span>
+            <span class="feature-tag"><span class="icon">✓</span>Priority booking (Premium)</span>
+            <span class="feature-tag"><span class="icon">✓</span>Hot stone &amp; specialty add-ons</span>
+            <span class="feature-tag"><span class="icon">✓</span>Corporate wellness packages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 4 — MARKET ══ -->
+  <div class="slide" data-slide="4">
+    <div class="slide-label">Market Opportunity</div>
+    <h2 class="slide-title">A $73B global market,<br>waiting for a Madrid champion</h2>
+    <p class="slide-subtitle">Massage therapy is the fastest-growing segment in the $628B global wellness industry</p>
+    <div class="slide-divider"></div>
+    <div class="grid-2" style="max-width:960px; margin-top:8px; align-items:start;">
+      <!-- TAM/SAM/SOM Visual -->
+      <div class="card">
+        <p style="font-weight:700; color:var(--green); margin-bottom:16px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Market Sizing</p>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:16px; height:16px; min-width:16px; border-radius:50%; background:rgba(76,175,80,0.15); border:2px solid rgba(76,175,80,0.3);"></div>
+            <div>
+              <div style="font-weight:800; color:var(--white); font-size:1.1rem;">€470M TAM</div>
+              <div style="font-size:0.8rem; color:var(--muted);">Global massage market share — relevant digital segment</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:16px; height:16px; min-width:16px; border-radius:50%; background:rgba(76,175,80,0.3); border:2px solid rgba(76,175,80,0.6);"></div>
+            <div>
+              <div style="font-weight:800; color:var(--green); font-size:1.1rem;">€52M SAM</div>
+              <div style="font-size:0.8rem; color:var(--muted);">Spain + Portugal + urban Europe wellness subscription market</div>
+            </div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div style="width:16px; height:16px; min-width:16px; border-radius:50%; background:var(--green); border:2px solid var(--green);"></div>
+            <div>
+              <div style="font-weight:800; color:var(--white); font-size:1.1rem;">€6.5M SOM</div>
+              <div style="font-size:0.8rem; color:var(--muted);">Madrid + Barcelona target (Year 3), 15% penetration of SAM</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:20px; padding:14px; background:var(--surface2); border-radius:10px;">
+          <p style="font-size:0.78rem; color:var(--muted);">
+            <strong style="color:var(--text);">Madrid first mover advantage:</strong> ClassPass scaled back European presence in 2023. Treatwell focuses on beauty, not massage. No subscription-first competitor exists in Spain.
+          </p>
+        </div>
+      </div>
+      <!-- Growth metrics -->
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="card">
+          <p style="font-weight:700; color:var(--green); margin-bottom:12px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Market Momentum</p>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div class="market-row">
+              <span class="label">Market</span>
+              <span class="val">$47.3B → $73.6B</span>
+              <span class="sub">11.2% CAGR</span>
+            </div>
+            <div class="market-row">
+              <span class="label">Wellness Subs</span>
+              <span class="val">34% YoY growth</span>
+              <span class="sub">global</span>
+            </div>
+            <div class="market-row">
+              <span class="label">Madrid Professionals</span>
+              <span class="val">2.8M</span>
+              <span class="sub">primary target</span>
+            </div>
+            <div class="market-row">
+              <span class="label">Avg. session (Madrid)</span>
+              <span class="val">€70+</span>
+              <span class="sub">per visit</span>
+            </div>
+          </div>
+        </div>
+        <div class="card card-green">
+          <p style="font-weight:700; margin-bottom:8px;">🎯 Growth Trajectory</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="feature-tag">Madrid Launch <span class="icon">Q2 '26</span></span>
+            <span class="feature-tag">Barcelona <span class="icon">Q4 '26</span></span>
+            <span class="feature-tag">Lisbon <span class="icon">Q2 '27</span></span>
+            <span class="feature-tag">Europe Expansion <span class="icon">2028+</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 5 — BUSINESS MODEL ══ -->
+  <div class="slide" data-slide="5">
+    <div class="slide-label">Business Model</div>
+    <h2 class="slide-title">Recurring revenue with<br>strong unit economics</h2>
+    <p class="slide-subtitle">Subscription-first model with multiple high-margin revenue streams</p>
+    <div class="slide-divider"></div>
+    <!-- Pricing Tiers -->
+    <div class="grid-2" style="max-width:760px; margin-top:8px;">
+      <div class="pricing-card">
+        <div class="pricing-tier-name">Basic</div>
+        <div class="pricing-price">€49</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li><span class="icon">✓</span>Up to 2 massages / month</li>
+          <li><span class="icon">✓</span>50+ partner studios</li>
+          <li><span class="icon">✓</span>Swedish, Deep Tissue, Thai</li>
+          <li><span class="icon">✓</span>Standard booking priority</li>
+          <li><span class="icon">✓</span>No contracts, cancel anytime</li>
+        </ul>
+        <div style="margin-top:auto; font-size:0.78rem; color:var(--muted);">Best for: maintenance &amp; wellness-focused clients</div>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tier-name">Premium</div>
+        <div class="pricing-price">€89</div>
+        <div class="pricing-period">per month</div>
+        <ul class="pricing-features">
+          <li><span class="icon">✓</span>Up to 4 massages / month</li>
+          <li><span class="icon">✓</span>Hot stone &amp; specialty treatments</li>
+          <li><span class="icon">✓</span>Priority booking (24h advance)</li>
+          <li><span class="icon">✓</span>Concierge support</li>
+          <li><span class="icon">✓</span>Corporate wellness package access</li>
+        </ul>
+        <div style="margin-top:auto; font-size:0.78rem; color:var(--muted);">Best for: chronic pain sufferers, power users</div>
+      </div>
+    </div>
+    <!-- Revenue Streams -->
+    <div style="max-width:900px; width:100%; margin-top:16px;">
+      <div class="card">
+        <div class="grid-3">
+          <div style="text-align:center;">
+            <div style="font-size:1.8rem; font-weight:800; color:var(--green);">75%</div>
+            <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-top:4px;">Therapist Revenue Share</div>
+            <div style="font-size:0.78rem; color:var(--muted); margin-top:4px;">of booking fee goes to studio</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:1.8rem; font-weight:800; color:var(--amber);">20%</div>
+            <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-top:4px;">Founder Take</div>
+            <div style="font-size:0.78rem; color:var(--muted); margin-top:4px;">per transaction after Stripe fees</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:1.8rem; font-weight:800; color:var(--text);">5%</div>
+            <div style="font-size:0.85rem; font-weight:600; color:var(--white); margin-top:4px;">Platform Reserve</div>
+            <div style="font-size:0.78rem; color:var(--muted); margin-top:4px;">operations &amp; support fund</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 6 — TRACTION ══ -->
+  <div class="slide" data-slide="6">
+    <div class="slide-label">Traction</div>
+    <h2 class="slide-title">Momentum before<br>we even launch</h2>
+    <p class="slide-subtitle">Early signals confirm strong product-market fit in Madrid</p>
+    <div class="slide-divider"></div>
+    <div class="grid-3" style="max-width:900px; margin-top:8px;">
+      <div class="card card-green" style="text-align:center;">
+        <div class="stat-number">127</div>
+        <div class="stat-label">Organic waitlist signups in 3 weeks</div>
+        <div style="margin-top:8px; font-size:0.75rem; color:var(--green); font-weight:600;">3.8 signups / day, zero paid ads</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="color:var(--amber);">3</div>
+        <div class="stat-label">Partner studios onboarded</div>
+        <div style="margin-top:8px; font-size:0.8rem; color:var(--muted);">Mayoac (Chamartín)<br>The Fix Room (Salamanca)<br>+ 1 soft-launch partner</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="stat-number" style="color:var(--white);">20</div>
+        <div class="stat-label">Beta users in private testing</div>
+        <div style="margin-top:8px; font-size:0.75rem; color:var(--green); font-weight:600;">Feedback loop active</div>
+      </div>
+    </div>
+    <div class="grid-2" style="max-width:800px; margin-top:16px;">
+      <div class="card">
+        <p style="font-weight:700; color:var(--green); margin-bottom:14px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Key Milestones</p>
+        <ul class="check-list">
+          <li>MVP landing page live with waitlist capture</li>
+          <li>3 partner studios signed LOIs in Madrid</li>
+          <li>Waitlist of 127 verified email signups</li>
+          <li>Stripe payment integration pipeline in progress</li>
+          <li>Soft launch scheduled April 24, 2026</li>
+        </ul>
+      </div>
+      <div class="card card-green" style="display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:8px;">📅</div>
+        <div style="font-size:2rem; font-weight:800; color:var(--green);">April 24, 2026</div>
+        <div style="font-size:1rem; font-weight:600; color:var(--white); margin-bottom:4px;">Soft Launch — Madrid</div>
+        <div style="font-size:0.85rem; color:var(--muted);">First paying subscribers. Live booking flow. Real revenue.</div>
+        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+          <span class="badge">Live MVP</span>
+          <span class="badge">Beta → Launch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 7 — GTM ══ -->
+  <div class="slide" data-slide="7">
+    <div class="slide-label">Go-to-Market</div>
+    <h2 class="slide-title">Madrid pilot, then<br>scale across Iberia</h2>
+    <p class="slide-subtitle">Studio-led acquisition + digital waitlist strategy to hit 1,000 subscribers in Year 1</p>
+    <div class="slide-divider"></div>
+    <div class="grid-2-3" style="max-width:960px; margin-top:8px; align-items:start;">
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="card">
+          <p style="font-weight:700; color:var(--green); margin-bottom:12px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Phase 1 — Madrid Pilot (Apr–Sep 2026)</p>
+          <ul class="check-list">
+            <li>Onboard 15–20 massage studios across Madrid districts</li>
+            <li>Launch waitlist → paid subscribers via early-bird pricing</li>
+            <li>Target: Salamanca, Chamartín, Chamberí, Centro</li>
+            <li>Word-of-mouth + local wellness influencer outreach</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p style="font-weight:700; color:var(--green); margin-bottom:12px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Phase 2 — Scale (Oct 2026–Dec 2027)</p>
+          <ul class="check-list">
+            <li>Expand to Barcelona (Q4 2026) and Lisbon (Q2 2027)</li>
+            <li>B2B corporate wellness packages — HR target lists</li>
+            <li>PR: lifestyle &amp; wellness media in Spain and Portugal</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="card card-green">
+          <p style="font-weight:700; margin-bottom:12px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--green);">Studio Acquisition Strategy</p>
+          <ul class="check-list">
+            <li>Direct outreach — visits, LOIs, pilot offers</li>
+            <li>75% revenue share to studios (above industry standard)</li>
+            <li>No exclusivity — studios keep existing clients</li>
+            <li>Platform handles booking, payment, scheduling</li>
+            <li>Only cost to studios: 15% platform commission</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p style="font-weight:700; color:var(--green); margin-bottom:12px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Waitlist &amp; PR Channels</p>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <span class="feature-tag"><span class="icon">①</span>Instagram &amp; TikTok content</span>
+            <span class="feature-tag"><span class="icon">②</span>Madrid expat &amp; wellness communities</span>
+            <span class="feature-tag"><span class="icon">③</span>IE alumni network activation</span>
+            <span class="feature-tag"><span class="icon">④</span>Local wellness influencer partnerships</span>
+            <span class="feature-tag"><span class="icon">⑤</span>SEO — "massage subscription Madrid"</span>
+            <span class="feature-tag"><span class="icon">⑥</span>Press: The Standard, Condé Nast Traveller Spain</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 8 — COMPETITION ══ -->
+  <div class="slide" data-slide="8">
+    <div class="slide-label">Competition</div>
+    <h2 class="slide-title">No one else offers a<br>massage membership in Spain</h2>
+    <p class="slide-subtitle">We are the first subscription-first, massage-only platform in the Spanish market</p>
+    <div class="slide-divider"></div>
+    <div style="max-width:900px; width:100%; margin-top:8px;">
+      <div class="fin-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th style="text-align:center;">Urban Company</th>
+              <th style="text-align:center;">Treatwell</th>
+              <th style="text-align:center;">ClassPass</th>
+              <th style="text-align:center;" class="tbl-green">MASSAGE-PASS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Subscription / membership model</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-amber">Partial</td>
+              <td style="text-align:center;" class="tbl-green">✓</td>
+            </tr>
+            <tr>
+              <td>Fixed monthly fee</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-amber">Credits</td>
+              <td style="text-align:center;" class="tbl-green">✓</td>
+            </tr>
+            <tr>
+              <td>Massage-only focus</td>
+              <td style="text-align:center;" class="tbl-amber">Mixed</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-amber">Many categories</td>
+              <td style="text-align:center;" class="tbl-green">✓</td>
+            </tr>
+            <tr>
+              <td>Spanish market focus</td>
+              <td style="text-align:center;" class="tbl-amber">Weak</td>
+              <td style="text-align:center;" class="tbl-amber">Broad</td>
+              <td style="text-align:center;" class="tbl-red">✗ Exited</td>
+              <td style="text-align:center;" class="tbl-green">✓ Local-first</td>
+            </tr>
+            <tr>
+              <td>No per-visit pricing</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-amber">Credits</td>
+              <td style="text-align:center;" class="tbl-green">✓ Unlimited</td>
+            </tr>
+            <tr>
+              <td>Partner studios, Madrid</td>
+              <td style="text-align:center;" class="tbl-amber">Limited</td>
+              <td style="text-align:center;" class="tbl-amber">Broad</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-green">✓ 50+ planned</td>
+            </tr>
+            <tr>
+              <td>Corporate wellness packages</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-amber">B2B limited</td>
+              <td style="text-align:center;" class="tbl-green">✓ Planned</td>
+            </tr>
+            <tr>
+              <td>Local brand, IE-backed</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-red">✗</td>
+              <td style="text-align:center;" class="tbl-green">✓ Founder-led</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card card-green" style="margin-top:16px; text-align:center;">
+        <p style="font-size:1rem; font-weight:700; color:var(--white);">
+          Key insight: No competitor offers a true "all-you-can-massage" membership in Spain.<br>
+          <span style="color:var(--green);">ClassPass exited Europe. Treatwell focuses on beauty. Urban Company is fragmented.</span><br>
+          <span style="font-size:0.85rem; color:var(--muted);">The window is open. MASSAGE-PASS moves now.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 9 — FINANCIALS ══ -->
+  <div class="slide" data-slide="9">
+    <div class="slide-label">Financial Projections</div>
+    <h2 class="slide-title">Path to profitability<br>by Year 3</h2>
+    <p class="slide-subtitle">Conservative assumptions — 500 subscribers Year 1, 5,000 by Year 3</p>
+    <div class="slide-divider"></div>
+    <div style="max-width:900px; width:100%; margin-top:8px;">
+      <div class="fin-table-wrap">
+        <table class="fin-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th style="text-align:right;">Year 1 (2026–27)</th>
+              <th style="text-align:right;">Year 2 (2027–28)</th>
+              <th style="text-align:right;">Year 3 (2028–29)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Subscribers (end of period)</td>
+              <td style="text-align:right;">500</td>
+              <td style="text-align:right;">2,200</td>
+              <td style="text-align:right;">5,000</td>
+            </tr>
+            <tr>
+              <td>Monthly Recurring Revenue (MRR)</td>
+              <td style="text-align:right;">€33,800</td>
+              <td style="text-align:right;">€148,600</td>
+              <td style="text-align:right;">€337,500</td>
+            </tr>
+            <tr>
+              <td>Annual Recurring Revenue (ARR)</td>
+              <td style="text-align:right;">€405,600</td>
+              <td style="text-align:right;">€1,783,200</td>
+              <td style="text-align:right;">€4,050,000</td>
+            </tr>
+            <tr>
+              <td>B2B Corporate Revenue</td>
+              <td style="text-align:right;">€18,000</td>
+              <td style="text-align:right;">€85,000</td>
+              <td style="text-align:right;">€210,000</td>
+            </tr>
+            <tr>
+              <td>Partner Studio Commission (15%)</td>
+              <td style="text-align:right;">(€60,840)</td>
+              <td style="text-align:right;">(€267,480)</td>
+              <td style="text-align:right;">(€607,500)</td>
+            </tr>
+            <tr>
+              <td>Gross Revenue</td>
+              <td style="text-align:right;">€423,600</td>
+              <td style="text-align:right;">€1,868,200</td>
+              <td style="text-align:right;">€4,260,000</td>
+            </tr>
+            <tr>
+              <td>Platform &amp; Ops Costs</td>
+              <td style="text-align:right;">(€84,720)</td>
+              <td style="text-align:right;">(€186,820)</td>
+              <td style="text-align:right;">(€426,000)</td>
+            </tr>
+            <tr>
+              <td>Sales &amp; Marketing</td>
+              <td style="text-align:right;">(€60,000)</td>
+              <td style="text-align:right;">(€150,000)</td>
+              <td style="text-align:right;">(€280,000)</td>
+            </tr>
+            <tr>
+              <td>Tech &amp; Engineering</td>
+              <td style="text-align:right;">(€96,000)</td>
+              <td style="text-align:right;">(€144,000)</td>
+              <td style="text-align:right;">(€180,000)</td>
+            </tr>
+            <tr>
+              <td>G&A</td>
+              <td style="text-align:right;">(€48,000)</td>
+              <td style="text-align:right;">(€72,000)</td>
+              <td style="text-align:right;">(€90,000)</td>
+            </tr>
+            <tr class="total-row">
+              <td>Net Operating Profit</td>
+              <td style="text-align:right; color:var(--amber);">(€125,120)</td>
+              <td style="text-align:right; color:var(--green);">€215,380</td>
+              <td style="text-align:right; color:var(--green);">€837,000</td>
+            </tr>
+            <tr>
+              <td>Cumulative Funding Raised</td>
+              <td style="text-align:right;">(€250,000)</td>
+              <td style="text-align:right;">—</td>
+              <td style="text-align:right;">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="margin-top:14px;">
+        <p style="font-weight:700; color:var(--green); margin-bottom:8px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Key Assumptions</p>
+        <div class="grid-4">
+          <div style="text-align:center; padding:8px;">
+            <div style="font-weight:700; color:var(--white);">70/30</div>
+            <div style="font-size:0.75rem; color:var(--muted);">Basic / Premium split</div>
+          </div>
+          <div style="text-align:center; padding:8px;">
+            <div style="font-weight:700; color:var(--white);">€49 / €89</div>
+            <div style="font-size:0.75rem; color:var(--muted);">Avg. monthly ARPU</div>
+          </div>
+          <div style="text-align:center; padding:8px;">
+            <div style="font-weight:700; color:var(--white);">15%</div>
+            <div style="font-size:0.75rem; color:var(--muted);">Churn (conservative)</div>
+          </div>
+          <div style="text-align:center; padding:8px;">
+            <div style="font-weight:700; color:var(--white);">€220 CPA</div>
+            <div style="font-size:0.75rem; color:var(--muted);">Avg. customer acquisition</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 10 — TEAM ══ -->
+  <div class="slide" data-slide="10">
+    <div class="slide-label">The Team</div>
+    <h2 class="slide-title">Founder with the vision<br>and the network to build it</h2>
+    <p class="slide-subtitle">Background in strategy, operations, and product — with the IMBA network behind him</p>
+    <div class="slide-divider"></div>
+    <div class="grid-3" style="max-width:900px; margin-top:8px;">
+      <div class="team-card">
+        <div class="team-avatar">JH</div>
+        <div class="team-name">Jordan Hays</div>
+        <div class="team-role">Founder &amp; CEO</div>
+        <div style="width:100%;">
+          <div style="height:2px; background:var(--border); margin:10px 0;"></div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:6px; text-align:left;">
+            <li style="font-size:0.82rem; color:var(--muted); display:flex; gap:6px;">
+              <span style="color:var(--green);">›</span>MBA candidate — IE IMBA (graduating 2026)
+            </li>
+            <li style="font-size:0.82rem; color:var(--muted); display:flex; gap:6px;">
+              <span style="color:var(--green);">›</span>5+ years in operations &amp; product roles
+            </li>
+            <li style="font-size:0.82rem; color:var(--muted); display:flex; gap:6px;">
+              <span style="color:var(--green);">›</span>Background in fintech &amp; SaaS go-to-market
+            </li>
+            <li style="font-size:0.82rem; color:var(--muted); display:flex; gap:6px;">
+              <span style="color:var(--green);">›</span>Strong Madrid business development network
+            </li>
+            <li style="font-size:0.82rem; color:var(--muted); display:flex; gap:6px;">
+              <span style="color:var(--green);">›</span>Built 3 previous ventures (PISCO, COMARE, Dealsmap)
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="team-card" style="justify-content:center; align-items:flex-start;">
+        <p style="font-weight:700; color:var(--green); margin-bottom:14px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Advisors &amp; Network</p>
+        <ul class="check-list">
+          <li>IE IMBA alumni network (150+ countries)</li>
+          <li>IE Business School startup ecosystem</li>
+          <li>Madrid startup community connections</li>
+          <li>Operations &amp; tech advisors (TBD post-seed)</li>
+        </ul>
+        <div style="margin-top:16px; padding:12px; background:var(--surface2); border-radius:10px; width:100%;">
+          <p style="font-size:0.8rem; color:var(--muted);">
+            <strong style="color:var(--white);">Looking for:</strong> CTO/technical co-founder, marketing lead, and senior advisors post-seed round.
+          </p>
+        </div>
+      </div>
+      <div class="team-card" style="justify-content:center; align-items:flex-start;">
+        <p style="font-weight:700; color:var(--green); margin-bottom:14px; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Why MASSAGE-PASS Now</p>
+        <ul class="check-list">
+          <li>Personal experience with Madrid's fragmented massage market</li>
+          <li>IE IMBA provides the network to recruit early partners and subscribers</li>
+          <li>Post-ClassPass Spain vacuum creates first-mover opportunity</li>
+          <li>Subscription model proven in US, unproven in Spain</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SLIDE 11 — ASK ══ -->
+  <div class="slide ask-slide" data-slide="11">
+    <div class="slide-label">The Ask</div>
+    <h2 class="slide-title">Join us in building<br>Spain's wellness revolution</h2>
+    <p class="slide-subtitle">We are raising a pre-seed round to launch MASSAGE-PASS in Madrid and prove the model</p>
+    <div class="slide-divider"></div>
+    <div style="margin-top:8px;">
+      <div class="ask-amount">€250,000</div>
+      <div class="ask-label">Pre-Seed Round</div>
+    </div>
+    <div class="ask-uses" style="margin-top:28px;">
+      <div class="ask-use"><span class="pct">40%</span>Booking infra &amp; tech (€100K)</div>
+      <div class="ask-use"><span class="pct">35%</span>Therapist network expansion to 50+ (€87K)</div>
+      <div class="ask-use"><span class="pct">15%</span>Marketing &amp; PR (€37K)</div>
+      <div class="ask-use"><span class="pct">10%</span>Operations &amp; admin (€26K)</div>
+    </div>
+    <div class="grid-3" style="max-width:760px; margin-top:24px;">
+      <div class="card card-green" style="text-align:center;">
+        <div style="font-size:1.8rem; font-weight:800; color:var(--green);">5,000</div>
+        <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Target subscribers by Year 3</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:1.8rem; font-weight:800; color:var(--white);">€4M+</div>
+        <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Projected ARR by Year 3</div>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:1.8rem; font-weight:800; color:var(--amber);">3 Cities</div>
+        <div style="font-size:0.82rem; color:var(--muted); margin-top:4px;">Madrid → Barcelona → Lisbon</div>
+      </div>
+    </div>
+    <div style="margin-top:28px; display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <a href="mailto:jordan@massagepass.io" class="cta-btn">
+        Get in Touch →
+      </a>
+      <p style="font-size:0.82rem; color:var(--muted);">jordan@massagepass.io &nbsp;·&nbsp; massagepass.io</p>
+    </div>
+  </div>
+
+</div><!-- /.deck -->
+
+<!-- Navigation bar -->
+<div class="nav-bar" id="navBar">
+  <button class="nav-btn" id="prevBtn" aria-label="Previous slide">‹</button>
+  <div class="dot-nav" id="dotNav"></div>
+  <div class="slide-counter" id="slideCounter">1 / 11</div>
+  <button class="nav-btn" id="nextBtn" aria-label="Next slide">›</button>
+</div>
+
+<script>
+  (function () {
+    const TOTAL    = 11;
+    const deck     = document.getElementById('deck');
+    const slides   = Array.from(deck.querySelectorAll('.slide'));
+    const prevBtn  = document.getElementById('prevBtn');
+    const nextBtn  = document.getElementById('nextBtn');
+    const counter  = document.getElementById('slideCounter');
+    const dotNav   = document.getElementById('dotNav');
+    const progress = document.getElementById('progressBar');
+
+    let current = 0;
+
+    // Build dots
+    for (let i = 0; i < TOTAL; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goTo(i));
+      dotNav.appendChild(dot);
+    }
+
+    function updateUI() {
+      slides.forEach((s, i) => {
+        s.classList.remove('active', 'exit-left');
+        if (i === current) s.classList.add('active');
+        else if (i < current) s.classList.add('exit-left');
+      });
+      document.querySelectorAll('.dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      counter.textContent = (current + 1) + ' / ' + TOTAL;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === TOTAL - 1;
+      progress.style.width = ((current + 1) / TOTAL * 100) + '%';
+    }
+
+    function goTo(index) {
+      if (index < 0 || index >= TOTAL || index === current) return;
+      current = index;
+      updateUI();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+        e.preventDefault();
+        goTo(current + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        goTo(current - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goTo(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goTo(TOTAL - 1);
+      }
+    });
+
+    // Click to advance (on slide, not controls)
+    deck.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-bar')) {
+        goTo(current + 1);
+      }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    deck.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    deck.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(dx) > 50) {
+        dx < 0 ? goTo(current + 1) : goTo(current - 1);
+      }
+    });
+
+    updateUI();
+  })();
+</script>
+
+</body>
+</html>

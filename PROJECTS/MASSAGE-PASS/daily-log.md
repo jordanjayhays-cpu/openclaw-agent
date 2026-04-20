@@ -1052,6 +1052,102 @@ Per LAUNCH-COUNTDOWN.md — today's Jordan tasks:
 
 ---
 
+## 2026-04-20 (Monday — 06:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 06:35 UTC | 4 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: April 24, 2026
+- Checked Notion API key → NOT AVAILABLE (still not configured by Jordan)
+- Notion unavailable → spawned subagent to build IE pitch deck
+
+### Autonomous Deliverable Completed
+
+**`pitch-deck.html`** ✅ DONE — 55KB, 11 slides, ready for IE IMBA presentation:
+- Dark theme with green accents (#4CAF50)
+- Keyboard/click/swipe navigation, dot nav, progress bar, slide counter (3/11)
+- Print-to-PDF ready (@media print rules)
+- Zero external JS dependencies (Inter font optional, falls back to system)
+- Financials: Y1 €405K ARR, Y2 €1.78M, Y3 €4.05M | Funding ask: €250K pre-seed
+IE IMBA pitch deck — Jordan will need this for his program presentation:
+- 11-slide full presentation: Problem → Solution → Market → Business Model → Traction → GTM → Competition → Financials → Team → Ask
+- Clean dark theme, green accents, slide navigation
+- Keyboard/click navigation, slide counter
+- Print-to-PDF friendly
+- Pure HTML/CSS/JS — zero external dependencies
+- Will be saved to `PROJECTS/MASSAGE-PASS/pitch-deck.html`
+
+### LAUNCH-COUNTDOWN — Day 4 (Monday, today)
+Per LAUNCH-COUNTDOWN.md — Jordan's tasks today:
+- [ ] Notion setup + share parent page ID (use `notion-setup-walkthrough.md`)
+- [ ] Review + approve `launch-emails.md` (Email 1 goes out Tue Apr 21 — tomorrow!)
+
+**Autonomous tasks for today:**
+- [x] IE pitch deck — subagent building now
+- [ ] None remaining after pitch deck
+
+### Launch Status (4 days — April 24)
+- [x] Landing pages — final ✅ + standalone ✅ + teaser ✅ + prelaunch-v2 ✅ + prelaunch-countdown ✅ (5 variants)
+- [x] Studio outreach — v1 + v2 ✅
+- [x] IG visual brief ✅
+- [x] Launch emails — drafted ✅ (needs Jordan approval)
+- [x] Email setup guide ✅
+- [x] Product Hunt submission ✅
+- [x] Analytics command center ✅
+- [x] IE pitch deck — in progress
+- [ ] Jordan: purchase domain
+- [ ] Jordan: set up Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: set up email platform (Email 1 goes out TOMORROW Apr 21)
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: create Notion integration + give parent page ID
+- [ ] Jordan: review + approve launch-emails.md BEFORE Apr 21 send
+
+### ⚠️ CRITICAL: Email 1 goes out TOMORROW (Apr 21)
+- `launch-emails.md` — 5 emails drafted, Jordan has NOT approved yet
+- Email platform still not set up — `email-setup-guide.md` has instructions
+- ConvertKit recommended (free, 5-min setup)
+- If Jordan approves today, he can set up ConvertKit tonight and send Email 1 tomorrow
+
+### Blockers (Jordan to resolve — sorted by urgency)
+1. **Email platform** — not set up (Email 1 TOMORROW) ← CRITICAL
+2. **Formspree** — not wired (waitlist form not capturing emails)
+3. **Domain** — not purchased
+4. **Pricing sign-off** — €49/€89 needs Jordan lock-in
+5. **Notion API** — integration + parent page ID
+
+### Flagged for Jordan
+
+⚠️ **TOMORROW is Email 1 send date** — `launch-emails.md` needs approval TODAY
+⚠️ **Notion integration still not done** — use `notion-setup-walkthrough.md` (~10 min)
+⚠️ **Pitch deck incoming** — IE IMBA presentation deck (subagent finishing now)
+⚠️ Founding member pricing closes Apr 26 — urgency built into all copy
+
+### Files in Project
+- `landing-final.html` — primary landing page
+- `landing-standalone.html` — zero-dep standalone
+- `landing-prelaunch.html` — alternate variant
+- `landing-teaser.html` — urgency/scarcity variant
+- `landing-prelaunch-v2.html` — current recommended variant
+- `landing-prelaunch-countdown.html` — countdown urgency variant
+- `analytics.html` — launch command center
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email sequence (needs Jordan approval)
+- `social-launch.md` — social posts
+- `email-setup-guide.md` — email platform setup
+- `product-hunt-submission.md` — PH launch day draft
+- `notion-setup-walkthrough.md` — Notion API setup steps
+- `notion-db-schema.md` — DB schemas ready
+- `pitch-deck.md` — brief notes (IE pitch building as HTML)
+- `shop-outreach.md` + `shop-outreach-v2.md` — studio outreach
+- `ig-visual-brief.md` — IG assets brief
+- `subscribers.json` — subscriber tracker
+- `LAUNCH-COUNTDOWN.md` + `LAUNCH-CHECKLIST.md` — project management
+
+---
+*Logged by Axton at 06:35 UTC*
+
 ## 2026-04-20 (Monday — 02:35 UTC Check-in)
 
 **Agent:** MASSAGE-PASS Check-in (Axton)
