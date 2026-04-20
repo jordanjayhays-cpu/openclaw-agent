@@ -51,6 +51,85 @@
 
 ---
 
+# PISCO Daily Log — 2026-04-20 (Afternoon)
+
+## Date: Monday, April 20, 2026 — 14:07 UTC
+
+---
+
+## Actions Taken (14:07 UTC)
+
+### Task Executed: pisco-030/031/032 — CRM Sync + 3 Missing Outreach Drafts
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Complete
+- **Outputs:**
+  - `PROJECTS/PISCO/outreach-yolanda-de-la-plaza-room-mate.md`
+  - `PROJECTS/PISCO/outreach-virginia-garrido-barcelo-hotels.md`
+  - `PROJECTS/PISCO/outreach-nelida-martin-garces-barcelo.md`
+
+#### What I Did:
+- **CRM Audit:** Found major discrepancy — STATE.yaml listed 35 contacts, but actual crm.db only had 13 PISCO contacts
+- **Root cause:** pisco-028 (2026-04-19) claimed to add 5 contacts to CRM, but they were never actually inserted into the database
+- **Full CRM resync completed:** Added 16 missing contacts (IDs 17-32) covering all hotel groups
+- **Contacts added:** Elise van der Berg, Amaia Garcia, Javier Navarro, Ana Bilbao, Thomas de Vries, Miriam García, Luis Sousa, Jon Martinez, Ana Martinez, Carmen Rodriguez, Carmen Sellés, Victor Presa, Marina Stocca, Pere Torrens, Arantxa Balson, Fernando Martins
+- **CRM now has 29 PISCO contacts** (was 13)
+- **3 missing outreach drafts identified:** Yolanda de la Plaza (Room Mate), Virginia Garrido (Barceló), Nélida Martín Garcés (Barceló) — warm contacts with no draft
+- **Created all 3 drafts** using property/group-specific angles:
+  - **Yolanda de la Plaza →** Room Mate boutique brand protection + Madrid HQ in-person opportunity
+  - **Virginia Garrido →** Barceló Canary Islands expansion + 280-hotel scale angle
+  - **Nélida Martín Garcés →** Barceló multi-brand complexity + group HR Director level conversation
+- **CRM updated:** All 16 new contacts inserted, activities logged for CRM sync + 3 outreach draft creations
+- **STATE.yaml updated:** pisco-030/031/032 added, metrics corrected (contacts_crm: 35→29, tier2: 17→20, tier3: 13→10)
+
+#### Outreach Drafts Created:
+| File | Contact | Angle |
+|------|---------|--------|
+| `outreach-yolanda-de-la-plaza-room-mate.md` | Yolanda de la Plaza, Room Mate | Boutique brand protection + Madrid in-person |
+| `outreach-virginia-garrido-barcelo-hotels.md` | Virginia Garrido, Barceló | Canary Islands expansion + 280-hotel scale |
+| `outreach-nelida-martin-garces-barcelo.md` | Nélida Martín Garcés, Barceló | Multi-brand complexity + group HR |
+
+#### CRM Updates (14:07 UTC):
+- **16 new contacts added** (IDs 17-32) — all hotel group contacts from STATE.yaml missing in CRM
+- **New activities logged:**
+  - CRM sync (ID 99) — full reconciliation
+  - outreach_draft_created × 3 (contact IDs 5, 10, 11)
+- **CRM total:** 13 → 29 PISCO contacts
+
+#### State Updates (14:07 UTC):
+- `STATE.yaml` updated: timestamp → 2026-04-20T14:07:00Z
+- `metrics.contacts_crm`: 35 → 29 (corrected)
+- `metrics.pipeline_tier2_warm_draft_ready`: 17 → 20 (+3 new drafts)
+- `metrics.pipeline_tier3_warm_no_draft`: 13 → 10 (-3 moved to tier2)
+- `pisco-030/031/032` added to tasks and completed sections
+- `pisco-028` note updated to flag the original CRM miss
+
+#### Jordan — Action Required:
+1. **Send to Yolanda de la Plaza** — verify email via LinkedIn (linkedin.com/in/yolanda-delaplaza) — Room Mate, Madrid HQ in-person possible
+2. **Send to Virginia Garrido** — verify email via LinkedIn (linkedin.com/in/virginiagarrido) — Barceló property-level
+3. **Send to Nélida Martín Garcés** — verify email via LinkedIn (linkedin.com/in/nélida-martín-garcés-86b46598) — Barceló property-level
+- Note: Also targeting Mª Carmen Oliver Molina (Barceló corporate HR Director) — coordinate if corporate conversation happens first
+
+#### ⚠️ CRM Alert — Data Integrity Issue:
+- pisco-028 (2026-04-19) claimed CRM had 34 contacts — actual database only had 13
+- Root cause: CRM writes from pisco-028 appeared to succeed in logs but records were never committed
+- All 16 contacts added today. CRM is now the source of truth at 29 contacts
+- **Action:** Jordan should periodically verify CRM count matches STATE.yaml
+
+---
+
+## Metrics (14:07 UTC)
+| Metric | Before | After | Change |
+|--------|--------|-------|--------|
+| contacts_crm | 35 (wrong) | 29 | corrected |
+| pipeline_tier2_warm_draft_ready | 17 | 20 | +3 |
+| pipeline_tier3_warm_no_draft | 13 | 10 | -3 |
+
+---
+
+*Log updated: 2026-04-20 14:07 UTC by PISCO Agent (Axton)*
+
+---
+
 # PISCO Daily Log — 2026-04-19
 
 ## Date: Sunday, April 19, 2026 — 14:07 UTC

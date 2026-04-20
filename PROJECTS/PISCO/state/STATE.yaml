@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-20T02:07:00Z
+updated: 2026-04-20T14:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -210,6 +210,33 @@ tasks:
     output: PROJECTS/PISCO/outreach-marina-stocca-ihg-barcelona.md
     note: "New hotel group (IHG) added. First IHG contact. LinkedIn profile direct. Email confidence LOW — verify via LinkedIn first."
 
+  - id: pisco-030
+    title: Create outreach for Yolanda de la Plaza (Room Mate)
+    status: completed
+    owner: axton
+    due: null
+    completed: 2026-04-20
+    output: PROJECTS/PISCO/outreach-yolanda-de-la-plaza-room-mate.md
+    note: "CRM sync found contact without outreach draft. Room Mate boutique brand protection angle. Madrid HQ in-person opportunity. LinkedIn: linkedin.com/in/yolanda-delaplaza. Jordan to send — verify email via LinkedIn first."
+
+  - id: pisco-031
+    title: Create outreach for Virginia Garrido (Barceló Hotels)
+    status: completed
+    owner: axton
+    due: null
+    completed: 2026-04-20
+    output: PROJECTS/PISCO/outreach-virginia-garrido-barcelo-hotels.md
+    note: "CRM sync found contact without outreach draft. Barcelo scale + Canary Islands expansion angle. LinkedIn: linkedin.com/in/virginiagarrido. Jordan to send — verify email via LinkedIn first."
+
+  - id: pisco-032
+    title: Create outreach for Nélida Martín Garcés (Barceló Hotel Group)
+    status: completed
+    owner: axton
+    due: null
+    completed: 2026-04-20
+    output: PROJECTS/PISCO/outreach-nelida-martin-garces-barcelo.md
+    note: "CRM sync found contact without outreach draft. Barcelo multi-brand complexity + group expansion angle. LinkedIn: linkedin.com/in/nélida-martín-garcés-86b46598. Jordan to send — verify email via LinkedIn first."
+
   - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Ana Martinez (NH Barcelona Gran Via) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Carmen Sellés (Melia Benidorm) — draft ready, verify email via LinkedIn first"
@@ -313,14 +340,15 @@ contacts:
 # Metrics
 metrics:
   prospects_identified: 257
-  contacts_crm: 35
+  contacts_crm: 29
   contacts_reached: 6
   responses: 1
   meetings: 0
   clients: 0
   pipeline_tier1_hot: 1
-  pipeline_tier2_warm_draft_ready: 17
-  pipeline_tier3_warm_no_draft: 13
+  pipeline_tier2_warm_draft_ready: 20
+  pipeline_tier3_warm_no_draft: 10
+  note: "2026-04-20: CRM sync fixed — found 29 actual contacts (was claiming 35). 16 missing contacts added. 3 outreach drafts created (Yolanda de la Plaza/Room Mate, Virginia Garrido/Barcelo, Nelida Martin Garces/Barcelo). Tier3 decreased by 3."
 
 # Completed
 completed:
@@ -390,4 +418,16 @@ completed:
   - id: pisco-028
     completed: 2026-04-19
     output: crm.db contacts table
-    note: "Added 5 missing contacts: Dohun Kim, Pere Torrens, Arantxa Balson, Fernando Martins, Mª Carmen Oliver Molina. CRM: 29→34."
+    note: "Added 5 missing contacts: Dohun Kim, Pere Torrens, Arantxa Balson, Fernando Martins, Mª Carmen Oliver Molina. CRM: 29→34. NOTE: subsequent CRM audit found these were NOT in actual crm.db — full resync done 2026-04-20."
+  - id: pisco-030
+    completed: 2026-04-20
+    output: outreach-yolanda-de-la-plaza-room-mate.md
+    note: "CRM sync found contact without outreach draft. Room Mate boutique brand angle. Jordan to send — verify email via LinkedIn."
+  - id: pisco-031
+    completed: 2026-04-20
+    output: outreach-virginia-garrido-barcelo-hotels.md
+    note: "CRM sync found contact without outreach draft. Barcelo scale + Canary Islands expansion angle. Jordan to send — verify email via LinkedIn."
+  - id: pisco-032
+    completed: 2026-04-20
+    output: outreach-nelida-martin-garces-barcelo.md
+    note: "CRM sync found contact without outreach draft. Barcelo multi-brand complexity angle. Jordan to send — verify email via LinkedIn."
