@@ -1,0 +1,146 @@
+{
+  "githubTrending": [
+    {
+      "name": "LionelBla/Monolith",
+      "desc": "No description",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/LionelBla/Monolith"
+    },
+    {
+      "name": "v8integra/UnrealParadise",
+      "desc": "No description",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/v8integra/UnrealParadise"
+    },
+    {
+      "name": "awais-hassan9/auction-website-backend",
+      "desc": "No description",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/awais-hassan9/auction-website-backend"
+    },
+    {
+      "name": "JLosada-Dev/frontend-guayacanes",
+      "desc": "No description",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/JLosada-Dev/frontend-guayacanes"
+    },
+    {
+      "name": "minagocorporation-ux/Dsgghjfghdf",
+      "desc": "No description",
+      "stars": 2,
+      "lang": null,
+      "url": "https://github.com/minagocorporation-ux/Dsgghjfghdf"
+    },
+    {
+      "name": "zhanghaichao520/zhanghaichao520",
+      "desc": "No description",
+      "stars": 0,
+      "lang": "Python",
+      "url": "https://github.com/zhanghaichao520/zhanghaichao520"
+    },
+    {
+      "name": "Megazone-Final/airline-eks",
+      "desc": "No description",
+      "stars": 0,
+      "lang": "Go Template",
+      "url": "https://github.com/Megazone-Final/airline-eks"
+    },
+    {
+      "name": "cristianogodoi1986/CONTROLE-DE-SITES---FOCO",
+      "desc": "Script automatizado para **bloqueio e gerenciamento de sites distrativos** diretamente no Windows, sem necessidade de softwares adicionais.",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/cristianogodoi1986/CONTROLE-DE-SITES---FOCO"
+    },
+    {
+      "name": "alexcastelan1223-hash/Beartrap",
+      "desc": "Bazar store",
+      "stars": 0,
+      "lang": "HTML",
+      "url": "https://github.com/alexcastelan1223-hash/Beartrap"
+    },
+    {
+      "name": "dotnet/android",
+      "desc": ".NET for Android provides open-source bindings of the Android SDK for use with .NET managed languages such as C#",
+      "stars": 2112,
+      "lang": "C#",
+      "url": "https://github.com/dotnet/android"
+    },
+    {
+      "name": "lilith/weaver",
+      "desc": "No description",
+      "stars": 0,
+      "lang": "TypeScript",
+      "url": "https://github.com/lilith/weaver"
+    },
+    {
+      "name": "WenyuChiou/research-hub",
+      "desc": "Research Hub: AI-powered academic literature pipeline — fetch papers from Zotero, build knowledge graphs, generate synthesis reports",
+      "stars": 3,
+      "lang": "Python",
+      "url": "https://github.com/WenyuChiou/research-hub"
+    },
+    {
+      "name": "stefanpejcic/heimdall",
+      "desc": "Monitor domain WHOIS, SSL & Uptime with GitHub Actions 🕒",
+      "stars": 5,
+      "lang": "HTML",
+      "url": "https://github.com/stefanpejcic/heimdall"
+    },
+    {
+      "name": "KaliSali/pc-retter-offers-catalog_v2",
+      "desc": "No description",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/KaliSali/pc-retter-offers-catalog_v2"
+    },
+    {
+      "name": "MRnigth/frostedsmp-datat",
+      "desc": "No description",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/MRnigth/frostedsmp-datat"
+    },
+    {
+      "name": "updata2/taoanhfree",
+      "desc": "No description",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/updata2/taoanhfree"
+    },
+    {
+      "name": "takai/htd",
+      "desc": "Headless To-Do (htd) is a headless task management system that enables both AI agents and CLI users to operate a structured workflow.",
+      "stars": 0,
+      "lang": "Go",
+      "url": "https://github.com/takai/htd"
+    },
+    {
+      "name": "IbaiPerez/TFG-source",
+      "desc": "No description",
+      "stars": 0,
+      "lang": "GDScript",
+      "url": "https://github.com/IbaiPerez/TFG-source"
+    },
+    {
+      "name": "lltv28/plan-demo-v2",
+      "desc": "Interactive demo v2 with quiz flow, pinned-frame chat UX, and plan modal",
+      "stars": 0,
+      "lang": null,
+      "url": "https://github.com/lltv28/plan-demo-v2"
+    },
+    {
+      "name": "llanerasp/llm-agent-mesh",
+      "desc": " Agente conversacional basado en LLM. Microservicios Node/TypeScript desplegados    ▎ en Kubernetes con service mesh (Linkerd/Istio), tracing distribuido",
+      "stars": 0,
+      "lang": "TypeScript",
+      "url": "https://github.com/llanerasp/llm-agent-mesh"
+    }
+  ],
+  "hackerNews": [],
+  "timestamp": "2026-04-20T21:50:00.176Z"
+}
