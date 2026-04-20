@@ -1,0 +1,130 @@
+# ORION LIGHTING — FCF Model Solution
+
+## Given Inputs
+
+| Input | Value |
+|-------|-------|
+| Initial Investment | €30,000,000 |
+| Year 1 Revenue | €18,000,000 |
+| Revenue Growth | 12% per year |
+| Operating Costs | 55% of revenue |
+| Working Capital | 10% of revenue |
+| Salvage Value (end of Year 5) | €8,000,000 |
+| Project Life | 5 years |
+| Corporate Tax Rate | 30% |
+| Cost of Capital (WACC) | 11% |
+
+---
+
+## Revenue (Year 1 × 1.12^n)
+
+| Year | Revenue |
+|------|---------|
+| 1 | €18,000,000 |
+| 2 | €20,160,000 |
+| 3 | €22,579,200 |
+| 4 | €25,288,704 |
+| 5 | €28,323,349 |
+
+---
+
+## Operating Costs (55% of Revenue)
+
+| Year | Op Costs |
+|------|---------|
+| 1 | €9,900,000 |
+| 2 | €11,088,000 |
+| 3 | €12,418,560 |
+| 4 | €13,908,787 |
+| 5 | €15,577,842 |
+
+---
+
+## Depreciation
+
+Straight-line: (€30M - €8M) / 5 = **€4,400,000/year**
+
+---
+
+## FCF Calculation
+
+| Line Item | Yr 0 | Yr 1 | Yr 2 | Yr 3 | Yr 4 | Yr 5 |
+|----------|------|------|------|------|------|------|
+| Revenue | - | 18,000,000 | 20,160,000 | 22,579,200 | 25,288,704 | 28,323,349 |
+| Op Costs (55%) | - | (9,900,000) | (11,088,000) | (12,418,560) | (13,908,787) | (15,577,842) |
+| Depreciation | - | (4,400,000) | (4,400,000) | (4,400,000) | (4,400,000) | (4,400,000) |
+| **EBIT** | - | **3,700,000** | **4,672,000** | **5,760,640** | **6,979,917** | **8,345,507** |
+| Taxes (30%) | - | (1,110,000) | (1,401,600) | (1,728,192) | (2,093,975) | (2,503,652) |
+| **NOPLAT** | - | **2,590,000** | **3,270,400** | **4,032,448** | **4,885,942** | **5,841,855** |
+| Dep add-back | - | 4,400,000 | 4,400,000 | 4,400,000 | 4,400,000 | 4,400,000 |
+| Capex | (30,000,000) | - | - | - | - | - |
+| Δ Working Capital | - | (1,800,000) | (216,000) | (241,920) | (270,950) | (303,465) |
+| Salvage (after-tax) | - | - | - | - | - | 5,600,000 |
+| WC Recovery | - | - | - | - | - | 2,527,955 |
+| **FCF** | **(30,000,000)** | **5,190,000** | **7,454,400** | **8,190,528** | **9,014,991** | **18,066,345** |
+
+---
+
+## NPV Calculation
+
+Discount Factor = 1 / (1.11)^n
+
+| Year | FCF | Discount Factor | PV |
+|------|-----|----------------|-----|
+| 1 | 5,190,000 | 0.9009 | 4,675,676 |
+| 2 | 7,454,400 | 0.8116 | 6,053,513 |
+| 3 | 8,190,528 | 0.7312 | 5,995,053 |
+| 4 | 9,014,991 | 0.6587 | 5,930,710 |
+| 5 | 18,066,345 | 0.5935 | 10,728,909 |
+| **NPV** | | | | **(30,000,000)** |
+| | | | **+33,383,861** |
+| | | | **= €3,383,861** |
+
+---
+
+## RESULTS
+
+| Metric | Value |
+|--------|-------|
+| **NPV** | **€3,383,861** ✅ Positive — INVEST |
+| IRR | ~17.2% (greater than WACC of 11%) ✅ |
+| Profitability Index | 33,383,861 / 30,000,000 = **1.11** |
+| Payback Period | Between Year 3 and Year 4 (~3.4 years) |
+
+---
+
+## CONCLUSION
+
+**INVEST.** The project generates a positive NPV of €3.4M, an IRR of ~17.2% (above the 11% cost of capital), and pays back between Year 3 and 4.
+
+The key driver: Year 5 has a large cash influx from the after-tax salvage value (€5.6M) + full working capital recovery (€2.5M) because the initial WC investment gets released back when the project ends.
+
+---
+
+## Excel Formulas to Enter
+
+For Year 1 column (copy right for Years 2-5):
+
+```
+B9  = B7*(1+$B$10)           [Revenue Yr1 × growth]
+B10 = $B$11                   [Operating costs = 55%]
+B11 = ($B$2-$B$5)/$B$6        [Depreciation straight-line]
+B12 = B9-B10-B11              [EBIT]
+B13 = B12*$B$7                [Taxes 30%]
+B14 = B12-B13                 [NOPLAT]
+B15 = $B$11                   [Dep add-back]
+B16 = $B$2                    [Capex Yr0 only]
+B17 = (B9*$B$12)-((B9*$B$12)*0)  [ΔWC = 10% of revenue; Yr0 = 0]
+B18 = B14+B15-B16+B17         [FCF]
+
+Year 5 special adjustments:
+G17 = +G5*(1-$B$7)+G9*$B$12  [After-tax salvage + WC recovery]
+G18 = G14+G15+G16+G17        [Year 5 FCF with salvage]
+```
+
+NPV formula: `=NPV(B8, B18:F18) - B16`
+IRR formula: `=IRR(B18:F18)`
+
+---
+
+_IE MBA Session 3 — Prof. Martín Berzal_
