@@ -1237,3 +1237,19 @@ Added 5 missing hotel group contacts to `crm.db` (contacts table). These were id
 
 *Log updated: 2026-04-19 20:20 UTC by PISCO Agent (Axton)*
 - Mon Apr 20 05:30:04 UTC 2026: Auto task generator ran
+
+---
+## 2026-04-20 — 08:07 UTC (PISCO Agent Check-in)
+
+**Task executed:** pisco-023 — Jon Martinez (NH Collection Victoria San Sebastián)
+
+**What I did:**
+- Reviewed outreach queue. Noted pisco-023 had no LinkedIn URL in CRM or STATE
+- Searched and found Jon Martinez on LinkedIn (es.linkedin.com/in/jon-martinez-961b3868) — Bilbao area, role not confirmed as San Sebastián HR Director
+- Updated CRM with LinkedIn URL + verification note
+- Updated STATE.yaml: pisco-023 marked completed, owner changed from jordan → axton, LinkedIn discrepancy noted
+
+**CRM update:** Jon Martinez contact — linkedin field populated, notes flagged verification needed
+
+**Flag for Jordan:**
+⚠️ The LinkedIn found shows Jon Martinez in Bilbao area — may not be the HR Director at NH Collection Victoria San Sebastián. Before sending outreach-jon-martinez-nh-san-sebastian.md, verify via LinkedIn that es.linkedin.com/in/jon-martinez-961b3868 is the right contact for the San Sebastián property.
