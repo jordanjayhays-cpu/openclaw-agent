@@ -1333,3 +1333,68 @@ Prelaunch urgency landing page — built because:
 - **Form backend:** Landing page form is wired to placeholder. Needs real Formspree/backend endpoint.
 - **Launch readiness:** 4 days out — this is the critical push window for waitlist captures and shop confirmations.
 
+
+## 2026-04-20 (Monday — 18:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 18:35 UTC | 4 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (still not configured by Jordan)
+- Notion unavailable → check-in complete, no new deliverable (earlier 14:35 run already built waitlist-dashboard.html)
+
+### Notion Status (unchanged — Jordan needs to act)
+
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md`
+- `notion-setup-walkthrough.md` has step-by-step instructions
+
+### Launch Status (4 days — April 24)
+- [x] Landing pages — 5 variants ✅
+- [x] Waitlist dashboard — waitlist-dashboard.html ✅ (built 14:35 UTC today)
+- [x] Studio outreach — v1 + v2 ✅
+- [x] IG visual brief ✅
+- [x] Launch emails — drafted ✅ (needs Jordan approval before Apr 21 send)
+- [x] Email setup guide ✅
+- [x] Product Hunt submission ✅
+- [x] Analytics command center ✅
+- [x] Pitch deck — pitch-deck.html ✅
+- [ ] Jordan: purchase domain
+- [ ] Jordan: wire Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: set up email platform (Email 1 TOMORROW Apr 21)
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: create Notion integration + give parent page ID
+
+### ⚠️ CRITICAL: Email 1 goes out TOMORROW (Apr 21)
+- `launch-emails.md` needs Jordan's approval TODAY
+- Email platform (ConvertKit recommended) must be set up TONIGHT
+- `email-setup-guide.md` has instructions — ConvertKit: free, 5-min setup
+
+### Blockers (Jordan to resolve — sorted by urgency)
+1. **Email platform** — not set up (Email 1 TOMORROW) ← CRITICAL
+2. **Formspree** — not wired (waitlist form not capturing emails)
+3. **Domain** — not purchased
+4. **Pricing sign-off** — €49/€89 needs Jordan lock-in
+5. **Notion API** — integration + parent page ID
+
+### Notion Databases — Ready to Build When API Available
+
+When Jordan sets up the Notion integration, I have all 3 schemas ready:
+1. **Shops DB** — studio tracking (Status, Location, Contact, Rate, Commission, Signed Date, Website)
+2. **Subscribers DB** — member tracking (Status, Email, Phone, Plan, Join Date, Cancellation Date, Source)
+3. **Bookings DB** — appointment tracking (Booking ID, Subscriber, Shop, Status, Request Date, Visit Date/Time, Shop/Subscriber notified flags)
+
+All schemas in `notion-db-schema.md` — just need Jordan's parent page ID.
+
+### Flagged for Jordan
+
+⚠️ **TOMORROW (Apr 21) — Email 1 goes out** — email platform must be set up TODAY
+⚠️ **Notion integration still not done** — 10 min setup, then Axton builds all 3 DBs automatically
+⚠️ `waitlist-dashboard.html` updated today at 14:35 UTC — use this to manually track subscribers
+⚠️ Founding member pricing closes Apr 26 — urgency is real, not manufactured
+
+---
+*Logged by Axton at 18:35 UTC*
