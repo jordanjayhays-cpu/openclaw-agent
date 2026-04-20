@@ -1,0 +1,13 @@
+{
+  "name": "idea-agent",
+  "version": "1.0.0",
+  "description": "Scrapes search data + generates app pitches",
+  "type": "module",
+  "scripts": {
+    "start": "node pipeline.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "playwright-core": "^1.59.1"
+  }
+}
