@@ -328,3 +328,27 @@
 - PISCO: Javier follow-up when ready
 - MASSAGE-PASS: Need landing page live for A/B test
 - PK MUSIC: First-week stream data pending review
+
+---
+
+## Run: 2026-04-20 19:22 UTC
+
+**Status:** All systems nominal
+
+### Experiment Status
+- EXP-001: Running. Javier follow-up due.
+- EXP-002: Pending. Landing page not live.
+- EXP-003: Ready for filming.
+- EXP-004: Release data pending review.
+- EXP-005: Awaiting Jordan ICP approval.
+
+### Actions Taken
+- Verified experiment files intact
+- Checked PISCO email tracking (no data yet)
+- MASSAGE-PASS variant B CTA created
+- Logged run to active-experiments.md
+
+### Notes
+- No blockers identified
+- PK MUSIC release timing on track
+- COMARE LinkedIn vs Email ready to launch pending approval
