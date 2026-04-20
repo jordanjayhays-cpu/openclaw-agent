@@ -1332,3 +1332,72 @@ Added 5 missing hotel group contacts to `crm.db` (contacts table). These were id
 
 **Flag for Jordan:**
 ⚠️ The LinkedIn found shows Jon Martinez in Bilbao area — may not be the HR Director at NH Collection Victoria San Sebastián. Before sending outreach-jon-martinez-nh-san-sebastian.md, verify via LinkedIn that es.linkedin.com/in/jon-martinez-961b3868 is the right contact for the San Sebastián property.
+
+---
+
+## Date: Monday, April 20, 2026 — 20:07 UTC (Evening Check-in)
+
+## Actions Taken (20:07 UTC)
+
+### Task Executed: pisco-033 — CRM Enrichment + LinkedIn Research
+- **Owner:** Axton (autonomous agent, cron-triggered)
+- **Status:** ✅ Complete
+
+#### What I Did:
+
+**1. CRM Audit:**
+- Found CRM had 32 contacts (not 29 as stated in state file). Fixed to 33 after adding 1 missing contact.
+- 14 warm/hot hotel prospects identified in CRM
+- Critical gap: 9 of 14 warm prospects had ZERO email AND zero LinkedIn data — no actionable outreach path
+
+**2. LinkedIn Research (via Felo AI):**
+- ✅ Found Lola Chamorro López: `https://es.linkedin.com/in/lolachamorrolopez` (Global Head of TA at Meliá)
+  - Note: As of Feb 2025, transitioned to Senior HR Manager at Centro de Operaciones Madrid
+- ⚠️ Jon Martinez: `https://es.linkedin.com/in/jon-martinez-961b3868` confirmed (Bilbao area, role still unclear)
+- ❌ Miriam García (NH Madrid Abascal) — LinkedIn not found (too many generic profiles)
+- ❌ Elise van der Berg (NH Amsterdam) — LinkedIn not found
+- ❌ Ana Martinez (NH Barcelona Gran Via) — LinkedIn not found
+- ❌ Thomas de Vries — NH Collection Krasnapolsky rebranded to Anantara Grand Hotel Krasnapolsky Amsterdam (hotel identity changed)
+
+**3. CRM Updates:**
+- ✅ Added: Lola Chamorro López (was missing from CRM entirely)
+- ✅ Added LinkedIn: Lola Chamorro López
+- ✅ Added pattern-guessed emails (NEED VERIFICATION):
+  - Ana Martinez: ana.martinez@nh-hotels.com
+  - Carmen Sellés: carmen.selles@melia.com
+  - Victor Presa: victor.presa@melia.com
+  - Patricia Jaén de la Vega: patricia.jaen@palladiumhotels.com
+- ✅ Updated LinkedIn: Jon Martinez
+
+**4. State File Updates:**
+- Fixed contacts_crm: 29 → 33
+- Added pisco-033 to completed list
+- Updated timestamp
+
+#### CRM Final State (20:07 UTC):
+- Total contacts: 33
+- Warm/Hot: 17 (14 hotel + 3 pharmacy)
+- With email: 10
+- With LinkedIn: 13
+
+### Critical Bottleneck Identified:
+
+**8 warm hotel prospects need email research before outreach can proceed:**
+1. Amaia Garcia (NH Pamplona)
+2. Ana Bilbao (NH Bilbao)
+3. Carmen Rodriguez (NH Sevilla)
+4. Elise van der Berg (NH Amsterdam)
+5. Javier Navarro (NH Zaragoza)
+6. Luis Sousa (Minor Hotels Portugal)
+7. Miriam García (NH Madrid Abascal)
+8. Thomas de Vries (NH Amsterdam)
+
+**Recommendation:** Jordan should verify emails via LinkedIn for Ana Martinez, Carmen Sellés, Victor Presa, and Patricia Jaén de la Vega (pattern-guessed emails already in CRM). The other 8 need dedicated research session.
+
+### Outreach-Ready Warm Prospects (ready to send, just need Jordan to send):
+1. Luis Zamora (Iberostar) — email confirmed
+2. Ana Martinez (NH Barcelona) — email in CRM (needs verify)
+3. Carmen Sellés (Melia Benidorm) — email in CRM (needs verify)
+4. Victor Presa (Melia Madrid Gran Via) — email in CRM (needs verify)
+5. Dohun Kim (South Korea/EPS) — Telegram/WhatsApp/email ready
+

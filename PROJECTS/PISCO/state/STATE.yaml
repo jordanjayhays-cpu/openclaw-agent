@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-20T14:07:00Z
+updated: 2026-04-20T20:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -340,7 +340,7 @@ contacts:
 # Metrics
 metrics:
   prospects_identified: 257
-  contacts_crm: 29
+  contacts_crm: 33
   contacts_reached: 6
   responses: 1
   meetings: 0
@@ -348,7 +348,8 @@ metrics:
   pipeline_tier1_hot: 1
   pipeline_tier2_warm_draft_ready: 20
   pipeline_tier3_warm_no_draft: 10
-  note: "2026-04-20: CRM sync fixed — found 29 actual contacts (was claiming 35). 16 missing contacts added. 3 outreach drafts created (Yolanda de la Plaza/Room Mate, Virginia Garrido/Barcelo, Nelida Martin Garces/Barcelo). Tier3 decreased by 3."
+  note: "2026-04-20 evening: CRM audit + enrichment. Added Lola Chamorro López (LinkedIn found). Added pattern-guessed emails for 4 warm prospects (Ana Martinez, Carmen Sellés, Victor Presa, Patricia Jaén de la Vega). Fixed Jon Martinez LinkedIn. CRM now 33 contacts (was 29). 8 warm prospects still missing email — primary bottleneck for outreach."
+  last_updated: "2026-04-20T20:07:00Z"
 
 # Completed
 completed:
@@ -431,3 +432,7 @@ completed:
     completed: 2026-04-20
     output: outreach-nelida-martin-garces-barcelo.md
     note: "CRM sync found contact without outreach draft. Barcelo multi-brand complexity angle. Jordan to send — verify email via LinkedIn."
+  - id: pisco-033
+    completed: 2026-04-20
+    output: crm.db contacts table + LinkedIn research
+    note: "CRM enrichment session. Added Lola Chamorro López (LinkedIn: es.linkedin.com/in/lolachamorrolopez). Added pattern-guessed emails to 4 warm prospects. Fixed Jon Martinez LinkedIn. 8 warm prospects still need email research — primary outreach bottleneck."
