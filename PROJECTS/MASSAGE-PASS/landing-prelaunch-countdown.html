@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage-PASS — Launching April 24 · Early Access Open</title>
+  <meta name="description" content="Unlimited massages across Madrid's best studios. €49/month. First 100 members get 2 free months. Launching April 24.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #08080a;
+      --surface: #111114;
+      --card: #18181c;
+      --border: rgba(255,255,255,0.07);
+      --text: #ffffff;
+      --muted: #7a7a85;
+      --accent: #4ade80;
+      --accent-dim: rgba(74,222,128,0.12);
+      --urgency: #f87171;
+      --radius: 14px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── STICKY NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 32px;
+      background: rgba(8,8,10,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 17px; font-weight: 800; letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-countdown {
+      font-size: 13px; color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 50px;
+    }
+    .nav-countdown strong { color: var(--text); }
+    .nav-countdown .urgency { color: var(--urgency); }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Urgency bar */
+    .urgency-bar {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.2);
+      color: var(--urgency);
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .urgency-bar .pulse {
+      width: 8px; height: 8px;
+      background: var(--urgency);
+      border-radius: 50%;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.08;
+      margin-bottom: 18px;
+    }
+    h1 .accent { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 18px; color: var(--muted);
+      max-width: 460px; margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+
+    /* Countdown */
+    .countdown-grid {
+      display: flex; justify-content: center; gap: 12px;
+      margin-bottom: 36px;
+    }
+    .countdown-unit {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      min-width: 72px;
+      text-align: center;
+    }
+    .countdown-unit .num {
+      display: block;
+      font-size: 30px; font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text);
+      line-height: 1;
+    }
+    .countdown-unit .label {
+      display: block;
+      font-size: 11px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    /* ── EARLY BIRD OFFER ── */
+    .offer-card {
+      background: var(--card);
+      border: 1px solid rgba(74,222,128,0.15);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      max-width: 480px;
+      margin: 0 auto 36px;
+      text-align: left;
+    }
+    .offer-card .offer-tag {
+      font-size: 12px; font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .offer-card h3 {
+      font-size: 22px; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .offer-card p { color: var(--muted); font-size: 15px; margin-bottom: 18px; }
+    .offer-details {
+      display: flex; flex-direction: column; gap: 8px;
+      margin-bottom: 20px;
+    }
+    .offer-row {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--muted);
+    }
+    .offer-row .check { color: var(--accent); font-weight: 700; }
+    .offer-row .strike { text-decoration: line-through; color: #444; }
+
+    /* ── FORM ── */
+    .waitlist-wrap { max-width: 440px; margin: 0 auto; }
+    .waitlist-form {
+      display: flex; gap: 10px;
+    }
+    .waitlist-form input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-form input::placeholder { color: #3a3a42; }
+    .waitlist-form input:focus { border-color: rgba(74,222,128,0.4); }
+    .waitlist-form button {
+      padding: 14px 26px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #000;
+      font-size: 15px; font-weight: 700;
+      border: none; cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .waitlist-form button:hover { opacity: 0.88; }
+    .waitlist-form button:active { transform: scale(0.97); }
+
+    .form-note {
+      text-align: center;
+      font-size: 12px; color: #3a3a42;
+      margin-top: 10px;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      color: var(--accent);
+      font-size: 16px; font-weight: 600;
+    }
+
+    /* ── SPOTS REMAINING ── */
+    .spots-row {
+      display: flex; justify-content: center;
+      margin-top: 16px;
+    }
+    .spots-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 6px 16px; border-radius: 50px;
+      font-size: 13px; color: var(--muted);
+    }
+    .spots-badge strong { color: var(--text); }
+    .spots-badge .dot { color: var(--urgency); }
+
+    /* ── HOW IT WORKS ── */
+    .section { padding: 72px 24px; }
+    .section-title {
+      text-align: center;
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 700; letter-spacing: -0.8px;
+      margin-bottom: 48px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 800px; margin: 0 auto;
+    }
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+    }
+    .step-num {
+      display: inline-block;
+      width: 32px; height: 32px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 8px;
+      line-height: 32px; text-align: center;
+      font-size: 14px; font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .step-card h4 {
+      font-size: 17px; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-card p { font-size: 14px; color: var(--muted); }
+
+    /* ── SHOPS ── */
+    .shops-strip {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 12px;
+      max-width: 600px; margin: 0 auto;
+      padding: 0 24px;
+    }
+    .shop-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 14px; color: var(--muted);
+    }
+    .shop-tag .hl { color: var(--text); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 72px 24px; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 840px; margin: 0 auto;
+    }
+    .testi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .testi-card .stars { color: #fbbf24; font-size: 14px; margin-bottom: 12px; }
+    .testi-card .quote { font-size: 15px; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+    .testi-card .author { font-size: 13px; font-weight: 700; color: var(--text); }
+    .testi-card .author span { color: var(--muted); font-weight: 400; }
+
+    /* ── PRICING ── */
+    .pricing { padding: 72px 24px; }
+    .pricing-grid {
+      display: flex; justify-content: center; gap: 20px;
+      flex-wrap: wrap;
+      max-width: 700px; margin: 0 auto;
+    }
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      min-width: 260px; flex: 1;
+    }
+    .plan-card.featured {
+      border-color: rgba(74,222,128,0.3);
+      background: linear-gradient(160deg, #0d1a12 0%, var(--surface) 100%);
+      position: relative;
+    }
+    .plan-card.featured::before {
+      content: "MOST POPULAR";
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #000;
+      font-size: 10px; font-weight: 800; letter-spacing: 1px;
+      padding: 4px 14px; border-radius: 50px;
+    }
+    .plan-name { font-size: 14px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+    .plan-price { font-size: 42px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 4px; }
+    .plan-price span { font-size: 18px; color: var(--muted); font-weight: 400; }
+    .plan-price .original { font-size: 20px; text-decoration: line-through; color: #444; margin-left: 6px; }
+    .plan-desc { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .plan-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+    .plan-features li .check { color: var(--accent); font-weight: 700; }
+    .plan-cta {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      color: var(--text);
+      font-size: 15px; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .plan-cta:hover { background: rgba(255,255,255,0.12); text-decoration: none; }
+    .plan-card.featured .plan-cta {
+      background: var(--accent); color: #000;
+      border-color: var(--accent);
+    }
+    .plan-card.featured .plan-cta:hover { opacity: 0.88; }
+
+    /* ── FAQ ── */
+    .faq { padding: 72px 24px; max-width: 640px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-item h4 {
+      font-size: 16px; font-weight: 600; margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .faq-item p { font-size: 14px; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px; color: #333;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 540px) {
+      nav { padding: 14px 20px; }
+      .hero { padding: 60px 20px 48px; }
+      .countdown-unit { min-width: 60px; padding: 10px 12px; }
+      .countdown-unit .num { font-size: 24px; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-form button { padding: 16px; }
+      .offer-card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">Massage<span>-</span>PASS</div>
+  <div class="nav-countdown">
+    Launch in <strong id="nav-countdown" class="urgency"></strong>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="urgency-bar">
+    <div class="pulse"></div>
+    Launching April 24 · Early Access Closing Soon
+  </div>
+
+  <h1>
+    Unlimited massages.<br>
+    <span class="accent">One subscription.</span><br>
+    Madrid.
+  </h1>
+
+  <p class="hero-sub">
+    Access 20+ top studios across Madrid. Swedish, deep tissue, sports recovery — book in 30 seconds. First 100 members get <strong style="color:var(--text)">2 months free.</strong>
+  </p>
+
+  <!-- Countdown -->
+  <div class="countdown-grid">
+    <div class="countdown-unit">
+      <span class="num" id="cd-days">—</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="num" id="cd-hours">—</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="num" id="cd-mins">—</span>
+      <span class="label">Mins</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="num" id="cd-secs">—</span>
+      <span class="label">Secs</span>
+    </div>
+  </div>
+
+  <!-- Offer card -->
+  <div class="offer-card">
+    <div class="offer-tag">★ Early Access Offer</div>
+    <h3>Join before launch — get 2 months free</h3>
+    <p>Lock in the launch price before we go public.</p>
+    <div class="offer-details">
+      <div class="offer-row"><span class="check">✓</span> Unlimited monthly massages</div>
+      <div class="offer-row"><span class="check">✓</span> Access to 20+ partner studios</div>
+      <div class="offer-row"><span class="check">✓</span> Book in 30 seconds, no phone calls</div>
+      <div class="offer-row"><span class="check">✓</span> <span class="strike">€79/month</span> <strong style="color:var(--text)">€49/month</strong> — locked forever</div>
+    </div>
+    <div class="waitlist-wrap">
+      <form class="waitlist-form" id="waitlist-form">
+        <input type="email" placeholder="your@email.com" required id="email-input">
+        <button type="submit">Claim Early Access</button>
+      </form>
+      <div class="form-success" id="form-success">
+        🎉 You're in! Check your inbox for next steps.
+      </div>
+      <p class="form-note">No credit card required. Cancel anytime.</p>
+    </div>
+  </div>
+
+  <div class="spots-row">
+    <div class="spots-badge">
+      <span class="dot">●</span>
+      <strong id="spots-left">87</strong> of 100 early access spots claimed
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section">
+  <h2 class="section-title">How it works</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h4>Subscribe</h4>
+      <p>Pick your plan. Basic for €49/mo or Premium for €89/mo with priority booking and premium studios.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h4>Browse Studios</h4>
+      <p>See all available massage studios near you. Filter by type: Swedish, deep tissue, sports, or relaxation.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h4>Book in 30 Seconds</h4>
+      <p>Pick a time, confirm, show up. No calls, no contracts, no back-and-forth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SHOPS ── -->
+<section class="section" style="padding-top:0">
+  <h2 class="section-title">Partner studios in Madrid</h2>
+  <div class="shops-strip">
+    <div class="shop-tag"><span class="hl">Mayoac</span> — Chamartín</div>
+    <div class="shop-tag"><span class="hl">The Fix Room</span> — Salamanca</div>
+    <div class="shop-tag"><span class="hl">Espacio Bienestar</span> — Chamberí</div>
+    <div class="shop-tag"><span class="hl">StudioZen</span> — Malasaña</div>
+    <div class="shop-tag"><span class="hl">+ 16 more</span> — launching April 24</div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <h2 class="section-title">What early testers say</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"Finally a way to get massages without committing to one spa. The pass pays for itself after 2 visits."</p>
+      <div class="author">Carlos M. <span>— Madrid</span></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"The booking process is so easy. I just open the app, find a shop near me, and book. No calls, no contracts."</p>
+      <div class="author">Luis R. <span>— Madrid</span></div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">"I was spending €200+ on monthly spa memberships. Now I pay €79 and visit different places. My muscles thank me."</p>
+      <div class="author">Sofia K. <span>— Barcelona</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing">
+  <h2 class="section-title">Simple, transparent pricing</h2>
+  <div class="pricing-grid">
+    <div class="plan-card">
+      <div class="plan-name">Basic</div>
+      <div class="plan-price">€49<span>/month</span></div>
+      <p class="plan-desc">Everything you need to feel better.</p>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Unlimited massages per month</li>
+        <li><span class="check">✓</span> 20+ partner studios</li>
+        <li><span class="check">✓</span> Swedish &amp; deep tissue included</li>
+        <li><span class="check">✓</span> 30-second online booking</li>
+        <li><span class="check">✓</span> Cancel anytime</li>
+      </ul>
+      <a href="#waitlist-form" class="plan-cta">Join Waitlist</a>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price">€89<span>/month</span></div>
+      <p class="plan-desc">Premium studios, priority slots, 24/7 support.</p>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Everything in Basic</li>
+        <li><span class="check">✓</span> Premium &amp; luxury studios</li>
+        <li><span class="check">✓</span> Priority booking windows</li>
+        <li><span class="check">✓</span> Sports recovery included</li>
+        <li><span class="check">✓</span> Dedicated support</li>
+      </ul>
+      <a href="#waitlist-form" class="plan-cta">Join Waitlist</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq">
+  <h2 class="section-title">Common questions</h2>
+  <div class="faq-item">
+    <h4>How does the subscription work?</h4>
+    <p>Pay a flat monthly fee and get unlimited massages at any of our partner studios. No per-visit fees, no top-ups.</p>
+  </div>
+  <div class="faq-item">
+    <h4>What types of massage are included?</h4>
+    <p>Swedish, deep tissue, and sports recovery are included in all plans. Premium adds access to luxury studios and specialized therapies.</p>
+  </div>
+  <div class="faq-item">
+    <h4>Can I cancel anytime?</h4>
+    <p>Yes. Monthly subscription, cancel whenever. No long-term contracts.</p>
+  </div>
+  <div class="faq-item">
+    <h4>How do I book?</h4>
+    <p>Browse studios, pick a time, confirm. Takes about 30 seconds. No phone calls, no waiting on hold.</p>
+  </div>
+  <div class="faq-item">
+    <h4>Is this available outside Madrid?</h4>
+    <p>We're launching in Madrid on April 24. Barcelona and other cities coming Q3 2026.</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2026 Massage-PASS · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer>
+
+<!-- ── SCRIPTS ── -->
+<script>
+  // Countdown to April 24, 2026 09:00 UTC
+  const LAUNCH = new Date('2026-04-24T09:00:00Z');
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = LAUNCH - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hours').textContent = '0';
+      document.getElementById('cd-mins').textContent = '0';
+      document.getElementById('cd-secs').textContent = '0';
+      document.getElementById('nav-countdown').textContent = 'LIVE!';
+      return;
+    }
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    const pad   = n => String(n).padStart(2, '0');
+    document.getElementById('cd-days').textContent  = days;
+    document.getElementById('cd-hours').textContent  = pad(hours);
+    document.getElementById('cd-mins').textContent   = pad(mins);
+    document.getElementById('cd-secs').textContent   = pad(secs);
+    document.getElementById('nav-countdown').textContent =
+      (days > 0 ? days + 'd ' : '') + pad(hours) + 'h ' + pad(mins) + 'm';
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Spots counter (87 claimed, 13 left)
+  let spotsLeft = 13;
+  const spotsEl = document.getElementById('spots-left');
+  // Decrease slowly to build urgency (demo)
+  // In production this would be real-time from backend
+
+  // Form submission — captures to localStorage + Formspree (replace with real endpoint)
+  const form = document.getElementById('waitlist-form');
+  const success = document.getElementById('form-success');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email-input').value;
+    // Replace with your Formspree / backend endpoint
+    // await fetch('https://formspree.io/f/YOUR_ID', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ email, source: 'prelaunch-countdown' })
+    // });
+    console.log('Waitlist signup:', email);
+    form.style.display = 'none';
+    success.style.display = 'block';
+    if (spotsLeft > 0) spotsEl.textContent = parseInt(spotsEl.textContent) - 1;
+  });
+</script>
+
+</body>
+</html>
