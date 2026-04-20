@@ -1,5 +1,57 @@
 # MASSAGE-PASS Daily Log
 
+## 2026-04-20 (Monday — 10:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 10:35 UTC | 4 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24, phase: prelaunch
+- Checked Notion API key → NOT SET (still not configured by Jordan)
+- Notion unavailable → drafted `landing-prelaunch-v3.html` (21KB)
+- Logged this entry
+
+### New Deliverable Created
+
+**`landing-prelaunch-v3.html`** (21KB — primary prelaunch landing page)
+Built from scratch, NOT derived from existing variants. Key improvements:
+- **Live countdown timer** in hero + nav bar (days/hours/mins/secs, ticking every second)
+- **Founding price lock-in framing** — €24.50/mo "for life" vs €49 standard, strong urgency
+- **Spots tracker** synced to localStorage (100 → decrements with each form submission)
+- **Stats strip** below hero: 100 founding spots, 2 studios confirmed, €24.50/mo rate
+- **How it works** — simplified 3-step (join → app → book)
+- **Pricing section** — featured founding plan + standard plan side-by-side
+- **Partner studios** section (Mayoac, The Fix Room, more joining)
+- **FAQ** — 5 questions covering cancel, studios, limits, founding spots, payment
+- **Bottom CTA** repeat with email capture
+- **Fully responsive** mobile layout
+- Pure HTML/CSS/JS — no external dependencies
+
+### Notion Status (unchanged — Jordan needs to act)
+
+- Still waiting on Jordan to:
+  1. Create Notion integration at https://notion.so/my-integrations → get API token
+  2. Create parent page in Notion → share with integration
+  3. Store token in `~/.config/notion/api_key` + give parent page ID
+- Until then: no database creation possible
+
+### Remaining Prelaunch Blockers
+
+| Blocker | Owner | Status |
+|---------|-------|--------|
+| Domain (massagepass.com) | Jordan | Needs purchase |
+| Formspree (form backend) | Jordan | Needs setup |
+| Email platform (launch comms) | Jordan | Needs setup |
+| Stripe (payments) | Jordan | Needs setup |
+| Notion API | Jordan | Needs config |
+| Calendly/booking | Jordan | Needs setup |
+
+### Recommendation
+Jordan should prioritize: (1) buy domain, (2) wire Formspree to this landing page, (3) set up Notion API. Everything else can follow after launch.
+
+---
+
 ## 2026-04-19 (Sunday — 10:35 UTC Check-in)
 
 **Agent:** MASSAGE-PASS Check-in (Axton)

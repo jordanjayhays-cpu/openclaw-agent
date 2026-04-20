@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage Pass — 4 Days to Launch. Founding Spots Still Open.</title>
+  <meta name="description" content="Madrid's first unlimited massage membership. €49/month. Launching April 24. Lock in founding member pricing before it's gone.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #161616;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --muted: #888888;
+      --subtle: #444444;
+      --accent: #4ade80;
+      --accent-dim: rgba(74,222,128,0.12);
+      --radius: 12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      z-index: 100;
+    }
+    .nav-logo { font-size: 17px; font-weight: 700; letter-spacing: -0.4px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-countdown { font-size: 13px; color: var(--muted); }
+    .nav-countdown strong { color: var(--text); }
+    .nav-cta {
+      background: var(--text);
+      color: var(--bg);
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 90px 24px 72px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Countdown pills */
+    .countdown-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .countdown-unit {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      min-width: 72px;
+      text-align: center;
+    }
+    .countdown-unit .num {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -1px;
+      color: var(--text);
+    }
+    .countdown-unit .label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* Launch badge */
+    .launch-badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.25);
+      color: var(--accent);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 56px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    h1 .accent { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+
+    /* Spots bar */
+    .spots-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .spots-bar strong { color: var(--text); }
+    .spots-bar .dot { color: var(--accent); font-size: 10px; }
+
+    /* Form */
+    .waitlist-wrap { max-width: 440px; margin: 0 auto; }
+    .waitlist-form { display: flex; gap: 10px; }
+    .waitlist-form input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-form input:focus { border-color: rgba(255,255,255,0.4); }
+    .waitlist-form input::placeholder { color: #444; }
+    .waitlist-form button {
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .waitlist-form button:hover { opacity: 0.88; }
+    .success-msg {
+      display: none;
+      color: var(--accent);
+      margin-top: 14px;
+      font-size: 15px;
+      text-align: center;
+    }
+    .form-note {
+      font-size: 12px;
+      color: var(--subtle);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      padding: 48px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0 24px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); }
+
+    /* ── HOW IT WORKS ── */
+    .how { padding: 80px 24px; max-width: 900px; margin: 0 auto; }
+    .section-label {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 48px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .step {
+      padding: 28px 32px;
+      border-right: 1px solid var(--border);
+      text-align: left;
+    }
+    .step:last-child { border-right: none; }
+    .step-num {
+      font-size: 36px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.05);
+      line-height: 1;
+      margin-bottom: 14px;
+      letter-spacing: -1px;
+    }
+    .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 80px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .pricing-inner { max-width: 720px; margin: 0 auto; }
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .plan {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      width: 300px;
+      text-align: left;
+      position: relative;
+    }
+    .plan.featured {
+      border-color: rgba(74,222,128,0.3);
+      background: #0c1911;
+    }
+    .plan.featured::before {
+      content: '✓ FOUNDING PRICE';
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #000;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 4px 14px;
+      border-radius: 50px;
+    }
+    .plan h3 { font-size: 16px; font-weight: 600; margin-bottom: 14px; color: var(--muted); }
+    .plan.featured h3 { color: var(--text); }
+    .plan .price { font-size: 40px; font-weight: 700; line-height: 1; margin-bottom: 2px; }
+    .plan .price span { font-size: 14px; font-weight: 400; color: var(--muted); }
+    .plan .price .strike { font-size: 18px; color: var(--subtle); text-decoration: line-through; margin-right: 6px; }
+    .plan .plan-desc { font-size: 13px; color: var(--muted); margin-bottom: 20px; margin-top: 6px; }
+    .plan ul { list-style: none; }
+    .plan li {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 5px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .plan li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .early-note { text-align: center; margin-top: 18px; font-size: 13px; color: var(--accent); }
+
+    /* ── STUDIOS ── */
+    .studios { padding: 80px 24px; border-top: 1px solid var(--border); }
+    .studios-inner { max-width: 900px; margin: 0 auto; }
+    .studios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 36px;
+    }
+    .studio-card { background: var(--bg); padding: 26px; }
+    .studio-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .studio-card .area { font-size: 12px; color: var(--subtle); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .studio-card p { font-size: 13px; color: var(--muted); }
+
+    /* ── FAQ ── */
+    .faq { padding: 80px 24px; max-width: 580px; margin: 0 auto; border-top: 1px solid var(--border); }
+    .faq h2 { text-align: center; font-size: clamp(22px, 4vw, 30px); margin-bottom: 40px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-item h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .faq-item p { font-size: 14px; color: var(--muted); }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      padding: 100px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .bottom-cta h2 { font-size: clamp(26px, 5vw, 40px); font-weight: 700; letter-spacing: -1px; margin-bottom: 10px; }
+    .bottom-cta p { color: var(--muted); font-size: 17px; margin-bottom: 32px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 36px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--subtle);
+      font-size: 13px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      nav .nav-countdown { display: none; }
+      .hero { padding: 60px 20px 50px; }
+      .countdown-wrap { gap: 8px; }
+      .countdown-unit { min-width: 60px; padding: 10px 12px; }
+      .countdown-unit .num { font-size: 22px; }
+      .waitlist-form { flex-direction: column; }
+      .stats-inner { grid-template-columns: 1fr; gap: 24px; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+      .stat-item:last-child { border-bottom: none; }
+      .steps { grid-template-columns: 1fr; }
+      .step { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 0; }
+      .step:last-child { border-bottom: none; }
+      .plans { flex-direction: column; align-items: center; }
+      .plan { width: 100%; max-width: 340px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Massage<span>Pass</span></div>
+  <div class="nav-right">
+    <div class="nav-countdown">
+      <strong id="navDays">4</strong>d <strong id="navHours">00</strong>h <strong id="navMins">00</strong>m to launch
+    </div>
+    <button class="nav-cta" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+
+  <div class="countdown-wrap">
+    <div class="countdown-unit"><span class="num" id="cdDays">4</span><span class="label">Days</span></div>
+    <div class="countdown-unit"><span class="num" id="cdHours">00</span><span class="label">Hours</span></div>
+    <div class="countdown-unit"><span class="num" id="cdMins">00</span><span class="label">Mins</span></div>
+    <div class="countdown-unit"><span class="num" id="cdSecs">00</span><span class="label">Secs</span></div>
+  </div>
+
+  <div class="launch-badge">🚀 April 24, 2026 — Madrid</div>
+  <h1>Unlimited massages.<br><span class="accent">One subscription.</span></h1>
+  <p class="hero-sub">Join the first 100 members and pay <strong>€24.50/month</strong> instead of €49. Lock in your founding price for life — forever.</p>
+
+  <div class="spots-bar">
+    <span class="dot">●</span>
+    <strong id="spots-left">16</strong> founding spots remaining
+  </div>
+
+  <div class="waitlist-wrap">
+    <form class="waitlist-form" id="waitlistForm" onsubmit="return handleSubmit(event, this)">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" id="submitBtn">Lock In My Price</button>
+    </form>
+    <div class="success-msg" id="successMsg">✅ You're in. Founding price locked in. We'll reach out before April 24. ✓</div>
+    <div class="form-note">No spam. No credit card until launch. Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- STATS STRIP -->
+<section class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">100</div>
+      <div class="stat-label">Founding member spots</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Partner studios confirmed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">€24.50</div>
+      <div class="stat-label">Founding monthly rate (was €49)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-label">Simple as that</p>
+  <h2 class="section-title">Everything works. Nothing extra.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Join before April 24</h3>
+      <p>Sign up now. Lock in your founding price — €24.50/mo instead of €49. This rate is yours for life.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Get the app on launch day</h3>
+      <p>April 24 you download the app, browse partner studios, and start booking immediately.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Book. Relax. Repeat.</h3>
+      <p>Unlimited bookings every month. No credits. No limits. Cancel whenever — no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="pricing-inner">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Start for less. Stay for everything.</h2>
+    <div class="plans">
+      <div class="plan featured">
+        <h3>FOUNDING MEMBER</h3>
+        <div class="price"><span class="strike">€49</span>€24.50<span>/mo</span></div>
+        <div class="plan-desc">Locked in for life. Your price never goes up.</div>
+        <ul>
+          <li>Unlimited massages per month</li>
+          <li>Access to all partner studios</li>
+          <li>Book up to 4 weeks ahead</li>
+          <li>Cancel anytime, no fees</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>STANDARD (AFTER LAUNCH)</h3>
+        <div class="price">€49<span>/mo</span></div>
+        <div class="plan-desc">Full access from day one.</div>
+        <ul>
+          <li>Unlimited massages per month</li>
+          <li>Access to all partner studios</li>
+          <li>Book up to 4 weeks ahead</li>
+          <li>Cancel anytime, no fees</li>
+        </ul>
+      </div>
+    </div>
+    <p class="early-note">⚡ Founding spots are limited. After they're gone, only €49/mo.</p>
+  </div>
+</section>
+
+<!-- STUDIOS -->
+<section class="studios">
+  <div class="studios-inner">
+    <p class="section-label">Partner studios</p>
+    <h2 class="section-title">Real studios. Real therapists.</h2>
+    <div class="studios-grid">
+      <div class="studio-card">
+        <h3>Mayoac</h3>
+        <div class="area">Chamartín</div>
+        <p>Sports &amp; therapeutic massage. 4 therapists. 4.7★ average rating.</p>
+      </div>
+      <div class="studio-card">
+        <h3>The Fix Room</h3>
+        <div class="area">Salamanca</div>
+        <p>Deep tissue &amp; recovery. 3 therapists. 4.8★ average rating.</p>
+      </div>
+      <div class="studio-card">
+        <h3>More studios joining</h3>
+        <div class="area">Chueca · Chamberí · Malasaña</div>
+        <p>We're onboarding city-wide before April 24. More studios = more variety.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <p class="section-label">Got questions?</p>
+  <h2>Common questions</h2>
+  <div class="faq-item">
+    <h3>What if I want to cancel?</h3>
+    <p>Cancel anytime from the app. No cancellation fees. No questions. We're confident you'll stay, but we won't make you feel trapped.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I use Massage Pass at any studio?</h3>
+    <p>Only at our verified partner studios. We pick quality over quantity — every partner meets our standards for cleanliness, professionalism, and technique.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is there a limit on how many bookings I can make?</h3>
+    <p>No. Unlimited bookings, unlimited months. As long as your subscription is active, you can book as often as you like.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What happens when founding spots run out?</h3>
+    <p>Founding members keep their price forever. Once the 100 spots are filled, the monthly rate goes up to €49 for new members.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do I pay now?</h3>
+    <p>No payment until April 24. You'll get your account details on launch day, and your first billing starts when you activate your subscription.</p>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <p class="section-label">4 days left</p>
+  <h2>Your massage habit<br>starts here.</h2>
+  <p>Join the waitlist. Lock in €24.50/mo. Stay for as long as you want.</p>
+  <div class="waitlist-wrap" style="margin: 0 auto;">
+    <form class="waitlist-form" onsubmit="return handleSubmit(event, this)">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Lock In My Price</button>
+    </form>
+    <div class="success-msg">✅ You're in. See you on April 24. ✓</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Massage Pass &copy; 2026 &nbsp;·&nbsp; Madrid, Spain &nbsp;·&nbsp; <a href="mailto:founder@massagepass.com">founder@massagepass.com</a></p>
+</footer>
+
+<script>
+  // ── COUNTDOWN ──
+  const LAUNCH = new Date('2026-04-24T09:00:00Z').getTime();
+
+  function tick() {
+    const now = Date.now();
+    const diff = Math.max(0, LAUNCH - now);
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cdDays').textContent = d;
+    document.getElementById('cdHours').textContent = pad(h);
+    document.getElementById('cdMins').textContent = pad(m);
+    document.getElementById('cdSecs').textContent = pad(s);
+    document.getElementById('navDays').textContent = d;
+    document.getElementById('navHours').textContent = pad(h);
+    document.getElementById('navMins').textContent = pad(m);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+
+  // ── FORM HANDLER ──
+  function handleSubmit(e, form) {
+    e.preventDefault();
+    var email = form.querySelector('input[type=email]').value.trim();
+    var btn = form.querySelector('button');
+    btn.textContent = 'Saving…';
+    btn.disabled = true;
+
+    var existing = JSON.parse(localStorage.getItem('mp_waitlist') || '[]');
+    if (!existing.includes(email)) {
+      existing.push(email);
+      localStorage.setItem('mp_waitlist', JSON.stringify(existing));
+    }
+
+    // Update spots display (mock: 100 - count)
+    var count = existing.length;
+    var remaining = Math.max(0, 100 - count);
+    ['spots-left'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = remaining;
+    });
+
+    form.style.display = 'none';
+    var msg = form.nextElementSibling;
+    if (msg && msg.classList.contains('success-msg')) msg.style.display = 'block';
+    return false;
+  }
+
+  // ── INIT SPOTS FROM STORAGE ──
+  (function() {
+    var existing = JSON.parse(localStorage.getItem('mp_waitlist') || '[]');
+    var remaining = Math.max(0, 100 - existing.length);
+    ['spots-left'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = remaining;
+    });
+  })();
+</script>
+
+</body>
+</html>
