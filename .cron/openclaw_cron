@@ -1,0 +1,5 @@
+# OpenClaw Auto-Save - every 15 minutes
+*/15 * * * * cd /home/openclaw/.openclaw/workspace && bash tools/auto_save.sh >> logs/auto_save.log 2>&1
+
+# Daily Morning Briefing - 9 AM Madrid time (7 UTC in CET, 6 UTC in CEST)
+0 7 * * * cd /home/openclaw/.openclaw/workspace && bash tools/daily_briefing.sh >> logs/briefing.log 2>&1
