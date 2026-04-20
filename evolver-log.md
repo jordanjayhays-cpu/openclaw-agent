@@ -289,3 +289,20 @@
 - Generated 15 tasks across 6 projects
 - Executed: 3 Philosophy King tweets (queued to twitter-queue.md)
 - Next: Javier Estrada follow-up, Luis Zamora email, Gabriel Zavala LinkedIn DM
+
+--- 2026-04-20 07:23 UTC ---
+
+**Active experiments checked:**
+- EXP-001: No email tracking data yet. Javier follow-up due.
+- EXP-002: Variant B CTA created. Landing page exists.
+- EXP-003: Ready to film and post.
+- EXP-004: First release (Apr 11) data pending. Days until: -9 (already past).
+- EXP-005: LinkedIn vs Email test ready. Awaiting Jordan approval.
+
+**Actions taken:**
+- Created MASSAGE-PASS variant B CTA ("Book Your Massage")
+
+**Observations:**
+- PK MUSIC release Apr 11 already past — first-week stream data needs review
+- No email open rate data yet for PISCO cold emails
+
