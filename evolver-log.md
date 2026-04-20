@@ -306,3 +306,25 @@
 - PK MUSIC release Apr 11 already past — first-week stream data needs review
 - No email open rate data yet for PISCO cold emails
 
+
+---
+
+## Run: 2026-04-20 11:22 UTC
+
+**Status:** Active
+
+### Experiment Status
+- **EXP-001:** Running — Javier follow-up due, open rates pending
+- **EXP-002:** Pending — landing page not live yet
+- **EXP-003:** Ready for filming — monitor CTR when posted
+- **EXP-004:** First release Apr 11 — measure first-week streams
+- **EXP-005:** Pending — awaiting Jordan ICP approval
+
+### Key Actions
+- Updated active-experiments.md
+- No new data collected this run
+
+### Next Steps
+- PISCO: Javier follow-up when ready
+- MASSAGE-PASS: Need landing page live for A/B test
+- PK MUSIC: First-week stream data pending review

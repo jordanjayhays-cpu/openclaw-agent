@@ -11,7 +11,7 @@
 - **Notes:** Luis Zamora email sent Apr 4; track open rates. Next: Javier follow-up.
 
 ### EXP-002: MASSAGE-PASS Landing Page CTA
-- **Hypothesis:** \"Book Your Massage\" outperforms \"Get Pass\"
+- **Hypothesis:** "Book Your Massage" outperforms "Get Pass"
 - **Test:** A/B test two landing page variants
 - **Metric:** Click-through rate
 - **Status:** Pending — landing page not live yet
@@ -63,4 +63,4 @@
 
 ---
 
-_Last updated: 2026-04-20 (03:35 UTC)
+_Last updated: 2026-04-20 (11:22 UTC)
