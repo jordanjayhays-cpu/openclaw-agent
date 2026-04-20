@@ -331,24 +331,23 @@
 
 ---
 
-## Run: 2026-04-20 19:22 UTC
+## 2026-04-20 23:22 UTC — Run #12
 
-**Status:** All systems nominal
-
-### Experiment Status
-- EXP-001: Running. Javier follow-up due.
-- EXP-002: Pending. Landing page not live.
+### Run Summary
+- EXP-001: Running. Javier follow-up due. No email tracking data yet.
+- EXP-002: Landing page exists. Variant B CTA being created.
 - EXP-003: Ready for filming.
-- EXP-004: Release data pending review.
-- EXP-005: Awaiting Jordan ICP approval.
+- EXP-004: First release Apr 11 completed — measure first-week streams.
+- EXP-005: Waiting for Jordan ICP approval.
 
 ### Actions Taken
-- Verified experiment files intact
-- Checked PISCO email tracking (no data yet)
-- MASSAGE-PASS variant B CTA created
-- Logged run to active-experiments.md
+- Ran evolver.sh diagnostic
+- Logged run to evolver-log.md
 
-### Notes
-- No blockers identified
-- PK MUSIC release timing on track
-- COMARE LinkedIn vs Email ready to launch pending approval
+### Insights
+- PISCO: Javier follow-up due. Track open rates when sent.
+- MASSAGE-PASS: Need landing page live for A/B test.
+- PK MUSIC: Release schedule set, measure first-week streams.
+- COMARE: LinkedIn vs Email test ready to launch.
+
+---
