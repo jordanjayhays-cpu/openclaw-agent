@@ -1,78 +1,58 @@
 # Session Search Index
 
-**Built:** 2026-04-16  
-**Sessions indexed:** 30
+## Table Schema
+```sql
+CREATE TABLE sessions_fts (
+  session_key TEXT PRIMARY KEY,  -- UUID of the session (cron sessions prefixed with "cron-")
+  date TEXT,                      -- ISO date (YYYY-MM-DD) of last modification
+  content TEXT                    -- All text extracted from the session JSONL
+);
+CREATE INDEX idx_date ON sessions_fts(date);
+```
 
-## Schema
+## DB Location
+```
+/home/openclaw/.openclaw/workspace/memory/sessions.db
+```
 
-```json
-{
-  "schema": "sessions_fts_v1",
-  "built": "2026-04-16T21:00:00.000Z",
-  "count": 30,
-  "fields": ["session_key", "date", "content", "tokens"],
-  "entries": [
-    {
-      "session_key": "uuid-string",
-      "date": "YYYY-MM-DD",
-      "content": "full text of session, truncated at 50k chars",
-      "tokens": ["word1", "word2", ...]
-    }
-  ]
+## Search Query Examples
+
+### Basic keyword search (LIKE)
+```js
+const results = db.exec(`
+  SELECT session_key, date, substr(content, 1, 200) as preview
+  FROM sessions_fts
+  WHERE content LIKE '%keyword%'
+  ORDER BY date DESC
+  LIMIT 20;
+`);
+```
+
+### Search by session key prefix
+```js
+const results = db.exec(`
+  SELECT session_key, date FROM sessions_fts
+  WHERE session_key LIKE 'a6a6070d%'
+  LIMIT 5;
+```
+
+### Recent sessions
+```js
+const results = db.exec(`
+  SELECT session_key, date FROM sessions_fts
+  ORDER BY date DESC LIMIT 10;
+```
+
+### Full-text match helper (multi-word OR)
+```js
+function search(db, terms) {
+  const where = terms.map(t => `content LIKE '%${t}%'`).join(' OR ');
+  return db.exec(`SELECT session_key, date, substr(content,1,200) FROM sessions_fts WHERE ${where} ORDER BY date DESC`);
 }
 ```
 
-## Storage
-
-- **File:** `/home/openclaw/.openclaw/workspace/memory/sessions-search.json`
-- **Size:** ~2MB (30 sessions with content + tokens)
-
-## Usage
-
-Search is done in-memory with JavaScript (FTS5/SQLite not available in this environment).
-
-```javascript
-const idx = JSON.parse(fs.readFileSync(
-  '/home/openclaw/.openclaw/workspace/memory/sessions-search.json',
-  'utf8'
-));
-
-// Search by keyword in content
-const results = idx.entries.filter(e => 
-  e.content.toLowerCase().includes('your-query')
-);
-
-// Search by token (fast prefix match)
-const byToken = idx.entries.filter(e => 
-  e.tokens.includes('keyword')
-);
-
-// Fuzzy match
-const fuzzy = idx.entries.filter(e =>
-  e.tokens.some(t => t.includes('partial'))
-);
-```
-
-## Search Examples
-
-| Query | Method |
-|-------|--------|
-| Exact phrase | `e.content.includes('phrase')` |
-| Any word | `e.tokens.includes('word')` |
-| Prefix match | `e.tokens.some(t => t.startsWith('pre'))` |
-| Date range | `e.date >= '2026-04-01' && e.date <= '2026-04-16'` |
-
-## Rebuild Index
-
-```bash
-node /tmp/index-sessions.js
-```
-
-This script reads all `.jsonl` files from `~/.openclaw/agents/main/sessions/`, extracts text content and tokens, and writes to `sessions-search.json`.
-
 ## Notes
-
-- FTS5 (SQLite full-text search) was not available — used JSON token index instead
-- Content truncated at 50,000 chars per session
-- Tokens extracted from content (lowercased, >2 chars, deduped, max 500)
-- Re-index daily via cron job
+- Database is rebuilt on each run (INSERT OR REPLACE). Re-run the indexer to refresh.
+- Content extracted from `message.content[].text` fields in JSONL.
+- sql.js does not support FTS5 — this uses LIKE-based search which works reliably.
+- Total sessions indexed: 36

@@ -1,50 +1,61 @@
-# HEARTBEAT.md — Mexico City Timezone
+# HEARTBEAT.md — Periodic Self-Maintenance Checklist
 
-## Timezone
-Madrid (Europe/Madrid) — UTC+2 in summer (DST started March 30)
-
-## Heartbeat Schedule
-Run every 30 minutes, **9am–11pm CDMX only**.
-Stay quiet overnight (11pm–9am).
-
-## Heartbeat Checklist
-
-### 1. Git Sync
-If workspace has uncommitted changes → `bash tools/auto_save.sh`
-
-### 2. Follow-ups
-Check contacts/CONTEXT.md for any contact with `Next Action: today`
-If found → send Telegram message to Jordan flagging the follow-up
-
-### 3. Stale Tasks
-Check AUTONOMOUS.md for tasks older than 3 days with no completion
-If found → flag in next message to Jordan
-
-### 4. New Notifications
-Check for any new Telegram messages or events that need Jordan's attention
-If urgent → message Jordan immediately (don't wait for heartbeat)
-
-### 5. Log
-Append timestamp to memory/heartbeats.md
+_Core rule: If nothing needs attention, reply HEARTBEAT_OK. Don't burn tokens checking things that don't need checking._
 
 ---
 
-## When to Message Jordan (Proactive)
+## Daily Checks (9 AM - 6 PM CET, rotate through)
 
-**Message him when:**
-- A contact follow-up is due today
-- A task has been stale >3 days and needs attention
-- The overnight research cron completed (results ready)
-- Something broke or needs a decision from him
-- Git push failed and needs his attention
+**Morning (once per day around 9 AM):**
+- Run `bash tools/daily_briefing.sh` — send morning status to Jordan via Telegram
+- Check AUTONOMOUS.md for today's priorities
+- Review contacts/CONTEXT.md for follow-ups due today
 
-**Stay quiet when:**
-- It's overnight (11pm–9am CDMX)
-- Nothing new since last check (<30 min ago)
-- Just completed a task with no blockers
+**Midday (rotate through every ~3 hours):**
+- Check for new GitHub commits or changes
+- Review memory/YYYY-MM-DD.md — add session notes if active conversation happened
+- Check project files for updates (PISCO/COMARE)
 
 ---
 
-## Proactive Messaging Rule
-Don't wait for Jordan to ask. If something needs his attention, tell him.
-Short message: "Hey Jordan — [X] needs your input on [Y]. Details: [Z]"
+## Task Checks (only if AUTONOMOUS.md has stale items)
+
+- Any tasks marked ">3 days old" without update? Flag to Jordan
+- Any completed items in AUTONOMOUS.md not marked done?
+- Any blocked tasks that can be unblocked?
+
+---
+
+## Auto-Save (every 15 min via cron, but verify during heartbeat)
+
+If auto_save hasn't run in >20 min and significant changes exist:
+```bash
+bash tools/auto_save.sh
+```
+
+---
+
+## Response Triggers (don't check these every heartbeat)
+
+Only act if:
+- Jordan asks something specific
+- A subagent reports back with results
+- A cron job triggered an alert (e.g., GitHub sync failed)
+
+---
+
+## If Nothing Needs Attention
+
+Reply exactly: HEARTBEAT_OK
+
+Do NOT:
+- Run calculations or research unprompted
+- Generate content without a task
+- Check all projects every single heartbeat
+- Send status updates unless it's the morning briefing
+
+---
+
+**Remember:** Heartbeats are for maintenance, not for starting new work. Jordan will message you when he needs something.
+
+_Created: 2026-04-20_

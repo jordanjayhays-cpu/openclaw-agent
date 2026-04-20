@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font-family: Arial, sans-serif; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+th { background-color: #1F4E79; color: white; }
+h2 { color: #1F4E79; }
+.positive { background-color: #C6EFCE; font-weight: bold; }
+.decision { background-color: #C6EFCE; font-weight: bold; font-size: 16px; }
+</style>
+</head>
+<body>
+<h2>ORION LIGHTING SYSTEMS - FCF Valuation</h2>
+<table>
+<tr><th></th><th>Year 0</th><th>Year 1</th><th>Year 2</th><th>Year 3</th><th>Year 4</th><th>Year 5</th></tr>
+<tr><td>Revenue ($M)</td><td></td><td>18.00</td><td>20.16</td><td>22.58</td><td>25.29</td><td>28.32</td></tr>
+<tr><td>Revenue Growth %</td><td></td><td></td><td>12.0%</td><td>12.0%</td><td>12.0%</td><td>12.0%</td></tr>
+<tr><td>Operating Costs 55% ($M)</td><td></td><td>9.90</td><td>11.09</td><td>12.42</td><td>13.91</td><td>15.58</td></tr>
+<tr><td>Depreciation ($M)</td><td></td><td>4.40</td><td>4.40</td><td>4.40</td><td>4.40</td><td>4.40</td></tr>
+<tr><td><b>EBIT ($M)</b></td><td></td><td><b>3.70</b></td><td><b>4.67</b></td><td><b>5.76</b></td><td><b>6.98</b></td><td><b>8.35</b></td></tr>
+<tr><td>NOPAT @ 30% ($M)</td><td></td><td>2.59</td><td>3.27</td><td>4.03</td><td>4.89</td><td>5.84</td></tr>
+<tr><td>Working Capital ($M)</td><td>1.80</td><td>2.02</td><td>2.26</td><td>2.53</td><td>2.83</td><td>0.00</td></tr>
+<tr><td>Change in WC ($M)</td><td>-1.80</td><td>-0.22</td><td>-0.24</td><td>-0.27</td><td>-0.30</td><td>2.83</td></tr>
+<tr><td>Capex ($M)</td><td>-30.00</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td><b>Free Cash Flow ($M)</b></td><td class="positive">-30.00</td><td class="positive">6.77</td><td class="positive">7.43</td><td class="positive">8.16</td><td class="positive">8.99</td><td class="positive">18.67</td></tr>
+<tr><td>Discount Factor 11%</td><td>1.000</td><td>0.901</td><td>0.812</td><td>0.731</td><td>0.659</td><td>0.593</td></tr>
+<tr><td>PV of FCF ($M)</td><td>-30.00</td><td>6.10</td><td>6.03</td><td>5.97</td><td>5.92</td><td>11.07</td></tr>
+<tr><td>Cumulative PV ($M)</td><td>-30.00</td><td>-23.90</td><td>-17.87</td><td>-11.90</td><td>-5.98</td><td class="positive">5.09</td></tr>
+</table>
+
+<h3>EVALUATION METRICS</h3>
+<table>
+<tr><td><b>NPV ($M)</b></td><td class="positive">5.09</td></tr>
+<tr><td><b>IRR</b></td><td class="positive">18.5%</td></tr>
+<tr><td><b>Profitability Index</b></td><td class="positive">1.17</td></tr>
+<tr><td><b>Payback Period (years)</b></td><td>3.5</td></tr>
+</table>
+
+<h3>Terminal Value (Year 5)</h3>
+<table>
+<tr><td>After-tax Salvage ($8M x 70%)</td><td></td><td></td><td></td><td></td><td></td><td>5.60</td></tr>
+<tr><td>WC Recovery</td><td></td><td></td><td></td><td></td><td></td><td>2.83</td></tr>
+<tr><td><b>Total Terminal CF</b></td><td></td><td></td><td></td><td></td><td></td><td><b>8.43</b></td></tr>
+</table>
+
+<p class="decision">DECISION: ✅ ACCEPT — NPV > 0, IRR (18.5%) > WACC (11%)</p>
+</body>
+</html>
