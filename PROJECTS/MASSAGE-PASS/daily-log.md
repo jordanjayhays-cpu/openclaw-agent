@@ -1,5 +1,100 @@
 # MASSAGE-PASS Daily Log
 
+## 2026-04-20 (Monday — 14:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 14:35 UTC | 4 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (still not configured by Jordan)
+- Notion unavailable → built `waitlist-dashboard.html` (30KB)
+
+### New Deliverable Created
+
+**`waitlist-dashboard.html`** (30KB — waitlist management command center)
+Built because: there's no real backend tracking for waitlist signups yet. Jordan needs a single view to manage subscribers, track founding spots, and monitor launch readiness.
+
+Key features:
+- **Live countdown** to April 24 (ticking every second)
+- **Hero stats strip**: total signups, founding spots claimed (synced with localStorage), spots remaining, conversion rate
+- **Founding spots tracker**: claimed/remaining/rate/projections (avg/day since Apr 18 + projected by launch)
+- **Progress bars**: founding spots filled + launch readiness score (13/18 items = 72%)
+- **Critical blockers panel**: 2 critical (email platform TODAY, Formspree), 2 high (domain, pricing), 1 medium (Notion) — each with action step and owner
+- **Email sequence timeline**: all 5 emails (Apr 21–26) with pending/approved/sent status badges
+- **Manual subscriber entry form**: add emails with source + status (waitlist/founding/active)
+- **Subscriber table**: numbered list with delete, status badges, export buttons
+- **Export**: CSV and JSON export of all subscriber data
+- **Landing page quick-links**: all 5 variants with tags (recommended/zero-dep/teaser/countdown/full)
+- **Zero dependencies**: pure HTML/CSS/JS, no external calls
+- Fully responsive
+
+### Notion Status (unchanged — Jordan needs to act)
+
+- Still waiting on Jordan to:
+  1. Create Notion integration at https://notion.so/my-integrations → get API token
+  2. Create parent page in Notion → share with integration
+  3. Store token in `~/.config/notion/api_key` + give parent page ID
+- Until then: no database creation possible
+
+### ⚠️ CRITICAL: 4 days to launch — Jordan's top priorities
+
+1. **Email platform TODAY** — Email 1 goes out TOMORROW (Apr 21). ConvertKit = free, 5-min setup.
+2. **Formspree** — wire `YOUR_FORM_ID` in landing page JS so real emails get captured
+3. **Domain** — purchase massagepass.com or similar
+4. **Pricing sign-off** — confirm €49/€89 in landing page copy
+5. **Notion API** — 10 min setup, then Axton builds all 3 DBs automatically
+
+### Launch Status (4 days — April 24)
+- [x] Landing pages — 5 variants (final, standalone, teaser, v2, v3, countdown) ✅
+- [x] Waitlist dashboard — `waitlist-dashboard.html` ← NEW (this check-in)
+- [x] Studio outreach — v1 + v2 ✅
+- [x] IG visual brief ✅
+- [x] Launch emails — drafted ✅ (needs Jordan approval before Apr 21)
+- [x] Email setup guide ✅
+- [x] Product Hunt submission ✅
+- [x] Analytics command center ✅
+- [x] IE pitch deck ✅
+- [ ] Jordan: purchase domain
+- [ ] Jordan: wire Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: set up email platform (Email 1 TOMORROW Apr 21)
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: create Notion integration + give parent page ID
+
+### Files in Project (updated)
+- `landing-final.html` — full-featured landing page
+- `landing-standalone.html` — zero-dep standalone
+- `landing-teaser.html` — scarcity/urgency variant
+- `landing-prelaunch-v2.html` — recommended variant
+- `landing-prelaunch-v3.html` — latest (morning, Apr 20)
+- `landing-prelaunch-countdown.html` — countdown urgency variant
+- `waitlist-dashboard.html` — subscriber + launch tracking dashboard ← NEW
+- `analytics.html` — launch command center (blockers + deliverables)
+- `waitlist-handler.js` — reusable form handler
+- `launch-emails.md` — 5-email sequence (needs Jordan approval)
+- `social-launch.md` — social posts
+- `email-setup-guide.md` — ConvertKit/Mailgun/Beehiiv setup
+- `product-hunt-submission.md` — PH launch day draft
+- `notion-setup-walkthrough.md` — Notion API setup steps
+- `notion-db-schema.md` — DB schemas ready to build
+- `pitch-deck.html` — IE IMBA presentation deck
+- `shop-outreach.md` + `shop-outreach-v2.md` — studio outreach
+- `ig-visual-brief.md` — IG assets brief
+- `subscribers.json` — empty tracker
+- `LAUNCH-COUNTDOWN.md` + `LAUNCH-CHECKLIST.md` — project management
+
+### Flagged for Jordan
+
+⚠️ **TOMORROW (Apr 21) — Email 1 goes out** — email platform must be set up TODAY
+⚠️ **`launch-emails.md` needs approval TODAY** — first send is tomorrow
+⚠️ **`waitlist-dashboard.html`** — open this to manually log subscribers and track founding spots
+⚠️ Notion integration still needed — 10 min setup, then Axton auto-builds all 3 DBs
+⚠️ Founding member pricing (50% off) closes Apr 26 — urgency is real, not manufactured
+
+---
+*Logged by Axton at 14:35 UTC*
+
 ## 2026-04-20 (Monday — 10:35 UTC Check-in)
 
 **Agent:** MASSAGE-PASS Check-in (Axton)
