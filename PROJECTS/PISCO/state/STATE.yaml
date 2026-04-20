@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-19T20:20:00Z
+updated: 2026-04-20T02:07:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -201,6 +201,14 @@ tasks:
     output: crm.db contacts table
     note: "Added 5 missing contacts: Dohun Kim (EPS partner), Pere Torrens (RIU Hotels), Arantxa Balson (Accor CHRO), Fernando Martins (Accor TA), Mª Carmen Oliver Molina (Barceló HR). CRM now 34 contacts."
 
+  - id: pisco-029
+    title: Create outreach for Marina Stocca (IHG InterContinental Barcelona)
+    status: pending_approval
+    owner: jordan
+    due: null
+    output: PROJECTS/PISCO/outreach-marina-stocca-ihg-barcelona.md
+    note: "New hotel group (IHG) added. First IHG contact. LinkedIn profile direct. Email confidence LOW — verify via LinkedIn first."
+
   - "jordan: Send to Carmen Rodriguez (NH Sevilla) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Ana Martinez (NH Barcelona Gran Via) — draft ready, verify email via LinkedIn first"
   - "jordan: Send to Carmen Sellés (Melia Benidorm) — draft ready, verify email via LinkedIn first"
@@ -295,16 +303,22 @@ contacts:
     last_contact: null
     note: "HR Director at Barcelo Hotel Group. Spain's #2 chain (280 hotels, 25+ countries)."
 
+  - name: Marina Stocca
+    company: IHG / InterContinental Barcelona
+    warmth: cold
+    last_contact: null
+    note: "Talent Manager at InterContinental Barcelona. First IHG contact. LinkedIn: linkedin.com/in/marinastocca. Email LOW — verify first."
+
 # Metrics
 metrics:
   prospects_identified: 257
-  contacts_crm: 34
+  contacts_crm: 35
   contacts_reached: 6
   responses: 1
   meetings: 0
   clients: 0
   pipeline_tier1_hot: 1
-  pipeline_tier2_warm_draft_ready: 16
+  pipeline_tier2_warm_draft_ready: 17
   pipeline_tier3_warm_no_draft: 13
 
 # Completed

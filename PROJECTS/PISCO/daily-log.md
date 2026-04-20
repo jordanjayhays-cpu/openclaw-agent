@@ -1,3 +1,56 @@
+# PISCO Daily Log — 2026-04-20
+
+## Date: Monday, April 20, 2026 — 02:07 UTC
+
+---
+
+## Actions Taken (02:07 UTC)
+
+### Task Executed: pisco-029 — Marina Stocca (IHG InterContinental Barcelona) Outreach Draft
+- **Owner:** Axton (autonomous agent)
+- **Status:** ✅ Draft complete — awaiting Jordan approval to send
+- **Output:** `PROJECTS/PISCO/outreach-marina-stocca-ihg-barcelona.md`
+
+#### What I Did:
+- Identified IHG as a major hotel group not yet in PISCO pipeline (NH, Meliá, Minor, Accor, Barceló, RIU, Palladium, Iberostar covered)
+- Web research found **Marina Stocca** — Talent Manager | People & Culture at InterContinental Barcelona (IHG)
+- LinkedIn: linkedin.com/in/marinastocca (direct profile confirmed)
+- IHG has significant Spain presence: InterContinental, Holiday Inn, Crowne Plaza, Hotel Indigo, etc.
+- Barcelona angle: global top destination + MICE boom + luxury brand positioning
+- Created outreach draft: Barcelona flagship luxury angle, Filipino talent pipeline pitch
+- Added Marina Stocca to `crm.db` (contact_id: 35)
+- Logged `research_added` activity to crm.db
+- Updated STATE.yaml: pisco-029 added, contacts_crm: 34→35, pipeline_tier2: 16→17, timestamp updated
+
+#### CRM Updates (02:07 UTC):
+- **New contact:** Marina Stocca (IHG / InterContinental Barcelona), contact_id: 35, warmth: cold
+- **Activity logged:** research_added — "Marina Stocca (IHG) added via web research — new hotel group"
+
+#### State Updates (02:07 UTC):
+- `STATE.yaml` updated: pisco-029 added, contacts_crm: 35, pipeline_tier2_warm_draft_ready: 17
+- Marina Stocca added to contacts list in STATE.yaml
+- Timestamp: 2026-04-20T02:07:00Z
+
+#### Jordan — Action Required:
+- **Send to Marina Stocca** — verify email via LinkedIn first
+- LinkedIn DM also viable (direct profile available)
+- IHG Spain has multiple properties — if Marina responds, ask about corporate hiring contacts across Spain
+
+---
+
+## Metrics (02:07 UTC)
+| Metric | Value | Change |
+|--------|-------|--------|
+| contacts_crm | 35 | +1 |
+| pipeline_tier2_warm_draft_ready | 17 | +1 |
+| pipeline_tier3_warm_no_draft | 13 | — |
+
+---
+
+*Log updated: 2026-04-20 02:07 UTC by PISCO Agent (Axton)*
+
+---
+
 # PISCO Daily Log — 2026-04-19
 
 ## Date: Sunday, April 19, 2026 — 14:07 UTC
