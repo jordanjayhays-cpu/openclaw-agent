@@ -96,6 +96,30 @@ Use `bash tools/auto_save.sh` for batch commits.
 
 ---
 
+## Lessons Learned (April 21, 2026)
+
+### What Works
+- **GitHub push/pull** — immediate success, use it
+- **Felo web research** — fast, reliable for current info
+- **One working thing > many broken ones** — get ONE thing working before adding more
+- **Save credentials to memory immediately** — don't lose them like I did with OpenRouter
+
+### What Doesn't Work
+- **Don't over-engineer** — simpler solution always wins
+- **Don't ask Jordan to repeat credentials** — save immediately on first share
+- **Don't try too many things at once** — focus on ONE task
+- **Don't build OAuth-dependent workflows in n8n Cloud** — too many moving parts
+
+### Jordan's Preferences (Confirmed)
+- Direct solutions, no fluff
+- ONE working thing before adding complexity
+- GitHub already set up: jordanjayhays-cpu/openclaw-agent
+- Telegram primary channel
+- Prefers skills from workspace/skills/
+- Willing to set up Notion for calendar (has API key)
+
+---
+
 ## Dashboard Sync
 
 Keep these files in sync:

@@ -1,0 +1,30 @@
+{
+  "query": "NeuroMatch",
+  "date": "2026-04-21",
+  "source": "ScrapeCreators Reddit API",
+  "credits_remaining": 25084,
+  "results_summary": {
+    "neuromatch_academy": {
+      "subreddit": "r/neuromatch",
+      "description": "Nonprofit computational neuroscience education organization",
+      "programs": ["Computational Neuroscience", "Deep Learning", "NeuroAI", "Climate Science"],
+      "ai_sentience_scholars": {
+        "description": "6-month remote mentored research on AI consciousness and ethics",
+        "stipend": true,
+        "deadline": "April 28, 2026",
+        "url": "neuromatch.io/ai-sentience-scholars"
+      },
+      "ta_positions": {
+        "description": "Paid virtual teaching assistants for July 2026 courses",
+        "paid": true,
+        "full_time": true,
+        "remote": true
+      }
+    },
+    "other_mentions": [
+      "r/compmathneuro - course discussions",
+      "r/neuro - residency matching",
+      "r/IMGreddit - international medical graduate neurology matching"
+    ]
+  }
+}
