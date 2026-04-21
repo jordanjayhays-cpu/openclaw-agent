@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-04-21T04:40:04.269Z",
+  "topics": {
+    "mri": {
+      "wikipedia": [],
+      "search": [
+        "class=\"result__snippet\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.diagnopein.com%2FBlogDetails%2FMRI%2DScan%2FHow%2DBrain%2DMRI%2DScans%2DHelp%2DDetect%2DEarly%2DSigns%2Dof%2DDisease&amp;rut=80",
+        "class=\"result__snippet\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fmdbrain.org%2Frole%2Dof%2Dbrain%2Dimaging%2F&amp;rut=c1d27dcba2bcf18e91262fd29f57eaa0b39ec0866d7857ebac211faab2c8e42e\">Epilepsy: Ab",
+        "class=\"result__snippet\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fmy.clevelandclinic.org%2Fhealth%2Fdiagnostics%2F22966%2Dbrain%2Dmri&amp;rut=90a5c2f2e609811b8122df0623e912ea48db7bd9be3a8bc0a5df608",
+        "class=\"result__snippet\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fpmc.ncbi.nlm.nih.gov%2Farticles%2FPMC534920%2F&amp;rut=95ef4e7e37bd6f56333ca7584028f0b30cde94a7eb2a2c455d9d2ee48ba609f2\">Summary: M",
+        "class=\"result__snippet\" href=\"//duckduckgo.com/l/?uddg=https%3A%2F%2Fwww.vista%2Dhealth.co.uk%2Fblogs%2Farticles%2Fhead%2Dmri%2Dscan%2Dwhat%2Dit%2Dcan%2Ddetect%2Dand%2Ddiagnose%2F&amp;rut=035817626196"
+      ]
+    },
+    "brain_tumor": {
+      "wikipedia": [],
+      "search": []
+    },
+    "alzheimer": {
+      "wikipedia": [],
+      "search": []
+    },
+    "stroke": {
+      "wikipedia": [
+        "During ischemic stroke, blood supply to part of the brain is decreased, leading to dysfunction of the brain tissue in that area. There are four reasons why this might happen:",
+        "If symptoms are maximal at onset, the cause is more likely to be a subarachnoid hemorrhage or an embolic stroke.",
+        "Because an embolus arises from elsewhere, local therapy solves the problem only temporarily. Thus, the source of the embolus must be identified. Because the embolic blockage is sudden in onset, symptoms are usually maximal at the start. Also, symptoms may be transient as the embolus is partially res"
+      ],
+      "search": []
+    },
+    "concussion": {
+      "wikipedia": [],
+      "search": []
+    }
+  }
+}
