@@ -351,3 +351,12 @@
 - COMARE: LinkedIn vs Email test ready to launch.
 
 ---
+---
+
+## Run: 2026-04-21 03:22 UTC
+
+**PISCO (EXP-001):** Javier follow-up due. No tracking data yet.
+**MASSAGE-PASS (EXP-002):** Landing page exists, variant B being created.
+**Neurotech (EXP-003):** Ready for filming.
+**PK MUSIC (EXP-004):** First release Apr 11 — stream data pending.
+**COMARE (EXP-005):** Awaiting Jordan ICP approval.
