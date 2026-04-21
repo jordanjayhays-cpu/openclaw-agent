@@ -1,0 +1,13 @@
+{
+  "name": "neuromatch-sales",
+  "version": "1.0.0",
+  "description": "Neuromatch Sales Agent - Lead management and proposal generation",
+  "type": "module",
+  "scripts": {
+    "start": "node agent.js",
+    "add": "node agent.js add",
+    "list": "node agent.js list",
+    "discover": "node agent.js discover",
+    "proposal": "node agent.js proposal"
+  }
+}
