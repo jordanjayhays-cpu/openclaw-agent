@@ -1,0 +1,45 @@
+{
+  "name": "File Processor",
+  "nodes": [
+    {
+      "parameters": {
+        "watchedFolder": "/home/openclaw/.openclaw/media/inbound",
+        "options": {
+          "includeSubfolders": true
+        }
+      },
+      "id": "folder-watch",
+      "name": "Watch Folder",
+      "type": "n8n-nodes-base.watchFolder",
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process file based on type\nconst fileName = $json.fileName;\nconst ext = fileName.split('.').pop().toLowerCase();\n\nconst result = {\n  fileName,\n  type: ext,\n  processed: true,\n  timestamp: new Date().toISOString()\n};\n\nreturn [{ json: result }];"
+      },
+      "id": "file-type",
+      "name": "Detect File Type",
+      "type": "n8n-nodes-base.code",
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "6463127078",
+        "text": "=📎 File processed!\n\nFile: {{$json.fileName}}\nType: {{$json.type}}\nTime: {{$json.timestamp}}",
+        "additionalFields": {}
+      },
+      "id": "telegram-notify",
+      "name": "Notify Jordan",
+      "type": "n8n-nodes-base.telegram",
+      "position": [750, 300]
+    }
+  ],
+  "connections": {
+    "Watch Folder": {
+      "main": [[{"node": "Detect File Type", "type": "main", "index": 0}]]
+    },
+    "Detect File Type": {
+      "main": [[{"node": "Notify Jordan", "type": "main", "index": 0}]]
+    }
+  }
+}

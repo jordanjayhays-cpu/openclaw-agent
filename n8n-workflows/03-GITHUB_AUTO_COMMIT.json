@@ -1,0 +1,50 @@
+{
+  "name": "GitHub Auto-Commit",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/jordanjayhays-cpu/openclaw-agent/dispatches",
+        "authentication": "genericCredential",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github+json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "event_type",
+              "value": "n8n-trigger"
+            }
+          ]
+        }
+      },
+      "id": "github-webhook",
+      "name": "Trigger GitHub Action",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "6463127078",
+        "text": "=✅ GitHub auto-commit triggered",
+        "additionalFields": {}
+      },
+      "id": "telegram-confirm",
+      "name": "Confirm to Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [750, 300]
+    }
+  ],
+  "connections": {
+    "Trigger GitHub Action": {
+      "main": [[{"node": "Confirm to Telegram", "type": "main", "index": 0}]]
+    }
+  }
+}

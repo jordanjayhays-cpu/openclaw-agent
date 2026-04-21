@@ -1,0 +1,53 @@
+{
+  "name": "Email Report Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 18,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "schedule",
+      "name": "Daily at 6pm",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generate daily report\nconst today = new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });\n\nconst report = `\n<h2>Daily Summary - ${today}</h2>\n<p><strong>Tasks completed:</strong></p>\n<ul>\n<li>Research tasks</li>\n<li>Code updates</li>\n<li>GitHub syncs</li>\n</ul>\n<p><strong>Tomorrow's priorities:</strong></p>\n<ul>\n<li>Continue BD work</li>\n<li>Process new leads</li>\n</ul>\n`;\n\nreturn [{ json: { subject: 'Daily Report - ' + today, html: report } }];"
+      },
+      "id": "generate-report",
+      "name": "Generate Report",
+      "type": "n8n-nodes-base.code",
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "=noreply@example.com",
+        "to": "=jordansemail@gmail.com",
+        "subject": "={{$json.subject}}",
+        "body": "={{$json.html}}",
+        "options": {
+          "html": true
+        }
+      },
+      "id": "sendgrid",
+      "name": "Send via SendGrid",
+      "type": "n8n-nodes-base.sendGrid",
+      "position": [750, 300]
+    }
+  ],
+  "connections": {
+    "Daily at 6pm": {
+      "main": [[{"node": "Generate Report", "type": "main", "index": 0}]]
+    },
+    "Generate Report": {
+      "main": [[{"node": "Send via SendGrid", "type": "main", "index": 0}]]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "Morning Briefing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/jordanjayhays-cpu/openclaw-agent/commits?per_page=5",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "github-commits",
+      "name": "Get GitHub Commits",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "6463127078",
+        "text": "=🌅 Good morning Jordan!\n\n📅 Date: {{now}}\n\n📝 Recent GitHub commits:\n{{$json[0].commit.message}}\n{{$json[1].commit.message}}\n\nWhat would you like to work on today?",
+        "additionalFields": {}
+      },
+      "id": "telegram-node",
+      "name": "Send Telegram Message",
+      "type": "n8n-nodes-base.telegram",
+      "position": [750, 300]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [[{"node": "Get GitHub Commits", "type": "main", "index": 0}]]
+    },
+    "Get GitHub Commits": {
+      "main": [[{"node": "Send Telegram Message", "type": "main", "index": 0}]]
+    }
+  }
+}
