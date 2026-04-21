@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iberdrola EV Charging Strategy - Datathon Presentation</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #1a1a2e; color: white; }
+.slide { width: 100%; max-width: 1920px; aspect-ratio: 16/9; margin: 20px auto; position: relative; overflow: hidden; display: none; }
+.slide.active { display: block; }
+.slide-number { position: absolute; bottom: 20px; right: 30px; font-size: 14px; color: rgba(255,255,255,0.5); z-index: 100; }
+
+/* Slide backgrounds */
+.dark-bg { background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 50%, #16213e 100%); }
+.iberdrola-green { background: linear-gradient(135deg, #00974C 0%, #007a3d 100%); }
+.image-bg { background-size: cover; background-position: center; }
+.image-bg::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,13,26,0.9) 0%, rgba(26,26,46,0.7) 100%); }
+
+/* Text styles */
+.slide-title { font-size: 4.5em; font-weight: 700; margin-bottom: 30px; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+.slide-subtitle { font-size: 2em; color: rgba(255,255,255,0.9); margin-bottom: 40px; }
+.big-number { font-size: 8em; font-weight: 900; color: #00D864; text-shadow: 0 0 40px rgba(0,216,100,0.5); }
+.big-stat { font-size: 5em; font-weight: 700; color: #FFD700; }
+.normal-text { font-size: 1.8em; line-height: 1.6; color: rgba(255,255,255,0.95); }
+.small-text { font-size: 1.2em; color: rgba(255,255,255,0.7); }
+.accent { color: #00D864; }
+.accent-yellow { color: #FFD700; }
+
+/* Grid layouts */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 80px; height: calc(100% - 80px); align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding: 60px; }
+.center-content { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 80px; height: 100%; }
+.left-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 100px; }
+.right-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 100px; }
+
+/* Cards and boxes */
+.stat-box { background: rgba(0,216,100,0.15); border: 2px solid #00D864; border-radius: 20px; padding: 40px; text-align: center; }
+.stat-box-yellow { background: rgba(255,215,0,0.15); border: 2px solid #FFD700; border-radius: 20px; padding: 40px; text-align: center; }
+.stat-box-red { background: rgba(255,59,48,0.15); border: 2px solid #FF3B30; border-radius: 20px; padding: 40px; text-align: center; }
+.content-box { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 30px; backdrop-filter: blur(10px); }
+
+/* Lists */
+.check-list { list-style: none; }
+.check-list li { font-size: 1.5em; margin: 20px 0; padding-left: 50px; position: relative; }
+.check-list li::before { content: '✓'; position: absolute; left: 0; color: #00D864; font-weight: bold; }
+
+/* Slide 1: Title */
+#slide1 { background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 100%); }
+#slide1 .title-bg { position: absolute; right: -10%; top: 50%; transform: translateY(-50%); width: 60%; opacity: 0.3; }
+#slide1 .logo { position: absolute; top: 40px; left: 60px; font-size: 1.5em; color: #00D864; font-weight: bold; letter-spacing: 2px; }
+#slide1 .badge { position: absolute; top: 40px; right: 60px; background: #00974C; padding: 10px 25px; border-radius: 30px; font-size: 1em; }
+
+/* Slide 2: Problem */
+#slide2 { background: #0a0a15; }
+#slide2 .spain-map { position: absolute; right: 50px; top: 50%; transform: translateY(-50%); width: 45%; opacity: 0.2; }
+
+/* Slide 3: Reality */
+#slide3 { background: linear-gradient(135deg, #1a0a0a 0%, #2e1a1a 100%); }
+.pie-chart { width: 300px; height: 300px; border-radius: 50%; background: conic-gradient(#FF3B30 91.5%, #FFD700 3.2%, #00D864 5.3%); position: relative; margin: 40px auto; }
+.pie-chart::after { content: ''; position: absolute; width: 60%; height: 60%; background: #1a1a2e; border-radius: 50%; top: 20%; left: 20%; }
+
+/* Slide 4: Approach */
+#slide4 { background: linear-gradient(135deg, #0a1a0a 0%, #1a2e1a 100%); }
+.step-box { background: rgba(0,216,100,0.1); border-left: 4px solid #00D864; padding: 30px 40px; margin: 20px 0; }
+.step-number { font-size: 4em; font-weight: 900; color: rgba(0,216,100,0.3); margin-bottom: 10px; }
+.step-title { font-size: 1.8em; font-weight: bold; color: #00D864; margin-bottom: 15px; }
+.step-desc { font-size: 1.2em; color: rgba(255,255,255,0.8); }
+
+/* Slide 5: Solution */
+#slide5 { background: linear-gradient(135deg, #00974C 0%, #004d2a 100%); }
+#slide5 .stations-map { position: absolute; right: 0; top: 0; width: 50%; height: 100%; background: url(images/iberdrola-charging-hub.jpg); background-size: cover; }
+#slide5 .stations-map::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,151,76,1) 0%, rgba(0,151,76,0) 50%); }
+
+/* Slide 6: Numbers */
+#slide6 { background: #0a0a15; }
+.metric-card { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; text-align: center; }
+.metric-value { font-size: 4em; font-weight: 900; color: #00D864; }
+.metric-label { font-size: 1.2em; color: rgba(255,255,255,0.7); margin-top: 10px; }
+
+/* Slide 7: Customer */
+#slide7 { background: linear-gradient(135deg, #1a1a2e 0%, #0d0d1a 100%); }
+.before-after { display: flex; gap: 60px; margin-top: 40px; }
+.before-box { background: rgba(255,59,48,0.2); border: 2px solid #FF3B30; border-radius: 20px; padding: 40px; flex: 1; }
+.after-box { background: rgba(0,216,100,0.2); border: 2px solid #00D864; border-radius: 20px; padding: 40px; flex: 1; }
+.before-box h3 { color: #FF3B30; margin-bottom: 20px; }
+.after-box h3 { color: #00D864; margin-bottom: 20px; }
+
+/* Slide 8: Next Steps */
+#slide8 { background: linear-gradient(135deg, #004d2a 0%, #00974C 50%, #00D864 100%); }
+.timeline { display: flex; justify-content: space-around; margin-top: 60px; width: 100%; }
+.timeline-item { text-align: center; position: relative; }
+.timeline-item::before { content: ''; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; border-radius: 50%; background: #00D864; border: 4px solid white; }
+.timeline-date { font-size: 1.5em; font-weight: bold; color: #004d2a; margin-top: 40px; }
+.timeline-event { font-size: 1.1em; color: rgba(255,255,255,0.9); margin-top: 10px; }
+
+/* Progress bar */
+.progress-bar { position: fixed; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.2); }
+.progress-fill { height: 100%; background: #00D864; transition: width 0.3s; }
+
+/* Navigation */
+.nav-buttons { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 1000; }
+.nav-btn { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); color: white; padding: 15px 40px; border-radius: 30px; cursor: pointer; font-size: 1.1em; transition: all 0.3s; }
+.nav-btn:hover { background: #00D864; border-color: #00D864; }
+
+/* Speaker notes toggle */
+.notes-toggle { position: fixed; top: 20px; right: 20px; z-index: 1000; }
+.notes-toggle button { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 10px 20px; border-radius: 20px; cursor: pointer; }
+.notes { display: none; background: rgba(0,0,0,0.9); padding: 20px; margin: 10px; border-radius: 10px; font-size: 0.9em; color: rgba(255,255,255,0.8); }
+.notes.visible { display: block; }
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<!-- Notes Toggle -->
+<div class="notes-toggle">
+<button onclick="toggleNotes()">📝 Speaker Notes</button>
+</div>
+
+<!-- SLIDE 1: Title -->
+<div class="slide active" id="slide1">
+<div class="slide-number">1 / 8</div>
+<div class="left-content">
+<div class="logo">IBERDROLA</div>
+<div class="badge">Datathon 2026</div>
+<h1 class="slide-title">Strategic Placement of EV Charging Infrastructure</h1>
+<div class="slide-subtitle">Meeting EU 2030 Requirements Through Data-Driven Analysis</div>
+<div class="small-text">April 21, 2026</div>
+</div>
+<div class="notes">HOOK: Start with 3 seconds of silence, make eye contact with judges. This is the attention grabber. Let the Iberdrola branding register before you speak.</div>
+</div>
+
+<!-- SLIDE 2: The Problem -->
+<div class="slide" id="slide2">
+<div class="slide-number">2 / 8</div>
+<div class="grid-2">
+<div class="left-content">
+<h2 class="slide-title">The Challenge</h2>
+<div class="slide-subtitle accent">Spain's Charging Infrastructure Gap</div>
+<div class="stat-box" style="margin: 30px 0;">
+<div class="big-number">420,000</div>
+<div class="normal-text">Public chargers required by EU by 2030</div>
+</div>
+<div class="stat-box-yellow" style="margin: 20px 0;">
+<div class="big-stat">~50,000</div>
+<div class="normal-text">Currently installed in Spain</div>
+</div>
+<div class="stat-box-red" style="margin: 20px 0;">
+<div class="big-stat">370,000</div>
+<div class="normal-text">Gap to fill — 92,500/year needed</div>
+</div>
+</div>
+<div class="right-content">
+<div style="font-size: 3em; font-weight: bold; color: #FF3B30; margin-bottom: 30px;">8x</div>
+<div class="normal-text">Faster installation rate required</div>
+<div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px;">
+<div class="small-text">By 2027: Over 1.5 million EVs projected on Spanish roads</div>
+</div>
+</div>
+</div>
+<div class="notes">KEY STATS: Cite EU Commission October 2025. This is verifiable policy. Judges will recognize these numbers. Pause after "8x" — let the scale sink in.</div>
+</div>
+
+<!-- SLIDE 3: The Reality -->
+<div class="slide" id="slide3">
+<div class="slide-number">3 / 8</div>
+<div class="center-content">
+<h2 class="slide-title">The Reality</h2>
+<div class="slide-subtitle accent-yellow">Infrastructure at Capacity</div>
+<div style="display: flex; gap: 80px; margin-top: 50px; align-items: center;">
+<div class="pie-chart"></div>
+<div style="text-align: left;">
+<div style="margin: 20px 0;">
+<div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+<div style="width: 30px; height: 30px; background: #FF3B30; border-radius: 5px;"></div>
+<span class="normal-text" style="font-size: 1.5em;"><strong style="font-size: 2em;">91.5%</strong> — CONGESTED (574 stations)</span>
+</div>
+</div>
+<div style="margin: 20px 0;">
+<div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+<div style="width: 30px; height: 30px; background: #FFD700; border-radius: 5px;"></div>
+<span class="normal-text" style="font-size: 1.5em;"><strong style="font-size: 2em;">3.2%</strong> — Moderate capacity</span>
+</div>
+</div>
+<div style="margin: 20px 0;">
+<div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+<div style="width: 30px; height: 30px; background: #00D864; border-radius: 5px;"></div>
+<span class="normal-text" style="font-size: 1.5em;"><strong style="font-size: 2em;">5.3%</strong> — Available for expansion (33 stations)</span>
+</div>
+</div>
+</div>
+</div>
+<div style="margin-top: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; max-width: 900px;">
+<div class="small-text accent-yellow">Customer Voice: Analyzed 8,350 conversations — Top pain points: App/Digital (29.2% negative), Pricing (25.8%), Route Planning (27.5%), Reliability (25.9%)</div>
+</div>
+</div>
+<div class="notes">EMPHASIS: "91.5% — CONGESTED" — Say this slowly. This is YOUR data from Iberdrola's dataset. Judges will feel the problem when they hear this.</div>
+</div>
+
+<!-- SLIDE 4: Our Approach -->
+<div class="slide" id="slide4">
+<div class="slide-number">4 / 8</div>
+<div class="left-content">
+<h2 class="slide-title">Our Methodology</h2>
+<div class="slide-subtitle accent">Three-Pillar Analysis</div>
+<div class="step-box">
+<div class="step-number">01</div>
+<div class="step-title">Network Analysis</div>
+<div class="step-desc">Analyzed 627 existing stations • Mapped grid capacity constraints • Identified 403 friction points</div>
+</div>
+<div class="step-box">
+<div class="step-number">02</div>
+<div class="step-title">Customer Integration</div>
+<div class="step-desc">Synthesized 8,350 JTBD conversations • Identified 12 demand themes • Prioritized reliability needs</div>
+</div>
+<div class="step-box">
+<div class="step-number">03</div>
+<div class="step-title">Optimization Model</div>
+<div class="step-desc">Built placement recommendation engine • Balanced capacity + demand + economics • Maximized ROI</div>
+</div>
+</div>
+<div class="right-content">
+<div class="content-box">
+<div style="font-size: 4em; font-weight: 900; color: #00D864; margin-bottom: 20px;">568</div>
+<div class="normal-text" style="font-size: 2em;">New stations identified</div>
+<div style="margin-top: 30px; padding: 20px; background: rgba(0,216,100,0.1); border-radius: 10px;">
+<div class="accent" style="font-size: 1.2em;">Not just where they fit — where they'll work</div>
+</div>
+</div>
+</div>
+</div>
+<div class="notes">TRANSITION: "We didn't just look at where chargers COULD go. We looked at where they SHOULD go." Pause for effect after "568".</div>
+</div>
+
+<!-- SLIDE 5: The Solution -->
+<div class="slide" id="slide5">
+<div class="slide-number">5 / 8</div>
+<div class="grid-2">
+<div class="left-content">
+<h2 class="slide-title" style="color: white;">The Solution</h2>
+<div class="slide-subtitle">Strategic Placement — Not More Building</div>
+<ul class="check-list" style="margin-top: 40px;">
+<li style="font-size: 1.5em;">Grid capacity available</li>
+<li style="font-size: 1.5em;">Demand proven by data</li>
+<li style="font-size: 1.5em;">Customer need identified</li>
+<li style="font-size: 1.5em;">Economic viability verified</li>
+</ul>
+<div style="margin-top: 50px; padding: 30px; background: rgba(255,255,255,0.1); border-radius: 15px; border-left: 4px solid #00D864;">
+<div class="big-number" style="font-size: 5em;">+40%</div>
+<div class="normal-text">Network capacity increase without new grid infrastructure</div>
+</div>
+</div>
+<div class="stations-map"></div>
+</div>
+<div class="notes">KEY INSIGHT: "Building more chargers is the instinct. But building them in wrong places is expensive AND doesn't solve the problem." Then show that your model does the opposite.</div>
+</div>
+
+<!-- SLIDE 6: The Numbers -->
+<div class="slide" id="slide6">
+<div class="slide-number">6 / 8</div>
+<div class="center-content">
+<h2 class="slide-title">The Business Case</h2>
+<div class="slide-subtitle accent">ROI That Pencils Out</div>
+<div class="grid-3" style="margin-top: 50px; max-width: 1400px; margin-left: auto; margin-right: auto;">
+<div class="metric-card">
+<div class="metric-value">1.9</div>
+<div class="metric-label">Years Avg Payback<br><small style="color: rgba(255,255,255,0.5);">(with 30% EU grants)</small></div>
+</div>
+<div class="metric-card">
+<div class="metric-value" style="color: #FFD700;">&lt;12</div>
+<div class="metric-label">Months Best Location<br><small style="color: rgba(255,255,255,0.5);">Top performing sites</small></div>
+</div>
+<div class="metric-card">
+<div class="metric-value">6.8</div>
+<div class="metric-label">Sessions/Charger/Day<br><small style="color: rgba(255,255,255,0.5);">Industry: 5-12 benchmark</small></div>
+</div>
+</div>
+<div style="display: flex; gap: 60px; margin-top: 60px; justify-content: center;">
+<div style="text-align: center;">
+<div style="font-size: 4em; font-weight: 900; color: #00D864;">2,878</div>
+<div class="small-text">Existing Stations</div>
+</div>
+<div style="font-size: 4em; color: rgba(255,255,255,0.3);">→</div>
+<div style="text-align: center;">
+<div style="font-size: 4em; font-weight: 900; color: #FFD700;">568</div>
+<div class="small-text">New Stations Proposed</div>
+</div>
+<div style="font-size: 4em; color: rgba(255,255,255,0.3);">=</div>
+<div style="text-align: center;">
+<div style="font-size: 4em; font-weight: 900; color: white;">3,446</div>
+<div class="small-text">Total Network by 2028</div>
+</div>
+</div>
+</div>
+<div class="notes">NUMBERS: These are from YOUR dataset. Be ready to defend: "We analyzed the economics based on projected utilization rates and current EU grant programs."</div>
+</div>
+
+<!-- SLIDE 7: Customer Impact -->
+<div class="slide" id="slide7">
+<div class="slide-number">7 / 8</div>
+<div class="center-content">
+<h2 class="slide-title">Addressing Customer Concerns</h2>
+<div class="slide-subtitle">Not Just Infrastructure — Trust</div>
+<div class="before-after">
+<div class="before-box">
+<h3>❌ Current Pain Points</h3>
+<div style="margin-top: 20px; font-size: 1.1em; line-height: 2;">
+"App doesn't work at station"<br>
+"Prices change unexpectedly"<br>
+"Don't know if charger works"<br>
+"Route planning is difficult"
+</div>
+</div>
+<div class="after-box">
+<h3>✓ Our Solution</h3>
+<div style="margin-top: 20px; font-size: 1.1em; line-height: 2;">
+Strategic placement = reliable coverage<br>
+Demand-based locations = proven usage<br>
+Grid optimization = consistent availability<br>
+Customer-first = trust built
+</div>
+</div>
+</div>
+<div style="margin-top: 40px;" class="accent">
+"We analyzed what EV drivers actually complain about — and built our model to solve those exact problems."
+</div>
+</div>
+<div class="notes">STORY: "2,322 of those 8,350 conversations were NEGATIVE. That's not noise — that's a signal. And our model addresses it."</div>
+</div>
+
+<!-- SLIDE 8: Next Steps -->
+<div class="slide" id="slide8">
+<div class="slide-number">8 / 8</div>
+<div class="center-content">
+<h2 class="slide-title" style="color: white;">The Path Forward</h2>
+<div class="slide-subtitle" style="color: rgba(255,255,255,0.9);">Together, We Can Meet EU Targets — Smarter, Not Just Bigger</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-date">Q3 2026</div>
+<div class="timeline-event">Pilot Launch<br><small>Top 50 locations</small></div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2027</div>
+<div class="timeline-event">Expand to 200<br><small>First full year</small></div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2028-2030</div>
+<div class="timeline-event">Complete 568<br><small>Full deployment</small></div>
+</div>
+</div>
+<div style="margin-top: 80px; padding: 40px; background: rgba(255,255,255,0.1); border-radius: 20px; max-width: 1000px;">
+<div class="normal-text" style="font-size: 1.8em; text-align: center;">
+<strong style="color: white;">The Ask:</strong> Support for pilot implementation and data partnership
+</div>
+</div>
+<div style="margin-top: 30px;" class="small-text">
+Thank you • Questions?
+</div>
+</div>
+<div class="notes">CLOSE: End with confidence. "We have the data, the model, and the plan. What we need is the partnership." Then pause and say "Thank you" and wait for questions.</div>
+</div>
+
+<!-- Navigation -->
+<div class="nav-buttons">
+<button class="nav-btn" onclick="prevSlide()">◀ Previous</button>
+<button class="nav-btn" onclick="nextSlide()">Next ▶</button>
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+const progress = document.getElementById('progress');
+
+function showSlide(n) {
+slides.forEach(s => s.classList.remove('active'));
+slides[n].classList.add('active');
+progress.style.width = ((n + 1) / totalSlides * 100) + '%';
+currentSlide = n;
+}
+
+function nextSlide() {
+if (currentSlide < totalSlides - 1) showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+if (currentSlide > 0) showSlide(currentSlide - 1);
+}
+
+function toggleNotes() {
+document.querySelectorAll('.notes').forEach(n => n.classList.toggle('visible'));
+}
+
+document.addEventListener('keydown', (e) => {
+if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+if (e.key === 'ArrowLeft') prevSlide();
+if (e.key === 'n') toggleNotes();
+});
+</script>
+
+</body>
+</html>
