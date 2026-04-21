@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "query": "brain health startup 2026 funding",
+  "date": "2026-04-21",
+  "text": "**Brain health and neurotech funding showed strong momentum in early 2026**, continuing the surge from 2025. Capital flowed into non-invasive devices, brain-computer interfaces (BCI), neurodegeneration biotech, cognitive screening tools, and neural biosignal platforms.\n\n### Notable 2025–Early 2026 Funding Rounds\n- **Cognito Therapeutics** — Raised $105M Series C (total $233M). Developed Spectris, a physician-prescribed at-home wearable delivering 40 Hz gamma light/sound stimulation for Alzheimer's. FDA Breakthrough Device Designation.\n- **Soley Therapeutics** — $200M Series C for cell stress sensing targeting neurodegeneration.\n- **ONWARD Medical** — €40.6M for spinal cord injury neuromodulation.\n- **Ivory (India)** — $1M for AI-powered brain health platform for early cognitive screening.\n- **biosignals** — $11M to analyze neural biosignals for drug development.\n- **Nudge** — $100M Series A (Thrive Capital, Greenoaks).\n- **Neuralink** — $650M Series E in 2025, ~$9B valuation.\n\n### Key Trend\nNon-invasive approaches (light/sound stimulation, wearables, EEG) gaining traction alongside invasive BCIs. AI integration for screening, biosignal analysis, and drug discovery is a clear theme. Neurotech led global digital health funding in April 2026.",
+  "citations": [
+    {"text": "m_goes_distance", "url": "https://x.com/m_goes_distance/status/2044841865816473757"},
+    {"text": "Cognito/insidepharma", "url": "https://x.com/insidepharma/status/2030999182866035006"},
+    {"text": "EU_Startups/ONWARD", "url": "https://x.com/EU_Startups/status/2045069192500805925"},
+    {"text": "Neuralink", "url": "https://x.com/neuralink/status/1929604804411904096"}
+  ],
+  "searches": 6,
+  "tokens": { "input": 25968, "output": 3724 }
+}

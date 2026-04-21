@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "query": "brain computer interface consumer 2026",
+  "date": "2026-04-21",
+  "text": "**As of April 2026, consumer BCIs are at an early but accelerating commercial stage.**\n\n### Key Development: Sabi BCI Beanie\n- First consumer BCI wearable shipping end of 2026\n- 70,000–100,000 miniature EEG sensors woven into fabric (beanie/cap)\n- Thought-to-text at ~30 words per minute, improving with use\n- Trained on ~100,000 hours of brain data from 100 volunteers\n- Funders: Vinod Khosla, Accel, Initialized, Kevin Weil\n- Strategy: non-invasive, clothing-like, no surgery\n\n### Neuralink (Medical/Invasive)\n- Scaling from dozens to thousands of implants annually\n- Moving toward fully automated robotic surgery\n- Consumer/elective versions NOT expected in 2026\n- Possible expanded applications (focus, mood, depression) by 2027–2028\n\n### Key Insight\n2026 = the year consumer BCI becomes real. Non-invasive solutions like Sabi lead true consumer adoption. Neuralink perfects high-bandwidth foundation for medical users first.",
+  "citations": [
+    {"text": "TheRundownAI/Sabi", "url": "https://x.com/TheRundownAI/status/2044845151185478045"},
+    {"text": "Neuralink scaling", "url": "https://x.com/neuralink/status/2044892424527356229"}
+  ],
+  "searches": 7,
+  "tokens": { "input": 40070, "output": 4825 }
+}
