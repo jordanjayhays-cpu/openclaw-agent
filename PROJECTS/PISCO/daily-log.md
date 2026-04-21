@@ -1,6 +1,6 @@
-# PISCO Daily Log — 2026-04-20
+# PISCO Daily Log — 2026-04-21
 
-## Date: Monday, April 20, 2026 — 02:07 UTC
+## Date: Tuesday, April 21, 2026 — 02:20 UTC
 
 ---
 
@@ -1401,3 +1401,46 @@ Added 5 missing hotel group contacts to `crm.db` (contacts table). These were id
 4. Victor Presa (Melia Madrid Gran Via) — email in CRM (needs verify)
 5. Dohun Kim (South Korea/EPS) — Telegram/WhatsApp/email ready
 
+
+---
+
+## Actions Taken (02:20 UTC)
+
+### Task Executed: pisco-034 — Jon Martinez / NH Collection San Sebastian Email Research
+- **Owner:** Axton (autonomous agent)
+- **Task Type:** Research correction + CRM update
+- **Status:** ✅ Intel corrected and logged
+
+#### What I Did:
+- Reviewed pisco-023 (Jon Martinez outreach draft) for email research
+- Found: **NH Collection San Sebastian has rebranded to NH Collection Aranzazu** — major renovation, reopened as Collection category
+- Found: Hotel director is **Cuque Illa** (not Jon Martinez)
+- Jon Martinez LinkedIn (es.linkedin.com/in/jon-martinez-961b3868) shows Bilbao area — role at NH San Sebastian unclear
+- Found general hotel contact: nhcollectionaranzazu@nh-hotels.com (from firstview.us hotel directory)
+- This is NOT property-specific HR contact — outreach draft for Jon Martinez may need reassignment to correct HR contact at Aranzazu
+
+#### CRM Updates (02:20 UTC):
+- **Activity logged:** research_email — "Email research session: web search rate-limited, found NH Collection Aranzazu San Sebastian general email but property-specific HR contact still needed. Jon Martinez LinkedIn verified Bilbao area."
+- **Jon Martinez notes updated** with corrected intel: NH San Sebastian = Aranzazu, director Cuque Illa, general email found, HR contact gap remains
+
+#### State Updates (02:20 UTC):
+- `STATE.yaml` updated: pisco-023 notes corrected with Aranzazu rebranding info
+- Timestamp: 2026-04-21T02:20:00Z
+
+#### Jordan — Action Required:
+- **Verify Jon Martinez email via LinkedIn before sending** — LinkedIn shows Bilbao area, may need confirmation he's still at San Sebastian
+- **Alternative:** Target Cuque Illa (hotel director) or find specific HR contact for NH Collection Aranzazu
+- San Sebastian angle still valid: Michelin gastronomy tourism, year-round conference traffic
+
+---
+
+## Metrics (02:20 UTC)
+| Metric | Value | Change |
+|--------|-------|--------|
+| contacts_crm | 35 | — |
+| pipeline_tier2_warm_draft_ready | 17 | — |
+| pipeline_tier3_warm_no_draft | 13 | — |
+
+---
+
+*Log updated: 2026-04-21 02:20 UTC by PISCO Agent (Axton)*

@@ -1,6 +1,6 @@
 # PISCO — State File
 project: PISCO
-updated: 2026-04-20T20:07:00Z
+updated: 2026-04-21T02:20:00Z
 
 # Goals
 goal: Land first hotel client, scale to 10 placements/month
@@ -191,7 +191,7 @@ tasks:
     due: null
     completed: 2026-04-19
     output: PROJECTS/PISCO/outreach-jon-martinez-nh-san-sebastian.md
-    note: "Created autonomously 2026-04-19. San Sebastián Michelin gastronomy tourism angle. Jordan to send — verify email via LinkedIn first. ⚠️ LinkedIn found (es.linkedin.com/in/jon-martinez-961b3868) shows Bilbao area, role unclear. CRM updated — needs confirmation this is the right Jon at NH Victoria San Sebastián."
+    note: "Created autonomously 2026-04-19. San Sebastián Michelin gastronomy tourism angle. Jordan to send — verify email via LinkedIn first. ⚠️ CORRECTION 2026-04-21: NH Collection San Sebastian rebranded to NH Collection Aranzazu (major renovation, reopened as Collection). Hotel director: Cuque Illa. Jon Martinez LinkedIn (Bilbao area) — may not be the San Sebastian HR contact. General hotel email: nhcollectionaranzazu@nh-hotels.com. CRM updated with corrected intel."
 
   - id: pisco-028
     title: Add missing contacts to CRM (research sweep)
