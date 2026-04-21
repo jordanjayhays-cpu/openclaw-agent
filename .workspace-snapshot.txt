@@ -1,0 +1,20 @@
+total 444
+drwxr-xr-x 31 openclaw openclaw  4096 Apr 21 03:01 .
+drwx------ 16 openclaw openclaw  4096 Apr 21 03:01 ..
+drwxr-xr-x  2 openclaw openclaw  4096 Mar 31 17:37 .clawhub
+drwxr-xr-x  2 openclaw openclaw  4096 Apr 20 12:50 .cron
+-rw-r--r--  1 openclaw openclaw    65 Mar 31 17:37 .env
+drwxr-xr-x  8 openclaw openclaw  4096 Apr 21 03:01 .git
+-rw-r--r--  1 openclaw openclaw    56 Mar 31 17:37 .git-credentials
+-rw-r--r--  1 openclaw openclaw     9 Mar 31 17:37 .gitignore
+drwxr-xr-x  2 openclaw openclaw  4096 Mar 31 17:37 .openclaw
+-rw-r--r--  1 openclaw openclaw     0 Apr 21 03:01 .workspace-snapshot.txt
+-rw-r--r--  1 openclaw openclaw  3074 Mar 31 17:37 AGENTS.md
+-rw-r--r--  1 openclaw openclaw  1593 Mar 31 17:37 AMERICAN_BEST_PRACTICES.md
+-rw-r--r--  1 openclaw openclaw  1843 Apr 20 12:53 AUTONOMOUS.md
+-rw-r--r--  1 openclaw openclaw  1471 Mar 31 17:37 BOOTSTRAP.md
+-rw-r--r--  1 openclaw openclaw  2133 Mar 31 17:37 CAPABILITY_TRACKER.md
+-rw-r--r--  1 openclaw openclaw 12202 Mar 31 17:37 COMARE-Decision-Makers.md
+-rw-r--r--  1 openclaw openclaw  2373 Mar 31 17:37 DASHBOARD.md
+-rw-r--r--  1 openclaw openclaw  2606 Mar 31 17:37 DECISIONS.md
+-rw-r--r--  1 openclaw openclaw 14483 Mar 31 17:37 Decision-Makers-Real.md
