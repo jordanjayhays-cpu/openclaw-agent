@@ -1465,3 +1465,78 @@ All 3 schemas ready in `notion-db-schema.md`:
 
 ---
 *Logged by Axton at 22:35 UTC*
+
+## 2026-04-21 (Tuesday — 02:35 UTC Check-in)
+
+**Agent:** MASSAGE-PASS Check-in (Axton)
+**Time:** 02:35 UTC | 3 days to launch (April 24)
+
+### Actions Taken
+
+- Read STATE.yaml → status: READY_TO_LAUNCH, launch: 2026-04-24
+- Checked Notion API key → NOT SET (still not configured by Jordan)
+- Notion unavailable → built `launch-day-playbook.md` (6.3KB)
+- Logged this entry
+
+### New Deliverable Created
+
+**`launch-day-playbook.md`** (NEW — 6.3KB)
+Day-of-launch operations playbook — generated because launch is now 3 days away and Jordan needs a clear, step-by-step guide for April 24:
+
+- **Pre-launch checklist** (days 1-3): domain, Formspree, email platform, pricing, Notion — all Jordan's tasks
+- **April 24 timeline** (6am → 6pm UTC): wake-up check, Email 3 (9am), Product Hunt (9:30am), social posts (10am), shop confirmations (11am), Email 4 (2pm), evening status check (6pm)
+- **Email copy templates** for Email 3, 4, 5 with exact subject lines and body text
+- **Social post templates** for Twitter/X, LinkedIn, Instagram with exact copy
+- **Product Hunt first-comment template** — ready to paste immediately after launch
+- **Notion DB update plan** — what I build once Jordan provides API key + parent page ID
+- **Metrics table** — targets for signups, founding spots, open rates, PH votes, studio confirmations, traffic
+- **Files reference** — all project files with one-line descriptions
+
+### Notion Status (unchanged — Jordan needs to act)
+
+- API key not set at `~/.config/notion/api_key`
+- Integration + parent page ID still needed from Jordan
+- Schema ready at `notion-db-schema.md`
+- `notion-setup-walkthrough.md` has step-by-step instructions
+
+### Launch Status (3 days — April 24)
+- [x] Landing pages — 6 variants ✅ (final, standalone, teaser, v2, v3, countdown)
+- [x] Waitlist dashboard ✅
+- [x] Studio outreach ✅
+- [x] IG visual brief ✅
+- [x] Launch emails — drafted ✅ (needs Jordan approval)
+- [x] Email setup guide ✅
+- [x] Product Hunt submission ✅
+- [x] Analytics command center ✅
+- [x] Pitch deck ✅
+- [x] Launch day playbook ✅ (this check-in)
+- [ ] Jordan: purchase domain
+- [ ] Jordan: wire Formspree + replace `YOUR_FORM_ID`
+- [ ] Jordan: set up email platform (Email 1 goes out today Apr 21)
+- [ ] Jordan: confirm pricing €49/€89
+- [ ] Jordan: create Notion integration + give parent page ID
+
+### ⚠️ Email 1 goes out TODAY (Apr 21)
+- `launch-emails.md` — if Jordan hasn't approved yet, he must do so immediately
+- Email platform (ConvertKit recommended) must be live this morning
+- First send window: 9am CET (07:00 UTC)
+
+### Blockers (Jordan — sorted by urgency)
+1. **Email platform** — not set up (Email 1 goes out TODAY) ← CRITICAL
+2. **launch-emails.md approval** — Jordan must approve before send
+3. **Formspree** — not wired (waitlist form not capturing real emails)
+4. **Domain** — not purchased
+5. **Pricing sign-off** — €49/€89 needs Jordan lock-in
+6. **Notion API** — integration + parent page ID
+
+### Flagged for Jordan
+
+⚠️ **TODAY (Apr 21) — Email 1 goes out** — email platform must be live NOW
+⚠️ **`launch-day-playbook.md` ready** — bookmark this for April 24 operations
+⚠️ **`launch-emails.md` needs approval** — if not done yet, do it before 9am CET
+⚠️ **Notion integration still not done** — 10 min setup, then Axton builds all 3 DBs
+⚠️ Founding member pricing closes Apr 26 — urgency is real
+⚠️ 3 days to launch
+
+---
+*Logged by Axton at 02:35 UTC*
