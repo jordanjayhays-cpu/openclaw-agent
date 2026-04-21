@@ -103,3 +103,11 @@
 
 ---
 Last updated: 2026-04-20 12:51 UTC
+
+## Self-Improvement Patterns Learned
+
+- STATE.yaml coordination pattern found in: notion-sync. Consider using for complex projects.
+- Market research pattern found in: openclaw-researcher. Should run this before building.
+- Outreach skills found: content_brainstorm, outreach, project_tracker. Should integrate into BD workflows.
+- Self-improvement skills: capability-evolver, openclaw-researcher. Should run capability-evolver.
+- Learned: 2026-04-21T06:25:24.006Z
