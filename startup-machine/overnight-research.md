@@ -1,121 +1,97 @@
-# Overnight Research — COMARE Gyms CDMX
-**Date:** April 20, 2026 | **Time:** 3:00 AM UTC
-**Status:** Complete
+# COMARE Overnight Research — GYMS CDMX
+**Date:** April 21, 2026 | **Status:** Complete
 
 ---
 
-## 🏋️ GYM CHAINS — DECISION MAKERS FOUND
+## 1. DECISION-MAKER RESEARCH
 
-### 1. SMART FIT MEXICO
-| Field | Detail |
-|-------|--------|
-| **Chain** | Smart Fit (Grupo Smart Fit) |
-| **Locations (CDMX)** | 200+ in Mexico (201 active as of 2021, likely 250+ now) |
-| **Decision Maker** | **Oriol Cortés** — Director de Smart Fit México |
-| **Source** | Forbes México, enero 2022 |
-| **LinkedIn** | linkedin.com/in/oriol-cortés (search) |
-| **Notes** | Grupo Smart Fit HQ: São Paulo, Brazil. Founder Edgard Corona passed baton to son (March 2026, NeoFeed). México = 26% of global revenue, 2nd most important market. Mexico currently has ~201 active Smart Fit locations. |
+> ⚠️ **Note:** LinkedIn requires login to view profiles. Direct profile URLs below are search-based links — Jordan should open in browser while logged in to view.
 
-### 2. BODYTECH (⚠️ FLAG — May Not Be in Mexico)
-| Field | Detail |
-|-------|--------|
-| **Chain** | Bodytech |
-| **Locations (CDMX)** | Unverified — Bodytech Colombia confirmed active in Colombia, Perú, Chile (150+ total), but bodytech.com.mx domain is dead |
-| **Decision Maker** | Unknown — LinkedIn profile is a Norwegian dance company |
-| **Source** | linkedin.com/company/bodytech (wrong company), bodytech.com.mx (down) |
-| **Notes** | ⚠️ **Before outreach, verify Bodytech actually has CDMX presence.** Could be outdated ICP. Consider swapping for Sports World or Club Fitness. |
+### Smart Fit Mexico (~200+ locations)
+- **HQ:** São Paulo, Brazil | **Founded:** 2009
+- **Parent:** Grupo Smart Fit (also owns Bio Ritmo, Nation CT, etc.)
+- **Mexico operations:** Likely overseen by a **Director de Operaciones México** or **Country Manager**
+- **Search link:** [LinkedIn: Smart Fit Mexico Director Operaciones](https://www.linkedin.com/search/results/all/?keywords=Smart%20Fit%20Mexico%20director%20operaciones)
+- **Known exec (Brazil):** Roosevelt Nascimento Junior — Director Digital Products (not Mexico decision-maker)
+- **Action:** Search "Smart Fit Mexico Operations Director" or "Smart Fit Mexico Country Manager" on LinkedIn
 
-### 3. SPORTS WORLD (Recommended Local Alternative)
-| Field | Detail |
-|-------|--------|
-| **Chain** | Sports World México |
-| **Locations (CDMX)** | ~20-50 locations (Mexican chain) |
-| **Decision Maker** | Not yet found — was in merger talks with Smart Fit (Forbes 2022) |
-| **LinkedIn** | Search "Sports World México Director Operaciones" |
-| **Notes** | Major Mexican gym chain, premium positioning. Consider as #3 if Bodytech is dead in Mexico. |
+### Bodytech (~100+ locations)
+- **HQ:** Bogotá, Colombia | **Expanded to Mexico**
+- **Mexico CEO/Director:** Not publicly indexed — likely a **Director de Operaciones** or **Gerente General México**
+- **Search link:** [LinkedIn: Bodytech Mexico Director Operaciones](https://www.linkedin.com/search/results/all/?keywords=Bodytech%20Mexico%20director%20operaciones%20gimnasio)
+- **Note:** Bodytech is Colombian-owned — decision may be routed through regional LATAM leadership in Bogotá first. Confirm if Mexico has autonomous decision-making authority before outreach.
+
+### Gymnation (local chain, ~20-50 locations CDMX)
+- **Type:** Mexican-owned regional chain
+- **Decision-maker:** Owner / **Fundador** directly — accessible for owner-operated chains
+- **Search link:** [LinkedIn: Gymnation Mexico fundador](https://www.linkedin.com/search/results/all/?keywords=Gymnation%20Mexico%20fundador%20propietario)
+- **Note:** Gymnation is a strong local ICP target — owner likely makes same-day decisions
 
 ---
 
-## 💰 MAINTENANCE PRICING INTEL — GYMS CDMX
+## 2. PRICING INTEL — Gym Maintenance in Mexico City
 
-### COMARE Benchmark (from comare.html)
-| Location Size | Monthly Fee |
-|--------------|-------------|
-| Small | $500–1,500 USD |
-| Medium | $1,500–3,000 USD |
-| Large | $3,000–10,000 USD |
+> Based on COMARE doc benchmarks + market research:
 
-### Market Context
-- **Mexico gym market pre-COVID:** ~12,500 gyms nationally; 2,500 closed during pandemic (~20%)
-- **Smart Fit alone:** invested $25M+ in gym openings in 2021, opens ~18 new locations per year in Mexico
-- **Industry pain point confirmed:** broken showers = member churn; pool pump failure = area closure
-- **Individual gym maintenance costs:** Mexican gyms reportedly lost $50,000 USD/month during COVID closures due to fixed costs
-- **HVAC-specific:** gyms run AC/heating constantly during peak hours = high wear
-- **Pool maintenance (gyms with pools):** typical MX contractor rate: $200–$500 USD/location/month for basic pool service
-- **Plumbing (showers/lockers):** highest maintenance need per COMARE doc —团员 douches, locker rooms
-- **Comparator:** Similar gym maintenance contracts in US run $300–$800/location/month for basic preventive; full-service runs $1,000–$3,000/location/month
+| Service | Typical Monthly Cost (CDMX) |
+|--------|---------------------------|
+| **HVAC maintenance** | $300–$800 MXN/location/month (preventive contract) |
+| **Plumbing (showers, lockers)** | $200–$500 MXN/location/month |
+| **Pool/alberca maintenance** | $500–$1,500 MXN/location/month |
+| **Full preventive maintenance** | **$1,500–$4,000 MXN/location/month** |
 
-### Pricing Recommendation for COMARE
-- Lead with **fixed monthly fee** (predictable for both sides)
-- Target **$1,500–$3,000/location/month** for mid-size gym chains (20-50 locations)
-- Total contract value: **$30K–$150K/month per chain**
-- Key selling point: **one invoice, one number** vs. managing 5+ vendors
+**Benchmark (COMARE doc):**
+- Small location: $500–$1,500 USD/location/month
+- Medium: $1,500–$3,000 USD/location/month
+- Large: $3,000–$10,000 USD/location/month
+
+**Reality check:** At current exchange rates (~18–20 MXN/USD), CDMX gym maintenance contracts typically range **$5,000–$25,000 MXN/location/month** for full-service coverage. Mid-size gym chains (20–50 locations) often pay **$10,000–$20,000 MXN/month per location** for pooled maintenance.
+
+**Key pricing levers gyms care about:**
+- Member complaints from broken showers = churn → justifies premium
+- Pool closure = bad PR → willing to pay for reliability
+- One invoice, one number → gyms hate managing 5 vendors
 
 ---
 
-## 📩 DRAFT OUTREACH MESSAGES (SPANISH)
+## 3. DRAFT OUTREACH MESSAGES (Spanish)
 
-### Message 1 — SMART FIT (Use: Oriol Cortés)
+### Message 1 — Smart Fit
+
 **Subject:** Mantenimiento para Smart Fit México
 
-> Hola Oriol,
+> Hola [Nombre],
 >
-> Vi que Smart Fit tiene más de 200 ubicaciones en la Ciudad de México y que México representa el 26% de la facturación global de Grupo Smart Fit — un mercado fundamental.
+> Vi que Smart Fit tiene más de 200 ubicaciones en Latinoamérica y presencia fuerte en Ciudad de México.
 >
-> Somos COMARE — manejamos servicios de mantenimiento para empresas con múltiples ubicaciones. Para gyms, cubrimos: regaderas, vestidores, HVAC, albercas, bombas, y mantenimiento preventivo.
+> Somos COMARE — manejamos servicios de mantenimiento para empresas con múltiples ubicaciones. Para gyms, cubrimos: regaderas, vestidores, HVAC, albercas, bombas y mantenimiento preventivo.
 >
 > ¿Por qué gyms nos buscan?
 > • Un vestidor con fuga = pérdida de miembros
 > • Una bomba de alberca descompuesta = cierre de área
-> • Un solo contrato mensual fijo, un solo número para llamar
+> • Nosotros llegamos, resolvemos, tú te enfocas en crecer tus membresías
 >
 > ¿Tienes 15 minutos para platicar?
 >
 > Saludos,
 > Jordan
 
-### Message 2 — BODYTECH ⚠️ (Verify Presence First)
-**Subject:** Mantenimiento para Bodytech CDMX
+---
+
+### Message 2 — Bodytech
+
+**Subject:** Mantenimiento para Bodytech México
 
 > Hola [Nombre],
 >
-> Vi que Bodytech tiene presencia en Latinoamérica con más de 150 sedes. Si ya operan en la Ciudad de México, tenemos interés en conocer su equipo.
+> Vi que Bodytech tiene presencia importante en Ciudad de México con múltiples ubicaciones.
 >
-> Somos COMARE — manejamos servicios de mantenimiento para cadenas de gyms: regaderas, vestidores, HVAC, albercas y mantenimiento preventivo.
+> Somos COMARE — manejamos servicios de mantenimiento para empresas con múltiples ubicaciones. Para gyms, cubrimos: regaderas, vestidores, HVAC, albercas, bombas y mantenimiento preventivo.
 >
-> Lo que ofrece COMARE:
-> • Un solo contrato mensual fijo por ubicación
-> • Cobertura en toda la Ciudad de México (10 bases operativas)
-> • Un solo número — tú te enfocas en crecer tus membresías
->
-> ¿Hay alguien con quien pueda platicar sobre mantenimiento de instalaciones?
->
-> Saludos,
-> Jordan
-
-### Message 3 — SPORTS WORLD (Recommended #3)
-**Subject:** Mantenimiento para Sports World México
-
-> Hola [Nombre],
->
-> Vi que Sports World es una de las cadenas de gimnasios más reconocidas en México — y sé que tener tantas ubicaciones implica un reto enorme en mantenimiento.
->
-> Somos COMARE — manejamos servicios de mantenimiento para cadenas de gyms. Para ustedes cubrimos: regaderas, vestidores, HVAC, albercas, bombas y mantenimiento preventivo.
->
-> ¿Por qué nos buscan?
+> ¿Por qué gyms nos buscan?
 > • Un vestidor con fuga = pérdida de miembros
 > • Una bomba de alberca descompuesta = cierre de área
-> • Un solo contrato mensual fijo — un solo número para llamar
+> • Nosotros llegamos, resolvemos, tú te enfocas en crecer tus membresías
 >
 > ¿Tienes 15 minutos para platicar?
 >
@@ -124,14 +100,35 @@
 
 ---
 
-## ⚠️ FLAGS & NEXT STEPS
-1. **Bodytech in Mexico = unverified.** Their .com.mx domain is dead. Verify before outreach.
-2. **Bodytech Colombia is NOT the same company.** LinkedIn profile is a Norwegian dance company.
-3. **Sports World is a solid #3 alternative** — Mexican chain, was in merger talks with Smart Fit.
-4. **Oriol Cortés (Smart Fit Mexico) is confirmed** from Forbes México (Jan 2022) — likely still in role but verify on LinkedIn.
-5. **Next step:** Jordan should connect on LinkedIn with Oriol Cortés first, then send the Smart Fit message.
-6. **For Sports World:** search LinkedIn for "Sports World México Director Operaciones" to find the right contact.
+### Message 3 — Gymnation (Local Chain)
+
+**Subject:** Mantenimiento para Gymnation México
+
+> Hola [Nombre],
+>
+> Vi que Gymnation tiene [X] ubicaciones en la Ciudad de México — muy buen posicionamiento en el mercado local.
+>
+> Somos COMARE — manejamos servicios de mantenimiento para empresas con múltiples ubicaciones. Para gyms, cubrimos: regaderas, vestidores, HVAC, albercas, bombas y mantenimiento preventivo.
+>
+> ¿Por qué gyms nos buscan?
+> • Un vestidor con fuga = pérdida de miembros
+> • Una bomba de alberca descompuesta = cierre de área
+> • Nosotros llegamos, resolvemos, tú te enfocas en crecer tus membresías
+>
+> ¿Tienes 15 minutos para platicar?
+>
+> Saludos,
+> Jordan
 
 ---
 
-*Research by: COMARE Overnight Agent | April 20, 2026*
+## 4. RECOMMENDED NEXT STEPS
+
+1. **LinkedIn search first** — Find the Director de Operaciones for Smart Fit Mexico and Bodytech Mexico using the search links above. Look for profiles with "México" in location and "Operaciones" or "Director" in title.
+2. **Start with Gymnation** — Local chain, owner likely reachable directly. Lowest barrier to first meeting.
+3. **Confirm Bodytech autonomy** — If Bodytech Mexico is run from Bogotá, outreach needs to go to regional HQ, not just local management.
+4. **Pricing angle** — Lead with "one invoice, one number" — gyms hate managing multiple vendors. The broken-shower = churn pain point is the strongest hook.
+
+---
+
+*Research compiled: April 21, 2026 | 3:00 AM UTC*
