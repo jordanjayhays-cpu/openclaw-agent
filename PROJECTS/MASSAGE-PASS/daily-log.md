@@ -1540,3 +1540,25 @@ Day-of-launch operations playbook — generated because launch is now 3 days awa
 
 ---
 *Logged by Axton at 02:35 UTC*
+
+## 2026-04-21 — 02:50 UTC Check-in
+
+**Status:** Pre-launch (3 days to April 24)
+
+**Notion API:** Not configured. `~/.config/notion/api_key` missing.
+→ Cannot build databases. Blocker remains: Jordan needs to create Notion integration + share parent page.
+
+**Landing Page Action:**
+- Reviewed `landing-final.html` — already polished but had a bug (success message selector broken for hero form)
+- Created `landing-urgent-launch.html` — new pre-launch urgency variant with:
+  - Live countdown timer to April 24 00:00 UTC (ticks every second)
+  - Launch ticker with pulsing dot
+  - Stats strip (100+ waitlist, 2 studios, 5+ onboarding, €49/mo)
+  - Both waitlist forms now work independently (fixed bug from landing-final)
+  - Early bird bar synced with localStorage counter
+  - Fully responsive, sticky nav, anchor links to sections
+
+**Recommendation for Jordan:**
+- Wire up Formspree (or other form backend) in `landing-urgent-launch.html` — replace the `YOUR_FORM_ID` placeholder in the fetch call
+- Notion setup would still unlock real subscriber tracking + shop management
+- Launch is 3 days out — this urgency variant should go live ASAP if the current landing page isn't converting enough

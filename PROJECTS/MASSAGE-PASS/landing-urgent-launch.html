@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage Pass — 3 Days to Launch · Madrid</title>
+  <meta name="description" content="Unlimited monthly massages at top studios across Madrid. €49/month. Launching April 24.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --surface2: #181818;
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --muted: #888888;
+      --subtle: #555555;
+      --accent: #4ade80;
+      --accent-dim: rgba(74,222,128,0.12);
+      --urgent: #f87171;
+      --radius: 12px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .nav-logo { font-size: 17px; font-weight: 700; letter-spacing: -0.4px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent);
+      color: #000;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 64px;
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    .launch-ticker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.2);
+      color: var(--urgent);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .launch-ticker .pulse {
+      width: 8px; height: 8px;
+      background: var(--urgent);
+      border-radius: 50%;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* ── COUNTDOWN ── */
+    .countdown-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .countdown-unit {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      min-width: 72px;
+      text-align: center;
+    }
+    .countdown-unit .num {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      display: block;
+      letter-spacing: -1px;
+    }
+    .countdown-unit .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--subtle);
+      margin-top: 4px;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+
+    /* ── EARLY BIRD BAR ── */
+    .early-bird-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .early-bird-bar strong { color: var(--text); }
+
+    /* ── FORMS ── */
+    .waitlist-wrap { max-width: 440px; margin: 0 auto; }
+    .waitlist-form {
+      display: flex;
+      gap: 10px;
+    }
+    .waitlist-form input {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-form input:focus { border-color: rgba(255,255,255,0.4); }
+    .waitlist-form input::placeholder { color: #444; }
+    .waitlist-form button {
+      padding: 14px 28px;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .waitlist-form button:hover { opacity: 0.85; }
+    .success-msg {
+      display: none;
+      color: var(--accent);
+      margin-top: 14px;
+      font-size: 15px;
+      text-align: center;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .form-note {
+      font-size: 12px;
+      color: var(--subtle);
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      margin: 64px 0 0;
+    }
+    .stat {
+      padding: 28px 40px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat .stat-num {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+    .stat .stat-label { font-size: 13px; color: var(--subtle); }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-label {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 56px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0;
+    }
+    .step {
+      padding: 32px;
+      border-right: 1px solid var(--border);
+      text-align: left;
+    }
+    .step:last-child { border-right: none; }
+    .step-num {
+      font-size: 40px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.06);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 80px 24px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .pricing-inner { max-width: 700px; margin: 0 auto; }
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .plan {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+      width: 300px;
+      text-align: left;
+      position: relative;
+    }
+    .plan.featured {
+      border-color: rgba(74,222,128,0.4);
+      background: #0a1a0e;
+      box-shadow: 0 0 40px rgba(74,222,128,0.06);
+    }
+    .plan.featured::before {
+      content: 'EARLY BIRD';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #000;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 50px;
+    }
+    .plan h3 { font-size: 17px; margin-bottom: 16px; }
+    .plan .price { font-size: 42px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+    .plan .price span { font-size: 15px; font-weight: 400; color: var(--muted); }
+    .plan .price .strike { font-size: 20px; color: var(--subtle); text-decoration: line-through; margin-right: 6px; }
+    .plan .plan-desc { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .plan ul { list-style: none; }
+    .plan li {
+      font-size: 14px;
+      color: var(--muted);
+      padding: 5px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .plan li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .launch-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ── FAQ ── */
+    .faq { padding: 80px 24px; max-width: 600px; margin: 0 auto; border-top: 1px solid var(--border); }
+    .faq h2 { text-align: center; font-size: clamp(24px, 4vw, 32px); margin-bottom: 40px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item h3 { font-size: 15px; margin-bottom: 8px; }
+    .faq-item p { font-size: 14px; color: var(--muted); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      padding: 100px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .bottom-cta h2 { font-size: clamp(28px, 5vw, 44px); font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
+    .bottom-cta p { color: var(--muted); font-size: 18px; margin-bottom: 36px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--subtle);
+      font-size: 13px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      nav .nav-links { display: none; }
+      .hero { padding: 64px 20px 52px; }
+      .countdown-wrap { gap: 8px; }
+      .countdown-unit { min-width: 60px; padding: 12px 14px; }
+      .countdown-unit .num { font-size: 24px; }
+      .waitlist-form { flex-direction: column; }
+      .step { border-right: none; border-bottom: 1px solid var(--border); }
+      .step:last-child { border-bottom: none; }
+      .plans { flex-direction: column; align-items: center; }
+      .plan { width: 100%; max-width: 340px; }
+      .stats-strip { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 24px; }
+      .stat:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Massage<span>Pass</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <button class="nav-cta" onclick="document.getElementById('waitlist-hero').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="launch-ticker">
+    <span class="pulse"></span>
+    Launching April 24, 2026 — Madrid
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown-wrap" id="countdown">
+    <div class="countdown-unit">
+      <span class="num" id="cd-days">--</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="num" id="cd-hours">--</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="num" id="cd-mins">--</span>
+      <span class="label">Mins</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="num" id="cd-secs">--</span>
+      <span class="label">Secs</span>
+    </div>
+  </div>
+
+  <h1>Unlimited massages.<br>One subscription.</h1>
+  <p class="hero-sub">Madrid's first all-you-can-massage membership. Access top studios across the city — sports, relaxation, holistic — for one flat monthly rate.</p>
+
+  <div class="early-bird-bar">
+    <strong id="spots-left">16</strong> early-bird spots remaining at 50% off Month 1
+  </div>
+
+  <div class="waitlist-wrap" id="waitlist-hero">
+    <form class="waitlist-form" id="wlFormHero" onsubmit="return handleSubmit(event, 'hero')">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Claim My Spot</button>
+    </form>
+    <div class="success-msg" id="successHero">✅ You're on the list! We'll reach out before April 24. ✓</div>
+    <div class="form-note">No spam. No credit card. Just first access.</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat">
+    <span class="stat-num">100+</span>
+    <span class="stat-label">Waitlist signups</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">2</span>
+    <span class="stat-label">Launch studios</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">5+</span>
+    <span class="stat-label">More onboarding</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">€49</span>
+    <span class="stat-label">From / month</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">Three steps to stress-free months</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Join the waitlist</h3>
+      <p>Sign up with your email. First 100 members lock in 50% off Month 1.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Get your pass</h3>
+      <p>On April 24, you receive full access to all partner studios via our app.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Book &amp; relax</h3>
+      <p>Browse studios, book a slot, show up. No credits, no limits, no friction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Simple. No surprises.</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Essential</h3>
+        <div class="price"><span class="strike">€70</span>€49 <span>/mo</span></div>
+        <div class="plan-desc">Per-visit average — pay as you go elsewhere</div>
+        <ul>
+          <li>4 massages / month</li>
+          <li>Access to all partner studios</li>
+          <li>Easy booking via app</li>
+          <li>Cancel anytime</li>
+        </ul>
+      </div>
+      <div class="plan featured">
+        <h3>Premium</h3>
+        <div class="price"><span class="strike">€120</span>€89 <span>/mo</span></div>
+        <div class="plan-desc">Per-visit average — pay as you go elsewhere</div>
+        <ul>
+          <li>Unlimited massages / month</li>
+          <li>Priority booking slots</li>
+          <li>Premium partner studios</li>
+          <li>Pause up to 2 weeks / year</li>
+        </ul>
+      </div>
+    </div>
+    <p class="launch-note">🎁 First 100 members: 50% off Month 1 — lock in your spot before April 24</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <h2>FAQ</h2>
+  <div class="faq-item">
+    <h3>How does it work?</h3>
+    <p>Subscribe → Download the app → Book a slot at any partner studio → Show up and relax. No credits, no visit limits on Premium.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Which studios are included?</h3>
+    <p>Launching April 24 with Mayoac (Chamartín) and The Fix Room (Salamanca). More studios in Chueca, Chamberí, and Malasaña joining before launch.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What types of massage are available?</h3>
+    <p>Swedish, deep tissue, sports, trigger point, and relaxation — depends on the studio. Each studio lists their services in the app.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I cancel anytime?</h3>
+    <p>Yes. Month-to-month, no contracts. Premium subscribers can pause up to 2 weeks per year at no cost.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How do studios benefit?</h3>
+    <p>Studios receive 75% of your subscription fee split across your visits. They get guaranteed recurring revenue and new clients — no marketing effort required.</p>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <h2>April 24, 2026.<br>Madrid.</h2>
+  <p>Be first. Lock in 50% off your first month.</p>
+  <div class="waitlist-wrap">
+    <form class="waitlist-form" id="wlFormBottom" onsubmit="return handleSubmit(event, 'bottom')">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit">Claim My Spot</button>
+    </form>
+    <div class="success-msg" id="successBottom">✅ You're on the list! See you April 24. ✓</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Massage Pass · Madrid, Spain · <a href="mailto:hello@massagepass.com">hello@massagepass.com</a></p>
+</footer>
+
+<script>
+  /* ── Countdown to April 24, 2026 00:00:00 UTC ── */
+  const LAUNCH = new Date('2026-04-24T00:00:00Z').getTime();
+
+  function tickCountdown() {
+    const now = Date.now();
+    const diff = Math.max(0, LAUNCH - now);
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const el = document.getElementById('countdown');
+    if (diff <= 0) {
+      el.innerHTML = '<div class="countdown-unit" style="width:100%"><span class="num" style="color:var(--accent)">We\'re Live!</span></div>';
+      return;
+    }
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  /* ── Spots counter (cross-tab sync via localStorage) ── */
+  const TOTAL_EARLY_BIRD = 100;
+  const STORAGE_KEY = 'mp_claimed';
+  let claimed = parseInt(localStorage.getItem(STORAGE_KEY) || '84', 10);
+
+  function syncSpots() {
+    const left = Math.max(0, TOTAL_EARLY_BIRD - claimed);
+    document.getElementById('spots-left').textContent = left;
+  }
+
+  window.addEventListener('storage', e => {
+    if (e.key === STORAGE_KEY) {
+      claimed = parseInt(e.newValue || '84', 10);
+      syncSpots();
+    }
+  });
+  syncSpots();
+
+  /* ── Form handler (fixed — both forms work independently) ── */
+  function handleSubmit(e, formId) {
+    e.preventDefault();
+    const form = document.getElementById(formId === 'hero' ? 'wlFormHero' : 'wlFormBottom');
+    const email = form.querySelector('input[type="email"]').value.trim();
+    if (!email) return false;
+
+    /* Increment counter */
+    claimed = Math.min(claimed + 1, TOTAL_EARLY_BIRD);
+    localStorage.setItem(STORAGE_KEY, claimed);
+    syncSpots();
+
+    /* Persist email to localStorage as backup */
+    const emails = JSON.parse(localStorage.getItem('mp_emails') || '[]');
+    if (!emails.includes(email)) emails.push(email);
+    localStorage.setItem('mp_emails', JSON.stringify(emails));
+
+    /* Swap form → success */
+    form.style.display = 'none';
+    document.getElementById('success' + formId.charAt(0).toUpperCase() + formId.slice(1)).style.display = 'block';
+
+    /* If Formspree is wired, POST here:
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+      headers: { 'Content-Type': 'application/json' }
+    }).catch(() => {});
+    */
+
+    return false;
+  }
+</script>
+
+</body>
+</html>
