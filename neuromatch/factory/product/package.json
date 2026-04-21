@@ -1,0 +1,12 @@
+{
+  "name": "neuromatch-product",
+  "version": "1.0.0",
+  "description": "Neuromatch Product Agent - Roadmap management and spec writing",
+  "type": "module",
+  "scripts": {
+    "start": "node agent.js",
+    "add-feature": "node agent.js add-feature",
+    "list": "node agent.js list-features",
+    "spec": "node agent.js spec"
+  }
+}

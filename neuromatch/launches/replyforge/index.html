@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReplyForge — AI writes emails in your style</title>
+  <meta name="description" content="AI writes emails in your style">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .glow { box-shadow: 0 0 60px rgba(102, 126, 234, 0.4); }
+  </style>
+</head>
+<body class="bg-gray-950 text-white min-h-screen">
+
+  <!-- Nav -->
+  <nav class="flex items-center justify-between px-8 py-6 max-w-6xl mx-auto">
+    <div class="text-2xl font-bold">ReplyForge</div>
+    <a href="#waitlist" class="gradient-bg px-5 py-2 rounded-full font-semibold hover:opacity-90 transition">Join Waitlist</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="text-center px-4 py-24 max-w-4xl mx-auto">
+    <div class="inline-block px-4 py-1 rounded-full border border-gray-700 text-sm text-gray-400 mb-8">
+      Coming soon
+    </div>
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+      <span class="gradient-text">AI writes emails in your style</span>
+    </h1>
+    <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+      I hate writing the same follow-up emails over and over
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#waitlist" class="gradient-bg glow px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition">
+        Join Waitlist →
+      </a>
+      <a href="#how" class="px-8 py-4 rounded-full font-semibold text-lg border border-gray-700 hover:border-gray-500 transition">
+        Learn more
+      </a>
+    </div>
+  </section>
+
+  <!-- Problem/Solution -->
+  <section id="how" class="px-4 py-24 bg-gray-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-16">How it works</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">1️⃣</div>
+          <h3 class="text-xl font-bold mb-2">Sign up</h3>
+          <p class="text-gray-400">Join the waitlist. First 100 get lifetime discount.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">2️⃣</div>
+          <h3 class="text-xl font-bold mb-2">We build it</h3>
+          <p class="text-gray-400">Your feedback shapes the product. You tell us what matters.</p>
+        </div>
+        <div class="text-center p-6">
+          <div class="text-4xl mb-4">3️⃣</div>
+          <h3 class="text-xl font-bold mb-2">Get early access</h3>
+          <p class="text-gray-400">Be first to use ReplyForge. For 9/mo. Lock in this price forever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Preview -->
+  <section class="px-4 py-24">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">What you get</h2>
+      <div class="bg-gray-900 rounded-2xl p-8 border border-gray-800">
+        <p class="text-xl text-gray-300 mb-6">Paste your email style. Get personalized replies in one click.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <span class="px-4 py-2 bg-gray-800 rounded-full text-sm">✨ One-click setup</span>
+          <span class="px-4 py-2 bg-gray-800 rounded-full text-sm">🔒 No credit card required</span>
+          <span class="px-4 py-2 bg-gray-800 rounded-full text-sm">⚡ Launch in minutes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section id="waitlist" class="px-4 py-24 gradient-bg">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-4">Join the waitlist</h2>
+      <p class="text-xl mb-8 opacity-90">Be first to know when we launch. No spam.</p>
+      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onsubmit="handleSubmit(event)">
+        <input type="email" id="email" placeholder="your@email.com" required
+          class="flex-1 px-6 py-4 rounded-full text-gray-900 font-semibold outline-none focus:ring-4 ring-white/30">
+        <button type="submit" class="px-8 py-4 bg-gray-900 text-white rounded-full font-bold hover:bg-gray-800 transition">
+          Join →
+        </button>
+      </form>
+      <p id="success" class="hidden mt-4 text-lg font-semibold">🎉 You're in! We'll email you when we launch.</p>
+      <p class="mt-4 text-sm opacity-75">No spam. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="px-4 py-8 text-center text-gray-500 text-sm">
+    <p>© 2026 ReplyForge. Built by humans, not robots.</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const leadsFile = '/data/workspace/neuromatch/launches/replyforge/leads.json';
+      // In production, send to your backend or use Formspree
+      console.log('Lead:', email);
+      document.getElementById('email').value = '';
+      document.getElementById('success').classList.remove('hidden');
+      // Save to localStorage for demo
+      const leads = JSON.parse(localStorage.getItem('replyforge_leads') || '[]');
+      leads.push({ email, date: new Date().toISOString() });
+      localStorage.setItem('replyforge_leads', JSON.stringify(leads));
+    }
+  </script>
+
+</body>
+</html>

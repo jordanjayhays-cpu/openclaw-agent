@@ -1,0 +1,10 @@
+{
+  "name": "neuromatch-ops",
+  "version": "1.0.0",
+  "description": "Neuromatch CEO Dashboard - Single view of the whole company",
+  "type": "module",
+  "scripts": {
+    "start": "node dashboard.js",
+    "dashboard": "node dashboard.js"
+  }
+}

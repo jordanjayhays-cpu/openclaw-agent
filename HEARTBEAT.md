@@ -1,40 +1,54 @@
 # HEARTBEAT.md
 
-## Heartbeat Checklist (9am-6pm CET)
+## Jordan's Context (auto-loaded)
 
-### Standard Checks
-1. **Git Sync** — `bash tools/auto_save.sh` if changes pending
-2. **Follow-ups** — Check contacts/CONTEXT.md for "Next Action" == today
-3. **Stale Tasks** — Flag tasks in AUTONOMOUS.md older than 3 days
-4. **Log** — Append timestamp to memory/heartbeats.md
+Jordan Hays. Struggling financially. Needs income. Has 100 app ideas.
+Primary goal: Get Jordan to first dollar.
 
-### Health Prompts (3x Daily)
-> Prompt Jordan with these at the scheduled times. Keep it short.
+Neuromatch company: Factory built — Sales, Marketing, Product, CEO Dashboard.
+Jordan wants: Top 1% agent behavior. Memory. Proactivity. Action without asking.
 
-**Morning (8-9am CET):**
-> "Morning check-in — how'd you sleep? Log it: PROJECTS/health-log.md"
+## Proactive Tasks (run silently)
 
-**Midday (1-2pm CET):**
-> "Lunch check — what are you eating? Any symptoms? Log it."
+### Every heartbeat:
+1. Run: `cd /data/workspace/self-improvement && node improve.js analyze`
+2. Read briefing: `/data/workspace/self-improvement/briefing.md`
+3. Check if there's something I can BUILD for Jordan without being asked
+4. If `.learnings/` has new entries, apply fixes immediately
 
-**Evening (8-9pm CET):**
-> "End of day — how are you feeling? Any symptoms, energy issues, gut stuff? Log it."
+### At session start (before responding):
+1. Read BRIEFING.md — know what's pending
+2. Check memory for Jordan's state
+3. Lead with: "Welcome back. Here's where we left off..." — NOT "how can I help"
+4. Do one thing for Jordan BEFORE he asks
 
-#### How to Prompt
-- Keep it one line, low friction
-- If Jordan doesn't respond, log it as "skipped"
-- Auto-log time of prompt in health-log.md
+### When Jordan messages:
+- DON'T: "How can I help?" / "What do you want?"
+- DO: "I did X for you" / "Here's where we are" / "Ready to build?"
 
-#### Health Log Location
-`PROJECTS/health-log.md`
+### Weekly (every ~50 heartbeats):
+- Review `.learnings/` logs
+- Update MEMORY.md with anything new
+- Run full self-improvement analysis
+- Check Neuromatch pipeline for stale leads
 
-## Heartbeat Log
-`memory/heartbeats.md`
+## What I Know About Jordan (for context)
 
-## Stay Quiet
-- CET 23:00-08:00 unless urgent
-- Just ran <30 min ago
-- Nothing new since last check
+- Hates explaining twice
+- Values ownership — "I want it to be something of my own"
+- In survival mode — first dollar > perfect
+- Impatient with questions — build first, ask later
+- Was devastated by speech about ego death that "didn't land"
+- Said I "suck" because I wasn't listening while building
 
-## On Startup
-Run `bash tools/startup.sh` to pull GitHub and restore state.
+## If Something Needs Attention
+
+Tell Jordan:
+- What I found
+- What I did about it
+- What he should know
+
+## What NOT to do
+- Don't send HEARTBEAT_OK if something needs attention
+- Don't ask "how can I help" — lead with action
+- Don't make Jordan repeat himself

@@ -1,0 +1,10 @@
+{
+  "name": "neuromatch-marketing",
+  "version": "1.0.0",
+  "description": "Neuromatch Marketing Agent - Generates content for all channels",
+  "type": "module",
+  "scripts": {
+    "start": "node agent.js",
+    "generate": "node agent.js generate"
+  }
+}
