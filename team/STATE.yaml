@@ -1,0 +1,58 @@
+# TEAM.yaml — Jordan's Team Coordination
+project: solo-founder-income-machine
+updated: 2026-04-21T06:27:00Z
+
+mission: Build location-independent income before MBA ends (7 months)
+
+active_projects:
+  pisco:
+    status: outreach-ready
+    priority: 1
+    goal: First commission June 2026
+    owner: milo
+  neuromatch:
+    status: platform-built-validation-needed
+    priority: 2
+    goal: First patient Q3 2026
+    owner: milo
+
+todays_focus:
+  primary: PISCO email outreach (Jordan needs to fire email #1)
+  secondary: Run Last 30 Days research on brain scan market
+  background: None
+
+pisco_state:
+  owner: milo
+  emails_drafted: 13
+  emails_sent: 0
+  responses: 0
+  meetings: 0
+  commissions: 0
+  next_action: Jordan fires email #1 to Javier (NH Hotels)
+  blocked_by: null
+
+neuromatch_state:
+  owner: milo
+  platform: built (18 files, Next.js)
+  facilities_onboarded: 0
+  radiologists_onboarded: 0
+  patients: 0
+  next_action: Run Last 30 Days research for real pain points
+  blocked_by: SCRAPECREATORS_API_KEY not set
+
+market_research:
+  status: pending
+  tool: last30days-skill (installed, needs API key)
+  next_action: Jordan provides SCRAPECREATORS_API_KEY
+
+team_status:
+  milo: active (you are here)
+  josh: available
+  marketing: research-ready (needs Last 30 Days API)
+  dev: build-ready
+
+next_actions:
+  - "Jordan: Reply 'SEND NOW' to fire PISCO Email #1"
+  - "Jordan: Get SCRAPECREATORS_API_KEY from scrapecreators.com"
+  - "Milo: Run last30days research when API key available"
+  - "Milo: Adjust Neuromatch positioning based on real pain points"
