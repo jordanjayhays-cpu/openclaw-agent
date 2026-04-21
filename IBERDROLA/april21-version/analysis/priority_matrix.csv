@@ -1,0 +1,10 @@
+demand_level,grid_status,priority,total_locations,tier1_upgrade,tier2_partner,tier3_new,action
+High,Sufficient,1,102,34,52,16,Deploy full hub (12 chargers). Top priority.
+High,Moderate,2,22,7,15,0,Deploy 4-11 chargers. Plan grid expansion.
+High,Congested,4,223,63,120,40,Grid upgrade prerequisite. Partner with DSO.
+Medium,Sufficient,3,46,13,28,5,Deploy standard (8 chargers). Monitor growth.
+Medium,Moderate,5,24,11,11,2,Deploy minimum (4 chargers). Grid constrains expansion.
+Medium,Congested,7,75,17,49,9,Defer unless strategic. Focus on grid upgrade.
+Low,Sufficient,6,17,12,2,3,Deploy minimum (4 chargers). Revisit 2028+.
+Low,Moderate,8,19,6,13,0,Only at existing Iberdrola/partner. Monitor.
+Low,Congested,9,40,11,24,5,Skip for 2027. Revisit next cycle.

@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV Charging JTBD Analysis — Spain | Electric Dragon</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:#0D1117; color:#E6EDF3; line-height:1.6; }
+.container { max-width:1400px; margin:0 auto; padding:20px; }
+
+/* Header */
+.header { text-align:center; padding:40px 20px 30px; border-bottom:1px solid #30363D; margin-bottom:30px; }
+.header h1 { font-size:2.2rem; font-weight:700; color:#52B788; margin-bottom:8px; }
+.header .subtitle { color:#8B949E; font-size:1rem; }
+.header .team { color:#F4A261; font-weight:600; margin-top:4px; }
+
+/* KPI Cards */
+.kpi-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:30px; }
+.kpi-card { background:#161B22; border:1px solid #30363D; border-radius:12px; padding:20px; text-align:center; }
+.kpi-value { font-size:2rem; font-weight:700; color:#52B788; }
+.kpi-label { color:#8B949E; font-size:0.85rem; margin-top:4px; }
+.kpi-value.negative { color:#E63946; }
+.kpi-value.warn { color:#F4A261; }
+
+/* Section headers */
+.section { margin-bottom:40px; }
+.section h2 { font-size:1.5rem; color:#E6EDF3; margin-bottom:16px; border-left:4px solid #52B788; padding-left:12px; }
+
+/* Charts grid */
+.charts-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:30px; }
+.chart-card { background:#161B22; border:1px solid #30363D; border-radius:12px; padding:20px; }
+.chart-card h3 { color:#8B949E; font-size:0.9rem; text-transform:uppercase; margin-bottom:12px; }
+.chart-card canvas { max-height:350px; }
+
+/* Theme detail cards */
+.theme-detail-card { background:#161B22; border:1px solid #30363D; border-radius:12px; padding:24px; margin-bottom:16px; }
+.theme-detail-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
+.theme-detail-header h3 { font-size:1.2rem; color:#E6EDF3; }
+.theme-badges { display:flex; gap:8px; flex-wrap:wrap; }
+.badge { padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:600; }
+.badge.count { background:#52B78822; color:#52B788; border:1px solid #52B788; }
+.badge.neg { background:#E6394622; color:#E63946; border:1px solid #E63946; }
+.theme-desc { color:#8B949E; font-size:0.9rem; margin-bottom:12px; }
+
+/* Sentiment bars */
+.sentiment-bar-container { display:flex; height:8px; border-radius:4px; overflow:hidden; margin-bottom:6px; }
+.sentiment-bar.neg { background:#E63946; }
+.sentiment-bar.neu { background:#6C757D; }
+.sentiment-bar.pos { background:#2D6A4F; }
+.bar-legend { display:flex; gap:16px; font-size:0.75rem; color:#8B949E; margin-bottom:12px; }
+.dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:4px; vertical-align:middle; }
+.dot.neg { background:#E63946; }
+.dot.neu { background:#6C757D; }
+.dot.pos { background:#2D6A4F; }
+
+/* Quotes */
+.quotes-section { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:10px; }
+.quote { padding:12px; border-radius:8px; font-size:0.85rem; position:relative; }
+.quote.negative { background:#E6394611; border-left:3px solid #E63946; }
+.quote.positive { background:#2D6A4F11; border-left:3px solid #2D6A4F; }
+.quote p { color:#E6EDF3; font-style:italic; margin:4px 0; }
+.quote-sentiment { font-size:0.7rem; font-weight:700; }
+.quote.negative .quote-sentiment { color:#E63946; }
+.quote.positive .quote-sentiment { color:#2D6A4F; }
+.quote-source { font-size:0.7rem; color:#8B949E; }
+
+/* App cards */
+.apps-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:16px; }
+.app-card { background:#161B22; border:1px solid #30363D; border-radius:12px; padding:16px; }
+.app-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.app-header h4 { color:#E6EDF3; }
+.app-rating { color:#F4A261; font-size:0.9rem; }
+.app-stats { display:flex; gap:16px; font-size:0.8rem; color:#8B949E; margin-bottom:6px; }
+.app-themes { font-size:0.8rem; color:#52B788; }
+
+/* Methodology */
+.methodology { background:#161B22; border:1px solid #30363D; border-radius:12px; padding:24px; }
+.methodology h3 { color:#52B788; margin-bottom:12px; }
+.methodology p { color:#8B949E; font-size:0.9rem; margin-bottom:8px; }
+.methodology ul { color:#8B949E; font-size:0.9rem; padding-left:20px; }
+.methodology li { margin-bottom:4px; }
+
+/* Insight callout */
+.insight-box { background: linear-gradient(135deg, #1B433244, #52B78822); border:1px solid #52B78855; border-radius:12px; padding:20px; margin-bottom:30px; }
+.insight-box h3 { color:#52B788; margin-bottom:8px; }
+.insight-box p { color:#E6EDF3; font-size:0.95rem; }
+.insight-box ul { color:#E6EDF3; padding-left:20px; margin-top:8px; }
+.insight-box li { margin-bottom:6px; }
+
+@media (max-width:768px) {
+    .charts-grid { grid-template-columns:1fr; }
+    .theme-detail-header { flex-direction:column; }
+    .header h1 { font-size:1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+    <h1>EV Charging Customer Voice Analysis</h1>
+    <div class="subtitle">Jobs-to-Be-Done & Sentiment Analysis — Spain Interurban Charging Network</div>
+    <div class="team">Electric Dragon | IE-Iberdrola Datathon 2026</div>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+    <div class="kpi-card">
+        <div class="kpi-value">8,350</div>
+        <div class="kpi-label">Total Data Points Analyzed</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value">12</div>
+        <div class="kpi-label">JTBD Themes Identified</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value ">+0.158</div>
+        <div class="kpi-label">Overall Sentiment Score</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value negative">2,322</div>
+        <div class="kpi-label">Negative Mentions</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value">3</div>
+        <div class="kpi-label">Data Sources</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-value">8,350</div>
+        <div class="kpi-label">ES + EN Languages</div>
+    </div>
+</div>
+
+<!-- Key Insight -->
+<div class="insight-box">
+    <h3>Key Strategic Insight for Iberdrola</h3>
+    <p>Customer voice data reveals that <strong>the #1 barrier to EV adoption on Spanish highways is not range — it's trust in the charging infrastructure.</strong> The dominant pain points are:</p>
+    <ul>
+        <li><strong>App & Digital Experience</strong> — 2662 mentions, 29.2% negative sentiment</li><li><strong>Pricing & Cost Transparency</strong> — 1882 mentions, 25.8% negative sentiment</li><li><strong>Route & Trip Planning</strong> — 1759 mentions, 27.5% negative sentiment</li><li><strong>Charging Speed</strong> — 1675 mentions, 25.9% negative sentiment</li><li><strong>Location & Amenities</strong> — 1341 mentions, 25.7% negative sentiment</li>
+    </ul>
+    <p style="margin-top:12px">This directly validates our network design: <strong>fewer, highly reliable stations with guaranteed grid capacity</strong> beats scattering unreliable chargers across the highway system.</p>
+</div>
+
+<!-- Charts -->
+<div class="section">
+    <h2>Theme & Sentiment Overview</h2>
+    <div class="charts-grid">
+        <div class="chart-card">
+            <h3>JTBD Theme Frequency</h3>
+            <canvas id="themeBarChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Sentiment by Theme</h3>
+            <canvas id="themeSentimentChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Overall Sentiment Distribution</h3>
+            <canvas id="sentimentPieChart"></canvas>
+        </div>
+        <div class="chart-card">
+            <h3>Data Sources</h3>
+            <canvas id="sourceChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Theme Details -->
+<div class="section">
+    <h2>JTBD Theme Deep Dive</h2>
+    
+        <div class="theme-detail-card" id="theme-app_experience">
+            <div class="theme-detail-header">
+                <h3>App & Digital Experience</h3>
+                <div class="theme-badges">
+                    <span class="badge count">2662 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.30 sentiment</span>
+                    <span class="badge neg">29.2% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Issues with charging apps, authentication, finding stations via app</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:29.2%"></div>
+                <div class="sentiment-bar neu" style="width:7.4%"></div>
+                <div class="sentiment-bar pos" style="width:63.4%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 29.2%</span>
+                <span><span class="dot neu"></span>Neutral 7.4%</span>
+                <span><span class="dot pos"></span>Positive 63.4%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.18</span><p>"...w to charge the car, but in most cars it&#39;s not intuitive so you can&#39;t just jump in and go.
+
+* Car software is often really bad at planning routes and offering chargers. In a lot of cars the software will even suggest slow chargers which will take hours. 
+
+* There are a lot of poorly maintained 50"</p><span class="quote-source">reddit_comment</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.67</span><p>"...solution is to stop treating e-bikes like bikes. Build a vertically integrated vehicle platform from the ground up—own the motors, batteries, electronics, software—exactly like Tesla did for electric cars. Or, ya know, like Rivian…
+
+I’ll be honest: when I first saw the ALSO TM-B, I thought it loo"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.39</span><p>"...roduce a fundamental paradigm shift: from **“cars searching for chargers”** to **“energy finding cars.”**
+
+● **Decoupling space and time:**
+
+●  MCRs can move freely in parking garages, shopping malls, and corporate campuses. Users simply tap on their phone, and the robot autonomously navigates to"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.15</span><p>"How to Display EV Charging Stations on a Map: Best Practices for Performance and UX
+Displaying thousands of EV charging stations on a map presents a unique challenge. Show too many markers at once and your map becomes an unusable mess of overlapping icons. Show too few and users miss important optio"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.56</span><p>"...(both level 2 chargers, both on dedicated 60A circuits). As other issues came up, I noted them, added screenshots and posted videos, in the hopes it will help the service techs and others that may be having similar issues.**
+
+Picked up the car last Tuesday (11/19/24) at the Beverly Hills Dealer. "</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-pricing_transparency">
+            <div class="theme-detail-header">
+                <h3>Pricing & Cost Transparency</h3>
+                <div class="theme-badges">
+                    <span class="badge count">1882 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.36 sentiment</span>
+                    <span class="badge neg">25.8% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Unclear pricing, expensive charging, hidden fees, cost concerns</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:25.8%"></div>
+                <div class="sentiment-bar neu" style="width:8.1%"></div>
+                <div class="sentiment-bar pos" style="width:66.1%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 25.8%</span>
+                <span><span class="dot neu"></span>Neutral 8.1%</span>
+                <span><span class="dot pos"></span>Positive 66.1%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.57</span><p>"... has slow speeds with no warning. Additionally, I feel significantly less safe at EV stations than at gas stations. If I pull up to a gas station at night and there’s sketchy characters around, I can just drive to another nearby. If I pull up to a EV station in the dark corner of a Walmart parkin"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.39</span><p>"... a Virtual Power Plant (VPP):**
+
+Charging service fees are only the most basic business model. What really excites Wall Street is that MCRs are essentially a **cloud-based shared energy storage pool**.
+
+They can store electricity at night when prices are low, and discharge during peak hours when "</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.25</span><p>"...ly understand what this NV Energy change in power billing means for us?
+Warning: nerdy electrical stuff ahead
+
+I read this article about a new NV Energy billing policy and at first reading it made no sense - [https://thenevadaindependent.com/article/nv-energys-bill-pricing-switch-greenlink-constr"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.65</span><p>"...ear old ICE cars in the last couple months. Total cost to transition was just **$41,500** and we&#39;re saving $4,500 annually on electric vs. gas. Why doesn&#39;t everyone do this!?
+
+&amp;#x200B;
+
+**Our Experience:**
+
+Just wanted to document my experience transitioning entirely to Tesla within the last "</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.84</span><p>"Building a P2P EV charging platform – need honest feedback from EV owners &amp; builders
+Hey everyone,
+
+I’m working on ChargeFlow — a peer-to-peer EV charging idea where people can list their private chargers (homes, offices, apartments), and EV owners nearby can book and pay to charge.
+
+This idea d"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-route_planning">
+            <div class="theme-detail-header">
+                <h3>Route & Trip Planning</h3>
+                <div class="theme-badges">
+                    <span class="badge count">1759 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.32 sentiment</span>
+                    <span class="badge neg">27.5% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Difficulty planning long trips, routing around chargers</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:27.5%"></div>
+                <div class="sentiment-bar neu" style="width:7.6%"></div>
+                <div class="sentiment-bar pos" style="width:65.0%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 27.5%</span>
+                <span><span class="dot neu"></span>Neutral 7.6%</span>
+                <span><span class="dot pos"></span>Positive 65.0%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.57</span><p>"Previously I posted about needing a PHEV for road trips, but I was seduced by the appearance of the Ioniq 5. After taking multiple road trips in my SE RWD, here are 10 things I think everyone should consider before switching to a BEV for road trips.
+Background info
+
+My wife and I were looking to rep"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.07</span><p>"...cided on going by car, rather then by train or airplane.
+
+## Planning
+
+The car in question is a ID.4 with a 77kWh battery pack, now 1.5 years old and has 35000 km (21500 miles) on the odometer.
+
+The whole trip was \~1800km (1100 miles) each way. For Europeans that is a bit of distance and more th"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.77</span><p>"Cold Weather Road Trip: Never Again
+I just completed a cold-weather road trip in my 2025 Ioniq 6 AWD. I love my car, but taking it was a huge mistake.
+
+Background: 500 miles each way in a roundtrip. Temperatures consistently in the low teens (Fahrenheit) to single digits.
+
+Issue #1: battery range. I"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.09</span><p>"...|\~4-5 mi/hr|\~35-40 miles|
+
+For most people on a road trip, a 50-amp site gets you a full charge overnight. A 20-amp outlet is a last resort, but it&#39;s something.
+
+# What Gear Do You Need?
+
+At minimum, you need your mobile charger (most EVs come with one) and a NEMA 14-50 adapter. That&#39;s the most"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.83</span><p>"...th the number of chargepoints first.
+
+For serious trip planning, I recommend PlugShare. But by all means check out these reported new locations and submit reviews on PlugShare, which makes things better for everyone.
+
+If you&#39;d like to know about new chargers along your routes right away, or just "</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-charging_speed">
+            <div class="theme-detail-header">
+                <h3>Charging Speed</h3>
+                <div class="theme-badges">
+                    <span class="badge count">1675 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.27 sentiment</span>
+                    <span class="badge neg">25.9% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Slow charging, speed not as advertised, DC fast vs AC slow</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:25.9%"></div>
+                <div class="sentiment-bar neu" style="width:16.3%"></div>
+                <div class="sentiment-bar pos" style="width:57.9%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 25.9%</span>
+                <span><span class="dot neu"></span>Neutral 16.3%</span>
+                <span><span class="dot pos"></span>Positive 57.9%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.57</span><p>"...iving around 80mph, my efficiency is around 2.4mi/kWh (u/Willman3755 did a fantastic [roll-down test](https://www.reddit.com/r/electricvehicles/comments/u8enlo/i\_did\_rolldown\_testing\_on\_the\_ioniq\_5\_to\_create/?utm\_source=share&amp;utm\_medium=ios\_app&amp;utm\_name=iossmf) with an Ioniq "</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.57</span><p>"...iving around 80mph, my efficiency is around 2.4mi/kWh ([u/Willman3755](https://www.reddit.com/u/Willman3755/) did a fantastic [roll-down test](https://www.reddit.com/r/electricvehicles/comments/u8enlo/i_did_rolldown_testing_on_the_ioniq_5_to_create/?utm_source=share&amp;utm_medium=ios_app&amp;utm"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.8</span><p>"....
+The NACS - mania that started with Ford getting supercharger access and then kept rolling until every brand, except for a few major luxury ones have committed to NACS.
+
+Here&#39;s my dislike issues for NACS, specifically for NACS Tesla superchargers.
+
+1. Not enough voltage. For EVs from Hyundai, Ki"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.8</span><p>"...**Battery Size and Charging:**
+
+Battery size, max fast charging speed, and range are heavily advertised and compared between models.  Stated range is battery capacity times efficiency; actual range is much more complicated, affected by temperature, speed, wind, hills, and other factors (discussed"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.6</span><p>"...s not fit for universal adoption (including Tesla Superchargers). Here are 10 problems that will need to be addressed for an all-electric future.
+TLDR: If EVs are truly going to fully replace gas cars then recharging an EV should be as convenient, consistent, and fast (within reason) as refilling"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-location_amenities">
+            <div class="theme-detail-header">
+                <h3>Location & Amenities</h3>
+                <div class="theme-badges">
+                    <span class="badge count">1341 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.39 sentiment</span>
+                    <span class="badge neg">25.7% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">What to do while charging, station location quality, safety</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:25.7%"></div>
+                <div class="sentiment-bar neu" style="width:4.2%"></div>
+                <div class="sentiment-bar pos" style="width:70.1%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 25.7%</span>
+                <span><span class="dot neu"></span>Neutral 4.2%</span>
+                <span><span class="dot pos"></span>Positive 70.1%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.63</span><p>"...V’s which makes it a little goofy to orient while parking at a charger that other people are at / may arrive at. But not insurmountable.
+
+**Route**
+
+I took I-5 north through Seattle, then cut east at Bellingham to cross the border in more like Abbotsford than Vancouver itself. From there in order"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.65</span><p>"...ch you want to split hairs regarding stopping for food, bathroom breaks, and fueling in an ICE vehicle. Total charge cost coast-to-coast was a little under $200. we would have had to stop less frequently if there was a higher density of chargers, so this trip will only get easier and more comfort"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.57</span><p>"...hat normally takes about 6.5 hours including gas, food, and restroom stops took us about 8 hours despite the good charging speeds. And that still beat the ABRP estimate. Keep in mind the charging stop times do not include time to actually get to the chargers which are further off the road than ty"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.56</span><p>"...56&amp;format=pjpg&amp;auto=webp&amp;s=e9cf449eebfcafe0ed26eda86008cea8eca0f4b5
+
+1-23-2024 1:29 PM UPDATE Plugged the car in to the old L2 Blink home charger in the driveway, set the amps at 48 just for the heck of it, and it is charging now. I have no idea why it kept failing before, but it&#39;s wo"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.76</span><p>"...id the same drive but in the other direction. The weather and traffic was variable—as was the quality of the innumerable podcasts I listened to—but there was one constant: I cursed Electrify America the whole way.
+
+To be clear, EA got me where I needed to go. I never once wasn’t able to charge an"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-wait_time">
+            <div class="theme-detail-header">
+                <h3>Wait Time & Queuing</h3>
+                <div class="theme-badges">
+                    <span class="badge count">1315 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.32 sentiment</span>
+                    <span class="badge neg">29.7% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Long charging times, queues at stations, time wasted</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:29.7%"></div>
+                <div class="sentiment-bar neu" style="width:4.3%"></div>
+                <div class="sentiment-bar pos" style="width:66.1%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 29.7%</span>
+                <span><span class="dot neu"></span>Neutral 4.3%</span>
+                <span><span class="dot pos"></span>Positive 66.1%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.63</span><p>"....
+
+**Summary**
+
+6 driving days, ranging from 5-10 hours drive time. Longest charge time was 4-5 hours, in a town where the fast charger was broken. Typically charged up above 80% given the unpredictability and distances involved in the more remote areas. Didn&#39;t ever get stranded but it was a litt"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.57</span><p>"...5 years when it’s time to replace my car, and hopefully in 10 years when it’s time to replace her car, we would go full BEV when the technology caught up. I made [this post](https://www.reddit.com/r/electricvehicles/comments/u9hhxo/has_anyone_had_recent_success_getting_a_new_phev/) asking about M"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.77</span><p>"...llowed to pick a Chevy Bolt or Kia Niro EV from a lineup down one row.  My wife picked the Niro because we own the hybrid 2019 version of that car (and it was orange).  Plus, she hated the size of the Bolt (and I hated its charge rate).  The EV was charged to 73% when we got it, so no charging wa"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.83</span><p>"...ed to reach the next charger. Even with the extra charging time, the truck was usually ready to go before we were. This will probably change once our son is older, but the baby helps mask the Lightning’s longer charging time to 80%. In an ICE, the trip to Omaha from Austin is a 12-hour drive on p"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.6</span><p>"...d the way back.  We wanted to go south and do the full route the original website suggested. 
+
+Scouting other sources of power in the west side of the peninsula using [Plugshare](https://www.plugshare.com/), we saw that there was a Tesla Supercharging station in Forks, WA where we were staying fo"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-payment_interoperability">
+            <div class="theme-detail-header">
+                <h3>Payment & Network Interoperability</h3>
+                <div class="theme-badges">
+                    <span class="badge count">979 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.39 sentiment</span>
+                    <span class="badge neg">24.5% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Incompatible networks, roaming, needing multiple accounts</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:24.5%"></div>
+                <div class="sentiment-bar neu" style="width:6.4%"></div>
+                <div class="sentiment-bar pos" style="width:69.1%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 24.5%</span>
+                <span><span class="dot neu"></span>Neutral 6.4%</span>
+                <span><span class="dot pos"></span>Positive 69.1%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.39</span><p>"...ng station—only to realize it’s either broken or blocked by a gas car.
+
+As global EV penetration continues to surge, the traditional **fixed charging station model** is starting to expose its fundamental physical limitations: aging residential grids can’t support expansion, long queues during pea"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.82</span><p>"...n in safety or other data.
+
+Pre-registration required to attend virtually.
+
+[http://www.nfpa.org/sc2025](http://www.nfpa.org/sc2025)
+
+This is the same issue flagged by Motor Trend Magazine:  
+[This Dumb New Electrical Code Could Doom Level 2 EV Charging](https://www.motortrend.com/news/national-e"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.2</span><p>"... sizable towns or charging stations, and I discovered that it&#39;s a little more uphill on the way back. The car gave me the &#39;charge now&#39; message while still a ways from Ventura. I drove as slowly as I dared on the freeway, and managed to make it to a charging station in Ventura, not far from downto"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.6</span><p>"...sign of EV fast-charging in the US is not fit for universal adoption (including Tesla Superchargers). Here are 10 problems that will need to be addressed for an all-electric future.
+TLDR: If EVs are truly going to fully replace gas cars then recharging an EV should be as convenient, consistent, a"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.43</span><p>"...ogistics and suburban development. The internet unlocked digital economies. In the electric transportation transition, charging infrastructure could play a similarly foundational role, yet it often receives less attention than vehicle manufacturers.
+
+That is one reason I started looking into EVgo"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-reliability">
+            <div class="theme-detail-header">
+                <h3>Charger Reliability & Maintenance</h3>
+                <div class="theme-badges">
+                    <span class="badge count">757 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.24 sentiment</span>
+                    <span class="badge neg">36.2% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Broken chargers, out of service, maintenance issues</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:36.2%"></div>
+                <div class="sentiment-bar neu" style="width:2.8%"></div>
+                <div class="sentiment-bar pos" style="width:61.0%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 36.2%</span>
+                <span><span class="dot neu"></span>Neutral 2.8%</span>
+                <span><span class="dot pos"></span>Positive 61.0%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.37</span><p>"...s EVs and replace the gas station is riddled with glitches that are proving difficult to stamp out.  
+&gt;  
+&gt;Individually, they are hiccups, but collectively, their consequences could be profound.  
+&gt;  
+&gt;“It adds to the non-EV driver’s view of the world that EV charging is painful,” sai"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.77</span><p>"...to pick a Chevy Bolt or Kia Niro EV from a lineup down one row.  My wife picked the Niro because we own the hybrid 2019 version of that car (and it was orange).  Plus, she hated the size of the Bolt (and I hated its charge rate).  The EV was charged to 73% when we got it, so no charging was neede"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.46</span><p>"...nity Vordingborg), where 3 out of 6 chargers were malfunctioning, so we had to wait a few minutes for a second spot to open up, and we had some stress about plugging in and getting error messages, thinking it could be the cars. But once one of the people charging moved it all worked out.
+
+Then we"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.84</span><p>"...own apps and rates, is frustrating. I&#39;ve run into broken &quot;free&quot; chargers, &quot;session fees&quot;, and I have like $20 locked into apps that require a minimum &quot;wallet&quot; balance for charging. When I drive up to a new charger, there&#39;s just no way to know what to expect. App? Touchscreen? Do I plug in first o"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.56</span><p>"...eans, but it hadn&#39;t been nothing. The battery was down to 292 miles of rated range from the initial 310 my LR RWD Model 3 started with (~6% degradation in 4.5 years). It was supposed to get an upgrade to 325 a few months after I got it, but it never did. Getting a Model Y would mean I&#39;d get anoth"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-connector_compatibility">
+            <div class="theme-detail-header">
+                <h3>Connector & Vehicle Compatibility</h3>
+                <div class="theme-badges">
+                    <span class="badge count">684 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.24 sentiment</span>
+                    <span class="badge neg">33.6% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Wrong connector types, adapter issues, vehicle-specific problems</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:33.6%"></div>
+                <div class="sentiment-bar neu" style="width:8.9%"></div>
+                <div class="sentiment-bar pos" style="width:57.5%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 33.6%</span>
+                <span><span class="dot neu"></span>Neutral 8.9%</span>
+                <span><span class="dot pos"></span>Positive 57.5%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.68</span><p>"...erience. I should also add that the the car has a Type 2 (Mennekes - EU AC type 2 socket - [IEC 62196-2](https://www.amperepoint.com/blogs/ev-charging-guide/type-2-chademo-ccs-all-about-plugs-for-your-ev?srsltid=AfmBOoqbQUwPnrBmBUhoxv6X2fiq1u4JF2rKbWMW0JbazcMJONqrQXMQ)) and a CHAdeMO sockets. I l"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.5</span><p>"...ce flat freeway.  However, we arrived at the only CCS fast charger on this leg and my wife was really nervous, so we went ahead and charged there too.  This one was the EVGo charger that I didn&#39;t have a membership, card, or the app so I had to call the number and get it going.  It&#39;s a hassle, and"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.49</span><p>"It will still go out. Most chargers have dual cables. They can do one CCS and one NACS connector, maybe that will finally kill off Chademo entirely. 
+
+Or install CCS chargers with a CCS to NACS adapter like Tesla did with the Magic Dock at some locations for a Tesla to CCS adapter built into the cha"</p><span class="quote-source">reddit_comment</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.49</span><p>"...Amps) when hardwired, or 40 Amps via a NEMA 14-50 plug. It comes equipped with a universal J1772 connector, making it compatible with almost every electric vehicle on the road today, including the Chevy Bolt, Nissan Leaf, Ford F-150 Lightning, and even Teslas (with an adapter).  
+  
+Why the Empor"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.83</span><p>"New US and Canadian CCS chargers in February 2026
+Hey electrons,
+
+**Here are all (\*) of the new US and Canadian CCS (Level 3 fast-charging) stations that rolled out in February 2026,** according to the US Department of Energy. You can [get the data yourself here](https://afdc.energy.gov/data_downlo"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-grid_energy">
+            <div class="theme-detail-header">
+                <h3>Grid & Renewable Energy</h3>
+                <div class="theme-badges">
+                    <span class="badge count">631 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.33 sentiment</span>
+                    <span class="badge neg">26.3% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Grid capacity concerns, renewable energy sourcing, sustainability</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:26.3%"></div>
+                <div class="sentiment-bar neu" style="width:9.4%"></div>
+                <div class="sentiment-bar pos" style="width:64.3%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 26.3%</span>
+                <span><span class="dot neu"></span>Neutral 9.4%</span>
+                <span><span class="dot pos"></span>Positive 64.3%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.82</span><p>"...vers Feel Threatened by the EV Transition—And Why Solar Energy Is the Future
+I wrote this because I needed to share why so many people just want to &quot;hate&quot; on EVs, Elon and Tesla without discussing politics.
+
+The transition from gasoline and diesel vehicles to electric vehicles has generated resis"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.54</span><p>"...Huang visiting Shanghai amid China regulatory headwinds, federal judges ruling Trump&#39;s EV charger suspension unlawful, California suing over offshore oil pipeline restarts, and congressional scrutiny intensifying around the TikTok joint venture deal&#39;s lack of transparency.
+
+* * *
+
+## Sentiment Br"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.43</span><p>"...gy
+  * Context: Converting EV battery facility to grid-scale energy storage responding to renewable power demand. Brings back workers previously furloughed. Flexibility to serve multiple markets.
+
+
+
+🟢 **Automotive - Tesla-LG Michigan Plant**
+
+  * Headline: U.S. government confirms Tesla and LG En"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.82</span><p>"...egrate the North African and European electricity grids and provide cheap, renewable energy for years to come.
+
+**More Solar Concentrators**
+
+Fourteen solar concentrators currently provide power to much of Western Europe, meeting a significant portion of European energy needs while entirely fulfi"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.68</span><p>"...tic, R-25 walls + R-5 exterior continuous, U-0.18 windows
+- HVAC: 2-ton variable cold-climate heat pump (COP 3.2+ at 5°F) with ERV
+- Result: 6,800-7,500 kWh/yr total electrical consumption (vs. 10,000+ typical)
+
+**Energy Systems:**
+
+- Solar PV: 7-8 kW array generating 9.8-11.2 MWh/yr (Chicago cli"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-station_availability">
+            <div class="theme-detail-header">
+                <h3>Station Availability & Coverage</h3>
+                <div class="theme-badges">
+                    <span class="badge count">83 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.56 sentiment</span>
+                    <span class="badge neg">18.1% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Not enough charging stations, gaps in network coverage</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:18.1%"></div>
+                <div class="sentiment-bar neu" style="width:2.4%"></div>
+                <div class="sentiment-bar pos" style="width:79.5%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 18.1%</span>
+                <span><span class="dot neu"></span>Neutral 2.4%</span>
+                <span><span class="dot pos"></span>Positive 79.5%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.82</span><p>"... I would have with a gasoline car. We desperately need more 150kW chargers to make this process less painful. 
+    -When leaving for the weekend back to houston I charged to 135miles at the same 50kW (cost spent in total about same as if it were gas / mile driven) charger at Walmart (these seem t"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.72</span><p>"...continues with a few paragraphs of rambling about lack of EV infrastructure, not having a tesla, etc. The thing is, using ABRP and plugshare, I found _multiple_ CCS chargers that would have worked on his trip. 10 minutes outbound and inbound at the north bend EA would have saved him a getting str"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.54</span><p>"...ops to get to my destination (~700km away). I had no charging at said destination so made sure to have enough to get there around 60%. Google said it&#39;s a 7h30 min drive but unfortunately a big portion of that route had no chargers so I had to go a different way, adding charging time it turned it "</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.56</span><p>"...menu of available options and apps. It was pretty sparse, with only 10 or so options and no charger apps. I got a message asking to connect my Google account and made multiple attempts over the next day, all unsuccessful. I got multiple emails from Google saying they were blocking suspicious acce"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.56</span><p>"...r that, though.
+5. Being a 2018, this Model 3 was missing a lot of the QoL features of modern Teslas. Power trunk, USB-C ports, longer range, better build quality and double-laminated windows (and thus less *wind noise*), improved center console, and a few others.
+6. I *hated* the red turn signal"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+        <div class="theme-detail-card" id="theme-range_anxiety">
+            <div class="theme-detail-header">
+                <h3>Range Anxiety</h3>
+                <div class="theme-badges">
+                    <span class="badge count">32 mentions</span>
+                    <span class="badge" style="background:#2D6A4F22;color:#2D6A4F;border:1px solid #2D6A4F">+0.10 sentiment</span>
+                    <span class="badge neg">50.0% negative</span>
+                </div>
+            </div>
+            <p class="theme-desc">Fear of running out of charge before reaching destination or next charger</p>
+            <div class="sentiment-bar-container">
+                <div class="sentiment-bar neg" style="width:50.0%"></div>
+                <div class="sentiment-bar neu" style="width:0.0%"></div>
+                <div class="sentiment-bar pos" style="width:50.0%"></div>
+            </div>
+            <div class="bar-legend">
+                <span><span class="dot neg"></span>Negative 50.0%</span>
+                <span><span class="dot neu"></span>Neutral 0.0%</span>
+                <span><span class="dot pos"></span>Positive 50.0%</span>
+            </div>
+            <div class="quotes-section"><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.44</span><p>"...this person said. To prevent drivers from getting stranded as their predicted range started declining more quickly, Teslas were designed with a “safety buffer,” allowing about 15 miles (24 km) of additional range even after the dash readout showed an empty battery, the source said.
+
+The directive"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.75</span><p>"...arging limited to 80% and EV! warning light after dead battery incident
+Hey all. I&#39;m wondering if anyone has experienced something like this, and/or if anyone knows what&#39;s going on.
+
+The other day, I ran out of charge shortly before getting home (first time in 3+ years of owning a 2021, the charg"</p><span class="quote-source">reddit_post</span></div><div class="quote negative"><span class="quote-sentiment">&#x25BC; -0.67</span><p>"...
+First off: the mid-range 3 would likely have run out of juice before getting to the Rochester Supercharger in Saturday&#39;s weather (very windy, about 4F). But there are several improvements over the last 5 years beyond just 80 more miles of range.
+
+We now have the option of the Owatonna Supercharg"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.33</span><p>"Is range anxiety justified?
+How often if ever have you guys been left stranded due to running out of electric range?
+
+Also how often have you had to abandon your trip midway because you realized your range will not get you to your destination?
+
+Finally, do you find that you mentally need to calculat"</p><span class="quote-source">reddit_post</span></div><div class="quote positive"><span class="quote-sentiment">&#x25B2; 0.85</span><p>"...was one area in west Texas on I-20 where I nearly ran out of electrons. A strong headwind threw my charge calculations off. And a Google glitch said that there was a DCFC in Monahans, TX, but there wasn’t. So instead of going to my planned overnight destination in Big Spring, we had to stay in Mo"</p><span class="quote-source">reddit_post</span></div></div>
+        </div>
+        
+</div>
+
+<!-- App Comparison -->
+
+
+<!-- Methodology -->
+<div class="section">
+    <div class="methodology">
+        <h3>Methodology</h3>
+        <p>This analysis scraped and analyzed real customer voice data from multiple sources to understand EV charging Jobs-to-Be-Done in Spain.</p>
+        <ul>
+            <li><strong>Sources:</strong> Reddit (posts + comments), Google News articles, Google Play Store reviews of charging apps</li>
+            <li><strong>Languages:</strong> Spanish and English (Spanish texts machine-translated for unified analysis)</li>
+            <li><strong>Theme extraction:</strong> Keyword-based JTBD classification with 12 predefined themes derived from EV charging literature and user research frameworks</li>
+            <li><strong>Sentiment:</strong> VADER sentiment analysis on English-normalized text (compound score: -1 to +1)</li>
+            <li><strong>Limitations:</strong> Reddit/app store users skew younger and more tech-savvy. Google News articles are editorial, not direct user voice. Translation may lose nuance.</li>
+        </ul>
+        <p style="margin-top:12px"><strong>Generated:</strong> 2026-04-07 | <strong>Team:</strong> Electric Dragon | <strong>Context:</strong> IE-Iberdrola Sustainability Datathon 2026</p>
+    </div>
+</div>
+
+</div>
+
+<script>
+Chart.defaults.color = '#8B949E';
+Chart.defaults.borderColor = '#30363D';
+Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+
+// Theme frequency bar chart
+new Chart(document.getElementById('themeBarChart'), {
+    type: 'bar',
+    data: {
+        labels: ["App & Digital Experience", "Pricing & Cost Transparency", "Route & Trip Planning", "Charging Speed", "Location & Amenities", "Wait Time & Queuing", "Payment & Network Interoperability", "Charger Reliability & Maintenance", "Connector & Vehicle Compatibility", "Grid & Renewable Energy", "Station Availability & Coverage", "Range Anxiety"],
+        datasets: [{
+            label: 'Mentions',
+            data: [2662, 1882, 1759, 1675, 1341, 1315, 979, 757, 684, 631, 83, 32],
+            backgroundColor: '#52B78888',
+            borderColor: '#52B788',
+            borderWidth: 1,
+            borderRadius: 4,
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { x: { grid: { color: '#30363D' } }, y: { grid: { display: false } } }
+    }
+});
+
+// Sentiment by theme (horizontal diverging)
+new Chart(document.getElementById('themeSentimentChart'), {
+    type: 'bar',
+    data: {
+        labels: ["App & Digital Experience", "Pricing & Cost Transparency", "Route & Trip Planning", "Charging Speed", "Location & Amenities", "Wait Time & Queuing", "Payment & Network Interoperability", "Charger Reliability & Maintenance", "Connector & Vehicle Compatibility", "Grid & Renewable Energy", "Station Availability & Coverage", "Range Anxiety"],
+        datasets: [{
+            label: 'Avg Sentiment',
+            data: [0.3, 0.356, 0.32, 0.272, 0.389, 0.318, 0.387, 0.242, 0.244, 0.329, 0.555, 0.096],
+            backgroundColor: ["#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88", "#2D6A4F88"],
+            borderColor: ["#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F", "#2D6A4F"],
+            borderWidth: 1,
+            borderRadius: 4,
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { min: -0.5, max: 0.5, grid: { color: '#30363D' } },
+            y: { grid: { display: false } }
+        }
+    }
+});
+
+// Sentiment pie
+new Chart(document.getElementById('sentimentPieChart'), {
+    type: 'doughnut',
+    data: {
+        labels: ['Negative', 'Neutral', 'Positive'],
+        datasets: [{
+            data: [2322, 2039, 3989],
+            backgroundColor: ['#E63946', '#6C757D', '#2D6A4F'],
+            borderColor: '#161B22',
+            borderWidth: 3,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { position: 'bottom' },
+        }
+    }
+});
+
+// Sources
+new Chart(document.getElementById('sourceChart'), {
+    type: 'bar',
+    data: {
+        labels: ["Reddit Post", "Reddit Comment", "Google News"],
+        datasets: [{
+            label: 'Entries',
+            data: [3712, 2141, 2497],
+            backgroundColor: ['#52B78888', '#F4A26188', '#1B433288', '#E6394688'],
+            borderRadius: 4,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { grid: { color: '#30363D' } }, x: { grid: { display: false } } }
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+location_id,latitude,longitude,route_segment,n_chargers_proposed,grid_status,distributor_network,nearest_grid_mw,grid_dist_km,tier,tier_label,target_name,demand_level,priority,priority_action,estimated_demand_kw,data_quality,daily_sessions_p80,daily_sessions_avg,util_peak_hour_pct,chargers_floor,chargers_demand_p80,chargers_peak_hr,cost_eur,is_tent,afir_gap_threshold_km,utilization_pct
+IBE_001,40.57308,-3.240925,A-2,5,Sufficient,i-DE,4.83,30.3,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,150,131,79.0,2,3,5,185000,True,60,53.3
+IBE_002,40.846426,-2.871971,A-2,5,Sufficient,i-DE,4.83,70.1,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,150,131,79.0,2,3,5,185000,True,60,53.3
+IBE_003,40.798179,-2.655168,A-2,5,Congested,Endesa,0.0,76.9,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_004,41.040243,-2.444286,A-2,5,Congested,Endesa,0.0,45.2,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_005,41.258052,-1.688781,A-2,5,Congested,Endesa,0.0,8.7,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_006,41.401789,-1.541575,A-2,5,Congested,Endesa,0.0,4.2,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_007,41.589026,-1.087176,A-2,5,Congested,Endesa,0.0,0.5,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_008,41.569849,-0.648856,A-2,5,Congested,Endesa,0.0,3.3,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,370000,True,60,53.3
+IBE_009,41.517383,-0.083468,A-2,5,Congested,Endesa,0.0,7.9,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_010,41.519389,0.456923,A-2,5,Congested,Endesa,0.0,5.3,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_011,41.641292,0.883123,A-2,5,Congested,Endesa,0.0,1.1,1,Upgrade Iberdrola,Mercadona Mollerussa,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_012,41.561852,1.230453,A-2,5,Congested,Endesa,0.0,14.1,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,370000,True,60,53.3
+IBE_013,41.473692,1.659009,A-2,5,Congested,Endesa,0.0,6.1,2,Partner Co-location,La Benzinera de Sant Pere,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_014,41.399381,1.982382,A-2,5,Congested,Endesa,0.0,1.0,2,Partner Co-location,EsclatOil,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,150,131,79.0,2,3,5,305000,True,60,53.3
+IBE_015,40.193142,-3.301801,A-3,4,Moderate,Naturgy,0.701,18.0,2,Partner Co-location,Moeve,High,2,Deploy 4-11 chargers. Plan grid expansion.,600,measured,166,137,109.3,2,3,5,157000,True,60,73.7
+IBE_016,40.006951,-2.968357,A-3,5,Congested,Endesa,0.0,13.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,166,137,87.5,2,3,5,305000,True,60,58.9
+IBE_017,39.850112,-2.4879,A-3,5,Congested,Endesa,0.0,18.8,2,Partner Co-location,Repsol Villares del Saz,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,166,137,87.5,2,3,5,305000,True,60,58.9
+IBE_018,39.989677,-2.110963,A-3,5,Sufficient,Endesa,20.3,3.2,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,166,137,87.5,2,3,5,185000,True,60,58.9
+IBE_019,39.718535,-1.7978,A-3,5,Sufficient,Endesa,7.15,19.4,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,166,137,87.5,2,3,5,250000,True,60,58.9
+IBE_020,39.526976,-1.448125,A-3,5,Sufficient,Endesa,7.15,48.6,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,166,137,87.5,2,3,5,185000,True,60,58.9
+IBE_021,39.461159,-0.96883,A-3,5,Sufficient,i-DE,38.17,34.0,2,Partner Co-location,Área de Servicio Las Moratillas,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,166,137,87.5,2,3,5,185000,True,60,58.9
+IBE_022,39.472142,-0.663105,A-3,5,Congested,Viesgo,0.03,8.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,166,137,87.5,2,3,5,305000,True,60,58.9
+IBE_023,40.102486,-3.848275,A-4,5,Congested,Viesgo,0.159,17.2,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_024,39.807779,-3.971844,A-4,5,Congested,Endesa,0.0,44.7,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_025,39.550159,-3.738688,A-4,5,Congested,Endesa,0.0,13.9,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,370000,True,60,57.5
+IBE_026,39.277112,-3.521558,A-4,5,Sufficient,Endesa,19.83,26.8,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,162,137,85.3,2,3,5,185000,True,60,57.5
+IBE_027,39.123138,-3.892408,A-4,4,Moderate,Naturgy,0.67,20.4,2,Partner Co-location,Petronor,High,2,Deploy 4-11 chargers. Plan grid expansion.,600,measured,162,137,106.7,2,3,5,157000,True,60,71.9
+IBE_028,38.73317,-4.065275,A-4,5,Moderate,Naturgy,0.84,3.0,1,Upgrade Iberdrola,,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,162,137,85.3,2,3,5,185000,True,60,57.5
+IBE_029,38.343047,-3.543966,A-4,5,Congested,Endesa,0.0,8.9,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_030,38.092598,-3.838269,A-4,5,Congested,Endesa,0.0,2.5,2,Partner Co-location,Estación de Servicio ASC Bailén,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_031,37.996426,-4.335973,A-4,5,Congested,Endesa,0.0,2.2,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_032,37.886585,-4.763909,A-4,5,Congested,Endesa,0.0,1.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_033,37.697876,-5.115053,A-4,5,Congested,Endesa,0.0,10.2,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_034,37.524007,-5.306606,A-4,5,Congested,Endesa,0.0,4.0,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_035,37.431837,-5.839116,A-4,5,Congested,Endesa,0.0,1.7,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_036,37.127571,-5.925977,A-4,5,Congested,Endesa,0.0,4.0,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_037,36.797737,-6.058119,A-4,5,Congested,Endesa,0.0,6.9,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,162,137,85.3,2,3,5,305000,True,60,57.5
+IBE_038,40.649276,-4.07103,A-6,3,Congested,Naturgy,0.335,19.9,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,92,77,80.8,2,2,3,249000,True,60,54.4
+IBE_039,40.72503,-4.265124,A-6,3,Congested,Naturgy,0.335,6.6,2,Partner Co-location,Los Llanos,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,92,77,80.8,2,2,3,249000,True,60,54.4
+IBE_040,40.981621,-4.250164,A-6,3,Moderate,Naturgy,1.285,10.2,2,Partner Co-location,Suministros Los Olmos,High,2,Deploy 4-11 chargers. Plan grid expansion.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_041,41.204354,-4.629356,A-6,3,Congested,Naturgy,0.488,25.5,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,92,77,80.8,2,2,3,314000,True,60,54.4
+IBE_042,41.479097,-4.959135,A-6,3,Sufficient,i-DE,14.76,26.0,2,Partner Co-location,Coaduero,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_043,41.503082,-5.468049,A-6,3,Sufficient,i-DE,36.0,22.6,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,194000,True,60,54.4
+IBE_044,41.641815,-5.792453,A-6,3,Sufficient,i-DE,36.0,12.7,2,Partner Co-location,Estación de Servicio Losada Montamarta,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_045,41.987228,-5.633901,A-6,3,Sufficient,Naturgy,2.192,40.2,1,Upgrade Iberdrola,Estación de carga Iberdrola,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_046,42.396233,-5.595422,A-6,3,Sufficient,Naturgy,2.192,26.6,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_047,42.623427,-5.741687,A-6,3,Sufficient,Naturgy,2.414,31.2,2,Partner Co-location,Área de descanso,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_048,42.849217,-5.994219,A-6,3,Congested,Viesgo,0.111,20.7,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,92,77,80.8,2,2,3,314000,True,60,54.4
+IBE_049,42.629796,-6.169868,A-6,3,Congested,Naturgy,0.428,17.8,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,92,77,80.8,2,2,3,314000,True,60,54.4
+IBE_050,42.564691,-6.644133,A-6,3,Congested,Naturgy,0.522,0.8,2,Partner Co-location,Valcarce,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,92,77,80.8,2,2,3,249000,True,60,54.4
+IBE_051,42.572037,-7.042663,A-6,3,Sufficient,Naturgy,2.193,17.4,2,Partner Co-location,O Muín,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_052,42.492638,-7.209085,A-6,3,Sufficient,i-DE,35.0,11.2,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_053,42.447092,-7.584901,A-6,3,Sufficient,Naturgy,2.285,9.2,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,194000,True,60,54.4
+IBE_054,42.619208,-7.805595,A-6,3,Sufficient,Naturgy,3.301,3.1,2,Partner Co-location,Icos Oil,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_055,42.920584,-8.021155,A-6,3,Congested,Naturgy,0.285,1.5,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,92,77,80.8,2,2,3,249000,True,60,54.4
+IBE_056,43.204268,-8.177816,A-6,3,Sufficient,Naturgy,10.982,23.6,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,92,77,80.8,2,2,3,129000,True,60,54.4
+IBE_057,40.593365,-6.614326,A-62,3,Sufficient,i-DE,3.0,85.2,3,New Partner,New site needed,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,98,83,86.0,2,2,3,194000,True,60,58.0
+IBE_058,40.809063,-6.162469,A-62,3,Sufficient,i-DE,112.34,76.1,2,Partner Co-location,,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,98,83,86.0,2,2,3,129000,True,60,58.0
+IBE_059,40.885394,-5.9562,A-62,3,Sufficient,i-DE,2.4,65.4,2,Partner Co-location,Repsol,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,98,83,86.0,2,2,3,129000,True,60,58.0
+IBE_060,41.072502,-5.521517,A-62,3,Sufficient,i-DE,2.4,53.5,2,Partner Co-location,,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,98,83,86.0,2,2,3,129000,True,60,58.0
+IBE_061,41.316402,-5.218363,A-62,3,Sufficient,i-DE,36.0,49.6,2,Partner Co-location,Estación de Servicio Alaejos,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,98,83,86.0,2,2,3,129000,True,60,58.0
+IBE_062,41.477302,-5.049658,A-62,3,Sufficient,i-DE,14.76,31.8,2,Partner Co-location,,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,98,83,86.0,2,2,3,129000,True,60,58.0
+IBE_063,41.755032,-4.6375,A-62,3,Sufficient,i-DE,14.76,14.8,2,Partner Co-location,Repsol,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,98,83,86.0,2,2,3,129000,True,60,58.0
+IBE_064,42.056176,-4.238828,A-62,3,Congested,Viesgo,0.044,25.9,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,measured,98,83,86.0,2,2,3,249000,True,60,58.0
+IBE_065,42.304774,-3.774991,A-62,3,Congested,Viesgo,0.044,36.2,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,measured,98,83,86.0,2,2,3,249000,True,60,58.0
+IBE_066,36.421358,-5.2175,A-7,7,Congested,Endesa,0.0,1.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_067,36.504016,-4.733333,A-7,7,Congested,Endesa,0.0,3.3,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_068,36.740296,-4.385792,A-7,7,Congested,Endesa,0.0,0.6,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_069,36.766506,-3.875544,A-7,7,Congested,Endesa,0.0,0.2,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_070,36.710027,-3.408672,A-7,7,Congested,Endesa,0.0,3.4,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_071,36.756764,-2.916535,A-7,7,Congested,Endesa,0.0,7.4,2,Partner Co-location,Cabasc,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_072,36.892956,-2.444307,A-7,7,Congested,Endesa,0.0,2.6,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_073,37.046456,-2.039503,A-7,7,Congested,Endesa,0.0,11.5,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,426000,True,60,53.8
+IBE_074,37.384743,-1.958327,A-7,7,Congested,Endesa,0.0,1.6,2,Partner Co-location,Estación de Servicio García,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_075,37.698289,-1.648871,A-7,7,Sufficient,i-DE,17.81,6.7,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1050,measured,212,179,79.8,2,4,7,241000,True,60,53.8
+IBE_076,37.912758,-1.310194,A-7,7,Sufficient,i-DE,22.23,21.5,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,1050,measured,212,179,79.8,2,4,7,241000,True,60,53.8
+IBE_077,38.270023,-1.323756,A-7,7,Sufficient,i-DE,4.44,40.3,2,Partner Co-location,Moeve,High,1,Deploy full hub (12 chargers). Top priority.,1050,measured,212,179,79.8,2,4,7,241000,True,60,53.8
+IBE_078,38.619671,-1.040901,A-7,7,Sufficient,i-DE,19.85,3.8,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1050,measured,212,179,79.8,2,4,7,241000,True,60,53.8
+IBE_079,38.908475,-0.696739,A-7,7,Sufficient,i-DE,7.78,0.3,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1050,measured,212,179,79.8,2,4,7,241000,True,60,53.8
+IBE_080,39.278914,-0.459898,A-7,7,Sufficient,i-DE,5.1,3.9,2,Partner Co-location,Font de Mussa,High,1,Deploy full hub (12 chargers). Top priority.,1050,measured,212,179,79.8,2,4,7,241000,True,60,53.8
+IBE_081,39.496145,-0.531308,A-7,7,Congested,Viesgo,0.03,4.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,measured,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_082,39.807626,-0.159689,A-7,7,Congested,Viesgo,0.111,14.7,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,measured,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_083,40.121522,0.133257,A-7,7,Congested,Viesgo,0.111,57.0,2,Partner Co-location,Eni,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,measured,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_084,40.481878,0.417929,A-7,7,Congested,Endesa,0.0,12.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_085,40.831908,0.738689,A-7,7,Congested,Endesa,0.0,6.7,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_086,41.119958,1.146152,A-7,7,Congested,Endesa,0.0,1.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,212,179,79.8,2,4,7,361000,True,60,53.8
+IBE_087,43.334773,-3.315166,A-8,4,Congested,Viesgo,0.044,8.3,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_088,43.415169,-3.57692,A-8,4,Congested,Viesgo,0.118,2.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_089,43.405344,-3.823092,A-8,4,Congested,Viesgo,0.139,0.7,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_090,43.398026,-4.168797,A-8,4,Congested,Viesgo,0.173,6.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_091,43.378783,-4.641796,A-8,4,Congested,Viesgo,0.069,5.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_092,43.363429,-5.035472,A-8,4,Congested,Viesgo,0.055,5.8,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,342000,True,60,53.7
+IBE_093,43.357099,-5.448488,A-8,4,Congested,Viesgo,0.069,4.2,2,Partner Co-location,Galp,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_094,43.376719,-5.984087,A-8,4,Congested,Viesgo,0.069,2.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_095,43.37251,-6.366154,A-8,4,Congested,Viesgo,0.111,2.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_096,43.546895,-6.8705,A-8,4,Congested,Viesgo,0.055,4.4,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_097,43.333791,-7.08228,A-8,4,Congested,Endesa,0.028,12.2,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,342000,True,60,53.7
+IBE_098,43.362752,-7.452584,A-8,4,Congested,Endesa,0.068,2.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_099,43.053639,-7.689526,A-8,4,Congested,Endesa,0.111,8.9,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,342000,True,60,53.7
+IBE_100,42.967354,-8.142968,A-8,4,Congested,Naturgy,0.285,10.7,2,Partner Co-location,Repsol Teiraboa,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_101,43.035393,-8.393847,A-8,4,Congested,Naturgy,0.567,15.7,2,Partner Co-location,Estación de servicio Ordes,High,4,Grid upgrade prerequisite. Partner with DSO.,600,measured,121,103,79.7,2,3,4,277000,True,60,53.7
+IBE_102,42.491383,-3.37743,AP-1,3,Congested,Viesgo,0.044,57.1,3,New Partner,New site needed,Low,9,Skip for 2027. Revisit next cycle.,450,measured,74,62,65.0,2,2,3,314000,True,60,43.8
+IBE_103,42.679985,-3.012275,AP-1,3,Moderate,i-DE,1.03,49.4,1,Upgrade Iberdrola,,Low,8,Only at existing Iberdrola/partner. Monitor.,450,measured,74,62,65.0,2,2,3,129000,True,60,43.8
+IBE_104,42.804891,-2.808541,AP-1,3,Moderate,i-DE,1.03,46.5,1,Upgrade Iberdrola,,Low,8,Only at existing Iberdrola/partner. Monitor.,450,measured,74,62,65.0,2,2,3,129000,True,60,43.8
+IBE_105,43.098121,-2.433499,AP-1,3,Sufficient,i-DE,3.52,53.1,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,450,measured,74,62,65.0,2,2,3,129000,True,60,43.8
+IBE_106,43.2853,-2.22524,AP-1,3,Sufficient,i-DE,3.52,31.0,2,Partner Co-location,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,450,measured,74,62,65.0,2,2,3,129000,True,60,43.8
+IBE_107,43.329731,-1.802575,AP-1,3,Sufficient,i-DE,3.52,4.3,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,450,measured,74,62,65.0,2,2,3,129000,True,60,43.8
+IBE_108,42.940563,-2.76643,AP-68,3,Moderate,i-DE,1.03,58.2,1,Upgrade Iberdrola,,Low,8,Only at existing Iberdrola/partner. Monitor.,450,measured,81,70,71.1,2,2,3,129000,True,60,47.9
+IBE_109,42.447244,-2.336596,AP-68,3,Moderate,i-DE,1.03,12.7,2,Partner Co-location,Avia,Low,8,Only at existing Iberdrola/partner. Monitor.,450,measured,81,70,71.1,2,2,3,129000,True,60,47.9
+IBE_110,42.1468,-2.096855,AP-68,3,Sufficient,i-DE,7.0,17.8,3,New Partner,New site needed,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,450,measured,81,70,71.1,2,2,3,194000,True,60,47.9
+IBE_111,42.064985,-1.667979,AP-68,3,Sufficient,i-DE,27.0,1.2,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,450,measured,81,70,71.1,2,2,3,129000,True,60,47.9
+IBE_112,41.819111,-1.285104,AP-68,3,Congested,Endesa,0.0,2.4,2,Partner Co-location,,Low,9,Skip for 2027. Revisit next cycle.,450,unknown,81,70,71.1,2,2,3,249000,True,60,47.9
+IBE_113,36.433139,-5.161826,AP-7,3,Congested,Endesa,0.0,0.9,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_114,36.720053,-4.412436,AP-7,3,Congested,Endesa,0.0,1.2,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_115,36.751083,-3.960134,AP-7,3,Congested,Endesa,0.0,1.0,2,Partner Co-location,Estación de Servicio BP Torrox,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_116,36.738993,-3.486567,AP-7,3,Congested,Endesa,0.0,5.0,1,Upgrade Iberdrola,Iberdrola,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_117,36.751803,-3.157635,AP-7,3,Congested,Endesa,0.0,19.6,2,Partner Co-location,Estación de Servicio Vista Alegre,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_118,36.812746,-2.641229,AP-7,3,Congested,Endesa,0.0,3.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_119,36.9042,-2.212742,AP-7,3,Congested,Endesa,0.0,4.8,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_120,37.196792,-1.911749,AP-7,3,Congested,Endesa,0.0,6.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_121,37.415615,-1.696202,AP-7,3,Sufficient,i-DE,24.12,3.2,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,78,66,68.5,2,2,3,194000,True,60,46.2
+IBE_122,37.605887,-1.471337,AP-7,3,Sufficient,i-DE,22.23,16.1,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,78,66,68.5,2,2,3,194000,True,60,46.2
+IBE_123,37.811099,-1.211732,AP-7,3,Sufficient,i-DE,22.85,14.8,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,78,66,68.5,2,2,3,194000,True,60,46.2
+IBE_124,38.064118,-1.107399,AP-7,3,Congested,Viesgo,0.022,30.6,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_125,38.300224,-0.65012,AP-7,3,Congested,Viesgo,0.1,3.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_126,38.525714,-0.25089,AP-7,3,Sufficient,i-DE,6.69,20.1,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,78,66,68.5,2,2,3,129000,True,60,46.2
+IBE_127,38.724655,0.062568,AP-7,3,Sufficient,i-DE,4.84,42.5,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,78,66,68.5,2,2,3,129000,True,60,46.2
+IBE_128,38.925363,-0.165033,AP-7,3,Moderate,i-DE,1.51,18.0,1,Upgrade Iberdrola,,High,2,Deploy 4-11 chargers. Plan grid expansion.,450,measured,78,66,68.5,2,2,3,129000,True,60,46.2
+IBE_129,39.29108,-0.402687,AP-7,3,Sufficient,i-DE,5.1,1.3,2,Partner Co-location,BP,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,78,66,68.5,2,2,3,129000,True,60,46.2
+IBE_130,39.661695,-0.305071,AP-7,3,Congested,Viesgo,0.091,3.6,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_131,39.98322,-0.088072,AP-7,3,Congested,Viesgo,0.111,35.2,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_132,40.270008,0.236153,AP-7,3,Congested,Endesa,0.0,40.1,2,Partner Co-location,Castell Xivert,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_133,40.497595,0.464049,AP-7,3,Congested,Endesa,0.0,8.3,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_134,40.814363,0.708215,AP-7,3,Congested,Endesa,0.0,3.5,2,Partner Co-location,Avia,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_135,41.100678,1.107423,AP-7,3,Congested,Endesa,0.0,5.0,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_136,41.209265,1.585022,AP-7,3,Congested,Endesa,0.0,5.2,2,Partner Co-location,"AGRICOLA CALAFELL, SCCL",High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_137,41.286574,1.999499,AP-7,3,Congested,Endesa,0.0,4.7,2,Partner Co-location,Petrocat,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_138,41.584414,2.299046,AP-7,3,Congested,Endesa,0.0,1.8,2,Partner Co-location,Galp,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_139,41.769364,2.694706,AP-7,3,Congested,Endesa,0.0,6.3,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_140,42.078843,2.889763,AP-7,3,Congested,Endesa,0.0,6.3,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_141,42.327615,3.08929,AP-7,3,Congested,Endesa,0.0,5.9,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,78,66,68.5,2,2,3,249000,True,60,46.2
+IBE_142,40.745478,-3.57212,A-1,6,Sufficient,i-DE,9.53,22.9,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,900,measured,172,150,75.5,2,4,6,213000,False,100,50.9
+IBE_143,40.873508,-3.601984,A-1,6,Sufficient,i-DE,9.53,36.3,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,900,measured,172,150,75.5,2,4,6,213000,False,100,50.9
+IBE_144,41.131126,-3.583895,A-1,6,Congested,Naturgy,0.045,30.7,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,900,measured,172,150,75.5,2,4,6,333000,False,100,50.9
+IBE_145,41.44781,-3.678215,A-1,6,Congested,Naturgy,0.045,28.2,2,Partner Co-location,Estación de Servicio Nevada,High,4,Grid upgrade prerequisite. Partner with DSO.,900,measured,172,150,75.5,2,4,6,333000,False,100,50.9
+IBE_146,41.629585,-3.686962,A-1,6,Congested,Naturgy,0.045,44.9,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,900,measured,172,150,75.5,2,4,6,333000,False,100,50.9
+IBE_147,42.017906,-3.757194,A-1,6,Congested,Viesgo,0.044,48.2,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,900,measured,172,150,75.5,2,4,6,333000,False,100,50.9
+IBE_148,42.338825,-3.611723,A-1,6,Congested,Viesgo,0.044,49.9,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,900,measured,172,150,75.5,2,4,6,333000,False,100,50.9
+IBE_149,42.637897,-3.215517,A-1,6,Congested,Viesgo,0.044,56.1,2,Partner Co-location,Estación de Servicio AN Mivisa,High,4,Grid upgrade prerequisite. Partner with DSO.,900,measured,172,150,75.5,2,4,6,333000,False,100,50.9
+IBE_150,42.783056,-2.823548,A-1,6,Moderate,i-DE,1.03,45.3,1,Upgrade Iberdrola,,High,2,Deploy 4-11 chargers. Plan grid expansion.,900,measured,172,150,75.5,2,4,6,213000,False,100,50.9
+IBE_151,42.863879,-2.325762,A-1,6,Moderate,i-DE,1.0,32.6,2,Partner Co-location,Moeve,High,2,Deploy 4-11 chargers. Plan grid expansion.,900,measured,172,150,75.5,2,4,6,213000,False,100,50.9
+IBE_152,43.093024,-2.121132,A-1,6,Sufficient,i-DE,3.52,32.6,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,900,measured,172,150,75.5,2,4,6,213000,False,100,50.9
+IBE_153,42.923371,-2.002916,A-10,6,Moderate,i-DE,1.0,28.4,2,Partner Co-location,Moeve,Low,8,Only at existing Iberdrola/partner. Monitor.,900,measured,244,206,107.1,2,5,8,213000,False,100,72.2
+IBE_154,41.61483,-4.18787,A-11,5,Congested,Naturgy,0.045,45.7,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,750,measured,142,120,74.8,2,3,5,305000,False,100,50.4
+IBE_155,41.63833,-3.63285,A-11,5,Congested,Naturgy,0.045,47.8,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,750,measured,142,120,74.8,2,3,5,305000,False,100,50.4
+IBE_156,41.58782,-3.07175,A-11,5,Congested,Endesa,0.0,46.5,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,750,unknown,142,120,74.8,2,3,5,305000,False,100,50.4
+IBE_157,42.416757,-2.666545,A-12,4,Moderate,i-DE,1.03,15.2,2,Partner Co-location,Area de descanso de peregrinos,Low,8,Only at existing Iberdrola/partner. Monitor.,600,measured,110,92,72.4,2,2,4,157000,False,100,48.8
+IBE_158,42.475605,-2.338393,A-12,4,Moderate,i-DE,1.03,12.6,2,Partner Co-location,Avia,Low,8,Only at existing Iberdrola/partner. Monitor.,600,measured,110,92,72.4,2,2,4,157000,False,100,48.8
+IBE_159,42.677617,-1.897486,A-12,4,Moderate,i-DE,1.0,4.9,1,Upgrade Iberdrola,,Low,8,Only at existing Iberdrola/partner. Monitor.,600,measured,110,92,72.4,2,2,4,157000,False,100,48.8
+IBE_160,42.678193,-1.456743,A-12,4,Moderate,i-DE,1.0,16.1,2,Partner Co-location,,Low,8,Only at existing Iberdrola/partner. Monitor.,600,measured,110,92,72.4,2,2,4,157000,False,100,48.8
+IBE_161,41.162318,-2.417244,A-15,2,Congested,Endesa,0.0,35.4,2,Partner Co-location,,Medium,7,Defer unless strategic. Focus on grid upgrade.,300,unknown,58,49,76.4,2,2,2,221000,False,100,51.5
+IBE_162,41.754615,-1.956701,A-15,2,Sufficient,Endesa,9.48,2.9,2,Partner Co-location,,Medium,3,Deploy standard (8 chargers). Monitor growth.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_163,42.118383,-1.747116,A-15,2,Sufficient,i-DE,23.0,2.2,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_164,42.5204,-1.663028,A-15,2,Moderate,i-DE,1.0,1.9,1,Upgrade Iberdrola,AN Energéticos - Olite,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_165,42.861608,-1.74497,A-15,2,Moderate,i-DE,1.0,20.4,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_166,43.188049,-2.022413,A-15,2,Sufficient,i-DE,3.52,19.5,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_167,43.265505,-1.961453,A-15,2,Sufficient,i-DE,3.52,10.5,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_168,43.078798,-1.946901,A-15,2,Sufficient,i-DE,1.85,24.6,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_169,42.786752,-1.657225,A-15,2,Moderate,i-DE,1.0,10.7,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,300,measured,58,49,76.4,2,2,2,101000,False,100,51.5
+IBE_170,42.622756,-1.108651,A-21,8,Sufficient,i-DE,33.73,13.9,3,New Partner,New site needed,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1200,measured,264,223,86.9,2,5,8,334000,False,100,58.6
+IBE_171,42.067981,-0.059927,A-22,5,Congested,Endesa,0.0,8.1,2,Partner Co-location,Repsol,Low,9,Skip for 2027. Revisit next cycle.,750,unknown,148,125,78.0,2,3,5,305000,False,100,52.5
+IBE_172,41.833014,0.305313,A-22,5,Congested,Endesa,0.0,2.5,2,Partner Co-location,Estación de Servicio Repsol,Low,9,Skip for 2027. Revisit next cycle.,750,unknown,148,125,78.0,2,3,5,305000,False,100,52.5
+IBE_173,39.86606,-0.516204,A-23,3,Sufficient,i-DE,7.91,6.7,2,Partner Co-location,COOP.SAGRADO CORAZON DE ALTURA,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,101,85,88.7,2,2,3,129000,False,100,59.8
+IBE_174,40.086791,-0.72853,A-23,3,Congested,Endesa,0.0,4.7,2,Partner Co-location,Galp,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_175,40.356862,-1.108635,A-23,3,Congested,Endesa,0.0,0.6,2,Partner Co-location,CIVERA,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_176,40.671393,-1.105309,A-23,3,Congested,Endesa,0.0,21.8,2,Partner Co-location,Cereales Teruel,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_177,40.913835,-1.276791,A-23,3,Congested,Endesa,0.0,0.7,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_178,41.215109,-1.248714,A-23,3,Congested,Endesa,0.0,14.9,2,Partner Co-location,COOP.VILLARREAL,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_179,41.503193,-1.052699,A-23,3,Congested,Endesa,0.0,2.0,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,314000,False,100,59.8
+IBE_180,41.869106,-0.79929,A-23,3,Congested,Endesa,0.0,0.5,2,Partner Co-location,Estación de Servicio Repsol Zuera,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_181,42.060572,-0.451227,A-23,3,Congested,Endesa,0.0,4.7,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_182,42.408825,-0.387488,A-23,3,Congested,Endesa,0.0,6.1,2,Partner Co-location,,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,101,85,88.7,2,2,3,249000,False,100,59.8
+IBE_183,38.793116,-1.728039,A-30,5,Sufficient,i-DE,19.85,59.2,2,Partner Co-location,Repsol,Medium,3,Deploy standard (8 chargers). Monitor growth.,750,measured,145,122,76.4,2,3,5,185000,False,100,51.5
+IBE_184,38.414028,-1.571871,A-30,5,Sufficient,i-DE,4.44,41.6,2,Partner Co-location,Moeve,Medium,3,Deploy standard (8 chargers). Monitor growth.,750,measured,145,122,76.4,2,3,5,185000,False,100,51.5
+IBE_185,38.164247,-1.303543,A-30,5,Sufficient,i-DE,4.44,36.2,2,Partner Co-location,Moeve,Medium,3,Deploy standard (8 chargers). Monitor growth.,750,measured,145,122,76.4,2,3,5,185000,False,100,51.5
+IBE_186,37.930275,-1.184403,A-30,5,Sufficient,i-DE,21.73,26.3,1,Upgrade Iberdrola,Calle Mayor (El Palmar),Medium,3,Deploy standard (8 chargers). Monitor growth.,750,measured,145,122,76.4,2,3,5,185000,False,100,51.5
+IBE_187,37.622438,-0.94702,A-30,5,Sufficient,i-DE,21.41,1.8,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,750,measured,145,122,76.4,2,3,5,185000,False,100,51.5
+IBE_188,38.87499,-1.35247,A-31,8,Sufficient,i-DE,19.85,37.0,2,Partner Co-location,,Medium,3,Deploy standard (8 chargers). Monitor growth.,1200,measured,271,229,89.2,2,5,8,269000,False,100,60.1
+IBE_189,38.70288,-0.92336,A-31,8,Sufficient,i-DE,31.16,1.8,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,1200,measured,271,229,89.2,2,5,8,269000,False,100,60.1
+IBE_190,38.35098,-0.6649,A-31,8,Sufficient,i-DE,10.45,8.4,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,1200,measured,271,229,89.2,2,5,8,269000,False,100,60.1
+IBE_191,38.0953,-3.14225,A-32,7,Congested,Endesa,0.0,14.5,2,Partner Co-location,Moeve,Low,9,Skip for 2027. Revisit next cycle.,1050,unknown,234,197,88.1,2,5,7,361000,False,100,59.3
+IBE_192,38.867311,-0.784741,A-35,7,Sufficient,i-DE,47.78,3.7,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1050,measured,211,178,79.4,2,4,7,241000,False,100,53.5
+IBE_193,39.65568,-3.657876,A-40,6,Congested,Endesa,0.0,14.2,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,900,unknown,199,171,87.4,2,4,6,398000,False,100,58.9
+IBE_194,39.403886,-3.507031,A-40,6,Sufficient,Endesa,19.83,12.8,2,Partner Co-location,EESS Combustibles gutierrez,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,199,171,87.4,2,4,6,213000,False,100,58.9
+IBE_195,39.226155,-3.770884,A-40,4,Moderate,Naturgy,0.67,35.0,2,Partner Co-location,COOP. NTRA. SRA FE,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,199,171,131.0,2,4,6,157000,False,100,88.3
+IBE_196,40.10046,-3.703731,A-42,17,Congested,Viesgo,0.173,15.6,2,Partner Co-location,Shell,Medium,7,Defer unless strategic. Focus on grid upgrade.,2550,measured,566,494,87.7,2,11,17,641000,False,100,59.1
+IBE_197,39.002986,-3.779887,A-43,2,Moderate,Naturgy,0.67,16.9,2,Partner Co-location,Moeve,Low,8,Only at existing Iberdrola/partner. Monitor.,300,measured,67,57,88.2,2,2,2,101000,False,100,59.5
+IBE_198,39.016484,-3.338517,A-43,2,Congested,Endesa,0.0,45.7,2,Partner Co-location,Yuntero,Low,9,Skip for 2027. Revisit next cycle.,300,unknown,67,57,88.2,2,2,2,221000,False,100,59.5
+IBE_199,39.16766,-2.821293,A-43,2,Congested,Endesa,0.0,22.8,3,New Partner,New site needed,Low,9,Skip for 2027. Revisit next cycle.,300,unknown,67,57,88.2,2,2,2,286000,False,100,59.5
+IBE_200,39.328925,-2.459358,A-43,2,Congested,Endesa,0.0,28.1,2,Partner Co-location,Estación de Servicio Ven y Ven,Low,9,Skip for 2027. Revisit next cycle.,300,unknown,67,57,88.2,2,2,2,221000,False,100,59.5
+IBE_201,39.504488,-2.267116,A-43,2,Sufficient,Endesa,18.83,32.9,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,300,measured,67,57,88.2,2,2,2,101000,False,100,59.5
+IBE_202,37.785356,-3.783549,A-44,4,Congested,Endesa,0.0,1.0,2,Partner Co-location,Plenergy,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,unknown,115,97,75.7,2,3,4,277000,False,100,51.0
+IBE_203,37.59428,-3.686322,A-44,4,Congested,Endesa,0.0,6.6,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,unknown,115,97,75.7,2,3,4,342000,False,100,51.0
+IBE_204,37.289207,-3.658251,A-44,4,Congested,Endesa,0.0,6.0,2,Partner Co-location,Estación de Servicio BP Cubillas,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,unknown,115,97,75.7,2,3,4,277000,False,100,51.0
+IBE_205,36.960972,-3.54777,A-44,4,Congested,Endesa,0.0,0.5,2,Partner Co-location,Estación de Servicio Lemans,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,unknown,115,97,75.7,2,3,4,277000,False,100,51.0
+IBE_206,36.73615,-3.443702,A-44,4,Congested,Endesa,0.0,2.6,1,Upgrade Iberdrola,Iberdrola,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,unknown,115,97,75.7,2,3,4,277000,False,100,51.0
+IBE_207,37.462044,-4.578141,A-45,5,Congested,Endesa,0.0,7.3,2,Partner Co-location,Estación de Servicio El Cañuelo,Low,9,Skip for 2027. Revisit next cycle.,750,unknown,143,120,75.3,2,3,5,305000,False,100,50.8
+IBE_208,37.25338,-4.52975,A-45,5,Congested,Endesa,0.0,4.3,2,Partner Co-location,GUADAGENIL,Low,9,Skip for 2027. Revisit next cycle.,750,unknown,143,120,75.3,2,3,5,305000,False,100,50.8
+IBE_209,36.925378,-4.447329,A-45,5,Congested,Endesa,0.0,3.5,2,Partner Co-location,Repsol,Low,9,Skip for 2027. Revisit next cycle.,750,unknown,143,120,75.3,2,3,5,305000,False,100,50.8
+IBE_210,37.338593,-7.010963,A-49,4,Congested,Endesa,0.0,5.6,3,New Partner,New site needed,Low,9,Skip for 2027. Revisit next cycle.,600,unknown,133,112,87.6,2,3,4,342000,False,100,59.0
+IBE_211,37.326823,-6.828497,A-49,4,Congested,Endesa,0.0,3.1,2,Partner Co-location,Moeve,Low,9,Skip for 2027. Revisit next cycle.,600,unknown,133,112,87.6,2,3,4,277000,False,100,59.0
+IBE_212,37.361072,-6.274623,A-49,4,Congested,Endesa,0.0,2.9,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,600,unknown,133,112,87.6,2,3,4,277000,False,100,59.0
+IBE_213,40.213387,-4.095692,A-5,5,Moderate,Naturgy,0.981,22.1,2,Partner Co-location,,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,153,134,80.6,2,3,5,185000,False,100,54.3
+IBE_214,40.047193,-4.39255,A-5,5,Moderate,i-DE,0.91,34.9,1,Upgrade Iberdrola,,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,153,134,80.6,2,3,5,185000,False,100,54.3
+IBE_215,39.958875,-4.825188,A-5,5,Moderate,i-DE,0.91,3.2,1,Upgrade Iberdrola,,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,153,134,80.6,2,3,5,185000,False,100,54.3
+IBE_216,39.706008,-5.075157,A-5,5,Congested,Endesa,0.0,37.6,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,153,134,80.6,2,3,5,370000,False,100,54.3
+IBE_217,39.440248,-5.273793,A-5,5,Sufficient,i-DE,3.62,22.1,2,Partner Co-location,repsol,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,153,134,80.6,2,3,5,185000,False,100,54.3
+IBE_218,39.337043,-5.457507,A-5,5,Sufficient,i-DE,3.62,24.9,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,153,134,80.6,2,3,5,185000,False,100,54.3
+IBE_219,39.168252,-5.883492,A-5,5,Congested,Endesa,0.0,36.0,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,153,134,80.6,2,3,5,305000,False,100,54.3
+IBE_220,38.937315,-6.302692,A-5,5,Congested,Endesa,0.0,3.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,153,134,80.6,2,3,5,305000,False,100,54.3
+IBE_221,38.866597,-6.798955,A-5,5,Congested,Endesa,0.0,5.3,2,Partner Co-location,Estación de Servicio Shell Talavera La Real,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,153,134,80.6,2,3,5,305000,False,100,54.3
+IBE_222,41.31275,-4.30481,A-50,4,Congested,Naturgy,0.488,18.3,2,Partner Co-location,,Low,9,Skip for 2027. Revisit next cycle.,600,measured,110,93,72.4,2,2,4,277000,False,100,48.8
+IBE_223,41.53558,-4.65177,A-50,4,Sufficient,i-DE,14.76,14.6,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,600,measured,110,93,72.4,2,2,4,157000,False,100,48.8
+IBE_224,42.310262,-8.16887,A-52,4,Moderate,Naturgy,0.644,16.8,2,Partner Co-location,Petronor,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,115,97,75.7,2,3,4,157000,False,100,51.0
+IBE_225,42.345134,-7.878304,A-52,4,Moderate,Naturgy,0.692,1.4,2,Partner Co-location,Peréz rumbao,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,115,97,75.7,2,3,4,157000,False,100,51.0
+IBE_226,42.062157,-7.680281,A-52,4,Moderate,Naturgy,0.795,2.2,2,Partner Co-location,Estación de Servizo de Abavides,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,115,97,75.7,2,3,4,157000,False,100,51.0
+IBE_227,41.989127,-7.244194,A-52,4,Moderate,Naturgy,0.846,19.3,2,Partner Co-location,O Viaxeiro,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,115,97,75.7,2,3,4,157000,False,100,51.0
+IBE_228,42.040882,-6.709394,A-52,4,Sufficient,Endesa,13.06,20.7,3,New Partner,New site needed,Medium,3,Deploy standard (8 chargers). Monitor growth.,600,measured,115,97,75.7,2,3,4,222000,False,100,51.0
+IBE_229,42.008749,-6.130735,A-52,4,Moderate,Naturgy,1.408,2.9,3,New Partner,New site needed,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,115,97,75.7,2,3,4,222000,False,100,51.0
+IBE_230,42.176077,-8.624432,A-55,7,Sufficient,Naturgy,3.456,4.3,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1050,measured,232,196,87.3,2,5,7,241000,False,100,58.8
+IBE_231,43.457483,-5.508706,A-64,7,Congested,Viesgo,0.173,5.3,2,Partner Co-location,,Low,9,Skip for 2027. Revisit next cycle.,1050,measured,208,176,78.3,2,4,7,361000,False,100,52.7
+IBE_232,37.743476,-5.935056,A-66,3,Congested,Endesa,0.0,18.7,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,90,76,79.0,2,2,3,314000,False,100,53.3
+IBE_233,38.173186,-6.193805,A-66,3,Congested,Endesa,0.0,13.0,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,90,76,79.0,2,2,3,314000,False,100,53.3
+IBE_234,38.478288,-6.359,A-66,3,Congested,Endesa,0.0,3.4,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,90,76,79.0,2,2,3,314000,False,100,53.3
+IBE_235,38.930892,-6.337579,A-66,3,Congested,Endesa,0.0,1.0,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,90,76,79.0,2,2,3,249000,False,100,53.3
+IBE_236,39.257255,-6.111739,A-66,3,Congested,Endesa,0.0,41.0,2,Partner Co-location,Estación de Servicio Las Glorias,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,90,76,79.0,2,2,3,249000,False,100,53.3
+IBE_237,39.566324,-5.833642,A-66,3,Sufficient,i-DE,5.24,43.5,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_238,39.756413,-6.004297,A-66,3,Sufficient,i-DE,5.24,23.4,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_239,40.04657,-5.954996,A-66,3,Sufficient,i-DE,5.24,11.2,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,194000,False,100,53.3
+IBE_240,40.080954,-6.08392,A-66,3,Sufficient,i-DE,5.24,20.7,2,Partner Co-location,Estación de Servicio Carrefour Plasencia,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_241,40.416389,-5.781486,A-66,3,Sufficient,i-DE,6.0,40.3,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_242,40.770053,-5.627529,A-66,3,Sufficient,i-DE,6.0,80.3,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_243,41.149384,-5.641701,A-66,3,Sufficient,i-DE,2.4,40.9,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,194000,False,100,53.3
+IBE_244,41.376618,-5.719608,A-66,3,Sufficient,i-DE,19.0,16.4,2,Partner Co-location,Agroduero Sociedad Cooperativa Ltda.,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_245,41.527094,-5.69801,A-66,3,Sufficient,i-DE,36.0,3.3,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_246,41.80099,-5.755191,A-66,3,Sufficient,i-DE,36.0,29.6,2,Partner Co-location,Área de Servicio,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_247,42.165135,-5.63538,A-66,3,Sufficient,Naturgy,2.192,25.4,2,Partner Co-location,Avia,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_248,42.572653,-5.567732,A-66,3,Sufficient,Naturgy,2.192,40.6,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_249,42.909001,-5.651654,A-66,3,Congested,Viesgo,0.069,25.3,1,Upgrade Iberdrola,Casa Ezequiel,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,90,76,79.0,2,2,3,249000,False,100,53.3
+IBE_250,43.135261,-5.821283,A-66,3,Congested,Viesgo,0.128,3.3,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,90,76,79.0,2,2,3,249000,False,100,53.3
+IBE_251,42.346418,-4.389489,A-67,6,Moderate,Viesgo,1.178,7.7,2,Partner Co-location,Área de servicio Los Chopos,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,900,measured,172,146,75.5,2,4,6,213000,False,100,50.9
+IBE_252,42.759563,-4.288586,A-67,6,Congested,Viesgo,0.15,4.0,2,Partner Co-location,,Medium,7,Defer unless strategic. Focus on grid upgrade.,900,measured,172,146,75.5,2,4,6,333000,False,100,50.9
+IBE_253,43.103407,-4.09006,A-67,6,Congested,Viesgo,0.044,3.0,2,Partner Co-location,Petronor,Medium,7,Defer unless strategic. Focus on grid upgrade.,900,measured,172,146,75.5,2,4,6,333000,False,100,50.9
+IBE_254,43.438373,-3.884513,A-67,6,Congested,Viesgo,0.044,1.1,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,900,measured,172,146,75.5,2,4,6,333000,False,100,50.9
+IBE_255,41.865195,-1.384901,A-68,8,Congested,Endesa,0.0,2.2,2,Partner Co-location,Moeve,Low,9,Skip for 2027. Revisit next cycle.,1200,unknown,250,211,82.3,2,5,8,389000,False,100,55.5
+IBE_256,41.727805,-1.045921,A-68,8,Congested,Endesa,0.0,1.0,2,Partner Co-location,Repsol,Low,9,Skip for 2027. Revisit next cycle.,1200,unknown,250,211,82.3,2,5,8,389000,False,100,55.5
+IBE_257,37.278869,-5.554208,A-92,7,Congested,Endesa,0.0,1.0,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,361000,False,100,54.8
+IBE_258,37.233654,-5.126244,A-92,7,Congested,Endesa,0.0,1.0,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,361000,False,100,54.8
+IBE_259,37.138479,-4.725009,A-92,7,Congested,Endesa,0.0,2.6,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,426000,False,100,54.8
+IBE_260,37.147732,-4.23273,A-92,7,Congested,Endesa,0.0,6.4,2,Partner Co-location,Estación de Servicio Moeve La Palma,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,361000,False,100,54.8
+IBE_261,37.194094,-3.842592,A-92,7,Congested,Endesa,0.0,9.4,2,Partner Co-location,Estación de Servicio Carburantes A-92 Láchar,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,361000,False,100,54.8
+IBE_262,37.306528,-3.419514,A-92,7,Congested,Endesa,0.0,12.9,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,361000,False,100,54.8
+IBE_263,37.194209,-2.986224,A-92,7,Congested,Endesa,0.0,7.9,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,361000,False,100,54.8
+IBE_264,37.117525,-2.598046,A-92,7,Congested,Endesa,0.0,23.2,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,361000,False,100,54.8
+IBE_265,37.132049,-2.507687,A-92,7,Congested,Endesa,0.0,22.4,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,216,182,81.3,2,4,7,426000,False,100,54.8
+IBE_266,42.621584,-1.630735,AP-15,2,Moderate,i-DE,1.0,7.9,2,Partner Co-location,COOP.VALDORBA,Low,8,Only at existing Iberdrola/partner. Monitor.,300,measured,44,37,58.0,2,2,2,101000,False,100,39.1
+IBE_267,42.202623,-1.675581,AP-15,2,Moderate,i-DE,1.0,10.9,1,Upgrade Iberdrola,,Low,8,Only at existing Iberdrola/partner. Monitor.,300,measured,44,37,58.0,2,2,2,101000,False,100,39.1
+IBE_268,42.226897,-1.680088,AP-15,2,Moderate,i-DE,1.0,8.4,2,Partner Co-location,AN Energéticos - Cadreita,Low,8,Only at existing Iberdrola/partner. Monitor.,300,measured,44,37,58.0,2,2,2,101000,False,100,39.1
+IBE_269,42.36445,-1.723974,AP-15,2,Moderate,i-DE,1.0,3.5,2,Partner Co-location,Venta de Arlas,Low,8,Only at existing Iberdrola/partner. Monitor.,300,measured,44,37,58.0,2,2,2,101000,False,100,39.1
+IBE_270,42.699267,-1.638201,AP-15,2,Moderate,i-DE,1.0,1.6,2,Partner Co-location,,Low,8,Only at existing Iberdrola/partner. Monitor.,300,measured,44,37,58.0,2,2,2,101000,False,100,39.1
+IBE_271,41.522307,-0.159982,AP-2,2,Congested,Endesa,0.0,14.3,2,Partner Co-location,SENERSA S.L,Low,9,Skip for 2027. Revisit next cycle.,300,unknown,52,44,68.5,2,2,2,221000,False,100,46.2
+IBE_272,41.496047,0.389048,AP-2,2,Congested,Endesa,0.0,4.2,2,Partner Co-location,BP Fraga (margen izquierdo),Low,9,Skip for 2027. Revisit next cycle.,300,unknown,52,44,68.5,2,2,2,221000,False,100,46.2
+IBE_273,41.524296,0.068398,AP-2,2,Congested,Endesa,0.0,5.6,2,Partner Co-location,Repsol,Low,9,Skip for 2027. Revisit next cycle.,300,unknown,52,44,68.5,2,2,2,221000,False,100,46.2
+IBE_274,41.495995,0.121585,AP-2,2,Congested,Endesa,0.0,9.4,2,Partner Co-location,,Low,9,Skip for 2027. Revisit next cycle.,300,unknown,52,44,68.5,2,2,2,221000,False,100,46.2
+IBE_275,41.539022,0.663171,AP-2,2,Sufficient,Endesa,3.99,5.5,1,Upgrade Iberdrola,Iberdrola,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,300,measured,52,44,68.5,2,2,2,101000,False,100,46.2
+IBE_276,41.387105,1.174495,AP-2,2,Congested,Endesa,0.0,3.5,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,300,unknown,52,44,68.5,2,2,2,221000,False,100,46.2
+IBE_277,43.17496,-2.51339,AP-8,8,Sufficient,i-DE,3.52,56.2,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1200,measured,259,218,85.3,2,5,8,269000,False,100,57.5
+IBE_278,43.28598,-2.031,AP-8,8,Sufficient,i-DE,3.52,15.4,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1200,measured,259,218,85.3,2,5,8,269000,False,100,57.5
+IBE_279,43.027581,-8.401568,AP-9,6,Congested,Naturgy,0.567,14.7,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,900,measured,196,174,86.0,2,4,6,333000,False,100,58.0
+IBE_280,42.684935,-8.547156,AP-9,6,Sufficient,Naturgy,2.798,3.5,2,Partner Co-location,BP,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,196,174,86.0,2,4,6,213000,False,100,58.0
+IBE_281,42.362952,-8.640623,AP-9,6,Moderate,Naturgy,1.137,2.7,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,900,measured,196,174,86.0,2,4,6,213000,False,100,58.0
+IBE_282,41.653591,1.425547,C-25,9,Congested,Endesa,0.0,11.6,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,1350,unknown,280,234,81.9,2,5,9,417000,False,100,55.2
+IBE_283,41.75444,1.88475,C-25,9,Congested,Endesa,0.0,4.4,2,Partner Co-location,"PETRO-PINTO,S.L.",Medium,7,Defer unless strategic. Focus on grid upgrade.,1350,unknown,280,234,81.9,2,5,9,417000,False,100,55.2
+IBE_284,40.74063,-3.41568,N-1,4,Sufficient,i-DE,4.83,27.3,2,Partner Co-location,Repsol,Medium,3,Deploy standard (8 chargers). Monitor growth.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_285,40.98389,-3.63964,N-1,4,Moderate,Naturgy,1.16,37.6,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_286,41.097,-3.59284,N-1,4,Congested,Naturgy,0.045,32.0,2,Partner Co-location,Q8,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,measured,108,91,71.1,2,2,4,277000,False,100,47.9
+IBE_287,41.44173,-3.343,N-1,4,Congested,Naturgy,0.045,51.2,2,Partner Co-location,Buquerin S.L.,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,measured,108,91,71.1,2,2,4,277000,False,100,47.9
+IBE_288,41.76514,-2.52393,N-1,4,Congested,Endesa,0.0,7.7,2,Partner Co-location,Gasolinera Alcampo,Medium,7,Defer unless strategic. Focus on grid upgrade.,600,unknown,108,91,71.1,2,2,4,277000,False,100,47.9
+IBE_289,42.10998,-2.63343,N-1,4,Moderate,Endesa,1.26,35.9,2,Partner Co-location,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_290,42.41634,-2.64562,N-1,4,Moderate,i-DE,1.03,13.6,2,Partner Co-location,Area de descanso Camino de Santiago,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_291,42.56195,-2.83863,N-1,4,Moderate,i-DE,1.03,30.8,2,Partner Co-location,Petronor,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_292,42.90713,-2.64826,N-1,4,Moderate,i-DE,1.03,51.6,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_293,43.25878,-2.38261,N-1,4,Sufficient,i-DE,3.52,44.0,1,Upgrade Iberdrola,Debegesa,Medium,3,Deploy standard (8 chargers). Monitor growth.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_294,43.2836,-1.9126,N-1,4,Sufficient,i-DE,3.52,6.1,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,600,measured,108,91,71.1,2,2,4,157000,False,100,47.9
+IBE_295,41.02414,-3.95559,N-110,7,Moderate,Naturgy,1.16,14.6,2,Partner Co-location,Bar-Restaurante Casa Manrique,High,2,Deploy 4-11 chargers. Plan grid expansion.,1050,measured,741,626,278.8,2,14,22,241000,False,100,187.9
+IBE_296,41.07995,-3.59825,N-110,22,Congested,Naturgy,0.045,32.8,2,Partner Co-location,Área de descanso de Horcajo,High,4,Grid upgrade prerequisite. Partner with DSO.,3300,measured,741,626,88.7,2,14,22,781000,False,100,59.8
+IBE_297,42.23577,-2.09102,N-111,9,Sufficient,i-DE,7.0,24.7,2,Partner Co-location,Repsol,Medium,3,Deploy standard (8 chargers). Monitor growth.,1350,measured,294,248,86.0,2,6,9,297000,False,100,58.0
+IBE_298,42.429229,-2.772549,N-120,5,Moderate,i-DE,1.03,23.4,2,Partner Co-location,Valcarce,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_299,42.42723,-3.138733,N-120,5,Moderate,i-DE,1.03,53.3,2,Partner Co-location,Area de descanso Peregrinos Camino Santiago,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_300,42.34284,-3.691385,N-120,5,Congested,Viesgo,0.044,43.4,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,152,128,80.1,2,3,5,305000,False,100,54.0
+IBE_301,42.400627,-4.165083,N-120,5,Congested,Viesgo,0.044,13.1,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,152,128,80.1,2,3,5,370000,False,100,54.0
+IBE_302,42.446714,-4.640594,N-120,5,Sufficient,i-DE,2.4,11.3,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_303,42.388894,-4.990675,N-120,5,Sufficient,i-DE,2.4,25.8,2,Partner Co-location,Moeve,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_304,42.439775,-5.35059,N-120,5,Sufficient,i-DE,2.4,43.6,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_305,42.542715,-5.714174,N-120,5,Sufficient,Naturgy,2.414,29.3,1,Upgrade Iberdrola,Volkswagen Teleauto,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_306,42.557456,-6.043011,N-120,5,Sufficient,Naturgy,2.414,10.4,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,250000,False,100,54.0
+IBE_307,42.601638,-6.497502,N-120,5,Congested,Naturgy,0.084,3.4,2,Partner Co-location,Los Rosales,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,152,128,80.1,2,3,5,305000,False,100,54.0
+IBE_308,42.553206,-6.564152,N-120,5,Congested,Naturgy,0.094,2.0,2,Partner Co-location,Valcarce,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,152,128,80.1,2,3,5,305000,False,100,54.0
+IBE_309,42.945065,-7.418403,N-120,5,Sufficient,Naturgy,2.77,5.2,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_310,42.730454,-7.75951,N-120,5,Sufficient,Naturgy,3.301,11.7,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_311,42.210873,-8.2643,N-120,5,Sufficient,Naturgy,2.702,8.6,2,Partner Co-location,Área de Servizo Quintáns,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,152,128,80.1,2,3,5,185000,False,100,54.0
+IBE_312,42.94404,-1.26932,N-121,8,Congested,Endesa,0.0,30.3,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,1200,unknown,243,205,80.0,2,5,8,389000,False,100,53.9
+IBE_313,42.89531,-1.55451,N-121,6,Moderate,i-DE,1.0,24.1,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,900,measured,243,205,106.7,2,5,8,213000,False,100,71.9
+IBE_314,43.13244,-1.65537,N-121,8,Sufficient,i-DE,1.85,0.2,2,Partner Co-location,Repsol,Medium,3,Deploy standard (8 chargers). Monitor growth.,1200,measured,243,205,80.0,2,5,8,269000,False,100,53.9
+IBE_315,41.6031,-2.98844,N-122,5,Congested,Endesa,0.0,39.4,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,153,129,80.6,2,3,5,305000,False,100,54.3
+IBE_316,41.59771,-3.3592,N-122,5,Congested,Naturgy,0.045,59.1,2,Partner Co-location,Galp,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,153,129,80.6,2,3,5,305000,False,100,54.3
+IBE_317,41.61573,-3.91943,N-122,5,Congested,Naturgy,0.045,39.4,2,Partner Co-location,Estación de Servicio Beroil Ribera de las Solanas,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,153,129,80.6,2,3,5,305000,False,100,54.3
+IBE_318,41.59899,-4.49536,N-122,5,Sufficient,i-DE,14.76,21.3,2,Partner Co-location,Hafesa Oil!,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,153,129,80.6,2,3,5,185000,False,100,54.3
+IBE_319,41.51469,-4.94789,N-122,5,Sufficient,i-DE,14.76,22.6,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,153,129,80.6,2,3,5,185000,False,100,54.3
+IBE_320,41.56532,-5.52092,N-122,5,Sufficient,i-DE,36.0,18.2,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,153,129,80.6,2,3,5,250000,False,100,54.3
+IBE_321,41.52484,-6.03105,N-122,5,Sufficient,i-DE,14.25,3.8,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,153,129,80.6,2,3,5,185000,False,100,54.3
+IBE_322,40.61228,-3.20792,N-2,7,Sufficient,i-DE,4.83,33.9,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1050,measured,224,189,84.3,2,4,7,241000,False,100,56.8
+IBE_323,40.89846,-2.75713,N-2,7,Congested,Endesa,0.0,69.3,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_324,41.33219,-1.65317,N-2,7,Congested,Endesa,0.0,0.9,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_325,41.34175,-1.22615,N-2,7,Congested,Endesa,0.0,1.0,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_326,41.58605,-0.95342,N-2,7,Congested,Endesa,0.0,1.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_327,41.64415,-0.63372,N-2,7,Congested,Endesa,0.0,6.4,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,426000,False,100,56.8
+IBE_328,41.51889,-0.27518,N-2,7,Congested,Endesa,0.0,18.8,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_329,41.49097,0.3473,N-2,7,Congested,Endesa,0.0,3.1,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_330,41.46955,0.88605,N-2,7,Congested,Endesa,0.32,8.3,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,measured,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_331,41.29305,1.35911,N-2,7,Congested,Endesa,0.0,5.8,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_332,41.44266,1.8506,N-2,7,Congested,Endesa,0.0,3.0,2,Partner Co-location,CACENCA,High,4,Grid upgrade prerequisite. Partner with DSO.,1050,unknown,224,189,84.3,2,4,7,361000,False,100,56.8
+IBE_333,40.64509,-1.316,N-211,14,Congested,Endesa,0.0,10.1,2,Partner Co-location,U. S. TORRELACARCEL,Medium,7,Defer unless strategic. Focus on grid upgrade.,2100,unknown,462,390,86.9,2,9,14,557000,False,100,58.6
+IBE_334,42.46767,0.02039,N-230,11,Congested,Endesa,0.0,11.4,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,1650,unknown,373,315,89.3,2,7,11,538000,False,100,60.2
+IBE_335,42.46302,0.41698,N-230,11,Congested,Endesa,0.0,2.3,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,1650,unknown,373,315,89.3,2,7,11,538000,False,100,60.2
+IBE_336,40.602428,-0.051982,N-232,9,Congested,Endesa,0.0,35.7,2,Partner Co-location,Petronor,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,278,234,81.4,2,5,9,417000,False,100,54.8
+IBE_337,40.862724,-0.143402,N-232,9,Congested,Endesa,0.0,12.0,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,278,234,81.4,2,5,9,482000,False,100,54.8
+IBE_338,41.062595,-0.474484,N-232,9,Congested,Endesa,0.0,2.2,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,278,234,81.4,2,5,9,482000,False,100,54.8
+IBE_339,41.383626,-0.464468,N-232,9,Congested,Endesa,0.0,2.9,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,278,234,81.4,2,5,9,417000,False,100,54.8
+IBE_340,41.543323,-0.692195,N-232,9,Congested,Endesa,0.0,1.1,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,278,234,81.4,2,5,9,482000,False,100,54.8
+IBE_341,41.805305,-1.140978,N-232,9,Congested,Endesa,0.0,5.1,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,278,234,81.4,2,5,9,417000,False,100,54.8
+IBE_342,42.036098,-1.537202,N-232,9,Sufficient,i-DE,15.3,3.4,1,Upgrade Iberdrola,Iberdrola estación de carga,High,1,Deploy full hub (12 chargers). Top priority.,1350,measured,278,234,81.4,2,5,9,297000,False,100,54.8
+IBE_343,41.975522,-3.295969,N-234,6,Congested,Endesa,0.0,71.7,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,185,156,81.2,2,4,6,398000,False,100,54.7
+IBE_344,41.807463,-2.835299,N-234,6,Congested,Endesa,0.0,29.3,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,185,156,81.2,2,4,6,333000,False,100,54.7
+IBE_345,41.724827,-2.299398,N-234,6,Congested,Endesa,0.0,14.6,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,185,156,81.2,2,4,6,398000,False,100,54.7
+IBE_346,41.490668,-1.801664,N-234,6,Congested,Endesa,0.0,15.9,2,Partner Co-location,Petronor,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,185,156,81.2,2,4,6,333000,False,100,54.7
+IBE_347,40.93995,-1.296002,N-234,6,Congested,Endesa,0.0,2.8,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,185,156,81.2,2,4,6,333000,False,100,54.7
+IBE_348,40.515353,-1.253882,N-234,6,Congested,Endesa,0.0,6.6,2,Partner Co-location,Cereales Teruel,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,185,156,81.2,2,4,6,333000,False,100,54.7
+IBE_349,40.189598,-0.905007,N-234,6,Congested,Endesa,0.0,3.6,2,Partner Co-location,COOP. HOYA,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,185,156,81.2,2,4,6,333000,False,100,54.7
+IBE_350,39.893554,-0.546336,N-234,6,Sufficient,i-DE,7.91,10.6,2,Partner Co-location,Shell,High,1,Deploy full hub (12 chargers). Top priority.,900,measured,185,156,81.2,2,4,6,213000,False,100,54.7
+IBE_351,42.56553,-0.73675,N-240,19,Congested,Endesa,0.0,11.2,2,Partner Co-location,Cepsa Puente la Reina de Jaca,High,4,Grid upgrade prerequisite. Partner with DSO.,2850,unknown,616,520,85.4,2,11,19,697000,False,100,57.5
+IBE_352,42.62548,-1.02775,N-240,19,Congested,Endesa,0.0,13.6,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,2850,unknown,616,520,85.4,2,11,19,697000,False,100,57.5
+IBE_353,42.73234,-1.56725,N-240,6,Moderate,i-DE,1.0,8.4,2,Partner Co-location,Área de Descanso de Camiones Torres,High,2,Deploy 4-11 chargers. Plan grid expansion.,900,measured,616,520,270.4,2,11,19,213000,False,100,182.2
+IBE_354,42.241743,2.905339,N-260,5,Congested,Endesa,0.0,3.6,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,305000,False,100,56.1
+IBE_355,42.263162,2.395372,N-260,5,Congested,Endesa,0.0,5.8,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,370000,False,100,56.1
+IBE_356,42.187591,2.075393,N-260,5,Congested,Endesa,0.0,10.8,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,370000,False,100,56.1
+IBE_357,42.142379,1.865097,N-260,5,Congested,Endesa,0.0,3.5,2,Partner Co-location,Àrea de Servei de La Rodonella,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,305000,False,100,56.1
+IBE_358,42.365721,1.679235,N-260,5,Congested,Endesa,0.0,17.8,2,Partner Co-location,Estació de Servei Sant Anton,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,305000,False,100,56.1
+IBE_359,42.448867,1.482952,N-260,5,Congested,Endesa,0.0,15.6,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,370000,False,100,56.1
+IBE_360,42.37556,1.192913,N-260,5,Congested,Endesa,0.0,9.0,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,370000,False,100,56.1
+IBE_361,42.389022,0.748552,N-260,5,Congested,Endesa,0.0,1.8,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,305000,False,100,56.1
+IBE_362,42.41302,0.262482,N-260,5,Congested,Endesa,0.0,10.0,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,158,134,83.2,2,3,5,370000,False,100,56.1
+IBE_363,40.0351,-3.92444,N-3,3,Congested,Viesgo,0.159,26.9,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,measured,73,61,64.1,2,2,3,249000,False,100,43.2
+IBE_364,39.79095,-3.95318,N-3,3,Congested,Endesa,0.0,42.3,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,73,61,64.1,2,2,3,249000,False,100,43.2
+IBE_365,39.47615,-3.59479,N-3,3,Congested,Endesa,0.0,7.7,2,Partner Co-location,Área de servicio de la CM-42,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,73,61,64.1,2,2,3,249000,False,100,43.2
+IBE_366,39.40011,-3.30024,N-3,3,Congested,Endesa,0.0,10.0,2,Partner Co-location,Área de servicio de la CM-42,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,73,61,64.1,2,2,3,249000,False,100,43.2
+IBE_367,39.29635,-2.37925,N-3,3,Congested,Endesa,0.0,35.9,2,Partner Co-location,Top Oil,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,73,61,64.1,2,2,3,249000,False,100,43.2
+IBE_368,39.13891,-2.04112,N-3,3,Congested,Endesa,0.0,69.7,2,Partner Co-location,EXIT Los Abades de La Gineta,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,73,61,64.1,2,2,3,249000,False,100,43.2
+IBE_369,39.10061,-1.56543,N-3,3,Sufficient,i-DE,12.99,65.7,2,Partner Co-location,Gasolineras Del Rey,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,73,61,64.1,2,2,3,129000,False,100,43.2
+IBE_370,38.96138,-1.18461,N-3,3,Sufficient,i-DE,12.99,29.4,2,Partner Co-location,FRANCISCO SAEZ EGIDO,Medium,3,Deploy standard (8 chargers). Monitor growth.,450,measured,73,61,64.1,2,2,3,129000,False,100,43.2
+IBE_371,40.01772,-3.63605,N-301,5,Congested,Viesgo,0.173,25.1,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,148,125,78.0,2,3,5,305000,False,100,52.5
+IBE_372,39.65543,-3.44509,N-301,5,Congested,Endesa,0.15,9.7,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,148,125,78.0,2,3,5,370000,False,100,52.5
+IBE_373,39.37125,-3.23006,N-301,5,Congested,Endesa,0.0,5.8,2,Partner Co-location,Estación de Servicio Carrefour Alcázar de San Juan,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,148,125,78.0,2,3,5,305000,False,100,52.5
+IBE_374,39.04,-2.26037,N-301,5,Congested,Endesa,0.0,60.6,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,148,125,78.0,2,3,5,370000,False,100,52.5
+IBE_375,38.96126,-1.80462,N-301,5,Sufficient,i-DE,19.85,73.2,2,Partner Co-location,Moeve,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,148,125,78.0,2,3,5,185000,False,100,52.5
+IBE_376,38.87652,-1.26425,N-301,5,Sufficient,i-DE,12.99,32.5,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,148,125,78.0,2,3,5,250000,False,100,52.5
+IBE_377,38.86048,-1.03948,N-301,5,Sufficient,i-DE,12.99,13.2,2,Partner Co-location,Moeve,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,148,125,78.0,2,3,5,185000,False,100,52.5
+IBE_378,38.48912,-0.77378,N-301,5,Sufficient,i-DE,25.55,5.7,2,Partner Co-location,Carrefour,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,148,125,78.0,2,3,5,185000,False,100,52.5
+IBE_379,38.52432,-3.57348,N-310,14,Congested,Endesa,0.0,27.5,2,Partner Co-location,Virgen del Valle,Low,9,Skip for 2027. Revisit next cycle.,2100,unknown,472,398,88.8,2,9,14,557000,False,100,59.8
+IBE_380,39.67904,-1.85708,N-320,7,Sufficient,Endesa,7.15,24.9,3,New Partner,New site needed,Medium,3,Deploy standard (8 chargers). Monitor growth.,1050,measured,230,194,86.5,2,5,7,306000,False,100,58.3
+IBE_381,39.52917,-1.56648,N-320,7,Sufficient,Endesa,7.15,43.6,2,Partner Co-location,"Santísimo Cristo de la Salud, Sociedad Cooperativa de CLM",Medium,3,Deploy standard (8 chargers). Monitor growth.,1050,measured,230,194,86.5,2,5,7,241000,False,100,58.3
+IBE_382,39.48233,-1.05937,N-320,7,Sufficient,i-DE,38.17,41.0,2,Partner Co-location,,Medium,3,Deploy standard (8 chargers). Monitor growth.,1050,measured,230,194,86.5,2,5,7,241000,False,100,58.3
+IBE_383,38.2699,-3.22651,N-322,7,Congested,Endesa,0.0,23.3,2,Partner Co-location,Estación de Servicio San Antonio,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,220,186,82.8,2,4,7,361000,False,100,55.8
+IBE_384,38.32492,-2.88916,N-322,7,Congested,Endesa,0.0,4.8,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,220,186,82.8,2,4,7,361000,False,100,55.8
+IBE_385,38.61616,-2.55417,N-322,7,Congested,Endesa,0.0,35.0,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,220,186,82.8,2,4,7,426000,False,100,55.8
+IBE_386,38.58891,-2.53697,N-322,7,Congested,Endesa,0.0,32.6,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,220,186,82.8,2,4,7,426000,False,100,55.8
+IBE_387,38.82894,-2.25335,N-322,7,Congested,Endesa,0.0,67.8,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,220,186,82.8,2,4,7,426000,False,100,55.8
+IBE_388,40.753438,-1.332909,N-330,3,Congested,Endesa,0.0,2.8,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_389,40.369781,-1.119364,N-330,3,Congested,Endesa,0.0,2.2,2,Partner Co-location,CIVERA,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_390,40.032933,-1.298662,N-330,3,Congested,Endesa,0.0,25.1,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_391,39.695294,-1.2469,N-330,3,Sufficient,Endesa,7.15,49.2,2,Partner Co-location,MANCEBO,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,84,71,73.8,2,2,3,129000,False,100,49.7
+IBE_392,38.954203,-1.080771,N-330,3,Sufficient,i-DE,12.99,21.7,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,84,71,73.8,2,2,3,194000,False,100,49.7
+IBE_393,39.209645,-1.063925,N-330,3,Sufficient,i-DE,38.17,29.8,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,84,71,73.8,2,2,3,194000,False,100,49.7
+IBE_394,39.568568,-1.192115,N-330,3,Congested,Viesgo,0.03,54.5,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,measured,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_395,39.909158,-1.359904,N-330,3,Sufficient,Endesa,7.15,34.4,2,Partner Co-location,CASTILLA ENERGIA,High,1,Deploy full hub (12 chargers). Top priority.,450,measured,84,71,73.8,2,2,3,129000,False,100,49.7
+IBE_396,40.243105,-1.172779,N-330,3,Congested,Endesa,0.0,1.0,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,314000,False,100,49.7
+IBE_397,40.602964,-1.285877,N-330,3,Congested,Endesa,0.0,6.6,2,Partner Co-location,U. S. TORRELACARCEL,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_398,41.018706,-1.267919,N-330,3,Congested,Endesa,0.0,11.5,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_399,41.417744,-1.153885,N-330,3,Congested,Endesa,0.0,7.6,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_400,41.765401,-0.835638,N-330,3,Congested,Endesa,0.0,1.4,2,Partner Co-location,Estación de Servicio Porta,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_401,42.094168,-0.475627,N-330,3,Congested,Endesa,0.0,2.0,2,Partner Co-location,Moeve,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_402,42.487095,-0.372794,N-330,3,Congested,Endesa,0.0,0.6,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_403,42.804347,-0.556505,N-330,3,Congested,Endesa,0.0,3.6,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,314000,False,100,49.7
+IBE_404,42.513693,-0.343622,N-330,3,Congested,Endesa,0.0,1.2,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_405,42.142642,-0.430889,N-330,3,Congested,Endesa,0.0,1.2,2,Partner Co-location,Carrefour,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_406,42.350973,-0.397352,N-330,3,Congested,Endesa,0.0,0.7,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,450,unknown,84,71,73.8,2,2,3,249000,False,100,49.7
+IBE_407,37.91523,-4.3781,N-331,5,Congested,Endesa,0.0,10.0,2,Partner Co-location,Dispesur,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,unknown,145,122,76.4,2,3,5,305000,False,100,51.5
+IBE_408,37.68133,-4.45803,N-331,5,Congested,Endesa,0.0,11.1,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,unknown,145,122,76.4,2,3,5,305000,False,100,51.5
+IBE_409,37.54297,-4.0138,N-331,5,Congested,Endesa,0.0,7.0,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,unknown,145,122,76.4,2,3,5,305000,False,100,51.5
+IBE_410,37.22698,-3.7356,N-331,5,Congested,Endesa,0.0,2.9,2,Partner Co-location,Estación de Servicio ASC Fuente Vaqueros,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,unknown,145,122,76.4,2,3,5,305000,False,100,51.5
+IBE_411,38.02987,-0.72684,N-332,25,Sufficient,i-DE,1.83,3.0,1,Upgrade Iberdrola,Iberdrola Oasis Center,High,1,Deploy full hub (12 chargers). Top priority.,3750,measured,824,696,86.8,2,15,25,745000,False,100,58.5
+IBE_412,37.66979,-0.89689,N-332,25,Sufficient,i-DE,21.41,6.9,2,Partner Co-location,Petronor,High,1,Deploy full hub (12 chargers). Top priority.,3750,measured,824,696,86.8,2,15,25,745000,False,100,58.5
+IBE_413,36.175037,-5.454093,N-340,8,Congested,Endesa,0.0,1.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_414,36.459318,-5.118071,N-340,8,Congested,Endesa,0.0,5.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_415,36.559755,-4.656179,N-340,8,Congested,Endesa,0.0,2.6,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_416,36.724839,-4.251855,N-340,8,Congested,Endesa,0.0,0.6,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_417,36.752635,-3.734842,N-340,8,Congested,Endesa,0.0,3.9,2,Partner Co-location,Estación de Servicio Moeve La Herradura,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_418,36.750716,-3.305523,N-340,8,Congested,Endesa,0.0,6.5,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,454000,False,100,57.9
+IBE_419,36.768021,-2.783737,N-340,8,Congested,Endesa,0.0,2.9,2,Partner Co-location,TRUCK STOP EL EJIDO S.A.,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_420,36.873813,-2.337634,N-340,8,Congested,Endesa,0.0,1.7,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_421,37.576799,-1.245573,N-340,8,Sufficient,i-DE,22.42,2.8,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_422,37.717709,-0.869515,N-340,8,Sufficient,i-DE,21.41,12.3,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_423,38.087042,-0.764747,N-340,8,Sufficient,i-DE,1.83,4.2,1,Upgrade Iberdrola,Iberdrola Oasis Center,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_424,38.33475,-0.510878,N-340,8,Sufficient,i-DE,23.6,7.3,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_425,38.583089,-0.110011,N-340,8,Sufficient,i-DE,6.69,33.6,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_426,38.88091,-0.04684,N-340,8,Moderate,i-DE,1.51,28.4,1,Upgrade Iberdrola,,High,2,Deploy 4-11 chargers. Plan grid expansion.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_427,39.175807,-0.38323,N-340,8,Sufficient,i-DE,45.47,7.0,2,Partner Co-location,Petronor,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_428,39.546578,-0.298849,N-340,8,Sufficient,i-DE,4.31,10.9,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,261,220,85.9,2,5,8,269000,False,100,57.9
+IBE_429,39.8972,-0.087355,N-340,8,Congested,Viesgo,0.111,26.2,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,measured,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_430,40.46902,0.440593,N-340,8,Congested,Endesa,0.0,12.1,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_431,40.725321,0.669045,N-340,8,Congested,Endesa,0.0,8.3,2,Partner Co-location,Arrossaires,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_432,41.024832,0.931476,N-340,8,Congested,Endesa,0.0,7.4,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_433,41.177478,1.42858,N-340,8,Congested,Endesa,0.0,5.3,2,Partner Co-location,Petrocat,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_434,41.264055,1.93346,N-340,8,Congested,Endesa,0.0,3.4,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,unknown,261,220,85.9,2,5,8,389000,False,100,57.9
+IBE_435,37.58419,-4.12004,N-344,11,Congested,Endesa,0.0,3.5,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,1650,unknown,372,314,89.1,2,7,11,473000,False,100,60.0
+IBE_436,37.30068,-3.81554,N-344,11,Congested,Endesa,0.0,7.9,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,1650,unknown,372,314,89.1,2,7,11,473000,False,100,60.0
+IBE_437,39.78913,-3.941,N-4,3,Congested,Endesa,0.0,41.3,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_438,39.03722,-3.93128,N-4,3,Moderate,Naturgy,0.67,10.3,1,Upgrade Iberdrola,punto recarga cohes electricos,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,450,measured,78,66,68.5,2,2,3,129000,False,100,46.2
+IBE_439,38.69399,-4.1095,N-4,3,Moderate,Naturgy,0.84,2.8,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,450,measured,78,66,68.5,2,2,3,129000,False,100,46.2
+IBE_440,38.67057,-4.29858,N-4,3,Congested,Endesa,0.0,15.4,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_441,38.27245,-4.31897,N-4,3,Congested,Endesa,0.0,0.5,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_442,37.94879,-4.54178,N-4,3,Congested,Endesa,0.0,4.1,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_443,37.76867,-4.81831,N-4,3,Congested,Endesa,0.0,10.0,2,Partner Co-location,Estación de Servicio Cuesta del Espino,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_444,37.52428,-5.24075,N-4,3,Congested,Endesa,0.0,6.8,2,Partner Co-location,Petroplus,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_445,37.4494,-5.77242,N-4,3,Congested,Endesa,0.0,7.5,2,Partner Co-location,Repsol,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_446,37.18112,-5.91068,N-4,3,Congested,Endesa,0.0,7.5,2,Partner Co-location,Área de Servicio La Florida,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_447,36.76501,-6.0421,N-4,3,Congested,Endesa,0.0,5.9,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,450,unknown,78,66,68.5,2,2,3,249000,False,100,46.2
+IBE_448,39.39956,-3.31705,N-400,9,Congested,Endesa,0.0,11.5,2,Partner Co-location,Galp,Medium,7,Defer unless strategic. Focus on grid upgrade.,1350,unknown,307,259,89.9,2,6,9,417000,False,100,60.5
+IBE_449,39.49814,-2.83102,N-400,9,Congested,Endesa,0.0,8.6,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,1350,unknown,307,259,89.9,2,6,9,417000,False,100,60.5
+IBE_450,39.05488,-3.93179,N-401,4,Moderate,Naturgy,0.67,12.2,1,Upgrade Iberdrola,punto recarga cohes electricos,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,600,measured,593,501,390.5,2,11,18,157000,False,100,263.1
+IBE_451,39.91016,-4.08021,N-403,5,Congested,Viesgo,0.159,46.0,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,measured,138,116,72.7,2,3,5,305000,False,100,49.0
+IBE_452,40.01351,-4.59471,N-403,5,Moderate,i-DE,0.91,17.3,2,Partner Co-location,Repsol,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,750,measured,138,116,72.7,2,3,5,185000,False,100,49.0
+IBE_453,39.77255,-4.92859,N-403,5,Moderate,i-DE,0.91,24.5,3,New Partner,New site needed,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,750,measured,138,116,72.7,2,3,5,250000,False,100,49.0
+IBE_454,39.4485,-5.02274,N-403,5,Congested,Endesa,0.0,8.6,2,Partner Co-location,Estación de Servicio Gamba Oil,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,unknown,138,116,72.7,2,3,5,305000,False,100,49.0
+IBE_455,39.78445,-5.15158,N-403,5,Moderate,i-DE,0.91,36.9,2,Partner Co-location,Repsol,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,750,measured,138,116,72.7,2,3,5,185000,False,100,49.0
+IBE_456,39.87492,-5.54932,N-403,5,Sufficient,i-DE,6.0,17.3,2,Partner Co-location,Repsol,Medium,3,Deploy standard (8 chargers). Monitor growth.,750,measured,138,116,72.7,2,3,5,185000,False,100,49.0
+IBE_457,37.98814,-4.31178,N-420,4,Congested,Endesa,0.0,0.1,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,600,unknown,125,106,82.3,2,3,4,277000,False,100,55.5
+IBE_458,38.097007,-3.800204,N-420,4,Congested,Endesa,0.0,2.5,2,Partner Co-location,Urban oil,High,4,Grid upgrade prerequisite. Partner with DSO.,600,unknown,125,106,82.3,2,3,4,277000,False,100,55.5
+IBE_459,38.361576,-3.524549,N-420,4,Congested,Endesa,0.0,11.6,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,600,unknown,125,106,82.3,2,3,4,277000,False,100,55.5
+IBE_460,38.770176,-3.404426,N-420,4,Moderate,Naturgy,0.67,52.2,2,Partner Co-location,Moeve,High,2,Deploy 4-11 chargers. Plan grid expansion.,600,measured,125,106,82.3,2,3,4,157000,False,100,55.5
+IBE_461,38.977397,-2.759779,N-420,4,Congested,Endesa,0.0,44.6,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,unknown,125,106,82.3,2,3,4,277000,False,100,55.5
+IBE_462,39.307059,-2.52201,N-420,4,Congested,Endesa,0.0,24.4,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,unknown,125,106,82.3,2,3,4,277000,False,100,55.5
+IBE_463,39.411901,-2.195428,N-420,4,Sufficient,Endesa,18.83,42.4,2,Partner Co-location,Petrobaires,High,1,Deploy full hub (12 chargers). Top priority.,600,measured,125,106,82.3,2,3,4,157000,False,100,55.5
+IBE_464,39.522043,-1.78308,N-420,4,Sufficient,Endesa,7.15,41.1,2,Partner Co-location,SANTA MARÍA MAGDALENA S. COOP. DE C-LM,High,1,Deploy full hub (12 chargers). Top priority.,600,measured,125,106,82.3,2,3,4,157000,False,100,55.5
+IBE_465,39.547293,-1.34548,N-420,4,Sufficient,Endesa,7.15,52.3,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,600,measured,125,106,82.3,2,3,4,157000,False,100,55.5
+IBE_466,39.751994,-1.080076,N-420,4,Congested,Endesa,0.0,51.2,2,Partner Co-location,CAMPOL,High,4,Grid upgrade prerequisite. Partner with DSO.,600,unknown,125,106,82.3,2,3,4,277000,False,100,55.5
+IBE_467,40.216245,-0.936219,N-420,4,Congested,Endesa,0.0,1.0,2,Partner Co-location,,High,4,Grid upgrade prerequisite. Partner with DSO.,600,unknown,125,106,82.3,2,3,4,277000,False,100,55.5
+IBE_468,39.12861,-4.8518,N-430,6,Congested,Endesa,0.0,25.0,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,198,167,86.9,2,4,6,398000,False,100,58.6
+IBE_469,39.09242,-5.03746,N-430,6,Congested,Endesa,0.0,13.8,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,198,167,86.9,2,4,6,398000,False,100,58.6
+IBE_470,39.09723,-5.55931,N-430,6,Congested,Endesa,0.0,12.5,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,198,167,86.9,2,4,6,333000,False,100,58.6
+IBE_471,39.434,-5.73377,N-430,6,Sufficient,i-DE,3.62,51.0,2,Partner Co-location,Iberdoex,High,1,Deploy full hub (12 chargers). Top priority.,900,measured,198,167,86.9,2,4,6,213000,False,100,58.6
+IBE_472,39.34381,-6.34213,N-430,6,Congested,Endesa,0.0,45.3,2,Partner Co-location,Estación de Servicio Valdesalor,High,4,Grid upgrade prerequisite. Partner with DSO.,900,unknown,198,167,86.9,2,4,6,333000,False,100,58.6
+IBE_473,38.18357,-5.04028,N-431,9,Congested,Endesa,0.0,12.4,2,Partner Co-location,Meroil,Low,9,Skip for 2027. Revisit next cycle.,1350,unknown,306,259,89.6,2,6,9,417000,False,100,60.4
+IBE_474,38.20401,-4.99178,N-432,9,Congested,Endesa,0.0,11.6,2,Partner Co-location,Meroil,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,302,255,88.4,2,6,9,417000,False,100,59.6
+IBE_475,38.5014,-5.21267,N-432,9,Congested,Endesa,0.0,7.1,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,302,255,88.4,2,6,9,482000,False,100,59.6
+IBE_476,38.73927,-5.60625,N-432,9,Congested,Endesa,0.0,22.6,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,302,255,88.4,2,6,9,482000,False,100,59.6
+IBE_477,38.90698,-5.87632,N-432,9,Congested,Endesa,0.0,30.4,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,302,255,88.4,2,6,9,482000,False,100,59.6
+IBE_478,38.94794,-6.26758,N-432,9,Congested,Endesa,0.0,5.9,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,302,255,88.4,2,6,9,417000,False,100,59.6
+IBE_479,38.86337,-6.78194,N-432,9,Congested,Endesa,0.0,6.8,2,Partner Co-location,Gasolinera Sociedad Cooperativa Aldea del Conde,High,4,Grid upgrade prerequisite. Partner with DSO.,1350,unknown,302,255,88.4,2,6,9,417000,False,100,59.6
+IBE_480,37.54543,-5.04451,N-433,3,Congested,Endesa,0.0,1.7,2,Partner Co-location,Estación de Servicio Moeve Astigi,Low,9,Skip for 2027. Revisit next cycle.,450,unknown,71,60,62.3,2,2,3,249000,False,100,42.0
+IBE_481,37.63333,-5.51149,N-433,3,Congested,Endesa,0.0,4.0,2,Partner Co-location,BP El Álamo,Low,9,Skip for 2027. Revisit next cycle.,450,unknown,71,60,62.3,2,2,3,249000,False,100,42.0
+IBE_482,37.96591,-5.66386,N-433,3,Congested,Endesa,0.0,3.4,3,New Partner,New site needed,Low,9,Skip for 2027. Revisit next cycle.,450,unknown,71,60,62.3,2,2,3,314000,False,100,42.0
+IBE_483,38.23552,-6.0221,N-433,3,Congested,Endesa,0.0,1.8,2,Partner Co-location,San Cristóbal,Low,9,Skip for 2027. Revisit next cycle.,450,unknown,71,60,62.3,2,2,3,249000,False,100,42.0
+IBE_484,37.93598,-6.23587,N-433,3,Congested,Endesa,0.0,5.9,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,450,unknown,71,60,62.3,2,2,3,249000,False,100,42.0
+IBE_485,37.59452,-5.87954,N-435,7,Congested,Endesa,0.0,5.5,2,Partner Co-location,Q8,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,223,189,83.9,2,4,7,361000,False,100,56.5
+IBE_486,37.36224,-6.20553,N-435,7,Congested,Endesa,0.0,3.4,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,223,189,83.9,2,4,7,361000,False,100,56.5
+IBE_487,37.33578,-6.76191,N-435,7,Congested,Endesa,0.0,7.2,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,223,189,83.9,2,4,7,361000,False,100,56.5
+IBE_488,38.952882,-6.244467,N-5,7,Congested,Endesa,0.0,7.2,2,Partner Co-location,Moeve,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,226,191,85.0,2,5,7,361000,False,100,57.3
+IBE_489,39.233818,-5.883067,N-5,7,Congested,Endesa,0.0,40.5,3,New Partner,New site needed,Medium,7,Defer unless strategic. Focus on grid upgrade.,1050,unknown,226,191,85.0,2,5,7,426000,False,100,57.3
+IBE_490,39.638346,-5.817055,N-5,7,Sufficient,i-DE,5.24,35.8,2,Partner Co-location,Área de descanso,Medium,3,Deploy standard (8 chargers). Monitor growth.,1050,measured,226,191,85.0,2,5,7,241000,False,100,57.3
+IBE_491,40.68469,-4.11744,N-501,3,Congested,Naturgy,0.335,14.4,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,450,measured,90,76,79.0,2,2,3,249000,False,100,53.3
+IBE_492,40.67526,-4.61162,N-501,3,Moderate,Naturgy,1.34,32.4,1,Upgrade Iberdrola,,Low,8,Only at existing Iberdrola/partner. Monitor.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_493,40.20624,-5.04278,N-501,3,Moderate,i-DE,0.91,34.5,2,Partner Co-location,Fernández Bermejo,Low,8,Only at existing Iberdrola/partner. Monitor.,450,measured,90,76,79.0,2,2,3,129000,False,100,53.3
+IBE_494,39.89053,-5.43416,N-502,15,Sufficient,i-DE,4.0,21.3,2,Partner Co-location,Galp,Medium,3,Deploy standard (8 chargers). Monitor growth.,2250,measured,487,412,85.5,2,9,15,465000,False,100,57.6
+IBE_495,39.68882,-5.7123,N-502,15,Sufficient,i-DE,6.0,31.9,2,Partner Co-location,La Ventilla del Camionero,Medium,3,Deploy standard (8 chargers). Monitor growth.,2250,measured,487,412,85.5,2,9,15,465000,False,100,57.6
+IBE_496,39.19843,-6.96421,N-521,5,Congested,Endesa,0.0,31.5,2,Partner Co-location,Repsol,Low,9,Skip for 2027. Revisit next cycle.,750,unknown,148,125,78.0,2,3,5,305000,False,100,52.5
+IBE_497,42.622684,-8.100981,N-525,8,Sufficient,Naturgy,3.278,3.4,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,254,214,83.6,2,5,8,269000,False,100,56.4
+IBE_498,42.012338,-7.579233,N-525,8,Congested,Naturgy,0.474,8.4,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,1200,measured,254,214,83.6,2,5,8,389000,False,100,56.4
+IBE_499,42.058562,-7.140488,N-525,8,Sufficient,Endesa,13.06,12.3,2,Partner Co-location,Repsol,High,1,Deploy full hub (12 chargers). Top priority.,1200,measured,254,214,83.6,2,5,8,269000,False,100,56.4
+IBE_500,42.055509,-6.593811,N-525,4,Moderate,Naturgy,0.664,24.9,2,Partner Co-location,BP,High,2,Deploy 4-11 chargers. Plan grid expansion.,600,measured,254,214,167.3,2,5,8,157000,False,100,112.7
+IBE_501,42.005585,-6.004183,N-525,8,Moderate,Naturgy,1.408,13.3,2,Partner Co-location,Repsol,High,2,Deploy 4-11 chargers. Plan grid expansion.,1200,measured,254,214,83.6,2,5,8,269000,False,100,56.4
+IBE_502,42.34267,-7.86012,N-540,4,Moderate,Naturgy,0.692,0.9,2,Partner Co-location,Peréz rumbao,Low,8,Only at existing Iberdrola/partner. Monitor.,600,measured,335,283,220.6,2,6,10,157000,False,100,148.7
+IBE_503,42.49421,-8.5407,N-541,9,Moderate,Naturgy,1.44,3.6,2,Partner Co-location,Estación de Servicio Moeve Peineto,Low,8,Only at existing Iberdrola/partner. Monitor.,1350,measured,389,328,113.9,2,7,12,297000,False,100,76.7
+IBE_504,43.22979,-8.26835,N-547,9,Sufficient,Naturgy,10.982,16.4,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1350,measured,287,242,84.0,2,6,9,297000,False,100,56.6
+IBE_505,42.52418,-8.66902,N-550,20,Sufficient,Naturgy,1.976,0.7,2,Partner Co-location,Es Rb,High,1,Deploy full hub (12 chargers). Top priority.,3000,measured,668,564,88.0,2,12,20,605000,False,100,59.3
+IBE_506,42.1862,-8.63634,N-550,20,Sufficient,Naturgy,3.596,3.3,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,3000,measured,668,564,88.0,2,12,20,605000,False,100,59.3
+IBE_507,40.94983,-4.11324,N-6,5,Moderate,Naturgy,1.16,3.1,1,Upgrade Iberdrola,,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,169,142,89.0,2,3,5,185000,False,100,60.0
+IBE_508,41.33268,-4.31007,N-6,5,Congested,Naturgy,0.488,20.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,169,142,89.0,2,3,5,305000,False,100,60.0
+IBE_509,41.55344,-4.66669,N-6,5,Sufficient,i-DE,14.76,12.2,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,169,142,89.0,2,3,5,185000,False,100,60.0
+IBE_510,41.53897,-5.06676,N-6,5,Sufficient,i-DE,14.76,29.5,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,169,142,89.0,2,3,5,185000,False,100,60.0
+IBE_511,41.87047,-5.43672,N-6,5,Sufficient,i-DE,36.0,44.8,2,Partner Co-location,Q8,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,169,142,89.0,2,3,5,185000,False,100,60.0
+IBE_512,42.01442,-5.90527,N-6,5,Moderate,Naturgy,1.408,21.5,2,Partner Co-location,Gasolinera Monumento al Camionero,High,2,Deploy 4-11 chargers. Plan grid expansion.,750,measured,169,142,89.0,2,3,5,185000,False,100,60.0
+IBE_513,42.0456,-6.50759,N-6,4,Moderate,Naturgy,0.664,26.2,2,Partner Co-location,El Pino,High,2,Deploy 4-11 chargers. Plan grid expansion.,600,measured,169,142,111.3,2,3,5,157000,False,100,75.0
+IBE_514,42.04836,-7.08397,N-6,5,Sufficient,Endesa,13.06,11.8,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,169,142,89.0,2,3,5,250000,False,100,60.0
+IBE_515,41.98682,-7.55016,N-6,5,Congested,Naturgy,0.474,8.4,2,Partner Co-location,Galp,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,169,142,89.0,2,3,5,305000,False,100,60.0
+IBE_516,42.30393,-7.86787,N-6,4,Moderate,Naturgy,0.692,3.6,2,Partner Co-location,Repsol,High,2,Deploy 4-11 chargers. Plan grid expansion.,600,measured,169,142,111.3,2,3,5,157000,False,100,75.0
+IBE_517,42.5965,-8.08724,N-6,5,Sufficient,Naturgy,3.278,6.5,2,Partner Co-location,Petronor,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,169,142,89.0,2,3,5,185000,False,100,60.0
+IBE_518,42.84676,-8.53294,N-6,5,Congested,Naturgy,0.594,3.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,169,142,89.0,2,3,5,305000,False,100,60.0
+IBE_519,42.227694,-5.268726,N-601,6,Sufficient,Naturgy,2.192,51.6,3,New Partner,New site needed,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,173,146,75.9,2,4,6,278000,False,100,51.2
+IBE_520,41.839146,-5.011795,N-601,6,Sufficient,i-DE,14.76,30.8,3,New Partner,New site needed,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,173,146,75.9,2,4,6,278000,False,100,51.2
+IBE_521,41.555827,-4.708262,N-601,6,Sufficient,i-DE,14.76,10.6,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,173,146,75.9,2,4,6,213000,False,100,51.2
+IBE_522,41.119872,-4.64341,N-601,6,Congested,Naturgy,0.488,26.2,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,900,measured,173,146,75.9,2,4,6,333000,False,100,51.2
+IBE_523,43.05943,-4.09005,N-611,16,Congested,Viesgo,0.044,0.8,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,2400,measured,516,436,84.9,2,10,16,613000,False,100,57.2
+IBE_524,43.42431,-3.94395,N-611,16,Congested,Viesgo,0.044,1.1,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,2400,measured,516,436,84.9,2,10,16,613000,False,100,57.2
+IBE_525,41.39658,-5.14194,N-620,6,Sufficient,i-DE,14.76,43.4,2,Partner Co-location,La Loba,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,185,156,81.2,2,4,6,213000,False,100,54.7
+IBE_526,41.0819,-5.50575,N-620,6,Sufficient,i-DE,19.0,53.2,2,Partner Co-location,Crape,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,185,156,81.2,2,4,6,213000,False,100,54.7
+IBE_527,40.97283,-5.66906,N-620,6,Sufficient,i-DE,2.4,58.1,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,185,156,81.2,2,4,6,213000,False,100,54.7
+IBE_528,40.80492,-6.19573,N-620,6,Sufficient,i-DE,112.34,76.8,2,Partner Co-location,Moeve,Medium,3,Deploy standard (8 chargers). Monitor growth.,900,measured,185,156,81.2,2,4,6,213000,False,100,54.7
+IBE_529,42.85577,-5.13619,N-621,11,Sufficient,i-DE,2.4,6.7,3,New Partner,New site needed,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1650,measured,358,302,85.7,2,7,11,418000,False,100,57.8
+IBE_530,42.65364,-5.46512,N-622,7,Sufficient,i-DE,2.4,31.8,1,Upgrade Iberdrola,,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1050,measured,230,194,86.5,2,5,7,241000,False,100,58.3
+IBE_531,42.94697,-5.65939,N-625,5,Congested,Viesgo,0.069,21.6,1,Upgrade Iberdrola,Casa Ezequiel,Low,9,Skip for 2027. Revisit next cycle.,750,measured,144,122,75.9,2,3,5,305000,False,100,51.1
+IBE_532,43.26984,-5.7742,N-625,5,Congested,Viesgo,0.087,2.9,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,750,measured,144,122,75.9,2,3,5,305000,False,100,51.1
+IBE_533,42.47513,-3.58984,N-627,5,Congested,Viesgo,0.044,50.1,3,New Partner,New site needed,Low,9,Skip for 2027. Revisit next cycle.,750,measured,138,116,72.7,2,3,5,370000,False,100,49.0
+IBE_534,43.11413,-3.45519,N-629,5,Congested,Viesgo,0.044,11.6,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,750,measured,170,144,89.6,2,4,5,305000,False,100,60.4
+IBE_535,43.39011,-3.44644,N-629,5,Congested,Viesgo,0.055,0.9,1,Upgrade Iberdrola,,Low,9,Skip for 2027. Revisit next cycle.,750,measured,170,144,89.6,2,4,5,305000,False,100,60.4
+IBE_536,43.230767,-5.781754,N-630,5,Congested,Viesgo,0.173,0.5,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,149,126,78.5,2,3,5,305000,False,100,52.9
+IBE_537,43.007874,-5.908498,N-630,5,Congested,Viesgo,0.111,2.3,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,149,126,78.5,2,3,5,370000,False,100,52.9
+IBE_538,42.928486,-5.856828,N-630,5,Congested,Viesgo,0.111,12.1,2,Partner Co-location,Area de Servicio Caldas de Luna,High,4,Grid upgrade prerequisite. Partner with DSO.,750,measured,149,126,78.5,2,3,5,305000,False,100,52.9
+IBE_539,42.596235,-5.692581,N-630,5,Sufficient,Naturgy,2.414,33.1,1,Upgrade Iberdrola,Volkswagen Teleauto,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,185000,False,100,52.9
+IBE_540,42.304054,-5.592753,N-630,5,Sufficient,Naturgy,2.192,24.4,2,Partner Co-location,Shell,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,185000,False,100,52.9
+IBE_541,41.970296,-5.598832,N-630,5,Sufficient,Naturgy,2.192,43.3,1,Upgrade Iberdrola,Estación de carga Iberdrola,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,185000,False,100,52.9
+IBE_542,41.579432,-5.775521,N-630,5,Sufficient,i-DE,36.0,5.9,1,Upgrade Iberdrola,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,185000,False,100,52.9
+IBE_543,41.201983,-5.700487,N-630,5,Sufficient,i-DE,2.4,33.4,2,Partner Co-location,Descanso,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,185000,False,100,52.9
+IBE_544,40.828056,-5.820747,N-630,5,Sufficient,i-DE,2.4,71.6,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,250000,False,100,52.9
+IBE_545,40.494081,-5.925862,N-630,5,Sufficient,i-DE,6.0,50.9,2,Partner Co-location,,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,185000,False,100,52.9
+IBE_546,40.221944,-5.983078,N-630,5,Sufficient,i-DE,6.0,26.8,3,New Partner,New site needed,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,250000,False,100,52.9
+IBE_547,39.490379,-6.384045,N-630,5,Sufficient,i-DE,3.0,49.2,1,Upgrade Iberdrola,Iberdrola McDonald's Cáceres,High,1,Deploy full hub (12 chargers). Top priority.,750,measured,149,126,78.5,2,3,5,185000,False,100,52.9
+IBE_548,39.155532,-6.645488,N-630,5,Congested,Endesa,0.0,29.7,2,Partner Co-location,Repsol,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,149,126,78.5,2,3,5,305000,False,100,52.9
+IBE_549,38.88495,-6.930621,N-630,5,Congested,Endesa,0.0,0.3,2,Partner Co-location,Ballenoil Badajoz,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,149,126,78.5,2,3,5,305000,False,100,52.9
+IBE_550,38.905294,-6.397874,N-630,5,Congested,Endesa,0.0,1.4,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,149,126,78.5,2,3,5,305000,False,100,52.9
+IBE_551,38.490048,-6.355174,N-630,5,Congested,Endesa,0.0,3.4,3,New Partner,New site needed,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,149,126,78.5,2,3,5,370000,False,100,52.9
+IBE_552,38.198635,-6.284548,N-630,5,Congested,Endesa,0.0,6.5,2,Partner Co-location,Galp,High,4,Grid upgrade prerequisite. Partner with DSO.,750,unknown,149,126,78.5,2,3,5,305000,False,100,52.9
+IBE_553,43.3577,-5.7232,N-632,17,Congested,Viesgo,0.111,3.2,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,2550,measured,571,482,88.5,2,11,17,641000,False,100,59.6
+IBE_554,43.19466,-2.43779,N-634,13,Sufficient,i-DE,3.52,49.7,1,Upgrade Iberdrola,Debegesa,High,1,Deploy full hub (12 chargers). Top priority.,1950,measured,440,372,89.2,2,8,13,409000,False,100,60.1
+IBE_555,43.257653,-2.941493,N-634,13,Congested,Viesgo,0.044,38.4,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1950,measured,440,372,89.2,2,8,13,529000,False,100,60.1
+IBE_556,43.38268,-3.366322,N-634,13,Congested,Viesgo,0.044,1.6,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1950,measured,440,372,89.2,2,8,13,529000,False,100,60.1
+IBE_557,43.458629,-3.825917,N-634,13,Congested,Viesgo,0.173,0.8,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1950,measured,440,372,89.2,2,8,13,529000,False,100,60.1
+IBE_558,43.336899,-4.156651,N-634,13,Congested,Viesgo,0.173,3.9,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1950,measured,440,372,89.2,2,8,13,529000,False,100,60.1
+IBE_559,43.391928,-4.612136,N-634,13,Congested,Viesgo,0.069,3.4,1,Upgrade Iberdrola,,High,4,Grid upgrade prerequisite. Partner with DSO.,1950,measured,440,372,89.2,2,8,13,529000,False,100,60.1
+IBE_560,43.346719,-5.06869,N-634,13,Congested,Viesgo,0.055,2.9,2,Partner Co-location,La Morra,High,4,Grid upgrade prerequisite. Partner with DSO.,1950,measured,440,372,89.2,2,8,13,529000,False,100,60.1
+IBE_561,43.375003,-5.550322,N-634,13,Congested,Viesgo,0.1,0.3,2,Partner Co-location,Galp,High,4,Grid upgrade prerequisite. Partner with DSO.,1950,measured,440,372,89.2,2,8,13,529000,False,100,60.1
+IBE_562,43.52234,-5.89802,N-640,5,Congested,Viesgo,0.028,1.8,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,measured,143,121,75.3,2,3,5,305000,False,100,50.8
+IBE_563,43.54532,-6.43841,N-640,5,Congested,Viesgo,0.011,7.0,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,measured,143,121,75.3,2,3,5,305000,False,100,50.8
+IBE_564,43.52437,-7.01249,N-640,5,Moderate,Endesa,1.25,2.5,1,Upgrade Iberdrola,,Medium,5,Deploy minimum (4 chargers). Grid constrains expansion.,750,measured,143,121,75.3,2,3,5,185000,False,100,50.8
+IBE_565,43.24124,-7.28675,N-640,5,Congested,Endesa,0.173,2.8,2,Partner Co-location,Estación de Servizo Granxeiro,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,measured,143,121,75.3,2,3,5,305000,False,100,50.8
+IBE_566,43.15273,-7.67162,N-640,5,Congested,Endesa,0.173,1.4,1,Upgrade Iberdrola,,Medium,7,Defer unless strategic. Focus on grid upgrade.,750,measured,143,121,75.3,2,3,5,305000,False,100,50.8
+IBE_567,43.25967,-8.21205,N-640,5,Sufficient,Naturgy,10.982,17.7,1,Upgrade Iberdrola,,Medium,3,Deploy standard (8 chargers). Monitor growth.,750,measured,143,121,75.3,2,3,5,185000,False,100,50.8
+IBE_568,43.16139,-8.36075,N-651,7,Sufficient,Naturgy,10.982,20.4,2,Partner Co-location,Estación de Servicio Valcarce Mesón do Vento,Low,6,Deploy minimum (4 chargers). Revisit 2028+.,1050,measured,232,196,87.3,2,5,7,241000,False,100,58.8

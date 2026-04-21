@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology · EV Charging Network · Electric Dragon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green:   #00A758;
+  --green-d: #007A40;
+  --green-l: #D6F2E5;
+  --amber:   #E8960A;
+  --amber-l: #FEF3D0;
+  --red:     #C8002A;
+  --red-l:   #FAE0E5;
+  --blue:    #0055A5;
+  --blue-l:  #DBE9F8;
+  --ink:     #0E1117;
+  --ink-2:   #2C3340;
+  --ink-3:   #556070;
+  --ink-4:   #8A95A3;
+  --rule:    #D8DDE4;
+  --bg:      #F6F7F9;
+  --surface: #FFFFFF;
+  --formula: #0E1C2E;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── LAYOUT ── */
+.page { max-width: 960px; margin: 0 auto; padding: 48px 32px 80px; }
+
+/* ── HEADER ── */
+.doc-header {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 28px;
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+}
+.doc-header .eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+.doc-header h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 36px;
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+}
+.doc-header .meta {
+  text-align: right;
+  font-size: 11px;
+  color: var(--ink-4);
+  line-height: 1.8;
+  font-family: 'DM Mono', monospace;
+}
+.doc-header .meta strong { color: var(--ink-3); font-weight: 500; }
+
+/* ── TOC ── */
+.toc {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 32px;
+}
+.toc-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 14px;
+  grid-column: 1 / -1;
+}
+.toc a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink-3);
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 4px 0;
+  transition: color .15s;
+}
+.toc a:hover { color: var(--green); }
+.toc-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--green);
+  width: 18px;
+  flex-shrink: 0;
+}
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 56px; scroll-margin-top: 24px; }
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--rule);
+}
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 500;
+}
+.section-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 22px;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+}
+
+/* ── SUBSECTIONS ── */
+.sub { margin-bottom: 28px; }
+.sub-title {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ink-3);
+  margin-bottom: 10px;
+}
+p { color: var(--ink-2); margin-bottom: 10px; font-size: 13.5px; }
+p:last-child { margin-bottom: 0; }
+
+/* ── FORMULA BLOCKS ── */
+.formula-block {
+  background: var(--formula);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 14px 0;
+  position: relative;
+  overflow: hidden;
+}
+.formula-block::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--green);
+}
+.formula-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5A7A6A;
+  margin-bottom: 8px;
+}
+.formula {
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  color: #E8F5ED;
+  line-height: 1.8;
+}
+.formula .var  { color: #7EC8A0; }
+.formula .op   { color: #A8C5B5; }
+.formula .num  { color: #F0C060; }
+.formula .note { color: #6A8A7A; font-size: 11px; }
+.formula .result { color: #60D890; font-weight: 500; }
+
+/* ── INLINE FORMULA ── */
+code {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  background: #EEF1F5;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--ink-2);
+}
+
+/* ── ASSUMPTION CALLOUTS ── */
+.assumption {
+  display: flex;
+  gap: 12px;
+  background: var(--amber-l);
+  border: 1px solid #E8A800;
+  border-left: 3px solid var(--amber);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 12px 0;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.assumption-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.assumption strong { color: #7A5000; font-weight: 600; }
+
+.data-note {
+  display: flex;
+  gap: 12px;
+  background: var(--blue-l);
+  border: 1px solid #90B8E0;
+  border-left: 3px solid var(--blue);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 12px 0;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.data-note strong { color: #003A7A; font-weight: 600; }
+
+.caveat {
+  display: flex;
+  gap: 12px;
+  background: var(--red-l);
+  border: 1px solid #E09090;
+  border-left: 3px solid var(--red);
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin: 12px 0;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.caveat strong { color: #7A0018; font-weight: 600; }
+
+/* ── TABLES ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  margin: 14px 0;
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.data-table thead { background: var(--ink); }
+.data-table thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #B0C0B8;
+}
+.data-table tbody tr { border-bottom: 1px solid var(--rule); }
+.data-table tbody tr:last-child { border-bottom: none; }
+.data-table tbody tr:hover { background: var(--bg); }
+.data-table td { padding: 9px 14px; color: var(--ink-2); vertical-align: top; }
+.data-table td:first-child { font-family: 'DM Mono', monospace; font-size: 11.5px; color: var(--ink-3); }
+.tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 3px;
+  letter-spacing: .5px;
+}
+.tag-green  { background: var(--green-l); color: var(--green-d); }
+.tag-amber  { background: var(--amber-l); color: #7A5000; }
+.tag-red    { background: var(--red-l);   color: var(--red); }
+.tag-blue   { background: var(--blue-l);  color: var(--blue); }
+.tag-gray   { background: #EEF1F5; color: var(--ink-3); }
+
+/* ── TWO-COL GRID ── */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 6px;
+}
+.card-value {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 28px;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.card-desc { font-size: 11.5px; color: var(--ink-4); }
+
+/* ── UTIL BAR ── */
+.util-legend {
+  display: flex;
+  gap: 0;
+  height: 28px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px 0 6px;
+  border: 1px solid var(--rule);
+}
+.util-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: #fff;
+  flex: 1;
+}
+.util-labels {
+  display: flex;
+  font-size: 10px;
+  color: var(--ink-4);
+  font-family: 'DM Mono', monospace;
+  padding: 0 2px;
+}
+.ul-green { flex: 70; background: var(--green); }
+.ul-amber { flex: 20; background: var(--amber); }
+.ul-red   { flex: 5;  background: #E85000; }
+.ul-danger{ flex: 5;  background: var(--red); }
+
+/* ── STEPS ── */
+.steps { counter-reset: step; }
+.step {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 12px 16px;
+  margin-bottom: 20px;
+  align-items: start;
+}
+.step-num {
+  width: 32px; height: 32px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.step-body {}
+.step-body p { margin-bottom: 6px; }
+
+/* ── DIVIDER ── */
+hr { border: none; border-top: 1px solid var(--rule); margin: 40px 0; }
+
+/* ── SUMMARY TABLE SECTION ── */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.summary-card .s-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 5px;
+}
+.summary-card .s-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.summary-card .s-note { font-size: 11px; color: var(--ink-4); }
+
+/* ── FOOTER ── */
+.doc-footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 24px;
+  margin-top: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--ink-4);
+  font-family: 'DM Mono', monospace;
+}
+.doc-footer .brand { color: var(--green); font-weight: 500; }
+
+@media (max-width: 640px) {
+  .two-col, .summary-grid { grid-template-columns: 1fr; }
+  .doc-header { grid-template-columns: 1fr; }
+  .doc-header .meta { text-align: left; }
+  .toc { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="doc-header">
+    <div>
+      <div class="eyebrow">Electric Dragon · IE-Iberdrola Datathon 2026</div>
+      <h1>Methodology &amp;<br>Assumptions</h1>
+      <p style="margin-top:10px;color:var(--ink-3);font-size:13px;">How demand, charger sizing, utilization, costs, and grid thresholds are calculated for the Spain EV fast-charging network proposal.</p>
+    </div>
+    <div class="meta">
+      <strong>Version</strong> April 19, 2026<br>
+      <strong>Team</strong> Electric Dragon<br>
+      <strong>File</strong> generate_deliverables.py<br>
+      <strong>Dashboard</strong> dashboard_v2.html<br>
+      <strong>Charger std.</strong> 150 kW DC fast
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#s1"><span class="toc-num">01</span>EV Fleet Forecast</a>
+    <a href="#s1b"><span class="toc-num">01b</span>Station Placement &amp; Deduplication</a>
+    <a href="#s2"><span class="toc-num">02</span>Demand Calculation</a>
+    <a href="#s3"><span class="toc-num">03</span>Charger Sizing</a>
+    <a href="#s4"><span class="toc-num">04</span>Utilization</a>
+    <a href="#s5"><span class="toc-num">05</span>Grid Thresholds</a>
+    <a href="#s6"><span class="toc-num">06</span>Investment Costs</a>
+    <a href="#s7"><span class="toc-num">07</span>Scenario Variants</a>
+    <a href="#s8"><span class="toc-num">08</span>AFIR / TEN-T Compliance</a>
+    <a href="#s9"><span class="toc-num">09</span>Assumptions Summary</a>
+  </nav>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 1. EV FLEET FORECAST -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">EV Fleet Forecast</h2>
+    </div>
+
+    <p>The 2027 EV fleet is the demand baseline. We use a <em>white-line model</em> — a declining-CAGR trajectory anchored to historical DGT registration data.</p>
+
+    <div class="sub">
+      <div class="sub-title">Historical anchor</div>
+      <p>Source: DGT vehicle registrations 2015–2023 (datos.gob.es). Fleet grew from 56,327 (2020) to 143,611 (2023).</p>
+      <div class="formula-block">
+        <div class="formula-label">Initial CAGR</div>
+        <div class="formula">
+          <span class="var">CAGR</span><span class="op"> = </span><span class="num">(143,611 / 56,327)</span><span class="op">^(1/3) − 1</span><span class="op"> ≈ </span><span class="result">36.6%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Declining growth model</div>
+      <p>Growth decays 15% per year (market maturation) and is capped at 50% of total new car sales. Fleet loses 1.5%/yr to attrition (end-of-life, export).</p>
+      <div class="formula-block">
+        <div class="formula-label">Year-on-year projection</div>
+        <div class="formula">
+          <span class="var">growth_t</span><span class="op"> = </span><span class="var">growth_{t-1}</span><span class="op"> × (1 − </span><span class="num">0.15</span><span class="op">)</span><br>
+          <span class="var">fleet_t</span><span class="op">  = </span><span class="var">fleet_{t-1}</span><span class="op"> × (1 + </span><span class="var">growth_t</span><span class="op">) × (1 − </span><span class="num">0.015</span><span class="op">)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-label">Current fleet (2026)</div>
+        <div class="card-value">543,337</div>
+        <div class="card-desc">BEV + PHEV registered in Spain</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Baseline 2027 (80% scenario)</div>
+        <div class="card-value" style="color:var(--green)">1,543,080</div>
+        <div class="card-desc">Effective CAGR 38.2% vs 2026</div>
+      </div>
+    </div>
+
+    <div class="assumption">
+      <span class="assumption-icon">⚠</span>
+      <div><strong>Assumption:</strong> The 15% annual decay in growth rate and 50% sales cap are judgment calls calibrated against IEA Spain projections, not regressed from data. The 2027 fleet could range from 1.26M (conservative) to 1.83M (aggressive). Scenario variants account for this spread.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 1b. STATION PLACEMENT & DEDUPLICATION -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s1b">
+    <div class="section-header">
+      <span class="section-num">01b</span>
+      <h2 class="section-title">Station Placement &amp; Deduplication</h2>
+    </div>
+
+    <p>Candidate charging locations are generated geometrically from the road network, then filtered for co-location feasibility. This section documents how raw candidates are placed, how true duplicates are removed, and how non-viable remote sites are excluded.</p>
+
+    <div class="sub">
+      <div class="sub-title">Step 1 — 50 km interval interpolation</div>
+      <p>For each of the 98 roads with sufficient length (&ge;40 km), candidate points are placed by linearly interpolating waypoints at fixed 50 km intervals along the road geometry (OSRM-routed from OpenStreetMap). Roads shorter than 40 km receive one candidate at their midpoint.</p>
+      <div class="formula-block">
+        <div class="formula-label">Candidate count per road</div>
+        <div class="formula">
+          <span class="var">n_candidates</span><span class="op"> = </span><span class="result">floor</span><span class="op">( </span><span class="var">route_km</span><span class="op"> / </span><span class="num">50</span><span class="op"> )</span><span class="note">  &nbsp;or 1 if route_km &lt; 50</span>
+        </div>
+      </div>
+      <div class="assumption">
+        <span class="assumption-icon">⚠</span>
+        <div><strong>Spacing rationale:</strong> 50 km provides a safety margin below the AFIR TEN-T maximum gap of 60 km. For non-TEN-T roads the regulatory threshold is 100 km; the 50 km spacing therefore doubles coverage density on national roads. Demand density (not optimised per station) is the next lever for refining placement.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 2 — Snapping to nearest road geometry point</div>
+      <p>Each interpolated candidate is snapped to the closest actual waypoint in the road geometry (within 10 km). This corrects floating-point interpolation errors and ensures all proposed stations lie on a surveyed road segment.</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 3 — Co-located duplicate removal (1 km radius)</div>
+      <p>The interpolation runs independently per road. Where two named routes share an identical waypoint — common where an autopista and its parallel national road overlay at interchanges (e.g. A-7 / N-340, N-3 / N-400, N-4 / N-401) — two candidates land at literally the same geographic coordinate. Proposing two stations at one physical point is a data artefact, not a network need.</p>
+      <p><strong>What is removed:</strong> any candidate whose snapped location falls within <strong>1 km</strong> of an already-selected candidate on a different route. The 1 km threshold is calibrated to catch exact and near-exact co-location artefacts only — it does <em>not</em> remove stations on genuinely parallel corridors (e.g. A-2 and N-2 at 5 km separation serve distinct traffic streams and are both retained).</p>
+      <div class="formula-block">
+        <div class="formula-label">Greedy deduplication — priority order</div>
+        <div class="formula">
+          <span class="num">1.</span><span class="op"> </span><span class="var">TEN-T routes</span><span class="op"> &nbsp;(AP-7, A-7, A-2, A-4, A-6, A-8, AP-1, AP-68, A-3, A-62, AP-71)</span><br>
+          <span class="num">2.</span><span class="op"> </span><span class="var">A- highways</span><span class="op"> &nbsp;(non-TEN-T)</span><br>
+          <span class="num">3.</span><span class="op"> </span><span class="var">AP- toll roads</span><br>
+          <span class="num">4.</span><span class="op"> </span><span class="var">N- national roads</span>
+        </div>
+      </div>
+      <p>Within each priority tier, candidates are sorted alphabetically by route name. The algorithm processes candidates in priority order; a candidate is accepted only if it is &ge;1 km from every already-accepted candidate. When two routes collide, the higher-priority route retains the slot — TEN-T coverage is never sacrificed to a parallel national road.</p>
+      <div class="data-note">
+        <span class="assumption-icon">ℹ</span>
+        <div><strong>Effect:</strong> In the April 20 run, deduplication reduced 627 raw candidates to approximately 600, removing ~27 true co-located artefacts. Parallel corridors such as A-2 / N-2 (Madrid–Zaragoza) and A-7 / N-340 (Mediterranean coast) are fully preserved with independent stations.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 4 — Partner proximity filter</div>
+      <p>DC fast-charging hubs require an existing venue for co-location: customer amenities (toilets, food, rest), existing footfall, and a grid connection point that can be shared. A proposed station with no fuel station or rest area within 10 km is unviable under this model.</p>
+      <p>Candidates with no partner site within 10 km are <strong>removed from the proposed list</strong> and shown as a separate "No-Partner Removed" layer in the dashboard. This is transparent — judges can see which locations were excluded and why.</p>
+      <div class="formula-block">
+        <div class="formula-label">Partner source</div>
+        <div class="formula">
+          <span class="var">partner_sites</span><span class="op"> = </span><span class="num">13,958</span><span class="op"> OpenStreetMap fuel stations + rest areas near Spanish road network</span>
+        </div>
+      </div>
+      <div class="assumption">
+        <span class="assumption-icon">⚠</span>
+        <div><strong>Threshold assumption:</strong> 10 km is a practical co-location radius for interurban sites — drivers will deviate up to ~5 km from a motorway exit. Sites beyond 10 km from any partner are classified as "greenfield remote" and excluded; they may become viable if new rest areas open or if Iberdrola develops standalone hubs, but that is outside the 2027 planning horizon.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Data sources for placement</div>
+      <table class="data-table">
+        <thead><tr><th>Source</th><th>Records</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>OSRM / OpenStreetMap road geometry</td><td>99 roads</td><td>Waypoints for interpolation &amp; snapping</td></tr>
+          <tr><td>OSM EV charging stations</td><td>4,801</td><td>Tier 1 matching (existing Iberdrola sites)</td></tr>
+          <tr><td>OSM fuel stations &amp; rest areas</td><td>13,958</td><td>Tier 2 partner matching; partner proximity filter</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 2. DEMAND CALCULATION -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Demand Calculation</h2>
+    </div>
+
+    <p>For each proposed station, daily charging sessions are estimated bottom-up: fleet size × traffic share × charge probability, adjusted by day-of-week patterns.</p>
+
+    <div class="sub">
+      <div class="sub-title">Step 1 — Traffic share per route</div>
+      <p>Source: MITMA (Ministerio de Transportes) interurban traffic segment data 2023–2024. Each MITMA segment is assigned a road identifier (A-7, N-340, etc.). The number of segments per road is used as a proxy for relative traffic volume.</p>
+      <div class="formula-block">
+        <div class="formula-label">Traffic volume proxy</div>
+        <div class="formula">
+          <span class="var">traffic_route</span><span class="op"> = </span><span class="var">segments_route</span><span class="op"> × </span><span class="num">2,234</span><span class="op">  </span><span class="note">vehicles/segment</span><br>
+          <span class="var">share_route</span><span class="op">   = </span><span class="var">traffic_route</span><span class="op"> / Σ </span><span class="var">traffic_all</span>
+        </div>
+      </div>
+      <div class="assumption">
+        <span class="assumption-icon">⚠</span>
+        <div><strong>Calibration assumption:</strong> 2,234 vehicles/segment is calibrated so AP-7 (5,513 segments) yields ≈12.3M annual vehicles — consistent with DGT toll counts. This is a route-level order-of-magnitude proxy, not actual traffic flow data.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 2 — Route base demand</div>
+      <div class="formula-block">
+        <div class="formula-label">Daily EV charging sessions on route (route-level)</div>
+        <div class="formula">
+          <span class="var">base_route</span><span class="op"> = </span><span class="var">fleet_2027</span><span class="op"> × </span><span class="var">share_route</span><span class="op"> / </span><span class="num">7</span><span class="op"> × </span><span class="num">0.40</span><br>
+          <span class="note">                  fleet × route share × weekly÷daily × charge probability</span>
+        </div>
+      </div>
+      <p>The <strong>÷7</strong> distributes the annual fleet across days: we assume each EV makes approximately one interurban trip per week on average.</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 3 — Charge probability: 40% corridor / 4% station</div>
+      <p>The 40% figure represents the probability that an EV on a given highway corridor will need to charge during that trip — based on average range (230 km), trip length distribution, and battery state assumptions from ACEA/IEA survey data.</p>
+      <p>With approximately 10 stations per corridor on average, the effective probability of stopping at any <em>specific</em> station is ~4%. Both framings produce identical demand outputs — the 40% is applied at the route level before dividing by station count.</p>
+      <div class="data-note">
+        <span class="assumption-icon">ℹ</span>
+        <div><strong>Why 40% and not 4%?</strong> The 40% at route level and 4% at station level are mathematically equivalent when demand is divided across all stations on a route. The route-level model was implemented first; a station-level 4% model yields the same result and is conceptually simpler for single-station analysis.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 4 — Day-of-week adjustment</div>
+      <p>Route-level day-of-week patterns are loaded from <code>route_day_of_week.json</code> (MITMA). The raw file contains absolute traffic volumes, which are normalized to multipliers (÷ weekly average) before applying. This was a critical bug fix — using raw volumes as multipliers inflated P80 by ~3 orders of magnitude.</p>
+      <div class="formula-block">
+        <div class="formula-label">DOW normalization → 7 daily session values</div>
+        <div class="formula">
+          <span class="var">factor_d</span><span class="op">    = </span><span class="var">raw_volume_d</span><span class="op"> / </span><span class="var">avg(raw_volume)</span><br>
+          <span class="var">sessions_d</span><span class="op">  = </span><span class="var">base_route</span><span class="op"> × </span><span class="var">factor_d</span><br>
+          <span class="note">  Default factors (no DOW data): Mon 0.87 · Tue 0.90 · Wed 0.92</span><br>
+          <span class="note">                                  Thu 0.97 · Fri 1.13 · Sat 1.06 · Sun 1.04</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 5 — P80 design day &amp; average demand</div>
+      <div class="formula-block">
+        <div class="formula-label">Design day metrics from 7 DOW values</div>
+        <div class="formula">
+          <span class="var">P80_route</span><span class="op">  = </span><span class="result">80th percentile</span><span class="op"> of [sessions_Mon … sessions_Sun]</span><br>
+          <span class="var">avg_route</span><span class="op">  = </span><span class="result">mean</span><span class="op">            of [sessions_Mon … sessions_Sun]</span>
+        </div>
+      </div>
+      <p>P80 is the <strong>design day</strong> — we size infrastructure for the 80th percentile demand day (typically Friday or Saturday on highway corridors). Average demand is also stored for context; it is lower (~87% of P80 on most routes).</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Step 6 — Per-station allocation</div>
+      <p>Total route demand is split equally across all stations on that route.</p>
+      <div class="formula-block">
+        <div class="formula-label">Station-level demand</div>
+        <div class="formula">
+          <span class="var">daily_sessions_p80_station</span><span class="op"> = </span><span class="var">P80_route</span><span class="op"> / </span><span class="var">n_stations_on_route</span><br>
+          <span class="var">daily_sessions_avg_station</span><span class="op"> = </span><span class="var">avg_route</span><span class="op"> / </span><span class="var">n_stations_on_route</span>
+        </div>
+      </div>
+      <div class="assumption">
+        <span class="assumption-icon">⚠</span>
+        <div><strong>Equal-split assumption:</strong> Demand is distributed uniformly across stations on a route. In reality, urban-adjacent stations see higher demand. A route-position weight (e.g. population density proximity) would refine this in future iterations.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 3. CHARGER SIZING -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Charger Sizing</h2>
+    </div>
+
+    <p>Each station's charger count is the <strong>maximum of two independent methods</strong> (ensuring we meet both daily capacity and peak-hour service levels), subject to a floor and a grid cap.</p>
+
+    <div class="sub">
+      <div class="sub-title">Physical constant: sessions per charger</div>
+      <div class="formula-block">
+        <div class="formula-label">Charger daily throughput capacity</div>
+        <div class="formula">
+          <span class="var">energy_per_stop</span><span class="op">         = </span><span class="num">210 km</span><span class="op"> × </span><span class="num">0.1775 kWh/km</span><span class="op"> = </span><span class="result">37.3 kWh</span><br>
+          <span class="var">charge_time</span><span class="op">              = </span><span class="num">37.3</span><span class="op"> / </span><span class="num">150 kW</span><span class="op"> = </span><span class="result">0.249 h</span><span class="op">  (≈ 15 min)</span><br>
+          <span class="var">sessions_per_charger_day</span><span class="op">  = </span><span class="num">14 h</span><span class="op"> / </span><span class="num">0.249 h</span><span class="op"> × </span><span class="num">0.60</span><span class="op"> = </span><span class="result">33.7 sessions</span><br>
+          <span class="note">  14h = operational window 06:00–20:00 · 60% = availability/efficiency factor</span>
+        </div>
+      </div>
+      <table class="data-table" style="margin-top:12px">
+        <thead><tr><th>Parameter</th><th>Value</th><th>Basis</th></tr></thead>
+        <tbody>
+          <tr><td>Average trip segment</td><td>210 km</td><td>MITMA interurban trip distribution</td></tr>
+          <tr><td>EV consumption</td><td>0.1775 kWh/km</td><td>WLTP average for segment mix (BEV+PHEV)</td></tr>
+          <tr><td>Charger power</td><td>150 kW</td><td>Fixed per datathon rules (DC fast)</td></tr>
+          <tr><td>Operational hours</td><td>14 h/day</td><td>06:00–20:00 highway service window</td></tr>
+          <tr><td>Efficiency factor</td><td>60%</td><td>Accounts for connector downtime, idle gaps, non-charging stays</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Method 1 — P80 day throughput</div>
+      <p>Size the station so that chargers can handle the full P80 day's total session volume across 14 operational hours.</p>
+      <div class="formula-block">
+        <div class="formula-label">P80-day charger count</div>
+        <div class="formula">
+          <span class="var">chargers_p80</span><span class="op"> = </span><span class="op">⌈ </span><span class="var">daily_sessions_p80</span><span class="op"> / </span><span class="num">33.7</span><span class="op"> ⌉</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Method 2 — Peak-hour 90% utilization target</div>
+      <p>Highway charging demand is not uniformly distributed across the day — midday (11:00–13:00) and early evening peaks can carry 10–14% of daily sessions in a single hour. We size chargers so that this peak hour reaches at most 90% utilization. Above 95% means cars are actively turned away.</p>
+      <div class="formula-block">
+        <div class="formula-label">Peak-hour charger count</div>
+        <div class="formula">
+          <span class="var">peak_hour_demand</span><span class="op">      = </span><span class="var">daily_sessions_p80</span><span class="op"> × </span><span class="num">0.12</span><br>
+          <span class="var">sessions_per_charger_hour</span><span class="op"> = </span><span class="num">1</span><span class="op"> / </span><span class="num">0.249 h</span><span class="op"> = </span><span class="result">4.02</span><span class="op">  (physical max, no efficiency derate)</span><br>
+          <span class="var">chargers_peak</span><span class="op">          = </span><span class="op">⌈ </span><span class="var">peak_hour_demand</span><span class="op"> / (</span><span class="num">4.02</span><span class="op"> × </span><span class="num">0.90</span><span class="op">) ⌉</span>
+        </div>
+      </div>
+      <div class="assumption">
+        <span class="assumption-icon">⚠</span>
+        <div><strong>Peak hour factor (12%):</strong> Derived from MITMA highway midday traffic concentration data. In the absence of intra-day charging session data, this is an estimate. Range observed in literature: 10–15%. At 12%, peak sessions require slightly more chargers than the P80-day method on most routes.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Final charger recommendation</div>
+      <div class="formula-block">
+        <div class="formula-label">Proposed charger count per station</div>
+        <div class="formula">
+          <span class="var">n_chargers</span><span class="op"> = </span><span class="op">min(</span><span class="num">12</span><span class="op">, max(</span><span class="num">4</span><span class="op">, max(</span><span class="var">chargers_p80</span><span class="op">, </span><span class="var">chargers_peak</span><span class="op">)))</span>
+        </div>
+      </div>
+      <table class="data-table" style="margin-top:12px">
+        <thead><tr><th>Bound</th><th>Value</th><th>Rationale</th></tr></thead>
+        <tbody>
+          <tr><td>Floor (minimum)</td><td><span class="tag tag-amber">4 chargers</span></td><td>Minimum viable station: economics of grid connection, civil works, and operations only justify ≥4 chargers. Below this, cost-per-session becomes unviable. Also provides redundancy — 1 charger always available if 3 others occupied or under maintenance.</td></tr>
+          <tr><td>Ceiling (maximum)</td><td><span class="tag tag-gray">12 chargers</span></td><td>Full hub = 12 × 150 kW = 1.8 MW, which is the Sufficient grid threshold. Beyond 12, a new grid connection is required — treated as a separate infrastructure project. Consistent with AFIR "large hub" specification.</td></tr>
+          <tr><td>Grid cap (Moderate only)</td><td><span class="tag tag-blue">grid_mw × 1000 / 150</span></td><td>For Moderate-grid stations, charger count is capped at what the available MW can physically support. For Congested stations, the full demand count is proposed (grid upgrade is flagged separately).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Scenario variants</div>
+      <div class="formula-block">
+        <div class="formula-label">Conservative / Baseline / Aggressive charger counts</div>
+        <div class="formula">
+          <span class="var">chargers_cons</span><span class="op"> = </span><span class="op">max(</span><span class="num">4</span><span class="op">, ⌊ </span><span class="var">n_chargers</span><span class="op"> × </span><span class="num">0.8</span><span class="op"> ⌋)</span><br>
+          <span class="var">chargers_base</span><span class="op"> = </span><span class="var">n_chargers</span><br>
+          <span class="var">chargers_aggr</span><span class="op"> = </span><span class="op">min(</span><span class="num">12</span><span class="op">, ⌈ </span><span class="var">n_chargers</span><span class="op"> × </span><span class="num">1.2</span><span class="op"> ⌉)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 4. UTILIZATION -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Utilization</h2>
+    </div>
+
+    <p>Two utilization metrics are reported per station: <strong>daily utilization</strong> (sessions vs daily capacity) and <strong>peak-hour utilization</strong> (the critical service constraint).</p>
+
+    <div class="sub">
+      <div class="sub-title">Daily utilization</div>
+      <div class="formula-block">
+        <div class="formula-label">Daily utilization %</div>
+        <div class="formula">
+          <span class="var">utilization_pct</span><span class="op"> = </span><span class="var">daily_sessions_p80</span><span class="op"> / (</span><span class="var">n_chargers</span><span class="op"> × </span><span class="num">33.7</span><span class="op">) × </span><span class="num">100</span>
+        </div>
+      </div>
+      <p>Measures how much of the station's total daily capacity is consumed on the P80 design day. This will be lower than peak-hour utilization because demand is not uniformly distributed across the day.</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Peak-hour utilization</div>
+      <div class="formula-block">
+        <div class="formula-label">Peak-hour utilization %</div>
+        <div class="formula">
+          <span class="var">util_peak_hour_pct</span><span class="op"> = </span><span class="var">daily_sessions_p80</span><span class="op"> × </span><span class="num">0.12</span><span class="op"> / (</span><span class="var">n_chargers</span><span class="op"> × </span><span class="num">4.02</span><span class="op">) × </span><span class="num">100</span>
+        </div>
+      </div>
+      <p>Measures fraction of physical throughput capacity consumed during the peak hour. Because charger sizing targets exactly 90% peak-hour utilization, most stations will land near 85–92% on this metric.</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Utilization thresholds</div>
+      <div class="util-legend">
+        <div class="util-segment ul-green">Underbuilt risk</div>
+        <div class="util-segment ul-amber" style="flex:25">Optimal zone</div>
+        <div class="util-segment ul-red">Near-capacity</div>
+        <div class="util-segment ul-danger">Overloaded</div>
+      </div>
+      <table class="data-table">
+        <thead><tr><th>Range</th><th>Status</th><th>Interpretation</th></tr></thead>
+        <tbody>
+          <tr><td>&lt; 30%</td><td><span class="tag tag-blue">Underbuilt</span></td><td>Station is significantly overbuilt relative to demand. Consider reducing charger count or revisiting siting. May indicate data quality issue (demand underestimated).</td></tr>
+          <tr><td>30–70%</td><td><span class="tag tag-green">Healthy</span></td><td>Good balance of capacity and demand. Chargers are productive but queuing is minimal. Leaves room for demand growth.</td></tr>
+          <tr><td>70–90%</td><td><span class="tag tag-amber">Near target</span></td><td>Approaching design threshold. This is the intended operating range for peak-hour utilization. Monitor quarterly.</td></tr>
+          <tr><td>90–95%</td><td><span class="tag tag-red">At limit</span></td><td>Station at capacity during peak hour. Some drivers may experience short waits. Plan charger addition within 12 months.</td></tr>
+          <tr><td>&gt; 95%</td><td><span class="tag tag-red">Overloaded</span></td><td>Cars being turned away or waiting &gt;15 min. Immediate expansion needed. Drives negative EV adoption sentiment.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 5. GRID THRESHOLDS -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Grid Thresholds</h2>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Data sources</div>
+      <table class="data-table">
+        <thead><tr><th>Distributor</th><th>Source</th><th>Coverage</th><th>Records</th></tr></thead>
+        <tbody>
+          <tr><td>Endesa</td><td>endesa_demanda_202603.csv</td><td>Andalucía, Cataluña, Extremadura, Balearics, Canarias</td><td>~1,838 substations</td></tr>
+          <tr><td>Viesgo / e-Redes</td><td>viesgo_ev_charging_*.csv</td><td>Cantabria, Asturias, Murcia (partial)</td><td>~3,619 points</td></tr>
+          <tr><td>Begasa</td><td>begasa_ev_charging.csv</td><td>Galicia coastal</td><td>Included in Endesa group</td></tr>
+          <tr><td>i-DE (Iberdrola Distribución)</td><td>2026_03_05_R1-001_Demanda.xlsx</td><td>Madrid, Navarra, Murcia, Valencia, Basque Country, Alicante</td><td>265 non-zero substations</td></tr>
+        </tbody>
+      </table>
+      <div class="data-note">
+        <span class="assumption-icon">ℹ</span>
+        <div><strong>i-DE coordinate conversion:</strong> The XLSX uses UTM Zone 30N (EPSG:25830) coordinates with comma decimal separators. These are converted to WGS84 using a manual inverse UTM formula (no external library). Accuracy: ±1m, validated against known substation locations in Madrid.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Threshold derivation</div>
+      <p>Thresholds are derived directly from the 150 kW charger standard. Each charger requires 150 kW of firm grid capacity.</p>
+      <div class="formula-block">
+        <div class="formula-label">Grid status thresholds</div>
+        <div class="formula">
+          <span class="var">Sufficient</span><span class="op"> : grid_mw </span><span class="op">≥ </span><span class="num">1.8 MW</span><span class="op">  → supports </span><span class="result">12 chargers</span><span class="op"> (full hub, no upgrade)</span><br>
+          <span class="var">Moderate</span><span class="op">  : </span><span class="num">0.6</span><span class="op"> ≤ grid_mw &lt; </span><span class="num">1.8 MW</span><span class="op">  → supports </span><span class="result">4–11 chargers</span><span class="op"> (constrained)</span><br>
+          <span class="var">Congested</span><span class="op"> : grid_mw </span><span class="op">&lt; </span><span class="num">0.6 MW</span><span class="op">  → below </span><span class="result">min viable</span><span class="op"> (grid upgrade required)</span>
+        </div>
+      </div>
+      <p>Note: the bimodal distribution of MW values (most substations cluster at 0 MW or &lt;0.3 MW, almost nothing in between) means the 0.6 MW Moderate threshold changes very few classifications — the majority of non-zero sites are either clearly Sufficient or clearly Congested.</p>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Data quality flag</div>
+      <p>62% of source records have zero or null MW capacity — a known data pipeline gap in the distributor's open-data feed, not necessarily indicating real grid congestion.</p>
+      <div class="formula-block">
+        <div class="formula-label">data_quality classification</div>
+        <div class="formula">
+          <span class="var">data_quality</span><span class="op"> = </span><span class="result">'measured'</span><span class="op">  if grid_mw &gt; 0  (real substation data available)</span><br>
+          <span class="var">data_quality</span><span class="op"> = </span><span class="result">'unknown'</span><span class="op">   if grid_mw = 0  (pipeline gap — default to Congested)</span>
+        </div>
+      </div>
+      <div class="caveat">
+        <span class="assumption-icon">✕</span>
+        <div><strong>Critical caveat:</strong> ~299 stations are classified as Congested solely because the nearest substation returned zero MW. These are <em>not</em> verified congestion points — they are data gaps. The dashboard's "Data Gap" KPI exposes this count. True measured Congested = ~88 stations. Headline congestion rate should be read with this caveat.</div>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Assignment method</div>
+      <p>Each candidate station is matched to the nearest substation within a 100 km search radius using Haversine distance. The substation's <code>Capacidad firme disponible (MW)</code> (firm available capacity) is used directly.</p>
+      <div class="assumption">
+        <span class="assumption-icon">⚠</span>
+        <div><strong>Distance assumption:</strong> "Nearest substation" is a geographic proxy. The actual grid connection point may be a different substation, especially in complex urban grid topologies. Real grid assignments require distributor engineering assessment (Estudios de Acceso). The dashboard popup surfaces headroom and flags upgrade requirements as a starting point for this conversation.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 6. INVESTMENT COSTS -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Investment Costs</h2>
+    </div>
+
+    <div class="formula-block">
+      <div class="formula-label">Station capex estimate</div>
+      <div class="formula">
+        <span class="var">cost_eur</span><span class="op">  = </span><span class="var">n_chargers</span><span class="op"> × </span><span class="num">€150,000</span><span class="op">  per charger</span><br>
+        <span class="var">total_M</span><span class="op">   = </span><span class="op">Σ </span><span class="var">cost_eur_station</span><span class="op"> / </span><span class="num">1,000,000</span><br>
+        <span class="result">Baseline total: €520.6M across 627 stations, 3,471 chargers</span>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead><tr><th>Cost component</th><th>Included?</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Charger hardware (150 kW DC unit)</td><td><span class="tag tag-green">Yes</span></td><td>Market price range €80k–€120k/unit; €150k includes margin and supply chain risk</td></tr>
+        <tr><td>Civil works (foundation, canopy, parking)</td><td><span class="tag tag-green">Yes</span></td><td>Bundled into per-unit rate for rest-area / fuel-station co-locations (lower); greenfield sites higher</td></tr>
+        <tr><td>Grid connection (MT/BT switchgear, metering)</td><td><span class="tag tag-green">Yes (Moderate)</span></td><td>For Sufficient grid stations, connection cost is marginal. For Congested: upgrade cost is NOT included — treated as a separate DSO investment.</td></tr>
+        <tr><td>Grid reinforcement / transformer upgrade</td><td><span class="tag tag-red">No</span></td><td>Congested stations require DSO investment that can range €200k–€2M per site. This must be negotiated with Endesa / i-DE separately.</td></tr>
+        <tr><td>Land acquisition</td><td><span class="tag tag-red">No</span></td><td>All proposed stations target existing road infrastructure (service areas, fuel stations, rest areas). Land cost assumed zero or licensing-based.</td></tr>
+        <tr><td>Operations &amp; maintenance (10-yr NPV)</td><td><span class="tag tag-red">No</span></td><td>Estimated €8–15k/charger/year (O&amp;M + energy losses + software). Not included in headline figure.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="assumption">
+      <span class="assumption-icon">⚠</span>
+      <div><strong>Cost sensitivity:</strong> The €150k/charger benchmark is derived from published Spanish charging infrastructure tenders (MOVES III program, 2022–2024). It is a capex planning figure, not a quotation. Actual costs vary significantly by site type: co-located (fuel station, rest area) sites run 20–30% cheaper due to shared civil works; greenfield motorway sites run 30–50% more. Apply ±35% confidence interval.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 7. SCENARIO VARIANTS -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Scenario Variants</h2>
+    </div>
+
+    <p>Three scenarios reflect uncertainty in EV adoption speed. The fleet multiplier propagates through all demand and charger calculations.</p>
+
+    <table class="data-table">
+      <thead><tr><th>Scenario</th><th>Fleet 2027</th><th>vs Baseline</th><th>Charger adjustment</th><th>Interpretation</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-blue">Conservative</span></td>
+          <td>1,257,933</td>
+          <td>−18%</td>
+          <td>floor(n × 0.8), min 4</td>
+          <td>Adoption slows — policy headwinds, infrastructure gaps delay uptake. Still 2.3× current fleet.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-green">Baseline</span></td>
+          <td>1,543,080</td>
+          <td>—</td>
+          <td>n (unchanged)</td>
+          <td>White-line model central estimate. ~38% CAGR. Consistent with IEA Spain trajectory.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-amber">Aggressive</span></td>
+          <td>1,828,228</td>
+          <td>+18%</td>
+          <td>min(12, ceil(n × 1.2))</td>
+          <td>Policy acceleration — Spanish EV incentive expansion, earlier ICE phase-out signals. Charging infrastructure becomes the constraint.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="assumption">
+      <span class="assumption-icon">⚠</span>
+      <div><strong>Scenario note:</strong> The ±18% fleet range is narrower than typical 10-year EV forecasts because we are only forecasting one year (2026→2027). For a 5-year horizon the uncertainty band would be ±50%+.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 8. AFIR / TEN-T COMPLIANCE -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">AFIR / TEN-T Compliance</h2>
+    </div>
+
+    <p>EU Regulation 2023/1804 (AFIR — Alternative Fuels Infrastructure Regulation) mandates minimum fast-charging coverage on the Trans-European Transport Network (TEN-T).</p>
+
+    <div class="sub">
+      <div class="sub-title">Spacing requirements</div>
+      <table class="data-table">
+        <thead><tr><th>Network type</th><th>Max gap</th><th>Min power</th><th>Deadline</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag tag-blue">TEN-T Core</span></td><td>60 km</td><td>≥ 400 kW (2030)</td><td>2025: ≥ 100 kW every 60 km</td></tr>
+          <tr><td>TEN-T Comprehensive</td><td>60 km</td><td>≥ 100 kW</td><td>2027</td></tr>
+          <tr><td>Non-TEN-T national roads</td><td>100 km</td><td>≥ 100 kW</td><td>2030 (recommended)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">TEN-T routes in our network</div>
+      <p>Routes tagged as TEN-T: <code>AP-7, A-7, A-2, A-4, A-6, A-8, AP-1, AP-68, A-3, A-62, AP-71</code>. These carry 147 of the 627 proposed stations.</p>
+      <div class="formula-block">
+        <div class="formula-label">AFIR gap detection</div>
+        <div class="formula">
+          <span class="note">For each consecutive station pair on a route:</span><br>
+          <span class="var">gap_km</span><span class="op"> = Haversine(station_i, station_{i+1})</span><br>
+          <span class="var">threshold</span><span class="op"> = </span><span class="num">60 km</span><span class="op"> if TEN-T else </span><span class="num">100 km</span><br>
+          <span class="op">Flag if </span><span class="var">gap_km</span><span class="op"> &gt; </span><span class="var">threshold</span>
+        </div>
+      </div>
+      <p><strong>Result: 58 gaps flagged</strong> across 21 routes (6 TEN-T corridors). Largest: A-2 (9 gaps), A-8 (7 gaps), A-7 (5 gaps). These appear as orange circles on the map's AFIR layer.</p>
+      <div class="assumption">
+        <span class="assumption-icon">⚠</span>
+        <div><strong>Gap detection limitation:</strong> Stations are sorted by latitude before gap checking — an approximation for route ordering. On non-meridional routes (e.g. A-8 running east-west) this may slightly misorder stations near route bends. A proper route-following distance calculation would require the full OSRM waypoint sequence.</div>
+      </div>
+      <div class="caveat">
+        <span class="assumption-icon">✕</span>
+        <div><strong>Existing stations not counted:</strong> AFIR gaps are detected only between <em>proposed</em> stations. Existing EV chargers already on the corridor (4,801 nationwide) may already close some of these gaps. A combined existing + proposed analysis would reduce the gap count.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- 9. ASSUMPTIONS SUMMARY -->
+  <!-- ══════════════════════════════════════════ -->
+  <section class="section" id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Assumptions Summary</h2>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Value used</th>
+          <th>Confidence</th>
+          <th>Where to challenge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EV fleet 2027 (baseline)</td>
+          <td>1,543,080</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>White-line model; ±18% scenario range applied</td>
+        </tr>
+        <tr>
+          <td>Fleet growth decay rate</td>
+          <td>15%/yr</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Judgment call; IEA scenarios suggest 10–20% range</td>
+        </tr>
+        <tr>
+          <td>Fleet attrition</td>
+          <td>1.5%/yr</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Consistent with European average vehicle turnover</td>
+        </tr>
+        <tr>
+          <td>Traffic proxy (vehicles/segment)</td>
+          <td>2,234</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Calibrated on AP-7 only; may over/under-estimate on N-roads</td>
+        </tr>
+        <tr>
+          <td>Charge probability (route level)</td>
+          <td>40%</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>No Spain-specific survey data; ACEA/IEA Europe-wide estimate</td>
+        </tr>
+        <tr>
+          <td>Interurban trips per EV per week</td>
+          <td>1 trip/week</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Accounts for ÷7 daily factor; PHEV owners travel less than assumed</td>
+        </tr>
+        <tr>
+          <td>Average trip distance</td>
+          <td>210 km</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>MITMA interurban trip distribution; well-validated</td>
+        </tr>
+        <tr>
+          <td>EV consumption rate</td>
+          <td>0.1775 kWh/km</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>WLTP average for 2022–2024 BEV/PHEV mix</td>
+        </tr>
+        <tr>
+          <td>Charger power</td>
+          <td>150 kW DC</td>
+          <td><span class="tag tag-green">Fixed</span></td>
+          <td>Datathon constraint — not a model assumption</td>
+        </tr>
+        <tr>
+          <td>Operational hours</td>
+          <td>14 h/day</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Highway service station operating hours; 06:00–20:00</td>
+        </tr>
+        <tr>
+          <td>Charger efficiency factor</td>
+          <td>60%</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Industry range: 55–70%. Lower bound appropriate for new network (maintenance teething)</td>
+        </tr>
+        <tr>
+          <td>Peak hour concentration</td>
+          <td>12% of daily</td>
+          <td><span class="tag tag-red">Low</span></td>
+          <td>No intra-day session data; estimated from highway traffic patterns. Range 10–15%.</td>
+        </tr>
+        <tr>
+          <td>Peak utilization target</td>
+          <td>90%</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Industry standard; above 95% creates measurable driver abandonment</td>
+        </tr>
+        <tr>
+          <td>Charger floor (minimum)</td>
+          <td>4</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Economic/redundancy argument. Low-demand N-roads may justify 2 chargers. Raises opex risk.</td>
+        </tr>
+        <tr>
+          <td>Charger ceiling (maximum)</td>
+          <td>12</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Aligned with Sufficient grid threshold and AFIR hub specification</td>
+        </tr>
+        <tr>
+          <td>Cost per charger (capex)</td>
+          <td>€150,000</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>±35% depending on site type. MOVES III benchmarks used.</td>
+        </tr>
+        <tr>
+          <td>Sufficient grid threshold</td>
+          <td>≥ 1.8 MW</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Directly derived: 12 chargers × 150 kW = 1.8 MW</td>
+        </tr>
+        <tr>
+          <td>Moderate grid threshold</td>
+          <td>≥ 0.6 MW</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Directly derived: 4 chargers × 150 kW = 0.6 MW</td>
+        </tr>
+        <tr>
+          <td>Grid search radius</td>
+          <td>100 km</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Generous to minimize "unknown" assignments. Closer substations always preferred where available.</td>
+        </tr>
+        <tr>
+          <td>data_quality = unknown → Congested</td>
+          <td>Conservative default</td>
+          <td><span class="tag tag-red">Low</span></td>
+          <td>~299 of 387 "Congested" stations may have sufficient grid — data gap, not real constraint. Verify with distributor.</td>
+        </tr>
+        <tr>
+          <td>Station spacing</td>
+          <td>50 km intervals</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>AFIR-compliant for TEN-T (60 km max). Conservative (50 km provides safety margin).</td>
+        </tr>
+        <tr>
+          <td>Co-location deduplication radius</td>
+          <td>1 km</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Removes only true co-location artefacts (two routes sharing the same waypoint). Parallel corridors ≥1 km apart (e.g. A-2 / N-2 at ~5 km) are retained as separate stations serving distinct traffic. Priority on collision: TEN-T > A- > AP- > N-.</td>
+        </tr>
+        <tr>
+          <td>Partner proximity filter</td>
+          <td>10 km radius</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Stations with no fuel/rest partner within 10 km are excluded from proposed list (shown as separate dashboard layer). Reflects co-location requirement for hub viability. Threshold is a planning heuristic — greenfield standalone hubs may be viable at longer distances with sufficient demand.</td>
+        </tr>
+        <tr>
+          <td>Naturgy grid (R1-002)</td>
+          <td>UTM Zone 30N assumed for all provinces</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Naturgy data covers Galicia, Madrid, Central Spain (679 substations). All coordinates converted using UTM30N (EPSG:25830), consistent with i-DE and Endesa datasets. Galicia is technically in Zone 29N but Naturgy uses Zone 30N throughout — validated by matching Madrid coordinates to known WGS84 reference points.</td>
+        </tr>
+        <tr>
+          <td>AFIR TEN-T routes</td>
+          <td>AP-7, A-7, A-2, A-4, A-6, A-8, AP-1, AP-68, A-3, A-62, AP-71</td>
+          <td><span class="tag tag-green">High</span></td>
+          <td>Based on EU TEN-T Regulation 1315/2013 map for Spain. Verify against latest revised TEN-T guidelines (2024 revision).</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="doc-footer">
+    <div><span class="brand">Electric Dragon</span> · IE-Iberdrola Sustainability Datathon 2026</div>
+    <div>methodology.html · April 20, 2026 · generate_deliverables.py v6</div>
+  </footer>
+
+</div>
+</body>
+</html>
