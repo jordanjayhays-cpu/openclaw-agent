@@ -1,0 +1,12 @@
+{
+  "backoff_reason": "system_load_exceeded",
+  "system_load": {
+    "load1m": 58.74,
+    "load5m": 58.11,
+    "load15m": 59.11
+  },
+  "load_max": 28.8,
+  "cpu_cores": 32,
+  "created_at": "2026-04-22T02:00:09.483Z",
+  "ttl_ms": 3600000
+}
