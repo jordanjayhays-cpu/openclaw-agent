@@ -32,7 +32,55 @@
       "validation": [
         "node scripts/validate-modules.js ./src/evolve ./src/gep/solidify ./src/gep/policyCheck ./src/gep/selector ./src/gep/memoryGraph ./src/gep/assetStore",
         "node scripts/validate-suite.js"
-      ]
+      ],
+      "learning_history": [
+        {
+          "at": "2026-04-22T06:29:19.436Z",
+          "outcome": "failed",
+          "mode": "soft",
+          "reason_class": "validation",
+          "retryable": true,
+          "learning_signals": [
+            "problem:reliability",
+            "action:repair",
+            "problem:protocol",
+            "action:optimize",
+            "area:prompt",
+            "problem:capability",
+            "action:innovate",
+            "problem:stagnation",
+            "area:memory",
+            "risk:validation"
+          ]
+        }
+      ],
+      "anti_patterns": [
+        {
+          "at": "2026-04-22T06:29:19.436Z",
+          "mode": "soft",
+          "reason_class": "validation",
+          "learning_signals": [
+            "problem:reliability",
+            "action:repair",
+            "problem:protocol",
+            "action:optimize",
+            "area:prompt",
+            "problem:capability",
+            "action:innovate",
+            "problem:stagnation"
+          ]
+        }
+      ],
+      "epigenetic_marks": [
+        {
+          "context": "linux/x64/v22.22.2",
+          "boost": -0.1,
+          "reason": "failure_in_environment",
+          "created_at": "2026-04-22T06:29:19.437Z"
+        }
+      ],
+      "schema_version": "1.6.0",
+      "asset_id": "sha256:29a68b2101fde824deddcb734ee3ca9db486c5e7f487c9f33615d26373e40ba9"
     },
     {
       "type": "Gene",

@@ -93,5 +93,22 @@
     "commitment_deadline": null,
     "applied_lessons": [],
     "hub_lessons": []
-  }
+  },
+  "last_solidify": {
+    "run_id": "run_1776736833310",
+    "at": "2026-04-22T06:29:19.303Z",
+    "event_id": "evt_1776839359303",
+    "capsule_id": null,
+    "outcome": {
+      "status": "failed",
+      "score": 0.67
+    }
+  },
+  "last_validation_failure": {
+    "cmd": "node scripts/validate-modules.js ./src/evolve ./src/gep/solidify ./src/gep/policyCheck ./src/gep/selector ./src/gep/memoryGraph ./src/gep/assetStore",
+    "stderr": "node:internal/modules/cjs/loader:1386\n  throw err;\n  ^\n\nError: Cannot find module '/home/openclaw/.openclaw/workspace/scripts/validate-modules.js'\n    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)\n    at Function._load (node:internal/modules/cjs/loader:1192:37)\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\n    ",
+    "retries_attempted": 2,
+    "at": "2026-04-22T06:29:19.303Z"
+  },
+  "solidify_count": 1
 }
