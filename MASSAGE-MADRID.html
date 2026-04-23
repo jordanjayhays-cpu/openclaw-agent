@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massage Pass | Book Spas & Massages Nearby</title>
+    <title>Massage Pass | Book Spas & Massages for Remote Workers in Madrid</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -19,6 +19,7 @@
             --text-light: #9CA3AF;
             --border: #E5E7EB;
             --white: #FFFFFF;
+            --success: #10B981;
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow: 0 4px 6px rgba(0,0,0,0.07);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
@@ -26,529 +27,444 @@
             --radius-sm: 12px;
             --radius-full: 9999px;
         }
-        html { scroll-behavior: smooth; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
         
-        /* NAV */
         .nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             background: var(--white); border-bottom: 1px solid var(--border);
             padding: 0 24px;
         }
-        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 72px; }
         .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; color: var(--primary); text-decoration: none; }
         .nav-logo-icon { width: 40px; height: 40px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-        .nav-links { display: flex; gap: 32px; }
-        .nav-link { font-size: 14px; font-weight: 600; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-        .nav-link:hover { color: var(--primary); }
         .nav-actions { display: flex; gap: 12px; }
         .nav-btn { padding: 10px 20px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .nav-btn-ghost { background: transparent; border: none; color: var(--text-secondary); }
-        .nav-btn-ghost:hover { color: var(--primary); }
         .nav-btn-primary { background: var(--primary); border: none; color: var(--white); }
         .nav-btn-primary:hover { background: var(--primary-hover); }
         
-        /* HERO */
         .hero {
-            padding: 140px 24px 80px; text-align: center;
+            padding: 120px 24px 60px; text-align: center;
             background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
-            position: relative; overflow: hidden;
         }
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 800px; height: 800px; background: radial-gradient(circle, rgba(123,105,255,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero-header { max-width: 700px; margin: 0 auto 40px; position: relative; }
+        .hero-header { max-width: 700px; margin: 0 auto 40px; }
         .hero-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 14px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600; margin-bottom: 20px; }
-        .hero-title { font-size: clamp(36px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .hero-title { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
         .hero-title span { color: var(--primary); }
-        .hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+        .hero-subtitle { font-size: 17px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 24px; }
         
-        /* SEARCH BOX */
-        .search-container { max-width: 900px; margin: 0 auto; position: relative; }
-        .search-box {
-            background: var(--white); border-radius: 24px; padding: 8px;
+        /* FILTER BAR */
+        .filter-bar { max-width: 900px; margin: 0 auto 40px; }
+        .filter-search {
+            background: var(--white); border-radius: 20px; padding: 6px;
             box-shadow: var(--shadow-lg); display: flex; gap: 0;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border); margin-bottom: 12px;
         }
-        .search-field { flex: 1; display: flex; align-items: center; gap: 12px; padding: 16px 24px; cursor: pointer; border-right: 1px solid var(--border); }
-        .search-field:last-of-type { border-right: none; }
-        .search-field-icon { font-size: 24px; }
-        .search-field-text { display: flex; flex-direction: column; text-align: left; }
-        .search-field-text .label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .search-field-text .value { font-size: 15px; font-weight: 600; color: var(--text); }
-        .search-btn {
-            width: 56px; height: 56px; background: var(--primary); border: none;
-            border-radius: 20px; cursor: pointer; font-size: 24px;
-            display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s;
+        .filter-field { flex: 1; display: flex; align-items: center; gap: 10px; padding: 14px 20px; cursor: pointer; border-right: 1px solid var(--border); }
+        .filter-field:last-of-type { border-right: none; }
+        .filter-field-icon { font-size: 20px; }
+        .filter-field-text { display: flex; flex-direction: column; text-align: left; }
+        .filter-field-text .label { font-size: 10px; color: var(--text-light); font-weight: 600; text-transform: uppercase; }
+        .filter-field-text .value { font-size: 14px; font-weight: 600; }
+        .filter-btn { width: 48px; height: 48px; background: var(--primary); border: none; border-radius: 16px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        
+        /* QUICK FILTERS */
+        .quick-filters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+        .quick-chip { background: var(--white); border: 1px solid var(--border); padding: 8px 16px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+        .quick-chip:hover { border-color: var(--primary); }
+        .quick-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .quick-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+        
+        /* PACKAGE BANNER */
+        .package-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, #9B8FFF 100%);
+            border-radius: var(--radius); margin: 0 24px 40px; padding: 28px;
+            display: flex; gap: 20px; align-items: center; color: white; position: relative; overflow: hidden;
         }
-        .search-btn:hover { background: var(--primary-hover); }
+        .package-banner::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%; }
+        .package-icon { font-size: 56px; flex-shrink: 0; }
+        .package-content { flex: 1; }
+        .package-content h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+        .package-content p { font-size: 13px; opacity: 0.9; margin-bottom: 8px; }
+        .package-price { font-size: 15px; font-weight: 700; }
+        .package-price span { font-size: 12px; opacity: 0.8; text-decoration: line-through; margin-left: 8px; }
+        .package-btn { background: white; color: var(--primary); padding: 12px 20px; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; font-size: 14px; flex-shrink: 0; }
         
-        /* STATS */
-        .stats { display: flex; justify-content: center; gap: 48px; margin-top: 48px; }
-        .stat { text-align: center; }
-        .stat-number { font-size: 32px; font-weight: 800; color: var(--primary); }
-        .stat-label { font-size: 13px; color: var(--text-secondary); }
+        /* SECTION */
+        .section { padding: 0 24px 60px; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-header { display: flex; justify-content: space-between; align-items: center; padding: 32px 0 20px; }
+        .section-title { font-size: 22px; font-weight: 700; }
+        .section-link { font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 600; }
         
-        /* MASSAGE TYPES */
-        .types { padding: 80px 24px; background: var(--white); }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-        .section-subtitle { font-size: 16px; color: var(--text-secondary); }
-        
-        .type-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
-        .type-card {
-            background: var(--bg-secondary); border-radius: 20px; padding: 28px 20px;
-            text-align: center; cursor: pointer; transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        .type-card:hover { border-color: var(--primary); background: var(--white); transform: translateY(-4px); }
-        .type-icon { font-size: 48px; margin-bottom: 14px; }
-        .type-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-        .type-price { font-size: 13px; color: var(--primary); font-weight: 600; }
-        
-        /* LISTINGS */
-        .listings { padding: 0 24px 80px; background: var(--bg-secondary); }
-        .listings-inner { max-width: 1100px; margin: 0 auto; }
-        .listings-header { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; flex-wrap: wrap; gap: 16px; }
-        .listings-title { font-size: 22px; font-weight: 700; }
-        .listings-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-        .listing-tab { padding: 8px 16px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600; background: var(--white); border: 1px solid var(--border); cursor: pointer; }
-        .listing-tab.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
-        
-        /* VENUE CARDS */
-        .venue-card {
-            background: var(--white); border-radius: 20px; overflow: hidden;
-            box-shadow: var(--shadow-sm); margin-bottom: 20px;
-            transition: all 0.3s;
-        }
+        /* VENUE GRID */
+        .venue-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .venue-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border); transition: all 0.3s; }
         .venue-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
         
-        .venue-image { position: relative; height: 200px; background: linear-gradient(135deg, #E8F5F9 0%, #D4E9F0 100%); display: flex; align-items: center; justify-content: center; font-size: 72px; }
-        .venue-badge { position: absolute; top: 16px; left: 16px; background: var(--primary); color: var(--white); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .venue-image { position: relative; height: 180px; background: linear-gradient(135deg, #E8F5F9 0%, #D4E9F0 100%); display: flex; align-items: center; justify-content: center; font-size: 64px; }
+        .venue-badges { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+        .venue-badge { background: var(--primary); color: white; padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .venue-badge.green { background: var(--success); }
         .venue-badge.orange { background: #FF5C39; }
-        .venue-badge.dark { background: #111827; }
-        .venue-favorite { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; background: var(--white); border: none; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .venue-favorite { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; background: white; border: none; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         
-        .venue-content { padding: 20px; }
-        .venue-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-        .venue-name { font-size: 18px; font-weight: 700; }
-        .venue-rating { display: flex; align-items: center; gap: 6px; }
-        .venue-stars { color: #FFB800; font-size: 14px; }
-        .venue-score { font-size: 14px; font-weight: 700; }
-        .venue-reviews { font-size: 12px; color: var(--text-light); }
+        .venue-content { padding: 18px; }
+        .venue-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+        .venue-name { font-size: 16px; font-weight: 700; }
+        .venue-rating { display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--text); }
+        .venue-stars { color: #FFB800; }
+        .venue-reviews { color: var(--text-light); font-size: 12px; }
         
-        .venue-location { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; display: flex; align-items: center; gap: 4px; }
-        .venue-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-        .venue-tag { background: var(--bg-secondary); padding: 6px 12px; border-radius: 8px; font-size: 12px; color: var(--text-secondary); }
+        .venue-location { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: flex; align-items: center; gap: 4px; }
+        .venue-quick-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+        .quick-tag { background: var(--bg-secondary); padding: 4px 10px; border-radius: 6px; font-size: 11px; color: var(--text-secondary); font-weight: 600; }
+        .quick-tag.highlight { background: var(--success); color: white; }
         
-        .venue-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--border); }
-        .venue-price { font-size: 20px; font-weight: 800; color: var(--text); }
-        .venue-price span { font-size: 13px; font-weight: 500; color: var(--text-light); }
-        .venue-book { background: var(--primary); color: var(--white); padding: 12px 24px; border-radius: var(--radius-full); border: none; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+        .venue-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
+        .venue-price { font-size: 18px; font-weight: 800; }
+        .venue-price span { font-size: 12px; font-weight: 400; color: var(--text-light); }
+        .venue-book { background: var(--primary); color: white; padding: 10px 20px; border-radius: var(--radius-sm); border: none; font-size: 14px; font-weight: 700; cursor: pointer; }
         .venue-book:hover { background: var(--primary-hover); }
         
         /* WHY SECTION */
-        .why { padding: 80px 24px; background: var(--white); }
-        .why-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; }
-        .why-card { text-align: center; padding: 32px 24px; }
-        .why-icon { font-size: 48px; margin-bottom: 16px; }
-        .why-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-        .why-text { font-size: 14px; color: var(--text-secondary); }
+        .why { padding: 60px 24px; background: var(--bg-secondary); }
+        .why-inner { max-width: 900px; margin: 0 auto; }
+        .why-header { text-align: center; margin-bottom: 40px; }
+        .why-header h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+        .why-header p { color: var(--text-secondary); }
         
-        /* APP CTA */
-        .app-cta { padding: 80px 24px; background: linear-gradient(135deg, var(--primary) 0%, #6558E8 100%); text-align: center; color: var(--white); }
-        .app-cta-inner { max-width: 600px; margin: 0 auto; }
-        .app-cta h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
-        .app-cta p { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
-        .app-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .app-btn { background: var(--white); color: var(--primary); padding: 14px 28px; border-radius: var(--radius-full); font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+        .why-card { background: white; border-radius: var(--radius); padding: 24px; text-align: center; }
+        .why-icon { font-size: 40px; margin-bottom: 12px; }
+        .why-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+        .why-text { font-size: 12px; color: var(--text-secondary); }
         
-        /* FOOTER */
-        .footer { padding: 48px 24px; background: var(--text); color: var(--white); }
-        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-        .footer-logo { font-size: 20px; font-weight: 800; }
-        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-        .footer-link { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; }
-        .footer-link:hover { color: var(--white); }
+        /* COWORK CTA */
+        .cowork-cta { padding: 60px 24px; text-align: center; }
+        .cowork-inner { max-width: 600px; margin: 0 auto; }
+        .cowork-inner h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+        .cowork-inner p { color: var(--text-secondary); margin-bottom: 20px; }
+        .cowork-form { display: flex; gap: 8px; max-width: 400px; margin: 0 auto; }
+        .cowork-form input { flex: 1; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; }
+        .cowork-form button { background: var(--primary); color: white; border: none; padding: 14px 20px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer; }
+        
+        .footer { padding: 32px 24px; background: var(--text); color: rgba(255,255,255,0.7); text-align: center; }
+        .footer-logo { font-size: 18px; font-weight: 800; color: white; margin-bottom: 8px; }
+        .footer p { font-size: 12px; }
         
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding: 120px 20px 60px; }
-            .search-box { flex-direction: column; gap: 8px; padding: 12px; }
-            .search-field { border-right: none; border-bottom: 1px solid var(--border); padding: 14px 16px; }
-            .search-field:last-of-type { border-bottom: none; }
-            .search-btn { width: 100%; height: 50px; border-radius: 16px; }
-            .stats { flex-wrap: wrap; gap: 24px; }
-            .type-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-            .venue-footer { flex-direction: column; gap: 12px; align-items: stretch; }
-            .venue-book { text-align: center; }
-            .footer-inner { flex-direction: column; text-align: center; }
+            .nav-actions { display: none; }
+            .filter-search { flex-direction: column; }
+            .filter-field { border-right: none; border-bottom: 1px solid var(--border); }
+            .filter-field:last-of-type { border-bottom: none; }
+            .filter-btn { width: 100%; }
+            .package-banner { flex-direction: column; text-align: center; }
+            .venue-footer { flex-direction: column; gap: 10px; }
+            .venue-book { width: 100%; text-align: center; }
+            .cowork-form { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- NAV -->
     <nav class="nav">
         <div class="nav-inner">
             <a href="#" class="nav-logo">
                 <span class="nav-logo-icon">💆</span>
                 Massage Pass
             </a>
-            <div class="nav-links">
-                <a href="#types" class="nav-link">Types</a>
-                <a href="#venues" class="nav-link">Venues</a>
-                <a href="#why" class="nav-link">Why Us</a>
-            </div>
             <div class="nav-actions">
-                <button class="nav-btn nav-btn-ghost">Sign in</button>
-                <button class="nav-btn nav-btn-primary">Book now</button>
+                <a href="#spas" class="nav-btn nav-btn-primary">Book now</a>
             </div>
         </div>
     </nav>
     
-    <!-- HERO -->
     <section class="hero">
         <div class="hero-header">
-            <div class="hero-badge">✨ No booking fees • Free cancellations</div>
-            <h1 class="hero-title">Book <span>massage</span> near you</h1>
-            <p class="hero-subtitle">Discover and book appointments at top-rated spas and massage studios nearby. No booking fees.</p>
+            <div class="hero-badge">📍 For remote workers & travelers in Madrid</div>
+            <h1 class="hero-title">Massage for <span>nomads</span> who deserve a break</h1>
+            <p class="hero-subtitle">Express 30-min sessions, same-day booking, and studios that actually understand neck pain from 12-hour coding days.</p>
         </div>
         
-        <div class="search-container">
-            <div class="search-box">
-                <div class="search-field">
-                    <span class="search-field-icon">📍</span>
-                    <div class="search-field-text">
-                        <span class="label">Location</span>
-                        <span class="value">Madrid, Spain</span>
+        <div class="filter-bar">
+            <div class="filter-search">
+                <div class="filter-field">
+                    <span class="filter-field-icon">📍</span>
+                    <div class="filter-field-text">
+                        <span class="label">Area</span>
+                        <span class="value">Malasaña, Chueca, Centro...</span>
                     </div>
                 </div>
-                <div class="search-field">
-                    <span class="search-field-icon">💆</span>
-                    <div class="search-field-text">
-                        <span class="label">Massage type</span>
-                        <span class="value">Any type</span>
+                <div class="filter-field">
+                    <span class="filter-field-icon">💆</span>
+                    <div class="filter-field-text">
+                        <span class="label">Type</span>
+                        <span class="value">Any massage</span>
                     </div>
                 </div>
-                <button class="search-btn">🔍</button>
+                <button class="filter-btn">🔍</button>
             </div>
-        </div>
-        
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Massage venues</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">50,000+</div>
-                <div class="stat-label">Bookings made</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">4.8★</div>
-                <div class="stat-label">Average rating</div>
+            
+            <div class="quick-filters">
+                <div class="quick-chip active"><span class="dot"></span> Same-day</div>
+                <div class="quick-chip"><span class="dot"></span> Express 30min</div>
+                <div class="quick-chip"><span class="dot"></span> Walk-ins OK</div>
+                <div class="quick-chip"><span class="dot"></span> Deep Tissue</div>
+                <div class="quick-chip"><span class="dot"></span> Couples</div>
             </div>
         </div>
     </section>
     
-    <!-- MASSAGE TYPES -->
-    <section class="types" id="types">
-        <div class="section-header">
-            <h2 class="section-title">Choose your massage</h2>
-            <p class="section-subtitle">From Swedish relaxation to deep tissue therapy</p>
+    <!-- NOMAD PACK BANNER -->
+    <div class="package-banner" id="spas">
+        <span class="package-icon">🎒</span>
+        <div class="package-content">
+            <h3>The Nomad Pack — €199/month</h3>
+            <p>4 massages · Express or standard · Use anytime · Valid 30 days</p>
+            <div class="package-price">€199/mo <span>was €280</span> · Save €81</div>
         </div>
-        <div class="type-grid">
-            <div class="type-card">
-                <div class="type-icon">🧘</div>
-                <div class="type-name">Swedish</div>
-                <div class="type-price">From €45</div>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">💪</div>
-                <div class="type-name">Deep Tissue</div>
-                <div class="type-price">From €55</div>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">🔥</div>
-                <div class="type-name">Hot Stone</div>
-                <div class="type-price">From €65</div>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">🏃</div>
-                <div class="type-name">Sports</div>
-                <div class="type-price">From €60</div>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">🌸</div>
-                <div class="type-name">Aromatherapy</div>
-                <div class="type-price">From €50</div>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">🪷</div>
-                <div class="type-name">Thai</div>
-                <div class="type-price">From €40</div>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">👂</div>
-                <div class="type-name">Shiatsu</div>
-                <div class="type-price">From €55</div>
-            </div>
-            <div class="type-card">
-                <div class="type-icon">💑</div>
-                <div class="type-name">Couples</div>
-                <div class="type-price">From €90</div>
-            </div>
-        </div>
-    </section>
+        <a href="#contact" class="package-btn">Get access →</a>
+    </div>
     
-    <!-- VENUE LISTINGS -->
-    <section class="listings" id="venues">
-        <div class="listings-inner">
-            <div class="listings-header">
-                <h2 class="listings-title">Top-rated venues in Madrid</h2>
-                <div class="listings-tabs">
-                    <div class="listing-tab active">All</div>
-                    <div class="listing-tab">Top Rated</div>
-                    <div class="listing-tab">Nearby</div>
-                    <div class="listing-tab">Best Value</div>
-                </div>
+    <!-- VENUES -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2 class="section-title">Studios near you</h2>
+                <a href="#" class="section-link">View all →</a>
             </div>
             
-            <div class="venue-card">
-                <div class="venue-image">
-                    🧖‍♀️
-                    <span class="venue-badge">Top Rated</span>
-                    <button class="venue-favorite">🤍</button>
-                </div>
-                <div class="venue-content">
-                    <div class="venue-header">
-                        <div class="venue-name">Wellness Center Madrid Centro</div>
-                        <div class="venue-rating">
-                            <span class="venue-stars">★★★★★</span>
-                            <span class="venue-score">4.8</span>
-                            <span class="venue-reviews">(847)</span>
+            <div class="venue-grid">
+                <div class="venue-card">
+                    <div class="venue-image">
+                        🧖‍♀️
+                        <div class="venue-badges">
+                            <span class="venue-badge green">Same-day OK</span>
+                            <span class="venue-badge">Express</span>
+                        </div>
+                        <button class="venue-favorite">🤍</button>
+                    </div>
+                    <div class="venue-content">
+                        <div class="venue-header">
+                            <div class="venue-name">Wellness Center Centro</div>
+                            <div class="venue-rating">★ 4.8 <span class="venue-reviews">(847)</span></div>
+                        </div>
+                        <div class="venue-location">📍 Gran Vía 28, Centro</div>
+                        <div class="venue-quick-tags">
+                            <span class="quick-tag highlight">Walk-ins OK</span>
+                            <span class="quick-tag">Swedish</span>
+                            <span class="quick-tag">Deep Tissue</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">From €40 <span>/ session</span></div>
+                            <button class="venue-book">Book</button>
                         </div>
                     </div>
-                    <div class="venue-location">📍 Gran Vía 28, Madrid 28013</div>
-                    <div class="venue-tags">
-                        <span class="venue-tag">Swedish</span>
-                        <span class="venue-tag">Deep Tissue</span>
-                        <span class="venue-tag">Hot Stone</span>
-                    </div>
-                    <div class="venue-footer">
-                        <div class="venue-price">€55-95 <span>/ session</span></div>
-                        <button class="venue-book">Book →</button>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="venue-card">
-                <div class="venue-image">
-                    ✨
-                    <span class="venue-badge orange">Most Popular</span>
-                    <button class="venue-favorite">🤍</button>
-                </div>
-                <div class="venue-content">
-                    <div class="venue-header">
-                        <div class="venue-name">Serenity Spa & Massage</div>
-                        <div class="venue-rating">
-                            <span class="venue-stars">★★★★★</span>
-                            <span class="venue-score">4.9</span>
-                            <span class="venue-reviews">(1,243)</span>
+                
+                <div class="venue-card">
+                    <div class="venue-image">
+                        ✨
+                        <div class="venue-badges">
+                            <span class="venue-badge green">Same-day OK</span>
+                            <span class="venue-badge orange">Most Popular</span>
+                        </div>
+                        <button class="venue-favorite">🤍</button>
+                    </div>
+                    <div class="venue-content">
+                        <div class="venue-header">
+                            <div class="venue-name">Serenity Spa</div>
+                            <div class="venue-rating">★ 4.9 <span class="venue-reviews">(1,243)</span></div>
+                        </div>
+                        <div class="venue-location">📍 Plaza Mayor 15, La Latina</div>
+                        <div class="venue-quick-tags">
+                            <span class="quick-tag highlight">Walk-ins OK</span>
+                            <span class="quick-tag">Swedish</span>
+                            <span class="quick-tag">Couples</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">From €55 <span>/ session</span></div>
+                            <button class="venue-book">Book</button>
                         </div>
                     </div>
-                    <div class="venue-location">📍 Plaza Mayor 15, Madrid 28012</div>
-                    <div class="venue-tags">
-                        <span class="venue-tag">Swedish</span>
-                        <span class="venue-tag">Aromatherapy</span>
-                        <span class="venue-tag">Couples</span>
-                    </div>
-                    <div class="venue-footer">
-                        <div class="venue-price">€65-110 <span>/ session</span></div>
-                        <button class="venue-book">Book →</button>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="venue-card">
-                <div class="venue-image">
-                    👑
-                    <span class="venue-badge dark">Luxury</span>
-                    <button class="venue-favorite">🤍</button>
-                </div>
-                <div class="venue-content">
-                    <div class="venue-header">
-                        <div class="venue-name">The Spa at Four Seasons</div>
-                        <div class="venue-rating">
-                            <span class="venue-stars">★★★★★</span>
-                            <span class="venue-score">4.9</span>
-                            <span class="venue-reviews">(2,156)</span>
+                
+                <div class="venue-card">
+                    <div class="venue-image">
+                        🌿
+                        <div class="venue-badges">
+                            <span class="venue-badge">Express</span>
+                        </div>
+                        <button class="venue-favorite">🤍</button>
+                    </div>
+                    <div class="venue-content">
+                        <div class="venue-header">
+                            <div class="venue-name">Zen Garden Wellness</div>
+                            <div class="venue-rating">★ 4.7 <span class="venue-reviews">(632)</span></div>
+                        </div>
+                        <div class="venue-location">📍 Alcalá 55, Salamanca</div>
+                        <div class="venue-quick-tags">
+                            <span class="quick-tag highlight">Walk-ins OK</span>
+                            <span class="quick-tag">Sports</span>
+                            <span class="quick-tag">Deep Tissue</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">From €45 <span>/ session</span></div>
+                            <button class="venue-book">Book</button>
                         </div>
                     </div>
-                    <div class="venue-location">📍 Plaza de Cibeles 1, Madrid 28014</div>
-                    <div class="venue-tags">
-                        <span class="venue-tag">Luxury Spa</span>
-                        <span class="venue-tag">VIP</span>
-                        <span class="venue-tag">Hammam</span>
-                    </div>
-                    <div class="venue-footer">
-                        <div class="venue-price">€120-200 <span>/ session</span></div>
-                        <button class="venue-book">Book →</button>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="venue-card">
-                <div class="venue-image">
-                    🌿
-                    <button class="venue-favorite">🤍</button>
-                </div>
-                <div class="venue-content">
-                    <div class="venue-header">
-                        <div class="venue-name">Zen Garden Wellness</div>
-                        <div class="venue-rating">
-                            <span class="venue-stars">★★★★☆</span>
-                            <span class="venue-score">4.7</span>
-                            <span class="venue-reviews">(632)</span>
+                
+                <div class="venue-card">
+                    <div class="venue-image">
+                        💧
+                        <div class="venue-badges">
+                            <span class="venue-badge green">Same-day OK</span>
+                        </div>
+                        <button class="venue-favorite">🤍</button>
+                    </div>
+                    <div class="venue-content">
+                        <div class="venue-header">
+                            <div class="venue-name">Aquarel Wellness</div>
+                            <div class="venue-rating">★ 4.6 <span class="venue-reviews">(489)</span></div>
+                        </div>
+                        <div class="venue-location">📍 Serrano 45, Salamanca</div>
+                        <div class="venue-quick-tags">
+                            <span class="quick-tag highlight">Walk-ins OK</span>
+                            <span class="quick-tag">Swedish</span>
+                            <span class="quick-tag">Aromatherapy</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">From €38 <span>/ session</span></div>
+                            <button class="venue-book">Book</button>
                         </div>
                     </div>
-                    <div class="venue-location">📍 Calle Alcalá 55, Madrid 28014</div>
-                    <div class="venue-tags">
-                        <span class="venue-tag">Sports Massage</span>
-                        <span class="venue-tag">Deep Tissue</span>
-                    </div>
-                    <div class="venue-footer">
-                        <div class="venue-price">€50-85 <span>/ session</span></div>
-                        <button class="venue-book">Book →</button>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="venue-card">
-                <div class="venue-image">
-                    💧
-                    <button class="venue-favorite">🤍</button>
-                </div>
-                <div class="venue-content">
-                    <div class="venue-header">
-                        <div class="venue-name">Aquarel Wellness</div>
-                        <div class="venue-rating">
-                            <span class="venue-stars">★★★★☆</span>
-                            <span class="venue-score">4.6</span>
-                            <span class="venue-reviews">(489)</span>
+                
+                <div class="venue-card">
+                    <div class="venue-image">
+                        🪷
+                        <div class="venue-badges">
+                            <span class="venue-badge">Express</span>
+                            <span class="venue-badge">Thai</span>
+                        </div>
+                        <button class="venue-favorite">🤍</button>
+                    </div>
+                    <div class="venue-content">
+                        <div class="venue-header">
+                            <div class="venue-name">Thai Harmony Massage</div>
+                            <div class="venue-rating">★ 4.5 <span class="venue-reviews">(321)</span></div>
+                        </div>
+                        <div class="venue-location">📍 Fuencarral 88, Malasaña</div>
+                        <div class="venue-quick-tags">
+                            <span class="quick-tag highlight">Walk-ins OK</span>
+                            <span class="quick-tag">Thai</span>
+                            <span class="quick-tag">Deep Tissue</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">From €35 <span>/ session</span></div>
+                            <button class="venue-book">Book</button>
                         </div>
                     </div>
-                    <div class="venue-location">📍 Calle Serrano 45, Madrid 28001</div>
-                    <div class="venue-tags">
-                        <span class="venue-tag">Swedish</span>
-                        <span class="venue-tag">Aromatherapy</span>
-                    </div>
-                    <div class="venue-footer">
-                        <div class="venue-price">€45-75 <span>/ session</span></div>
-                        <button class="venue-book">Book →</button>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="venue-card">
-                <div class="venue-image">
-                    🏛️
-                    <button class="venue-favorite">🤍</button>
-                </div>
-                <div class="venue-content">
-                    <div class="venue-header">
-                        <div class="venue-name">Madrid Royal Spa</div>
-                        <div class="venue-rating">
-                            <span class="venue-stars">★★★★★</span>
-                            <span class="venue-score">4.8</span>
-                            <span class="venue-reviews">(1,023)</span>
+                
+                <div class="venue-card">
+                    <div class="venue-image">
+                        👑
+                        <div class="venue-badges">
+                            <span class="venue-badge">Luxury</span>
+                            <span class="venue-badge">Hammam</span>
                         </div>
+                        <button class="venue-favorite">🤍</button>
                     </div>
-                    <div class="venue-location">📍 Calle Arenal 18, Madrid 28013</div>
-                    <div class="venue-tags">
-                        <span class="venue-tag">Deep Tissue</span>
-                        <span class="venue-tag">Hot Stone</span>
-                        <span class="venue-tag">Couples</span>
-                    </div>
-                    <div class="venue-footer">
-                        <div class="venue-price">€70-120 <span>/ session</span></div>
-                        <button class="venue-book">Book →</button>
+                    <div class="venue-content">
+                        <div class="venue-header">
+                            <div class="venue-name">Four Seasons Spa</div>
+                            <div class="venue-rating">★ 4.9 <span class="venue-reviews">(2,156)</span></div>
+                        </div>
+                        <div class="venue-location">📍 Plaza de Cibeles 1</div>
+                        <div class="venue-quick-tags">
+                            <span class="quick-tag">VIP</span>
+                            <span class="quick-tag">Hot Stone</span>
+                            <span class="quick-tag">Couples</span>
+                        </div>
+                        <div class="venue-footer">
+                            <div class="venue-price">From €95 <span>/ session</span></div>
+                            <button class="venue-book">Book</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- WHY US -->
-    <section class="why" id="why">
-        <div class="section-header">
-            <h2 class="section-title">Why book with Massage Pass?</h2>
-        </div>
-        <div class="why-grid">
-            <div class="why-card">
-                <div class="why-icon">🚫</div>
-                <div class="why-title">No booking fees</div>
-                <div class="why-text">What you see is what you pay. No hidden charges.</div>
+    <!-- WHY FOR NOMADS -->
+    <section class="why">
+        <div class="why-inner">
+            <div class="why-header">
+                <h2>Why nomads choose Massage Pass</h2>
+                <p>Built for people who can't afford to be in pain</p>
             </div>
-            <div class="why-card">
-                <div class="why-icon">⭐</div>
-                <div class="why-title">Verified reviews</div>
-                <div class="why-text">Real reviews from real customers who actually visited.</div>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">🔄</div>
-                <div class="why-title">Free cancellation</div>
-                <div class="why-text">Cancel up to 24 hours before your appointment.</div>
-            </div>
-            <div class="why-card">
-                <div class="why-icon">📱</div>
-                <div class="why-title">Instant confirmation</div>
-                <div class="why-text">Book and get confirmed in seconds, any time.</div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">⚡</div>
+                    <div class="why-title">Same-day booking</div>
+                    <div class="why-text">Don't plan ahead. Book at 2pm, be there at 4pm.</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💨</div>
+                    <div class="why-title">Express sessions</div>
+                    <div class="why-text">30 or 45 min — perfect for a break, not a commitment.</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🚶</div>
+                    <div class="why-title">Walk-ins welcome</div>
+                    <div class="why-text">No 24h advance. Just show up when you need it.</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💻</div>
+                    <div class="why-title">Deep tissue focus</div>
+                    <div class="why-text">Therapists who understand desk posture and laptop shoulder.</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">🌍</div>
+                    <div class="why-title">Used by 12,000+ nomads</div>
+                    <div class="why-text">In Madrid, Lisbon, Barcelona, Berlin, and growing.</div>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">📱</div>
+                    <div class="why-title">Instant confirmation</div>
+                    <div class="why-text">Book in 30 seconds. Get confirmed in real time.</div>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- APP CTA -->
-    <section class="app-cta">
-        <div class="app-cta-inner">
-            <h2>Get the app</h2>
-            <p>Book faster, earn rewards, and never miss an appointment</p>
-            <div class="app-cta-btns">
-                <a href="#" class="app-btn">🍎 Download for iOS</a>
-                <a href="#" class="app-btn">🤖 Download for Android</a>
+    <!-- COWORK PARTNERSHIP -->
+    <section class="cowork-cta" id="contact">
+        <div class="cowork-inner">
+            <h2>For co-working spaces & hostels</h2>
+            <p>Partner with Massage Pass and offer your members/guests exclusive discounts. We handle everything — you just share the link.</p>
+            <div class="cowork-form">
+                <input type="email" placeholder="Your email or workspace name">
+                <button>Partner →</button>
             </div>
         </div>
     </section>
     
-    <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-logo">💆 Massage Pass</div>
-            <div class="footer-links">
-                <a href="#" class="footer-link">About</a>
-                <a href="#" class="footer-link">For venues</a>
-                <a href="#" class="footer-link">Help</a>
-                <a href="#" class="footer-link">Terms</a>
-                <a href="#" class="footer-link">Privacy</a>
-            </div>
-        </div>
+        <div class="footer-logo">💆 Massage Pass</div>
+        <p>Built for remote workers · Madrid · jordan@massagepass.io</p>
     </footer>
     
     <script>
         document.querySelectorAll('.venue-favorite').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
+            btn.addEventListener('click', () => {
                 btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
             });
         });
         
-        document.querySelectorAll('.listing-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.listing-tab').forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-            });
+        document.querySelectorAll('.quick-chip').forEach(chip => {
+            chip.addEventListener('click', () => chip.classList.toggle('active'));
         });
     </script>
 </body>
