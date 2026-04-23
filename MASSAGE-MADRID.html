@@ -2,816 +2,529 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Massage Pass | Book Spas in Madrid</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Pass | Book Spas & Salons Nearby</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         :root {
-            --bg: #ffffff;
-            --bg-secondary: #F9F7F4;
-            --bg-card: #ffffff;
-            --border: #E8E4E0;
-            --text: #1A1A1A;
-            --text-secondary: #6B6B6B;
-            --text-light: #9A9A9A;
-            --accent: #00C9A7;
-            --accent-hover: #00B095;
-            --accent-orange: #FF5C39;
-            --accent-navy: #001E62;
-            --star: #FFB800;
-            --shadow: 0 2px 12px rgba(0,0,0,0.08);
-            --shadow-hover: 0 4px 20px rgba(0,0,0,0.12);
+            --primary: #7B69FF;
+            --primary-hover: #6558E8;
+            --primary-light: #F5F4FF;
+            --bg: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --text: #111827;
+            --text-secondary: #6B7280;
+            --text-light: #9CA3AF;
+            --border: #E5E7EB;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
             --radius: 16px;
-            --radius-sm: 10px;
+            --radius-sm: 12px;
+            --radius-full: 9999px;
         }
-        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-secondary); color: var(--text); line-height: 1.5; padding-bottom: 80px; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
         
-        /* HEADER - Treatwell style */
-        .header {
-            background: var(--bg); border-bottom: 1px solid var(--border);
-            padding: 16px 20px; position: sticky; top: 0; z-index: 100;
+        /* NAVIGATION - Exact Fresha style */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: var(--white); border-bottom: 1px solid var(--border);
+            padding: 0 24px;
         }
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-        .logo { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-        .logo-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .header-actions { display: flex; gap: 12px; }
-        .header-btn { background: none; border: none; font-size: 22px; cursor: pointer; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; color: var(--primary); }
+        .nav-logo-icon { width: 40px; height: 40px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-link { font-size: 14px; font-weight: 600; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .nav-link:hover { color: var(--primary); }
+        .nav-actions { display: flex; gap: 12px; }
+        .nav-btn { padding: 10px 20px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .nav-btn-ghost { background: transparent; border: none; color: var(--text-secondary); }
+        .nav-btn-ghost:hover { color: var(--primary); }
+        .nav-btn-primary { background: var(--primary); border: none; color: var(--white); }
+        .nav-btn-primary:hover { background: var(--primary-hover); }
         
-        /* SEARCH BAR - Treatwell style */
-        .search-bar {
-            background: var(--bg-secondary); border-radius: var(--radius);
-            padding: 4px; display: flex; gap: 4px;
+        /* HERO SECTION */
+        .hero {
+            padding: 140px 24px 80px; text-align: center;
+            background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
+            position: relative; overflow: hidden;
         }
-        .search-field {
-            flex: 1; display: flex; align-items: center; gap: 8px;
-            padding: 12px; border-radius: var(--radius-sm); background: var(--bg);
-            border: none; font-size: 14px; cursor: pointer;
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 800px; background: radial-gradient(circle, rgba(123,105,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
-        .search-field-icon { font-size: 18px; color: var(--text-secondary); }
-        .search-field-text { display: flex; flex-direction: column; }
-        .search-field-text span:first-child { font-size: 13px; font-weight: 600; color: var(--text); }
-        .search-field-text span:last-child { font-size: 11px; color: var(--text-light); }
+        .hero-header { max-width: 700px; margin: 0 auto 40px; position: relative; }
+        .hero-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 14px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600; margin-bottom: 20px; }
+        .hero-title { font-size: clamp(36px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; letter-spacing: -0.02em; }
+        .hero-title span { color: var(--primary); }
+        .hero-subtitle { font-size: 18px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+        
+        /* SEARCH BOX - Exact Fresha style */
+        .search-container { max-width: 900px; margin: 0 auto; position: relative; }
+        .search-box {
+            background: var(--white); border-radius: 24px; padding: 8px;
+            box-shadow: var(--shadow-lg); display: flex; gap: 0;
+            border: 1px solid var(--border);
+        }
+        .search-field { flex: 1; display: flex; align-items: center; gap: 12px; padding: 16px 24px; cursor: pointer; border-right: 1px solid var(--border); }
+        .search-field:last-of-type { border-right: none; }
+        .search-field-icon { font-size: 24px; }
+        .search-field-text { display: flex; flex-direction: column; text-align: left; }
+        .search-field-text .label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .search-field-text .value { font-size: 15px; font-weight: 600; color: var(--text); }
         .search-btn {
-            width: 48px; height: 48px; background: var(--accent); border: none;
-            border-radius: var(--radius-sm); cursor: pointer; font-size: 20px;
+            width: 56px; height: 56px; background: var(--primary); border: none;
+            border-radius: 20px; cursor: pointer; font-size: 24px;
             display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
         }
+        .search-btn:hover { background: var(--primary-hover); }
         
-        /* APP CTA BANNER - Fresha style */
-        .app-banner {
-            background: linear-gradient(135deg, var(--accent-navy) 0%, #003D8F 100%);
-            border-radius: var(--radius); margin: 16px 20px; padding: 20px;
-            display: flex; gap: 16px; align-items: center;
+        /* STATS COUNTER */
+        .stats { display: flex; justify-content: center; gap: 48px; margin-top: 48px; }
+        .stat { text-align: center; }
+        .stat-number { font-size: 32px; font-weight: 800; color: var(--primary); }
+        .stat-label { font-size: 13px; color: var(--text-secondary); }
+        
+        /* CATEGORIES - Fresha style */
+        .categories { padding: 80px 24px; background: var(--white); }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+        .section-subtitle { font-size: 16px; color: var(--text-secondary); }
+        
+        .category-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; }
+        .category-card {
+            background: var(--bg-secondary); border-radius: 20px; padding: 24px 16px;
+            text-align: center; cursor: pointer; transition: all 0.3s;
+            border: 2px solid transparent;
         }
-        .app-banner-icon { font-size: 48px; }
-        .app-banner-text { flex: 1; color: white; }
-        .app-banner-text h3 { font-size: 16px; margin-bottom: 4px; }
-        .app-banner-text p { font-size: 12px; opacity: 0.9; }
-        .app-banner-btn { background: var(--accent); color: var(--text); padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; }
+        .category-card:hover { border-color: var(--primary); background: var(--white); transform: translateY(-4px); }
+        .category-icon { font-size: 40px; margin-bottom: 12px; }
+        .category-name { font-size: 13px; font-weight: 600; }
         
-        /* CATEGORY CHIPS - Treatwell style */
-        .section { padding: 20px; }
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-        .section-title { font-size: 18px; font-weight: 700; }
-        .section-link { font-size: 13px; color: var(--accent); text-decoration: none; font-weight: 600; }
+        /* LISTING SECTION */
+        .listings { padding: 0 24px 80px; background: var(--bg-secondary); }
+        .listings-inner { max-width: 1100px; margin: 0 auto; }
+        .listings-header { display: flex; justify-content: space-between; align-items: center; padding: 32px 0; }
+        .listings-title { font-size: 22px; font-weight: 700; }
+        .listings-tabs { display: flex; gap: 8px; }
+        .listing-tab { padding: 8px 16px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600; background: var(--white); border: 1px solid var(--border); cursor: pointer; }
+        .listing-tab.active { background: var(--primary); color: var(--white); border-color: var(--primary); }
         
-        .category-scroll { display: flex; gap: 10px; overflow-x: auto; padding: 0 20px; margin: 0 -20px; scrollbar-width: none; -ms-overflow-style: none; }
-        .category-scroll::-webkit-scrollbar { display: none; }
-        .category-chip {
-            flex-shrink: 0; background: var(--bg); border: 1px solid var(--border);
-            border-radius: 20px; padding: 10px 18px; font-size: 13px; font-weight: 600;
-            display: flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap;
-            transition: all 0.2s;
+        /* VENUE CARDS - Exact Fresha style */
+        .venue-card {
+            background: var(--white); border-radius: 20px; overflow: hidden;
+            box-shadow: var(--shadow-sm); margin-bottom: 20px;
+            transition: all 0.3s;
         }
-        .category-chip:hover { border-color: var(--accent); }
-        .category-chip.active { background: var(--accent); color: var(--text); border-color: var(--accent); }
-        .category-chip .icon { font-size: 18px; }
+        .venue-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
         
-        /* SPA CARDS - Treatwell exact style */
-        .spa-card {
-            background: var(--bg-card); border-radius: var(--radius); overflow: hidden;
-            box-shadow: var(--shadow); margin-bottom: 16px;
-            transition: transform 0.2s, box-shadow 0.2s;
+        .venue-image { position: relative; height: 200px; background: linear-gradient(135deg, #E8F5F9 0%, #D4E9F0 100%); display: flex; align-items: center; justify-content: center; font-size: 72px; }
+        .venue-badge { position: absolute; top: 16px; left: 16px; background: var(--primary); color: var(--white); padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        .venue-favorite { position: absolute; top: 16px; right: 16px; width: 40px; height: 40px; background: var(--white); border: none; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        
+        .venue-content { padding: 20px; }
+        .venue-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+        .venue-name { font-size: 18px; font-weight: 700; }
+        .venue-rating { display: flex; align-items: center; gap: 6px; }
+        .venue-stars { color: #FFB800; font-size: 14px; }
+        .venue-score { font-size: 14px; font-weight: 700; }
+        .venue-reviews { font-size: 12px; color: var(--text-light); }
+        
+        .venue-location { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; display: flex; align-items: center; gap: 4px; }
+        .venue-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+        .venue-tag { background: var(--bg-secondary); padding: 6px 12px; border-radius: 8px; font-size: 12px; color: var(--text-secondary); }
+        
+        .venue-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--border); }
+        .venue-price { font-size: 20px; font-weight: 800; color: var(--text); }
+        .venue-price span { font-size: 13px; font-weight: 500; color: var(--text-light); }
+        .venue-book { background: var(--primary); color: var(--white); padding: 12px 24px; border-radius: var(--radius-full); border: none; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+        .venue-book:hover { background: var(--primary-hover); }
+        
+        /* TESTIMONIALS - Fresha style */
+        .testimonials { padding: 80px 24px; background: var(--white); }
+        .testimonials-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .testimonial-card { background: var(--bg-secondary); border-radius: 20px; padding: 24px; }
+        .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .testimonial-avatar { width: 48px; height: 48px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .testimonial-meta .name { font-size: 15px; font-weight: 700; }
+        .testimonial-meta .location { font-size: 12px; color: var(--text-secondary); }
+        .testimonial-stars { color: #FFB800; font-size: 14px; margin-bottom: 8px; }
+        .testimonial-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        
+        /* APP DOWNLOAD - Fresha style */
+        .app-cta { padding: 80px 24px; background: linear-gradient(135deg, var(--primary) 0%, #6558E8 100%); text-align: center; color: var(--white); }
+        .app-cta-inner { max-width: 600px; margin: 0 auto; }
+        .app-cta h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+        .app-cta p { font-size: 16px; opacity: 0.9; margin-bottom: 24px; }
+        .app-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .app-btn { background: var(--white); color: var(--primary); padding: 14px 28px; border-radius: var(--radius-full); font-size: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        
+        /* FOOTER */
+        .footer { padding: 48px 24px; background: var(--text); color: var(--white); }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+        .footer-logo { font-size: 20px; font-weight: 800; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-link { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; }
+        .footer-link:hover { color: var(--white); }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding: 120px 20px 60px; }
+            .search-box { flex-direction: column; gap: 8px; padding: 12px; }
+            .search-field { border-right: none; border-bottom: 1px solid var(--border); padding: 14px 16px; }
+            .search-field:last-of-type { border-bottom: none; }
+            .search-btn { width: 100%; height: 50px; border-radius: 16px; }
+            .stats { flex-wrap: wrap; gap: 24px; }
+            .category-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+            .category-card { padding: 16px 8px; }
+            .category-icon { font-size: 28px; }
+            .listings-header { flex-direction: column; gap: 12px; }
+            .venue-footer { flex-direction: column; gap: 12px; align-items: stretch; }
+            .venue-book { text-align: center; }
+            .footer-inner { flex-direction: column; text-align: center; }
         }
-        .spa-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-        
-        .spa-card-image { position: relative; height: 160px; background: linear-gradient(135deg, #e8f5f2 0%, #d0ece7 100%); display: flex; align-items: center; justify-content: center; font-size: 64px; }
-        .spa-card-badge {
-            position: absolute; top: 12px; left: 12px;
-            background: var(--accent); color: white;
-            padding: 4px 10px; border-radius: 6px;
-            font-size: 10px; font-weight: 700; text-transform: uppercase;
-        }
-        .spa-card-badge.top { background: var(--star); color: var(--text); }
-        .spa-card-badge.new { background: var(--accent-orange); }
-        .spa-card-favorite {
-            position: absolute; top: 12px; right: 12px;
-            width: 36px; height: 36px; background: white; border: none;
-            border-radius: 50%; font-size: 18px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        .spa-card-content { padding: 16px; }
-        .spa-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-        .spa-card-name { font-size: 16px; font-weight: 600; }
-        .spa-card-rating { display: flex; align-items: center; gap: 4px; font-size: 13px; }
-        .spa-card-stars { color: var(--star); }
-        .spa-card-reviews { color: var(--text-light); font-size: 12px; }
-        
-        .spa-card-location { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: flex; align-items: center; gap: 4px; }
-        
-        .spa-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-        .spa-card-tag {
-            background: var(--bg-secondary); padding: 4px 10px; border-radius: 6px;
-            font-size: 11px; color: var(--text-secondary);
-        }
-        
-        .spa-card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
-        .spa-card-price { font-size: 18px; font-weight: 700; color: var(--text); }
-        .spa-card-price span { font-size: 12px; font-weight: 400; color: var(--text-light); }
-        .spa-card-book {
-            background: var(--accent); color: white; padding: 10px 20px;
-            border-radius: var(--radius-sm); border: none; font-weight: 600; font-size: 14px; cursor: pointer;
-        }
-        
-        /* REVIEW PREVIEW - Spafinder style */
-        .spa-card-review {
-            padding: 12px 16px; background: var(--bg-secondary); border-top: 1px solid var(--border);
-            display: flex; align-items: flex-start; gap: 8px;
-        }
-        .spa-card-review .quote { color: var(--accent); font-size: 20px; line-height: 1; }
-        .spa-card-review p { font-size: 12px; color: var(--text-secondary); font-style: italic; }
-        
-        /* DEALS BANNER */
-        .deals-banner {
-            background: linear-gradient(135deg, var(--accent-orange) 0%, #FF8A6C 100%);
-            border-radius: var(--radius); margin: 0 20px 20px; padding: 20px;
-            display: flex; gap: 16px; align-items: center;
-        }
-        .deals-icon { font-size: 48px; }
-        .deals-text { flex: 1; color: white; }
-        .deals-text h3 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-        .deals-text p { font-size: 13px; opacity: 0.95; }
-        .deals-code { background: white; color: var(--accent-orange); padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 14px; }
-        
-        /* TRENDING CAROUSEL - Fresha style */
-        .trending-card {
-            flex-shrink: 0; width: 280px; background: var(--bg-card);
-            border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
-        }
-        .trending-image { height: 120px; background: linear-gradient(135deg, #e8f5f2 0%, #d0ece7 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; }
-        .trending-content { padding: 14px; }
-        .trending-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-        .trending-meta { font-size: 12px; color: var(--text-secondary); }
-        
-        /* BOTTOM NAV - Fresha style */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg);
-            border-top: 1px solid var(--border); display: flex; padding: 8px 0;
-            padding-bottom: max(8px, env(safe-area-inset-bottom));
-        }
-        .nav-item {
-            flex: 1; display: flex; flex-direction: column; align-items: center;
-            gap: 4px; padding: 8px; text-decoration: none; color: var(--text-light);
-            font-size: 11px; font-weight: 600; cursor: pointer;
-            transition: color 0.2s;
-        }
-        .nav-item.active { color: var(--accent); }
-        .nav-item .icon { font-size: 24px; }
-        .nav-item.active .icon { transform: scale(1.1); }
-        
-        /* PAGE SECTIONS */
-        .page { display: none; }
-        .page.active { display: block; }
-        
-        /* EXPLORE PAGE */
-        .explore-header {
-            background: var(--bg); padding: 16px 20px; border-bottom: 1px solid var(--border);
-            position: sticky; top: 0; z-index: 90;
-        }
-        .explore-title { font-size: 24px; font-weight: 700; margin-bottom: 14px; }
-        
-        .filter-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
-        .filter-btn {
-            flex-shrink: 0; background: var(--bg); border: 1px solid var(--border);
-            border-radius: 20px; padding: 8px 16px; font-size: 13px; font-weight: 600;
-            display: flex; align-items: center; gap: 6px; cursor: pointer;
-        }
-        .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
-        
-        /* BOOKINGS PAGE */
-        .booking-tab-bar {
-            display: flex; gap: 4px; padding: 4px; background: var(--bg-secondary);
-            border-radius: 12px; margin: 0 20px 16px;
-        }
-        .booking-tab {
-            flex: 1; padding: 10px; text-align: center; border-radius: 10px;
-            font-size: 13px; font-weight: 600; cursor: pointer;
-        }
-        .booking-tab.active { background: var(--bg); box-shadow: var(--shadow); }
-        
-        .booking-card {
-            background: var(--bg-card); border-radius: var(--radius); padding: 16px;
-            margin: 0 20px 12px; box-shadow: var(--shadow);
-        }
-        .booking-card-header { display: flex; gap: 12px; margin-bottom: 12px; }
-        .booking-card-image { width: 60px; height: 60px; background: var(--bg-secondary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
-        .booking-card-info { flex: 1; }
-        .booking-card-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-        .booking-card-service { font-size: 13px; color: var(--text-secondary); }
-        .booking-card-datetime { font-size: 12px; color: var(--accent); font-weight: 600; }
-        .booking-card-footer { display: flex; gap: 8px; }
-        .booking-card-btn {
-            flex: 1; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: 600;
-            text-align: center; cursor: pointer; border: none;
-        }
-        .booking-card-btn.secondary { background: var(--bg-secondary); color: var(--text); }
-        .booking-card-btn.primary { background: var(--accent); color: white; }
-        
-        /* FAVORITES PAGE */
-        .empty-state { text-align: center; padding: 60px 40px; }
-        .empty-state .icon { font-size: 64px; margin-bottom: 16px; }
-        .empty-state h3 { font-size: 18px; margin-bottom: 8px; }
-        .empty-state p { font-size: 14px; color: var(--text-secondary); }
-        
-        /* PROFILE PAGE */
-        .profile-header { background: var(--bg); padding: 24px 20px; text-align: center; border-bottom: 1px solid var(--border); }
-        .profile-avatar { width: 80px; height: 80px; background: var(--accent); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
-        .profile-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-        .profile-email { font-size: 14px; color: var(--text-secondary); }
-        
-        .points-card {
-            background: linear-gradient(135deg, var(--accent-navy) 0%, #003D8F 100%);
-            border-radius: var(--radius); margin: 16px 20px; padding: 20px;
-            color: white; text-align: center;
-        }
-        .points-card .points { font-size: 36px; font-weight: 700; }
-        .points-card .label { font-size: 13px; opacity: 0.9; }
-        .points-card .progress { height: 6px; background: rgba(255,255,255,0.3); border-radius: 3px; margin: 12px 0; overflow: hidden; }
-        .points-card .progress-fill { height: 100%; background: var(--accent); border-radius: 3px; width: 65%; }
-        .points-card .next { font-size: 12px; opacity: 0.9; }
-        
-        .profile-menu {
-            background: var(--bg-card); margin: 0 20px;
-            border-radius: var(--radius); overflow: hidden;
-        }
-        .profile-menu-item {
-            display: flex; align-items: center; gap: 14px;
-            padding: 16px 20px; border-bottom: 1px solid var(--border);
-            font-size: 15px; cursor: pointer;
-        }
-        .profile-menu-item:last-child { border-bottom: none; }
-        .profile-menu-item .icon { font-size: 22px; }
-        .profile-menu-item .arrow { margin-left: auto; color: var(--text-light); }
-        
-        /* MODAL */
-        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: flex-end; }
-        .modal.active { display: flex; }
-        .modal-content { background: var(--bg); border-radius: var(--radius) var(--radius) 0 0; padding: 24px; width: 100%; max-height: 90vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .modal-header h3 { font-size: 18px; }
-        .modal-close { background: none; border: none; font-size: 24px; cursor: pointer; }
-        
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
-        .form-group input, .form-group select { width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 10px; font-size: 15px; background: var(--bg); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        
-        .submit-btn { width: 100%; background: var(--accent); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; }
-        
-        .success-icon { text-align: center; font-size: 72px; margin-bottom: 16px; }
-        .success-content { text-align: center; }
-        .success-content h3 { font-size: 22px; margin-bottom: 8px; color: var(--accent); }
-        .success-ref { font-size: 28px; font-weight: 800; color: var(--text); display: block; margin: 12px 0; }
-        .success-content p { color: var(--text-secondary); margin-bottom: 20px; }
-        .success-close { width: 100%; background: var(--bg-secondary); color: var(--text); padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; }
-        
-        /* MAP VIEW */
-        .map-container { height: 400px; background: var(--bg-secondary); border-radius: var(--radius); margin: 16px 20px; overflow: hidden; }
-        .map-container iframe { width: 100%; height: 100%; border: none; }
-        
-        /* QUICK FILTERS */
-        .quick-filters { padding: 12px 20px; display: flex; gap: 8px; overflow-x: auto; }
-        .quick-chip {
-            flex-shrink: 0; background: var(--bg); border: 1px solid var(--border);
-            border-radius: 20px; padding: 8px 14px; font-size: 12px; font-weight: 600;
-            display: flex; align-items: center; gap: 4px;
-        }
-        .quick-chip.active { background: var(--accent); color: white; border-color: var(--accent); }
-        
-        /* VIEW TOGGLE */
-        .view-toggle { display: flex; gap: 4px; margin-left: auto; }
-        .view-btn { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg); font-size: 14px; cursor: pointer; }
-        .view-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
     </style>
 </head>
 <body>
-    <!-- HOME PAGE -->
-    <div class="page active" id="page-home">
-        <header class="header">
-            <div class="header-top">
-                <div class="logo">
-                    <span class="logo-icon">💆</span>
-                    Massage Pass
-                </div>
-                <div class="header-actions">
-                    <button class="header-btn">🔔</button>
-                    <button class="header-btn">👤</button>
-                </div>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <span class="nav-logo-icon">💆</span>
+                Massage Pass
+            </a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Beauty</a>
+                <a href="#" class="nav-link">Massage</a>
+                <a href="#" class="nav-link">Hair</a>
+                <a href="#" class="nav-link">Nails</a>
+                <a href="#" class="nav-link">More</a>
             </div>
-            <div class="search-bar">
-                <div class="search-field" onclick="switchTab('explore')">
-                    <span class="search-field-icon">📍</span>
-                    <div class="search-field-text">
-                        <span>Madrid</span>
-                        <span>Location</span>
-                    </div>
-                </div>
-                <div class="search-field" onclick="switchTab('explore')">
-                    <span class="search-field-icon">💆</span>
-                    <div class="search-field-text">
-                        <span>Massage</span>
-                        <span>Treatment</span>
-                    </div>
-                </div>
-                <button class="search-btn" onclick="switchTab('explore')">🔍</button>
-            </div>
-        </header>
-        
-        <!-- App Banner -->
-        <div class="app-banner">
-            <span class="app-banner-icon">📱</span>
-            <div class="app-banner-text">
-                <h3>Get the App</h3>
-                <p>Book faster, earn rewards</p>
-            </div>
-            <a href="#" class="app-banner-btn">Download</a>
-        </div>
-        
-        <!-- Categories - Treatwell style -->
-        <div class="section-header" style="padding: 0 20px; margin-bottom: 12px;">
-            <span class="section-title">What do you need?</span>
-        </div>
-        <div class="category-scroll">
-            <div class="category-chip active" onclick="selectCategory(this)"><span class="icon">💆</span> Massage</div>
-            <div class="category-chip" onclick="selectCategory(this)"><span class="icon">🧖‍♀️</span> Facial</div>
-            <div class="category-chip" onclick="selectCategory(this)"><span class="icon">💅</span> Nails</div>
-            <div class="category-chip" onclick="selectCategory(this)"><span class="icon">🧔</span> Barber</div>
-            <div class="category-chip" onclick="selectCategory(this)"><span class="icon">👁️</span> Beauty</div>
-            <div class="category-chip" onclick="selectCategory(this)"><span class="icon">🔥</span> Hot Stone</div>
-            <div class="category-chip" onclick="selectCategory(this)"><span class="icon">💑</span> Couples</div>
-        </div>
-        
-        <!-- Deals Banner - Fresha style -->
-        <div class="deals-banner">
-            <span class="deals-icon">🎁</span>
-            <div class="deals-text">
-                <h3>15% Off First Booking!</h3>
-                <p>Use code BIENVENIDO at checkout</p>
-            </div>
-            <span class="deals-code">BIENVENIDO</span>
-        </div>
-        
-        <!-- Trending - Fresha style -->
-        <div class="section">
-            <div class="section-header">
-                <span class="section-title">🔥 Trending near you</span>
-                <a href="#" class="section-link">See all</a>
-            </div>
-            <div class="category-scroll">
-                <div class="trending-card">
-                    <div class="trending-image">🧖‍♀️</div>
-                    <div class="trending-content">
-                        <div class="trending-name">Wellness Center Centro</div>
-                        <div class="trending-meta">⭐ 4.8 (847) • €55起</div>
-                    </div>
-                </div>
-                <div class="trending-card">
-                    <div class="trending-image">✨</div>
-                    <div class="trending-content">
-                        <div class="trending-name">Serenity Spa</div>
-                        <div class="trending-meta">⭐ 4.9 (1.2k) • €65起</div>
-                    </div>
-                </div>
-                <div class="trending-card">
-                    <div class="trending-image">👑</div>
-                    <div class="trending-content">
-                        <div class="trending-name">Four Seasons Spa</div>
-                        <div class="trending-meta">⭐ 4.9 (2.1k) • €120起</div>
-                    </div>
-                </div>
+            <div class="nav-actions">
+                <button class="nav-btn nav-btn-ghost">Sign in</button>
+                <button class="nav-btn nav-btn-primary">Book now</button>
             </div>
         </div>
-        
-        <!-- Top Rated -->
-        <div class="section">
-            <div class="section-header">
-                <span class="section-title">⭐ Top Rated</span>
-                <a href="#" class="section-link">See all</a>
-            </div>
-            
-            <div class="spa-card">
-                <div class="spa-card-image">🧖‍♀️
-                    <span class="spa-card-badge top">Top Rated</span>
-                    <button class="spa-card-favorite" onclick="toggleFavorite(this)">🤍</button>
-                </div>
-                <div class="spa-card-content">
-                    <div class="spa-card-header">
-                        <div class="spa-card-name">Wellness Center Madrid Centro</div>
-                        <div class="spa-card-rating">
-                            <span class="spa-card-stars">★</span>
-                            <span>4.8</span>
-                            <span class="spa-card-reviews">(847)</span>
-                        </div>
-                    </div>
-                    <div class="spa-card-location">📍 Gran Vía 28, Madrid</div>
-                    <div class="spa-card-tags">
-                        <span class="spa-card-tag">Swedish</span>
-                        <span class="spa-card-tag">Deep Tissue</span>
-                        <span class="spa-card-tag">Hot Stone</span>
-                    </div>
-                    <div class="spa-card-footer">
-                        <div class="spa-card-price">€55-95 <span>/ session</span></div>
-                        <button class="spa-card-book" onclick="openBooking('Wellness Center Madrid Centro')">Book</button>
-                    </div>
-                </div>
-                <div class="spa-card-review">
-                    <span class="quote">"</span>
-                    <p>"Best massage in Madrid, hands down. The hot stone is incredible."</p>
-                </div>
-            </div>
-            
-            <div class="spa-card">
-                <div class="spa-card-image">✨
-                    <span class="spa-card-badge new">Most Popular</span>
-                    <button class="spa-card-favorite" onclick="toggleFavorite(this)">🤍</button>
-                </div>
-                <div class="spa-card-content">
-                    <div class="spa-card-header">
-                        <div class="spa-card-name">Serenity Spa & Massage</div>
-                        <div class="spa-card-rating">
-                            <span class="spa-card-stars">★</span>
-                            <span>4.9</span>
-                            <span class="spa-card-reviews">(1,243)</span>
-                        </div>
-                    </div>
-                    <div class="spa-card-location">📍 Plaza Mayor 15, Madrid</div>
-                    <div class="spa-card-tags">
-                        <span class="spa-card-tag">Swedish</span>
-                        <span class="spa-card-tag">Aromatherapy</span>
-                    </div>
-                    <div class="spa-card-footer">
-                        <div class="spa-card-price">€65-110 <span>/ session</span></div>
-                        <button class="spa-card-book" onclick="openBooking('Serenity Spa & Massage')">Book</button>
-                    </div>
-                </div>
-                <div class="spa-card-review">
-                    <span class="quote">"</span>
-                    <p>"Absolutely incredible experience. Will definitely return!"</p>
-                </div>
-            </div>
-            
-            <div class="spa-card">
-                <div class="spa-card-image">👑
-                    <span class="spa-card-badge">Luxury</span>
-                    <button class="spa-card-favorite" onclick="toggleFavorite(this)">🤍</button>
-                </div>
-                <div class="spa-card-content">
-                    <div class="spa-card-header">
-                        <div class="spa-card-name">The Spa at Four Seasons</div>
-                        <div class="spa-card-rating">
-                            <span class="spa-card-stars">★</span>
-                            <span>4.9</span>
-                            <span class="spa-card-reviews">(2,156)</span>
-                        </div>
-                    </div>
-                    <div class="spa-card-location">📍 Plaza de Cibeles 1, Madrid</div>
-                    <div class="spa-card-tags">
-                        <span class="spa-card-tag">All Treatments</span>
-                        <span class="spa-card-tag">VIP</span>
-                        <span class="spa-card-tag">Hammam</span>
-                    </div>
-                    <div class="spa-card-footer">
-                        <div class="spa-card-price">€120-200 <span>/ session</span></div>
-                        <button class="spa-card-book" onclick="openBooking('The Spa at Four Seasons')">Book</button>
-                    </div>
-                </div>
-                <div class="spa-card-review">
-                    <span class="quote">"</span>
-                    <p>"Pure luxury. Perfect for special occasions."</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- EXPLORE PAGE -->
-    <div class="page" id="page-explore">
-        <div class="explore-header">
-            <div class="explore-title">Explore Spas</div>
-            <div class="filter-row">
-                <div class="filter-btn active" onclick="setFilter(this, 'all')">All</div>
-                <div class="filter-btn" onclick="setFilter(this, 'nearme')">📍 Near Me</div>
-                <div class="filter-btn" onclick="setFilter(this, 'toprated')">⭐ Top Rated</div>
-                <div class="filter-btn" onclick="setFilter(this, 'deals')">🔥 Deals</div>
-                <div class="filter-btn" onclick="setFilter(this, 'couples')">💑 Couples</div>
-                <div class="filter-btn" onclick="setFilter(this, 'budget')">💰 Budget</div>
-            </div>
-        </div>
-        
-        <div class="quick-filters">
-            <div class="quick-chip active" onclick="toggleQuick(this)">Swedish</div>
-            <div class="quick-chip" onclick="toggleQuick(this)">Deep Tissue</div>
-            <div class="quick-chip" onclick="toggleQuick(this)">Hot Stone</div>
-            <div class="quick-chip" onclick="toggleQuick(this)">Sports</div>
-            <div class="quick-chip" onclick="toggleQuick(this)">Aromatherapy</div>
-        </div>
-        
-        <div id="explore-results">
-            <div class="spa-card" style="margin: 16px 20px;">
-                <div class="spa-card-image">🧖‍♀️
-                    <span class="spa-card-badge top">Top Rated</span>
-                    <button class="spa-card-favorite">🤍</button>
-                </div>
-                <div class="spa-card-content">
-                    <div class="spa-card-header">
-                        <div class="spa-card-name">Wellness Center Madrid Centro</div>
-                        <div class="spa-card-rating">★ 4.8 <span class="spa-card-reviews">(847)</span></div>
-                    </div>
-                    <div class="spa-card-location">📍 Gran Vía 28, Madrid</div>
-                    <div class="spa-card-tags">
-                        <span class="spa-card-tag">Swedish</span>
-                        <span class="spa-card-tag">Deep Tissue</span>
-                    </div>
-                    <div class="spa-card-footer">
-                        <div class="spa-card-price">€55-95</div>
-                        <button class="spa-card-book" onclick="openBooking('Wellness Center Madrid Centro')">Book</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="spa-card" style="margin: 0 20px 16px;">
-                <div class="spa-card-image">✨
-                    <button class="spa-card-favorite">🤍</button>
-                </div>
-                <div class="spa-card-content">
-                    <div class="spa-card-header">
-                        <div class="spa-card-name">Serenity Spa & Massage</div>
-                        <div class="spa-card-rating">★ 4.9 <span class="spa-card-reviews">(1,243)</span></div>
-                    </div>
-                    <div class="spa-card-location">📍 Plaza Mayor 15, Madrid</div>
-                    <div class="spa-card-tags">
-                        <span class="spa-card-tag">Swedish</span>
-                        <span class="spa-card-tag">Aromatherapy</span>
-                    </div>
-                    <div class="spa-card-footer">
-                        <div class="spa-card-price">€65-110</div>
-                        <button class="spa-card-book" onclick="openBooking('Serenity Spa & Massage')">Book</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- BOOKINGS PAGE -->
-    <div class="page" id="page-bookings">
-        <div class="explore-header">
-            <div class="explore-title">My Bookings</div>
-        </div>
-        <div class="booking-tab-bar">
-            <div class="booking-tab active" onclick="setBookingTab(this, 'upcoming')">Upcoming</div>
-            <div class="booking-tab" onclick="setBookingTab(this, 'past')">Past</div>
-        </div>
-        
-        <div class="booking-card">
-            <div class="booking-card-header">
-                <div class="booking-card-image">🧖‍♀️</div>
-                <div class="booking-card-info">
-                    <div class="booking-card-name">Wellness Center Madrid Centro</div>
-                    <div class="booking-card-service">Swedish Massage</div>
-                    <div class="booking-card-datetime">📅 Tomorrow, 2:00 PM</div>
-                </div>
-            </div>
-            <div class="booking-card-footer">
-                <button class="booking-card-btn secondary">Cancel</button>
-                <button class="booking-card-btn primary">Reschedule</button>
-            </div>
-        </div>
-        
-        <div class="booking-card">
-            <div class="booking-card-header">
-                <div class="booking-card-image">✨</div>
-                <div class="booking-card-info">
-                    <div class="booking-card-name">Serenity Spa & Massage</div>
-                    <div class="booking-card-service">Hot Stone Massage</div>
-                    <div class="booking-card-datetime">📅 Apr 28, 4:00 PM</div>
-                </div>
-            </div>
-            <div class="booking-card-footer">
-                <button class="booking-card-btn secondary">Cancel</button>
-                <button class="booking-card-btn primary">Reschedule</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- FAVORITES PAGE -->
-    <div class="page" id="page-favorites">
-        <div class="explore-header">
-            <div class="explore-title">My Favorites</div>
-        </div>
-        
-        <div class="empty-state">
-            <div class="icon">❤️</div>
-            <h3>No favorites yet</h3>
-            <p>Save your favorite spas to book them quickly later.</p>
-        </div>
-    </div>
-    
-    <!-- PROFILE PAGE -->
-    <div class="page" id="page-profile">
-        <div class="profile-header">
-            <div class="profile-avatar">👤</div>
-            <div class="profile-name">Guest User</div>
-            <div class="profile-email">guest@email.com</div>
-        </div>
-        
-        <div class="points-card">
-            <div class="points">650</div>
-            <div class="label">Points Balance</div>
-            <div class="progress"><div class="progress-fill"></div></div>
-            <div class="next">350 more points for a free massage!</div>
-        </div>
-        
-        <div class="profile-menu">
-            <div class="profile-menu-item">
-                <span class="icon">📋</span>
-                <span>My Bookings</span>
-                <span class="arrow">→</span>
-            </div>
-            <div class="profile-menu-item">
-                <span class="icon">🎁</span>
-                <span>Rewards & Offers</span>
-                <span class="arrow">→</span>
-            </div>
-            <div class="profile-menu-item">
-                <span class="icon">📍</span>
-                <span>Saved Locations</span>
-                <span class="arrow">→</span>
-            </div>
-            <div class="profile-menu-item">
-                <span class="icon">🔔</span>
-                <span>Notifications</span>
-                <span class="arrow">→</span>
-            </div>
-            <div class="profile-menu-item">
-                <span class="icon">⚙️</span>
-                <span>Settings</span>
-                <span class="arrow">→</span>
-            </div>
-            <div class="profile-menu-item">
-                <span class="icon">❓</span>
-                <span>Help & Support</span>
-                <span class="arrow">→</span>
-            </div>
-        </div>
-    </div>
-    
-    <!-- BOTTOM NAV -->
-    <nav class="bottom-nav">
-        <a class="nav-item active" onclick="switchTab('home')">
-            <span class="icon">🏠</span>
-            <span>Home</span>
-        </a>
-        <a class="nav-item" onclick="switchTab('explore')">
-            <span class="icon">🔍</span>
-            <span>Explore</span>
-        </a>
-        <a class="nav-item" onclick="switchTab('bookings')">
-            <span class="icon">📅</span>
-            <span>Bookings</span>
-        </a>
-        <a class="nav-item" onclick="switchTab('favorites')">
-            <span class="icon">❤️</span>
-            <span>Favorites</span>
-        </a>
-        <a class="nav-item" onclick="switchTab('profile')">
-            <span class="icon">👤</span>
-            <span>Profile</span>
-        </a>
     </nav>
     
-    <!-- BOOKING MODAL -->
-    <div class="modal" id="booking-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Book Appointment</h3>
-                <button class="modal-close" onclick="closeModal('booking-modal')">×</button>
-            </div>
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" id="booking-name" placeholder="Your name">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" id="booking-email" placeholder="your@email.com">
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Date</label>
-                    <input type="date" id="booking-date">
-                </div>
-                <div class="form-group">
-                    <label>Time</label>
-                    <select id="booking-time">
-                        <option value="">Select</option>
-                        <option>10:00 AM</option>
-                        <option>11:00 AM</option>
-                        <option>12:00 PM</option>
-                        <option>2:00 PM</option>
-                        <option>3:00 PM</option>
-                        <option>4:00 PM</option>
-                        <option>5:00 PM</option>
-                        <option>6:00 PM</option>
-                    </select>
-                </div>
-            </div>
-            <button class="submit-btn" onclick="submitBooking()">Confirm Booking</button>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-header">
+            <div class="hero-badge">✨ No booking fees • Free cancellations</div>
+            <h1 class="hero-title">Book <span>beauty & wellness</span> near you</h1>
+            <p class="hero-subtitle">Discover and book appointments at top-rated salons, spas, and barbers nearby. No booking fees.</p>
         </div>
-    </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <div class="search-field">
+                    <span class="search-field-icon">📍</span>
+                    <div class="search-field-text">
+                        <span class="label">Location</span>
+                        <span class="value">Madrid, Spain</span>
+                    </div>
+                </div>
+                <div class="search-field">
+                    <span class="search-field-icon">💆</span>
+                    <div class="search-field-text">
+                        <span class="label">Service</span>
+                        <span class="value">Massage, Facial, Hair...</span>
+                    </div>
+                </div>
+                <button class="search-btn">🔍</button>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Partner venues</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">12M+</div>
+                <div class="stat-label">Bookings made</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Average rating</div>
+            </div>
+        </div>
+    </section>
     
-    <!-- SUCCESS MODAL -->
-    <div class="modal" id="success-modal">
-        <div class="modal-content">
-            <div class="success-icon">✅</div>
-            <div class="success-content">
-                <h3>Booking Confirmed!</h3>
-                <span class="success-ref" id="success-ref">MR-2026-0001</span>
-                <p>Confirmation sent to your email. See you soon!</p>
-                <button class="success-close" onclick="closeModal('success-modal')">Done</button>
+    <!-- CATEGORIES -->
+    <section class="categories">
+        <div class="section-header">
+            <h2 class="section-title">What do you need?</h2>
+            <p class="section-subtitle">Browse by category to find the perfect service</p>
+        </div>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">💆</div>
+                <div class="category-name">Massage</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🧖‍♀️</div>
+                <div class="category-name">Facial</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💇</div>
+                <div class="category-name">Hair</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💅</div>
+                <div class="category-name">Nails</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🧔</div>
+                <div class="category-name">Barber</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👁️</div>
+                <div class="category-name">Beauty</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🔥</div>
+                <div class="category-name">Hot Stone</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💑</div>
+                <div class="category-name">Couples</div>
             </div>
         </div>
-    </div>
+    </section>
+    
+    <!-- LISTINGS -->
+    <section class="listings">
+        <div class="listings-inner">
+            <div class="listings-header">
+                <h2 class="listings-title">Popular near Madrid</h2>
+                <div class="listings-tabs">
+                    <div class="listing-tab active">All</div>
+                    <div class="listing-tab">Top Rated</div>
+                    <div class="listing-tab">Nearby</div>
+                    <div class="listing-tab">Deals</div>
+                </div>
+            </div>
+            
+            <!-- Venue Card -->
+            <div class="venue-card">
+                <div class="venue-image">
+                    🧖‍♀️
+                    <span class="venue-badge">Top Rated</span>
+                    <button class="venue-favorite">🤍</button>
+                </div>
+                <div class="venue-content">
+                    <div class="venue-header">
+                        <div class="venue-name">Wellness Center Madrid Centro</div>
+                        <div class="venue-rating">
+                            <span class="venue-stars">★★★★★</span>
+                            <span class="venue-score">4.8</span>
+                            <span class="venue-reviews">(847 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="venue-location">📍 Gran Vía 28, Madrid 28013</div>
+                    <div class="venue-tags">
+                        <span class="venue-tag">Swedish Massage</span>
+                        <span class="venue-tag">Deep Tissue</span>
+                        <span class="venue-tag">Hot Stone</span>
+                    </div>
+                    <div class="venue-footer">
+                        <div class="venue-price">€55-95 <span>/ session</span></div>
+                        <button class="venue-book" onclick="openBooking('Wellness Center Madrid Centro')">Book →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Venue Card -->
+            <div class="venue-card">
+                <div class="venue-image">
+                    ✨
+                    <span class="venue-badge" style="background: #FF5C39;">Most Popular</span>
+                    <button class="venue-favorite">🤍</button>
+                </div>
+                <div class="venue-content">
+                    <div class="venue-header">
+                        <div class="venue-name">Serenity Spa & Massage</div>
+                        <div class="venue-rating">
+                            <span class="venue-stars">★★★★★</span>
+                            <span class="venue-score">4.9</span>
+                            <span class="venue-reviews">(1,243 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="venue-location">📍 Plaza Mayor 15, Madrid 28012</div>
+                    <div class="venue-tags">
+                        <span class="venue-tag">Swedish</span>
+                        <span class="venue-tag">Aromatherapy</span>
+                        <span class="venue-tag">Couples</span>
+                    </div>
+                    <div class="venue-footer">
+                        <div class="venue-price">€65-110 <span>/ session</span></div>
+                        <button class="venue-book" onclick="openBooking('Serenity Spa & Massage')">Book →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Venue Card -->
+            <div class="venue-card">
+                <div class="venue-image">
+                    👑
+                    <span class="venue-badge" style="background: #111827;">Luxury</span>
+                    <button class="venue-favorite">🤍</button>
+                </div>
+                <div class="venue-content">
+                    <div class="venue-header">
+                        <div class="venue-name">The Spa at Four Seasons</div>
+                        <div class="venue-rating">
+                            <span class="venue-stars">★★★★★</span>
+                            <span class="venue-score">4.9</span>
+                            <span class="venue-reviews">(2,156 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="venue-location">📍 Plaza de Cibeles 1, Madrid 28014</div>
+                    <div class="venue-tags">
+                        <span class="venue-tag">Luxury Spa</span>
+                        <span class="venue-tag">VIP</span>
+                        <span class="venue-tag">Hammam</span>
+                    </div>
+                    <div class="venue-footer">
+                        <div class="venue-price">€120-200 <span>/ session</span></div>
+                        <button class="venue-book" onclick="openBooking('The Spa at Four Seasons')">Book →</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Venue Card -->
+            <div class="venue-card">
+                <div class="venue-image">
+                    🌿
+                    <button class="venue-favorite">🤍</button>
+                </div>
+                <div class="venue-content">
+                    <div class="venue-header">
+                        <div class="venue-name">Zen Garden Wellness</div>
+                        <div class="venue-rating">
+                            <span class="venue-stars">★★★★☆</span>
+                            <span class="venue-score">4.7</span>
+                            <span class="venue-reviews">(632 reviews)</span>
+                        </div>
+                    </div>
+                    <div class="venue-location">📍 Calle Alcalá 55, Madrid 28014</div>
+                    <div class="venue-tags">
+                        <span class="venue-tag">Sports Massage</span>
+                        <span class="venue-tag">Deep Tissue</span>
+                    </div>
+                    <div class="venue-footer">
+                        <div class="venue-price">€50-85 <span>/ session</span></div>
+                        <button class="venue-book" onclick="openBooking('Zen Garden Wellness')">Book →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2 class="section-title">What people say</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">👩</div>
+                    <div class="testimonial-meta">
+                        <div class="name">Sarah M.</div>
+                        <div class="location">Madrid, Spain</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Best booking platform I've ever used. Found an amazing massage place I never knew existed. The reminders are so useful!"</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">👨</div>
+                    <div class="testimonial-meta">
+                        <div class="name">David R.</div>
+                        <div class="location">Barcelona, Spain</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"So easy to use. Book appointments anytime, even when salons are closed. No more waiting on hold. Absolutely game changer."</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">👩</div>
+                    <div class="testimonial-meta">
+                        <div class="name">Emma L.</div>
+                        <div class="location">Valencia, Spain</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">"Love the points system! Got my first free massage after a few bookings. The interface is so clean and modern."</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- APP CTA -->
+    <section class="app-cta">
+        <div class="app-cta-inner">
+            <h2>Get the app</h2>
+            <p>Book faster, earn rewards, and never miss an appointment</p>
+            <div class="app-cta-btns">
+                <a href="#" class="app-btn">🍎 Download for iOS</a>
+                <a href="#" class="app-btn">🤖 Download for Android</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">💆 Massage Pass</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Partner with us</a>
+                <a href="#" class="footer-link">Help</a>
+                <a href="#" class="footer-link">Terms</a>
+                <a href="#" class="footer-link">Privacy</a>
+            </div>
+        </div>
+    </footer>
     
     <script>
-        let currentSpa = '';
+        // Tab switching
+        document.querySelectorAll('.listing-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.listing-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
         
-        function switchTab(tab) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            document.getElementById('page-' + tab).classList.add('active');
-            document.querySelector(`.nav-item[onclick="switchTab('${tab}')"]`).classList.add('active');
-            window.scrollTo(0, 0);
-        }
+        // Category hover effect
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                alert('Category selected: ' + card.querySelector('.category-name').textContent);
+            });
+        });
         
-        function selectCategory(el) {
-            document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
-            el.classList.add('active');
-        }
+        // Favorite toggle
+        document.querySelectorAll('.venue-favorite').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+            });
+        });
         
-        function setFilter(el, type) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
-        }
-        
-        function toggleQuick(el) {
-            el.classList.toggle('active');
-        }
-        
-        function toggleFavorite(el) {
-            el.textContent = el.textContent === '🤍' ? '❤️' : '🤍';
-        }
-        
-        function setBookingTab(el, type) {
-            document.querySelectorAll('.booking-tab').forEach(t => t.classList.remove('active'));
-            el.classList.add('active');
-        }
-        
-        function openBooking(spaName) {
-            currentSpa = spaName;
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('booking-date').min = today;
-            closeModal('success-modal');
-            document.getElementById('booking-modal').classList.add('active');
-        }
-        
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
-        
-        async function submitBooking() {
-            const name = document.getElementById('booking-name').value;
-            const email = document.getElementById('booking-email').value;
-            const date = document.getElementById('booking-date').value;
-            const time = document.getElementById('booking-time').value;
-            
-            if (!name || !email || !date || !time) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            document.getElementById('success-ref').textContent = 'MR-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
-            closeModal('booking-modal');
-            document.getElementById('success-modal').classList.add('active');
+        // Booking
+        function openBooking(venueName) {
+            alert('Booking: ' + venueName + '\n\nIntegration with Supabase coming soon!');
         }
     </script>
 </body>
