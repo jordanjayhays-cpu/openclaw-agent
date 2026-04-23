@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softie Debt Financing | Lender Negotiation Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --border: #1f1f2e;
+            --text: #e8e8f0;
+            --text-dim: #6b6b80;
+            --accent: #00d4aa;
+            --red: #ff4757;
+            --yellow: #ffbe0b;
+            --blue: #3a86ff;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--blue) 0%, #1a4a7a 100%);
+            padding: 32px 40px;
+        }
+        .header h1 { font-size: 28px; font-weight: 800; color: white; }
+        .header p { color: rgba(255,255,255,0.7); margin-top: 6px; }
+        .role-badge { 
+            display: inline-block; 
+            background: var(--accent); 
+            color: var(--bg); 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            font-weight: 700; 
+            font-size: 14px; 
+            margin-top: 12px; 
+        }
+        
+        .main { max-width: 1200px; margin: 0 auto; padding: 32px 40px; }
+        
+        .alert {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid var(--red);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+        .alert h3 { color: var(--red); margin-bottom: 12px; }
+        .alert ul { padding-left: 20px; }
+        .alert li { color: var(--text-dim); font-size: 13px; margin-bottom: 6px; }
+        
+        .section { margin-bottom: 32px; }
+        .section h2 { font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        
+        .term-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        
+        .term-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .term-card h3 { font-size: 14px; margin-bottom: 12px; display: flex; justify-content: space-between; }
+        .term-target { color: var(--accent); font-weight: 700; }
+        .term-target.push { color: var(--yellow); }
+        .term-target.concede { color: var(--text-dim); }
+        
+        .term-details { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; }
+        
+        .term-args {
+            background: var(--bg);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+        }
+        .term-args strong { color: var(--yellow); }
+        
+        .stats-row { 
+            display: grid; grid-template-columns: repeat(4, 1fr); 
+            gap: 16px; margin-bottom: 32px; 
+        }
+        .stat { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 20px; 
+            text-align: center; 
+        }
+        .stat-value { font-size: 24px; font-weight: 800; color: var(--accent); }
+        .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+        
+        .footer { text-align: center; padding: 32px; color: var(--text-dim); font-size: 12px; }
+        
+        .proposal-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: center;
+        }
+        .form-label { font-size: 13px; font-weight: 600; }
+        .form-input { 
+            padding: 10px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border); 
+            background: var(--bg); 
+            color: var(--text); 
+            font-size: 13px; 
+        }
+        .form-target { 
+            padding: 10px; 
+            border-radius: 8px; 
+            border: 1px solid var(--accent); 
+            background: rgba(0, 212, 170, 0.1); 
+            color: var(--accent); 
+            font-size: 13px; 
+            font-weight: 600; 
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🏦 Softie N.V. — Debt Financing Negotiation</h1>
+        <p>Lender Team Prep Dashboard | Leveraged Finance Simulation</p>
+        <div class="role-badge">YOUR ROLE: LENDER</div>
+    </header>
+
+    <main class="main">
+        <div class="alert">
+            <h3>⚠️ Key Risk Flags (Use these in negotiations)</h3>
+            <ul>
+                <li><strong>EBITDA inflation:</strong> Management claims €80m adjusted vs €70m reported — question every adjustment</li>
+                <li><strong>Goodwill declining:</strong> €280m → €200m = impairment risk on intangibles</li>
+                <li><strong>Speculative growth:</strong> €20m EBITDA from "advanced discussions" — unsigned, unproven</li>
+                <li><strong>PIK Note €200m:</strong> Unsecured, accruing — expensive existing debt</li>
+                <li><strong>Cash €52m:</strong> Masks cash burn — what are their real cash needs?</li>
+            </ul>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">€702m</div>
+                <div class="stat-label">Softie EV</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">10x</div>
+                <div class="stat-label">Implied EV/EBITDA</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">5.8x</div>
+                <div class="stat-label">Comps Avg</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">3.2x</div>
+                <div class="stat-label">Reported Leverage</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Term-by-Term Strategy & Targets</h2>
+            
+            <div class="term-grid">
+                <div class="term-card">
+                    <h3>🏢 Issuer Entity <span class="term-target">Max Score</span></h3>
+                    <div class="term-details">Who is the actual borrower? SPV or OpCo?</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Softie NV (HoldCo level = riskier = higher yield needed)
+                        <br><strong>Argument:</strong> If below OpCo, demand 50-100bps premium for structural subordination
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>💰 Loan Amount <span class="term-target">Your Call</span></h3>
+                    <div class="term-details">What's the refinance quantum?</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Smaller = less risk. Ask: "Is this refinancing or additional raise?"
+                        <br><strong>Argument:</strong> If PE is putting in equity, you have more leverage on terms
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>📈 Interest Rate <span class="term-target push">MAXIMIZE</span></h3>
+                    <div class="term-details">Your primary return — price the risk</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> EURIBOR + 450-550bps (given leverage + sector)
+                        <br><strong>Argument:</strong> Comps trade at 5-6x, Softie at 10x implies growth premium. Argue: "Your valuation is stretched — we need compensating yield"
+                        <br><strong>💡:</strong> Reference CNNX (5.6x) and SaaSy (6.0x) — you're taking more risk
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>📅 Maturity <span class="term-target push">SHORTER = BETTER</span></h3>
+                    <div class="term-details"> tenor = 4.5yr PIK Note already exists</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> 3-4 years max
+                        <br><strong>Argument:</strong> "4.5yr PIK Note is already out the door. Your new debt should mature before or at same time. We won't extend beyond [date]."
+                        <br><strong>💡:</strong> If you must go longer, demand 25bps per year step-up
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>🔄 Amortization <span class="term-target push">MAXIMIZE CASH PAY</span></h3>
+                    <div class="term-details">Cash paydown schedule — prefer faster repayment</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> 1-2% p.a. amortization + 50% excess cash flow sweep
+                        <br><strong>Argument:</strong> "SaaS companies burn cash. We want amortization to ensure you're not dependent on refinancing to repay us"
+                        <br><strong>Concede on:</strong> If borrower argues cash constraints, reduce to 0.5% with step-up provisions
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>⏰ Prepayment Option <span class="term-target">BALANCED</span></h3>
+                    <div class="term-details">Make-whole vs call protection</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Soft call for 12 months at 102, then 101, then par
+                        <br><strong>Argument:</strong> "We need time to reinvest proceeds. 12-month soft call protects our refinancing risk"
+                        <br><strong>Concede on:</strong> Step-down schedule if borrower pushes back on lockout period
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>🛡️ Guarantees <span class="term-target push">DEMAND FULL</span></h3>
+                    <div class="term-details">Who guarantees the loan?</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Full guarantee from OpCo (Softie NV) + all material subsidiaries
+                        <br><strong>Argument:</strong> "We're lending to HoldCo structure. We need downstream guarantees to have real recourse"
+                        <br><strong>💡:</strong> If they refuse, reduce loan size or increase pricing by 50bps
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>📊 Seniority <span class="term-target push">SENIOR TO PIK</span></h3>
+                    <div class="term-details">Where in capital structure?</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Senior secured — ranking ahead of €200m PIK Note
+                        <br><strong>Argument:</strong> "PIK Note is unsecured. New money = senior secured treatment required"
+                        <br><strong>Counter:</strong> If PIK Note holders object, offer "last-out" senior secured at 25bps discount
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>🔒 Security <span class="term-target push">MAXIMIZE COLLATERAL</span></h3>
+                    <div class="term-details">What assets secure the loan?</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> First ranking security over all assets (shares of OpCo + all material IP)
+                        <br><strong>Argument:</strong> "Goodwill is €200m today, €280m last year. IP is declining — we need security to protect against impairment"
+                        <br><strong>Critical:</strong> Get share pledges on Softie Midco NV + Softie Holdco NV
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>✅ Borrower Reps & Warranties <span class="term-target">STANDARD + ADDITIONS</span></h3>
+                    <div class="term-details">Bring-down of representations</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Market standard + specific "goodwill not impaired" + "no material contracts terminated"
+                        <br><strong>Argument:</strong> "Given the IP valuation decline, we need explicit warranty that no impairment is pending"
+                        <br><strong>💡:</strong> Add "no undisclosed liabilities" from SaaP acquisition
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>📋 Conditions Precedent <span class="term-target push">DEMAND MORE</span></h3>
+                    <div class="term-details">Conditions before funding — use as leverage</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> CP list should include:
+                        <br>• Audited financials (not management accounts)
+                        <br>• Solvency opinion
+                        <br>• IP valuation report (not declining)
+                        <br>• Evidence of SaaP synergies realized
+                        <br><strong>Argument:</strong> "Given €10m adjustments, we'll only fund on audited numbers"
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>👍 Affirmative Covenants <span class="term-target">MARKET STANDARD</span></h3>
+                    <div class="term-details">Ongoing obligations — don't over-negotiate here</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Standard reporting (monthly/quarterly), but add:
+                        <br>• SaaS ARR disclosure
+                        <br>• Churn rate reporting
+                        <br>• IP valuation update annually
+                        <br><strong>Argument:</strong> "SaaS metrics are key to your story. We need visibility on recurring revenue quality"
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>🚫 Negative Covenants <span class="term-target push">TIGHTEN MAX</span></h3>
+                    <div class="term-details">Restricted activities — protect your position</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Include:
+                        <br>• No additional debt > €5m without consent
+                        <br>• No acquisitions without consent (esp. the €20m rumored deal)
+                        <br>• No asset sales > €2m without consent
+                        <br>• No dividend payments while leverage > 3x
+                        <br><strong>Argument:</strong> "We know about the €20m acquisition opportunity. Any M&A needs lender consent"
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>📐 Financial Covenant (Leverage) <span class="term-target push">TIGHTEST YOU CAN GET</span></h3>
+                    <div class="term-details">THIS IS THE KEY TERM — spend most time here</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Leverage ≤ 3.5x Total Net Debt / EBITDA
+                        <br><strong>Definition:</strong> Use Reported EBITDA (€70m), not Adjusted (€80m)
+                        <br><strong>Equity Cure:</strong> Allow max 2x per year, 3% max each, 5% lifetime cap
+                        <br><strong>Testing:</strong> Quarterly, with 20% cure right cushion
+                        <br><strong>Argument:</strong> "Adjusted EBITDA is €10m above reported. We're pricing on real numbers"
+                        <br><strong>⚠️ FIGHT HARD:</strong> If they want 4x+, demand 25-50bps additional margin
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>🔄 Change of Control <span class="term-target push">PROTECT YOUR VOTE</span></h3>
+                    <div class="term-details">What happens if PE sponsor exits?</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Mandatory prepayment at par + 101 call premium upon CoC
+                        <br><strong>Argument:</strong> "PE sponsor exit = likely recap. We need to be able to demand repayment or re-price at new leverage"
+                        <br><strong>Alternative:</strong> Lender consent required for CoC (not just notification)
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>❌ Events of Default <span class="term-target">STANDARD + ADDITIONS</span></h3>
+                    <div class="term-details">Cross-default, payment default, financial covenant breach</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> Market standard + add:
+                        <br>• Goodwill impairment > €20m = EoD
+                        <br>• IP valuation < €150m = EoD
+                        <br>• Material SaaS contract loss > 20% ARR
+                        <br><strong>Argument:</strong> "Given IP volatility, we need early warning triggers"
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>💸 Default Rate <span class="term-target">MAXIMIZE PENALTY</span></h3>
+                    <div class="term-details">Interest rate during default period</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> P+300bps (prevailing rate + 3%) with 5% floor
+                        <br><strong>Argument:</strong> "We need meaningful penalty to discourage strategic default"
+                        <br><strong>💡:</strong> This is standard — don't waste negotiating capital here
+                    </div>
+                </div>
+
+                <div class="term-card">
+                    <h3>💳 Fees & Expenses <span class="term-target push">MAXIMIZE UPFRONT</span></h3>
+                    <div class="term-details">Arrangement fee, underwriting fee, legal costs</div>
+                    <div class="term-args">
+                        <strong>🎯 Target:</strong> 
+                        <br>• Arrangement fee: 2.0-2.5% upfront
+                        <br>• Underwriting fee: 1.0%
+                        <br>• Legal expenses: borrower pays regardless
+                        <br><strong>Argument:</strong> "We're taking leverage risk. Upfront fees compensate for structuring cost"
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Quick Reference — Your Walk-Away Points</h2>
+            <div class="term-grid">
+                <div class="term-card" style="border-left: 4px solid var(--accent);">
+                    <h3 style="color: var(--accent);">✅ Walk-Away IF:</h3>
+                    <div class="term-args" style="background: rgba(0, 212, 170, 0.1);">
+                        • Interest rate < EURIBOR + 400bps<br>
+                        • Financial covenant > 4.0x leverage<br>
+                        • No security over IP/shares<br>
+                        • Maturity > 5 years without premium<br>
+                        • Arrangement fee < 1.5%
+                    </div>
+                </div>
+
+                <div class="term-card" style="border-left: 4px solid var(--yellow);">
+                    <h3 style="color: var(--yellow);">⚠️ Negotiate IF:</h3>
+                    <div class="term-args" style="background: rgba(255, 190, 11, 0.1);">
+                        • Interest rate 400-500bps (split the diff)<br>
+                        • Covenant 3.5-4.0x (add equity cure)<br>
+                        • Partial security on IP<br>
+                        • 4-5 year maturity with step-up<br>
+                        • Fee 1.5-2.0%
+                    </div>
+                </div>
+
+                <div class="term-card" style="border-left: 4px solid var(--blue);">
+                    <h3 style="color: var(--blue);">🏆 Acceptable Range:</h3>
+                    <div class="term-args" style="background: rgba(58, 134, 255, 0.1);">
+                        • IR: EURIBOR + 450-500bps<br>
+                        • Covenant: 3.5-4.0x<br>
+                        • Security: IP + shares<br>
+                        • Maturity: 3.5-4.5 years<br>
+                        • Fee: 2.0-2.5%
+                    </div>
+                </div>
+
+                <div class="term-card" style="border-left: 4px solid var(--red);">
+                    <h3 style="color: var(--red);">🚨 Red Lines — Don't Cross:</h3>
+                    <div class="term-args" style="background: rgba(255, 71, 87, 0.1);">
+                        • Covenant using Adjusted EBITDA<br>
+                        • No equity cure right<br>
+                        • Goodwill excluded from security<br>
+                        • PIK Note outranks your debt<br>
+                        • No CoC protection
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Comparable-Backed Arguments</h2>
+            <div class="term-card">
+                <h3>Use These in Negotiation:</h3>
+                <div class="term-args">
+                    <strong>"Look at CNNX (5.6x) and SaaSy (6.0x):"</strong> Comps with similar SaaS models trade at 5-6x leverage. If Softie wants financing at comparable terms, it needs to justify pricing above comps given EBITDA quality concerns.<br><br>
+                    <strong>"Your EV/EBITDA is 10x vs 5.8x comps:"</strong> Either your growth story is exceptional (prove it) or your EBITDA is inflated (we'll use reported numbers).<br><br>
+                    <strong>"WeCloud trades at 6.1x with €133m cash:"</strong> You have €52m cash against €225m existing debt. Your net debt position is worse than comparables.<br><br>
+                    <strong>"Al-Mind has -3 EBITDA but 5.5x:"</strong> Even loss-making comps price better. Your €10m "adjustments" don't inspire confidence.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">
+        Softie Debt Financing Dashboard · Built by Axton · For Lender Team · Finsimco Simulation
+    </div>
+</body>
+</html>
