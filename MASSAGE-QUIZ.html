@@ -61,7 +61,6 @@
             font-weight: 700; font-size: 12px; display: inline-block; margin-bottom: 16px;
         }
         .result h2 { font-size: 24px; margin-bottom: 8px; }
-        .result .why { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.6; }
         
         .service-card {
             background: var(--bg-card);
@@ -121,7 +120,7 @@
         }
         .map-wrapper iframe {
             width: 100%;
-            height: 350px;
+            height: 400px;
             border: none;
         }
         
@@ -139,7 +138,7 @@
         .place .rating { font-size: 12px; color: var(--accent); }
         .place .address { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
         .place .services { font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
-        .place .meta { font-size: 11px; color: var(--accent); display: flex; gap: 16px; }
+        .place .meta { font-size: 11px; color: var(--accent); display: flex; gap: 16px; flex-wrap: wrap; }
         .place .meta span { display: flex; align-items: center; gap: 4px; }
         
         .book-btn {
@@ -155,7 +154,7 @@
             font-size: 14px;
         }
         
-        .book-modal {
+        .book-modal, .success-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -164,15 +163,15 @@
             align-items: center;
             justify-content: center;
         }
-        .book-modal.active { display: flex; }
-        .book-modal-content {
+        .book-modal.active, .success-modal.active { display: flex; }
+        .book-modal-content, .success-modal-content {
             background: var(--bg-card);
             border-radius: 16px;
             padding: 24px;
             max-width: 400px;
             width: 90%;
         }
-        .book-modal h3 { margin-bottom: 16px; }
+        .book-modal h3, .success-modal h3 { margin-bottom: 16px; }
         .book-modal input, .book-modal select {
             width: 100%;
             padding: 12px;
@@ -201,34 +200,17 @@
             font-weight: 600;
             cursor: pointer;
         }
-        
-        .success-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        .success-modal.active { display: flex; }
-        .success-modal-content {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-        }
         .success-modal .icon { font-size: 64px; margin-bottom: 16px; }
-        .success-modal h3 { margin-bottom: 8px; color: var(--accent); }
-        .success-modal .ref { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+        .success-modal .ref { font-size: 18px; font-weight: 700; margin-bottom: 16px; display: block; }
+        .success-modal p { color: var(--text-dim); font-size: 13px; margin-bottom: 16px; }
     </style>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo&libraries=places&callback=initMap" async defer></script>
 </head>
 <body>
     <header class="header">
         <h1>🔮 Find Your Perfect Massage</h1>
-        <p>Quiz + Real Madrid Spas · Book Directly</p>
+        <p>Quiz + Real Madrid Spas · Google Maps Enabled</p>
     </header>
 
     <main class="main">
@@ -257,76 +239,37 @@
 
         <!-- Q1: Pressure -->
         <div class="quiz-container" id="q1">
-            <div class="progress">
-                <div class="progress-dot done"></div>
-                <div class="progress-dot current"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-            </div>
+            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot current"></div><div class="progress-dot"></div><div class="progress-dot"></div></div>
             <div class="question">How much pressure?</div>
             <div class="options">
-                <div class="option" onclick="select('q1', 'light')">
-                    <strong>Gentle & Relaxing</strong>
-                </div>
-                <div class="option" onclick="select('q1', 'medium')">
-                    <strong>Medium</strong>
-                </div>
-                <div class="option" onclick="select('q1', 'firm')">
-                    <strong>Firm & Deep</strong>
-                </div>
-                <div class="option" onclick="select('q1', 'intense')">
-                    <strong>Deep Tissue</strong>
-                </div>
+                <div class="option" onclick="select('q1', 'light')"><strong>Gentle & Relaxing</strong></div>
+                <div class="option" onclick="select('q1', 'medium')"><strong>Medium</strong></div>
+                <div class="option" onclick="select('q1', 'firm')"><strong>Firm & Deep</strong></div>
+                <div class="option" onclick="select('q1', 'intense')"><strong>Deep Tissue</strong></div>
             </div>
         </div>
 
         <!-- Q2: Area -->
         <div class="quiz-container" id="q2">
-            <div class="progress">
-                <div class="progress-dot done"></div>
-                <div class="progress-dot done"></div>
-                <div class="progress-dot current"></div>
-                <div class="progress-dot"></div>
-            </div>
+            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot current"></div><div class="progress-dot"></div></div>
             <div class="question">Focus area?</div>
             <div class="options">
-                <div class="option" onclick="select('q2', 'full')">
-                    <strong>Full Body</strong>
-                </div>
-                <div class="option" onclick="select('q2', 'back')">
-                    <strong>Back & Shoulders</strong>
-                </div>
-                <div class="option" onclick="select('q2', 'legs')">
-                    <strong>Legs & Feet</strong>
-                </div>
-                <div class="option" onclick="select('q2', 'head')">
-                    <strong>Head & Neck</strong>
-                </div>
+                <div class="option" onclick="select('q2', 'full')"><strong>Full Body</strong></div>
+                <div class="option" onclick="select('q2', 'back')"><strong>Back & Shoulders</strong></div>
+                <div class="option" onclick="select('q2', 'legs')"><strong>Legs & Feet</strong></div>
+                <div class="option" onclick="select('q2', 'head')"><strong>Head & Neck</strong></div>
             </div>
         </div>
 
         <!-- Q3: Add-ons -->
         <div class="quiz-container" id="q3">
-            <div class="progress">
-                <div class="progress-dot done"></div>
-                <div class="progress-dot done"></div>
-                <div class="progress-dot done"></div>
-                <div class="progress-dot current"></div>
-            </div>
+            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot current"></div></div>
             <div class="question">Any preferences?</div>
             <div class="options">
-                <div class="option" onclick="select('q3', 'classic')">
-                    <strong>No extras, just massage</strong>
-                </div>
-                <div class="option" onclick="select('q3', 'heat')">
-                    <strong>🔥 Heat (Hot Stone)</strong>
-                </div>
-                <div class="option" onclick="select('q3', 'oils')">
-                    <strong>🌸 Aromatherapy</strong>
-                </div>
-                <div class="option" onclick="select('q3', 'sports')">
-                    <strong>🏃 Sports Recovery</strong>
-                </div>
+                <div class="option" onclick="select('q3', 'classic')"><strong>No extras, just massage</strong></div>
+                <div class="option" onclick="select('q3', 'heat')"><strong>🔥 Heat (Hot Stone)</strong></div>
+                <div class="option" onclick="select('q3', 'oils')"><strong>🌸 Aromatherapy</strong></div>
+                <div class="option" onclick="select('q3', 'sports')"><strong>🏃 Sports Recovery</strong></div>
             </div>
         </div>
 
@@ -335,32 +278,25 @@
             <div class="result-badge">YOUR PERFECT MATCH</div>
             <h2 id="result-title">Swedish Massage</h2>
             
-            <div class="service-card" id="service-card">
+            <div class="service-card">
                 <h3 id="service-name">Swedish Massage</h3>
                 <p id="service-desc">Classic relaxation massage with long, flowing strokes.</p>
-                <div class="duration" id="service-duration">60-90 min · €45-80</div>
+                <div class="duration" id="service-duration">60-90 min · €55-85</div>
             </div>
             
-            <!-- MAP SECTION -->
             <div class="map-section">
                 <h3>📍 Best Massage Places in Madrid</h3>
                 
                 <div class="location-search">
-                    <input type="text" class="location-input" id="location" placeholder="Or enter a different Madrid neighborhood..." value="Madrid, Spain">
-                    <button class="location-btn" onclick="updateMap()">↗️</button>
+                    <input type="text" class="location-input" id="location" placeholder="Enter Madrid neighborhood..." value="Madrid">
+                    <button class="location-btn" onclick="searchPlaces()">🔍</button>
                 </div>
                 
                 <div class="map-wrapper">
-                    <iframe id="map-frame" 
-                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBFwKQM7iuOA5_1SZNZdN3aYdODz6l4hWk&q=massage+spa+Madrid+Spain&zoom=13&maptype=roadmap"
-                        allowfullscreen>
-                    </iframe>
+                    <div id="map" style="height:400px;width:100%;"></div>
                 </div>
                 
-                <div class="places" id="places">
-                    <!-- Spa Casa de la Mé...
-                    -->
-                </div>
+                <div class="places" id="places"></div>
                 
                 <button class="book-btn" onclick="openBooking()">📅 Book This Service</button>
             </div>
@@ -376,7 +312,7 @@
             <input type="text" id="client-name" placeholder="Your Name">
             <input type="email" id="client-email" placeholder="Email">
             <input type="tel" id="client-phone" placeholder="Phone">
-            <input type="date" id="booking-date" placeholder="Select Date">
+            <input type="date" id="booking-date">
             <select id="booking-time">
                 <option value="">Select Time</option>
                 <option value="10:00">10:00 AM</option>
@@ -391,7 +327,7 @@
             </select>
             <div style="display:flex;margin-top:16px;">
                 <button class="close-btn" onclick="closeBooking()">Cancel</button>
-                <button class="submit-btn" onclick="submitBooking()">Confirm Booking</button>
+                <button class="submit-btn" onclick="submitBooking()">Confirm</button>
             </div>
         </div>
     </div>
@@ -401,8 +337,8 @@
         <div class="success-modal-content">
             <div class="icon">✅</div>
             <h3>Booking Confirmed!</h3>
-            <div class="ref" id="booking-ref">MR-2026-0001</div>
-            <p style="color:var(--text-dim);font-size:13px;margin-bottom:16px;">We've sent confirmation details to your email. See you soon!</p>
+            <span class="ref" id="booking-ref">MR-2026-0001</span>
+            <p>Confirmation sent to your email. See you soon!</p>
             <button class="close-btn" onclick="closeSuccess()">Close</button>
         </div>
     </div>
@@ -410,194 +346,95 @@
     <script>
         let answers = {};
         let recommendedService = '';
+        let map, placesService, service;
         
         const services = {
-            swedish: {
-                name: 'Swedish Massage',
-                desc: 'Classic relaxation massage with long, flowing strokes. Perfect for stress relief and first-timers.',
-                duration: '60-90 min · €55-85',
-                best: ['stress', 'wellness', 'light', 'medium', 'full', 'classic']
-            },
-            deeptissue: {
-                name: 'Deep Tissue Massage',
-                desc: 'Intensive massage targeting deep muscle layers. Ideal for chronic pain and muscle knots.',
-                duration: '60-90 min · €65-95',
-                best: ['pain', 'firm', 'intense', 'back', 'head', 'sports']
-            },
-            hotstone: {
-                name: 'Hot Stone Massage',
-                desc: 'Heated basalt stones melt deep tension. Combining warmth with massage for profound relaxation.',
-                duration: '75-90 min · €75-110',
-                best: ['stress', 'wellness', 'light', 'medium', 'heat']
-            },
-            sports: {
-                name: 'Sports Massage',
-                desc: 'Athletic-focused massage for pre/post event. Stretching, compression, and targeted recovery.',
-                duration: '45-90 min · €55-90',
-                best: ['athlete', 'pain', 'firm', 'intense', 'sports', 'legs']
-            },
-            aromatherapy: {
-                name: 'Aromatherapy Massage',
-                desc: 'Essential oils combined with massage. Holistic wellness and mood enhancement.',
-                duration: '60-90 min · €65-95',
-                best: ['stress', 'wellness', 'light', 'medium', 'oils', 'full']
-            },
-            shiatsu: {
-                name: 'Shiatsu Massage',
-                desc: 'Japanese pressure point therapy. Balancing energy meridians with finger pressure.',
-                duration: '60 min · €50-80',
-                best: ['stress', 'pain', 'head', 'medium', 'classic']
-            }
+            swedish: { name: 'Swedish Massage', desc: 'Classic relaxation massage with long, flowing strokes.', duration: '60-90 min · €55-85' },
+            deeptissue: { name: 'Deep Tissue Massage', desc: 'Intensive massage targeting deep muscle layers.', duration: '60-90 min · €65-95' },
+            hotstone: { name: 'Hot Stone Massage', desc: 'Heated stones melt deep tension.', duration: '75-90 min · €75-110' },
+            sports: { name: 'Sports Massage', desc: 'Athletic-focused massage for recovery.', duration: '45-90 min · €55-90' },
+            aromatherapy: { name: 'Aromatherapy Massage', desc: 'Essential oils for holistic wellness.', duration: '60-90 min · €65-95' },
+            shiatsu: { name: 'Shiatsu Massage', desc: 'Japanese pressure point therapy.', duration: '60 min · €50-80' }
         };
         
-        // Real Madrid spa data
-        const madridSpas = [
-            {
-                name: '🌿 Wellness Center Madrid Centro',
-                address: 'Calle Gran Vía 28, Madrid 28013',
-                phone: '+34 912 345 678',
-                rating: 4.8,
-                reviews: 847,
-                priceRange: '€55-95',
-                services: ['Swedish', 'Deep Tissue', 'Hot Stone'],
-                lat: 40.4178, lng: -3.7043,
-                hours: 'Mon-Sat 10AM-9PM'
-            },
-            {
-                name: '💆 Serenity Spa & Massage',
-                address: 'Plaza Mayor 15, Madrid 28012',
-                phone: '+34 913 456 789',
-                rating: 4.9,
-                reviews: 1243,
-                priceRange: '€65-110',
-                services: ['Swedish', 'Aromatherapy', 'Shiatsu'],
-                lat: 40.4154, lng: -3.7072,
-                hours: 'Daily 9AM-10PM'
-            },
-            {
-                name: '🧘 Zen Garden Wellness',
-                address: 'Calle Alcalá 55, Madrid 28014',
-                phone: '+34 914 567 890',
-                rating: 4.7,
-                reviews: 632,
-                priceRange: '€50-85',
-                services: ['Swedish', 'Deep Tissue', 'Sports'],
-                lat: 40.4168, lng: -3.6986,
-                hours: 'Mon-Fri 10AM-8PM, Sat 10AM-6PM'
-            },
-            {
-                name: '✨ The Spa at Four Seasons',
-                address: 'Plaza de Cibeles 1, Madrid 28014',
-                phone: '+34 915 678 901',
-                rating: 4.9,
-                reviews: 2156,
-                priceRange: '€120-200',
-                services: ['Swedish', 'Deep Tissue', 'Hot Stone', 'Aromatherapy'],
-                lat: 40.4208, lng: -3.6936,
-                hours: 'Daily 9AM-9PM'
-            },
-            {
-                name: '🌸 Aquarel Wellness',
-                address: 'Calle Serrano 45, Madrid 28001',
-                phone: '+34 916 789 012',
-                rating: 4.6,
-                reviews: 489,
-                priceRange: '€45-75',
-                services: ['Swedish', 'Aromatherapy', 'Facial'],
-                lat: 40.4295, lng: -3.6855,
-                hours: 'Mon-Sat 10AM-8PM'
-            },
-            {
-                name: '🏛️ Madrid Royal Spa',
-                address: 'Calle Arenal 18, Madrid 28013',
-                phone: '+34 917 890 123',
-                rating: 4.8,
-                reviews: 1023,
-                priceRange: '€70-120',
-                services: ['Deep Tissue', 'Hot Stone', 'Shiatsu', 'Couples'],
-                lat: 40.4151, lng: -3.7032,
-                hours: 'Daily 10AM-10PM'
-            }
-        ];
-        
-        function startQuiz() {
-            document.getElementById('intro').classList.remove('active');
-            document.getElementById('q1').classList.add('active');
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 40.4168, lng: -3.7036 },
+                zoom: 13,
+                styles: [{ featureType: 'all', elementType: 'geometry', stylers: [{ color: '#1a1a24' }] }, { featureType: 'all', elementType: 'labels.text.fill', stylers: [{ color: '#6b6b80' }] }, { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0f' }] }]
+            });
+            placesService = new google.maps.places.PlacesService(map);
         }
         
         function select(question, value) {
             answers[question] = value;
-            
-            // Hide current, show next or result
             document.getElementById(question).classList.remove('active');
-            
-            if (question === 'intro') {
-                document.getElementById('q1').classList.add('active');
-            } else if (question === 'q1') {
-                document.getElementById('q2').classList.add('active');
-            } else if (question === 'q2') {
-                document.getElementById('q3').classList.add('active');
-            } else if (question === 'q3') {
-                document.getElementById('result').classList.add('active');
-                showResult();
-            }
+            if (question === 'intro') document.getElementById('q1').classList.add('active');
+            else if (question === 'q1') document.getElementById('q2').classList.add('active');
+            else if (question === 'q2') document.getElementById('q3').classList.add('active');
+            else if (question === 'q3') { document.getElementById('result').classList.add('active'); showResult(); }
         }
         
         function showResult() {
-            // Simple recommendation logic
-            if (answers.intro === 'athlete' || answers.q3 === 'sports' || answers.q2 === 'legs') {
-                recommendedService = 'sports';
-            } else if (answers.intro === 'pain' || answers.q1 === 'firm' || answers.q1 === 'intense') {
-                recommendedService = 'deeptissue';
-            } else if (answers.q3 === 'heat') {
-                recommendedService = 'hotstone';
-            } else if (answers.q3 === 'oils') {
-                recommendedService = 'aromatherapy';
-            } else if (answers.intro === 'wellness' && answers.q2 === 'head') {
-                recommendedService = 'shiatsu';
-            } else {
-                recommendedService = 'swedish';
-            }
+            if (answers.athlete || answers.q3 === 'sports' || answers.q2 === 'legs') recommendedService = 'sports';
+            else if (answers.pain || answers.q1 === 'firm' || answers.q1 === 'intense') recommendedService = 'deeptissue';
+            else if (answers.q3 === 'heat') recommendedService = 'hotstone';
+            else if (answers.q3 === 'oils') recommendedService = 'aromatherapy';
+            else recommendedService = 'swedish';
             
-            const service = services[recommendedService];
+            const s = services[recommendedService];
+            document.getElementById('result-title').textContent = s.name;
+            document.getElementById('service-name').textContent = s.name;
+            document.getElementById('service-desc').textContent = s.desc;
+            document.getElementById('service-duration').textContent = s.duration;
             
-            document.getElementById('result-title').textContent = service.name;
-            document.getElementById('service-name').textContent = service.name;
-            document.getElementById('service-desc').textContent = service.desc;
-            document.getElementById('service-duration').textContent = service.duration;
-            
-            // Render places
-            renderPlaces();
+            searchPlaces();
         }
         
-        function renderPlaces() {
+        function searchPlaces() {
+            const location = document.getElementById('location').value || 'Madrid, Spain';
+            const request = {
+                query: 'massage spa ' + location,
+                fields: ['name', 'geometry', 'formatted_address', 'rating', 'user_ratings_total', 'opening_hours', 'types']
+            };
+            
+            placesService.findPlaceFromQuery(request, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+                    displayPlaces(results);
+                    if (results[0].geometry) {
+                        map.setCenter(results[0].geometry.location);
+                    }
+                } else {
+                    // Fallback to text search
+                    placesService.textSearch({
+                        query: 'massage spa madrid',
+                        location: { lat: 40.4168, lng: -3.7036 },
+                        radius: 10000
+                    }, (results, status) => {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) displayPlaces(results.slice(0, 8));
+                    });
+                }
+            });
+        }
+        
+        function displayPlaces(places) {
             const placesDiv = document.getElementById('places');
             let html = '';
             
-            madridSpas.forEach(place => {
-                const matchingServices = place.services.filter(s => 
-                    s.toLowerCase().includes(recommendedService.substring(0, 4)) ||
-                    (recommendedService === 'swedish' && s.includes('Swedish')) ||
-                    (recommendedService === 'deeptissue' && s.includes('Deep Tissue')) ||
-                    (recommendedService === 'hotstone' && s.includes('Hot Stone')) ||
-                    (recommendedService === 'sports' && s.includes('Sports')) ||
-                    (recommendedService === 'aromatherapy' && s.includes('Aromatherapy'))
-                );
-                
-                const stars = '★'.repeat(Math.floor(place.rating)) + (place.rating % 1 >= 0.5 ? '½' : '');
+            places.forEach(place => {
+                const rating = place.rating || 'N/A';
+                const reviews = place.user_ratings_total || '';
+                const address = place.formatted_address || '';
+                const hours = place.opening_hours ? (place.opening_hours.isOpen() ? '🟢 Open now' : '🔴 Closed') : '';
                 
                 html += `
                     <div class="place">
                         <div class="header-row">
-                            <h4>${place.name}</h4>
-                            <span class="rating">${stars} ${place.rating} (${place.reviews})</span>
+                            <h4>📍 ${place.name}</h4>
+                            <span class="rating">★ ${rating}${reviews ? ' (' + reviews + ')' : ''}</span>
                         </div>
-                        <div class="address">📍 ${place.address}</div>
-                        <div class="services">Services: ${place.services.join(', ')}</div>
-                        <div class="meta">
-                            <span>💰 ${place.priceRange}</span>
-                            <span>⏰ ${place.hours}</span>
-                        </div>
+                        <div class="address">${address}</div>
+                        <div class="meta">${hours ? '<span>' + hours + '</span>' : ''}</div>
                     </div>
                 `;
             });
@@ -605,48 +442,15 @@
             placesDiv.innerHTML = html;
         }
         
-        function updateMap() {
-            const location = document.getElementById('location').value || 'Madrid';
-            const iframe = document.getElementById('map-frame');
-            iframe.src = `https://www.google.com/maps/embed/v1/search?key=AIzaSyBFwKQM7iuOA5_1SZNZdN3aYdODz6l4hWk&q=massage+spa+${encodeURIComponent(location)}&zoom=14&maptype=roadmap`;
-        }
-        
-        function openBooking() {
-            document.getElementById('book-modal').classList.add('active');
-            // Set minimum date to today
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('booking-date').min = today;
-        }
-        
-        function closeBooking() {
-            document.getElementById('book-modal').classList.remove('active');
-        }
-        
-        function closeSuccess() {
-            document.getElementById('success-modal').classList.remove('active');
-        }
+        function openBooking() { document.getElementById('book-modal').classList.add('active'); }
+        function closeBooking() { document.getElementById('book-modal').classList.remove('active'); }
+        function closeSuccess() { document.getElementById('success-modal').classList.remove('active'); }
         
         function submitBooking() {
-            const name = document.getElementById('client-name').value;
-            const email = document.getElementById('client-email').value;
-            const phone = document.getElementById('client-phone').value;
-            const date = document.getElementById('booking-date').value;
-            const time = document.getElementById('booking-time').value;
-            
-            if (!name || !email || !date || !time) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Generate booking reference
             const ref = 'MR-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
             document.getElementById('booking-ref').textContent = ref;
-            
             closeBooking();
             document.getElementById('success-modal').classList.add('active');
-            
-            // Log booking (in production would send to API)
-            console.log('Booking:', { name, email, phone, date, time, ref, service: recommendedService });
         }
         
         function restart() {
