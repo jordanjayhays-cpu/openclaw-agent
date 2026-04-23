@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PISCO Command Center</title>
+    <title>n8n Workflows | Axton Command Center</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,300 +14,177 @@
             --text: #e8e8f0;
             --text-dim: #6b6b80;
             --accent: #00d4aa;
-            --accent-dim: rgba(0, 212, 170, 0.12);
             --red: #ff4757;
             --yellow: #ffbe0b;
             --blue: #3a86ff;
+            --purple: #a855f7;
         }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
         
         .header {
-            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg) 100%);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo { font-size: 20px; font-weight: 800; }
-        .logo span { color: var(--accent); }
-        .live-badge { 
-            background: var(--accent-dim); 
-            color: var(--accent); 
-            padding: 6px 12px; 
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .live-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-        
-        .main { max-width: 1400px; margin: 0 auto; padding: 32px 40px; }
-        
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 212, 170, 0.15) 0%, rgba(0, 212, 170, 0.02) 100%);
-            border: 1px solid rgba(0, 212, 170, 0.25);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-        .hero-emoji { font-size: 64px; }
-        .hero h1 { font-size: 28px; font-weight: 800; color: var(--accent); }
-        .hero p { color: var(--text-dim); margin-top: 4px; }
-        
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-        @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-        .stat-card { 
-            background: var(--bg-card); 
-            border: 1px solid var(--border); 
-            border-radius: 16px; 
-            padding: 24px;
+            background: linear-gradient(135deg, var(--purple) 0%, #6b21a8 100%);
+            padding: 40px 40px;
             text-align: center;
         }
-        .stat-value { font-size: 48px; font-weight: 800; color: var(--accent); }
-        .stat-label { font-size: 12px; color: var(--text-dim); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+        .header h1 { font-size: 32px; font-weight: 800; color: white; }
+        .header p { color: rgba(255,255,255,0.7); margin-top: 8px; }
         
-        .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 16px; }
+        .main { max-width: 1000px; margin: 0 auto; padding: 40px; }
         
-        .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 32px; }
-        @media (max-width: 1100px) { .pipeline { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 700px) { .pipeline { grid-template-columns: repeat(2, 1fr); } }
-        
-        .stage {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            min-height: 120px;
-        }
-        .stage-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-        .stage-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .stage-count { font-size: 20px; font-weight: 800; }
-        
-        .stage-1 .stage-name { color: var(--blue); }
-        .stage-2 .stage-name { color: var(--yellow); }
-        .stage-3 .stage-name { color: var(--accent); }
-        .stage-4 .stage-name { color: var(--accent); }
-        .stage-5 .stage-name { color: var(--accent); }
-        
-        .lead-card {
-            background: var(--bg);
-            border-radius: 8px;
-            padding: 10px 12px;
-            margin-bottom: 8px;
-            font-size: 12px;
-            border: 1px solid var(--border);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .lead-card:hover { border-color: var(--accent); transform: translateX(4px); }
-        .lead-name { font-weight: 600; margin-bottom: 2px; }
-        .lead-company { color: var(--text-dim); }
-        .lead-date { font-size: 10px; color: var(--text-dim); margin-top: 4px; }
-        
-        .hot-leads { margin-bottom: 32px; }
-        .leads-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        @media (max-width: 900px) { .leads-grid { grid-template-columns: 1fr; } }
-        
-        .lead-full {
+        .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
         }
-        .lead-full:hover { border-color: var(--accent); }
-        .lead-status { 
-            font-size: 10px; 
-            font-weight: 700; 
-            padding: 4px 8px; 
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-        .status-hot { background: rgba(255, 71, 87, 0.2); color: var(--red); }
-        .status-warm { background: rgba(255, 190, 11, 0.2); color: var(--yellow); }
-        .status-new { background: var(--accent-dim); color: var(--accent); }
-        .lead-name-full { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-        .lead-title { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; }
-        .lead-actions { display: flex; gap: 8px; }
-        .btn {
+        
+        .card h2 { font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+        .card h2 .icon { font-size: 28px; }
+        
+        .workflow-id {
+            background: var(--bg);
             padding: 8px 16px;
             border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--accent);
+            display: inline-block;
+            margin-top: 12px;
+        }
+        
+        .card ul { padding-left: 20px; }
+        .card li { color: var(--text-dim); font-size: 13px; margin-bottom: 8px; }
+        
+        .status-row { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
         }
-        .btn-primary { background: var(--accent); color: var(--bg); }
-        .btn-primary:hover { background: #00e4b8; }
-        .btn-secondary { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
-        .btn-secondary:hover { border-color: var(--accent); }
+        .status-badge.active { background: rgba(0, 212, 170, 0.15); color: var(--accent); }
+        .status-badge.ready { background: rgba(255, 190, 11, 0.15); color: var(--yellow); }
         
-        .footer {
-            text-align: center;
-            padding: 32px;
-            color: var(--text-dim);
-            font-size: 12px;
+        .cmd {
+            background: var(--bg);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--accent);
+            margin: 8px 0;
         }
         
-        .add-lead {
-            background: var(--accent-dim);
-            border: 2px dashed var(--accent);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .add-lead:hover { background: rgba(0, 212, 170, 0.2); }
-        .add-lead-icon { font-size: 32px; margin-bottom: 8px; }
-        .add-lead-text { font-size: 12px; color: var(--accent); font-weight: 600; }
+        .footer { text-align: center; padding: 40px; color: var(--text-dim); font-size: 12px; }
     </style>
 </head>
 <body>
     <header class="header">
-        <div class="logo">🦞 <span>PISCO</span> Command Center</div>
-        <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+        <h1>⚙️ Axton's n8n Workflows</h1>
+        <p>Powerful automation engines running 24/7</p>
     </header>
 
     <main class="main">
-        <div class="hero">
-            <div class="hero-emoji">🌏</div>
-            <div>
-                <h1>Filipino Staff BD Pipeline</h1>
-                <p>Tracking outreach to European hotels & healthcare</p>
+        <div class="card">
+            <h2><span class="icon">🚀</span> 1. PISCO Outreach Engine</h2>
+            <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 12px;">
+                Daily automated outreach for PISCO hotel BD. Sends personalized emails to hotel chains for approval before sending.
+            </p>
+            <ul>
+                <li><strong>Schedule:</strong> Daily at 9:00 AM</li>
+                <li><strong>Reads:</strong> PISCO prospect list</li>
+                <li><strong>Creates:</strong> Personalized emails based on hotel segment</li>
+                <li><strong>Sends:</strong> Draft to Jordan via Telegram for approval</li>
+            </ul>
+            <div class="workflow-id">ID: W6ZsjatbH8tnk05p</div>
+            <div class="status-row">
+                <span class="status-badge ready">⚠️ Needs prospect data populated</span>
             </div>
         </div>
 
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">756</div>
-                <div class="stat-label">Total Leads</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" style="color: var(--blue)">20</div>
-                <div class="stat-label">Hot Leads</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" style="color: var(--yellow)">3</div>
-                <div class="stat-label">Replied</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" style="color: var(--red)">0</div>
-                <div class="stat-label">Meetings</div>
+        <div class="card">
+            <h2><span class="icon">⏰</span> 2. MBA Deadline Guardian</h2>
+            <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 12px;">
+                Watches your IE calendar and alerts you 48 hours before deadlines. Never miss an MBA deadline again.
+            </p>
+            <ul>
+                <li><strong>Schedule:</strong> Daily at 8:00 AM</li>
+                <li><strong>Reads:</strong> IE iCal feed (350 events)</li>
+                <li><strong>Filters:</strong> Deadlines in next 7 days</li>
+                <li><strong>Sends:</strong> Briefing with countdown to Telegram</li>
+            </ul>
+            <div class="workflow-id">ID: 6pLhQx4Babpqu3xO</div>
+            <div class="status-row">
+                <span class="status-badge active">✅ Active - Next alert: Tomorrow</span>
             </div>
         </div>
 
-        <div class="section-title">Pipeline</div>
-        <div class="pipeline">
-            <div class="stage stage-1">
-                <div class="stage-header">
-                    <span class="stage-name">Research</span>
-                    <span class="stage-count" style="color: var(--blue)">100</span>
-                </div>
-                <div class="lead-card">
-                    <div class="lead-name">Prospects</div>
-                    <div class="lead-company">Ready to contact</div>
-                </div>
-            </div>
-            <div class="stage stage-2">
-                <div class="stage-header">
-                    <span class="stage-name">Emails Sent</span>
-                    <span class="stage-count" style="color: var(--yellow)">50</span>
-                </div>
-                <div class="lead-card">
-                    <div class="lead-name">Batch 1</div>
-                    <div class="lead-company">50 personalized</div>
-                </div>
-            </div>
-            <div class="stage stage-3">
-                <div class="stage-header">
-                    <span class="stage-name">Follow-up</span>
-                    <span class="stage-count">25</span>
-                </div>
-                <div class="lead-card">
-                    <div class="lead-name">Awaiting reply</div>
-                    <div class="lead-company">Day 3 follow-up</div>
-                </div>
-            </div>
-            <div class="stage stage-4">
-                <div class="stage-header">
-                    <span class="stage-name">Replied</span>
-                    <span class="stage-count">3</span>
-                </div>
-                <div class="lead-card">
-                    <div class="lead-name">Javier (NH)</div>
-                    <div class="lead-company">Interested</div>
-                </div>
-            </div>
-            <div class="stage stage-5">
-                <div class="stage-header">
-                    <span class="stage-name">Meetings</span>
-                    <span class="stage-count">0</span>
-                </div>
-                <div class="add-lead" onclick="alert('Click to add new lead!')">
-                    <div class="add-lead-icon">+</div>
-                    <div class="add-lead-text">Add Meeting</div>
-                </div>
+        <div class="card">
+            <h2><span class="icon">🕵️</span> 3. Market Intelligence Radar</h2>
+            <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 12px;">
+                Monitors news on your target companies. Finds opportunities before competitors do.
+            </p>
+            <ul>
+                <li><strong>Schedule:</strong> Daily at 7:30 AM</li>
+                <li><strong>Tracks:</strong> Hotels, competitors, industry news</li>
+                <li><strong>Finds:</strong> Funding rounds, hiring, expansion news</li>
+                <li><strong>Alerts:</strong> Relevant opportunities to Telegram</li>
+            </ul>
+            <div class="workflow-id">ID: SV8dLbCTLJw6lVkk</div>
+            <div class="status-row">
+                <span class="status-badge ready">⏳ Ready to activate</span>
             </div>
         </div>
 
-        <div class="section-title">🔥 Hot Leads</div>
-        <div class="leads-grid">
-            <div class="lead-full">
-                <span class="lead-status status-hot">🔥 HOT</span>
-                <div class="lead-name-full">Javier Estrada</div>
-                <div class="lead-title">HR Director · NH Hotel Group Spain</div>
-                <div class="lead-actions">
-                    <button class="btn btn-primary">Send Email</button>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+        <div class="card">
+            <h2><span class="icon">🎯</span> 4. Lead Generation Engine</h2>
+            <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 12px;">
+                Weekly lead generation for PISCO and COMARE. Researches new prospects automatically.
+            </p>
+            <ul>
+                <li><strong>Schedule:</strong> Weekly on Mondays at 10:00 AM</li>
+                <li><strong>ICP:</strong> Hotel chains (PISCO), Gyms/Pharmacies (COMARE)</li>
+                <li><strong>Research:</strong> New openings, expansions, contacts</li>
+                <li><strong>Reports:</strong> New leads to Telegram for review</li>
+            </ul>
+            <div class="workflow-id">ID: kWDGFfGboA9J1GfO</div>
+            <div class="status-row">
+                <span class="status-badge active">✅ Active</span>
             </div>
-            <div class="lead-full">
-                <span class="lead-status status-warm">📅 Scheduled</span>
-                <div class="lead-name-full">Luis Zamora</div>
-                <div class="lead-title">GM · Iberostar</div>
-                <div class="lead-actions">
-                    <button class="btn btn-primary">Send Email</button>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon">🎛️</span> 5. Jordan's Command Center</h2>
+            <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 12px;">
+                THE MASTER. Combines everything into one powerful daily briefing.
+            </p>
+            <ul>
+                <li><strong>Schedule:</strong> Daily at 8:00 AM</li>
+                <li><strong>Includes:</strong> Deadlines + MBA schedule + Project status + Weather</li>
+                <li><strong>Format:</strong> Clean Telegram message with actionable items</li>
+                <li><strong>Example:</strong> "You have 2 deadlines this week. Prioritize X."</li>
+            </ul>
+            <div class="workflow-id">ID: NgYhxPoZxCnbfQTd</div>
+            <div class="status-row">
+                <span class="status-badge active">✅ Active - Running daily</span>
             </div>
-            <div class="lead-full">
-                <span class="lead-status status-new">✨ New</span>
-                <div class="lead-name-full">Yolanda de la Plaza</div>
-                <div class="lead-title">Director · Room Mate Hotels</div>
-                <div class="lead-actions">
-                    <button class="btn btn-primary">Send Email</button>
-                    <button class="btn btn-secondary">View Profile</button>
-                </div>
-            </div>
+        </div>
+
+        <div class="card" style="background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(0, 160, 128, 0.1) 100%); border-color: var(--accent);">
+            <h2 style="color: var(--accent);"><span class="icon">⚡</span> What to Say to Activate</h2>
+            <p style="color: var(--text-dim); font-size: 13px; margin-bottom: 16px;">
+                Just tell me what you want, and I'll run the workflow:
+            </p>
+            <div class="cmd">"Run the MBA Deadline Guardian now"</div>
+            <div class="cmd">"Execute PISCO batch 1 outreach"</div>
+            <div class="cmd">"Run Market Intelligence Radar"</div>
+            <div class="cmd">"Generate leads for COMARE"</div>
         </div>
     </main>
 
     <div class="footer">
-        🦞 PISCO Command Center · Powered by Axton · Last updated: <span id="last-update">--</span>
+        n8n Workflows · Powered by Axton · OpenClaw · Jordan Hays
     </div>
-
-    <script>
-        // Update timestamp
-        document.getElementById('last-update').textContent = new Date().toLocaleString();
-        
-        // Auto-refresh every 30 seconds
-        setInterval(() => {
-            document.getElementById('last-update').textContent = new Date().toLocaleString();
-        }, 30000);
-        
-        // Click to add lead
-        document.querySelector('.add-lead').addEventListener('click', function() {
-            alert('This would open a form to add a new lead to the pipeline!');
-        });
-    </script>
 </body>
 </html>
