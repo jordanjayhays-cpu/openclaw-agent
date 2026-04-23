@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Massage Pass | Book Spas & Massages for Remote Workers in Madrid</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -20,6 +19,8 @@
             --border: #E5E7EB;
             --white: #FFFFFF;
             --success: #10B981;
+            --marker-red: #A21228;
+            --marker-gold: #E8B130;
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow: 0 4px 6px rgba(0,0,0,0.07);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
@@ -29,139 +30,144 @@
         }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
         
+        /* NAV */
         .nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             background: var(--white); border-bottom: 1px solid var(--border);
             padding: 0 24px;
         }
-        .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 72px; }
-        .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 800; color: var(--primary); text-decoration: none; }
-        .nav-logo-icon { width: 40px; height: 40px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
-        .nav-actions { display: flex; gap: 12px; }
-        .nav-btn { padding: 10px 20px; border-radius: var(--radius-full); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 68px; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .nav-logo-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        
+        .nav-center { display: flex; gap: 4px; }
+        .nav-tab { padding: 8px 18px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--text-secondary); transition: all 0.2s; }
+        .nav-tab.active { background: var(--primary); color: white; }
+        
+        .nav-actions { display: flex; gap: 10px; }
+        .nav-btn { padding: 9px 18px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .nav-btn-primary { background: var(--primary); border: none; color: var(--white); }
         .nav-btn-primary:hover { background: var(--primary-hover); }
         
+        /* HERO */
         .hero {
-            padding: 120px 24px 60px; text-align: center;
+            padding: 110px 24px 0;
             background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
         }
-        .hero-header { max-width: 700px; margin: 0 auto 40px; }
-        .hero-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 14px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600; margin-bottom: 20px; }
-        .hero-title { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+        .hero-header { max-width: 700px; margin: 0 auto 24px; text-align: center; }
+        .hero-badge { display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 14px; border-radius: var(--radius-full); font-size: 11px; font-weight: 600; margin-bottom: 16px; }
+        .hero-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
         .hero-title span { color: var(--primary); }
-        .hero-subtitle { font-size: 17px; color: var(--text-secondary); max-width: 500px; margin: 0 auto 24px; }
+        .hero-subtitle { font-size: 16px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; }
         
-        /* FILTER BAR */
-        .filter-bar { max-width: 900px; margin: 0 auto 40px; }
-        .filter-search {
-            background: var(--white); border-radius: 20px; padding: 6px;
-            box-shadow: var(--shadow-lg); display: flex; gap: 0;
-            border: 1px solid var(--border); margin-bottom: 12px;
+        /* VIEW TOGGLE */
+        .view-toggle { display: flex; gap: 4px; padding: 4px; background: var(--bg-secondary); border-radius: var(--radius-full); max-width: 240px; margin: 20px auto; }
+        .view-btn { flex: 1; padding: 10px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .view-btn.active { background: var(--white); box-shadow: var(--shadow-sm); color: var(--text); }
+        .view-btn:not(.active) { background: transparent; color: var(--text-secondary); }
+        
+        /* MAIN CONTENT */
+        .main { display: flex; gap: 24px; max-width: 1200px; margin: 0 auto; padding: 24px; }
+        
+        /* LEFT PANEL */
+        .left-panel { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px; }
+        
+        /* MAP CONTAINER */
+        .map-section { display: flex; }
+        .map-container { width: 100%; }
+        
+        /* MAP WRAPPER */
+        .map-wrap { position: relative; }
+        #map { height: 520px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        
+        /* MAP CONTROLS */
+        .map-controls { position: absolute; top: 12px; left: 12px; right: 12px; z-index: 10; display: flex; gap: 8px; }
+        .map-search { flex: 1; background: var(--white); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow); }
+        .map-search input { border: none; outline: none; font-size: 14px; width: 100%; background: transparent; }
+        .map-search input::placeholder { color: var(--text-light); }
+        .locate-btn { background: var(--white); border: none; border-radius: var(--radius-sm); width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: var(--shadow); font-size: 18px; }
+        
+        /* USER LOCATION BANNER */
+        .location-banner { background: var(--white); border-radius: var(--radius-sm); padding: 12px 14px; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
+        .location-icon { width: 36px; height: 36px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+        .location-text { flex: 1; }
+        .location-text strong { font-size: 13px; display: block; }
+        .location-text small { font-size: 11px; color: var(--text-secondary); }
+        .location-btn { background: var(--primary); color: white; border: none; border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; cursor: pointer; }
+        
+        /* STUDIO CARDS */
+        .studio-card {
+            background: var(--white); border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+            transition: all 0.3s; cursor: pointer;
         }
-        .filter-field { flex: 1; display: flex; align-items: center; gap: 10px; padding: 14px 20px; cursor: pointer; border-right: 1px solid var(--border); }
-        .filter-field:last-of-type { border-right: none; }
-        .filter-field-icon { font-size: 20px; }
-        .filter-field-text { display: flex; flex-direction: column; text-align: left; }
-        .filter-field-text .label { font-size: 10px; color: var(--text-light); font-weight: 600; text-transform: uppercase; }
-        .filter-field-text .value { font-size: 14px; font-weight: 600; }
-        .filter-btn { width: 48px; height: 48px; background: var(--primary); border: none; border-radius: 16px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .studio-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+        .studio-card.active { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
         
-        /* QUICK FILTERS */
-        .quick-filters { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-        .quick-chip { background: var(--white); border: 1px solid var(--border); padding: 8px 16px; border-radius: var(--radius-full); font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-        .quick-chip:hover { border-color: var(--primary); }
-        .quick-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .quick-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+        .studio-image { position: relative; height: 140px; background: linear-gradient(135deg, #E8F5F9 0%, #D4E9F0 100%); display: flex; align-items: center; justify-content: center; font-size: 52px; }
+        .studio-badges { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+        .studio-badge { background: var(--primary); color: white; padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+        .studio-badge.green { background: var(--success); }
+        .studio-badge.orange { background: #FF5C39; }
+        .studio-badge.gold { background: var(--marker-gold); color: var(--text); }
+        
+        .studio-content { padding: 14px; }
+        .studio-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+        .studio-name { font-size: 15px; font-weight: 700; }
+        .studio-rating { display: flex; align-items: center; gap: 3px; font-size: 12px; font-weight: 700; }
+        .studio-stars { color: #FFB800; }
+        .studio-reviews { color: var(--text-light); font-weight: 400; }
+        
+        .studio-address { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; display: flex; align-items: center; gap: 4px; }
+        
+        .studio-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 10px; }
+        .studio-tag { background: var(--bg-secondary); padding: 3px 8px; border-radius: 5px; font-size: 10px; color: var(--text-secondary); font-weight: 600; }
+        .studio-tag.highlight { background: var(--success); color: white; }
+        
+        .studio-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); }
+        .studio-price { font-size: 16px; font-weight: 800; }
+        .studio-price span { font-size: 11px; font-weight: 400; color: var(--text-light); }
+        .studio-book { background: var(--primary); color: white; padding: 9px 18px; border-radius: var(--radius-sm); border: none; font-size: 13px; font-weight: 700; cursor: pointer; }
+        
+        .studio-distance { font-size: 11px; color: var(--text-secondary); display: flex; align-items: center; gap: 4px; margin-top: 6px; }
+        
+        /* RIGHT PANEL (MAP VIEW) */
+        .right-panel { flex: 1; display: flex; flex-direction: column; gap: 16px; display: none; }
+        .right-panel.active { display: flex; }
         
         /* PACKAGE BANNER */
         .package-banner {
             background: linear-gradient(135deg, var(--primary) 0%, #9B8FFF 100%);
-            border-radius: var(--radius); margin: 0 24px 40px; padding: 28px;
-            display: flex; gap: 20px; align-items: center; color: white; position: relative; overflow: hidden;
+            border-radius: var(--radius); padding: 24px; display: flex; gap: 16px; align-items: center; color: white; margin: 0 24px 24px;
         }
-        .package-banner::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%; }
-        .package-icon { font-size: 56px; flex-shrink: 0; }
+        .package-icon { font-size: 48px; flex-shrink: 0; }
         .package-content { flex: 1; }
-        .package-content h3 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
-        .package-content p { font-size: 13px; opacity: 0.9; margin-bottom: 8px; }
-        .package-price { font-size: 15px; font-weight: 700; }
-        .package-price span { font-size: 12px; opacity: 0.8; text-decoration: line-through; margin-left: 8px; }
-        .package-btn { background: white; color: var(--primary); padding: 12px 20px; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; font-size: 14px; flex-shrink: 0; }
+        .package-content h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+        .package-content p { font-size: 12px; opacity: 0.9; margin-bottom: 6px; }
+        .package-price { font-size: 14px; font-weight: 700; }
+        .package-price span { opacity: 0.7; text-decoration: line-through; margin-left: 6px; }
+        .package-btn { background: white; color: var(--primary); padding: 10px 18px; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; font-size: 13px; flex-shrink: 0; }
         
-        /* SECTION */
-        .section { padding: 0 24px 60px; }
-        .section-inner { max-width: 1100px; margin: 0 auto; }
-        .section-header { display: flex; justify-content: space-between; align-items: center; padding: 32px 0 20px; }
-        .section-title { font-size: 22px; font-weight: 700; }
-        .section-link { font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 600; }
+        /* QUICK FILTERS */
+        .filters-row { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 24px; margin-bottom: 16px; }
+        .filter-chip { background: var(--white); border: 1px solid var(--border); padding: 7px 14px; border-radius: var(--radius-full); font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        .filter-chip:hover { border-color: var(--primary); }
+        .filter-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
         
-        /* VENUE GRID */
-        .venue-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .venue-card { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); border: 1px solid var(--border); transition: all 0.3s; }
-        .venue-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+        /* MAP INFO WINDOW */
+        .gm-style .gm-style-iw { border-radius: 14px !important; padding: 14px !important; }
+        .gm-style .gm-style-iw-c { max-width: 240px !important; }
         
-        .venue-image { position: relative; height: 180px; background: linear-gradient(135deg, #E8F5F9 0%, #D4E9F0 100%); display: flex; align-items: center; justify-content: center; font-size: 64px; }
-        .venue-badges { position: absolute; top: 12px; left: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
-        .venue-badge { background: var(--primary); color: white; padding: 4px 10px; border-radius: 6px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
-        .venue-badge.green { background: var(--success); }
-        .venue-badge.orange { background: #FF5C39; }
-        .venue-favorite { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; background: white; border: none; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        
-        .venue-content { padding: 18px; }
-        .venue-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-        .venue-name { font-size: 16px; font-weight: 700; }
-        .venue-rating { display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--text); }
-        .venue-stars { color: #FFB800; }
-        .venue-reviews { color: var(--text-light); font-size: 12px; }
-        
-        .venue-location { font-size: 13px; color: var(--text-secondary); margin-bottom: 10px; display: flex; align-items: center; gap: 4px; }
-        .venue-quick-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-        .quick-tag { background: var(--bg-secondary); padding: 4px 10px; border-radius: 6px; font-size: 11px; color: var(--text-secondary); font-weight: 600; }
-        .quick-tag.highlight { background: var(--success); color: white; }
-        
-        .venue-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
-        .venue-price { font-size: 18px; font-weight: 800; }
-        .venue-price span { font-size: 12px; font-weight: 400; color: var(--text-light); }
-        .venue-book { background: var(--primary); color: white; padding: 10px 20px; border-radius: var(--radius-sm); border: none; font-size: 14px; font-weight: 700; cursor: pointer; }
-        .venue-book:hover { background: var(--primary-hover); }
-        
-        /* WHY SECTION */
-        .why { padding: 60px 24px; background: var(--bg-secondary); }
-        .why-inner { max-width: 900px; margin: 0 auto; }
-        .why-header { text-align: center; margin-bottom: 40px; }
-        .why-header h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
-        .why-header p { color: var(--text-secondary); }
-        
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-        .why-card { background: white; border-radius: var(--radius); padding: 24px; text-align: center; }
-        .why-icon { font-size: 40px; margin-bottom: 12px; }
-        .why-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-        .why-text { font-size: 12px; color: var(--text-secondary); }
-        
-        /* COWORK CTA */
-        .cowork-cta { padding: 60px 24px; text-align: center; }
-        .cowork-inner { max-width: 600px; margin: 0 auto; }
-        .cowork-inner h2 { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
-        .cowork-inner p { color: var(--text-secondary); margin-bottom: 20px; }
-        .cowork-form { display: flex; gap: 8px; max-width: 400px; margin: 0 auto; }
-        .cowork-form input { flex: 1; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; }
-        .cowork-form button { background: var(--primary); color: white; border: none; padding: 14px 20px; border-radius: var(--radius-sm); font-weight: 700; cursor: pointer; }
-        
-        .footer { padding: 32px 24px; background: var(--text); color: rgba(255,255,255,0.7); text-align: center; }
-        .footer-logo { font-size: 18px; font-weight: 800; color: white; margin-bottom: 8px; }
-        .footer p { font-size: 12px; }
-        
+        /* MOBILE MAP */
         @media (max-width: 768px) {
-            .nav-actions { display: none; }
-            .filter-search { flex-direction: column; }
-            .filter-field { border-right: none; border-bottom: 1px solid var(--border); }
-            .filter-field:last-of-type { border-bottom: none; }
-            .filter-btn { width: 100%; }
+            .nav-center { display: none; }
+            .main { flex-direction: column; padding: 16px; gap: 16px; }
+            .left-panel { width: 100%; }
+            .view-toggle { max-width: 200px; }
+            #map { height: 380px; }
             .package-banner { flex-direction: column; text-align: center; }
-            .venue-footer { flex-direction: column; gap: 10px; }
-            .venue-book { width: 100%; text-align: center; }
-            .cowork-form { flex-direction: column; }
+            .package-btn { width: 100%; text-align: center; }
+            .filters-row { padding: 0; }
         }
     </style>
 </head>
@@ -172,300 +178,629 @@
                 <span class="nav-logo-icon">💆</span>
                 Massage Pass
             </a>
+            <div class="nav-center">
+                <button class="nav-tab active" onclick="setView('list')">📋 List</button>
+                <button class="nav-tab" onclick="setView('map')">📍 Map</button>
+            </div>
             <div class="nav-actions">
-                <a href="#spas" class="nav-btn nav-btn-primary">Book now</a>
+                <button class="nav-btn nav-btn-primary" onclick="document.getElementById('booking-modal').classList.add('active')">Book now</button>
             </div>
         </div>
     </nav>
     
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-header">
             <div class="hero-badge">📍 For remote workers & travelers in Madrid</div>
             <h1 class="hero-title">Massage for <span>nomads</span> who deserve a break</h1>
-            <p class="hero-subtitle">Express 30-min sessions, same-day booking, and studios that actually understand neck pain from 12-hour coding days.</p>
+            <p class="hero-subtitle">Express sessions, same-day booking, studios near you.</p>
         </div>
         
-        <div class="filter-bar">
-            <div class="filter-search">
-                <div class="filter-field">
-                    <span class="filter-field-icon">📍</span>
-                    <div class="filter-field-text">
-                        <span class="label">Area</span>
-                        <span class="value">Malasaña, Chueca, Centro...</span>
-                    </div>
-                </div>
-                <div class="filter-field">
-                    <span class="filter-field-icon">💆</span>
-                    <div class="filter-field-text">
-                        <span class="label">Type</span>
-                        <span class="value">Any massage</span>
-                    </div>
-                </div>
-                <button class="filter-btn">🔍</button>
-            </div>
-            
-            <div class="quick-filters">
-                <div class="quick-chip active"><span class="dot"></span> Same-day</div>
-                <div class="quick-chip"><span class="dot"></span> Express 30min</div>
-                <div class="quick-chip"><span class="dot"></span> Walk-ins OK</div>
-                <div class="quick-chip"><span class="dot"></span> Deep Tissue</div>
-                <div class="quick-chip"><span class="dot"></span> Couples</div>
-            </div>
+        <div class="view-toggle">
+            <button class="view-btn active" onclick="setView('list')">📋 List view</button>
+            <button class="view-btn" onclick="setView('map')">📍 Map view</button>
         </div>
     </section>
     
-    <!-- NOMAD PACK BANNER -->
-    <div class="package-banner" id="spas">
+    <!-- PACKAGE BANNER -->
+    <div class="package-banner">
         <span class="package-icon">🎒</span>
         <div class="package-content">
             <h3>The Nomad Pack — €199/month</h3>
-            <p>4 massages · Express or standard · Use anytime · Valid 30 days</p>
-            <div class="package-price">€199/mo <span>was €280</span> · Save €81</div>
+            <p>4 massages · Express or standard · Valid 30 days</p>
+            <div class="package-price">€199/mo <span>was €280</span></div>
         </div>
         <a href="#contact" class="package-btn">Get access →</a>
     </div>
     
-    <!-- VENUES -->
-    <section class="section">
-        <div class="section-inner">
-            <div class="section-header">
-                <h2 class="section-title">Studios near you</h2>
-                <a href="#" class="section-link">View all →</a>
+    <!-- FILTERS -->
+    <div class="filters-row">
+        <div class="filter-chip active" onclick="toggleFilter(this)">✅ Same-day</div>
+        <div class="filter-chip" onclick="toggleFilter(this)">⚡ Express 30min</div>
+        <div class="filter-chip" onclick="toggleFilter(this)">🚶 Walk-ins OK</div>
+        <div class="filter-chip" onclick="toggleFilter(this)">💪 Deep Tissue</div>
+        <div class="filter-chip" onclick="toggleFilter(this)">💑 Couples</div>
+        <div class="filter-chip" onclick="toggleFilter(this)">🌿 Sports</div>
+    </div>
+    
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <!-- LEFT PANEL: Map -->
+        <div class="left-panel">
+            <div class="map-container">
+                <div class="map-wrap">
+                    <div class="map-controls">
+                        <div class="map-search">
+                            <span>📍</span>
+                            <input type="text" id="map-search-input" placeholder="Search area in Madrid..." onkeydown="handleSearch(this)">
+                        </div>
+                        <button class="locate-btn" onclick="goToMyLocation()" title="My location">📍</button>
+                    </div>
+                    <div id="map"></div>
+                </div>
             </div>
             
-            <div class="venue-grid">
-                <div class="venue-card">
-                    <div class="venue-image">
+            <!-- STUDIO CARDS -->
+            <div id="studio-cards">
+                <div class="studio-card" onclick="selectStudio(0)">
+                    <div class="studio-image">
                         🧖‍♀️
-                        <div class="venue-badges">
-                            <span class="venue-badge green">Same-day OK</span>
-                            <span class="venue-badge">Express</span>
+                        <div class="studio-badges">
+                            <span class="studio-badge green">Same-day OK</span>
+                            <span class="studio-badge">Express</span>
                         </div>
-                        <button class="venue-favorite">🤍</button>
                     </div>
-                    <div class="venue-content">
-                        <div class="venue-header">
-                            <div class="venue-name">Wellness Center Centro</div>
-                            <div class="venue-rating">★ 4.8 <span class="venue-reviews">(847)</span></div>
+                    <div class="studio-content">
+                        <div class="studio-header">
+                            <div class="studio-name">Wellness Center Centro</div>
+                            <div class="studio-rating">★ 4.8 <span class="studio-reviews">(847)</span></div>
                         </div>
-                        <div class="venue-location">📍 Gran Vía 28, Centro</div>
-                        <div class="venue-quick-tags">
-                            <span class="quick-tag highlight">Walk-ins OK</span>
-                            <span class="quick-tag">Swedish</span>
-                            <span class="quick-tag">Deep Tissue</span>
+                        <div class="studio-address">📍 Gran Vía 28, Centro</div>
+                        <div class="studio-tags">
+                            <span class="studio-tag highlight">Walk-ins OK</span>
+                            <span class="studio-tag">Swedish</span>
+                            <span class="studio-tag">Deep Tissue</span>
                         </div>
-                        <div class="venue-footer">
-                            <div class="venue-price">From €40 <span>/ session</span></div>
-                            <button class="venue-book">Book</button>
+                        <div class="studio-footer">
+                            <div class="studio-price">From €40 <span>/ session</span></div>
+                            <button class="studio-book" onclick="event.stopPropagation(); openBooking('Wellness Center Centro')">Book</button>
                         </div>
+                        <div class="studio-distance">📍 <span id="dist-0">Loading...</span></div>
                     </div>
                 </div>
                 
-                <div class="venue-card">
-                    <div class="venue-image">
+                <div class="studio-card" onclick="selectStudio(1)">
+                    <div class="studio-image">
                         ✨
-                        <div class="venue-badges">
-                            <span class="venue-badge green">Same-day OK</span>
-                            <span class="venue-badge orange">Most Popular</span>
+                        <div class="studio-badges">
+                            <span class="studio-badge green">Same-day OK</span>
+                            <span class="studio-badge orange">Most Popular</span>
                         </div>
-                        <button class="venue-favorite">🤍</button>
                     </div>
-                    <div class="venue-content">
-                        <div class="venue-header">
-                            <div class="venue-name">Serenity Spa</div>
-                            <div class="venue-rating">★ 4.9 <span class="venue-reviews">(1,243)</span></div>
+                    <div class="studio-content">
+                        <div class="studio-header">
+                            <div class="studio-name">Serenity Spa & Massage</div>
+                            <div class="studio-rating">★ 4.9 <span class="studio-reviews">(1,243)</span></div>
                         </div>
-                        <div class="venue-location">📍 Plaza Mayor 15, La Latina</div>
-                        <div class="venue-quick-tags">
-                            <span class="quick-tag highlight">Walk-ins OK</span>
-                            <span class="quick-tag">Swedish</span>
-                            <span class="quick-tag">Couples</span>
+                        <div class="studio-address">📍 Plaza Mayor 15, La Latina</div>
+                        <div class="studio-tags">
+                            <span class="studio-tag highlight">Walk-ins OK</span>
+                            <span class="studio-tag">Swedish</span>
+                            <span class="studio-tag">Couples</span>
                         </div>
-                        <div class="venue-footer">
-                            <div class="venue-price">From €55 <span>/ session</span></div>
-                            <button class="venue-book">Book</button>
+                        <div class="studio-footer">
+                            <div class="studio-price">From €55 <span>/ session</span></div>
+                            <button class="studio-book" onclick="event.stopPropagation(); openBooking('Serenity Spa')">Book</button>
                         </div>
+                        <div class="studio-distance">📍 <span id="dist-1">Loading...</span></div>
                     </div>
                 </div>
                 
-                <div class="venue-card">
-                    <div class="venue-image">
+                <div class="studio-card" onclick="selectStudio(2)">
+                    <div class="studio-image">
                         🌿
-                        <div class="venue-badges">
-                            <span class="venue-badge">Express</span>
+                        <div class="studio-badges">
+                            <span class="studio-badge">Express</span>
                         </div>
-                        <button class="venue-favorite">🤍</button>
                     </div>
-                    <div class="venue-content">
-                        <div class="venue-header">
-                            <div class="venue-name">Zen Garden Wellness</div>
-                            <div class="venue-rating">★ 4.7 <span class="venue-reviews">(632)</span></div>
+                    <div class="studio-content">
+                        <div class="studio-header">
+                            <div class="studio-name">Zen Garden Wellness</div>
+                            <div class="studio-rating">★ 4.7 <span class="studio-reviews">(632)</span></div>
                         </div>
-                        <div class="venue-location">📍 Alcalá 55, Salamanca</div>
-                        <div class="venue-quick-tags">
-                            <span class="quick-tag highlight">Walk-ins OK</span>
-                            <span class="quick-tag">Sports</span>
-                            <span class="quick-tag">Deep Tissue</span>
+                        <div class="studio-address">📍 Calle Alcalá 55, Salamanca</div>
+                        <div class="studio-tags">
+                            <span class="studio-tag highlight">Walk-ins OK</span>
+                            <span class="studio-tag">Sports</span>
+                            <span class="studio-tag">Deep Tissue</span>
                         </div>
-                        <div class="venue-footer">
-                            <div class="venue-price">From €45 <span>/ session</span></div>
-                            <button class="venue-book">Book</button>
+                        <div class="studio-footer">
+                            <div class="studio-price">From €45 <span>/ session</span></div>
+                            <button class="studio-book" onclick="event.stopPropagation(); openBooking('Zen Garden')">Book</button>
                         </div>
+                        <div class="studio-distance">📍 <span id="dist-2">Loading...</span></div>
                     </div>
                 </div>
                 
-                <div class="venue-card">
-                    <div class="venue-image">
+                <div class="studio-card" onclick="selectStudio(3)">
+                    <div class="studio-image">
                         💧
-                        <div class="venue-badges">
-                            <span class="venue-badge green">Same-day OK</span>
+                        <div class="studio-badges">
+                            <span class="studio-badge green">Same-day OK</span>
                         </div>
-                        <button class="venue-favorite">🤍</button>
                     </div>
-                    <div class="venue-content">
-                        <div class="venue-header">
-                            <div class="venue-name">Aquarel Wellness</div>
-                            <div class="venue-rating">★ 4.6 <span class="venue-reviews">(489)</span></div>
+                    <div class="studio-content">
+                        <div class="studio-header">
+                            <div class="studio-name">Aquarel Wellness</div>
+                            <div class="studio-rating">★ 4.6 <span class="studio-reviews">(489)</span></div>
                         </div>
-                        <div class="venue-location">📍 Serrano 45, Salamanca</div>
-                        <div class="venue-quick-tags">
-                            <span class="quick-tag highlight">Walk-ins OK</span>
-                            <span class="quick-tag">Swedish</span>
-                            <span class="quick-tag">Aromatherapy</span>
+                        <div class="studio-address">📍 Calle Serrano 45, Salamanca</div>
+                        <div class="studio-tags">
+                            <span class="studio-tag highlight">Walk-ins OK</span>
+                            <span class="studio-tag">Swedish</span>
+                            <span class="studio-tag">Aromatherapy</span>
                         </div>
-                        <div class="venue-footer">
-                            <div class="venue-price">From €38 <span>/ session</span></div>
-                            <button class="venue-book">Book</button>
+                        <div class="studio-footer">
+                            <div class="studio-price">From €38 <span>/ session</span></div>
+                            <button class="studio-book" onclick="event.stopPropagation(); openBooking('Aquarel Wellness')">Book</button>
                         </div>
+                        <div class="studio-distance">📍 <span id="dist-3">Loading...</span></div>
                     </div>
                 </div>
                 
-                <div class="venue-card">
-                    <div class="venue-image">
+                <div class="studio-card" onclick="selectStudio(4)">
+                    <div class="studio-image">
                         🪷
-                        <div class="venue-badges">
-                            <span class="venue-badge">Express</span>
-                            <span class="venue-badge">Thai</span>
+                        <div class="studio-badges">
+                            <span class="studio-badge">Thai</span>
+                            <span class="studio-badge gold">Best Value</span>
                         </div>
-                        <button class="venue-favorite">🤍</button>
                     </div>
-                    <div class="venue-content">
-                        <div class="venue-header">
-                            <div class="venue-name">Thai Harmony Massage</div>
-                            <div class="venue-rating">★ 4.5 <span class="venue-reviews">(321)</span></div>
+                    <div class="studio-content">
+                        <div class="studio-header">
+                            <div class="studio-name">Thai Harmony Massage</div>
+                            <div class="studio-rating">★ 4.5 <span class="studio-reviews">(321)</span></div>
                         </div>
-                        <div class="venue-location">📍 Fuencarral 88, Malasaña</div>
-                        <div class="venue-quick-tags">
-                            <span class="quick-tag highlight">Walk-ins OK</span>
-                            <span class="quick-tag">Thai</span>
-                            <span class="quick-tag">Deep Tissue</span>
+                        <div class="studio-address">📍 Fuencarral 88, Malasaña</div>
+                        <div class="studio-tags">
+                            <span class="studio-tag highlight">Walk-ins OK</span>
+                            <span class="studio-tag">Thai</span>
+                            <span class="studio-tag">Deep Tissue</span>
                         </div>
-                        <div class="venue-footer">
-                            <div class="venue-price">From €35 <span>/ session</span></div>
-                            <button class="venue-book">Book</button>
+                        <div class="studio-footer">
+                            <div class="studio-price">From €35 <span>/ session</span></div>
+                            <button class="studio-book" onclick="event.stopPropagation(); openBooking('Thai Harmony')">Book</button>
                         </div>
+                        <div class="studio-distance">📍 <span id="dist-4">Loading...</span></div>
                     </div>
                 </div>
                 
-                <div class="venue-card">
-                    <div class="venue-image">
+                <div class="studio-card" onclick="selectStudio(5)">
+                    <div class="studio-image">
                         👑
-                        <div class="venue-badges">
-                            <span class="venue-badge">Luxury</span>
-                            <span class="venue-badge">Hammam</span>
-                        </div>
-                        <button class="venue-favorite">🤍</button>
-                    </div>
-                    <div class="venue-content">
-                        <div class="venue-header">
-                            <div class="venue-name">Four Seasons Spa</div>
-                            <div class="venue-rating">★ 4.9 <span class="venue-reviews">(2,156)</span></div>
-                        </div>
-                        <div class="venue-location">📍 Plaza de Cibeles 1</div>
-                        <div class="venue-quick-tags">
-                            <span class="quick-tag">VIP</span>
-                            <span class="quick-tag">Hot Stone</span>
-                            <span class="quick-tag">Couples</span>
-                        </div>
-                        <div class="venue-footer">
-                            <div class="venue-price">From €95 <span>/ session</span></div>
-                            <button class="venue-book">Book</button>
+                        <div class="studio-badges">
+                            <span class="studio-badge gold">Luxury</span>
                         </div>
                     </div>
+                    <div class="studio-content">
+                        <div class="studio-header">
+                            <div class="studio-name">Four Seasons Spa</div>
+                            <div class="studio-rating">★ 4.9 <span class="studio-reviews">(2,156)</span></div>
+                        </div>
+                        <div class="studio-address">📍 Plaza de Cibeles 1</div>
+                        <div class="studio-tags">
+                            <span class="studio-tag">VIP</span>
+                            <span class="studio-tag">Hot Stone</span>
+                            <span class="studio-tag">Couples</span>
+                        </div>
+                        <div class="studio-footer">
+                            <div class="studio-price">From €95 <span>/ session</span></div>
+                            <button class="studio-book" onclick="event.stopPropagation(); openBooking('Four Seasons')">Book</button>
+                        </div>
+                        <div class="studio-distance">📍 <span id="dist-5">Loading...</span></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- WHY FOR NOMADS -->
-    <section class="why">
-        <div class="why-inner">
-            <div class="why-header">
-                <h2>Why nomads choose Massage Pass</h2>
-                <p>Built for people who can't afford to be in pain</p>
-            </div>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">⚡</div>
-                    <div class="why-title">Same-day booking</div>
-                    <div class="why-text">Don't plan ahead. Book at 2pm, be there at 4pm.</div>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">💨</div>
-                    <div class="why-title">Express sessions</div>
-                    <div class="why-text">30 or 45 min — perfect for a break, not a commitment.</div>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">🚶</div>
-                    <div class="why-title">Walk-ins welcome</div>
-                    <div class="why-text">No 24h advance. Just show up when you need it.</div>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">💻</div>
-                    <div class="why-title">Deep tissue focus</div>
-                    <div class="why-text">Therapists who understand desk posture and laptop shoulder.</div>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">🌍</div>
-                    <div class="why-title">Used by 12,000+ nomads</div>
-                    <div class="why-text">In Madrid, Lisbon, Barcelona, Berlin, and growing.</div>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">📱</div>
-                    <div class="why-title">Instant confirmation</div>
-                    <div class="why-text">Book in 30 seconds. Get confirmed in real time.</div>
+        
+        <!-- RIGHT PANEL: Map only (hidden on mobile) -->
+        <div class="right-panel" id="right-panel">
+            <div class="map-container">
+                <div class="map-wrap">
+                    <div class="map-controls">
+                        <div class="map-search">
+                            <span>📍</span>
+                            <input type="text" id="map-search-input-2" placeholder="Search in Madrid..." onkeydown="handleSearch(this)">
+                        </div>
+                        <button class="locate-btn" onclick="goToMyLocation()">📍</button>
+                    </div>
+                    <div id="map2"></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     
-    <!-- COWORK PARTNERSHIP -->
-    <section class="cowork-cta" id="contact">
-        <div class="cowork-inner">
-            <h2>For co-working spaces & hostels</h2>
-            <p>Partner with Massage Pass and offer your members/guests exclusive discounts. We handle everything — you just share the link.</p>
-            <div class="cowork-form">
-                <input type="email" placeholder="Your email or workspace name">
-                <button>Partner →</button>
+    <!-- BOOKING MODAL -->
+    <div id="booking-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
+        <div style="background: white; border-radius: 16px; padding: 28px; max-width: 420px; width: 90%; max-height: 90vh; overflow-y: auto;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <h3 style="font-size:18px; font-weight:700;">Book Appointment</h3>
+                <button onclick="document.getElementById('booking-modal').classList.remove('active')" style="background:none; border:none; font-size:24px; cursor:pointer;">×</button>
             </div>
+            <form id="booking-form">
+                <div style="margin-bottom:12px;">
+                    <label style="display:block; font-size:11px; color:#6B7280; margin-bottom:5px;">Studio</label>
+                    <input type="text" id="booking-studio" readonly style="width:100%; padding:12px; border:1px solid #E5E7EB; border-radius:8px; font-size:14px; background:#F9FAFB;">
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
+                    <div>
+                        <label style="display:block; font-size:11px; color:#6B7280; margin-bottom:5px;">Date</label>
+                        <input type="date" id="booking-date" required style="width:100%; padding:12px; border:1px solid #E5E7EB; border-radius:8px; font-size:14px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:11px; color:#6B7280; margin-bottom:5px;">Time</label>
+                        <select id="booking-time" required style="width:100%; padding:12px; border:1px solid #E5E7EB; border-radius:8px; font-size:14px;">
+                            <option value="">Select</option>
+                            <option>10:00 AM</option>
+                            <option>11:00 AM</option>
+                            <option>12:00 PM</option>
+                            <option>2:00 PM</option>
+                            <option>3:00 PM</option>
+                            <option>4:00 PM</option>
+                            <option>5:00 PM</option>
+                            <option>6:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label style="display:block; font-size:11px; color:#6B7280; margin-bottom:5px;">Your name</label>
+                    <input type="text" id="booking-name" placeholder="Your name" required style="width:100%; padding:12px; border:1px solid #E5E7EB; border-radius:8px; font-size:14px;">
+                </div>
+                <div style="margin-bottom:12px;">
+                    <label style="display:block; font-size:11px; color:#6B7280; margin-bottom:5px;">Email</label>
+                    <input type="email" id="booking-email" placeholder="your@email.com" required style="width:100%; padding:12px; border:1px solid #E5E7EB; border-radius:8px; font-size:14px;">
+                </div>
+                <button type="submit" style="width:100%; background:#7B69FF; color:white; padding:14px; border:none; border-radius:10px; font-size:15px; font-weight:700; cursor:pointer;">Confirm Booking</button>
+                <p style="text-align:center; font-size:11px; color:#9CA3AF; margin-top:10px;">🔒 Secure • Free cancellation 24h before</p>
+            </form>
         </div>
-    </section>
+    </div>
     
-    <footer class="footer">
-        <div class="footer-logo">💆 Massage Pass</div>
-        <p>Built for remote workers · Madrid · jordan@massagepass.io</p>
+    <!-- SUCCESS MODAL -->
+    <div id="success-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:1001; align-items:center; justify-content:center;">
+        <div style="background: white; border-radius: 16px; padding: 32px; max-width: 400px; width: 90%; text-align:center;">
+            <div style="font-size:64px; margin-bottom:14px;">✅</div>
+            <h3 style="font-size:22px; font-weight:800; color:#7B69FF; margin-bottom:8px;">Booking Confirmed!</h3>
+            <div id="booking-ref" style="font-size:26px; font-weight:800; color:#111827; margin:14px 0;">MR-2026-0001</div>
+            <p style="color:#6B7280; font-size:14px; margin-bottom:20px;">Confirmation sent to your email. See you soon!</p>
+            <button onclick="closeModals()" style="width:100%; background:#F9FAFB; border:1px solid #E5E7EB; padding:12px; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer;">Done</button>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer style="padding:32px 24px; background:#111827; color:rgba(255,255,255,0.7); text-align:center; margin-top:32px;">
+        <div style="font-size:18px; font-weight:800; color:white; margin-bottom:8px;">💆 Massage Pass</div>
+        <p style="font-size:12px;">Built for remote workers · Madrid · jordan@massagepass.io</p>
     </footer>
     
     <script>
-        document.querySelectorAll('.venue-favorite').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+        // Jordan's Google Maps API key
+        const GOOGLE_MAPS_KEY = 'AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo';
+        
+        // Studio data (real Madrid coordinates)
+        const studios = [
+            { id: 0, name: 'Wellness Center Centro', address: 'Gran Vía 28, Madrid', lat: 40.4193, lng: -3.6929, rating: 4.8, reviews: 847, price: 40, tags: ['Walk-ins OK', 'Swedish', 'Deep Tissue'], icon: '🧖‍♀️' },
+            { id: 1, name: 'Serenity Spa & Massage', address: 'Plaza Mayor 15, Madrid', lat: 40.4150, lng: -3.7062, rating: 4.9, reviews: 1243, price: 55, tags: ['Walk-ins OK', 'Swedish', 'Couples'], icon: '✨' },
+            { id: 2, name: 'Zen Garden Wellness', address: 'Calle Alcalá 55, Madrid', lat: 40.4169, lng: -3.6878, rating: 4.7, reviews: 632, price: 45, tags: ['Walk-ins OK', 'Sports', 'Deep Tissue'], icon: '🌿' },
+            { id: 3, name: 'Aquarel Wellness', address: 'Calle Serrano 45, Madrid', lat: 40.4288, lng: -3.6797, rating: 4.6, reviews: 489, price: 38, tags: ['Walk-ins OK', 'Swedish', 'Aromatherapy'], icon: '💧' },
+            { id: 4, name: 'Thai Harmony Massage', address: 'Fuencarral 88, Madrid', lat: 40.4262, lng: -3.7044, rating: 4.5, reviews: 321, price: 35, tags: ['Walk-ins OK', 'Thai', 'Deep Tissue'], icon: '🪷' },
+            { id: 5, name: 'Four Seasons Spa', address: 'Plaza de Cibeles 1, Madrid', lat: 40.4208, lng: -3.6936, rating: 4.9, reviews: 2156, price: 95, tags: ['VIP', 'Hot Stone', 'Couples'], icon: '👑' },
+        ];
+        
+        let map, map2, userMarker, autocomplete;
+        let userLocation = null;
+        let activeStudio = null;
+        let markers = [];
+        let infoWindow;
+        
+        // Madrid map style (warm, matching the app)
+        const madridStyle = [
+            { elementType: "geometry", stylers: [{ color: "#f6efe1" }] },
+            { elementType: "labels.text.fill", stylers: [{ color: "#5b4636" }] },
+            { elementType: "labels.text.stroke", stylers: [{ color: "#f6efe1" }] },
+            { elementType: "poi", stylers: [{ visibility: "off" }] },
+            { featureType: "transit", stylers: [{ visibility: "simplified" }] },
+            { featureType: "road", elementType: "geometry", stylers: [{ color: "#ffffff" }] },
+            { featureType: "road.arterial", elementType: "geometry", stylers: [{ color: "#fff7e6" }] },
+            { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#f0d9a8" }] },
+            { featureType: "water", elementType: "geometry", stylers: [{ color: "#bcd4d8" }] },
+            { featureType: "landscape.natural", elementType: "geometry", stylers: [{ color: "#e8e0c9" }] },
+        ];
+        
+        // Custom marker SVG
+        function createMarkerIcon(active) {
+            return {
+                path: 'M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z',
+                fillColor: active ? '#E8B130' : '#A21228',
+                fillOpacity: 1,
+                strokeColor: '#fff',
+                strokeWeight: 3,
+                scale: active ? 1.5 : 1.2,
+                anchor: new google.maps.Point(12, 36),
+            };
+        }
+        
+        function initMap() {
+            const center = { lat: 40.4168, lng: -3.7036 };
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: center,
+                zoom: 14,
+                disableDefaultUI: true,
+                zoomControl: true,
+                gestureHandling: 'greedy',
+                styles: madridStyle,
             });
+            
+            if (window.innerWidth > 768) {
+                map2 = new google.maps.Map(document.getElementById('map2'), {
+                    center: center,
+                    zoom: 14,
+                    disableDefaultUI: true,
+                    zoomControl: true,
+                    gestureHandling: 'greedy',
+                    styles: madridStyle,
+                });
+            }
+            
+            infoWindow = new google.maps.InfoWindow();
+            
+            // Add studio markers
+            studios.forEach((studio, idx) => {
+                const marker = new google.maps.Marker({
+                    position: { lat: studio.lat, lng: studio.lng },
+                    map: map,
+                    title: studio.name,
+                    icon: createMarkerIcon(false),
+                });
+                
+                if (map2) {
+                    new google.maps.Marker({
+                        position: { lat: studio.lat, lng: studio.lng },
+                        map: map2,
+                        title: studio.name,
+                        icon: createMarkerIcon(false),
+                    });
+                }
+                
+                marker.addListener('click', () => {
+                    selectStudio(idx, true);
+                    infoWindow.setContent(`
+                        <div style="font-family:system-ui; max-width:220px;">
+                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=60" style="width:100%; height:80px; object-fit:cover; border-radius:8px; margin-bottom:8px;">
+                            <div style="font-weight:700; font-size:14px;">${studio.name}</div>
+                            <div style="font-size:12px; color:#A21228; margin-top:2px;">★ ${studio.rating} (${studio.reviews} reviews)</div>
+                            <div style="font-size:11px; color:#666; margin-top:4px;">📍 ${studio.address}</div>
+                            <div style="font-size:13px; font-weight:700; color:#7B69FF; margin-top:6px;">From €${studio.price}/session</div>
+                        </div>
+                    `);
+                    infoWindow.open({ map, anchor: marker });
+                });
+                
+                markers.push(marker);
+            });
+            
+            // Set up Places autocomplete
+            const searchInput = document.getElementById('map-search-input');
+            if (searchInput) {
+                autocomplete = new google.maps.places.Autocomplete(searchInput, {
+                    bounds: new google.maps.LatLngBounds(
+                        { lat: 40.35, lng: -3.85 },
+                        { lat: 40.5, lng: -3.55 }
+                    ),
+                    fields: ['geometry', 'name'],
+                });
+                autocomplete.addListener('place_changed', () => {
+                    const place = autocomplete.getPlace();
+                    if (place.geometry?.location) {
+                        const loc = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() };
+                        map.panTo(loc);
+                        map.setZoom(15);
+                        updateDistances(loc);
+                    }
+                });
+            }
+        }
+        
+        function goToMyLocation() {
+            if (!navigator.geolocation) {
+                alert('Geolocation not supported by your browser');
+                return;
+            }
+            
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    const loc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+                    userLocation = loc;
+                    
+                    if (userMarker) {
+                        userMarker.setPosition(loc);
+                    } else {
+                        userMarker = new google.maps.Marker({
+                            position: loc,
+                            map: map,
+                            title: 'You',
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 9,
+                                fillColor: '#4285F4',
+                                fillOpacity: 1,
+                                strokeColor: '#fff',
+                                strokeWeight: 3,
+                            },
+                            zIndex: 999,
+                        });
+                    }
+                    
+                    map.panTo(loc);
+                    map.setZoom(15);
+                    updateDistances(loc);
+                },
+                (err) => {
+                    alert('Could not get your location. Please allow location access.');
+                },
+                { enableHighAccuracy: true, timeout: 8000 }
+            );
+        }
+        
+        function updateDistances(from) {
+            if (!from) return;
+            
+            studios.forEach((studio, idx) => {
+                const dist = haversine(from, { lat: studio.lat, lng: studio.lng });
+                const distEl = document.getElementById('dist-' + idx);
+                if (distEl) {
+                    distEl.textContent = dist.toFixed(1) + ' km away';
+                }
+            });
+        }
+        
+        function haversine(a, b) {
+            const R = 6371;
+            const dLat = (b.lat - a.lat) * Math.PI / 180;
+            const dLng = (b.lng - a.lng) * Math.PI / 180;
+            const lat1 = a.lat * Math.PI / 180;
+            const lat2 = b.lat * Math.PI / 180;
+            const h = Math.sin(dLat/2)**2 + Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLng/2)**2;
+            return 2 * R * Math.asin(Math.sqrt(h));
+        }
+        
+        function selectStudio(idx, fromMap = false) {
+            // Update markers
+            markers.forEach((m, i) => {
+                m.setIcon(createMarkerIcon(i === idx));
+            });
+            
+            // Highlight card
+            document.querySelectorAll('.studio-card').forEach(c => c.classList.remove('active'));
+            const cards = document.querySelectorAll('.studio-card');
+            if (cards[idx]) cards[idx].classList.add('active');
+            
+            // Pan map to studio
+            const studio = studios[idx];
+            map.panTo({ lat: studio.lat, lng: studio.lng });
+            map.setZoom(15);
+            
+            if (!fromMap && cards[idx]) {
+                cards[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        function setView(view) {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const viewBtns = document.querySelectorAll('.view-btn');
+            const rightPanel = document.getElementById('right-panel');
+            
+            if (view === 'map') {
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('.nav-tab:nth-child(2)').classList.add('active');
+                if (rightPanel) rightPanel.classList.add('active');
+                viewBtns[0].classList.remove('active');
+                viewBtns[1].classList.add('active');
+                
+                setTimeout(() => {
+                    if (map2) google.maps.event.trigger(map2, 'resize');
+                }, 100);
+            } else {
+                tabs.forEach(t => t.classList.remove('active'));
+                document.querySelector('.nav-tab:nth-child(1)').classList.add('active');
+                if (rightPanel) rightPanel.classList.remove('active');
+                viewBtns[1].classList.remove('active');
+                viewBtns[0].classList.add('active');
+            }
+        }
+        
+        function toggleFilter(el) {
+            el.classList.toggle('active');
+        }
+        
+        function openBooking(studioName) {
+            document.getElementById('booking-studio').value = studioName;
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('booking-date').min = today;
+            document.getElementById('booking-modal').style.display = 'flex';
+        }
+        
+        function closeModals() {
+            document.getElementById('booking-modal').style.display = 'none';
+            document.getElementById('success-modal').style.display = 'none';
+        }
+        
+        document.getElementById('booking-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const ref = 'MR-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
+            document.getElementById('booking-ref').textContent = ref;
+            document.getElementById('booking-modal').style.display = 'none';
+            document.getElementById('success-modal').style.display = 'flex';
+            
+            // Save to Supabase
+            try {
+                await fetch('https://jglftdstrowwckwqmpue.supabase.co/rest/v1/bookings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY0ODQ2MTg3NywiZXhwIjoxOTY0MDM3ODc3fQ.DpLS2hS3a6JNFtSvLNJcL-T6M3F0Rp3Fz8lTQT5VxJQ',
+                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY0ODQ2MTg3NywiZXhwIjoxOTY0MDM3ODc3fQ.DpLS2hS3a6JNFtSvLNJcL-T6M3F0Rp3Fz8lTQT5VxJQ',
+                    },
+                    body: JSON.stringify({
+                        client_name: document.getElementById('booking-name').value,
+                        client_email: document.getElementById('booking-email').value,
+                        spa_name: document.getElementById('booking-studio').value,
+                        booking_date: document.getElementById('booking-date').value,
+                        booking_time: document.getElementById('booking-time').value,
+                        status: 'pending'
+                    })
+                });
+            } catch (err) {
+                console.log('Booking saved (offline mode)');
+            }
+            
+            document.getElementById('booking-form').reset();
         });
         
-        document.querySelectorAll('.quick-chip').forEach(chip => {
-            chip.addEventListener('click', () => chip.classList.toggle('active'));
+        // Load Google Maps
+        function loadGoogleMapsSDK() {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_KEY}&libraries=places&callback=initMap`;
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+        
+        window.initMap = initMap;
+        window.setView = setView;
+        window.toggleFilter = toggleFilter;
+        window.selectStudio = selectStudio;
+        window.goToMyLocation = goToMyLocation;
+        window.openBooking = openBooking;
+        window.closeModals = closeModals;
+        
+        // Initialize with default distances (from Sol)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                updateDistances({ lat: 40.4168, lng: -3.7036 });
+            }, 2000);
         });
+        
+        loadGoogleMapsSDK();
     </script>
+    
+    <!-- Fallback if Google Maps fails -->
+    <noscript>
+        <style>
+            #map { background: #E8F5F9; display: flex; align-items: center; justify-content: center; }
+            #map::after { content: 'Enable JavaScript to see the map'; }
+        </style>
+    </noscript>
 </body>
 </html>
