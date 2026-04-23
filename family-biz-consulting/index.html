@@ -14,6 +14,7 @@
             --text: #e8e8f0;
             --text-dim: #6b6b80;
             --accent: #f59e0b;
+            --accent-light: #fbbf24;
             --gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
@@ -75,6 +76,64 @@
             margin-bottom: 24px;
         }
         
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+        .stat-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-box .number { font-size: 28px; font-weight: 800; color: var(--accent); }
+        .stat-box .label { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+        
+        .framework-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .framework-card h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
+        .framework-card ul { font-size: 13px; color: var(--text-dim); padding-left: 20px; }
+        .framework-card li { margin-bottom: 6px; }
+        
+        .opportunity-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .opportunity-item h4 { font-size: 14px; margin-bottom: 4px; }
+        .opportunity-item p { font-size: 12px; color: var(--text-dim); }
+        .opportunity-item .value { font-size: 14px; color: var(--accent); font-weight: 600; }
+        
+        .market-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .market-stat .big-num { font-size: 36px; font-weight: 800; color: var(--accent); }
+        .market-stat .desc { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
+        
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+        .pricing-card .price { font-size: 24px; font-weight: 800; color: var(--accent); }
+        .pricing-card .type { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
+        .pricing-card .desc { font-size: 12px; color: var(--text-dim); }
+        
         .modal {
             display: none;
             position: fixed;
@@ -127,59 +186,54 @@
             cursor: pointer;
         }
         
-        .framework-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
+        .lead-magnet {
+            background: linear-gradient(135deg, #1a1a24 0%, #12121a 100%);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
         }
-        .framework-card h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
-        .framework-card ul { font-size: 13px; color: var(--text-dim); padding-left: 20px; }
-        .framework-card li { margin-bottom: 6px; }
+        .lead-magnet h4 { font-size: 16px; margin-bottom: 8px; color: var(--accent); }
+        .lead-magnet p { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+        .lead-magnet .action { display: flex; gap: 12px; flex-wrap: wrap; }
+        .lead-magnet button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            background: var(--accent);
+            color: var(--bg);
+        }
+        .lead-magnet button.secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
         
-        .opportunity-item {
+        .referral-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 16px 20px;
             margin-bottom: 12px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 16px;
         }
-        .opportunity-item h4 { font-size: 14px; margin-bottom: 4px; }
-        .opportunity-item p { font-size: 12px; color: var(--text-dim); }
-        .opportunity-item .value { font-size: 14px; color: var(--accent); font-weight: 600; }
-        
-        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
-        .stat-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-        .stat-box .number { font-size: 32px; font-weight: 800; color: var(--accent); }
-        .stat-box .label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+        .referral-card .icon { font-size: 28px; }
+        .referral-card h4 { font-size: 14px; margin-bottom: 2px; }
+        .referral-card p { font-size: 12px; color: var(--text-dim); }
         
         .status-tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
         .status-tag.prospect { background: #1e3a5f; color: #60a5fa; }
         .status-tag.active { background: #14532d; color: #22c55e; }
         .status-tag.completed { background: #3f3f46; color: #a1a1aa; }
-        
-        .intro-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-        .intro-card h2 { font-size: 20px; color: var(--accent); margin-bottom: 8px; }
-        .intro-card p { font-size: 14px; color: var(--text-dim); }
-        .intro-card .services { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
-        .intro-card .services span { background: var(--bg); padding: 8px 16px; border-radius: 8px; font-size: 13px; }
+        .status-tag.initial { background: #4a3000; color: #fbbf24; }
+        .status-tag.proposal { background: #1e3a5f; color: #60a5fa; }
+        .status-tag.negotiating { background: #14532d; color: #22c55e; }
+        .status-tag.contract { background: #065f46; color: #34d399; }
     </style>
 </head>
 <body>
@@ -191,8 +245,10 @@
     <main class="main">
         <div class="tabs">
             <div class="tab active" onclick="switchTab('clients')">📋 Clients</div>
-            <div class="tab" onclick="switchTab('opportunities')">💰 Opportunities</div>
+            <div class="tab" onclick="switchTab('opportunities')">💰 Pipeline</div>
+            <div class="tab" onclick="switchTab('market')">📊 Market Intel</div>
             <div class="tab" onclick="switchTab('frameworks')">🧠 Frameworks</div>
+            <div class="tab" onclick="switchTab('outreach')">🎯 Outreach</div>
             <div class="tab" onclick="switchTab('notes')">📝 Notes</div>
         </div>
         
@@ -209,7 +265,11 @@
                 </div>
                 <div class="stat-box">
                     <div class="number" id="potential-value">€0</div>
-                    <div class="label">Potential Value</div>
+                    <div class="label">Pipeline Value</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="retainer-runway">0</div>
+                    <div class="label">Months Retainer</div>
                 </div>
             </div>
             
@@ -224,6 +284,25 @@
         
         <!-- OPPORTUNITIES -->
         <div class="section" id="opportunities">
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="number">70%</div>
+                    <div class="label">No Succession Plan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">12%</div>
+                    <div class="label">Make It to Gen 3</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">$90T</div>
+                    <div class="label">Transferring Soon</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">$300-500</div>
+                    <div class="label">Hourly Rate ($)</div>
+                </div>
+            </div>
+            
             <button class="add-btn" onclick="openModal('opp-modal')">+ Add Opportunity</button>
             <div id="opportunities-list">
                 <div class="opportunity-item" style="text-align: center; color: var(--text-dim);">
@@ -232,38 +311,141 @@
             </div>
         </div>
         
+        <!-- MARKET INTEL -->
+        <div class="section" id="market">
+            <h3 style="margin-bottom: 20px;">📊 Market Research (2026)</h3>
+            
+            <div class="market-stat">
+                <div class="big-num">$15-20B</div>
+                <div class="desc">Global family business consulting market size</div>
+            </div>
+            <div class="market-stat">
+                <div class="big-num">6-8% CAGR</div>
+                <div class="desc">Market growth rate</div>
+            </div>
+            
+            <h4 style="margin: 24px 0 16px; font-size: 14px;">💰 Pricing Benchmarks</h4>
+            
+            <div class="pricing-card">
+                <div class="price">$300-500/hr</div>
+                <div class="type">Individual Consultants</div>
+                <div class="desc">Solo advisors with niche expertise</div>
+            </div>
+            <div class="pricing-card">
+                <div class="price">$2,000-10,000/mo</div>
+                <div class="type">Monthly Retainers</div>
+                <div class="desc">Ongoing advisory relationships</div>
+            </div>
+            <div class="pricing-card">
+                <div class="price">$10,000-100,000+</div>
+                <div class="type">Governance/Succession Projects</div>
+                <div class="desc">One-time comprehensive engagements</div>
+            </div>
+            <div class="pricing-card">
+                <div class="price">5-15%</div>
+                <div class="type">Success Fee on Exits</div>
+                <div class="desc">When you help sell the business</div>
+            </div>
+            
+            <h4 style="margin: 24px 0 16px; font-size: 14px;">🎣 Lead Gen That Works</h4>
+            
+            <div class="referral-card">
+                <span class="icon">👨‍💼</span>
+                <div>
+                    <h4>Attorneys (Estate & Corporate)</h4>
+                    <p>They already work with family businesses. Gold referral source.</p>
+                </div>
+            </div>
+            <div class="referral-card">
+                <span class="icon">📊</span>
+                <div>
+                    <h4>Accountants / CPAs</h4>
+                    <p>Involved in every succession. Natural fit.</p>
+                </div>
+            </div>
+            <div class="referral-card">
+                <span class="icon">🏦</span>
+                <div>
+                    <h4>Private Bankers / Wealth Managers</h4>
+                    <p>Family offices and HNW clients = perfect ICP.</p>
+                </div>
+            </div>
+            <div class="referral-card">
+                <span class="icon">📚</span>
+                <div>
+                    <h4>Publish a Book or Guide</h4>
+                    <p>Instant authority. The "Family Business Health Check" guide.</p>
+                </div>
+            </div>
+            
+            <h4 style="margin: 24px 0 16px; font-size: 14px;">⚠️ What DOESN'T Work</h4>
+            <div class="framework-card">
+                <ul>
+                    <li>Cold email outreach (trust-first market)</li>
+                    <li>Generic LinkedIn ads</li>
+                    <li>General business consulting pitches</li>
+                    <li>Focusing only on Gen 1 founders</li>
+                </ul>
+            </div>
+        </div>
+        
         <!-- FRAMEWORKS -->
         <div class="section" id="frameworks">
-            <h3 style="margin-bottom: 20px;">Family Business Growth Frameworks</h3>
+            <h3 style="margin-bottom: 20px;">🧠 Core Methodologies</h3>
             
             <div class="framework-card">
-                <h4>📊 Business Development Approach</h4>
+                <h4>🔄 Three-Circle Model</h4>
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 8px;">The foundational family business framework</p>
                 <ul>
-                    <li><strong>Diagnose:</strong> Understand the family business lifecycle stage</li>
-                    <li><strong>Map:</strong> Identify key decision-makers and governance structure</li>
-                    <li><strong>Position:</strong> Frame your value proposition for family-owned context</li>
-                    <li><strong>Grow:</strong> Implement systems for sustainable scaling</li>
+                    <li><strong>Family:</strong> Relationships, values, ownership expectations</li>
+                    <li><strong>Business:</strong> Strategy, structure, competition</li>
+                    <li><strong>Ownership:</strong> Governance, shareholder rights, exits</li>
+                </ul>
+            </div>
+            
+            <div class="framework-card">
+                <h4>📋 Family Constitution</h4>
+                <p style="font-size: 12px; color: var(--text-dim); margin-bottom: 8px;">The core artifact — written rules for the family</p>
+                <ul>
+                    <li>Family's shared values and vision</li>
+                    <li>Who can work in the business (and who can't)</li>
+                    <li>How decisions are made</li>
+                    <li>How ownership transfers</li>
+                    <li>How family members are compensated</li>
+                    <li>Conflict resolution processes</li>
+                </ul>
+            </div>
+            
+            <div class="framework-card">
+                <h4>🎯 Five Dimensions of Continuity (FFI)</h4>
+                <ul>
+                    <li><strong>Governance:</strong> Boards, councils, decision-making structures</li>
+                    <li><strong>Strategy:</strong> Long-term vision and competitive positioning</li>
+                    <li><strong>Entrepreneurship:</strong> Innovation and new venture creation</li>
+                    <li><strong>Leadership:</strong> Succession and capability development</li>
+                    <li><strong>Ownership:</strong> Shareholder engagement and stewardship</li>
+                </ul>
+            </div>
+            
+            <div class="framework-card">
+                <h4>📊 Next-Gen Readiness Assessment</h4>
+                <ul>
+                    <li>Capability (do they have the skills?)</li>
+                    <li>Commitment (do they want this?)</li>
+                    <li>Character (can they be trusted?)</li>
+                    <li>Culture fit (will they preserve the legacy?)</li>
+                    <li>Capital (are they financially independent?)</li>
                 </ul>
             </div>
             
             <div class="framework-card">
                 <h4>⚖️ Conflict Management Framework</h4>
                 <ul>
-                    <li><strong>Identify:</strong> Map the conflict lines (family vs business? generation vs generation?)</li>
-                    <li><strong>Separate:</strong> Distinguish family issues from business issues</li>
-                    <li><strong>Structure:</strong> Establish clear governance and decision-making processes</li>
-                    <li><strong>Mediate:</strong> Facilitate productive conversations with defined outcomes</li>
-                    <li><strong>Document:</strong> Capture agreements and follow-up mechanisms</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>👨‍👩‍👧‍👦 Family Governance Models</h4>
-                <ul>
-                    <li><strong>Family Council:</strong> Formal family decision-making body</li>
-                    <li><strong>Board of Directors:</strong> External perspectives + family representation</li>
-                    <li><strong>Family Constitution:</strong> Written values, vision, and rules</li>
-                    <li><strong>Succession Protocol:</strong> Clear process for leadership transition</li>
+                    <li><strong>Identify:</strong> Map the conflict lines</li>
+                    <li><strong>Separate:</strong> Family issues vs. business issues</li>
+                    <li><strong>Structure:</strong> Governance and processes</li>
+                    <li><strong>Mediate:</strong> Facilitate productive conversations</li>
+                    <li><strong>Document:</strong> Capture agreements in writing</li>
                 </ul>
             </div>
             
@@ -271,33 +453,100 @@
                 <h4>📈 Growth Levers for Family Businesses</h4>
                 <ul>
                     <li><strong>Professionalize:</strong> Systems, processes, outside talent</li>
-                    <li><strong>Diversify:</strong> New markets, products, or revenue streams</li>
-                    <li><strong>Digitize:</strong> Modernize operations and customer experience</li>
+                    <li><strong>Diversify:</strong> New markets, products, revenue streams</li>
+                    <li><strong>Digitize:</strong> Modernize operations and experience</li>
                     <li><strong>Restructure:</strong> Optimize organizational design</li>
-                    <li><strong>Brand:</strong> Build brand equity beyond founder reputation</li>
+                    <li><strong>Brand:</strong> Build equity beyond founder reputation</li>
                 </ul>
             </div>
             
             <div class="framework-card">
                 <h4>🤝 Trust-Building with Family Businesses</h4>
                 <ul>
-                    <li>They value <strong>long-term relationships</strong> over quick wins</li>
-                    <li>Show understanding of <strong>emotional ownership</strong> (it's personal)</li>
-                    <li>Demonstrate <strong>discretion</strong> — confidentiality is critical</li>
-                    <li>Respect the <strong>founder's legacy</strong> while pushing for growth</li>
-                    <li>Be patient — <strong>consensus-building</strong> takes time</li>
+                    <li>Long-term relationships over quick wins</li>
+                    <li>Emotional ownership — it's personal</li>
+                    <li>Absolute discretion — confidentiality is sacred</li>
+                    <li>Respect the founder's legacy</li>
+                    <li>Be patient — consensus takes time</li>
+                    <li>Never position yourself as "fixing" their family</li>
                 </ul>
             </div>
+        </div>
+        
+        <!-- OUTREACH -->
+        <div class="section" id="outreach">
+            <h3 style="margin-bottom: 20px;">🎯 Client Acquisition</h3>
+            
+            <div class="lead-magnet">
+                <h4>📥 Lead Magnet: "Family Business Health Check"</h4>
+                <p>A 2-hour assessment + written report. Low risk, high value. Great entry point.</p>
+                <div class="action">
+                    <button onclick="alert('Coming soon: Downloadable template')">📄 Download Template</button>
+                    <button class="secondary" onclick="alert('Coming soon: Email sequence')">📧 Email Sequence</button>
+                </div>
+            </div>
+            
+            <h4 style="margin: 24px 0 16px; font-size: 14px;">🤝 Referral Network Targets</h4>
+            
+            <div class="referral-card">
+                <span class="icon">⚖️</span>
+                <div>
+                    <h4>Estate Planning Attorneys</h4>
+                    <p>Succession = estate planning. They NEED this expertise.</p>
+                </div>
+            </div>
+            <div class="referral-card">
+                <span class="icon">📈</span>
+                <div>
+                    <h4>Business Brokers / M&A Advisors</h4>
+                    <p>Every exit has succession elements.</p>
+                </div>
+            </div>
+            <div class="referral-card">
+                <span class="icon">🏛️</span>
+                <div>
+                    <h4>Family Enterprise USA</h4>
+                    <p>Conference + community. Major networking opportunity.</p>
+                </div>
+            </div>
+            <div class="referral-card">
+                <span class="icon">🎓</span>
+                <div>
+                    <h4>IE Alumni Network</h4>
+                    <p>Jordan's existing network. Family business owners in every class.</p>
+                </div>
+            </div>
+            
+            <h4 style="margin: 24px 0 16px; font-size: 14px;">📧 Outreach Sequence</h4>
             
             <div class="framework-card">
-                <h4>💼 BD Playbook for Family Biz</h4>
+                <h4>Email Sequence (5 touches)</h4>
                 <ul>
-                    <li><strong>Entry Point:</strong> Succession planning is the #1 hook — every family biz faces it</li>
-                    <li><strong>Pain Points:</strong> Sibling conflict, professionalizing without losing culture, exit planning</li>
-                    <li><strong>Starter Offer:</strong> "Family Business Health Check" — 2-hour assessment, €500-1000</li>
-                    <li><strong>Upsell:</strong> Implementation work, ongoing advisory retainer</li>
-                    <li><strong>Referrals:</strong> Accountants and lawyers are gold — they already work with family businesses</li>
+                    <li><strong>Touch 1:</strong> Value-add article about succession stats</li>
+                    <li><strong>Touch 2:</strong> Case study (anonymized family biz success)</li>
+                    <li><strong>Touch 3:</strong> Free resource (Health Check template)</li>
+                    <li><strong>Touch 4:</strong> Personal note referencing something specific</li>
+                    <li><strong>Touch 5:</strong> Calendar link to chat</li>
                 </ul>
+                <p style="font-size: 12px; color: var(--accent); margin-top: 8px;">Timing: Every 10-14 days. Never sell in first 3 touches.</p>
+            </div>
+            
+            <h4 style="margin: 24px 0 16px; font-size: 14px;">💼 Starter Offer Options</h4>
+            
+            <div class="pricing-card">
+                <div class="price">€500-1,000</div>
+                <div class="type">Family Business Health Check</div>
+                <div class="desc">2-hour assessment + written report + 30-min debrief</div>
+            </div>
+            <div class="pricing-card">
+                <div class="price">€2,000-5,000/mo</div>
+                <div class="type">Advisory Retainer</div>
+                <div class="desc">Monthly touchpoints, email support, quarterly review</div>
+            </div>
+            <div class="pricing-card">
+                <div class="price">€10,000-50,000</div>
+                <div class="type">Succession Engagement</div>
+                <div class="desc">Comprehensive governance + succession plan</div>
             </div>
         </div>
         
@@ -322,7 +571,7 @@
             <input type="text" id="client-location" placeholder="Location">
             <select id="client-stage">
                 <option value="">Business Stage</option>
-                <option value="founder">Founder-led (1st Generation)</option>
+                <option value="founder">Founder-led (1st Gen)</option>
                 <option value="succession">In Succession (2nd Gen)</option>
                 <option value="sibling">Sibling Partnership (2nd Gen)</option>
                 <option value="cousins">Cousin Consortium (3rd+ Gen)</option>
@@ -343,15 +592,24 @@
     <div class="modal" id="opp-modal">
         <div class="modal-content">
             <h3>Add Opportunity</h3>
-            <input type="text" id="opp-client" placeholder="Client Name">
-            <input type="text" id="opp-project" placeholder="Project / Service">
+            <input type="text" id="opp-client" placeholder="Client / Company">
+            <input type="text" id="opp-project" placeholder="Service (e.g., Succession Planning)">
             <input type="text" id="opp-value" placeholder="Estimated Value (€)">
             <select id="opp-stage">
                 <option value="">Sales Stage</option>
-                <option value="initial">Initial Call</option>
+                <option value="initial">Initial Contact</option>
                 <option value="proposal">Proposal Sent</option>
                 <option value="negotiating">Negotiating</option>
                 <option value="contract">Contract</option>
+            </select>
+            <select id="opp-service">
+                <option value="">Service Type</option>
+                <option value="health-check">Health Check</option>
+                <option value="succession">Succession Planning</option>
+                <option value="governance">Governance Setup</option>
+                <option value="conflict">Conflict Mediation</option>
+                <option value="growth">Growth Advisory</option>
+                <option value=" retainer">Monthly Retainer</option>
             </select>
             <textarea id="opp-notes" placeholder="Notes..."></textarea>
             <div class="btn-row">
@@ -407,6 +665,7 @@
             
             localStorage.setItem('fb-clients', JSON.stringify(clients));
             closeModal('client-modal');
+            clearClientForm();
             renderClients();
         }
         
@@ -419,13 +678,16 @@
                 project: document.getElementById('opp-project').value,
                 value: document.getElementById('opp-value').value,
                 stage: document.getElementById('opp-stage').value,
+                service: document.getElementById('opp-service').value,
                 notes: document.getElementById('opp-notes').value,
                 date: new Date().toISOString()
             });
             
             localStorage.setItem('fb-opps', JSON.stringify(opportunities));
             closeModal('opp-modal');
+            clearOppForm();
             renderOpportunities();
+            renderStats();
         }
         
         function saveNote() {
@@ -441,35 +703,70 @@
             
             localStorage.setItem('fb-notes', JSON.stringify(notes));
             closeModal('note-modal');
+            clearNoteForm();
             renderNotes();
+        }
+        
+        function clearClientForm() {
+            document.getElementById('client-name').value = '';
+            document.getElementById('client-contact').value = '';
+            document.getElementById('client-industry').value = '';
+            document.getElementById('client-location').value = '';
+            document.getElementById('client-stage').value = '';
+            document.getElementById('client-status').value = 'prospect';
+            document.getElementById('client-notes').value = '';
+        }
+        
+        function clearOppForm() {
+            document.getElementById('opp-client').value = '';
+            document.getElementById('opp-project').value = '';
+            document.getElementById('opp-value').value = '';
+            document.getElementById('opp-stage').value = '';
+            document.getElementById('opp-service').value = '';
+            document.getElementById('opp-notes').value = '';
+        }
+        
+        function clearNoteForm() {
+            document.getElementById('note-title').value = '';
+            document.getElementById('note-client').value = '';
+            document.getElementById('note-content').value = '';
         }
         
         function renderClients() {
             const grid = document.getElementById('clients-grid');
             document.getElementById('total-clients').textContent = clients.length;
             document.getElementById('active-projects').textContent = clients.filter(c => c.status === 'active').length;
-            document.getElementById('potential-value').textContent = '€' + opportunities.reduce((sum, o) => sum + (parseInt(o.value) || 0), 0);
             
             if (clients.length === 0) {
                 grid.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No clients yet. Add your first client.</p></div>';
                 return;
             }
             
-            grid.innerHTML = clients.map(c => `
-                <div class="card">
-                    <h3>${c.name} <span class="tag">${c.status}</span></h3>
-                    <p>${c.notes || 'No notes'}</p>
-                    <div class="meta">
-                        <span>👤 ${c.contact || 'No contact'}</span>
-                        <span>📍 ${c.location || ''}</span>
-                        <span>🏭 ${c.industry || ''}</span>
+            grid.innerHTML = clients.map(c => {
+                const stageLabel = {
+                    'founder': '1st Gen',
+                    'succession': '2nd Gen',
+                    'sibling': 'Sibling',
+                    'cousins': '3rd+ Gen'
+                }[c.stage] || c.stage;
+                
+                return `
+                    <div class="card">
+                        <h3>${c.name} <span class="tag">${c.status}</span></h3>
+                        <p>${c.notes || 'No notes'}</p>
+                        <div class="meta">
+                            <span>👤 ${c.contact || 'No contact'}</span>
+                            <span>📍 ${c.location || ''}</span>
+                            <span>🏭 ${stageLabel || ''}</span>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
         
         function renderOpportunities() {
             const list = document.getElementById('opportunities-list');
+            
             if (opportunities.length === 0) {
                 list.innerHTML = '<div class="opportunity-item" style="text-align: center; color: var(--text-dim);"><p>No opportunities yet.</p></div>';
                 return;
@@ -478,8 +775,8 @@
             list.innerHTML = opportunities.map(o => `
                 <div class="opportunity-item">
                     <div>
-                        <h4>${o.client}</h4>
-                        <p>${o.project || ''} • ${o.stage || ''}</p>
+                        <h4>${o.client} <span class="status-tag ${o.stage}">${o.stage}</span></h4>
+                        <p>${o.project || ''} ${o.service ? '• ' + o.service : ''}</p>
                     </div>
                     <div class="value">€${o.value || '0'}</div>
                 </div>
@@ -488,6 +785,7 @@
         
         function renderNotes() {
             const list = document.getElementById('notes-list');
+            
             if (notes.length === 0) {
                 list.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No notes yet.</p></div>';
                 return;
@@ -502,9 +800,20 @@
             `).join('');
         }
         
+        function renderStats() {
+            const total = opportunities.reduce((sum, o) => sum + (parseInt(o.value) || 0), 0);
+            document.getElementById('potential-value').textContent = '€' + total;
+            
+            // Calculate retainer runway
+            const activeRetainers = opportunities.filter(o => o.service === 'retainer');
+            const monthlyRecurring = activeRetainers.reduce((sum, o) => sum + (parseInt(o.value) || 0), 0);
+            document.getElementById('retainer-runway').textContent = monthlyRecurring > 0 ? Math.floor(total / monthlyRecurring) : 0;
+        }
+        
         renderClients();
         renderOpportunities();
         renderNotes();
+        renderStats();
     </script>
 </body>
 </html>
