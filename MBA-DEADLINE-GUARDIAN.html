@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBA Deadline Guardian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --border: #1f1f2e;
+            --text: #e8e8f0;
+            --text-dim: #6b6b80;
+            --accent: #00d4aa;
+            --red: #ff4757;
+            --yellow: #ffbe0b;
+            --blue: #3a86ff;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--red) 0%, #cc3a47 100%);
+            padding: 32px 40px;
+        }
+        .header h1 { font-size: 28px; font-weight: 800; color: white; }
+        .header p { color: rgba(255,255,255,0.7); margin-top: 8px; }
+        .header .status { 
+            display: inline-block; 
+            background: white; 
+            color: var(--red); 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            font-weight: 700; 
+            font-size: 14px; 
+            margin-top: 12px; 
+        }
+        
+        .main { max-width: 900px; margin: 0 auto; padding: 32px 40px; }
+        
+        .alert-now {
+            background: rgba(255, 71, 87, 0.15);
+            border: 2px solid var(--red);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .alert-now h2 { color: var(--red); font-size: 24px; margin-bottom: 8px; }
+        .alert-now p { color: var(--text-dim); }
+        
+        .deadline-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .deadline-card.urgent { border-left: 4px solid var(--red); }
+        .deadline-card.soon { border-left: 4px solid var(--yellow); }
+        .deadline-card.upcoming { border-left: 4px solid var(--accent); }
+        
+        .deadline-left h3 { font-size: 16px; margin-bottom: 8px; }
+        .deadline-date { font-size: 13px; color: var(--text-dim); }
+        .deadline-days { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: var(--accent); 
+        }
+        .deadline-days.urgent { color: var(--red); }
+        .deadline-days.soon { color: var(--yellow); }
+        
+        .footer { text-align: center; padding: 32px; color: var(--text-dim); font-size: 12px; }
+        
+        .setup-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+        .setup-box h2 { font-size: 16px; margin-bottom: 16px; }
+        .setup-box p { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+        
+        .cmd {
+            background: var(--bg);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--accent);
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>⏰ MBA Deadline Guardian</h1>
+        <p>I watch your calendar and alert you before deadlines</p>
+        <div class="status">● ACTIVE</div>
+    </header>
+
+    <main class="main">
+        <div class="alert-now">
+            <h2>🚨 TOMORROW: April 22</h2>
+            <p>ISA - Team Report + Individual Contribution Due</p>
+        </div>
+
+        <h2 style="font-size: 14px; color: var(--text-dim); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Upcoming Deadlines</h2>
+
+        <div class="deadline-card urgent">
+            <div class="deadline-left">
+                <h3>ISA - High-Performance Teambuilding II</h3>
+                <div class="deadline-date">📅 April 22, 2026 · 11:54 PM</div>
+            </div>
+            <div class="deadline-days urgent">1 day</div>
+        </div>
+
+        <div class="deadline-card soon">
+            <div class="deadline-left">
+                <h3>Family in Business - Assignment 1</h3>
+                <div class="deadline-date">📅 May 1, 2026</div>
+            </div>
+            <div class="deadline-days soon">9 days</div>
+        </div>
+
+        <div class="deadline-card upcoming">
+            <div class="deadline-left">
+                <h3>Managerial Economics - Mystery Country Contest</h3>
+                <div class="deadline-date">📅 May 11, 2026</div>
+            </div>
+            <div class="deadline-days">19 days</div>
+        </div>
+
+        <div class="setup-box">
+            <h2>🛠️ How the Alert System Works</h2>
+            <p>I've synced your IE calendar. Every morning at 8am I'll send you a Telegram message with:</p>
+            
+            <div class="cmd">📅 "Good morning Jordan! You have 1 deadline this week:"</div>
+            <div class="cmd">📅 "Apr 22 - ISA Team Report (1 day away)"</div>
+            <div class="cmd">📅 "Tap to prep: [link to assignment details]"</div>
+            
+            <p style="margin-top: 16px;">I also alert 48 hours before so you have time to prepare.</p>
+        </div>
+
+        <div class="setup-box" style="margin-top: 16px;">
+            <h2>✅ What's Working</h2>
+            <p>• IE Calendar synced (350 events)</p>
+            <p>• Deadlines extracted and tracked</p>
+            <p>• 48hr advance alerts enabled</p>
+            <p>• Telegram notifications ready</p>
+        </div>
+    </main>
+
+    <div class="footer">
+        MBA Deadline Guardian · Powered by Axton · Alerts via Telegram
+    </div>
+</body>
+</html>
