@@ -3,682 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massage Madrid | Book Your Appointment</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Massage Madrid | Premium Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-card: #1a1a24;
-            --bg-input: #22222e;
+            --bg: #0a0a0f;
+            --bg-card: #111118;
             --accent: #00d4aa;
-            --accent-glow: rgba(0, 212, 170, 0.3);
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0b0;
-            --text-muted: #606070;
-            --border: #2a2a3a;
-            --success: #00d4aa;
-            --error: #ff6b6b;
+            --accent-soft: rgba(0, 212, 170, 0.15);
+            --text: #ffffff;
+            --text-dim: #888;
         }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            line-height: 1.6;
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
         }
-
-        .container {
-            max-width: 520px;
-            margin: 0 auto;
-            padding: 20px;
+        .logo { font-size: 20px; font-weight: 700; }
+        .logo span { color: var(--accent); }
+        .nav-btn {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3); }
+        
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Header */
-        .header {
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 40px 0 30px;
+            padding: 120px 40px 80px;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 170, 0.08) 0%, transparent 70%);
         }
-
-        .logo {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        
+        .badge {
+            background: var(--accent-soft);
             color: var(--accent);
-            margin-bottom: 8px;
-        }
-
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .header p {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-top: 8px;
-        }
-
-        /* Card */
-        .card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 28px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border);
-        }
-
-        .card-title {
-            font-size: 13px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--accent);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            letter-spacing: 2px;
+            margin-bottom: 32px;
         }
-
-        .card-title::before {
-            content: '';
-            width: 4px;
-            height: 16px;
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        h1 span { color: var(--accent); }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+        
+        .hero-btns { display: flex; gap: 16px; }
+        
+        .btn-primary {
             background: var(--accent);
-            border-radius: 2px;
-        }
-
-        /* Form Elements */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--bg-input);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 15px;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
-
-        input::placeholder {
-            color: var(--text-muted);
-        }
-
-        select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23606070' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 40px;
-        }
-
-        /* Service Grid */
-        .services-grid {
-            display: grid;
-            gap: 12px;
-        }
-
-        .service-option {
-            position: relative;
-        }
-
-        .service-option input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .service-option label {
-            display: block;
-            padding: 16px;
-            background: var(--bg-input);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: none;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0;
-            color: var(--text-primary);
-            margin-bottom: 0;
-        }
-
-        .service-option label .service-name {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .service-option label .service-desc {
-            display: block;
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--text-secondary);
-        }
-
-        .service-option label .service-price {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .service-option input:checked + label {
-            border-color: var(--accent);
-            background: rgba(0, 212, 170, 0.1);
-        }
-
-        .service-option label:hover {
-            border-color: var(--accent);
-        }
-
-        /* Date/Time Row */
-        .row-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        /* Submit Button */
-        .btn-submit {
-            width: 100%;
-            padding: 16px 24px;
-            background: linear-gradient(135deg, var(--accent) 0%, #00b894 100%);
-            color: var(--bg-primary);
-            font-size: 15px;
-            font-weight: 600;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--accent-glow);
-        }
-
-        .btn-submit:active {
-            transform: translateY(0);
-        }
-
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Loading State */
-        .loading {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(10, 10, 15, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .loading.active {
-            display: flex;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Success Screen */
-        .success-screen {
-            display: none;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .success-screen.active {
-            display: block;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent) 0%, #00b894 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            stroke: var(--bg-primary);
-        }
-
-        .success-screen h2 {
-            font-size: 24px;
+            color: var(--bg);
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 700;
-            margin-bottom: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
         }
-
-        .success-screen p {
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-        }
-
-        .booking-ref {
-            background: var(--bg-card);
-            border: 1px solid var(--accent);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-
-        .booking-ref .label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            margin-bottom: 4px;
-        }
-
-        .booking-ref .ref {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--accent);
-            font-family: monospace;
-        }
-
-        .booking-details {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: left;
-        }
-
-        .booking-details .row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .booking-details .row:last-child {
-            border-bottom: none;
-        }
-
-        .booking-details .key {
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        .booking-details .value {
-            font-weight: 500;
-            font-size: 13px;
-        }
-
-        .btn-new {
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 50px rgba(0, 212, 170, 0.4); }
+        
+        .btn-secondary {
             background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 14px 24px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            margin-top: 24px;
-            transition: all 0.3s ease;
+            color: var(--text);
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s;
         }
-
-        .btn-new:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+        
+        .stats {
+            display: flex;
+            gap: 80px;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-
-        /* Form Screen */
-        .form-screen {
-            display: block;
+        .stat { text-align: center; }
+        .stat-value { font-size: 48px; font-weight: 700; color: var(--accent); }
+        .stat-label { font-size: 14px; color: var(--text-dim); margin-top: 4px; }
+        
+        .section { padding: 100px 60px; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 48px; margin-bottom: 16px; }
+        .section-header p { color: var(--text-dim); font-size: 18px; }
+        
+        .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+        @media (max-width: 900px) { .features { grid-template-columns: 1fr; } }
+        
+        .feature {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
         }
-
-        .form-screen.hidden {
-            display: none;
+        .feature:hover { border-color: var(--accent); transform: translateY(-8px); }
+        .feature-icon { font-size: 48px; margin-bottom: 20px; }
+        .feature h3 { font-size: 20px; margin-bottom: 12px; }
+        .feature p { color: var(--text-dim); font-size: 14px; }
+        
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(0, 212, 170, 0.02) 100%);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            border-radius: 24px;
+            padding: 80px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
-
-        /* Footer */
+        
+        .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 40px; margin-bottom: 16px; }
+        .cta-section p { color: var(--text-dim); margin-bottom: 32px; font-size: 18px; }
+        
+        .form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; }
+        @media (max-width: 600px) { .form { flex-direction: column; } }
+        .form input {
+            flex: 1;
+            padding: 16px 24px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form input:focus { border-color: var(--accent); }
+        .form input::placeholder { color: var(--text-dim); }
+        
         .footer {
             text-align: center;
-            padding: 20px 0;
-            color: var(--text-muted);
-            font-size: 12px;
-        }
-
-        /* Error message */
-        .error-msg {
-            background: rgba(255, 107, 107, 0.1);
-            border: 1px solid var(--error);
-            color: var(--error);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 13px;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        .error-msg.active {
-            display: block;
-        }
-
-        /* Status badge */
-        .status-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .status-pending {
-            background: rgba(255, 193, 7, 0.2);
-            color: #ffc107;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-dim);
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-    </div>
+    <nav class="nav">
+        <div class="logo">massage<span>.madrid</span></div>
+        <a href="#book" class="nav-btn">Book Now</a>
+    </nav>
 
-    <div class="container">
-        <div class="header">
-            <div class="logo">Massage Madrid</div>
-            <h1>Book Your Session</h1>
-            <p>Relax, rejuvenate, repeat.</p>
+    <section class="hero">
+        <div class="badge">Premium Wellness in Madrid</div>
+        <h1>Escape the City.<br><span>Restore Your Body.</span></h1>
+        <p>Expert therapists. Premium facilities. The relief you deserve — delivered with care in the heart of Madrid.</p>
+        <div class="hero-btns">
+            <a href="#book" class="btn-primary">Book a Session</a>
+            <a href="#services" class="btn-secondary">View Services</a>
         </div>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">500+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4.9</div>
+                <div class="stat-label">Average Rating</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Expert Therapists</div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Form Screen -->
-        <div class="form-screen" id="formScreen">
-            <form id="bookingForm">
-                <div class="error-msg" id="errorMsg"></div>
+    <section id="services" class="section">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Tailored treatments for every need</p>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">💆</div>
+                <h3>Swedish Massage</h3>
+                <p>Classic relaxation technique to ease tension and improve circulation. Perfect for first-time clients.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔥</div>
+                <h3>Deep Tissue</h3>
+                <p>Intensive therapy for chronic muscle tension. Ideal for athletes and desk workers.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🪨</div>
+                <h3>Hot Stone</h3>
+                <p>Heated basalt stones melt away stress. Deep relaxation meets therapeutic healing.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🤰</div>
+                <h3>Prenatal</h3>
+                <p>Specialized care for expecting mothers. Safe, gentle, and wonderfully relaxing.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚽</div>
+                <h3>Sports Recovery</h3>
+                <p>Performance-focused therapy for athletes. Recover faster, perform better.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🧘</div>
+                <h3>Aromatherapy</h3>
+                <p>Essential oils + massage for complete sensory restoration. Mind and body aligned.</p>
+            </div>
+        </div>
+    </section>
 
-                <!-- Service Selection -->
-                <div class="card">
-                    <div class="card-title">Select Service</div>
-                    <div class="services-grid">
-                        <div class="service-option">
-                            <input type="radio" name="service" value="Swedish Massage" id="swedish" checked>
-                            <label for="swedish">
-                                <span class="service-name">Swedish Massage</span>
-                                <span class="service-desc">60 min • Classic relaxation</span>
-                                <span class="service-price">€45</span>
-                            </label>
-                        </div>
-                        <div class="service-option">
-                            <input type="radio" name="service" value="Deep Tissue Massage" id="deep">
-                            <label for="deep">
-                                <span class="service-name">Deep Tissue Massage</span>
-                                <span class="service-desc">60 min • Tension release</span>
-                                <span class="service-price">€55</span>
-                            </label>
-                        </div>
-                        <div class="service-option">
-                            <input type="radio" name="service" value="Hot Stone Therapy" id="hotstone">
-                            <label for="hotstone">
-                                <span class="service-name">Hot Stone Therapy</span>
-                                <span class="service-desc">75 min • Deep warmth</span>
-                                <span class="service-price">€65</span>
-                            </label>
-                        </div>
-                        <div class="service-option">
-                            <input type="radio" name="service" value="Aromatherapy" id="aroma">
-                            <label for="aroma">
-                                <span class="service-name">Aromatherapy</span>
-                                <span class="service-desc">60 min • Scent journey</span>
-                                <span class="service-price">€50</span>
-                            </label>
-                        </div>
-                        <div class="service-option">
-                            <input type="radio" name="service" value="Sports Massage" id="sports">
-                            <label for="sports">
-                                <span class="service-name">Sports Massage</span>
-                                <span class="service-desc">45 min • Recovery focus</span>
-                                <span class="service-price">€50</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Date & Time -->
-                <div class="card">
-                    <div class="card-title">Choose Date & Time</div>
-                    <div class="row-2">
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <input type="date" id="date" name="date" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="time">Time</label>
-                            <select id="time" name="time" required>
-                                <option value="">Select time</option>
-                                <option value="09:00">9:00 AM</option>
-                                <option value="10:00">10:00 AM</option>
-                                <option value="11:00">11:00 AM</option>
-                                <option value="12:00">12:00 PM</option>
-                                <option value="13:00">1:00 PM</option>
-                                <option value="14:00">2:00 PM</option>
-                                <option value="15:00">3:00 PM</option>
-                                <option value="16:00">4:00 PM</option>
-                                <option value="17:00">5:00 PM</option>
-                                <option value="18:00">6:00 PM</option>
-                                <option value="19:00">7:00 PM</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Info -->
-                <div class="card">
-                    <div class="card-title">Your Details</div>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="Maria García" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+34 612 345 678" required>
-                    </div>
-                    <div class="form-group" style="margin-bottom: 0;">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="maria@email.com" required>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-submit" id="submitBtn">Confirm Booking</button>
+    <section id="book" class="section">
+        <div class="cta-section">
+            <h2>Ready to Feel Better?</h2>
+            <p>Enter your email and we'll send you our booking guide with exclusive first-time offers.</p>
+            <form class="form" action="https://formspree.io/f/placeholder" method="POST">
+                <input type="email" name="email" placeholder="your@email.com" required>
+                <button type="submit" class="btn-primary">Get Started</button>
             </form>
         </div>
+    </section>
 
-        <!-- Success Screen -->
-        <div class="success-screen" id="successScreen">
-            <div class="success-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-            </div>
-            <h2>Booking Confirmed!</h2>
-            <p>We'll see you soon for your massage session.</p>
-            
-            <div class="booking-ref">
-                <div class="label">Booking Reference</div>
-                <div class="ref" id="refNumber">MR-2026-0001</div>
-            </div>
-
-            <div class="booking-details" id="bookingDetails">
-                <div class="row">
-                    <span class="key">Service</span>
-                    <span class="value" id="detailService">-</span>
-                </div>
-                <div class="row">
-                    <span class="key">Date</span>
-                    <span class="value" id="detailDate">-</span>
-                </div>
-                <div class="row">
-                    <span class="key">Time</span>
-                    <span class="value" id="detailTime">-</span>
-                </div>
-                <div class="row">
-                    <span class="key">Client</span>
-                    <span class="value" id="detailName">-</span>
-                </div>
-                <div class="row">
-                    <span class="key">Status</span>
-                    <span class="value"><span class="status-badge status-pending">Pending</span></span>
-                </div>
-            </div>
-
-            <button class="btn-new" onclick="location.reload()">Make Another Booking</button>
-        </div>
-
-        <div class="footer">
-            Questions? Call us at +34 912 345 678
-        </div>
-    </div>
-
-    <script>
-        // Set minimum date to today
-        const dateInput = document.getElementById('date');
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
-
-        // Form submission
-        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const form = e.target;
-            const submitBtn = document.getElementById('submitBtn');
-            const loading = document.getElementById('loading');
-            const errorMsg = document.getElementById('errorMsg');
-
-            // Show loading
-            loading.classList.add('active');
-            submitBtn.disabled = true;
-            errorMsg.classList.remove('active');
-
-            // Gather form data
-            const bookingData = {
-                service: form.service.value,
-                date: form.date.value,
-                time: form.time.value,
-                client: form.name.value,
-                phone: form.phone.value,
-                email: form.email.value
-            };
-
-            try {
-                const response = await fetch('http://localhost:3000/api/book', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(bookingData)
-                });
-
-                const result = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(result.error || 'Booking failed');
-                }
-
-                // Show success
-                document.getElementById('refNumber').textContent = result.booking.id;
-                document.getElementById('detailService').textContent = result.booking.service;
-                document.getElementById('detailDate').textContent = formatDate(result.booking.date);
-                document.getElementById('detailTime').textContent = formatTime(result.booking.time);
-                document.getElementById('detailName').textContent = result.booking.client;
-
-                document.getElementById('formScreen').classList.add('hidden');
-                document.getElementById('successScreen').classList.add('active');
-
-            } catch (error) {
-                errorMsg.textContent = error.message || 'Something went wrong. Please try again.';
-                errorMsg.classList.add('active');
-            } finally {
-                loading.classList.remove('active');
-                submitBtn.disabled = false;
-            }
-        });
-
-        function formatDate(dateStr) {
-            const date = new Date(dateStr + 'T00:00:00');
-            return date.toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-        }
-
-        function formatTime(timeStr) {
-            const [hours, minutes] = timeStr.split(':');
-            const h = parseInt(hours);
-            const ampm = h >= 12 ? 'PM' : 'AM';
-            const h12 = h % 12 || 12;
-            return `${h12}:${minutes} ${ampm}`;
-        }
-    </script>
+    <footer class="footer">
+        <p>massage.madrid · Premium Wellness · Madrid, Spain<br>© 2026 All rights reserved</p>
+    </footer>
 </body>
 </html>
