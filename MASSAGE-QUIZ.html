@@ -28,41 +28,29 @@
         
         .main { max-width: 900px; margin: 0 auto; padding: 32px 24px; }
         
-        .quiz-container { display: none; }
-        .quiz-container.active { display: block; }
-        .quiz-container h2 { font-size: 18px; margin-bottom: 20px; text-align: center; }
+        .quiz-container, .result { display: none; }
+        .quiz-container.active, .result.active { display: block; }
         
         .question { font-size: 16px; font-weight: 600; margin-bottom: 20px; text-align: center; }
         
         .options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        
         .option {
             background: var(--bg-card);
             border: 2px solid var(--border);
             border-radius: 12px;
             padding: 20px;
             cursor: pointer;
-            transition: all 0.2s;
             text-align: center;
+            transition: all 0.2s;
         }
         .option:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .option .icon { font-size: 32px; margin-bottom: 8px; }
-        .option .title { font-weight: 600; margin-bottom: 4px; }
-        .option .desc { font-size: 12px; color: var(--text-dim); }
+        .option .icon { font-size: 28px; margin-bottom: 8px; }
+        .option .title { font-weight: 600; }
+        .option .desc { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
         
         .progress { display: flex; gap: 8px; margin-bottom: 32px; }
         .progress-dot { flex: 1; height: 4px; border-radius: 2px; background: var(--border); }
         .progress-dot.done { background: var(--accent); }
-        .progress-dot.current { background: var(--accent); opacity: 0.5; }
-        
-        .result { display: none; }
-        .result.active { display: block; }
-        .result-badge { 
-            background: var(--accent); color: var(--bg); 
-            padding: 8px 20px; border-radius: 20px; 
-            font-weight: 700; font-size: 12px; display: inline-block; margin-bottom: 16px;
-        }
-        .result h2 { font-size: 24px; margin-bottom: 8px; }
         
         .service-card {
             background: var(--bg-card);
@@ -75,21 +63,8 @@
         .service-card h3 { font-size: 20px; margin-bottom: 8px; color: var(--accent); }
         .service-card p { font-size: 13px; color: var(--text-dim); }
         
-        .restart-btn {
-            display: block;
-            width: 100%;
-            background: var(--bg-card);
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 24px;
-        }
-        
         .map-section { margin-top: 32px; }
-        .map-section h3 { font-size: 16px; margin-bottom: 16px; text-align: center; }
+        .map-section h3 { font-size: 16px; margin-bottom: 16px; }
         
         .map-container {
             background: var(--bg-card);
@@ -102,7 +77,6 @@
             width: 100%;
             height: 400px;
             border: none;
-            display: block;
         }
         
         .places-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -114,12 +88,11 @@
             padding: 20px;
         }
         .place-card:hover { border-color: var(--accent); }
-        .place-card .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-        .place-card h4 { font-size: 14px; font-weight: 600; flex: 1; }
+        .place-card .header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .place-card h4 { font-size: 14px; }
         .place-card .rating { font-size: 12px; color: var(--accent); }
         .place-card .address { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
-        .place-card .info { font-size: 11px; color: var(--text-dim); display: flex; gap: 12px; flex-wrap: wrap; }
-        .place-card .info span { display: flex; align-items: center; gap: 4px; }
+        .place-card .info { font-size: 11px; color: var(--text-dim); display: flex; gap: 12px; }
         
         .book-btn {
             width: 100%;
@@ -134,7 +107,7 @@
             font-size: 15px;
         }
         
-        .book-modal, .success-modal {
+        .modal, .success-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -143,7 +116,7 @@
             align-items: center;
             justify-content: center;
         }
-        .book-modal.active, .success-modal.active { display: flex; }
+        .modal.active, .success-modal.active { display: flex; }
         .modal-content {
             background: var(--bg-card);
             border-radius: 20px;
@@ -186,6 +159,37 @@
         .success-icon { font-size: 72px; text-align: center; margin-bottom: 16px; }
         .success-ref { font-size: 24px; font-weight: 800; color: var(--accent); text-align: center; display: block; margin-bottom: 12px; }
         .success-msg { color: var(--text-dim); font-size: 14px; text-align: center; margin-bottom: 20px; }
+        
+        .restart-btn {
+            display: block;
+            width: 100%;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 24px;
+        }
+        
+        .db-status {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .db-status .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .db-status.connected .dot { background: #22c55e; }
+        .db-status.error .dot { background: #ef4444; }
+        
+        .submit-btn { width: 100%; background: var(--gradient); color: var(--bg); border: none; padding: 16px; border-radius: 10px; font-weight: 700; cursor: pointer; }
+        .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -195,36 +199,33 @@
     </header>
 
     <main class="main">
+        <div class="db-status connected" id="db-status">
+            <span class="dot"></span>
+            <span>Database: Connected</span>
+        </div>
+        
         <!-- INTRO -->
         <div class="quiz-container active" id="intro">
-            <h2>What's your main goal?</h2>
+            <div class="question">What's your main goal?</div>
             <div class="options">
                 <div class="option" onclick="select('intro', 'stress')">
-                    <div class="icon">🧘</div>
-                    <div class="title">Stress & Relaxation</div>
-                    <div class="desc">Unwind and de-stress</div>
+                    <div class="icon">🧘</div><div class="title">Stress & Relaxation</div><div class="desc">Unwind and de-stress</div>
                 </div>
                 <div class="option" onclick="select('intro', 'pain')">
-                    <div class="icon">💆</div>
-                    <div class="title">Pain & Soreness</div>
-                    <div class="desc">Muscle relief</div>
+                    <div class="icon">💆</div><div class="title">Pain & Soreness</div><div class="desc">Muscle relief</div>
                 </div>
                 <div class="option" onclick="select('intro', 'athlete')">
-                    <div class="icon">🏃</div>
-                    <div class="title">Sports Recovery</div>
-                    <div class="desc">Athletes & active</div>
+                    <div class="icon">🏃</div><div class="title">Sports Recovery</div><div class="desc">Athletes & active</div>
                 </div>
                 <div class="option" onclick="select('intro', 'wellness')">
-                    <div class="icon">✨</div>
-                    <div class="title">Pure Wellness</div>
-                    <div class="desc">Luxury & pampering</div>
+                    <div class="icon">✨</div><div class="title">Pure Wellness</div><div class="desc">Luxury & pampering</div>
                 </div>
             </div>
         </div>
 
-        <!-- Q1: Pressure -->
+        <!-- Q1 -->
         <div class="quiz-container" id="q1">
-            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot current"></div><div class="progress-dot"></div><div class="progress-dot"></div></div>
+            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot"></div><div class="progress-dot"></div><div class="progress-dot"></div></div>
             <div class="question">Preferred pressure?</div>
             <div class="options">
                 <div class="option" onclick="select('q1', 'light')"><div class="icon">🌸</div><div class="title">Gentle</div></div>
@@ -234,9 +235,9 @@
             </div>
         </div>
 
-        <!-- Q2: Area -->
+        <!-- Q2 -->
         <div class="quiz-container" id="q2">
-            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot current"></div><div class="progress-dot"></div></div>
+            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot"></div><div class="progress-dot"></div></div>
             <div class="question">Focus area?</div>
             <div class="options">
                 <div class="option" onclick="select('q2', 'full')"><div class="icon">🙋</div><div class="title">Full Body</div></div>
@@ -246,9 +247,9 @@
             </div>
         </div>
 
-        <!-- Q3: Add-ons -->
+        <!-- Q3 -->
         <div class="quiz-container" id="q3">
-            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot current"></div></div>
+            <div class="progress"><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot done"></div><div class="progress-dot"></div></div>
             <div class="question">Any extras?</div>
             <div class="options">
                 <div class="option" onclick="select('q3', 'classic')"><div class="icon">👍</div><div class="title">Just Massage</div></div>
@@ -260,34 +261,17 @@
 
         <!-- RESULT -->
         <div class="result" id="result">
-            <div class="result-badge">YOUR MATCH</div>
-            <h2 id="result-title">Swedish Massage</h2>
-            
             <div class="service-card">
                 <h3 id="service-name">Swedish Massage</h3>
                 <p id="service-desc">Classic relaxation massage</p>
-                <p id="service-duration">60-90 min</p>
             </div>
             
             <div class="map-section">
                 <h3>📍 Best Spas in Madrid</h3>
-                
-                <!-- OpenStreetMap - always works, no API key needed -->
                 <div class="map-container">
-                    <iframe 
-                        width="100%" 
-                        height="400" 
-                        frameborder="0" 
-                        scrolling="no" 
-                        marginheight="0" 
-                        marginwidth="0"
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=-3.8%2C40.35%2C-3.6%2C40.5&amp;layer=mapnik&amp;marker=40.4168%2C-3.7036"
-                        style="border: none;">
-                    </iframe>
+                    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-3.8%2C40.35%2C-3.6%2C40.5&layer=mapnik&marker=40.4168%2C-3.7036" allowfullscreen></iframe>
                 </div>
-                
                 <div class="places-grid" id="places"></div>
-                
                 <button class="book-btn" onclick="openBooking()">📅 Book This Massage</button>
             </div>
             
@@ -296,12 +280,21 @@
     </main>
 
     <!-- BOOKING MODAL -->
-    <div class="book-modal" id="book-modal">
+    <div class="modal" id="book-modal">
         <div class="modal-content">
             <h3>Book Your Massage</h3>
             <input type="text" id="client-name" placeholder="Your Name">
             <input type="email" id="client-email" placeholder="Email">
             <input type="tel" id="client-phone" placeholder="Phone">
+            <select id="spa-name">
+                <option value="">Select Spa</option>
+                <option value="Wellness Center Madrid Centro">Wellness Center Madrid Centro</option>
+                <option value="Serenity Spa & Massage">Serenity Spa & Massage</option>
+                <option value="Zen Garden Wellness">Zen Garden Wellness</option>
+                <option value="The Spa at Four Seasons">The Spa at Four Seasons</option>
+                <option value="Aquarel Wellness">Aquarel Wellness</option>
+                <option value="Madrid Royal Spa">Madrid Royal Spa</option>
+            </select>
             <input type="date" id="booking-date">
             <select id="booking-time">
                 <option value="">Select Time</option>
@@ -317,7 +310,7 @@
             </select>
             <div class="btn-row">
                 <button class="btn-cancel" onclick="closeBooking()">Cancel</button>
-                <button class="btn-confirm" onclick="submitBooking()">Confirm</button>
+                <button class="btn-confirm" id="submit-booking" onclick="submitBooking()">Confirm Booking</button>
             </div>
         </div>
     </div>
@@ -334,24 +327,27 @@
     </div>
 
     <script>
+        const SUPABASE_URL = 'https://jglftdstrowwckwqmpue.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY0ODQ2MTg3NywiZXhwIjoxOTY0MDM3ODc3fQ.DpLS2hS3a6JNFtSvLNJcL-T6M3F0Rp3Fz8lTQT5VxJQ';
+        
         let answers = {};
         let recommendedService = '';
         
         const services = {
-            swedish: { name: 'Swedish Massage', desc: 'Classic relaxation with flowing strokes', duration: '60-90 min' },
-            deeptissue: { name: 'Deep Tissue Massage', desc: 'Intensive muscle layer work', duration: '60-90 min' },
-            hotstone: { name: 'Hot Stone Massage', desc: 'Heated stones for deep relaxation', duration: '75-90 min' },
-            sports: { name: 'Sports Massage', desc: 'Athletic recovery and performance', duration: '45-90 min' },
-            aromatherapy: { name: 'Aromatherapy Massage', desc: 'Essential oils for holistic wellness', duration: '60-90 min' }
+            swedish: { name: 'Swedish Massage', desc: 'Classic relaxation with flowing strokes' },
+            deeptissue: { name: 'Deep Tissue Massage', desc: 'Intensive muscle layer work' },
+            hotstone: { name: 'Hot Stone Massage', desc: 'Heated stones for deep relaxation' },
+            sports: { name: 'Sports Massage', desc: 'Athletic recovery and performance' },
+            aromatherapy: { name: 'Aromatherapy Massage', desc: 'Essential oils for holistic wellness' }
         };
         
         const madridSpas = [
-            { name: 'Wellness Center Madrid Centro', address: 'Gran Vía 28, Madrid', rating: 4.8, reviews: 847, phone: '+34 912 345 678', price: '€55-95', hours: 'Mon-Sat 10AM-9PM', lat: 40.4178, lng: -3.7043, types: ['Swedish', 'Deep Tissue', 'Hot Stone'] },
-            { name: 'Serenity Spa & Massage', address: 'Plaza Mayor 15, Madrid', rating: 4.9, reviews: 1243, phone: '+34 913 456 789', price: '€65-110', hours: 'Daily 9AM-10PM', lat: 40.4154, lng: -3.7072, types: ['Swedish', 'Aromatherapy', 'Shiatsu'] },
-            { name: 'Zen Garden Wellness', address: 'Calle Alcalá 55, Madrid', rating: 4.7, reviews: 632, phone: '+34 914 567 890', price: '€50-85', hours: 'Mon-Fri 10AM-8PM', lat: 40.4168, lng: -3.6986, types: ['Swedish', 'Deep Tissue', 'Sports'] },
-            { name: 'The Spa at Four Seasons', address: 'Plaza de Cibeles 1, Madrid', rating: 4.9, reviews: 2156, phone: '+34 915 678 901', price: '€120-200', hours: 'Daily 9AM-9PM', lat: 40.4208, lng: -3.6936, types: ['Swedish', 'Deep Tissue', 'Hot Stone', 'Aromatherapy'] },
-            { name: 'Aquarel Wellness', address: 'Calle Serrano 45, Madrid', rating: 4.6, reviews: 489, phone: '+34 916 789 012', price: '€45-75', hours: 'Mon-Sat 10AM-8PM', lat: 40.4295, lng: -3.6855, types: ['Swedish', 'Aromatherapy'] },
-            { name: 'Madrid Royal Spa', address: 'Calle Arenal 18, Madrid', rating: 4.8, reviews: 1023, phone: '+34 917 890 123', price: '€70-120', hours: 'Daily 10AM-10PM', lat: 40.4151, lng: -3.7032, types: ['Deep Tissue', 'Hot Stone', 'Shiatsu', 'Couples'] }
+            { name: 'Wellness Center Madrid Centro', address: 'Gran Vía 28, Madrid', rating: 4.8, reviews: 847, price: '€55-95' },
+            { name: 'Serenity Spa & Massage', address: 'Plaza Mayor 15, Madrid', rating: 4.9, reviews: 1243, price: '€65-110' },
+            { name: 'Zen Garden Wellness', address: 'Calle Alcalá 55, Madrid', rating: 4.7, reviews: 632, price: '€50-85' },
+            { name: 'The Spa at Four Seasons', address: 'Plaza de Cibeles 1, Madrid', rating: 4.9, reviews: 2156, price: '€120-200' },
+            { name: 'Aquarel Wellness', address: 'Calle Serrano 45, Madrid', rating: 4.6, reviews: 489, price: '€45-75' },
+            { name: 'Madrid Royal Spa', address: 'Calle Arenal 18, Madrid', rating: 4.8, reviews: 1023, price: '€70-120' }
         ];
         
         function select(question, value) {
@@ -371,46 +367,87 @@
             else recommendedService = 'swedish';
             
             const s = services[recommendedService];
-            document.getElementById('result-title').textContent = s.name;
             document.getElementById('service-name').textContent = s.name;
             document.getElementById('service-desc').textContent = s.desc;
-            document.getElementById('service-duration').textContent = s.duration;
             
             renderPlaces();
         }
         
         function renderPlaces() {
             const placesDiv = document.getElementById('places');
-            let html = '';
-            
-            madridSpas.forEach(spa => {
-                html += `
-                    <div class="place-card">
-                        <div class="header">
-                            <h4>${spa.name}</h4>
-                            <span class="rating">★ ${spa.rating}</span>
-                        </div>
-                        <div class="address">📍 ${spa.address}</div>
-                        <div class="info">
-                            <span>💰 ${spa.price}</span>
-                            <span>⏰ ${spa.hours}</span>
-                        </div>
+            placesDiv.innerHTML = madridSpas.map(spa => `
+                <div class="place-card">
+                    <div class="header">
+                        <h4>${spa.name}</h4>
+                        <span class="rating">★ ${spa.rating}</span>
                     </div>
-                `;
-            });
-            
-            placesDiv.innerHTML = html;
+                    <div class="address">📍 ${spa.address}</div>
+                    <div class="info">
+                        <span>💰 ${spa.price}</span>
+                        <span>📞 ${spa.reviews} reviews</span>
+                    </div>
+                </div>
+            `).join('');
         }
         
         function openBooking() { document.getElementById('book-modal').classList.add('active'); }
         function closeBooking() { document.getElementById('book-modal').classList.remove('active'); }
         function closeSuccess() { document.getElementById('success-modal').classList.remove('active'); }
         
-        function submitBooking() {
-            const ref = 'MR-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
-            document.getElementById('booking-ref').textContent = ref;
-            closeBooking();
-            document.getElementById('success-modal').classList.add('active');
+        async function submitBooking() {
+            const name = document.getElementById('client-name').value;
+            const email = document.getElementById('client-email').value;
+            const phone = document.getElementById('client-phone').value;
+            const spa = document.getElementById('spa-name').value;
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            
+            if (!name || !email || !spa || !date || !time) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            const btn = document.getElementById('submit-booking');
+            btn.disabled = true;
+            btn.textContent = 'Saving...';
+            
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/bookings`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': `Bearer ${SUPABASE_KEY}`,
+                        'Prefer': 'return=representation'
+                    },
+                    body: JSON.stringify({
+                        client_name: name,
+                        client_email: email,
+                        client_phone: phone,
+                        spa_name: spa,
+                        service_type: services[recommendedService]?.name || 'Swedish Massage',
+                        booking_date: date,
+                        booking_time: time,
+                        status: 'pending'
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    const bookingId = data[0]?.id || 1;
+                    document.getElementById('booking-ref').textContent = `MR-2026-${String(bookingId + 1000).slice(-4)}`;
+                    closeBooking();
+                    document.getElementById('success-modal').classList.add('active');
+                } else {
+                    throw new Error('Booking failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Booking failed. Please try again or contact us directly.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Confirm Booking';
+            }
         }
         
         function restart() {
