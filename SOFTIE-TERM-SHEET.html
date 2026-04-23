@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softie Term Sheet | Lender Proposal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --border: #1f1f2e;
+            --text: #e8e8f0;
+            --text-dim: #6b6b80;
+            --accent: #00d4aa;
+            --red: #ff4757;
+            --yellow: #ffbe0b;
+            --blue: #3a86ff;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--accent) 0%, #00a080 100%);
+            padding: 32px 40px;
+        }
+        .header h1 { font-size: 28px; font-weight: 800; color: var(--bg); }
+        .header p { color: rgba(10, 10, 15, 0.7); margin-top: 8px; }
+        .header .badge { 
+            display: inline-block; 
+            background: var(--bg); 
+            color: var(--accent); 
+            padding: 6px 16px; 
+            border-radius: 20px; 
+            font-weight: 700; 
+            font-size: 14px; 
+            margin-top: 12px; 
+        }
+        
+        .main { max-width: 900px; margin: 0 auto; padding: 32px 40px; }
+        
+        .term-row {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+        .term-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .term-name { font-weight: 700; font-size: 15px; }
+        .term-score { 
+            background: var(--accent); 
+            color: var(--bg); 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-size: 12px; 
+            font-weight: 700; 
+        }
+        .term-proposal { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: var(--accent); 
+            margin-bottom: 8px; 
+        }
+        .term-rationale { font-size: 12px; color: var(--text-dim); }
+        
+        .section-title {
+            font-size: 14px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 24px 0 12px;
+        }
+        
+        .high-priority { border-left: 4px solid var(--accent); }
+        .medium-priority { border-left: 4px solid var(--yellow); }
+        .low-priority { border-left: 4px solid var(--text-dim); }
+        
+        .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+        .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+        .stat-value { font-size: 24px; font-weight: 800; color: var(--accent); }
+        .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 4px; text-transform: uppercase; }
+        
+        .footer { text-align: center; padding: 32px; color: var(--text-dim); font-size: 12px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>📋 Softie N.V. — Term Sheet Proposal</h1>
+        <p>Lender Team | Finsimco Debt Financing Simulation</p>
+        <div class="badge">YOUR ROLE: LENDER</div>
+    </header>
+
+    <main class="main">
+        <div class="stats-row">
+            <div class="stat">
+                <div class="stat-value">475bps</div>
+                <div class="stat-label">Target Spread</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4yr</div>
+                <div class="stat-label">Maturity</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">3.5x</div>
+                <div class="stat-label">Leverage Covenant</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2%</div>
+                <div class="stat-label">Arrangement Fee</div>
+            </div>
+        </div>
+
+        <div class="section-title">📊 Key Financial Terms</div>
+        
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">💼 Issuer</div>
+                <div class="term-score">30/30</div>
+            </div>
+            <div class="term-proposal">Softie NV (Dutch incorporated OpCo)</div>
+            <div class="term-rationale">Ensure borrower is at OpCo level, not HoldCo SPV, to avoid structural subordination</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">💰 Loan Amount</div>
+                <div class="term-score">30/30</div>
+            </div>
+            <div class="term-proposal">TBD — request full refinance quantum from borrower</div>
+            <div class="term-rationale">Clarify if refinancing existing debt or raising additional; sizing should not exceed 4x EBITDA on reported numbers</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">📈 Interest Rate</div>
+                <div class="term-score">30/30</div>
+            </div>
+            <div class="term-proposal">EURIBOR + 475bps</div>
+            <div class="term-rationale">Above comparable deals (CNNX 5.6x, SaaSy 6.0x) to compensate for EBITDA quality concerns and Goodwill impairment risk. Reference market comps to justify.</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">📅 Maturity</div>
+                <div class="term-score">30/30</div>
+            </div>
+            <div class="term-proposal">4 years from close date</div>
+            <div class="term-rationale">Matches PIK Note maturity (4.5yr). Don't extend beyond — creates refinancing cliff. If longer maturity required, demand 25bps step-up per year.</div>
+        </div>
+
+        <div class="section-title">📝 Structural Terms (400 words each)</div>
+
+        <div class="term-row medium-priority">
+            <div class="term-header">
+                <div class="term-name">🔄 Amortization</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">1% p.a. cash amortization + 50% excess cash flow sweep</div>
+            <div class="term-rationale">Ensures borrower repays from operations, not just refinancing. Excess cash flow sweep protects against cash accumulation at HoldCo level.</div>
+        </div>
+
+        <div class="term-row medium-priority">
+            <div class="term-header">
+                <div class="term-name">⏰ Prepayment Option</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Soft call: 12 months @ 102, then 101 for 6 months, then par</div>
+            <div class="term-rationale">12-month soft call protects refinancing risk. Step-down to par over 18 months compensates for early repayment.</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">🛡️ Guarantees</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Full downstream guarantee from Softie NV + all material subsidiaries</div>
+            <div class="term-rationale">Downstream guarantees ensure lender has direct recourse to operating entities. All material subsidiaries must be included to prevent structural leakage.</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">📊 Seniority</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Senior secured — ranking ahead of €200m Unsecured PIK Note</div>
+            <div class="term-rationale">PIK Note is unsecured. New money should be senior secured to have claim on assets ahead of subordinated debt. Position as "new money = senior treatment".</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">🔒 Security</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">First ranking security over all assets, shares of Softie Midco NV + Holdco NV, and all material IP</div>
+            <div class="term-rationale">Goodwill declined €280m → €200m in one year. IP is declining — need security to protect against further impairment. Share pledges on HoldCo entities critical.</div>
+        </div>
+
+        <div class="term-row medium-priority">
+            <div class="term-header">
+                <div class="term-name">✅ Borrower Reps & Warranties</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Standard market representations + explicit warranty that no pending goodwill impairment exists + no undisclosed liabilities from SaaP acquisition</div>
+            <div class="term-rationale">Given IP volatility, explicit warranty protects against hidden impairment. SaaP acquisition add-on covers undisclosed deal risks.</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">📋 Conditions Precedent</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Audited FY financials (not management accounts), independent IP valuation report, solvency opinion, evidence of €5m SaaP synergies realized</div>
+            <div class="term-rationale">€10m "non-recurring" EBITDA adjustments need validation. Independent IP valuation confirms asset quality. Solvency opinion protects against structuring into distress.</div>
+        </div>
+
+        <div class="term-row medium-priority">
+            <div class="term-header">
+                <div class="term-name">👍 Affirmative Covenants</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Quarterly financial reporting + monthly SaaS ARR disclosure + quarterly churn rate reporting + annual IP valuation update</div>
+            <div class="term-rationale">SaaS metrics are key to recurring revenue story. ARR and churn reporting gives early warning on customer retention. IP updates flag impairment risks.</div>
+        </div>
+
+        <div class="term-row high-priority">
+            <div class="term-header">
+                <div class="term-name">🚫 Negative Covenants</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">No additional debt > €5m without consent; no acquisitions > €2m without consent (including rumored €20m deal); no asset sales > €2m; no dividends if leverage > 3x; no management fee payments > €500k p.a.</div>
+            <div class="term-rationale">Prevents leveraging up further without lender knowledge. The €20m acquisition "advanced discussions" must require consent — borrower may not disclose if not required.</div>
+        </div>
+
+        <div class="term-row high-priority" style="border-left: 4px solid var(--accent); background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, transparent 100%);">
+            <div class="term-header">
+                <div class="term-name">📐 Financial Covenant (LEVERAGE)</div>
+                <div class="term-score">400 ★ KEY TERM ★</div>
+            </div>
+            <div class="term-proposal">Total Net Debt / Reported EBITDA ≤ 3.5x; quarterly testing; 20% cure right cushion; max 2 equity cures per year; 3% per cure; 5% lifetime cap</div>
+            <div class="term-rationale">Use REPORTED €70m EBITDA, NOT adjusted €80m. Management's €10m "adjustments" are questioned. 3.5x allows some cushion for growth while protecting lender. Equity cure prevents technical default from forcing acceleration.</div>
+        </div>
+
+        <div class="term-row medium-priority">
+            <div class="term-header">
+                <div class="term-name">🔄 Change of Control</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Mandatory prepayment at par + 101 call premium upon Change of Control; lender consent required (not just notification) for sponsor exit</div>
+            <div class="term-rationale">PE sponsor exit = likely recapitalization or sale. Need mandatory prepayment option or ability to reprice at new leverage. 101 premium compensates for lost yield.</div>
+        </div>
+
+        <div class="term-row medium-priority">
+            <div class="term-header">
+                <div class="term-name">❌ Events of Default</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">Standard EoD (payment, insolvency, breach) + IP impairment > €20m = EoD; IP valuation < €150m = EoD; material SaaS contract loss > 20% ARR = EoD; cross-default threshold €5m</div>
+            <div class="term-rationale">Given goodwill decline, IP impairment threshold triggers early warning. 20% ARR loss on key contract is material — should trigger EoD given SaaS revenue concentration risk.</div>
+        </div>
+
+        <div class="term-row low-priority">
+            <div class="term-header">
+                <div class="term-name">💸 Default Rate</div>
+                <div class="term-score">30/30</div>
+            </div>
+            <div class="term-proposal">P+300bps (prevailing rate + 3%) with 5% floor</div>
+            <div class="term-rationale">Standard penalty rate. Floor ensures minimum return even in low rate environment. 3% spread is meaningful but not punitive.</div>
+        </div>
+
+        <div class="term-row medium-priority">
+            <div class="term-header">
+                <div class="term-name">💳 Fees and Expenses</div>
+                <div class="term-score">400</div>
+            </div>
+            <div class="term-proposal">2% arrangement fee + 1% underwriting fee; all legal and advisory costs borne by borrower regardless of closing</div>
+            <div class="term-rationale">Upfront fees compensate for structuring risk and early repayment possibility. 2% arrangement + 1% underwriting = market standard for leveraged deals. Borrower-pays legal reduces lender exposure.</div>
+        </div>
+
+    </main>
+
+    <div class="footer">
+        Softie N.V. Term Sheet · Built by Axton · Good luck! 🏦
+    </div>
+</body>
+</html>
