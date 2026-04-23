@@ -15,18 +15,19 @@
             --text-dim: #6b6b80;
             --accent: #00d4aa;
             --purple: #a855f7;
+            --gradient: linear-gradient(135deg, var(--accent) 0%, #00a080 100%);
         }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
         
         .header {
-            background: linear-gradient(135deg, var(--accent) 0%, #00a080 100%);
+            background: var(--gradient);
             padding: 40px;
             text-align: center;
         }
         .header h1 { font-size: 28px; font-weight: 800; color: var(--bg); }
         .header p { color: rgba(10,10,15,0.7); margin-top: 8px; }
         
-        .main { max-width: 700px; margin: 0 auto; padding: 32px 24px; }
+        .main { max-width: 800px; margin: 0 auto; padding: 32px 24px; }
         
         .quiz-container { display: none; }
         .quiz-container.active { display: block; }
@@ -45,8 +46,7 @@
             transition: all 0.2s;
             font-size: 14px;
         }
-        .option:hover { border-color: var(--accent); transform: translateY(-2px); }
-        .option.selected { border-color: var(--accent); background: rgba(0,212,170,0.1); }
+        .option:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,170,0.15); }
         
         .progress { display: flex; gap: 8px; margin-bottom: 32px; }
         .progress-dot { flex: 1; height: 4px; border-radius: 2px; background: var(--border); }
@@ -67,7 +67,7 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             text-align: left;
         }
         .service-card h3 { font-size: 18px; margin-bottom: 8px; color: var(--accent); }
@@ -110,6 +110,7 @@
             border-radius: 10px;
             font-weight: 700;
             cursor: pointer;
+            font-size: 16px;
         }
         
         .map-wrapper {
@@ -117,11 +118,27 @@
             border-radius: 16px;
             overflow: hidden;
             margin-bottom: 20px;
+            border: 2px solid var(--border);
         }
-        .map-wrapper iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
+        #map { width: 100%; height: 450px; }
+        
+        /* Custom Info Window */
+        .gm-style .info-window {
+            background: var(--bg-card) !important;
+            border-radius: 12px !important;
+            padding: 0 !important;
+        }
+        
+        .gm-style .info-window h4 {
+            color: var(--accent) !important;
+            font-size: 14px !important;
+            margin: 0 !important;
+        }
+        
+        .gm-style .info-window p {
+            color: var(--text-dim) !important;
+            font-size: 12px !important;
+            margin: 4px 0 0 0 !important;
         }
         
         .places { margin-top: 20px; }
@@ -132,33 +149,46 @@
             padding: 16px;
             margin-bottom: 12px;
             text-align: left;
+            transition: all 0.2s;
         }
-        .place .header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-        .place h4 { font-size: 14px; font-weight: 600; }
+        .place:hover { border-color: var(--accent); transform: translateX(4px); }
+        .place .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .place h4 { font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .place .logo { 
+            width: 28px; height: 28px; 
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
         .place .rating { font-size: 12px; color: var(--accent); }
         .place .address { font-size: 12px; color: var(--text-dim); margin-bottom: 4px; }
         .place .services { font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
-        .place .meta { font-size: 11px; color: var(--accent); display: flex; gap: 16px; flex-wrap: wrap; }
-        .place .meta span { display: flex; align-items: center; gap: 4px; }
+        .place .meta { font-size: 11px; display: flex; gap: 16px; flex-wrap: wrap; }
+        .place .meta span { color: var(--accent); display: flex; align-items: center; gap: 4px; }
         
         .book-btn {
             width: 100%;
-            background: var(--accent);
+            background: var(--gradient);
             color: var(--bg);
             border: none;
-            padding: 14px;
-            border-radius: 10px;
+            padding: 16px;
+            border-radius: 12px;
             font-weight: 700;
             cursor: pointer;
             margin-top: 20px;
-            font-size: 14px;
+            font-size: 15px;
+            box-shadow: 0 10px 30px rgba(0,212,170,0.3);
         }
+        .book-btn:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(0,212,170,0.4); }
         
         .book-modal, .success-modal {
             display: none;
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -166,51 +196,67 @@
         .book-modal.active, .success-modal.active { display: flex; }
         .book-modal-content, .success-modal-content {
             background: var(--bg-card);
-            border-radius: 16px;
-            padding: 24px;
-            max-width: 400px;
+            border-radius: 20px;
+            padding: 32px;
+            max-width: 420px;
             width: 90%;
+            border: 1px solid var(--border);
         }
-        .book-modal h3, .success-modal h3 { margin-bottom: 16px; }
+        .book-modal h3, .success-modal h3 { font-size: 20px; margin-bottom: 20px; color: var(--accent); }
         .book-modal input, .book-modal select {
             width: 100%;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px 16px;
+            border-radius: 10px;
             border: 1px solid var(--border);
             background: var(--bg);
             color: var(--text);
             margin-bottom: 12px;
             font-size: 14px;
         }
+        .book-modal input:focus, .book-modal select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .book-modal .btn-row { display: flex; gap: 12px; margin-top: 20px; }
         .book-modal .close-btn {
+            flex: 1;
             background: var(--bg);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 10px;
             cursor: pointer;
-            margin-right: 8px;
+            font-weight: 600;
         }
         .book-modal .submit-btn {
-            background: var(--accent);
+            flex: 1;
+            background: var(--gradient);
             border: none;
             color: var(--bg);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 700;
             cursor: pointer;
         }
-        .success-modal .icon { font-size: 64px; margin-bottom: 16px; }
-        .success-modal .ref { font-size: 18px; font-weight: 700; margin-bottom: 16px; display: block; }
-        .success-modal p { color: var(--text-dim); font-size: 13px; margin-bottom: 16px; }
+        .success-modal .icon { font-size: 72px; margin-bottom: 20px; }
+        .success-modal .ref { font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 12px; display: block; }
+        .success-modal p { color: var(--text-dim); font-size: 14px; margin-bottom: 20px; }
+        .success-modal .close-btn {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
     </style>
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo&libraries=places&callback=initMap" async defer></script>
 </head>
 <body>
     <header class="header">
-        <h1>🔮 Find Your Perfect Massage</h1>
-        <p>Quiz + Real Madrid Spas · Google Maps Enabled</p>
+        <h1>💆 Find Your Perfect Massage</h1>
+        <p>Personalized Quiz + Real Madrid Spas</p>
     </header>
 
     <main class="main">
@@ -288,17 +334,17 @@
                 <h3>📍 Best Massage Places in Madrid</h3>
                 
                 <div class="location-search">
-                    <input type="text" class="location-input" id="location" placeholder="Enter Madrid neighborhood..." value="Madrid">
+                    <input type="text" class="location-input" id="location" placeholder="Search neighborhood..." value="Madrid">
                     <button class="location-btn" onclick="searchPlaces()">🔍</button>
                 </div>
                 
                 <div class="map-wrapper">
-                    <div id="map" style="height:400px;width:100%;"></div>
+                    <div id="map"></div>
                 </div>
                 
                 <div class="places" id="places"></div>
                 
-                <button class="book-btn" onclick="openBooking()">📅 Book This Service</button>
+                <button class="book-btn" onclick="openBooking()">📅 Book This Massage</button>
             </div>
             
             <button class="restart-btn" onclick="restart()">🔄 Take Quiz Again</button>
@@ -325,7 +371,7 @@
                 <option value="18:00">6:00 PM</option>
                 <option value="19:00">7:00 PM</option>
             </select>
-            <div style="display:flex;margin-top:16px;">
+            <div class="btn-row">
                 <button class="close-btn" onclick="closeBooking()">Cancel</button>
                 <button class="submit-btn" onclick="submitBooking()">Confirm</button>
             </div>
@@ -335,7 +381,7 @@
     <!-- SUCCESS MODAL -->
     <div class="success-modal" id="success-modal">
         <div class="success-modal-content">
-            <div class="icon">✅</div>
+            <div class="icon">💆</div>
             <h3>Booking Confirmed!</h3>
             <span class="ref" id="booking-ref">MR-2026-0001</span>
             <p>Confirmation sent to your email. See you soon!</p>
@@ -346,22 +392,45 @@
     <script>
         let answers = {};
         let recommendedService = '';
-        let map, placesService, service;
+        let map, placesService, markers = [];
         
         const services = {
             swedish: { name: 'Swedish Massage', desc: 'Classic relaxation massage with long, flowing strokes.', duration: '60-90 min · €55-85' },
             deeptissue: { name: 'Deep Tissue Massage', desc: 'Intensive massage targeting deep muscle layers.', duration: '60-90 min · €65-95' },
             hotstone: { name: 'Hot Stone Massage', desc: 'Heated stones melt deep tension.', duration: '75-90 min · €75-110' },
             sports: { name: 'Sports Massage', desc: 'Athletic-focused massage for recovery.', duration: '45-90 min · €55-90' },
-            aromatherapy: { name: 'Aromatherapy Massage', desc: 'Essential oils for holistic wellness.', duration: '60-90 min · €65-95' },
-            shiatsu: { name: 'Shiatsu Massage', desc: 'Japanese pressure point therapy.', duration: '60 min · €50-80' }
+            aromatherapy: { name: 'Aromatherapy Massage', desc: 'Essential oils for holistic wellness.', duration: '60-90 min · €65-95' }
         };
+        
+        // Custom dark map style
+        const darkMapStyle = [
+            { elementType: 'geometry', stylers: [{ color: '#1a1a24' }] },
+            { elementType: 'labels.text.fill', stylers: [{ color: '#6b6b80' }] },
+            { elementType: 'labels.text.stroke', stylers: [{ color: '#0a0a0f' }] },
+            { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a3a' }] },
+            { featureType: 'poi', elementType: 'geometry', stylers: [{ color: '#22222e' }] },
+            { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#6b6b80' }] },
+            { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#1a2a1a' }] },
+            { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#2a2a3a' }] },
+            { featureType: 'road', elementType: 'geometry.stroke', stylers: [{ color: '#1a1a24' }] },
+            { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#4a4a5a' }] },
+            { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#3a3a4a' }] },
+            { featureType: 'road.highway', elementType: 'geometry.stroke', stylers: [{ color: '#1a1a24' }] },
+            { featureType: 'transit', elementType: 'geometry', stylers: [{ color: '#22222e' }] },
+            { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0f' }] },
+            { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#3a3a4a' }] }
+        ];
         
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: 40.4168, lng: -3.7036 },
                 zoom: 13,
-                styles: [{ featureType: 'all', elementType: 'geometry', stylers: [{ color: '#1a1a24' }] }, { featureType: 'all', elementType: 'labels.text.fill', stylers: [{ color: '#6b6b80' }] }, { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0f' }] }]
+                styles: darkMapStyle,
+                disableDefaultUI: false,
+                zoomControl: true,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: true
             });
             placesService = new google.maps.places.PlacesService(map);
         }
@@ -392,27 +461,19 @@
         }
         
         function searchPlaces() {
-            const location = document.getElementById('location').value || 'Madrid, Spain';
-            const request = {
-                query: 'massage spa ' + location,
-                fields: ['name', 'geometry', 'formatted_address', 'rating', 'user_ratings_total', 'opening_hours', 'types']
-            };
+            // Clear existing markers
+            markers.forEach(m => m.setMap(null));
+            markers = [];
             
-            placesService.findPlaceFromQuery(request, (results, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-                    displayPlaces(results);
-                    if (results[0].geometry) {
-                        map.setCenter(results[0].geometry.location);
-                    }
-                } else {
-                    // Fallback to text search
-                    placesService.textSearch({
-                        query: 'massage spa madrid',
-                        location: { lat: 40.4168, lng: -3.7036 },
-                        radius: 10000
-                    }, (results, status) => {
-                        if (status === google.maps.places.PlacesServiceStatus.OK) displayPlaces(results.slice(0, 8));
-                    });
+            const location = document.getElementById('location').value || 'Madrid';
+            
+            placesService.textSearch({
+                query: 'massage spa ' + location,
+                location: { lat: 40.4168, lng: -3.7036 },
+                radius: 10000
+            }, (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    displayPlaces(results.slice(0, 8));
                 }
             });
         }
@@ -421,20 +482,73 @@
             const placesDiv = document.getElementById('places');
             let html = '';
             
-            places.forEach(place => {
+            // Create custom marker icon (SVG)
+            const markerIcon = {
+                path: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
+                fillColor: '#00d4aa',
+                fillOpacity: 1,
+                strokeColor: '#0a0a0f',
+                strokeWeight: 2,
+                scale: 2,
+                anchor: new google.maps.Point(12, 22),
+                labelOrigin: new google.maps.Point(12, 6)
+            };
+            
+            const labelMarkerIcon = {
+                url: 'data:image/svg+xml,' + encodeURIComponent(`
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="50" viewBox="0 0 40 50">
+                        <path d="M20 2C11.72 2 5 8.72 5 17c0 10.5 15 31 15 31s15-20.5 15-31c0-8.28-6.72-15-15-15z" fill="#00d4aa"/>
+                        <circle cx="20" cy="17" r="8" fill="#0a0a0f"/>
+                        <text x="20" y="21" font-size="8" font-family="Arial" font-weight="bold" fill="#00d4aa" text-anchor="middle">M</text>
+                    </svg>
+                `),
+                size: new google.maps.Size(40, 50),
+                anchor: new google.maps.Point(20, 50)
+            };
+            
+            places.forEach((place, i) => {
+                // Create marker
+                const marker = new google.maps.Marker({
+                    position: place.geometry.location,
+                    map: map,
+                    icon: labelMarkerIcon,
+                    title: place.name,
+                    animation: google.maps.Animation.DROP
+                });
+                markers.push(marker);
+                
+                // Info window content
+                const infoContent = `
+                    <div style="padding:12px;background:#12121a;border-radius:8px;min-width:200px;">
+                        <h4 style="color:#00d4aa;margin:0 0 4px 0;font-size:14px;">${place.name}</h4>
+                        <p style="color:#6b6b80;margin:0;font-size:11px;">${place.formatted_address || ''}</p>
+                        ${place.rating ? `<p style="color:#00d4aa;margin:4px 0 0 0;font-size:12px;">★ ${place.rating} (${place.user_ratings_total || ''} reviews)</p>` : ''}
+                    </div>
+                `;
+                
+                const infoWindow = new google.maps.InfoWindow({ content: infoContent });
+                
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+                
+                // List item
                 const rating = place.rating || 'N/A';
                 const reviews = place.user_ratings_total || '';
                 const address = place.formatted_address || '';
-                const hours = place.opening_hours ? (place.opening_hours.isOpen() ? '🟢 Open now' : '🔴 Closed') : '';
+                const hours = place.opening_hours ? (place.opening_hours.isOpen() ? '🟢 Open' : '🔴 Closed') : '';
                 
                 html += `
-                    <div class="place">
+                    <div class="place" onclick="panToMarker(${i})">
                         <div class="header-row">
-                            <h4>📍 ${place.name}</h4>
+                            <h4><span class="logo">M</span> ${place.name}</h4>
                             <span class="rating">★ ${rating}${reviews ? ' (' + reviews + ')' : ''}</span>
                         </div>
-                        <div class="address">${address}</div>
-                        <div class="meta">${hours ? '<span>' + hours + '</span>' : ''}</div>
+                        <div class="address">📍 ${address}</div>
+                        <div class="meta">
+                            ${hours ? '<span>' + hours + '</span>' : ''}
+                            <span>📍 ${(place.geometry.location.lat()).toFixed(4)}, ${(place.geometry.location.lng()).toFixed(4)}</span>
+                        </div>
                     </div>
                 `;
             });
@@ -442,11 +556,29 @@
             placesDiv.innerHTML = html;
         }
         
+        function panToMarker(index) {
+            if (markers[index]) {
+                map.panTo(markers[index].getPosition());
+                map.setZoom(15);
+                google.maps.event.trigger(markers[index], 'click');
+            }
+        }
+        
         function openBooking() { document.getElementById('book-modal').classList.add('active'); }
         function closeBooking() { document.getElementById('book-modal').classList.remove('active'); }
         function closeSuccess() { document.getElementById('success-modal').classList.remove('active'); }
         
         function submitBooking() {
+            const name = document.getElementById('client-name').value;
+            const email = document.getElementById('client-email').value;
+            const date = document.getElementById('booking-date').value;
+            const time = document.getElementById('booking-time').value;
+            
+            if (!name || !email || !date || !time) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
             const ref = 'MR-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
             document.getElementById('booking-ref').textContent = ref;
             closeBooking();
@@ -459,5 +591,8 @@
             document.getElementById('intro').classList.add('active');
         }
     </script>
+    
+    <!-- Google Maps API with Places -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>
