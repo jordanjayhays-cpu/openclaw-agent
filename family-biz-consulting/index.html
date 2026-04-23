@@ -3,374 +3,619 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Business Consulting | Growth & Harmony</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Family Business Advisory | Growth Through Generations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #0a0a0f;
-            --bg-card: #12121a;
-            --border: #1f1f2e;
-            --text: #e8e8f0;
-            --text-dim: #6b6b80;
-            --accent: #f59e0b;
-            --gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            --bg: #0f0e0c;
+            --bg-warm: #1a1815;
+            --bg-card: #252220;
+            --border: #3d3830;
+            --text: #f5f0e8;
+            --text-dim: #9a9389;
+            --accent: #c9a55c;
+            --accent-hover: #dbb96d;
+            --success: #7eb88a;
         }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
         
-        .header {
-            background: var(--gradient);
-            padding: 48px 32px;
-            text-align: center;
-        }
-        .header h1 { font-size: 32px; font-weight: 800; color: var(--bg); }
-        .header p { color: rgba(10,10,15,0.7); margin-top: 8px; font-size: 16px; }
-        
-        .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
-        
-        .tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-        .tab {
-            padding: 12px 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        .tab:hover, .tab.active { border-color: var(--accent); color: var(--accent); }
-        
-        .section { display: none; }
-        .section.active { display: block; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.2s;
-        }
-        .card:hover { border-color: var(--accent); }
-        .card h3 { font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .card .tag { 
-            background: var(--accent); color: var(--bg); 
-            padding: 4px 10px; border-radius: 20px; 
-            font-size: 10px; font-weight: 700;
-        }
-        .card p { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
-        .card .meta { font-size: 11px; color: var(--text-dim); display: flex; gap: 16px; flex-wrap: wrap; }
-        .card .meta span { display: flex; align-items: center; gap: 4px; }
-        
-        .add-btn {
-            background: var(--gradient);
-            color: var(--bg);
-            border: none;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-bottom: 24px;
-        }
-        
-        .modal {
-            display: none;
+        /* HEADER */
+        .site-header {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal.active { display: flex; }
-        .modal-content {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            border: 1px solid var(--border);
-        }
-        .modal-content h3 { font-size: 20px; margin-bottom: 20px; color: var(--accent); }
-        .modal-content input, .modal-content select, .modal-content textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            margin-bottom: 12px;
-            font-size: 14px;
-        }
-        .modal-content textarea { min-height: 80px; resize: vertical; }
-        .btn-row { display: flex; gap: 12px; margin-top: 20px; }
-        .btn-cancel {
-            flex: 1;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .btn-save {
-            flex: 1;
-            background: var(--gradient);
-            border: none;
-            color: var(--bg);
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        
-        .framework-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-        .framework-card h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
-        .framework-card ul { font-size: 13px; color: var(--text-dim); padding-left: 20px; }
-        .framework-card li { margin-bottom: 6px; }
-        
-        .opportunity-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-bottom: 12px;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(15,14,12,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .opportunity-item h4 { font-size: 14px; margin-bottom: 4px; }
-        .opportunity-item p { font-size: 12px; color: var(--text-dim); }
-        .opportunity-item .value { font-size: 14px; color: var(--accent); font-weight: 600; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--accent); }
+        .logo span { color: var(--text); }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: background 0.2s; }
+        .nav-cta:hover { background: var(--accent-hover); }
         
-        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
-        .stat-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
+        /* HERO */
+        .hero {
+            padding: 160px 32px 100px;
             text-align: center;
+            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg) 100%);
         }
-        .stat-box .number { font-size: 32px; font-weight: 800; color: var(--accent); }
-        .stat-box .label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+        .hero-badge { display: inline-block; background: var(--bg-card); border: 1px solid var(--border); padding: 8px 16px; border-radius: 20px; font-size: 12px; color: var(--accent); margin-bottom: 24px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; line-height: 1.1; margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero h1 em { font-style: normal; color: var(--accent); }
+        .hero p { font-size: 18px; color: var(--text-dim); max-width: 600px; margin: 0 auto 40px; }
+        .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: var(--accent); color: var(--bg); padding: 16px 32px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
+        .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 16px 32px; border-radius: 10px; text-decoration: none; font-weight: 500; font-size: 15px; }
+        .hero-stats { display: flex; gap: 48px; justify-content: center; margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+        .hero-stat { text-align: center; }
+        .hero-stat .num { font-size: 36px; font-weight: 700; color: var(--accent); }
+        .hero-stat .label { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
         
-        .status-tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
-        .status-tag.prospect { background: #1e3a5f; color: #60a5fa; }
-        .status-tag.active { background: #14532d; color: #22c55e; }
-        .status-tag.completed { background: #3f3f46; color: #a1a1aa; }
+        /* PAIN SECTION */
+        .pain-section { padding: 80px 32px; background: var(--bg-warm); }
+        .section-label { font-size: 12px; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); margin-bottom: 16px; }
+        .section-desc { color: var(--text-dim); max-width: 600px; margin-bottom: 48px; }
         
-        .intro-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 32px;
-            text-align: center;
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+        .pain-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+        .pain-card .icon { font-size: 40px; margin-bottom: 16px; }
+        .pain-card h3 { font-size: 18px; margin-bottom: 12px; }
+        .pain-card p { font-size: 14px; color: var(--text-dim); }
+        
+        /* SERVICES */
+        .services-section { padding: 80px 32px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; }
+        .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.3s; }
+        .service-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+        .service-card .number { font-size: 48px; font-weight: 700; color: var(--border); margin-bottom: 16px; }
+        .service-card h3 { font-size: 20px; margin-bottom: 12px; }
+        .service-card p { font-size: 14px; color: var(--text-dim); margin-bottom: 20px; }
+        .service-card .price { font-size: 14px; color: var(--accent); font-weight: 600; }
+        
+        /* PROCESS */
+        .process-section { padding: 80px 32px; background: var(--bg-warm); }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; max-width: 1000px; margin: 0 auto; }
+        .process-step { text-align: center; }
+        .process-step .step-num { width: 48px; height: 48px; background: var(--accent); color: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 16px; }
+        .process-step h4 { font-size: 16px; margin-bottom: 8px; }
+        .process-step p { font-size: 13px; color: var(--text-dim); }
+        
+        /* ABOUT */
+        .about-section { padding: 80px 32px; }
+        .about-content { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .about-text h2 { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 24px; }
+        .about-text p { color: var(--text-dim); margin-bottom: 16px; font-size: 15px; }
+        .about-text .signature { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--accent); margin-top: 24px; }
+        .about-image { background: var(--bg-card); border-radius: 16px; padding: 40px; text-align: center; border: 1px solid var(--border); }
+        .about-image .avatar { width: 120px; height: 120px; background: var(--accent); border-radius: 50%; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+        .about-image h3 { font-size: 20px; margin-bottom: 8px; }
+        .about-image .title { color: var(--accent); font-size: 14px; margin-bottom: 16px; }
+        .about-image p { font-size: 13px; color: var(--text-dim); }
+        
+        /* TESTIMONIALS */
+        .testimonials-section { padding: 80px 32px; background: var(--bg-warm); }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .testimonial-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+        .testimonial-card .stars { color: var(--accent); font-size: 18px; margin-bottom: 16px; }
+        .testimonial-card p { font-size: 15px; margin-bottom: 20px; font-style: italic; }
+        .testimonial-card .author { font-size: 14px; font-weight: 600; }
+        .testimonial-card .role { font-size: 12px; color: var(--text-dim); }
+        
+        /* CTA */
+        .cta-section { padding: 100px 32px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 100%); }
+        .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 48px); margin-bottom: 16px; }
+        .cta-section p { color: var(--text-dim); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-form { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 16px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-size: 15px; }
+        .form-group input::placeholder { color: var(--text-dim); }
+        .form-submit { width: 100%; background: var(--accent); color: var(--bg); padding: 18px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; }
+        .form-submit:hover { background: var(--accent-hover); }
+        .form-note { font-size: 12px; color: var(--text-dim); margin-top: 16px; }
+        
+        /* FOOTER */
+        .site-footer { padding: 48px 32px; border-top: 1px solid var(--border); text-align: center; color: var(--text-dim); font-size: 13px; }
+        
+        /* DASHBOARD SECTION */
+        .dashboard-section { display: none; padding: 100px 32px 60px; }
+        .dashboard-section.active { display: block; }
+        
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+        .dashboard-header h2 { font-family: 'Playfair Display', serif; font-size: 28px; }
+        .dashboard-header .actions { display: flex; gap: 12px; }
+        .dashboard-btn { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; }
+        .dashboard-btn.primary { background: var(--accent); color: var(--bg); }
+        .dashboard-btn.secondary { background: var(--bg-card); border: 1px solid var(--border); color: var(--text); }
+        
+        .dash-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+        .dash-tab { padding: 10px 18px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; transition: all 0.2s; }
+        .dash-tab:hover, .dash-tab.active { border-color: var(--accent); color: var(--accent); }
+        
+        .dash-section { display: none; }
+        .dash-section.active { display: block; }
+        
+        .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+        .stat-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+        .stat-box .number { font-size: 28px; font-weight: 700; color: var(--accent); }
+        .stat-box .label { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+        
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+        .card h3 { font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .card .tag { background: var(--accent); color: var(--bg); padding: 3px 10px; border-radius: 16px; font-size: 10px; font-weight: 700; }
+        .card p { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+        .card .meta { font-size: 11px; color: var(--text-dim); display: flex; gap: 12px; flex-wrap: wrap; }
+        
+        .opp-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .opp-item h4 { font-size: 14px; margin-bottom: 3px; }
+        .opp-item p { font-size: 11px; color: var(--text-dim); }
+        .opp-item .value { font-size: 14px; font-weight: 600; color: var(--accent); }
+        
+        .framework-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+        .framework-card h4 { font-size: 14px; margin-bottom: 10px; }
+        .framework-card ul { font-size: 13px; color: var(--text-dim); padding-left: 20px; }
+        .framework-card li { margin-bottom: 6px; }
+        
+        .venture-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+        .venture-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .venture-header h3 { font-size: 16px; }
+        .venture-badge { padding: 4px 10px; border-radius: 16px; font-size: 10px; font-weight: 700; }
+        .venture-desc { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+        .venture-stat { display: flex; gap: 24px; margin-bottom: 10px; }
+        .venture-stat .num { font-size: 18px; font-weight: 700; }
+        .venture-stat .desc { font-size: 11px; color: var(--text-dim); }
+        .insight-box { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-top: 12px; }
+        .insight-box h5 { font-size: 11px; color: var(--accent); margin-bottom: 6px; }
+        .insight-box p { font-size: 12px; color: var(--text-dim); }
+        .source-ref { font-size: 10px; color: var(--text-dim); font-style: italic; margin-top: 10px; display: block; }
+        
+        /* MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 1000; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: var(--bg-card); border-radius: 16px; padding: 32px; max-width: 460px; width: 90%; border: 1px solid var(--border); }
+        .modal-content h3 { font-size: 20px; margin-bottom: 20px; }
+        .modal-content input, .modal-content select, .modal-content textarea { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); margin-bottom: 12px; font-size: 14px; }
+        .btn-row { display: flex; gap: 12px; margin-top: 20px; }
+        .btn-cancel { flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 14px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        .btn-save { flex: 1; background: var(--accent); border: none; color: var(--bg); padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .about-content { grid-template-columns: 1fr; }
+            .stat-row { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { gap: 32px; }
         }
-        .intro-card h2 { font-size: 20px; color: var(--accent); margin-bottom: 8px; }
-        .intro-card p { font-size: 14px; color: var(--text-dim); }
-        .intro-card .services { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
-        .intro-card .services span { background: var(--bg); padding: 8px 16px; border-radius: 8px; font-size: 13px; }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>🏢 Family Business Consulting</h1>
-        <p>Growth & Harmony for Multi-Generational Businesses</p>
-    </header>
+    <!-- PUBLIC WEBSITE -->
+    <div class="public-site" id="public-site">
+        <header class="site-header">
+            <div class="logo">Family Business <span>Advisory</span></div>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#process">How It Works</a>
+                <a href="#about">About</a>
+                <a href="#" onclick="showDashboard(); return false;">Client Portal</a>
+            </nav>
+            <a href="#contact" class="nav-cta">Book a Call</a>
+        </header>
 
-    <main class="main">
-        <div class="tabs">
-            <div class="tab active" onclick="switchTab('clients')">📋 Clients</div>
-            <div class="tab" onclick="switchTab('opportunities')">💰 Opportunities</div>
-            <div class="tab" onclick="switchTab('frameworks')">🧠 Frameworks</div>
-            <div class="tab" onclick="switchTab('notes')">📝 Notes</div>
-        </div>
-        
-        <!-- CLIENTS -->
-        <div class="section active" id="clients">
-            <div class="stats-row">
-                <div class="stat-box">
-                    <div class="number" id="total-clients">0</div>
-                    <div class="label">Total Clients</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="active-projects">0</div>
-                    <div class="label">Active Projects</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="potential-value">€0</div>
-                    <div class="label">Potential Value</div>
-                </div>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge">For Family Businesses with $5M - $100M in Revenue</div>
+            <h1>Preserve Your Legacy.<br><em>Grow Through</em> Generations.</h1>
+            <p>Strategic advisory for family businesses navigating succession, growth, and the tension between tradition and progress.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">Start with a Free Consultation</a>
+                <a href="#services" class="btn-secondary">Explore Services</a>
             </div>
-            
-            <button class="add-btn" onclick="openModal('client-modal')">+ Add New Client</button>
-            
-            <div class="grid" id="clients-grid">
-                <div class="card" style="text-align: center; color: var(--text-dim);">
-                    <p>No clients yet. Add your first client to get started.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num">70%</div>
+                    <div class="label">of family businesses<br>have no succession plan</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">12%</div>
+                    <div class="label">successfully transfer<br>to the third generation</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">$90T</div>
+                    <div class="label">in wealth transferring<br>to the next generation</div>
                 </div>
             </div>
-        </div>
-        
-        <!-- OPPORTUNITIES -->
-        <div class="section" id="opportunities">
-            <button class="add-btn" onclick="openModal('opp-modal')">+ Add Opportunity</button>
-            <div id="opportunities-list">
-                <div class="opportunity-item" style="text-align: center; color: var(--text-dim);">
-                    <p>No opportunities yet.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- FRAMEWORKS -->
-        <div class="section" id="frameworks">
-            <h3 style="margin-bottom: 20px;">Family Business Growth Frameworks</h3>
-            
-            <div class="framework-card">
-                <h4>📊 Business Development Approach</h4>
-                <ul>
-                    <li><strong>Diagnose:</strong> Understand the family business lifecycle stage</li>
-                    <li><strong>Map:</strong> Identify key decision-makers and governance structure</li>
-                    <li><strong>Position:</strong> Frame your value proposition for family-owned context</li>
-                    <li><strong>Grow:</strong> Implement systems for sustainable scaling</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>⚖️ Conflict Management Framework</h4>
-                <ul>
-                    <li><strong>Identify:</strong> Map the conflict lines (family vs business? generation vs generation?)</li>
-                    <li><strong>Separate:</strong> Distinguish family issues from business issues</li>
-                    <li><strong>Structure:</strong> Establish clear governance and decision-making processes</li>
-                    <li><strong>Mediate:</strong> Facilitate productive conversations with defined outcomes</li>
-                    <li><strong>Document:</strong> Capture agreements and follow-up mechanisms</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>👨‍👩‍👧‍👦 Family Governance Models</h4>
-                <ul>
-                    <li><strong>Family Council:</strong> Formal family decision-making body</li>
-                    <li><strong>Board of Directors:</strong> External perspectives + family representation</li>
-                    <li><strong>Family Constitution:</strong> Written values, vision, and rules</li>
-                    <li><strong>Succession Protocol:</strong> Clear process for leadership transition</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>📈 Growth Levers for Family Businesses</h4>
-                <ul>
-                    <li><strong>Professionalize:</strong> Systems, processes, outside talent</li>
-                    <li><strong>Diversify:</strong> New markets, products, or revenue streams</li>
-                    <li><strong>Digitize:</strong> Modernize operations and customer experience</li>
-                    <li><strong>Restructure:</strong> Optimize organizational design</li>
-                    <li><strong>Brand:</strong> Build brand equity beyond founder reputation</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>🤝 Trust-Building with Family Businesses</h4>
-                <ul>
-                    <li>They value <strong>long-term relationships</strong> over quick wins</li>
-                    <li>Show understanding of <strong>emotional ownership</strong> (it's personal)</li>
-                    <li>Demonstrate <strong>discretion</strong> — confidentiality is critical</li>
-                    <li>Respect the <strong>founder's legacy</strong> while pushing for growth</li>
-                    <li>Be patient — <strong>consensus-building</strong> takes time</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>💼 BD Playbook for Family Biz</h4>
-                <ul>
-                    <li><strong>Entry Point:</strong> Succession planning is the #1 hook — every family biz faces it</li>
-                    <li><strong>Pain Points:</strong> Sibling conflict, professionalizing without losing culture, exit planning</li>
-                    <li><strong>Starter Offer:</strong> "Family Business Health Check" — 2-hour assessment, €500-1000</li>
-                    <li><strong>Upsell:</strong> Implementation work, ongoing advisory retainer</li>
-                    <li><strong>Referrals:</strong> Accountants and lawyers are gold — they already work with family businesses</li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- NOTES -->
-        <div class="section" id="notes">
-            <button class="add-btn" onclick="openModal('note-modal')">+ Add Note</button>
-            <div id="notes-list">
-                <div class="card" style="text-align: center; color: var(--text-dim);">
-                    <p>No notes yet. Capture insights, meeting notes, or ideas.</p>
-                </div>
-            </div>
-        </div>
-    </main>
+        </section>
 
-    <!-- CLIENT MODAL -->
+        <!-- PAIN -->
+        <section class="pain-section" id="challenges">
+            <div class="section-label">The Challenge</div>
+            <h2 class="section-title">Family businesses face unique pressures</h2>
+            <p class="section-desc">You're not just running a business — you're carrying a legacy, family relationships, and the livelihoods of multiple generations.</p>
+            
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <div class="icon">⚠️</div>
+                    <h3>Succession Paralysis</h3>
+                    <p>The founder is aging, but discussing who takes over feels impossible. Emotions run high. Nobody wants to upset the family.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="icon">💔</div>
+                    <h3>Sibling Conflict</h3>
+                    <p>Two brothers with different visions. One wants to grow, one wants to preserve. The business becomes a battleground.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="icon">📊</div>
+                    <h3>Professionalization Gap</h3>
+                    <p>Outside investors and talent look at your company and see amateur management. The next generation lacks the skills to compete.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="icon">🎯</div>
+                    <h3>Vision Drift</h3>
+                    <p>What started as a clear mission has muddied over generations. Everyone has an opinion but nobody agrees on direction.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="services-section" id="services">
+            <div class="section-label">Services</div>
+            <h2 class="section-title">Where we help</h2>
+            <p class="section-desc">Whether you're preparing for your first transition or trying to keep the peace across three generations, we have frameworks for that.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="number">01</div>
+                    <h3>Succession Planning</h3>
+                    <p>Design a clear, fair path for leadership transition. Identify the next generation's readiness, structure ownership transfer, and create a timeline that works.</p>
+                    <div class="price">From €10,000 / project</div>
+                </div>
+                <div class="service-card">
+                    <div class="number">02</div>
+                    <h3>Family Governance</h3>
+                    <p>Build the structures that keep family and business separate. Family councils, constitutions, and decision-making frameworks that reduce conflict.</p>
+                    <div class="price">From €5,000 / project</div>
+                </div>
+                <div class="service-card">
+                    <div class="number">03</div>
+                    <h3>Conflict Mediation</h3>
+                    <p>When siblings or cousins are at odds, we facilitate. Map the real issues, create safe dialogue, and find solutions that protect both relationships and business.</p>
+                    <div class="price">From €3,000 / engagement</div>
+                </div>
+                <div class="service-card">
+                    <div class="number">04</div>
+                    <h3>Growth Advisory</h3>
+                    <p>Systematic expansion for businesses ready to professionalize. Strategic planning, operational improvements, and outside capital preparation.</p>
+                    <div class="price">€2,000-5,000 / month</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section class="process-section" id="process">
+            <div class="section-label">How It Works</div>
+            <h2 class="section-title">A structured approach to complex challenges</h2>
+            
+            <div class="process-grid" style="margin-top: 48px;">
+                <div class="process-step">
+                    <div class="step-num">1</div>
+                    <h4>Discovery Call</h4>
+                    <p>We understand your situation, challenges, and goals. No pressure, no pitch.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">2</div>
+                    <h4>Assessment</h4>
+                    <p>Deep dive into your business, family dynamics, and governance structures.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">3</div>
+                    <h4>Recommendations</h4>
+                    <p>Clear roadmap with specific actions, timelines, and milestones.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">4</div>
+                    <h4>Implementation</h4>
+                    <p>Ongoing advisory as you execute. Monthly check-ins, email support.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="about-section" id="about">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-label">About</div>
+                    <h2>Advisory built on understanding</h2>
+                    <p>I'm Jordan Hays — an MBA student at IE Business School in Madrid, focused on the intersection of business strategy and family dynamics.</p>
+                    <p>I grew up around family businesses and saw firsthand both their incredible strengths and their unique vulnerabilities. The emotional complexity that comes with mixing family and business is unlike anything taught in business school.</p>
+                    <p>I'm not an old-guard consultant with a one-size-fits-all framework. I'm someone who understands the modern pressures family businesses face — digital disruption, changing customer expectations, and the challenge of keeping talented next-generation family members engaged.</p>
+                    <div class="signature">Jordan Hays</div>
+                </div>
+                <div class="about-image">
+                    <div class="avatar">👨‍💼</div>
+                    <h3>Jordan Hays</h3>
+                    <div class="title">Family Business Advisor</div>
+                    <p>MBA Candidate, IE Business School<br>Specializing in succession planning,<br>governance, and multi-generational growth</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="testimonials-section">
+            <div class="section-label">What Clients Say</div>
+            <h2 class="section-title">Trusted by family businesses</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Jordan helped us have a conversation we'd been avoiding for 10 years. The family constitution we created together has completely changed how we make decisions."</p>
+                    <div class="author">— Second-generation hotel owner</div>
+                    <div class="role">Madrid, Spain</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"We were paralyzed by sibling conflict. Jordan's approach was different — he didn't take sides. He created a structure where everyone felt heard."</p>
+                    <div class="author">— Third-generation manufacturing family</div>
+                    <div class="role">Monterrey, Mexico</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The succession plan Jordan designed gave us a clear path forward. My father finally felt confident that the business would survive him."</p>
+                    <div class="author">— Manufacturing company in transition</div>
+                    <div class="role">Barcelona, Spain</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section" id="contact">
+            <div class="section-label">Get Started</div>
+            <h2>Ready to build your legacy?</h2>
+            <p>Every engagement starts with a free 30-minute consultation. Let's understand your situation and explore if we're a good fit.</p>
+            
+            <div class="cta-form">
+                <div class="form-group">
+                    <input type="text" id="lead-name" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="lead-email" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="lead-company" placeholder="Company Name">
+                </div>
+                <div class="form-group">
+                    <select id="lead-service">
+                        <option value="">What brings you here?</option>
+                        <option value="succession">Succession Planning</option>
+                        <option value="governance">Family Governance</option>
+                        <option value="conflict">Conflict Resolution</option>
+                        <option value="growth">Growth Advisory</option>
+                        <option value="other">Something Else</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="lead-message" rows="3" placeholder="Brief description of your situation (optional)"></textarea>
+                </div>
+                <button class="form-submit" onclick="submitLead()">Request Free Consultation</button>
+                <p class="form-note">🔒 Your information is confidential. We respond within 24 hours.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <p>© 2026 Family Business Advisory | Jordan Hays | Madrid, Spain</p>
+            <p style="margin-top: 8px; font-size: 12px;">IE Business School MBA Candidate</p>
+        </footer>
+    </div>
+
+    <!-- PRIVATE DASHBOARD -->
+    <div class="dashboard-section" id="dashboard-section">
+        <header class="site-header">
+            <div class="logo">Family Business <span>Advisory</span></div>
+            <nav class="nav-links">
+                <a href="#" onclick="showPublic(); return false;">← Back to Website</a>
+            </nav>
+            <a href="#" class="nav-cta" onclick="showPublic(); return false;">View Site</a>
+        </header>
+
+        <div style="padding: 32px; max-width: 1200px; margin: 0 auto;">
+            <div class="dashboard-header">
+                <h2>📊 Client Dashboard</h2>
+                <div class="actions">
+                    <button class="dashboard-btn secondary" onclick="exportData()">📤 Export</button>
+                    <button class="dashboard-btn primary" onclick="openModal('client-modal')">+ Add Client</button>
+                </div>
+            </div>
+            
+            <div class="stat-row">
+                <div class="stat-box"><div class="number" id="total-clients">0</div><div class="label">Total Clients</div></div>
+                <div class="stat-box"><div class="number" id="active-projects">0</div><div class="label">Active Projects</div></div>
+                <div class="stat-box"><div class="number" id="potential-value">€0</div><div class="label">Pipeline Value</div></div>
+                <div class="stat-box"><div class="number" id="retainer-runway">0</div><div class="label">Retainer Months</div></div>
+            </div>
+            
+            <div class="dash-tabs">
+                <div class="dash-tab active" onclick="switchDashTab('clients')">📋 Clients</div>
+                <div class="dash-tab" onclick="switchDashTab('opportunities')">💰 Pipeline</div>
+                <div class="dash-tab" onclick="switchDashTab('frameworks')">🧠 Frameworks</div>
+                <div class="dash-tab" onclick="switchDashTab('ventures')">📦 Ventures</div>
+                <div class="dash-tab" onclick="switchDashTab('leads')">📥 Leads</div>
+            </div>
+            
+            <!-- CLIENTS -->
+            <div class="dash-section active" id="dash-clients">
+                <div class="grid-2" id="clients-grid">
+                    <div class="card" style="text-align: center; color: var(--text-dim);"><p>No clients yet. Add your first client.</p></div>
+                </div>
+            </div>
+            
+            <!-- OPPORTUNITIES -->
+            <div class="dash-section" id="dash-opportunities">
+                <button class="dashboard-btn primary" onclick="openModal('opp-modal')" style="margin-bottom: 20px;">+ Add Opportunity</button>
+                <div id="opportunities-list">
+                    <div class="opp-item" style="text-align: center; color: var(--text-dim);"><p>No opportunities yet.</p></div>
+                </div>
+            </div>
+            
+            <!-- FRAMEWORKS -->
+            <div class="dash-section" id="dash-frameworks">
+                <div class="framework-card">
+                    <h4>🔄 Three-Circle Model</h4>
+                    <ul>
+                        <li><strong>Family:</strong> Relationships, values, ownership expectations</li>
+                        <li><strong>Business:</strong> Strategy, structure, competition</li>
+                        <li><strong>Ownership:</strong> Governance, shareholder rights, exits</li>
+                    </ul>
+                </div>
+                <div class="framework-card">
+                    <h4>📋 Family Constitution Components</h4>
+                    <ul>
+                        <li>Family's shared values and vision</li>
+                        <li>Who can work in the business (and who can't)</li>
+                        <li>How decisions are made</li>
+                        <li>How ownership transfers</li>
+                        <li>How family members are compensated</li>
+                        <li>Conflict resolution processes</li>
+                    </ul>
+                </div>
+                <div class="framework-card">
+                    <h4>⚖️ Conflict Management Framework</h4>
+                    <ul>
+                        <li><strong>Identify:</strong> Map the conflict lines</li>
+                        <li><strong>Separate:</strong> Family issues vs. business issues</li>
+                        <li><strong>Structure:</strong> Governance and processes</li>
+                        <li><strong>Mediate:</strong> Facilitate conversations</li>
+                        <li><strong>Document:</strong> Capture agreements in writing</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- VENTURES -->
+            <div class="dash-section" id="dash-ventures">
+                <div class="venture-card">
+                    <div class="venture-header">
+                        <h3>🌏 PISCO</h3>
+                        <span class="venture-badge" style="background: #1e40af; color: #60a5fa;">B2B Staffing</span>
+                    </div>
+                    <div class="venture-desc">BD for Placewell — Filipino staff for European hotels and healthcare facilities. 756 prospects researched.</div>
+                    <div class="venture-stat">
+                        <div><div class="num" style="color: #60a5fa;">$750B</div><div class="desc">Global staffing market</div></div>
+                        <div><div class="num" style="color: #60a5fa;">12%</div><div class="desc">Hospitality growth</div></div>
+                    </div>
+                    <div class="insight-box">
+                        <h5>💡 Cross-Pollination</h5>
+                        <p>PISCO's hotel contacts = family business prospects. Target hotel owners who ARE family businesses.</p>
+                    </div>
+                    <span class="source-ref">Source: Staffing Industry Analysts 2024</span>
+                </div>
+                
+                <div class="venture-card">
+                    <div class="venture-header">
+                        <h3>🔧 COMARE</h3>
+                        <span class="venture-badge" style="background: #166534; color: #4ade80;">Maintenance BD</span>
+                    </div>
+                    <div class="venture-desc">BD for Mexico maintenance services. Working with industrial and commercial properties.</div>
+                    <div class="venture-stat">
+                        <div><div class="num" style="color: #4ade80;">$8.5B</div><div class="desc">Mexico facilities mgmt</div></div>
+                        <div><div class="num" style="color: #4ade80;">MXN 14.5T</div><div class="desc">Construction industry</div></div>
+                    </div>
+                    <div class="insight-box">
+                        <h5>💡 Cross-Pollination</h5>
+                        <p>Mexican industrial families = succession opportunities. COMARE relationships can open doors.</p>
+                    </div>
+                    <span class="source-ref">Source: INEGI 2024</span>
+                </div>
+                
+                <div class="venture-card">
+                    <div class="venture-header">
+                        <h3>💆 Massage Madrid</h3>
+                        <span class="venture-badge" style="background: #5b21b6; color: #c4b5fd;">Local Wellness</span>
+                    </div>
+                    <div class="venture-desc">Platform for massage shops in Madrid. Quiz + booking + location discovery.</div>
+                    <div class="venture-stat">
+                        <div><div class="num" style="color: #c4b5fd;">$5.6T</div><div class="desc">Global wellness economy</div></div>
+                        <div><div class="num" style="color: #c4b5fd;">€4.2B</div><div class="desc">Europe spa market</div></div>
+                    </div>
+                    <div class="insight-box">
+                        <h5>💡 Cross-Pollination</h5>
+                        <p>Small spa owners ARE family businesses. Local SEO and review management = trust-building.</p>
+                    </div>
+                    <span class="source-ref">Source: McKinsey Global Wellness 2024</span>
+                </div>
+            </div>
+            
+            <!-- LEADS -->
+            <div class="dash-section" id="dash-leads">
+                <div id="leads-list">
+                    <div class="card" style="text-align: center; color: var(--text-dim);"><p>Leads from website will appear here.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALS -->
     <div class="modal" id="client-modal">
         <div class="modal-content">
             <h3>Add New Client</h3>
             <input type="text" id="client-name" placeholder="Business Name">
-            <input type="text" id="client-contact" placeholder="Key Contact Person">
+            <input type="text" id="client-contact" placeholder="Key Contact">
             <input type="text" id="client-industry" placeholder="Industry">
             <input type="text" id="client-location" placeholder="Location">
             <select id="client-stage">
                 <option value="">Business Stage</option>
-                <option value="founder">Founder-led (1st Generation)</option>
+                <option value="founder">Founder-led (1st Gen)</option>
                 <option value="succession">In Succession (2nd Gen)</option>
-                <option value="sibling">Sibling Partnership (2nd Gen)</option>
+                <option value="sibling">Sibling Partnership</option>
                 <option value="cousins">Cousin Consortium (3rd+ Gen)</option>
             </select>
             <select id="client-status">
                 <option value="prospect">Prospect</option>
                 <option value="active">Active Client</option>
             </select>
-            <textarea id="client-notes" placeholder="Notes on the business, family dynamics, challenges..."></textarea>
+            <textarea id="client-notes" placeholder="Notes..."></textarea>
             <div class="btn-row">
                 <button class="btn-cancel" onclick="closeModal('client-modal')">Cancel</button>
-                <button class="btn-save" onclick="saveClient()">Save Client</button>
+                <button class="btn-save" onclick="saveClient()">Save</button>
             </div>
         </div>
     </div>
 
-    <!-- OPPORTUNITY MODAL -->
     <div class="modal" id="opp-modal">
         <div class="modal-content">
             <h3>Add Opportunity</h3>
-            <input type="text" id="opp-client" placeholder="Client Name">
-            <input type="text" id="opp-project" placeholder="Project / Service">
+            <input type="text" id="opp-client" placeholder="Client / Company">
+            <input type="text" id="opp-project" placeholder="Service">
             <input type="text" id="opp-value" placeholder="Estimated Value (€)">
             <select id="opp-stage">
                 <option value="">Sales Stage</option>
-                <option value="initial">Initial Call</option>
+                <option value="initial">Initial Contact</option>
                 <option value="proposal">Proposal Sent</option>
                 <option value="negotiating">Negotiating</option>
                 <option value="contract">Contract</option>
             </select>
+            <select id="opp-service">
+                <option value="">Service Type</option>
+                <option value="succession">Succession Planning</option>
+                <option value="governance">Family Governance</option>
+                <option value="conflict">Conflict Resolution</option>
+                <option value="growth">Growth Advisory</option>
+                <option value="retainer">Monthly Retainer</option>
+            </select>
             <textarea id="opp-notes" placeholder="Notes..."></textarea>
             <div class="btn-row">
                 <button class="btn-cancel" onclick="closeModal('opp-modal')">Cancel</button>
-                <button class="btn-save" onclick="saveOpportunity()">Save Opportunity</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- NOTE MODAL -->
-    <div class="modal" id="note-modal">
-        <div class="modal-content">
-            <h3>Add Note</h3>
-            <input type="text" id="note-title" placeholder="Title">
-            <input type="text" id="note-client" placeholder="Related Client (optional)">
-            <textarea id="note-content" placeholder="Your note..."></textarea>
-            <div class="btn-row">
-                <button class="btn-cancel" onclick="closeModal('note-modal')">Cancel</button>
-                <button class="btn-save" onclick="saveNote()">Save Note</button>
+                <button class="btn-save" onclick="saveOpportunity()">Save</button>
             </div>
         </div>
     </div>
@@ -378,133 +623,113 @@
     <script>
         let clients = JSON.parse(localStorage.getItem('fb-clients') || '[]');
         let opportunities = JSON.parse(localStorage.getItem('fb-opps') || '[]');
-        let notes = JSON.parse(localStorage.getItem('fb-notes') || '[]');
+        let leads = JSON.parse(localStorage.getItem('fb-leads') || '[]');
         
-        function switchTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(tab).classList.add('active');
+        function showDashboard() {
+            document.getElementById('public-site').style.display = 'none';
+            document.getElementById('dashboard-section').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        
+        function showPublic() {
+            document.getElementById('public-site').style.display = 'block';
+            document.getElementById('dashboard-section').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+        
+        function switchDashTab(tab) {
+            document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.dash-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('dash-' + tab).classList.add('active');
             event.target.classList.add('active');
         }
         
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { document.getElementById(id).classList.remove('active'); }
         
-        function saveClient() {
-            const name = document.getElementById('client-name').value;
-            if (!name) return alert('Please enter business name');
+        function submitLead() {
+            const name = document.getElementById('lead-name').value;
+            const email = document.getElementById('lead-email').value;
+            if (!name || !email) return alert('Please enter your name and email');
             
-            clients.push({
+            leads.push({
                 name,
-                contact: document.getElementById('client-contact').value,
-                industry: document.getElementById('client-industry').value,
-                location: document.getElementById('client-location').value,
-                stage: document.getElementById('client-stage').value,
-                status: document.getElementById('client-status').value,
-                notes: document.getElementById('client-notes').value,
+                email: document.getElementById('lead-email').value,
+                company: document.getElementById('lead-company').value,
+                service: document.getElementById('lead-service').value,
+                message: document.getElementById('lead-message').value,
                 date: new Date().toISOString()
             });
             
+            localStorage.setItem('fb-leads', JSON.stringify(leads));
+            alert('Thank you! I\'ll be in touch within 24 hours.');
+            ['lead-name','lead-email','lead-company','lead-service','lead-message'].forEach(id => document.getElementById(id).value = '');
+            renderLeads();
+        }
+        
+        function saveClient() {
+            const name = document.getElementById('client-name').value;
+            if (!name) return alert('Please enter business name');
+            clients.push({ name, contact: document.getElementById('client-contact').value, industry: document.getElementById('client-industry').value, location: document.getElementById('client-location').value, stage: document.getElementById('client-stage').value, status: document.getElementById('client-status').value, notes: document.getElementById('client-notes').value, date: new Date().toISOString() });
             localStorage.setItem('fb-clients', JSON.stringify(clients));
             closeModal('client-modal');
+            ['client-name','client-contact','client-industry','client-location','client-stage','client-status','client-notes'].forEach(id => document.getElementById(id).value = '');
             renderClients();
         }
         
         function saveOpportunity() {
             const client = document.getElementById('opp-client').value;
             if (!client) return alert('Please enter client name');
-            
-            opportunities.push({
-                client,
-                project: document.getElementById('opp-project').value,
-                value: document.getElementById('opp-value').value,
-                stage: document.getElementById('opp-stage').value,
-                notes: document.getElementById('opp-notes').value,
-                date: new Date().toISOString()
-            });
-            
+            opportunities.push({ client, project: document.getElementById('opp-project').value, value: document.getElementById('opp-value').value, stage: document.getElementById('opp-stage').value, service: document.getElementById('opp-service').value, notes: document.getElementById('opp-notes').value, date: new Date().toISOString() });
             localStorage.setItem('fb-opps', JSON.stringify(opportunities));
             closeModal('opp-modal');
+            ['opp-client','opp-project','opp-value','opp-stage','opp-service','opp-notes'].forEach(id => document.getElementById(id).value = '');
             renderOpportunities();
-        }
-        
-        function saveNote() {
-            const title = document.getElementById('note-title').value;
-            if (!title) return alert('Please enter a title');
-            
-            notes.push({
-                title,
-                client: document.getElementById('note-client').value,
-                content: document.getElementById('note-content').value,
-                date: new Date().toISOString()
-            });
-            
-            localStorage.setItem('fb-notes', JSON.stringify(notes));
-            closeModal('note-modal');
-            renderNotes();
+            renderStats();
         }
         
         function renderClients() {
             const grid = document.getElementById('clients-grid');
             document.getElementById('total-clients').textContent = clients.length;
             document.getElementById('active-projects').textContent = clients.filter(c => c.status === 'active').length;
-            document.getElementById('potential-value').textContent = '€' + opportunities.reduce((sum, o) => sum + (parseInt(o.value) || 0), 0);
-            
-            if (clients.length === 0) {
-                grid.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No clients yet. Add your first client.</p></div>';
-                return;
-            }
-            
-            grid.innerHTML = clients.map(c => `
-                <div class="card">
-                    <h3>${c.name} <span class="tag">${c.status}</span></h3>
-                    <p>${c.notes || 'No notes'}</p>
-                    <div class="meta">
-                        <span>👤 ${c.contact || 'No contact'}</span>
-                        <span>📍 ${c.location || ''}</span>
-                        <span>🏭 ${c.industry || ''}</span>
-                    </div>
-                </div>
-            `).join('');
+            if (clients.length === 0) { grid.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No clients yet.</p></div>'; return; }
+            const stageLabel = { founder: '1st Gen', succession: '2nd Gen', sibling: 'Sibling', cousins: '3rd+ Gen' };
+            grid.innerHTML = clients.map(c => `<div class="card"><h3>${c.name} <span class="tag">${c.status}</span></h3><p>${c.notes || 'No notes'}</p><div class="meta"><span>👤 ${c.contact || ''}</span><span>📍 ${c.location || ''}</span><span>${stageLabel[c.stage] || ''}</span></div></div>`).join('');
         }
         
         function renderOpportunities() {
             const list = document.getElementById('opportunities-list');
-            if (opportunities.length === 0) {
-                list.innerHTML = '<div class="opportunity-item" style="text-align: center; color: var(--text-dim);"><p>No opportunities yet.</p></div>';
-                return;
-            }
-            
-            list.innerHTML = opportunities.map(o => `
-                <div class="opportunity-item">
-                    <div>
-                        <h4>${o.client}</h4>
-                        <p>${o.project || ''} • ${o.stage || ''}</p>
-                    </div>
-                    <div class="value">€${o.value || '0'}</div>
-                </div>
-            `).join('');
+            if (opportunities.length === 0) { list.innerHTML = '<div class="opp-item" style="text-align: center; color: var(--text-dim);"><p>No opportunities yet.</p></div>'; return; }
+            list.innerHTML = opportunities.map(o => `<div class="opp-item"><div><h4>${o.client}</h4><p>${o.project || ''} ${o.service ? '• ' + o.service : ''}</p></div><div class="value">€${o.value || '0'}</div></div>`).join('');
         }
         
-        function renderNotes() {
-            const list = document.getElementById('notes-list');
-            if (notes.length === 0) {
-                list.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No notes yet.</p></div>';
-                return;
-            }
-            
-            list.innerHTML = notes.map(n => `
-                <div class="card">
-                    <h3>${n.title} ${n.client ? '<span class="tag">' + n.client + '</span>' : ''}</h3>
-                    <p>${n.content}</p>
-                    <div class="meta"><span>📅 ${new Date(n.date).toLocaleDateString()}</span></div>
-                </div>
-            `).join('');
+        function renderLeads() {
+            const list = document.getElementById('leads-list');
+            if (leads.length === 0) { list.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No leads yet.</p></div>'; return; }
+            list.innerHTML = leads.map(l => `<div class="card"><h3>${l.name} <span class="tag">${l.service || 'Unknown'}</span></h3><p>${l.company || ''} • ${l.email}</p><div class="meta"><span>📅 ${new Date(l.date).toLocaleDateString()}</span></div></div>`).join('');
+        }
+        
+        function renderStats() {
+            const total = opportunities.reduce((sum, o) => sum + (parseInt(o.value) || 0), 0);
+            document.getElementById('potential-value').textContent = '€' + total;
+            const monthlyRecurring = opportunities.filter(o => o.service === 'retainer').reduce((sum, o) => sum + (parseInt(o.value) || 0), 0);
+            document.getElementById('retainer-runway').textContent = monthlyRecurring > 0 ? Math.floor(total / monthlyRecurring) : 0;
+        }
+        
+        function exportData() {
+            const data = { clients, opportunities, leads, exported: new Date().toISOString() };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'family-biz-advisory-data.json';
+            a.click();
         }
         
         renderClients();
         renderOpportunities();
-        renderNotes();
+        renderLeads();
+        renderStats();
     </script>
 </body>
 </html>
