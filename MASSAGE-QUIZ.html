@@ -40,14 +40,13 @@
             background: var(--bg-card);
             border: 2px solid var(--border);
             border-radius: 12px;
-            padding: 16px;
+            padding: 20px;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 14px;
             text-align: center;
         }
-        .option:hover { border-color: var(--accent); }
-        .option .icon { font-size: 28px; margin-bottom: 8px; }
+        .option:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .option .icon { font-size: 32px; margin-bottom: 8px; }
         .option .title { font-weight: 600; margin-bottom: 4px; }
         .option .desc { font-size: 12px; color: var(--text-dim); }
         
@@ -74,7 +73,7 @@
             text-align: center;
         }
         .service-card h3 { font-size: 20px; margin-bottom: 8px; color: var(--accent); }
-        .service-card p { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; }
+        .service-card p { font-size: 13px; color: var(--text-dim); }
         
         .restart-btn {
             display: block;
@@ -91,30 +90,6 @@
         
         .map-section { margin-top: 32px; }
         .map-section h3 { font-size: 16px; margin-bottom: 16px; text-align: center; }
-        
-        .location-bar {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-        .location-input {
-            flex: 1;
-            padding: 14px 16px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            font-size: 14px;
-        }
-        .search-btn {
-            background: var(--accent);
-            color: var(--bg);
-            border: none;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-        }
         
         .map-container {
             background: var(--bg-card);
@@ -137,12 +112,11 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 20px;
-            transition: all 0.2s;
         }
         .place-card:hover { border-color: var(--accent); }
         .place-card .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
         .place-card h4 { font-size: 14px; font-weight: 600; flex: 1; }
-        .place-card .rating { font-size: 12px; color: var(--accent); white-space: nowrap; }
+        .place-card .rating { font-size: 12px; color: var(--accent); }
         .place-card .address { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; }
         .place-card .info { font-size: 11px; color: var(--text-dim); display: flex; gap: 12px; flex-wrap: wrap; }
         .place-card .info span { display: flex; align-items: center; gap: 4px; }
@@ -298,15 +272,17 @@
             <div class="map-section">
                 <h3>📍 Best Spas in Madrid</h3>
                 
-                <div class="location-bar">
-                    <input type="text" class="location-input" id="location" placeholder="Search neighborhood..." value="Madrid">
-                    <button class="search-btn" onclick="searchMap()">Search</button>
-                </div>
-                
+                <!-- OpenStreetMap - always works, no API key needed -->
                 <div class="map-container">
-                    <iframe id="map-frame" 
-                        src="https://www.google.com/maps/embed/v1/search?key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo&q=massage+spa+madrid&zoom=12&maptype=roadmap"
-                        allowfullscreen>
+                    <iframe 
+                        width="100%" 
+                        height="400" 
+                        frameborder="0" 
+                        scrolling="no" 
+                        marginheight="0" 
+                        marginwidth="0"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-3.8%2C40.35%2C-3.6%2C40.5&amp;layer=mapnik&amp;marker=40.4168%2C-3.7036"
+                        style="border: none;">
                     </iframe>
                 </div>
                 
@@ -362,23 +338,20 @@
         let recommendedService = '';
         
         const services = {
-            swedish: { name: 'Swedish Massage', desc: 'Classic relaxation with flowing strokes', duration: '60-90 min · €55-85' },
-            deeptissue: { name: 'Deep Tissue Massage', desc: 'Intensive muscle layer work', duration: '60-90 min · €65-95' },
-            hotstone: { name: 'Hot Stone Massage', desc: 'Heated basalt stones for deep relaxation', duration: '75-90 min · €75-110' },
-            sports: { name: 'Sports Massage', desc: 'Athletic recovery and performance', duration: '45-90 min · €55-90' },
-            aromatherapy: { name: 'Aromatherapy Massage', desc: 'Essential oils for holistic wellness', duration: '60-90 min · €65-95' }
+            swedish: { name: 'Swedish Massage', desc: 'Classic relaxation with flowing strokes', duration: '60-90 min' },
+            deeptissue: { name: 'Deep Tissue Massage', desc: 'Intensive muscle layer work', duration: '60-90 min' },
+            hotstone: { name: 'Hot Stone Massage', desc: 'Heated stones for deep relaxation', duration: '75-90 min' },
+            sports: { name: 'Sports Massage', desc: 'Athletic recovery and performance', duration: '45-90 min' },
+            aromatherapy: { name: 'Aromatherapy Massage', desc: 'Essential oils for holistic wellness', duration: '60-90 min' }
         };
         
-        // Pre-researched Madrid spas with real data
         const madridSpas = [
             { name: 'Wellness Center Madrid Centro', address: 'Gran Vía 28, Madrid', rating: 4.8, reviews: 847, phone: '+34 912 345 678', price: '€55-95', hours: 'Mon-Sat 10AM-9PM', lat: 40.4178, lng: -3.7043, types: ['Swedish', 'Deep Tissue', 'Hot Stone'] },
             { name: 'Serenity Spa & Massage', address: 'Plaza Mayor 15, Madrid', rating: 4.9, reviews: 1243, phone: '+34 913 456 789', price: '€65-110', hours: 'Daily 9AM-10PM', lat: 40.4154, lng: -3.7072, types: ['Swedish', 'Aromatherapy', 'Shiatsu'] },
             { name: 'Zen Garden Wellness', address: 'Calle Alcalá 55, Madrid', rating: 4.7, reviews: 632, phone: '+34 914 567 890', price: '€50-85', hours: 'Mon-Fri 10AM-8PM', lat: 40.4168, lng: -3.6986, types: ['Swedish', 'Deep Tissue', 'Sports'] },
             { name: 'The Spa at Four Seasons', address: 'Plaza de Cibeles 1, Madrid', rating: 4.9, reviews: 2156, phone: '+34 915 678 901', price: '€120-200', hours: 'Daily 9AM-9PM', lat: 40.4208, lng: -3.6936, types: ['Swedish', 'Deep Tissue', 'Hot Stone', 'Aromatherapy'] },
             { name: 'Aquarel Wellness', address: 'Calle Serrano 45, Madrid', rating: 4.6, reviews: 489, phone: '+34 916 789 012', price: '€45-75', hours: 'Mon-Sat 10AM-8PM', lat: 40.4295, lng: -3.6855, types: ['Swedish', 'Aromatherapy'] },
-            { name: 'Madrid Royal Spa', address: 'Calle Arenal 18, Madrid', rating: 4.8, reviews: 1023, phone: '+34 917 890 123', price: '€70-120', hours: 'Daily 10AM-10PM', lat: 40.4151, lng: -3.7032, types: ['Deep Tissue', 'Hot Stone', 'Shiatsu', 'Couples'] },
-            { name: 'Balmes Wellness', address: 'Calle Balmes 88, Barcelona', rating: 4.5, reviews: 378, phone: '+34 93 456 7890', price: '€40-70', hours: 'Mon-Sat 10AM-8PM', lat: 41.3988, lng: 2.1533, types: ['Swedish', 'Deep Tissue'] },
-            { name: 'Spa La Reserva', address: 'Urbanización La Reserva, Marbella', rating: 4.7, reviews: 892, phone: '+34 952 883 040', price: '€80-150', hours: 'Daily 10AM-8PM', lat: 36.5099, lng: -4.8867, types: ['Hot Stone', 'Aromatherapy', ' Couples'] }
+            { name: 'Madrid Royal Spa', address: 'Calle Arenal 18, Madrid', rating: 4.8, reviews: 1023, phone: '+34 917 890 123', price: '€70-120', hours: 'Daily 10AM-10PM', lat: 40.4151, lng: -3.7032, types: ['Deep Tissue', 'Hot Stone', 'Shiatsu', 'Couples'] }
         ];
         
         function select(question, value) {
@@ -410,36 +383,23 @@
             const placesDiv = document.getElementById('places');
             let html = '';
             
-            // Filter by matching service type
-            const matchingSpas = madridSpas.filter(spa => 
-                spa.types.some(t => t.toLowerCase().includes(recommendedService.substring(0, 4))) ||
-                recommendedService === 'swedish'
-            );
-            
-            matchingSpas.forEach(spa => {
+            madridSpas.forEach(spa => {
                 html += `
                     <div class="place-card">
                         <div class="header">
                             <h4>${spa.name}</h4>
-                            <span class="rating">★ ${spa.rating} (${spa.reviews})</span>
+                            <span class="rating">★ ${spa.rating}</span>
                         </div>
                         <div class="address">📍 ${spa.address}</div>
                         <div class="info">
                             <span>💰 ${spa.price}</span>
                             <span>⏰ ${spa.hours}</span>
-                            <span>📞 ${spa.phone}</span>
                         </div>
                     </div>
                 `;
             });
             
             placesDiv.innerHTML = html;
-        }
-        
-        function searchMap() {
-            const location = document.getElementById('location').value || 'Madrid';
-            const iframe = document.getElementById('map-frame');
-            iframe.src = `https://www.google.com/maps/embed/v1/search?key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo&q=massage+spa+${encodeURIComponent(location)}&zoom=13&maptype=roadmap`;
         }
         
         function openBooking() { document.getElementById('book-modal').classList.add('active'); }
