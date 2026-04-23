@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan's OpenClaw Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --border: #1f1f2e;
+            --text: #e8e8f0;
+            --text-dim: #6b6b80;
+            --accent: #00d4aa;
+            --red: #ff4757;
+            --yellow: #ffbe0b;
+            --blue: #3a86ff;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        .header {
+            background: linear-gradient(135deg, var(--accent) 0%, #00a080 100%);
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 36px; font-weight: 800; color: var(--bg); }
+        .header p { color: rgba(10, 10, 15, 0.7); margin-top: 8px; }
+        
+        .main { max-width: 800px; margin: 0 auto; padding: 32px 40px; }
+        
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .card h2 {
+            font-size: 20px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card h3 { font-size: 16px; margin: 20px 0 12px; }
+        
+        .card p, .card li { color: var(--text-dim); font-size: 14px; }
+        
+        .card ul { padding-left: 20px; }
+        .card li { margin-bottom: 8px; }
+        
+        .badges { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+        .badge {
+            background: rgba(0, 212, 170, 0.15);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        
+        .table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        .table th, .table td { padding: 12px; text-align: left; border-bottom: 1px solid var(--border); }
+        .table th { color: var(--text-dim); font-size: 11px; text-transform: uppercase; }
+        
+        .cmd {
+            background: var(--bg);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            color: var(--accent);
+            margin: 8px 0;
+        }
+        
+        .power-table { display: grid; grid-template-columns: 40px 1fr; gap: 12px; margin-top: 16px; }
+        .power-num { 
+            width: 32px; 
+            height: 32px; 
+            background: var(--accent); 
+            color: var(--bg); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 700;
+        }
+        .power-text { font-size: 14px; }
+        
+        .footer { text-align: center; padding: 32px; color: var(--text-dim); font-size: 12px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎓 Jordan's OpenClaw Guide</h1>
+        <p>How to use Axton effectively</p>
+    </header>
+
+    <main class="main">
+        <div class="card">
+            <h2>💬 How to Talk to Axton</h2>
+            
+            <h3>The 3 Rules:</h3>
+            
+            <h3>1. Be Direct</h3>
+            <div class="cmd">❌ "Can you maybe possibly..."</div>
+            <div class="cmd">✅ "Do this"</div>
+            
+            <h3>2. Give Context Once</h3>
+            <p>Tell me about your projects, goals, preferences — I'll remember.</p>
+            
+            <h3>3. Give Me Tasks, Not Questions</h3>
+            <div class="cmd">❌ "What's my schedule?"</div>
+            <div class="cmd">✅ "Send me my schedule for today"</div>
+        </div>
+
+        <div class="card">
+            <h2>⚡ What Axton Can Do</h2>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>What it does</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>📅 Calendar</td>
+                        <td>Track events, send reminders before deadlines</td>
+                    </tr>
+                    <tr>
+                        <td>📊 Dashboards</td>
+                        <td>Build & deploy HTML dashboards live</td>
+                    </tr>
+                    <tr>
+                        <td>🔍 Research</td>
+                        <td>Web search, summarize, save findings</td>
+                    </tr>
+                    <tr>
+                        <td>📧 Email</td>
+                        <td>Draft emails, track responses (with claw-mail)</td>
+                    </tr>
+                    <tr>
+                        <td>⚙️ Automation</td>
+                        <td>Create n8n workflows for repetitive tasks</td>
+                    </tr>
+                    <tr>
+                        <td>📝 Content</td>
+                        <td>Landing pages, documents, presentations</td>
+                    </tr>
+                    <tr>
+                        <td>💼 Business</td>
+                        <td>BD outreach, deal tracking, project management</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>🚀 Quick Commands to Try</h2>
+            
+            <div class="cmd">"Add Corporate Finance midterm to calendar on May 15"</div>
+            <div class="cmd">"Build me a landing page for my consulting"</div>
+            <div class="cmd">"Research best MBA career strategies"</div>
+            <div class="cmd">"Give me a summary of all my active projects"</div>
+            <div class="cmd">"Remind me about 12Twenty profile tomorrow at 9am"</div>
+            <div class="cmd">"Deploy a lead capture page for PISCO"</div>
+        </div>
+
+        <div class="card">
+            <h2>🏆 Top 10 Uses (From Power Users)</h2>
+            
+            <div class="power-table">
+                <div class="power-num">1</div>
+                <div class="power-text"><strong>Morning Briefing</strong> — Daily 8am summary of calendar, weather, priorities</div>
+                
+                <div class="power-num">2</div>
+                <div class="power-text"><strong>Email Triage</strong> — Summarize unread emails, draft responses</div>
+                
+                <div class="power-num">3</div>
+                <div class="power-text"><strong>Calendar Management</strong> — Add events, send reminders before meetings</div>
+                
+                <div class="power-num">4</div>
+                <div class="power-text"><strong>Research</strong> — Topic deep-dives, save to memory</div>
+                
+                <div class="power-num">5</div>
+                <div class="power-text"><strong>Draft Documents</strong> — Emails, proposals, reports</div>
+                
+                <div class="power-num">6</div>
+                <div class="power-text"><strong>Deadline Tracking</strong> — Never miss a due date</div>
+                
+                <div class="power-num">7</div>
+                <div class="power-text"><strong>Build Dashboards</strong> — Live web dashboards for anything</div>
+                
+                <div class="power-num">8</div>
+                <div class="power-text"><strong>Workflow Automation</strong> — n8n integration for complex tasks</div>
+                
+                <div class="power-num">9</div>
+                <div class="power-text"><strong>Content Creation</strong> — Landing pages, presentations, posts</div>
+                
+                <div class="power-num">10</div>
+                <div class="power-text"><strong>Smart Reminders</strong> — Time-based alerts for anything</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Jordan's Current Setup</h2>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Status</th>
+                        <th>What it does</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Telegram</td>
+                        <td style="color: var(--accent);">✅</td>
+                        <td>Chat interface</td>
+                    </tr>
+                    <tr>
+                        <td>IE Calendar</td>
+                        <td style="color: var(--accent);">✅</td>
+                        <td>350 events synced</td>
+                    </tr>
+                    <tr>
+                        <td>GitHub</td>
+                        <td style="color: var(--accent);">✅</td>
+                        <td>Code & backups</td>
+                    </tr>
+                    <tr>
+                        <td>Vercel</td>
+                        <td style="color: var(--accent);">✅</td>
+                        <td>Deploy dashboards</td>
+                    </tr>
+                    <tr>
+                        <td>n8n</td>
+                        <td style="color: var(--accent);">✅</td>
+                        <td>Workflow automation</td>
+                    </tr>
+                    <tr>
+                        <td>Skills</td>
+                        <td style="color: var(--accent);">✅</td>
+                        <td>49 installed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>🌟 Next Level (What's Coming)</h2>
+            
+            <div class="badges">
+                <span class="badge">📧 claw-mail — Full email automation</span>
+                <span class="badge">🧠 memu — Better knowledge memory</span>
+                <span class="badge">🔄 self-improving — Gets smarter over time</span>
+                <span class="badge">📓 notion-sync — Notion for notes</span>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">
+        Jordan's OpenClaw Guide · <span style="color: var(--accent);">Powered by Axton</span> · Last updated: April 23, 2026
+    </div>
+</body>
+</html>

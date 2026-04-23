@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IE MBA Deadline Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --border: #1f1f2e;
+            --text: #e8e8f0;
+            --text-dim: #6b6b80;
+            --accent: #00d4aa;
+            --red: #ff4757;
+            --yellow: #ffbe0b;
+            --blue: #3a86ff;
+            --purple: #a855f7;
+            --orange: #ff9f43;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+        
+        .header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 18px; font-weight: 800; }
+        .logo span { color: var(--accent); }
+        
+        .main { max-width: 900px; margin: 0 auto; padding: 32px 40px; }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 212, 170, 0.15) 0%, rgba(0, 212, 170, 0.02) 100%);
+            border: 1px solid rgba(0, 212, 170, 0.25);
+            border-radius: 16px;
+            padding: 24px 32px;
+            margin-bottom: 24px;
+        }
+        .hero h1 { font-size: 24px; color: var(--accent); }
+        .hero p { color: var(--text-dim); font-size: 14px; margin-top: 4px; }
+        
+        .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+        .stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+        .stat-value { font-size: 32px; font-weight: 800; }
+        .stat-label { font-size: 11px; color: var(--text-dim); margin-top: 4px; text-transform: uppercase; }
+        
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+        .section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 12px; }
+        
+        .class-section { margin-bottom: 24px; }
+        .class-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 18px;
+            background: var(--bg);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--accent);
+            cursor: pointer;
+        }
+        .class-header:hover { background: rgba(255,255,255,0.02); }
+        .class-name { font-weight: 700; font-size: 15px; }
+        .class-weight { font-size: 12px; color: var(--text-dim); }
+        
+        .deadline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            margin-left: 16px;
+        }
+        .deadline.overdue { border-left: 3px solid var(--red); }
+        .deadline-name { font-weight: 600; font-size: 13px; }
+        .deadline-weight { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+        .deadline-date { text-align: right; }
+        .deadline-days { font-size: 18px; font-weight: 800; color: var(--accent); }
+        
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .tag-cf { background: rgba(58, 134, 255, 0.2); color: var(--blue); }
+        .tag-da { background: rgba(0, 212, 170, 0.2); color: var(--accent); }
+        .tag-lpc { background: rgba(168, 85, 247, 0.2); color: var(--purple); }
+        .tag-career { background: rgba(255, 71, 87, 0.2); color: var(--red); }
+        .tag-econ { background: rgba(255, 159, 67, 0.2); color: var(--orange); }
+        
+        .footer { text-align: center; padding: 24px; color: var(--text-dim); font-size: 11px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">📚 <span>IE MBA</span> Deadline Tracker</div>
+        <div style="font-size: 12px; color: var(--accent);">Term 2 · April 2026</div>
+    </header>
+
+    <main class="main">
+        <div class="hero">
+            <h1>🎓 Your Deadlines</h1>
+            <p>Extracted from your IE calendar + syllabi</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" style="color: var(--accent);" id="total">0</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" style="color: var(--red);" id="overdue">0</div>
+                <div class="stat-label">Overdue</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" style="color: var(--yellow);" id="due">0</div>
+                <div class="stat-label">Due Soon</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" style="color: var(--text-dim);" id="done">0</div>
+                <div class="stat-label">Done</div>
+            </div>
+        </div>
+
+        <div class="section-title">📚 Corporate Finance</div>
+        <div class="card">
+            <div class="class-header" style="border-left-color: var(--blue);">
+                <div>
+                    <div class="class-name">Corporate Finance</div>
+                    <div class="class-weight">Concepción Martín Berzal · Sessions 1-15</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="class-weight">Final Exam: 40%</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-cf">EXAM</span> Final Exam</div>
+                    <div class="deadline-weight">40% · Multiple Choice in Class</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-cf">PROJECT</span> Orion Lighting FCF Analysis</div>
+                    <div class="deadline-weight">Part of Sessions 1-4</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">📚 Data Analytics for Managers</div>
+        <div class="card">
+            <div class="class-header" style="border-left-color: var(--accent);">
+                <div>
+                    <div class="class-name">Data Analytics for Managers</div>
+                    <div class="class-weight">Sessions 1-15</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="class-weight">Assignments: 45% · Exam: 35%</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-da">ASSIGNMENT</span> Assignment 1: Forecasting</div>
+                    <div class="deadline-weight">15%</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-da">ASSIGNMENT</span> Assignment 2</div>
+                    <div class="deadline-weight">15%</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-da">ASSIGNMENT</span> Assignment 3</div>
+                    <div class="deadline-weight">15%</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-da">EXAM</span> Final Exam</div>
+                    <div class="deadline-weight">35% · Open Book</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">📚 Leading People & Change</div>
+        <div class="card">
+            <div class="class-header" style="border-left-color: var(--purple);">
+                <div>
+                    <div class="class-name">Leading People & Change</div>
+                    <div class="class-weight">Kelly Nault · Sessions 1-15</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="class-weight">Exam: 40% · Presentations: 30%</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-lpc">PRESENTATION</span> Group Presentations</div>
+                    <div class="deadline-weight">30% · Sessions 13-15</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-lpc">EXAM</span> Final Exam (Individual)</div>
+                    <div class="deadline-weight">40%</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">TBD</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">⚠️ Calendar Deadlines</div>
+        <div class="card">
+            <div class="deadline overdue">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-career">CAREER</span> Complete 12Twenty Profile</div>
+                    <div class="deadline-weight">Was due: April 10</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days" style="color: var(--red);">OVERDUE</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-econ">ECON</span> Mystery Country Contest</div>
+                    <div class="deadline-weight">Managerial Economics</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">May 11</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-econ">ECON</span> Data Study Part 1</div>
+                    <div class="deadline-weight">Managerial Economics</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">May 20</div>
+                </div>
+            </div>
+            <div class="deadline">
+                <div>
+                    <div class="deadline-name"><span class="tag tag-econ">ECON</span> Data Study Part 2</div>
+                    <div class="deadline-weight">Managerial Economics</div>
+                </div>
+                <div class="deadline-date">
+                    <div class="deadline-days">May 28</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">
+        IE MBA Deadline Tracker · <span style="color: var(--accent);">Powered by Axton</span> · Text extracted from syllabi via PDF-parse
+    </div>
+
+    <script>
+        // Count tasks
+        const tasks = document.querySelectorAll('.deadline:not(.overdue)').length;
+        const overdue = document.querySelectorAll('.deadline.overdue').length;
+        document.getElementById('total').textContent = tasks;
+        document.getElementById('overdue').textContent = overdue;
+        document.getElementById('due').textContent = 4;
+    </script>
+</body>
+</html>

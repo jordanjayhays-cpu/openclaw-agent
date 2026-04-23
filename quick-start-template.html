@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordan's Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --border: #1f1f2e;
+            --text: #e8e8f0;
+            --text-dim: #6b6b80;
+            --accent: #00d4aa;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+        
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .badge {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        
+        h1 span { color: var(--accent); }
+        
+        p {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 500px;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            background: var(--accent);
+            color: var(--bg);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0, 212, 170, 0.3); }
+        
+        .footer {
+            text-align: center;
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="badge">Built by Axton</div>
+        <h1>Your Project<br>Goes <span>Here</span></h1>
+        <p>This is a template. Tell Axton what to build and wake up to a live landing page.</p>
+        <a href="#" class="btn">Get Started</a>
+    </div>
+    <div class="footer">Powered by Axton · Deploy Agent</div>
+</body>
+</html>
