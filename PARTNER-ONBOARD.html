@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0\">
+    <title>Partner Onboarding | Massage Pass</title>
+    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap\" rel=\"stylesheet\">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root {
+            --primary: #7B69FF;
+            --primary-hover: #6558E8;
+            --primary-light: #F5F4FF;
+            --bg: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --text: #111827;
+            --text-secondary: #6B7280;
+            --text-light: #9CA3AF;
+            --border: #E5E7EB;
+            --success: #10B981;
+            --orange: #FF5C39;
+            --radius: 16px;
+            --radius-sm: 12px;
+            --radius-full: 9999px;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-secondary); color: var(--text); line-height: 1.5; }
+        
+        /* SCREENS */
+        .screen { display: none; }
+        .screen.active { display: block; }
+        
+        /* HEADER */
+        .header {
+            background: var(--bg); border-bottom: 1px solid var(--border);
+            padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+            position: sticky; top: 0; z-index: 50;
+        }
+        .header-back { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-secondary); border: none; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .header-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 800; color: var(--primary); flex: 1; }
+        .header-logo-icon { width: 28px; height: 28px; background: var(--primary); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .header-step { font-size: 12px; color: var(--text-light); font-weight: 600; }
+        
+        /* PROGRESS BAR */
+        .progress-bar { padding: 0 20px 16px; background: var(--bg); }
+        .progress-track { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary); border-radius: 2px; transition: width 0.4s ease; }
+        
+        /* SECTIONS */
+        .section { padding: 24px 20px; }
+        
+        /* WELCOME */
+        .welcome-icon { font-size: 80px; text-align: center; margin-bottom: 16px; }
+        .welcome-title { font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 8px; }
+        .welcome-sub { font-size: 15px; color: var(--text-secondary); text-align: center; margin-bottom: 32px; line-height: 1.6; }
+        .welcome-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+        .welcome-feature { display: flex; align-items: center; gap: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
+        .welcome-feature-icon { font-size: 24px; width: 40px; text-align: center; }
+        .welcome-feature-text { font-size: 14px; font-weight: 600; }
+        
+        /* BUTTONS */
+        .btn-primary {
+            width: 100%; padding: 16px; border-radius: var(--radius); border: none;
+            background: var(--primary); color: white; font-size: 16px; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-primary:hover { background: var(--primary-hover); }
+        .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn-secondary {
+            width: 100%; padding: 16px; border-radius: var(--radius); border: 1px solid var(--border);
+            background: var(--bg); color: var(--text); font-size: 15px; font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-google {
+            width: 100%; padding: 14px; border-radius: var(--radius); border: 1px solid var(--border);
+            background: var(--bg); font-size: 15px; font-weight: 600;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+        .btn-google img { width: 20px; height: 20px; }
+        
+        .btn-icon-right { margin-left: auto; font-size: 18px; }
+        
+        /* INPUTS */
+        .input-group { margin-bottom: 16px; }
+        .input-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .input-field { width: 100%; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 15px; background: var(--bg); }
+        .input-field:focus { outline: none; border-color: var(--primary); }
+        .input-hint { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+        
+        /* FORM SECTIONS */
+        .form-section { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); padding: 16px; margin-bottom: 12px; }
+        .form-section-title { font-size: 14px; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        
+        /* SEARCH */
+        .search-wrap { position: relative; margin-bottom: 12px; }
+        .search-wrap input { width: 100%; padding: 12px 16px 12px 40px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 14px; background: var(--bg-secondary); }
+        .search-wrap .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; }
+        
+        /* BUSINESS CARD */
+        .business-card {
+            background: var(--bg); border: 2px solid var(--primary); border-radius: var(--radius);
+            padding: 16px; margin-bottom: 12px; cursor: pointer;
+        }
+        .business-card.selected { border-color: var(--primary); background: var(--primary-light); }
+        .business-card-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+        .business-card-address { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+        .business-card-meta { display: flex; gap: 8px; font-size: 12px; color: var(--text-secondary); }
+        .business-card-meta span { display: flex; align-items: center; gap: 3px; }
+        
+        /* SERVICE ITEMS */
+        .service-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .service-item:last-child { border-bottom: none; }
+        .service-icon { font-size: 24px; width: 40px; text-align: center; }
+        .service-info { flex: 1; }
+        .service-name { font-size: 14px; font-weight: 600; }
+        .service-duration { font-size: 12px; color: var(--text-secondary); }
+        .service-price-wrap { display: flex; align-items: center; gap: 4px; }
+        .service-price-input { width: 70px; padding: 8px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-weight: 700; text-align: right; background: var(--bg); }
+        .service-toggle { width: 44px; height: 24px; border-radius: 12px; background: var(--border); border: none; cursor: pointer; position: relative; transition: background 0.2s; }
+        .service-toggle.on { background: var(--success); }
+        .service-toggle::after { content: ''; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: white; top: 3px; left: 3px; transition: left 0.2s; }
+        .service-toggle.on::after { left: 23px; }
+        
+        /* AVAILABILITY CALENDAR */
+        .day-section { background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 10px; overflow: hidden; }
+        .day-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; }
+        .day-name { font-size: 14px; font-weight: 700; }
+        .day-toggle { font-size: 18px; color: var(--text-light); }
+        .day-toggle.open { color: var(--success); }
+        .day-slots { display: none; flex-wrap: wrap; gap: 8px; padding: 0 16px 14px; }
+        .day-slots.visible { display: flex; }
+        .time-slot {
+            padding: 8px 14px; border-radius: 20px; border: 1px solid var(--border);
+            font-size: 12px; font-weight: 600; cursor: pointer; background: var(--bg);
+        }
+        .time-slot.selected { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        /* CONFIRMATION */
+        .confirm-icon { font-size: 72px; text-align: center; margin-bottom: 16px; }
+        .confirm-title { font-size: 24px; font-weight: 800; text-align: center; color: var(--success); margin-bottom: 8px; }
+        .confirm-sub { font-size: 14px; color: var(--text-secondary); text-align: center; margin-bottom: 24px; }
+        .confirm-link-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; text-align: center; margin-bottom: 16px; }
+        .confirm-link-label { font-size: 11px; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .confirm-link-url { font-size: 14px; font-weight: 700; color: var(--primary); word-break: break-all; }
+        .confirm-copy { width: 100%; padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg); font-size: 13px; font-weight: 600; cursor: pointer; }
+        .confirm-copy.copied { background: var(--success); color: white; border-color: var(--success); }
+        
+        /* LOGIN LINK */
+        .login-link { text-align: center; font-size: 13px; color: var(--text-secondary); margin-top: 16px; }
+        .login-link a { color: var(--primary); font-weight: 600; text-decoration: none; }
+        
+        /* ERROR */
+        .error-msg { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #DC2626; margin-bottom: 12px; display: none; }
+        .error-msg.visible { display: block; }
+        
+        /* LOADING */
+        .loading-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.9); display: none; align-items: center; justify-content: center; z-index: 200; }
+        .loading-overlay.active { display: flex; }
+        .loading-spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        /* DASHBOARD */
+        .dashboard-header { background: var(--primary); color: white; padding: 20px; border-radius: 0 0 var(--radius) var(--radius); margin-bottom: 20px; }
+        .dashboard-greeting { font-size: 13px; opacity: 0.8; margin-bottom: 4px; }
+        .dashboard-biz-name { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+        .dashboard-link { font-size: 12px; opacity: 0.8; }
+        .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; text-align: center; }
+        .stat-num { font-size: 24px; font-weight: 800; }
+        .stat-num.pending { color: var(--orange); }
+        .stat-num.confirmed { color: var(--success); }
+        .stat-label { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+        
+        .booking-item { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; }
+        .booking-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .booking-name { font-size: 14px; font-weight: 700; }
+        .booking-ref { font-size: 11px; color: var(--text-light); }
+        .booking-meta { font-size: 12px; color: var(--text-secondary); margin-bottom: 10px; }
+        .booking-meta span { margin-right: 12px; }
+        .booking-actions { display: flex; gap: 8px; }
+        .booking-btn { flex: 1; padding: 10px; border-radius: 8px; border: none; font-size: 13px; font-weight: 700; cursor: pointer; }
+        .booking-btn.confirm { background: var(--success); color: white; }
+        .booking-btn.decline { background: var(--bg-secondary); color: var(--text-secondary); }
+        
+        .logout-btn { width: 100%; padding: 14px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 16px; }
+    </style>
+</head>
+<body>
+    <!-- LOADING -->
+    <div class=\"loading-overlay\" id=\"loading\">
+        <div class=\"loading-spinner\"></div>
+    </div>
+    
+    <!-- SCREEN 1: WELCOME -->
+    <div class=\"screen active\" id=\"screen-welcome\">
+        <div style=\"padding: 60px 20px 20px; text-align:center;\">
+            <div class=\"welcome-icon\">🏥</div>
+            <h1 class=\"welcome-title\">List Your Spa</h1>
+            <p class=\"welcome-sub\">Get your massage studio on Massage Pass and start accepting bookings online in 2 minutes.</p>
+            
+            <div class=\"welcome-features\">
+                <div class=\"welcome-feature\">
+                    <span class=\"welcome-feature-icon\">📍</span>
+                    <span class=\"welcome-feature-text\">Auto-fill your business from Google</span>
+                </div>
+                <div class=\"welcome-feature\">
+                    <span class=\"welcome-feature-icon\">💰</span>
+                    <span class=\"welcome-feature-text\">Set your own prices and services</span>
+                </div>
+                <div class=\"welcome-feature\">
+                    <span class=\"welcome-feature-icon\">📅</span>
+                    <span class=\"welcome-feature-text\">Real-time availability for customers</span>
+                </div>
+                <div class=\"welcome-feature\">
+                    <span class=\"welcome-feature-icon\">✅</span>
+                    <span class=\"welcome-feature-text\">Confirm bookings with one tap</span>
+                </div>
+            </div>
+            
+            <button class=\"btn-primary\" onclick=\"showScreen('screen-signup')\">Get Started <span class=\"btn-icon-right\">→</span></button>
+            <p class=\"login-link\">Already have an account? <a href=\"#\" onclick=\"showScreen('screen-login')\">Sign in</a></p>
+        </div>
+    </div>
+    
+    <!-- SCREEN 2: SIGNUP -->
+    <div class=\"screen\" id=\"screen-signup\">
+        <div class=\"header\">
+            <button class=\"header-back\" onclick=\"showScreen('screen-welcome')\">←</button>
+            <div class=\"header-logo\"><span class=\"header-logo-icon\">💆</span> Massage Pass</div>
+            <span class=\"header-step\">1 of 5</span>
+        </div>
+        <div class=\"progress-bar\"><div class=\"progress-track\"><div class=\"progress-fill\" style=\"width:20%\"></div></div></div>
+        
+        <div class=\"section\">
+            <h2 style=\"font-size:22px; font-weight:800; margin-bottom:4px;\">Create your account</h2>
+            <p style=\"font-size:14px; color:var(--text-secondary); margin-bottom:20px;\">This is for spa owners to manage their listing</p>
+            
+            <div id=\"signup-error\" class=\"error-msg\"></div>
+            
+            <div class=\"input-group\">
+                <label class=\"input-label\">Your name</label>
+                <input type=\"text\" class=\"input-field\" id=\"signup-name\" placeholder=\"Carlos Rodriguez\">
+            </div>
+            <div class=\"input-group\">
+                <label class=\"input-label\">Email</label>
+                <input type=\"email\" class=\"input-field\" id=\"signup-email\" placeholder=\"carlos@wellnesscentro.com\">
+            </div>
+            <div class=\"input-group\">
+                <label class=\"input-label\">Password</label>
+                <input type=\"password\" class=\"input-field\" id=\"signup-password\" placeholder=\"At least 8 characters\">
+            </div>
+            
+            <button class=\"btn-primary\" onclick=\"doSignup()\">Continue</button>
+            <p class=\"login-link\">Already have an account? <a href=\"#\" onclick=\"showScreen('screen-login')\">Sign in</a></p>
+        </div>
+    </div>
+    
+    <!-- SCREEN 3: LOGIN -->
+    <div class=\"screen\" id=\"screen-login\">
+        <div class=\"header\">
+            <button class=\"header-back\" onclick=\"showScreen('screen-welcome')\">←</button>
+            <div class=\"header-logo\"><span class=\"header-logo-icon\">💆</span> Massage Pass</div>
+        </div>
+        
+        <div class=\"section\">
+            <h2 style=\"font-size:22px; font-weight:800; margin-bottom:20px;\">Welcome back</h2>
+            
+            <div id=\"login-error\" class=\"error-msg\"></div>
+            
+            <div class=\"input-group\">
+                <label class=\"input-label\">Email</label>
+                <input type=\"email\" class=\"input-field\" id=\"login-email\" placeholder=\"your@email.com\">
+            </div>
+            <div class=\"input-group\">
+                <label class=\"input-label\">Password</label>
+                <input type=\"password\" class=\"input-field\" id=\"login-password\" placeholder=\"Your password\">
+            </div>
+            
+            <button class=\"btn-primary\" onclick=\"doLogin()\">Sign In</button>
+        </div>
+    </div>
+    
+    <!-- SCREEN 4: GOOGLE PLACES SEARCH -->
+    <div class=\"screen\" id=\"screen-google-search\">
+        <div class=\"header\">
+            <button class=\"header-back\" onclick=\"showScreen('screen-dashboard')\">←</button>
+            <div class=\"header-logo\"><span class=\"header-logo-icon\">💆</span> Massage Pass</div>
+            <span class=\"header-step\">2 of 5</span>
+        </div>
+        <div class=\"progress-bar\"><div class=\"progress-track\"><div class=\"progress-fill\" style=\"width:40%\"></div></div></div>
+        
+        <div class=\"section\">
+            <h2 style=\"font-size:22px; font-weight:800; margin-bottom:4px;\">Find your business</h2>
+            <p style=\"font-size:14px; color:var(--text-secondary); margin-bottom:20px;\">Search on Google to auto-fill your details</p>
+            
+            <div class=\"search-wrap\">
+                <span class=\"search-icon\">🔍</span>
+                <input type=\"text\" id=\"google-search-input\" placeholder=\"Search your spa name...\" oninput=\"searchGooglePlaces(this.value)\">
+            </div>
+            
+            <div id=\"google-results\"></div>
+        </div>
+    </div>
+    
+    <!-- SCREEN 5: SERVICES -->
+    <div class=\"screen\" id=\"screen-services\">
+        <div class=\"header\">
+            <button class=\"header-back\" onclick=\"showScreen('screen-google-search')\">←</button>
+            <div class=\"header-logo\"><span class=\"header-logo-icon\">💆</span> Massage Pass</div>
+            <span class=\"header-step\">3 of 5</span>
+        </div>
+        <div class=\"progress-bar\"><div class=\"progress-track\"><div class=\"progress-fill\" style=\"width:60%\"></div></div></div>
+        
+        <div class=\"section\">
+            <h2 style=\"font-size:22px; font-weight:800; margin-bottom:4px;\">Your services</h2>
+            <p style=\"font-size:14px; color:var(--text-secondary); margin-bottom:20px;\">Set prices for each massage type you offer</p>
+            
+            <div id=\"services-list\"></div>
+            
+            <button class=\"btn-primary\" onclick=\"saveServices()\" style=\"margin-top:16px;\">Save & Continue</button>
+        </div>
+    </div>
+    
+    <!-- SCREEN 6: AVAILABILITY -->
+    <div class=\"screen\" id=\"screen-availability\">
+        <div class=\"header\">
+            <button class=\"header-back\" onclick=\"showScreen('screen-services')\">←</button>
+            <div class=\"header-logo\"><span class=\"header-logo-icon\">💆</span> Massage Pass</div>
+            <span class=\"header-step\">4 of 5</span>
+        </div>
+        <div class=\"progress-bar\"><div class=\"progress-track\"><div class=\"progress-fill\" style=\"width:80%\"></div></div></div>
+        
+        <div class=\"section\">
+            <h2 style=\"font-size:22px; font-weight:800; margin-bottom:4px;\">When are you open?</h2>
+            <p style=\"font-size:14px; color:var(--text-secondary); margin-bottom:20px;\">Tap each day to set your available hours</p>
+            
+            <div id=\"availability-list\"></div>
+            
+            <button class=\"btn-primary\" onclick=\"saveAvailability()\" style=\"margin-top:16px;\">Save & Continue</button>
+        </div>
+    </div>
+    
+    <!-- SCREEN 7: CONFIRMATION -->
+    <div class=\"screen\" id=\"screen-confirm\">
+        <div class=\"section\" style=\"padding-top:60px;\">
+            <div class=\"confirm-icon\">🎉</div>
+            <div class=\"confirm-title\">You're Live!</div>
+            <p class=\"confirm-sub\">Your spa is now on Massage Pass. Customers can find and book you instantly.</p>
+            
+            <div class=\"confirm-link-box\">
+                <div class=\"confirm-link-label\">Your booking page</div>
+                <div class=\"confirm-link-url\" id=\"studio-link\"></div>
+            </div>
+            <button class=\"confirm-copy\" id=\"copy-btn\" onclick=\"copyLink()\">📋 Copy link</button>
+            
+            <button class=\"btn-primary\" onclick=\"showScreen('screen-dashboard')\" style=\"margin-top:16px;\">Go to Dashboard →</button>
+        </div>
+    </div>
+    
+    <!-- SCREEN 8: DASHBOARD -->
+    <div class=\"screen\" id=\"screen-dashboard\">
+        <div class=\"dashboard-header\" id=\"dashboard-header\">
+            <div class=\"dashboard-greeting\">Welcome back,</div>
+            <div class=\"dashboard-biz-name\" id=\"dash-name\">Loading...</div>
+            <div class=\"dashboard-link\" id=\"dash-link\"></div>
+        </div>
+        
+        <div style=\"padding:0 20px 20px;\">
+            <div class=\"stat-row\">
+                <div class=\"stat-card\">
+                    <div class=\"stat-num pending\" id=\"stat-pending\">0</div>
+                    <div class=\"stat-label\">Pending</div>
+                </div>
+                <div class=\"stat-card\">
+                    <div class=\"stat-num confirmed\" id=\"stat-confirmed\">0</div>
+                    <div class=\"stat-label\">Confirmed</div>
+                </div>
+                <div class=\"stat-card\">
+                    <div class=\"stat-num\" id=\"stat-total\">0</div>
+                    <div class=\"stat-label\">Total</div>
+                </div>
+            </div>
+            
+            <div style=\"display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;\">
+                <h3 style=\"font-size:16px; font-weight:700;\">Recent Bookings</h3>
+                <button onclick=\"showScreen('screen-availability')\" style=\"background:none; border:none; color:var(--primary); font-size:13px; font-weight:600; cursor:pointer;\">Edit availability</button>
+            </div>
+            
+            <div id=\"bookings-list\">
+                <div style=\"text-align:center; padding:40px; color:var(--text-secondary); font-size:14px;\">
+                    No bookings yet. Share your link to start getting customers!
+                </div>
+            </div>
+            
+            <button class=\"logout-btn\" onclick=\"doLogout()\">Sign out</button>
+        </div>
+    </div>
+    
+    <!-- GOOGLE PLACES API -->
+    <script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo&libraries=places&callback=initGooglePlaces\" async defer></script>
+    
+    <script>
+        const SUPABASE_URL = 'https://jglftdstrowwckwqmpue.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY0ODQ2MTg3NywiZXhwIjoxOTY0MDM3ODc3fQ.DpLS2hS3a6JNFtSvLNJcL-T6M3F0Rp3Fz8lTQT5VxJQ';
+        
+        let session = null;
+        let bizData = null;
+        let selectedPlace = null;
+        let services = [
+            { name: 'Swedish Relax', duration: 60, price: 50, enabled: true, icon: '🧘' },
+            { name: 'Deep Tissue', duration: 75, price: 65, enabled: true, icon: '💪' },
+            { name: 'Hot Stone', duration: 90, price: 80, enabled: false, icon: '🔥' },
+            { name: 'Sports Recovery', duration: 60, price: 55, enabled: false, icon: '🏃' },
+            { name: 'Thai Bodywork', duration: 75, price: 45, enabled: false, icon: '🪷' },
+            { name: 'Couples Massage', duration: 90, price: 120, enabled: false, icon: '💑' },
+        ];
+        let availability = {
+            monday: { open: false, slots: [] },
+            tuesday: { open: true, slots: ['10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00','19:00'] },
+            wednesday: { open: true, slots: ['10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00','19:00'] },
+            thursday: { open: true, slots: ['10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00','19:00'] },
+            friday: { open: true, slots: ['10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00','19:00'] },
+            saturday: { open: false, slots: [] },
+            sunday: { open: false, slots: [] },
+        };
+        let placesService = null;
+        
+        // INIT
+        window.addEventListener('load', () => {
+            checkSession();
+        });
+        
+        function initGooglePlaces() {
+            placesService = new google.maps.places.SearchBox(document.getElementById('google-search-input'));
+        }
+        
+        async function checkSession() {
+            const stored = localStorage.getItem('mp_session');
+            if (stored) {
+                session = JSON.parse(stored);
+                // Verify still valid
+                try {
+                    const r = await fetch(`${SUPABASE_URL}/rest/v1/partners?id=eq.${session.id}`, {
+                        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+                    });
+                    if (r.ok) {
+                        const data = await r.json();
+                        if (data.length > 0) {
+                            bizData = data[0];
+                            showDashboard();
+                            return;
+                        }
+                    }
+                } catch(e) {}
+                localStorage.removeItem('mp_session');
+            }
+            showScreen('screen-welcome');
+        }
+        
+        function showScreen(id) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            
+            if (id === 'screen-services') renderServices();
+            if (id === 'screen-availability') renderAvailability();
+        }
+        
+        function showLoading() { document.getElementById('loading').classList.add('active'); }
+        function hideLoading() { document.getElementById('loading').classList.remove('active'); }
+        
+        function showError(el, msg) {
+            const div = document.getElementById(el);
+            div.textContent = msg;
+            div.classList.add('visible');
+        }
+        
+        // AUTH
+        async function doSignup() {
+            const name = document.getElementById('signup-name').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const password = document.getElementById('signup-password').value;
+            
+            if (!name || !email || !password) { showError('signup-error','Please fill all fields'); return; }
+            if (password.length < 6) { showError('signup-error','Password must be at least 6 characters'); return; }
+            
+            showLoading();
+            try {
+                // Check if email exists
+                const check = await fetch(`${SUPABASE_URL}/rest/v1/partners?email=eq.${encodeURIComponent(email)}`, {
+                    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+                });
+                const existing = await check.json();
+                if (existing.length > 0) { hideLoading(); showError('signup-error','Email already registered. Try signing in.'); return; }
+                
+                // Create partner
+                const r = await fetch(`${SUPABASE_URL}/rest/v1/partners`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+                    body: JSON.stringify({ name, email, password, created_at: new Date().toISOString() })
+                });
+                if (!r.ok) throw new Error('Failed');
+                const data = await r.json();
+                
+                session = data[0];
+                localStorage.setItem('mp_session', JSON.stringify(session));
+                hideLoading();
+                showScreen('screen-google-search');
+            } catch(e) {
+                hideLoading();
+                showError('signup-error','Something went wrong. Try again.');
+            }
+        }
+        
+        async function doLogin() {
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+            
+            if (!email || !password) { showError('login-error','Please fill all fields'); return; }
+            
+            showLoading();
+            try {
+                const r = await fetch(`${SUPABASE_URL}/rest/v1/partners?email=eq.${encodeURIComponent(email)}&password=eq.${encodeURIComponent(password)}`, {
+                    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+                });
+                const data = await r.json();
+                if (data.length === 0) { hideLoading(); showError('login-error','Invalid email or password'); return; }
+                
+                session = data[0];
+                localStorage.setItem('mp_session', JSON.stringify(session));
+                bizData = session;
+                hideLoading();
+                showDashboard();
+            } catch(e) {
+                hideLoading();
+                showError('login-error','Something went wrong. Try again.');
+            }
+        }
+        
+        function doLogout() {
+            localStorage.removeItem('mp_session');
+            session = null;
+            bizData = null;
+            showScreen('screen-welcome');
+        }
+        
+        // GOOGLE PLACES
+        async function searchGooglePlaces(query) {
+            if (!query || query.length < 3) return;
+            
+            const results = document.getElementById('google-results');
+            results.innerHTML = '<div style=\"text-align:center; padding:20px; color:var(--text-secondary); font-size:13px;\">Searching...</div>';
+            
+            try {
+                const r = await fetch(`https://maps.googleapis.com/maps/api/place/textsearch/json?query=${encodeURIComponent(query + ' massage spa madrid')}&key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo`);
+                const data = await r.json();
+                
+                if (!data.results || data.results.length === 0) {
+                    results.innerHTML = '<div style=\"text-align:center; padding:20px; color:var(--text-secondary); font-size:13px;\">No results found. Try a different name.</div>';
+                    return;
+                }
+                
+                results.innerHTML = data.results.slice(0,5).map(p => `
+                    <div class=\"business-card\" onclick=\"selectPlace(${JSON.stringify(p).replace(/\"/g,'&quot;')})\">
+                        <div class=\"business-card-name\">${p.name}</div>
+                        <div class=\"business-card-address\">${p.formatted_address || p.vicinity || ''}</div>
+                        <div class=\"business-card-meta\">
+                            <span>★ ${p.rating || 'N/A'}</span>
+                            <span>📍 ${p.geometry?.location ? 'Madrid' : ''}</span>
+                        </div>
+                    </div>
+                `).join('');
+            } catch(e) {
+                results.innerHTML = '<div style=\"text-align:center; padding:20px; color:var(--text-secondary); font-size:13px;\">Search failed. Try again.</div>';
+            }
+        }
+        
+        async function selectPlace(place) {
+            selectedPlace = place;
+            
+            // Show selected
+            document.querySelectorAll('.business-card').forEach(c => c.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            
+            showLoading();
+            try {
+                // Get more details
+                const r = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${place.place_id}&fields=name,formatted_address,formatted_phone_number,website,rating,user_ratings_total,photos&key=AIzaSyDx4a7iq1lt4LItVg44_kDmzvlpK7Ftldo`);
+                const data = await r.json();
+                const details = data.result || {};
+                
+                // Save to partner
+                const update = {
+                    business_name: details.name || place.name,
+                    address: details.formatted_address || place.formatted_address || place.vicinity || '',
+                    phone: details.formatted_phone_number || '',
+                    google_place_id: place.place_id,
+                    rating: details.rating || place.rating || 0,
+                    reviews_count: details.user_ratings_total || 0,
+                    website: details.website || '',
+                };
+                
+                await fetch(`${SUPABASE_URL}/rest/v1/partners?id=eq.${session.id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+                    body: JSON.stringify(update)
+                });
+                
+                session = { ...session, ...update };
+                bizData = session;
+                localStorage.setItem('mp_session', JSON.stringify(session));
+                
+                hideLoading();
+                showScreen('screen-services');
+            } catch(e) {
+                hideLoading();
+                alert('Failed to save. Try again.');
+            }
+        }
+        
+        // SERVICES
+        function renderServices() {
+            const list = document.getElementById('services-list');
+            list.innerHTML = services.map((s, i) => `
+                <div class=\"form-section\">
+                    <div class=\"service-item\">
+                        <span class=\"service-icon\">${s.icon}</span>
+                        <div class=\"service-info\">
+                            <div class=\"service-name\">${s.name}</div>
+                            <div class=\"service-duration\">${s.duration} min</div>
+                        </div>
+                        <button class=\"service-toggle ${s.enabled ? 'on' : ''}\" onclick=\"toggleService(${i})\"></button>
+                    </div>
+                    <div style=\"display:flex; align-items:center; gap:8px; padding-top:8px;\">
+                        <span style=\"font-size:13px; color:var(--text-secondary);\">€</span>
+                        <input type=\"number\" class=\"service-price-input\" value=\"${s.price}\" onchange=\"updateServicePrice(${i}, this.value)\">
+                        <span style=\"font-size:12px; color:var(--text-light);\">per session</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function toggleService(i) {
+            services[i].enabled = !services[i].enabled;
+            renderServices();
+        }
+        
+        function updateServicePrice(i, val) {
+            services[i].price = parseInt(val) || 0;
+        }
+        
+        async function saveServices() {
+            const enabled = services.filter(s => s.enabled);
+            if (enabled.length === 0) { alert('Select at least one service'); return; }
+            
+            showLoading();
+            try {
+                await fetch(`${SUPABASE_URL}/rest/v1/partners?id=eq.${session.id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+                    body: JSON.stringify({ services: JSON.stringify(services) })
+                });
+                session.services = JSON.stringify(services);
+                localStorage.setItem('mp_session', JSON.stringify(session));
+                hideLoading();
+                showScreen('screen-availability');
+            } catch(e) {
+                hideLoading();
+                alert('Failed to save. Try again.');
+            }
+        }
+        
+        // AVAILABILITY
+        function renderAvailability() {
+            const list = document.getElementById('availability-list');
+            const days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+            const labels = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            
+            list.innerHTML = days.map((d, i) => `
+                <div class=\"day-section\">
+                    <div class=\"day-header\" onclick=\"toggleDay('${d}')\">
+                        <span class=\"day-name\">${labels[i]}</span>
+                        <span class=\"day-toggle ${availability[d].open ? 'open' : ''}\">${availability[d].open ? '✅' : '✗'}</span>
+                    </div>
+                    <div class=\"day-slots ${availability[d].open ? 'visible' : ''}\" id=\"slots-${d}\">
+                        ${['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'].map(t => `
+                            <button class=\"time-slot ${availability[d].slots.includes(t) ? 'selected' : ''}\" onclick=\"toggleSlot('${d}','${t}',event)\">${t}</button>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function toggleDay(d) {
+            availability[d].open = !availability[d].open;
+            if (!availability[d].open) availability[d].slots = [];
+            renderAvailability();
+        }
+        
+        function toggleSlot(d, t, e) {
+            e.stopPropagation();
+            const idx = availability[d].slots.indexOf(t);
+            if (idx >= 0) availability[d].slots.splice(idx,1);
+            else availability[d].slots.push(t);
+            renderAvailability();
+        }
+        
+        async function saveAvailability() {
+            showLoading();
+            try {
+                await fetch(`${SUPABASE_URL}/rest/v1/partners?id=eq.${session.id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+                    body: JSON.stringify({ availability: JSON.stringify(availability) })
+                });
+                session.availability = JSON.stringify(availability);
+                localStorage.setItem('mp_session', JSON.stringify(session));
+                hideLoading();
+                
+                // Generate studio link
+                const slug = (bizData?.business_name || 'studio').toLowerCase().replace(/\\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+                document.getElementById('studio-link').textContent = `massagepass.io/studio/${slug}`;
+                document.getElementById('dash-link').textContent = `massagepass.io/studio/${slug}`;
+                
+                showScreen('screen-confirm');
+            } catch(e) {
+                hideLoading();
+                alert('Failed to save. Try again.');
+            }
+        }
+        
+        // DASHBOARD
+        async function showDashboard() {
+            showScreen('screen-dashboard');
+            
+            document.getElementById('dash-name').textContent = bizData?.business_name || bizData?.name || 'Your Studio';
+            const slug = (bizData?.business_name || 'studio').toLowerCase().replace(/\/\\s+/g,'-').replace(/[^a-z0-9-]/g,'');
+            document.getElementById('dash-link').textContent = `massagepass.io/studio/${slug}`;
+            
+            loadBookings();
+        }
+        
+        async function loadBookings() {
+            try {
+                const r = await fetch(`${SUPABASE_URL}/rest/v1/bookings?spa_name=eq.${encodeURIComponent(bizData?.business_name || '')}&order=created_at.desc`, {
+                    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+                });
+                const data = await r.json();
+                
+                const pending = data.filter(b => b.status === 'pending').length;
+                const confirmed = data.filter(b => b.status === 'confirmed').length;
+                
+                document.getElementById('stat-pending').textContent = pending;
+                document.getElementById('stat-confirmed').textContent = confirmed;
+                document.getElementById('stat-total').textContent = data.length;
+                
+                const list = document.getElementById('bookings-list');
+                if (data.length === 0) {
+                    list.innerHTML = '<div style=\"text-align:center; padding:40px; color:var(--text-secondary); font-size:14px;\">No bookings yet. Share your link to start getting customers!</div>';
+                } else {
+                    list.innerHTML = data.map(b => `
+                        <div class=\"booking-item\">
+                            <div class=\"booking-top\">
+                                <span class=\"booking-name\">${b.client_name || 'Guest'}</span>
+                                <span class=\"booking-ref\">${b.id || b.ref || 'MR-000'}</span>
+                            </div>
+                            <div class=\"booking-meta\">
+                                <span>📅 ${b.booking_date || ''}</span>
+                                <span>🕐 ${b.booking_time || ''}</span>
+                                <span>💆 ${b.massage_type || 'Massage'}</span>
+                            </div>
+                            <div class=\"booking-actions\">
+                                <button class=\"booking-btn confirm\" onclick=\"updateBooking('${b.id}','confirmed')\">✓ Confirm</button>
+                                <button class=\"booking-btn decline\" onclick=\"updateBooking('${b.id}','declined')\">✗ Decline</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch(e) {
+                console.log('Could not load bookings');
+            }
+        }
+        
+        async function updateBooking(id, status) {
+            try {
+                await fetch(`${SUPABASE_URL}/rest/v1/bookings?id=eq.${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` },
+                    body: JSON.stringify({ status })
+                });
+                loadBookings();
+            } catch(e) {
+                alert('Failed to update. Try again.');
+            }
+        }
+        
+        function copyLink() {
+            const url = document.getElementById('studio-link').textContent;
+            navigator.clipboard.writeText('https://' + url).then(() => {
+                const btn = document.getElementById('copy-btn');
+                btn.textContent = '✅ Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = '📋 Copy link'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
