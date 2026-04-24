@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Global Trade Explorer | Import/Export Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --primary-light: #EDE9FE;
+            --accent: #06B6D4;
+            --bg: #FFFBF5;
+            --bg-secondary: #F7F4EF;
+            --text: #1C1917;
+            --text-secondary: #78716C;
+            --text-light: #A8A29E;
+            --border: #E7E5E4;
+            --success: #10B981;
+            --success-light: #D1FAE5;
+            --orange: #F97316;
+            --card: #FFFFFF;
+            --shadow: 0 4px 24px rgba(139, 92, 246, 0.08);
+            --shadow-lg: 0 12px 48px rgba(139, 92, 246, 0.12);
+            --radius: 20px;
+            --radius-sm: 14px;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: Inter, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+        .screen { display: none; opacity: 0; transform: translateY(16px); transition: opacity 0.45s ease, transform 0.45s ease; }
+        .screen.active { display: block; opacity: 1; transform: translateY(0); }
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,251,245,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 0 24px; height: 64px; display: flex; align-items: center; gap: 12px; }
+        .header-back { width: 40px; height: 40px; border-radius: 12px; background: var(--card); border: none; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow); transition: all 0.2s; }
+        .header-back:hover { background: var(--primary-light); }
+        .header-logo { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 800; color: var(--primary); flex: 1; }
+        .header-logo-icon { width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .header-step { font-size: 13px; color: var(--text-light); font-weight: 600; background: var(--bg-secondary); padding: 6px 12px; border-radius: 20px; }
+        .progress-bar { position: fixed; top: 64px; left: 0; right: 0; z-index: 99; padding: 0 0 14px; background: rgba(255,251,245,0.9); backdrop-filter: blur(10px); }
+        .progress-track { height: 3px; background: var(--border); }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%); border-radius: 2px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .container { max-width: 480px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 100px 0 40px; }
+        .hero { text-align: center; padding: 56px 24px 40px; background: linear-gradient(180deg, var(--primary-light) 0%, var(--bg) 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ""; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%); border-radius: 50%; }
+        .hero::after { content: ""; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--primary-light); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 20px; box-shadow: var(--shadow); position: relative; z-index: 1; }
+        .hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        .hero-emoji { font-size: 80px; margin-bottom: 20px; animation: float 3s ease-in-out infinite; position: relative; z-index: 1; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        .hero h1 { font-size: 30px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 10px; position: relative; z-index: 1; }
+        .hero p { font-size: 15px; color: var(--text-secondary); max-width: 340px; margin: 0 auto 28px; line-height: 1.7; position: relative; z-index: 1; }
+        .feature-card { display: flex; align-items: center; gap: 16px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 10px; box-shadow: var(--shadow); transition: all 0.3s; }
+        .feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .feature-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+        .feature-icon.purple { background: var(--primary-light); }
+        .feature-icon.green { background: #D1FAE5; }
+        .feature-icon.orange { background: #FFEDD5; }
+        .feature-icon.cyan { background: #CFFAFE; }
+        .feature-text { flex: 1; }
+        .feature-title { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+        .feature-desc { font-size: 12px; color: var(--text-secondary); }
+        .btn-primary { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 18px 24px; border-radius: var(--radius-sm); border: none; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 16px rgba(139,92,246,0.3); transition: all 0.3s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.4); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .form-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--shadow); margin-bottom: 16px; }
+        .form-title { font-size: 26px; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 6px; }
+        .form-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 28px; line-height: 1.6; }
+        .input-group { margin-bottom: 16px; }
+        .input-label { display: block; font-size: 12px; font-weight: 700; color: var(--text-secondary); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.6px; }
+        .select-field { width: 100%; padding: 16px 18px; border: 1.5px solid var(--border); border-radius: 14px; font-size: 15px; background: var(--bg); color: var(--text); font-family: Inter, sans-serif; transition: all 0.2s; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23A8A29E' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+        .select-field:focus { outline: none; border-color: var(--primary); background-color: var(--card); box-shadow: 0 0 0 4px rgba(139,92,246,0.1); }
+        .input-field { width: 100%; padding: 16px 18px; border: 1.5px solid var(--border); border-radius: 14px; font-size: 15px; background: var(--bg); color: var(--text); font-family: Inter, sans-serif; transition: all 0.2s; }
+        .input-field:focus { outline: none; border-color: var(--primary); background: var(--card); box-shadow: 0 0 0 4px rgba(139,92,246,0.1); }
+        .input-field::placeholder { color: var(--text-light); }
+        .skip-link { display: block; text-align: center; font-size: 13px; color: var(--text-light); margin-top: 12px; cursor: pointer; }
+        .skip-link:hover { color: var(--primary); }
+        .loading-overlay { position: fixed; inset: 0; background: rgba(255,251,245,0.92); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 300; flex-direction: column; gap: 16px; }
+        .loading-overlay.active { display: flex; }
+        .loading-spinner { width: 44px; height: 44px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.7s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+        /* Results screen */
+        .results-hero { background: linear-gradient(135deg, var(--primary) 0%, #6D28D9 50%, var(--accent) 100%); color: white; padding: 36px 24px 52px; border-radius: 0 0 32px 32px; position: relative; overflow: hidden; }
+        .results-hero::before { content: ""; position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); border-radius: 50%; }
+        .results-from-to { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 14px; opacity: 0.85; margin-bottom: 10px; }
+        .results-from-to .flag { font-size: 20px; }
+        .results-headline { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
+        .results-sub { font-size: 13px; opacity: 0.75; }
+        .result-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 0 24px 12px; box-shadow: var(--shadow); transition: all 0.3s; }
+        .result-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .result-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .result-card-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+        .result-card-icon.trade { background: #EDE9FE; }
+        .result-card-icon.city { background: #FFEDD5; }
+        .result-card-icon.import { background: #CFFAFE; }
+        .result-card-icon.network { background: #D1FAE5; }
+        .result-card-icon.step { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; }
+        .result-card-title { font-size: 16px; font-weight: 800; }
+        .result-card-sub { font-size: 11px; color: var(--text-light); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .result-tag { display: inline-flex; align-items: center; gap: 5px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 10px; padding: 6px 12px; font-size: 12px; font-weight: 600; margin: 0 6px 6px 0; color: var(--text-secondary); }
+        .result-tag .tag-icon { font-size: 14px; }
+        .result-list { list-style: none; }
+        .result-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+        .result-list li:last-child { border-bottom: none; }
+        .result-list li .bullet { color: var(--primary); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+        .result-action-box { background: linear-gradient(135deg, var(--primary) 0%, #6D28D9 100%); border-radius: var(--radius); padding: 20px 22px; margin: 0 24px 12px; color: white; }
+        .result-action-box .action-label { font-size: 11px; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
+        .result-action-box .action-text { font-size: 14px; font-weight: 600; line-height: 1.7; }
+        .divider { height: 1px; background: var(--border); margin: 8px 0; }
+        .section-label { font-size: 12px; font-weight: 800; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.8px; margin: 28px 24px 12px; }
+        .restart-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: calc(100% - 48px); margin: 24px 24px 0; padding: 16px; border-radius: var(--radius-sm); border: 1.5px solid var(--border); background: var(--card); font-size: 14px; font-weight: 600; cursor: pointer; color: var(--text-secondary); box-shadow: var(--shadow); transition: all 0.2s; }
+        .restart-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .bottom-pad { height: 40px; }
+        .searching-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--primary-light); border-radius: 20px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--primary); margin-bottom: 16px; }
+        .searching-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 1s infinite; }
+        .loading-dots::after { content: ""; animation: dots 1.5s infinite; }
+        @keyframes dots { 0%{content:""} 25%{content:"."} 50%{content:".."} 75%{content:"..."} }
+        .no-results { text-align: center; padding: 20px; font-size: 14px; color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" id="loading-text">Searching trade databases<span class="loading-dots"></span></div>
+    </div>
+
+    <!-- Screen 0: Welcome -->
+    <div class="screen active" id="screen-welcome">
+        <div style="padding-top:0;">
+            <div class="hero">
+                <div class="hero-badge"><span class="hero-badge-dot"></span> Free Export Intelligence Tool</div>
+                <div class="hero-emoji">🌍</div>
+                <h1>Sell Your Products<br>Around the World</h1>
+                <p>Get trade agreements, import rules, and warm connections — all in one place. No research needed.</p>
+            </div>
+            <div style="padding: 0 24px 32px;">
+                <div class="feature-card" style="margin-bottom:12px;">
+                    <div class="feature-icon purple">📋</div>
+                    <div class="feature-text">
+                        <div class="feature-title">Trade agreements</div>
+                        <div class="feature-desc">Know what's actually signed and active</div>
+                    </div>
+                </div>
+                <div class="feature-card" style="margin-bottom:12px;">
+                    <div class="feature-icon orange">🏙️</div>
+                    <div class="feature-text">
+                        <div class="feature-title">Key cities to target</div>
+                        <div class="feature-desc">Where distributors and buyers are</div>
+                    </div>
+                </div>
+                <div class="feature-card" style="margin-bottom:12px;">
+                    <div class="feature-icon cyan">📦</div>
+                    <div class="feature-text">
+                        <div class="feature-title">Import requirements</div>
+                        <div class="feature-desc">CE, FDA, NOM, etc. — what's needed</div>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon green">🤝</div>
+                    <div class="feature-text">
+                        <div class="feature-title">Warm intros & events</div>
+                        <div class="feature-desc">Export forums, trade shows, communities</div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 0 24px 40px;">
+                <button class="btn-primary" onclick="showScreen('screen-from')">Start Now <span style="font-size:18px;">→</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 1: Where are you FROM -->
+    <div class="screen" id="screen-from">
+        <div class="header">
+            <button class="header-back" onclick="showScreen('screen-welcome')">←</button>
+            <div class="header-logo"><span class="header-logo-icon">🌍</span> Trade Explorer</div>
+            <span class="header-step">Step 1 of 3</span>
+        </div>
+        <div class="progress-bar"><div class="progress-track"><div class="progress-fill" style="width:33%"></div></div></div>
+        <div class="container section">
+            <div class="form-card">
+                <h2 class="form-title">Where are you FROM?</h2>
+                <p class="form-sub">Your home country — where your business is registered</p>
+                <div class="input-group">
+                    <label class="input-label">Origin Country</label>
+                    <select class="select-field" id="from-country">
+                        <option value="">Select your country...</option>
+                        <option value="Philippines">🇵🇭 Philippines</option>
+                        <option value="USA">🇺🇸 United States</option>
+                        <option value="Mexico">🇲🇽 Mexico</option>
+                        <option value="Spain">🇪🇸 Spain</option>
+                        <option value="UK">🇬🇧 United Kingdom</option>
+                        <option value="Germany">🇩🇪 Germany</option>
+                        <option value="China">🇨🇳 China</option>
+                        <option value="India">🇮🇳 India</option>
+                        <option value="Vietnam">🇻🇳 Vietnam</option>
+                        <option value="Indonesia">🇮🇩 Indonesia</option>
+                        <option value="Thailand">🇹🇭 Thailand</option>
+                        <option value="Brazil">🇧🇷 Brazil</option>
+                        <option value="Colombia">🇨🇴 Colombia</option>
+                        <option value="Argentina">🇦🇷 Argentina</option>
+                        <option value="South Korea">🇰🇷 South Korea</option>
+                        <option value="Japan">🇯🇵 Japan</option>
+                        <option value="Australia">🇦🇺 Australia</option>
+                        <option value="Canada">🇨🇦 Canada</option>
+                        <option value="France">🇫🇷 France</option>
+                        <option value="Italy">🇮🇹 Italy</option>
+                        <option value="Netherlands">🇳🇱 Netherlands</option>
+                        <option value="Portugal">🇵🇹 Portugal</option>
+                        <option value="Poland">🇵🇱 Poland</option>
+                        <option value="UAE">🇦🇪 UAE</option>
+                        <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                        <option value="South Africa">🇿🇦 South Africa</option>
+                        <option value="Nigeria">🇳🇬 Nigeria</option>
+                        <option value="Egypt">🇪🇬 Egypt</option>
+                        <option value="Turkey">🇹🇷 Turkey</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn-primary" id="btn-from-next" onclick="goFrom()" disabled>Continue →</button>
+        </div>
+    </div>
+
+    <!-- Screen 2: Where do you want to SELL -->
+    <div class="screen" id="screen-to">
+        <div class="header">
+            <button class="header-back" onclick="showScreen('screen-from')">←</button>
+            <div class="header-logo"><span class="header-logo-icon">🌍</span> Trade Explorer</div>
+            <span class="header-step">Step 2 of 3</span>
+        </div>
+        <div class="progress-bar"><div class="progress-track"><div class="progress-fill" style="width:66%"></div></div></div>
+        <div class="container section">
+            <div class="form-card">
+                <h2 class="form-title">Where do you want to SELL?</h2>
+                <p class="form-sub">Your target export market</p>
+                <div class="input-group">
+                    <label class="input-label">Target Market</label>
+                    <select class="select-field" id="to-country">
+                        <option value="">Select target country...</option>
+                        <option value="Philippines">🇵🇭 Philippines</option>
+                        <option value="USA">🇺🇸 United States</option>
+                        <option value="Mexico">🇲🇽 Mexico</option>
+                        <option value="Spain">🇪🇸 Spain</option>
+                        <option value="UK">🇬🇧 United Kingdom</option>
+                        <option value="Germany">🇩🇪 Germany</option>
+                        <option value="China">🇨🇳 China</option>
+                        <option value="India">🇮🇳 India</option>
+                        <option value="Vietnam">🇻🇳 Vietnam</option>
+                        <option value="Indonesia">🇮🇩 Indonesia</option>
+                        <option value="Thailand">🇹🇭 Thailand</option>
+                        <option value="Brazil">🇧🇷 Brazil</option>
+                        <option value="Colombia">🇨🇴 Colombia</option>
+                        <option value="Argentina">🇦🇷 Argentina</option>
+                        <option value="South Korea">🇰🇷 South Korea</option>
+                        <option value="Japan">🇯🇵 Japan</option>
+                        <option value="Australia">🇦🇺 Australia</option>
+                        <option value="Canada">🇨🇦 Canada</option>
+                        <option value="France">🇫🇷 France</option>
+                        <option value="Italy">🇮🇹 Italy</option>
+                        <option value="Netherlands">🇳🇱 Netherlands</option>
+                        <option value="Portugal">🇵🇹 Portugal</option>
+                        <option value="Poland">🇵🇱 Poland</option>
+                        <option value="UAE">🇦🇪 UAE</option>
+                        <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+                        <option value="South Africa">🇿🇦 South Africa</option>
+                        <option value="Nigeria">🇳🇬 Nigeria</option>
+                        <option value="Egypt">🇪🇬 Egypt</option>
+                        <option value="Turkey">🇹🇷 Turkey</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn-primary" id="btn-to-next" onclick="goTo()" disabled>Continue →</button>
+        </div>
+    </div>
+
+    <!-- Screen 3: What are you selling -->
+    <div class="screen" id="screen-product">
+        <div class="header">
+            <button class="header-back" onclick="showScreen('screen-to')">←</button>
+            <div class="header-logo"><span class="header-logo-icon">🌍</span> Trade Explorer</div>
+            <span class="header-step">Step 3 of 3</span>
+        </div>
+        <div class="progress-bar"><div class="progress-track"><div class="progress-fill" style="width:100%"></div></div></div>
+        <div class="container section">
+            <div class="form-card">
+                <h2 class="form-title">What are you selling?</h2>
+                <p class="form-sub">Optional — helps tailor import rules and requirements</p>
+                <div class="input-group">
+                    <label class="input-label">Product Category</label>
+                    <input type="text" class="input-field" id="product-input" placeholder="e.g. Organic coffee, Textiles, Software, Furniture...">
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:4px;">
+                    <button class="btn-secondary" style="padding:12px; font-size:13px;" onclick="setProduct('Food & Beverages')">🍎 Food & Bev</button>
+                    <button class="btn-secondary" style="padding:12px; font-size:13px;" onclick="setProduct('Textiles & Apparel')">👕 Textiles</button>
+                    <button class="btn-secondary" style="padding:12px; font-size:13px;" onclick="setProduct('Electronics')">💻 Electronics</button>
+                    <button class="btn-secondary" style="padding:12px; font-size:13px;" onclick="setProduct('Cosmetics')">💄 Cosmetics</button>
+                    <button class="btn-secondary" style="padding:12px; font-size:13px;" onclick="setProduct('Furniture')">🪑 Furniture</button>
+                    <button class="btn-secondary" style="padding:12px; font-size:13px;" onclick="setProduct('Medical Devices')">🏥 Medical</button>
+                </div>
+                <span class="skip-link" onclick="goResults()">Skip this step →</span>
+            </div>
+            <button class="btn-primary" onclick="goResults()">Get My Export Report →</button>
+        </div>
+    </div>
+
+    <!-- Screen 4: Results -->
+    <div class="screen" id="screen-results">
+        <div class="header" style="background:rgba(139,92,246,0.95); border-bottom:none;">
+            <button class="header-back" onclick="showScreen('screen-from'); resetForm();" style="background:rgba(255,255,255,0.2); color:white;">←</button>
+            <div class="header-logo" style="color:white;"><span class="header-logo-icon" style="background:rgba(255,255,255,0.2);">🌍</span> Trade Explorer</div>
+        </div>
+        <div class="results-hero">
+            <div class="results-from-to" id="results-flags"></div>
+            <div class="results-headline" id="results-headline">Building your report...</div>
+            <div class="results-sub" id="results-sub">Searching trade databases</div>
+        </div>
+
+        <div class="section-label">Trade Agreements & Tariffs</div>
+        <div class="result-card" id="card-trade">
+            <div class="result-card-header">
+                <div class="result-card-icon trade">📋</div>
+                <div>
+                    <div class="result-card-title">Trade Agreements</div>
+                    <div class="result-card-sub">Active treaties & preferential access</div>
+                </div>
+            </div>
+            <div id="trade-content"><div class="no-results">Loading...</div></div>
+        </div>
+
+        <div class="section-label">Target Cities in <span id="target-city-label">market</span></div>
+        <div class="result-card" id="card-cities">
+            <div class="result-card-header">
+                <div class="result-card-icon city">🏙️</div>
+                <div>
+                    <div class="result-card-title">Key Cities to Target</div>
+                    <div class="result-card-sub">Where distributors & buyers are</div>
+                </div>
+            </div>
+            <div id="cities-content"><div class="no-results">Loading...</div></div>
+        </div>
+
+        <div class="section-label">Import Requirements</div>
+        <div class="result-card" id="card-import">
+            <div class="result-card-header">
+                <div class="result-card-icon import">📦</div>
+                <div>
+                    <div class="result-card-title">Import Regulations</div>
+                    <div class="result-card-sub">Certifications, labels & compliance</div>
+                </div>
+            </div>
+            <div id="import-content"><div class="no-results">Loading...</div></div>
+        </div>
+
+        <div class="section-label">Networking & Events</div>
+        <div class="result-card" id="card-network">
+            <div class="result-card-header">
+                <div class="result-card-icon network">🤝</div>
+                <div>
+                    <div class="result-card-title">Trade Networks & Events</div>
+                    <div class="result-card-sub">Export forums, shows & communities</div>
+                </div>
+            </div>
+            <div id="network-content"><div class="no-results">Loading...</div></div>
+        </div>
+
+        <div class="result-action-box" id="card-action">
+            <div class="action-label">Recommended Next Step</div>
+            <div class="action-text" id="action-text">Contact your country's export promotion agency to get started...</div>
+        </div>
+
+        <button class="restart-btn" onclick="restart()">🔄 Start New Search</button>
+        <div class="bottom-pad"></div>
+    </div>
+
+    <script>
+    var fromCountry = "";
+    var toCountry = "";
+    var product = "";
+
+    var countryFlags = {
+        "Philippines":"🇵🇭","USA":"🇺🇸","Mexico":"🇲🇽","Spain":"🇪🇸","UK":"🇬🇧","Germany":"🇩🇪",
+        "China":"🇨🇳","India":"🇮🇳","Vietnam":"🇻🇳","Indonesia":"🇮🇩","Thailand":"🇹🇭","Brazil":"🇧🇷",
+        "Colombia":"🇨🇴","Argentina":"🇦🇷","South Korea":"🇰🇷","Japan":"🇯🇵","Australia":"🇦🇺","Canada":"🇨🇦",
+        "France":"🇫🇷","Italy":"🇮🇹","Netherlands":"🇳🇱","Portugal":"🇵🇹","Poland":"🇵🇱","UAE":"🇦🇪",
+        "Saudi Arabia":"🇸🇦","South Africa":"🇿🇦","Nigeria":"🇳🇬","Egypt":"🇪🇬","Turkey":"🇹🇷"
+    };
+
+    var cityData = {
+        "USA": ["New York","Los Angeles","Chicago","Miami","Houston","San Francisco"],
+        "Philippines": ["Metro Manila","Cebu","Davao","Clark","Bacolod","Iloilo"],
+        "Mexico": ["Mexico City","Guadalajara","Monterrey","Puebla","Cancún","Tijuana"],
+        "Spain": ["Madrid","Barcelona","Valencia","Seville","Bilbao","Málaga"],
+        "UK": ["London","Manchester","Birmingham","Leeds","Glasgow","Edinburgh"],
+        "Germany": ["Berlin","Munich","Hamburg","Frankfurt","Düsseldorf","Cologne"],
+        "China": ["Shanghai","Beijing","Guangzhou","Shenzhen","Hangzhou","Chengdu"],
+        "India": ["Mumbai","Delhi","Bangalore","Hyderabad","Chennai","Ahmedabad"],
+        "Vietnam": ["Ho Chi Minh City","Hanoi","Da Nang","Hai Phong","Can Tho","Vung Tau"],
+        "Indonesia": ["Jakarta","Surabaya","Bandung","Bali","Medan","Makassar"],
+        "Thailand": ["Bangkok","Chiang Mai","Phuket","Pattaya","Samut Prakan","Nonthaburi"],
+        "Brazil": ["São Paulo","Rio de Janeiro","Brasília","Belo Horizonte","Salvador","Fortaleza"],
+        "Colombia": ["Bogotá","Medellín","Cali","Barranquilla","Cartagena","Cúcuta"],
+        "Argentina": ["Buenos Aires","Córdoba","Rosario","Mendoza","Tucumán","La Plata"],
+        "South Korea": ["Seoul","Busan","Incheon","Daegu","Daejeon","Gwangju"],
+        "Japan": ["Tokyo","Osaka","Yokohama","Nagoya","Sapporo","Kyoto"],
+        "Australia": ["Sydney","Melbourne","Brisbane","Perth","Adelaide","Canberra"],
+        "Canada": ["Toronto","Vancouver","Montreal","Calgary","Ottawa","Edmonton"],
+        "France": ["Paris","Lyon","Marseille","Toulouse","Nice","Nantes"],
+        "Italy": ["Rome","Milan","Naples","Turin","Florence","Bologna"],
+        "Netherlands": ["Amsterdam","Rotterdam","The Hague","Utrecht","Eindhoven","Groningen"],
+        "Portugal": ["Lisbon","Porto","Vila Nova de Gaia","Braga","Coimbra","Faro"],
+        "Poland": ["Warsaw","Kraków","Łódź","Wrocław","Poznań","Gdańsk"],
+        "UAE": ["Dubai","Abu Dhabi","Sharjah","Al Ain","Ruwais","Fujairah"],
+        "Saudi Arabia": ["Riyadh","Jeddah","Mecca","Medina","Dammam","Khobar"],
+        "South Africa": ["Johannesburg","Cape Town","Durban","Pretoria","Port Elizabeth","Bloemfontein"],
+        "Nigeria": ["Lagos","Abuja","Port Harcourt","Ibadan","Benin City","Kano"],
+        "Egypt": ["Cairo","Alexandria","Giza","Shubra El-Kheima","Port Said","Suez"],
+        "Turkey": ["Istanbul","Ankara","Izmir","Bursa","Antalya","Konya"]
+    };
+
+    var importRules = {
+        "USA": ["FDA registration for food/cosmetics/pharmaceuticals","FCC certification for electronics","USDA import permits for agricultural products","TSCA compliance for chemicals","CPSC safety standards for consumer products","Customs tariff classification (HTS codes required)"],
+        "Philippines": ["BPS (Bureau of Products Standards) certification","FDA Philippines registration for food, cosmetics, drugs","Plant quarantine permits for agricultural imports","Customs clearance with BIR payment","Halal certification if applicable","Import license from DTI for regulated goods"],
+        "Mexico": ["NOM (Norma Oficial Mexicana) compliance required","COFEPRIS authorization for food/cosmetics/pharma","SENASICA phytosanitary certificates for agriculture","SAT customs with RFC tax number","Importers registry in SAT portal","CE marking not required but some standards align"],
+        "Spain": ["CE marking mandatory for EU-regulated products","Spanish Agency of Medicines (AEMPS) for pharma","FEGA for agricultural products","Customs via EU Single Window","REACH regulation compliance for chemicals","EUR.1 preferential certificate if available"],
+        "UK": ["UKCA marking (replacing CE)","UKCA for electronics, toys, PPE","FSA food safety regulations","MHRA approval for medicines","HMRC customs declaration","Product safety regulations (GPSR)"],
+        "Germany": ["CE marking mandatory","REACH/CLP chemical regulations","BfR food safety assessment","EU conformity declaration required","WEEE registration for electronics","GS mark preferred for some products"],
+        "China": ["CCC (China Compulsory Certificate) for regulated products","CNCA registration","CFDA (now NMPA) for food/cosmetics/pharma","CIQ inspection at entry","Chinese label requirements (Chinese text mandatory)","GACC registration for overseas facilities"],
+        "India": ["BIS (Bureau of Indian Standards) mandatory for many products","FSSAI license for food products","CDSCO approval for drugs/cosmetics","TEC certification for telecom equipment","Environmental clearance for some goods","Customs duty varies by HSN code"],
+        "Vietnam": ["Vietnamese standards (TCVN) alignment","MIC type approval for telecom/electronics","MOH (Ministry of Health) registration for food/cosmetics","Vietnam Customs declaration","Halal certification if selling to Muslim consumers","QC/test requirements at border"],
+        "Indonesia": ["SNI (Indonesian National Standard) mandatory","BPOM registration for food, cosmetics, drugs","IPPHI permits for agricultural products","Indonesian customs declaration (PEB)","Halal certification required for Muslim market","Import recommendation from relevant ministry"],
+        "Thailand": ["Thai Industrial Standards Institute (TISI) certification","FDA Thailand registration for food, cosmetics, drugs","AOAC/CODEX compliance for food","Thai customs declaration","Thai language label requirement","Plant quarantine import permit"],
+        "Brazil": ["INMETRO certification for many products","ANVISA registration for food, cosmetics, drugs","MAPA inspection for agricultural products","Brazilian customs (SISCOMEX) declaration","ABNT standards alignment","看懂Portuguese label requirement"],
+        "Colombia": ["INVIMA registration for food, cosmetics, pharma","ICULTURA for cultural products","Colombia customs declaration (DUA)","SIC certification for consumer products","ICA phytosanitary certificate for agriculture","Resolution 1400 compliance"],
+        "Argentina": ["ANMAT registration for food, cosmetics, drugs","SENASA for agricultural/livestock imports","IRAM standards where applicable","Argentine customs (MALLA) declaration","Spanish/Portuguese label requirement","Certificate of Free Sale often required"],
+        "South Korea": ["KCs mark mandatory for safety-regulated products","MFDS (KFDA) registration for food/cosmetics/drugs","Korean customs declaration","KC certification for electronics","KS standards alignment","Korean language label required"],
+        "Japan": ["PSE mark for electronics ( DENAN )","JIS mark for industrial products","MHWL (PMDA) registration for pharma/cosmetics","Japanese customs declaration","Japanese Industrial Standards (JIS) alignment","Japanese language label mandatory"],
+        "Australia": ["ACCC product safety requirements","TGA registration for therapeutic goods","APVMA for agricultural chemicals","Australian customs Tariff classification","C-Tick for EMC compliance","Australian Standards (AS) alignment"],
+        "Canada": ["Health Canada approval for food, cosmetics, drugs","ISED certification for electronics","CFIA inspection for agricultural products","CBSA customs declaration","Canadian Standards Association (CSA)","Bilingual (EN/FR) label required"],
+        "France": ["CE marking mandatory","DGCCRF for food and consumer products","ANSM for pharmaceuticals","French customs via EU Single Window","EUR.1 if preferential access applies","French language label for consumer products"],
+        "Italy": ["CE marking mandatory","Italian Customs via EU Single Window","ISS for food safety","AIFA for pharmaceuticals","CE declaration of conformity","Italian language label required"],
+        "Netherlands": ["CE marking mandatory","NVWA for food safety","Dutch Customs via EU Single Window","RIVM/relevant agencies","EUR.1 if applicable","English widely accepted but local label helpful"],
+        "Portugal": ["CE marking mandatory","ASAE for food safety","Portuguese Customs via EU Single Window","INFARMED for health products","EUR.1 if applicable","Portuguese label for consumer products"],
+        "Poland": ["CE marking mandatory","GIS (Sanitary Inspectorate) for food","Polish Customs via EU Single Window","URZ atomic energy commission where relevant","EUR.1 if applicable","Polish language label required"],
+        "UAE": ["ESMA conformity certification","UAE Customs duties (5% standard)","GCC conformity for Gulf region","Halal certification strongly recommended","Dubai Municipality approval for food","Arabic label required"],
+        "Saudi Arabia": ["SASO certification mandatory","SFDA registration for food, cosmetics, pharma","Saudi customs declaration","Halal certification mandatory for many products","SABER platform for product registration","Arabic label required"],
+        "South Africa": ["NRCS letter of authority for regulated products","SABS certification","FSSAI equivalent for food","South African Revenue Service (SARS) customs","Product Safety Regulations compliance","SA language requirements (EN/AF)"],
+        "Nigeria": ["SON (Standard Organization of Nigeria) CAP","NAFDAC registration for food, cosmetics, drugs","Nigerian Customs Service declaration","CompulsoryConformity (PC) certificate via SONCAP","Phytosanitary certificate for agriculture","Nigerian labels in English"],
+        "Egypt": ["EOS (Egyptian Organization for Standardization) standards","Egyptian customs declaration","EOSQ hala for cosmetics","GOEIC import inspection","Egyptian label requirements (Arabic)","Pre-shipment inspection sometimes required"],
+        "Turkey": ["CE marking accepted","TSE (Turkish Standards Institute) certification","Ministry of Health for pharmaceuticals","Turkish customs declaration (GTIP)","Turkish language label required","Cryptocurrency not regulated — standard trade rules"]
+    };
+
+    var networkData = {
+        "USA": [{name:"US Commercial Service",type:"Government",desc:"Federally funded export assistance — trade specialists in 100+ US cities and 80+ countries"},{name:"Trade Shows: ASD",type:"Trade Show",desc:"Las Vegas and Orlando consumer goods trade shows — 45,000+ buyers"},{name:"NAFTA Works",type:"Export Forum",desc:"EU-Mexico trade network for Filipino exporters"}],
+        "Philippines": [{name:"DTI Export Marketing Bureau",type:"Government",desc:"Philippine export promotions, market research, trade missions"},{name:"PhILEXPORT",type:"Export Association",desc:"Philippine Exporters Confederation — 8,000+ member companies"},{name:"CITEM",type:"Government",desc:"Center for International Trade Expositions and Missions — organizes overseas shows"},{name:"AFEX (Agriculture Fair)",type:"Trade Show",desc:"Annual agriculture trade fair in Manila, buyers from ASEAN + China"},{name:"Google Business Profile",type:"Online",desc:"Free visibility for distributors searching online — claim your listing"}],
+        "Mexico": [{name:"BANCOMEXT",type:"Government",desc:"Mexico export development bank — financing, guarantees, and trade intelligence"},{name:"ProMexico (now SE)",type:"Government",desc:"Trade and investment promotion via Secretaría de Economía"},{name:"ANVISA trade events",type:"Export Forum",desc:"Annual export forums connecting LatAm producers with global buyers"},{name:"ANTAD",type:"Trade Association",desc:"National retail association — connects with major Mexican retailers"},{name:"CPNI export",type:"Online",desc:"Connect with Filipino staff agencies expanding to Mexico"}],
+        "Spain": [{name:"ICEX Spain Trade & Investment",type:"Government",desc:"Spanish export agency — market studies, trade missions, subsidies for exhibitors"},{name:"ESCA Certification",type:"Certification",desc:"European Chamber certification to access EU buyer networks"},{name:"FEMP Spanish Export Forum",type:"Export Forum",desc:"Annual forum for Spanish businesses going international"}],
+        "UK": [{name:"DIT (Dept for Intl Trade)",type:"Government",desc:"UK export promotion — now merged into DBT — trade advisors in all regions"},{name:"UKIFS Export Network",type:"Export Forum",desc:"International Finance Society network for UK-based international traders"},{name:"London Food Expo",type:"Trade Show",desc:"Major food and beverage trade show attracting global buyers"}],
+        "Germany": [{name:"Germany Trade & Invest (GTAI)",type:"Government",desc:"German federal trade promotion — market data, legal advice, location services"},{name:"ANUGA Food Expo",type:"Trade Show",desc:"World's largest food fair in Cologne — 7,000+ exhibitors, 160+ countries"},{name:"AHK Germany",type:"Chamber",desc:"German-ASEAN Chambers of Commerce — business matching services"}],
+        "China": [{name:"CCPIT",type:"Government",desc:"China Council for Promotion of International Trade — trade fairs, certificates, matchmaking"},{name:"Canton Fair",type:"Trade Show",desc:"Guangzhou Export Fair — largest in China, 24,000+ exhibitors twice yearly"},{name:"China International Import Expo",type:"Trade Show",desc:"Shanghai CIIE — annual import-focused show, government-backed buyer invites"},{name:"Alibaba B2B",type:"Online",desc:"Platform for finding verified Chinese distributors and buyers"}],
+        "India": [{name:"FIEO",type:"Export Association",desc:"Federation of Indian Export Organisations — 25,000+ members, global network"},{name:"APEDA",type:"Government",desc:"Agricultural and Processed Food Products Export Development Authority"},{name:"India International Trade Fair",type:"Trade Show",desc:"Annual ITF in New Delhi — major B2B and B2C event"}],
+        "Vietnam": [{name:"VCCI",type:"Chamber",desc:"Vietnam Chamber of Commerce and Industry — networking events and trade missions"},{name:"Vietnam Export Forum",type:"Export Forum",desc:"Annual forum connecting Vietnamese exporters with global buyers"},{name:"SECC Trade Shows",type:"Trade Show",desc:"Saigon Exhibition & Convention Center — major consumer goods shows"}],
+        "Indonesia": [{name:"BKPM",type:"Government",desc:"Investment coordinating board — export and investment promotion"},{name:"INATRADE",type:"Government",desc:"Indonesian Trade Fair — international buyer matchmaking"}],
+        "Thailand": [{name:"DITP Thailand",type:"Government",desc:"Department of International Trade Promotion — trade missions, databases"},{name:"Thailand Export Forum",type:"Export Forum",desc:"Annual event connecting Thai exporters with global buyers"}],
+        "Brazil": [{name:"AEB",type:"Export Association",desc:"Brazilian Exporters Association — certificates, trade missions, market intelligence"},{name:"Brazil Trade Portal",type:"Government",desc:"Ministry of Economy international trade info and customs guidance"}],
+        "Colombia": [{name:"ProColombia",type:"Government",desc:"Colombian export and tourism agency — trade missions, buyer introductions"},{name:"Analdex",type:"Export Association",desc:"National Exporters Association of Colombia"}],
+        "Argentina": [{name:"AAEI Argentina",type:"Export Association",desc:"Argentine Association of Exporters — networking and trade facilitation"}],
+        "South Korea": [{name:"KITA",type:"Trade Association",desc:"Korea International Trade Association — trade fairs, matchmaking services"},{name:"KOTRA",type:"Government",desc:"Korea Trade-Investment Promotion Agency — global network"}],
+        "Japan": [{name:"JICA",type:"Government",desc:"Japan International Cooperation Agency — development trade, ASEAN networks"},{name:"JETRO",type:"Government",desc:"Japan External Trade Organization — import support and matchmaking"}],
+        "Australia": [{name:"Austrade",type:"Government",desc:"Australian Trade and Investment Commission — export assistance worldwide"},{name:"AIO",type:"Online",desc:"Australian Industry Overview — maps supplier landscapes"}],
+        "Canada": [{name:"EDC Canada",type:"Government",desc:"Export Development Canada — financing, insurance, trade knowledge"},{name:"Canadian Trade Commissioner Service",type:"Government",desc:"Federal trade officials in 100+ cities — free market intelligence"}],
+        "France": [{name:"Business France",type:"Government",desc:"French export agency — trade missions, buyer connections, market studies"},{name:"Sopexa",type:"Trade Association",desc:"Food and beverage export promotion for French products worldwide"}],
+        "Italy": [{name:"ICE Agency",type:"Government",desc:"Italian Trade Agency — investment and export promotion"},{name:"Confindustria",type:"Chamber",desc:"Major Italian industry confederation — global networking events"}],
+        "Netherlands": [{name:"RVO",type:"Government",desc:"Netherlands Enterprise Agency — subsidies, export help, trade missions"},{name:"DutchTrade Portal",type:"Online",desc:"Online platform connecting Dutch exporters with international buyers"}],
+        "Portugal": [{name:"AICEP",type:"Government",desc:"Portuguese Agency for Investment and External Trade"},{name:"IEP",type:"Online",desc:"Instituto de Exportação de Portugal — trade events and matchmaking"}],
+        "Poland": [{name:"PARP",type:"Government",desc:"Polish Agency for Enterprise Development — export training and subsidies"},{name:"LewiT",type:"Online",desc:"Polish export network — trade events and market intelligence"}],
+        "UAE": [{name:"Dubai Exports",type:"Government",desc:"Dubai government export development — training and buyer connections"},{name:"DCCI",type:"Chamber",desc:"Dubai Chamber of Commerce and Industry — networking events"}],
+        "Saudi Arabia": [{name:"SAGIA",type:"Government",desc:"Saudi Arabian General Investment Authority — now MOMD — investment and trade facilitation"}],
+        "South Africa": [{name:"SAExport",type:"Government",desc:"South African Revenue Service export promotion arm"},{name:"Export Opportunities SA",type:"Online",desc:"Online portal for South African export opportunities"}],
+        "Nigeria": [{name:"NEPC",type:"Government",desc:"Nigerian Export Promotion Council — export zones, trade info"},{name:"NACC",type:"Chamber",desc:"Nigerian Association of Chambers of Commerce — networking events"}],
+        "Egypt": [{name:"GAFI",type:"Government",desc:"General Authority for Investment — export and investment promotion"},{name:"Cairo Chamber",type:"Chamber",desc:"Cairo Chamber of Commerce — major networking events"}],
+        "Turkey": [{name:"IGEME",type:"Government",desc:"Institute of Export Promotion — now under Ministry — training and trade missions"},{name:"TOBB",type:"Chamber",desc:"Union of Chambers and Commodity Exchanges of Turkey — major network"}]
+    };
+
+    function showScreen(id) {
+        document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
+        var el = document.getElementById(id);
+        if(el) { el.classList.add("active"); }
+        window.scrollTo(0,0);
+    }
+
+    function showLoading(text) {
+        var lt = document.getElementById("loading-text");
+        if(lt) lt.innerHTML = (text || "Searching trade databases") + '<span class="loading-dots"></span>';
+        var lo = document.getElementById("loading");
+        if(lo) lo.classList.add("active");
+    }
+    function hideLoading() {
+        var lo = document.getElementById("loading");
+        if(lo) lo.classList.remove("active");
+    }
+
+    document.getElementById("from-country").addEventListener("change", function() {
+        fromCountry = this.value;
+        document.getElementById("btn-from-next").disabled = !fromCountry;
+    });
+    document.getElementById("to-country").addEventListener("change", function() {
+        toCountry = this.value;
+        document.getElementById("btn-to-next").disabled = !toCountry;
+    });
+
+    function goFrom() {
+        if(!fromCountry) return;
+        showScreen("screen-to");
+    }
+    function goTo() {
+        if(!toCountry) return;
+        showScreen("screen-product");
+    }
+    function setProduct(p) {
+        document.getElementById("product-input").value = p;
+        product = p;
+    }
+    function goResults() {
+        product = document.getElementById("product-input").value.trim();
+        if(fromCountry === toCountry) {
+            alert("Origin and target market are the same. Please choose different countries.");
+            return;
+        }
+        showScreen("screen-results");
+        buildResults();
+    }
+    function resetForm() {
+        fromCountry = "";
+        toCountry = "";
+        product = "";
+        document.getElementById("from-country").value = "";
+        document.getElementById("to-country").value = "";
+        document.getElementById("product-input").value = "";
+        document.getElementById("btn-from-next").disabled = true;
+        document.getElementById("btn-to-next").disabled = true;
+    }
+    function restart() {
+        resetForm();
+        showScreen("screen-welcome");
+    }
+
+    function getTradeAgreement(from, to) {
+        var agreements = {
+            "Philippines-USA": ["US-Philippines Trade and Investment Framework Agreement (TIFA) — active since 1989","Philippine Benefits Under Generalized System of Preferences (GSP) — US renewed duty-free access in 2024","US-Philippines Mutual Recognition Agreement on Conformity Assessment","No comprehensive free trade agreement currently in force — ongoing FTA negotiations paused","US International Development Finance Corporation (DFC) active in Philippines","Filipino workers under US visa programs (H-1B, L-1) generate cross-border business ties"],
+            "Philippines-Spain": ["ASEAN-Spain Framework Cooperation Agreement","EU GSP+ scheme — Philippines benefits from preferential tariffs on 6,274 products","EU-Philippines Partnership and Cooperation Agreement (PCA) — signed 2012, in force 2018","EU GSP+ requires Philippines to ratify 27 core UN conventions — mostly compliant","EU-Philippines Free Trade Agreement negotiations ongoing since 2015","Spanish Companies investing heavily in Philippine BPO, real estate, and infrastructure"],
+            "Philippines-EU": ["EU GSP+ — Philippines enjoys reduced tariffs on 6,274 product lines entering EU","EU-Philippines Partnership and Cooperation Agreement (PCA) — in force since 2018","EU-Philippines FTA negotiations ongoing (launched 2016) — no final agreement yet","EU provides €325M development aid annually through various programs","Philippines has access to EU Generalized System of Preferences Plus","No tariff on most Philippine exports under GSP+ but rules of origin apply"],
+            "Mexico-USA": ["USMCA (United States-Mexico-Canada Agreement) — in force July 2020, replaced NAFTA","USMCA: 75% of auto content must be made in US/Mexico/Canada for duty-free","USMCA: 30% of auto labor must be done by workers earning ≥$16/hr","Mexican goods have broad duty-free access to US market under USMCA","Mexico is #1 export market for US goods — $323B in US exports 2023","Energy provisions in USMCA favor US companies in Mexican energy sector"],
+            "Mexico-EU": ["EU-Mexico Global Agreement — modernized version signed 2020, pending final ratification","EU-Mexico trade agreement would cover 99% of goods — major tariff reductions expected","EU currently provides GSP+ access to Mexico — 0% duty on many products","Mexico has preferential access to EU market for agricultural products","EU FDI into Mexico: €180B cumulative — major Spanish banks, French telecoms","Pending EU-Mexico agreement would add investment protection chapter"],
+            "Spain-EU": ["Spain is EU member — full access to EU Single Market (27 countries, 450M people)","EU Customs Union — common external tariff, no internal tariffs","EU allows Spanish goods to move freely across 27 EU countries","Spain participates in EU trade agreements independently when applicable","EUR.1 certificate allows preferential tariffs with partner countries","Spain has bilateral agreements through EU framework"],
+            "Mexico-Philippines": ["ASEAN-Mexico trade relationship via ASEAN Framework Agreement","No bilateral free trade agreement currently in force","Mexico is the largest Spanish-speaking market outside EU","Pacific Alliance trade bloc (Mexico, Colombia, Chile, Peru) — potential for expansion","Filipino-Mexican bilateral trade commission meets periodically","Tequila, fashion, and food sectors show growth potential for Filipino MSMEs"],
+            "China-USA": ["US-China Phase One Trade Agreement — January 2020","Phase One: China committed to buy $200B more US goods over 2020-2021","Ongoing Section 301 tariffs — 25% on ~$370B of Chinese goods","USexport.gov provides China market data and trade leads","China uses retaliatory tariffs on US goods — trade tensions ongoing","US Customs enforces Section 301 tariffs with bond requirements"],
+            "India-USA": ["US-India Trade Policy Forum — regular ministerial meetings","India's GSP benefits suspended by US in 2019 — not yet reinstated","India-US bilateral trade: $128B total (2022) — growing","No comprehensive free trade agreement yet — FTA discussions ongoing since 2000s","Bilateral Investment Treaty (BIT) negotiations ongoing","US-India CEO Forum and US-India Trade Policy Forum active"],
+            "China-EU": ["EU-China Comprehensive Agreement on Investment (CAI) — agreed in principle Dec 2020, stalled","EU currently applies Generalised Scheme of Preferences (GSP) to China","EU-China Investment Agreement negotiations frozen over human rights concerns","EU applies anti-dumping duties on Chinese steel, solar panels, ceramics","China is EU's largest trading partner — €694B in goods 2022","EU Foreign Investment Screening Regulation affects Chinese acquisitions"],
+            "India-EU": ["EU-India Free Trade Agreement — negotiations resumed 2022 after 8-year gap","EU-India trade: €120B annually — significant potential for growth","Bilateral Investment Treaty (BIT) negotiations ongoing","EU GSP+ does not currently apply to India (suspended 2019)","EU-India Connectivity Partnership — infrastructure cooperation","Scope: tariffs, Geographical Indications, sustainable trade"]
+        };
+        var key = from + "-" + to;
+        var reverseKey = to + "-" + from;
+        if(agreements[key]) return agreements[key];
+        if(agreements[reverseKey]) return agreements[reverseKey];
+        // Generate based on trade blocks
+        var euCountries = ["Spain","Germany","France","Italy","Netherlands","Portugal","Poland"];
+        var aseanCountries = ["Philippines","Vietnam","Indonesia","Thailand"];
+        var latam = ["Mexico","Colombia","Argentina","Brazil"];
+        var isEuFrom = euCountries.includes(from);
+        var isEuTo = euCountries.includes(to);
+        if(isEuFrom && aseanCountries.includes(to)) {
+            return ["EU-ASEAN Trade and Investment Agreement — negotiations ongoing since 2016","EU provides GSP+ tariff preferences to ASEAN countries","EU FDI in ASEAN: €270B cumulative — largest investor in region","EUR.1 certificate enables preferential access when origin rules met","EU-ASEAN FTA would cover goods, services, investment, sustainability","EU Chamber of Commerce in each ASEAN country — local market intelligence"];
+        }
+        if(isEuFrom && latam.includes(to)) {
+            return ["EU-Latin America trade framework agreements at various stages","EU-Mercosur Association Agreement — concluded 2019, not yet ratified","EU providing GSP preferences to most Latin American countries","EU FDI in Latin America: €800B+ — largest foreign investor in region","EU-Latin America Investment Facilitation Agreement in development","No comprehensive EU-LatAm FTA yet — structural tariff barriers remain"];
+        }
+        if(aseanCountries.includes(from) && latam.includes(to)) {
+            return ["No ASEAN-Latin America bilateral trade agreement currently","Pacific Alliance (Mexico, Colombia, Chile, Peru) — ASEAN dialogue partner","ASEAN-Latin America trade growing at 8% annually","Regional Comprehensive Economic Partnership (RCEP) — Asia-Pacific","ASEAN Framework Agreement on Services covers some trade flows","Tariffs vary significantly by product — need case-by-case HS code check"];
+        }
+        return [
+            "Check " + from + " Export Promotion Agency for active trade agreements",
+            "Verify " + to + " customs tariff schedule for your specific product (HS code)",
+            "Consider EUR.1 certificate if " + from + " has EU association agreement",
+            "Review WTO bound tariff rates as baseline for both countries",
+            "Contact trade attaché at nearest embassy for current agreement status",
+            "Use ITC Market Analysis Tools (trademap.org) for duty rates by HS code"
+        ];
+    }
+
+    function getAction(from, to, product) {
+        var actions = {
+            "Philippines-USA": "Contact PTIC-USA (Philippine Trade and Investment Center in Los Angeles or New York) for one-on-one market entry support — they offer free trade counseling for Filipino exporters.",
+            "Philippines-Spain": "Register with PhILEXPORT and apply for the Shared Services Export program — Spain is a priority market for Filipino goods under the DTI export diversification strategy.",
+            "Mexico-Philippines": "Apply to the Philippine Trade Training Center for a Mexico market immersion program, then explore the Philippine-Mexico Business Council for warm introductions.",
+            "China-EU": "Get CE marking and ensure your factory passes an EU audit — then register with your local China trade office for distribution partners in Shanghai and Guangzhou.",
+            "Mexico-USA": "Leverage USMCA rules of origin to qualify for duty-free access — work with a US customs broker in Laredo or El Paso to navigate cross-border logistics.",
+            "default": "Contact " + from + "'s national export promotion agency for a free market consultation — they typically offer matchmaking with " + to + " buyers within 30 days."
+        };
+        var key = from + "-" + to;
+        return actions[key] || actions["default"];
+    }
+
+    async function buildResults() {
+        showLoading("Researching trade agreements<span class='loading-dots'></span>");
+        await new Promise(r => setTimeout(r, 400));
+
+        var flagsEl = document.getElementById("results-flags");
+        flagsEl.innerHTML = '<span class="flag">' + (countryFlags[fromCountry]||"🏳️") + '</span> <span>from</span> <span class="flag">' + (countryFlags[toCountry]||"🏳️") + '</span> <span>to</span>';
+        document.getElementById("results-headline").textContent = fromCountry + " → " + toCountry;
+        document.getElementById("results-sub").textContent = product ? "Exporting: " + product : "General export overview";
+        document.getElementById("target-city-label").textContent = toCountry;
+
+        // Trade agreements
+        var tradeAgreements = getTradeAgreement(fromCountry, toCountry);
+        var tradeHtml = "";
+        for(var i=0; i<tradeAgreements.length; i++) {
+            var item = tradeAgreements[i];
+            var icon = "📋";
+            if(item.includes("FTA")||item.includes("Agreement")||item.includes("USMCA")||item.includes("EU")) icon = "✅";
+            if(item.includes("tariff")||item.includes("duty")||item.includes("GSP")||item.includes("preferential")) icon = "💰";
+            if(item.includes("ongoing")||item.includes("negotiat")||item.includes("suspended")) icon = "⏳";
+            if(item.includes("FDI")||item.includes("investment")||item.includes("billion")) icon = "💼";
+            tradeHtml += '<li class="result-list-item"><span class="bullet">' + icon + '</span> ' + item + '</li>';
+        }
+        document.getElementById("trade-content").innerHTML = '<ul class="result-list" style="margin:0; padding:0;">' + tradeHtml + '</ul>';
+
+        // Cities
+        var cities = cityData[toCountry] || cityData["USA"];
+        var citiesHtml = "";
+        for(var ci=0; ci<cities.length; ci++) {
+            citiesHtml += '<span class="result-tag"><span class="tag-icon">📍</span> ' + cities[ci] + '</span>';
+        }
+        document.getElementById("cities-content").innerHTML = citiesHtml;
+
+        // Import rules
+        var rules = importRules[toCountry] || ["Check " + toCountry + " customs authority for import requirements","Determine HS (Harmonized System) code for your product","Verify product-specific certifications with local agent","Register with national standards body if applicable"];
+        var importHtml = "";
+        for(var ri=0; ri<rules.length; ri++) {
+            var rule = rules[ri];
+            var icon = "📄";
+            if(rule.includes("registration")||rule.includes("approval")||rule.includes(" license")) icon = "🛡️";
+            if(rule.includes("customs")||rule.includes("tariff")||rule.includes("declaration")) icon = "🏛️";
+            if(rule.includes("mark")||rule.includes("standard")||rule.includes("certification")) icon = "🏅";
+            if(rule.includes("label")||rule.includes("language")) icon = "🏷️";
+            importHtml += '<li class="result-list-item"><span class="bullet">' + icon + '</span> ' + rule + '</li>';
+        }
+        document.getElementById("import-content").innerHTML = '<ul class="result-list" style="margin:0; padding:0;">' + importHtml + '</ul>';
+
+        // Networks
+        var networks = networkData[toCountry] || [{name:"National Export Promotion Agency of " + toCountry,type:"Government",desc:"Government trade promotion body for " + toCountry}, {name:toCountry + " Chamber of Commerce",type:"Chamber",desc:"Business network connecting foreign suppliers with local buyers"},{name:"TradeShow Database",type:"Online",desc:"Use tradeshowbuddy.com or eventbrite.com to find relevant shows in " + toCountry}];
+        var netHtml = "";
+        for(var ni=0; ni<networks.length; ni++) {
+            var net = networks[ni];
+            var typeColor = net.type === "Government" ? "color:var(--accent);" : net.type === "Trade Show" ? "color:var(--orange);" : net.type === "Export Forum" ? "color:var(--primary);" : "color:var(--text-secondary);";
+            netHtml += '<div style="padding:12px 0; border-bottom:1px solid var(--border);">';
+            netHtml += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">';
+            netHtml += '<span style="font-size:16px;font-weight:700;">' + net.name + '</span>';
+            netHtml += '<span style="font-size:10px;font-weight:700;background:var(--bg-secondary);padding:2px 8px;border-radius:8px;' + typeColor + '">' + net.type + '</span>';
+            netHtml += '</div>';
+            netHtml += '<div style="font-size:12px;color:var(--text-secondary);">' + net.desc + '</div></div>';
+        }
+        if(networks.length === 0) netHtml = '<div class="no-results">No network data available for this market yet.</div>';
+        document.getElementById("network-content").innerHTML = netHtml;
+
+        // Action
+        document.getElementById("action-text").textContent = getAction(fromCountry, toCountry, product);
+
+        hideLoading();
+    }
+    </script>
+</body>
+</html>
