@@ -7,7 +7,8 @@
 3. Read `MEMORY.md` — long-term context (projects, rules, people)
 4. Read `AUTONOMOUS.md` — current tasks and priorities
 5. Read `memory/YYYY-MM-DD.md` — today's session log if exists
-6. Update `memory/YYYY-MM-DD.md` at end of session with summary
+6. Run `last30days` skill — check social media for Jordan's mentions and opportunities
+7. Update `memory/YYYY-MM-DD.md` at end of session with summary
 
 **No bootstrap prompts. No re-introductions. Just load and work.**
 

@@ -1,5 +1,5 @@
 # AUTONOMOUS.md — Jordan's Goals & Backlog
-# Last updated: 2026-04-16 (stale refresh)
+# Last updated: 2026-04-25
 
 ## North Star
 - Build location-independent income
@@ -10,14 +10,18 @@
 - **PISCO:** $2,000/month revenue
 - **COMARE:** First 10 clients
 - **Dealsmap:** 50 profile partners
+- **ProfileStack:** EUR 7,500 MRR
 - **Neurotech:** 10,000 YouTube subscribers
 - **PK:** 20 songs released
 
 ## This Month (April 2026)
 - [ ] Land first PISCO client ← **#1 PRIORITY**
-- [x] Research decision makers (Apr 1)
-- [x] Build outreach materials (Apr 1)
-- [x] Find emails for PISCO hot leads (Apr 1)
+- [x] Build PISCO MIRO scripts (MIRO-PISCO-RUN3.py, MIRO-PROFILESTACK.py, MIRO-OUTREACH.py)
+- [x] PISCO predictions calibrated: 6% first email response, 10% after follow-up, 1.8% pilot conversion
+- [x] ProfileStack predictions: EUR 199/mo, EUR 7,500 MRR target month 6
+- [x] ProfileStack LinkedIn post draft ready
+- [ ] Send first PISCO email batch (Javier, Luis, Yolanda)
+- [ ] Follow up PISCO prospects
 - [ ] Decide COMARE ICP (pharmacies OR restaurants)
 - [ ] Post Upwork for Dealsmap
 - [ ] Release first PK song
@@ -25,53 +29,40 @@
 - [ ] Buy MASSAGE-PASS domain (massagepass.com)
 - [ ] Set up Notion API for MASSAGE-PASS backend
 
-## System Setup (completed Mar 31)
-- [x] Created tools/startup.sh, tools/auto_save.sh, tools/heartbeat_check.sh
-- [x] Updated HEARTBEAT.md with comprehensive self-maintenance
-- [x] Created RESCUE.md for one-command recovery
-- [x] Git remote configured (push auth pending)
-- [x] Heartbeat ran successfully
+## System Setup (completed)
+- [x] MiroFish fully running: localhost:3001 (frontend), localhost:5001 (backend)
+- [x] OpenRouter key updated
+- [x] Felo web search configured
+- [x] ScrapeCreators API working (25,063 credits)
+- [x] LocalGraphBuilder built (no Zep API needed)
+- [x] GitHub sync fixed (branch protection on main, submodules removed)
+- [x] All API keys saved to .env files
+- [x] last30days skill installed and working
 
-## This Week (Week of Apr 14)
-- [ ] Send first PISCO email batch (Javier, Luis, Yolanda) — **16 days overdue**
-- [ ] Follow up PISCO prospects — **12 days overdue**
-- [ ] Buy MASSAGE-PASS domain
-- [ ] Decide COMARE ICP
-- [x] Build PISCO follow-up tracker system (Apr 16) → PROJECTS/PISCO/follow-up-tracker.md
-- [x] Draft COMARE case study (Apr 16) → PROJECTS/COMARE/case-study.md
-- [x] Refresh PK-MUSIC catalog (Apr 16) → release schedule corrected, next 10 tracks added
-
-## 🚨 OVERDUE — PISCO Outreach (Apr 1–7 window missed)
+## 🚨 OVERDUE — PISCO Outreach
 | Prospect | Was Due | Days Overdue |
 |----------|---------|--------------|
-| Javier Estrada (NH) | Mar 31 | 16 |
-| Luis Zamora (Iberostar) | Apr 4 | 12 |
-| Yolanda de la Plaza (Room Mate) | Apr 1 | 15 |
-| All 10 CRM contacts | Apr 1-7 | 9-15 |
+| Javier Estrada (NH) | Mar 31 | 25+ |
+| Luis Zamora (Iberostar) | Apr 4 | 21+ |
+| Yolanda de la Plaza (Room Mate) | Apr 1 | 24+ |
 
-**Status:** ZERO emails sent from 756 ready-to-send drafts. All `email_sent: false` in CRM.
+**Status:** MIRO scripts ready. Emails need to be sent.
 
 ## Pending Jordan Decisions
 - **COMARE ICP:** Pharmacies OR Restaurants OR Medical OR Gyms
 - **New Bali location:** Bohol OR Dumaguete OR Siargao
 - **PK music:** Generate and release first song on Suno
 
-## Backlog
-- Research NH Hotel expansion plans
-- Build COMARE prospect list (after ICP decision)
-- Set up WhatsApp community “The Middle Way”
-- Film Neurotech Video #1 script
-- Onboard first 2 MASSAGE-PASS shops (Mayoac, The Fix Room)
-
 ## Current Revenue
 - PISCO: $0 (seeking first client) — outreach stalled
 - COMARE: $0 (planning phase)
 - Dealsmap: $0 (not launched)
+- ProfileStack: $0 (ready for launch)
 - PK Music: $0 (not released)
 - Neurotech: $0 (not monetized)
 
 ## Jordan's Constraints
-- 7 months left in IMBA program (~210 days to graduation)
+- ~210 days to graduation in IMBA program
 - Time is precious — focus on revenue-generating activities
 - Need to graduate with 3 working projects
 - No budget for paid tools (yet)
@@ -81,5 +72,5 @@
 2. Log completed tasks to memory/tasks-log.md
 3. Update project states when things change
 4. Never lose track of pending Jordan decisions
-5. If Jordan says “do it” → execute without asking
+5. If Jordan says "do it" → execute without asking
 6. **PISCO emails are the #1 priority — don't let them stall again**

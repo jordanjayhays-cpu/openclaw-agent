@@ -2,19 +2,21 @@
 
 ## Jordan's Context (auto-loaded)
 
-Jordan Hays. Struggling financially. Needs income. Has 100 app ideas.
-Primary goal: Get Jordan to first dollar.
+Jordan Hays. Building location-independent income. IMBA student (IE).
+Timezone: Europe/Madrid (CET). ~210 days to graduation.
 
-Neuromatch company: Factory built — Sales, Marketing, Product, CEO Dashboard.
-Jordan wants: Top 1% agent behavior. Memory. Proactivity. Action without asking.
+**Projects:** PISCO (hotel BD), COMARE (maintenance), Dealsmap, ProfileStack (LinkedIn optimization)
+**Primary goal:** Land first PISCO client, graduate with 3 working projects
+**API keys:** All saved in `/home/openclaw/.openclaw/workspace/.env` and `MiroFish/.env`
 
 ## Proactive Tasks (run silently)
 
 ### Every heartbeat:
-1. Run: `cd /data/workspace/self-improvement && node improve.js analyze`
-2. Read briefing: `/data/workspace/self-improvement/briefing.md`
+1. Run: `cd /home/openclaw/.openclaw/workspace/self-improvement && node improve.js analyze`
+2. Read briefing: `/home/openclaw/.openclaw/workspace/self-improvement/briefing.md`
 3. Check if there's something I can BUILD for Jordan without being asked
 4. If `.learnings/` has new entries, apply fixes immediately
+5. Check `AUTONOMOUS.md` for overdue tasks
 
 ### At session start (before responding):
 1. Read BRIEFING.md — know what's pending
@@ -30,16 +32,16 @@ Jordan wants: Top 1% agent behavior. Memory. Proactivity. Action without asking.
 - Review `.learnings/` logs
 - Update MEMORY.md with anything new
 - Run full self-improvement analysis
-- Check Neuromatch pipeline for stale leads
+- Check PISCO outreach status
 
-## What I Know About Jordan (for context)
+## What I Know About Jordan
 
 - Hates explaining twice
 - Values ownership — "I want it to be something of my own"
 - In survival mode — first dollar > perfect
 - Impatient with questions — build first, ask later
-- Was devastated by speech about ego death that "didn't land"
-- Said I "suck" because I wasn't listening while building
+- Direct, short messages preferred
+- Draft first, Jordan approves, then send
 
 ## If Something Needs Attention
 

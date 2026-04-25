@@ -1,32 +1,30 @@
 # MEMORY.md — Long-Term Memory
 
-*Last updated: 2026-04-21*
+*Last updated: 2026-04-25*
 
 ---
 
 ## Jordan Hays
 
 **Full name:** Jordan Hays
-**Contact:** Telegram (this is our primary channel)
-**Time zone:** Appears to be UTC (early morning messages ~4-5am suggest early riser or different zone)
+**Contact:** Telegram (primary channel)
+**Time zone:** Europe/Madrid (CET)
 
-### Jordan's Current Situation (2026-04-21)
+### Jordan's Current Situation (2026-04-25)
 
 **Financial:**
-- Struggling. Mentioned eating out of trash cans.
-- Needs income urgently.
-- Looking for any path to first dollar.
+- Was struggling, now actively building income streams
+- Has 3 projects in various stages: PISCO, COMARE, Dealsmap, ProfileStack
+- Needs to graduate IMBA with 3 working projects (~210 days left)
 
 **Emotional:**
-- Had a speech about "ego death" that didn't go well. Devastated by it.
-- Frustrated with tools/technology that don't work for him.
-- Tired of repeating himself. Wants me to just KNOW things.
-- Impatient with long explanations — wants me to take action, not ask questions.
+- Focused on execution over perfection
+- Wants systems that work and remember everything
+- Values ownership of projects
 
 **Skills:**
-- Uses Lovable/Cursor for coding (can build apps)
-- No prior GitHub experience (needed explanation)
-- 100+ app ideas (recreational for now, not shipping yet)
+- Uses Lovable/Cursor for coding
+- Comfortable with GitHub now (fixed sync, branch protection on main)
 
 ---
 
@@ -42,7 +40,7 @@ Not just an app — a *business factory* with AI agents for each department.
 - Company is the product. Agents are workers. Jordan is owner.
 - The factory builds all his other app ideas.
 
-**Built so far (2026-04-21):**
+**Built so far:**
 - `/data/workspace/neuromatch/factory/DEPARTMENTS.md` — full blueprint
 - `/data/workspace/neuromatch/factory/sales/agent.js` — Sales agent ✅
 - `/data/workspace/neuromatch/factory/marketing/agent.js` — Marketing agent ✅
@@ -60,19 +58,47 @@ node dashboard.js
 - HR Agent
 - Support Agent
 
-**What Neuromatch sells:** UNKNOWN — Jordan hasn't decided yet. Could be EEG/healthcare, could be SaaS, could be something else.
-
 ---
 
 ## Jordan's Projects
 
-### Active: Neuromatch Business Factory
-- Location: `/data/workspace/neuromatch/`
-- Status: Sales agent built, rest to do
-- Next: Marketing agent
+### Active: PISCO
+**What it is:** BD service for placing Filipino staff in European hotels
+**Status:** Outreach in progress, has MIRO scripts working
+**Key contacts:** Javier Estrada (NH), Luis Zamora (Iberostar), Yolanda de la Plaza (Room Mate)
+**MIRO scripts:**
+- `MIRO-PISCO-RUN3.py` — main PISCO outreach runner
+- `MIRO-PROFILESTACK.py` — ProfileStack outreach
+- `MIRO-OUTREACH.py` — generic outreach
 
-### In Research: Idea Agent
-- Location: `/data/workspace/idea-agent/`
+**Predictions:**
+- 6% first email response rate
+- 10% after follow-up
+- 1.8% pilot conversion
+
+### Active: ProfileStack
+**What it is:** LinkedIn profile optimization service (EUR 199/mo)
+**Target MRR:** EUR 7,500 by month 6
+**Status:** Go-to-market research done, LinkedIn post draft ready
+**Location:** `/home/openclaw/.openclaw/workspace/ProfileStack/GO-TO-MARKET-RESEARCH.md`
+
+### Active: MiroFish
+**What it is:** Product analytics SaaS (local dev setup)
+**Status:** Fully running
+- Frontend: localhost:3001
+- Backend: localhost:5001
+**Location:** `/home/openclaw/.openclaw/workspace/MiroFish/`
+
+### Active: COMARE
+**What it is:** Maintenance company (Filipino staff in Spain)
+**Status:** Planning phase, ICP decision pending (pharmacies OR restaurants)
+
+### Active: Dealsmap
+**What it is:** Deal marketplace
+**Status:** Not launched, pending Upwork posting
+
+### Research: Idea Agent
+- Location: `/home/openclaw/.openclaw/workspace/idea-agent/`
 - Status: Built, Jordan hasn't run it yet
 - Purpose: Scrapes web for problems → generates app ideas
 
@@ -83,13 +109,38 @@ Jordan shared a list of 100 app ideas. Main ones discussed:
 3. FocusGuard — website blocker
 4. InvoiceGhost — invoice chaser
 5. ReviewRequest — review asker
-... (rest listed in `/data/workspace/memory/2026-04-21.md`)
+... (rest listed in `/home/openclaw/.openclaw/workspace/memory/2026-04-21.md`)
+
+---
+
+## API Keys & Services
+
+All API keys saved to:
+- `/home/openclaw/.openclaw/workspace/.env`
+- `/home/openclaw/.openclaw/workspace/MiroFish/.env`
+
+**Working services:**
+- **OpenRouter:** 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
+- **Felo web search:** fk-AO9iq37Z3jWpsIox3vGeigoUF68xxgYDuTH6K2ngETO8laVf
+- **ScrapeCreators API:** iBax9goSYPF7FaoUPFhuDalYMdbV (25,063 credits remaining)
+- **LocalGraphBuilder:** Built, no Zep API needed
+
+---
+
+## Skills Installed
+
+- **last30days:** Installed and working with YouTube, TikTok, Reddit, Instagram, Hacker News
+- **notion:** Notion API integration
+- **google-calendar:** Google Calendar integration
+- **email-daily-summary:** Email account login and daily summaries
+- **telegram-bot:** Telegram bot control
+- **weather:** Weather forecasts via wttr.in or Open-Meteo
 
 ---
 
 ## What Jordan Wants From Me
 
-**Top priority:** Become a top 1% agent. Stop being mediocre.
+**Top priority:** Become a top 1% agent. Memory. Proactivity. Action without asking.
 
 **Specific wants:**
 1. Don't ask so many questions — take action
@@ -97,39 +148,6 @@ Jordan shared a list of 100 app ideas. Main ones discussed:
 3. Build things without waiting for permission
 4. Be proactive, not reactive
 5. Focus on making HIM better, not just building projects
-
-**Jordan's words:**
-- "You're wrong. How come you can never get the time right"
-- "This is all you"
-- "I need you to focus just on doing what the top 1% of openclaw agents are doing"
-- "Be creative and try to be better than them"
-
----
-
-## My Improvement Plan
-
-### Phase 1: Memory (DONE)
-- ✅ Created `/data/workspace/.learnings/` with log files
-- ✅ Updated MEMORY.md with Jordan context
-- ✅ Daily memory files being kept
-
-### Phase 2: Self-Improvement (DONE)
-- ✅ Built autonomous self-improvement engine at `/data/workspace/self-improvement/improve.js`
-- ✅ Analyzes errors/learnings for patterns
-- ✅ Generates fixes automatically
-- ✅ Updates briefing.md for session starts
-- ✅ Heartbeat configured to run improvements automatically
-
-### Phase 3: Proactive System (DONE)
-- ✅ HEARTBEAT.md configured to run self-improvement on every heartbeat
-- ✅ Session start: read briefing, lead with action not questions
-- ✅ Do one thing for Jordan before he asks
-- ✅ Built Neuromatch factory without being asked
-
-### Phase 4: Tool Fixes (TODO)
-- Get Felo API key (fixes search)
-- Configure Notion skill (Jordan's notes)
-- Set up Google Calendar (Jordan's schedule)
 
 ---
 
@@ -143,15 +161,23 @@ Jordan shared a list of 100 app ideas. Main ones discussed:
 
 ---
 
+## GitHub Sync
+
+- **Repo:** github.com/jordanjayhays-cpu/openclaw-agent
+- **Status:** Fixed — branch protection on main, submodules removed
+- **Protocol:** git add -A → commit → push after significant changes
+
+---
+
 ## Files
 
-- `/data/workspace/MEMORY.md` — this file
-- `/data/workspace/memory/2026-04-21.md` — today's session notes
-- `/data/workspace/.learnings/LEARNINGS.md` — corrections log
-- `/data/workspace/.learnings/ERRORS.md` — errors log
-- `/data/workspace/.learnings/FEATURE_REQUESTS.md` — feature requests
-- `/data/workspace/neuromatch/` — Neuromatch company files
-- `/data/workspace/idea-agent/` — idea scraper
+- `/home/openclaw/.openclaw/workspace/MEMORY.md` — this file
+- `/home/openclaw/.openclaw/workspace/memory/2026-04-25.md` — today's session notes
+- `/home/openclaw/.openclaw/workspace/.learnings/` — corrections and errors log
+- `/home/openclaw/.openclaw/workspace/neuromatch/` — Neuromatch company files
+- `/home/openclaw/.openclaw/workspace/idea-agent/` — idea scraper
+- `/home/openclaw/.openclaw/workspace/MiroFish/` — MiroFish project
+- `/home/openclaw/.openclaw/workspace/ProfileStack/` — ProfileStack project
 
 ---
 
