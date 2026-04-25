@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Bali — Philippines Coliving for Digital Nomads</title>
+  <meta name="description" content="Discover the Philippines' best-kept secret for digital nomads. Beautiful, affordable coliving spaces in paradise — without the Bali crowds.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --teal: #0d9488;
+      --teal-dark: #0f766e;
+      --sand: #f5f0e8;
+      --dark: #1a1a2e;
+      --white: #ffffff;
+      --gray: #6b7280;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--sand);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: var(--white);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    nav .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--teal);
+      letter-spacing: -0.5px;
+    }
+    nav .logo span { color: var(--dark); }
+    nav .cta-btn {
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.5rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    nav .cta-btn:hover { background: var(--teal-dark); }
+
+    /* HERO */
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero .eyebrow {
+      display: inline-block;
+      background: #ccfbf1;
+      color: var(--teal-dark);
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--teal), #14b8a6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero .sub {
+      font-size: 1.15rem;
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* VIDEO PLACEHOLDER */
+    .video-section {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f766e, #134e4a);
+      color: var(--white);
+      gap: 1rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .video-placeholder:hover { opacity: 0.9; }
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .play-btn svg { fill: var(--teal); width: 28px; height: 28px; margin-left: 4px; }
+    .video-placeholder p { font-size: 1rem; font-weight: 600; opacity: 0.9; }
+    .video-placeholder small { font-size: 0.8rem; opacity: 0.7; }
+
+    /* COMING SOON */
+    .coming-soon {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 560px;
+      margin: 0 auto 5rem;
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
+    .coming-soon h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .coming-soon p { color: var(--gray); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .email-form { display: flex; gap: 0.5rem; max-width: 420px; margin: 0 auto; }
+    .email-form input {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .email-form input:focus { border-color: var(--teal); }
+    .email-form button {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .email-form button:hover { background: var(--teal-dark); }
+
+    /* LOCATION CARDS */
+    .locations { max-width: 960px; margin: 0 auto 5rem; padding: 0 2rem; }
+    .locations h2 {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .card-img {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+    }
+    .card-body { padding: 1.25rem; }
+    .card-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .card-body .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      margin-bottom: 0.75rem;
+    }
+    .tag.surf { background: #fef3c7; color: #92400e; }
+    .tag.quiet { background: #dbeafe; color: #1e40af; }
+    .tag.budget { background: #dcfce7; color: #166534; }
+    .tag.nomad { background: #fce7f3; color: #9d174d; }
+    .card-body p { font-size: 0.85rem; color: var(--gray); }
+    .card-body .stats {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f3f4f6;
+    }
+    .stat { font-size: 0.8rem; color: var(--gray); }
+    .stat strong { color: var(--dark); }
+
+    /* HOW IT WORKS */
+    .how { background: var(--white); padding: 4rem 2rem; }
+    .how-inner { max-width: 800px; margin: 0 auto; }
+    .how h2 { text-align: center; font-size: 1.6rem; font-weight: 800; margin-bottom: 2.5rem; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .step { text-align: center; }
+    .step-num {
+      width: 48px;
+      height: 48px;
+      background: var(--teal);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin: 0 auto 1rem;
+    }
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.85rem; color: var(--gray); }
+
+    /* CTA STRIP */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--teal), #14b8a6);
+      padding: 4rem 2rem;
+      text-align: center;
+      color: var(--white);
+    }
+    .cta-strip h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .cta-strip p { opacity: 0.9; margin-bottom: 1.75rem; font-size: 1.05rem; }
+    .cta-strip .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--teal);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: transform 0.2s;
+    }
+    .cta-strip .btn-white:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 640px) {
+      .steps { grid-template-columns: 1fr; gap: 1.5rem; }
+      .email-form { flex-direction: column; }
+      nav .cta-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">New<span>Bali</span></div>
+    <a href="#waitlist" class="cta-btn">Join the Waitlist</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">🏝️ Philippines — 2026</div>
+    <h1>The new Bali is<br><span class="highlight">not Bali at all.</span></h1>
+    <p class="sub">Beautiful beaches. Fiber internet. Coliving spaces from $500/mo. No crowds, no premium tourist tax. Just the Philippines' best-kept secret — and we're bringing digital nomads first.</p>
+    <a href="#waitlist" style="display:inline-block; background:var(--teal); color:#fff; padding:0.85rem 2rem; border-radius:8px; font-weight:700; text-decoration:none; font-size:1rem;">Get Early Access →</a>
+  </section>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <div class="video-wrapper">
+      <div class="video-placeholder" id="videoThumb">
+        <div class="play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p>Watch the Documentary</p>
+        <small>Coming May 2026 — How we found the next digital nomad hub</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="coming-soon" id="waitlist">
+    <h2>We're launching a coliving community.</h2>
+    <p>Be first in line for early access, partner pricing, and a spot on our founding member list.</p>
+    <form class="email-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="your@email.com" required id="emailInput">
+      <button type="submit">Join Waitlist</button>
+    </form>
+    <p style="font-size:0.75rem; margin-top:0.75rem; color:#9ca3af;" id="formMessage"></p>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations">
+    <h2>Where we're setting up</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-img" style="background: linear-gradient(135deg, #0d9488, #134e4a); display:flex; align-items:center; justify-content:center; color:#fff; font-size:3rem;">🏝️</div>
+        <div class="card-body">
+          <h3>Bantayan Island</h3>
+          <span class="tag quiet">Quiet Paradise</span>
+          <p>Pristine white sand beaches, minimal tourists, genuine local life. The hidden gem most nomads haven't found yet.</p>
+          <div class="stats">
+            <div class="stat"><strong>$500–800</strong>/mo</div>
+            <div class="stat"><strong>~25 Mbps</strong> WiFi</div>
+            <div class="stat"><strong>Few</strong> nomads</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background: linear-gradient(135deg, #f59e0b, #d97706); display:flex; align-items:center; justify-content:center; color:#fff; font-size:3rem;">🏄</div>
+        <div class="card-body">
+          <h3>Siargao</h3>
+          <span class="tag surf">Surf Capital</span>
+          <p>Established digital nomad scene. Coworking spaces, cafes, international community. Best internet of the bunch.</p>
+          <div class="stats">
+            <div class="stat"><strong>$700–1,100</strong>/mo</div>
+            <div class="stat"><strong>~40 Mbps</strong> WiFi</div>
+            <div class="stat"><strong>Growing</strong> nomad scene</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img" style="background: linear-gradient(135deg, #6366f1, #4338ca); display:flex; align-items:center; justify-content:center; color:#fff; font-size:3rem;">📚</div>
+        <div class="card-body">
+          <h3>Dumaguete</h3>
+          <span class="tag budget">Budget-Friendly</span>
+          <p>University city energy. Cheap living, decent cafes, warm community. Best option for stretched budgets without sacrificing vibe.</p>
+          <div class="stats">
+            <div class="stat"><strong>$400–700</strong>/mo</div>
+            <div class="stat"><strong>~30 Mbps</strong> WiFi</div>
+            <div class="stat"><strong>Steady</strong> nomad scene</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="how-inner">
+      <h2>How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>YouTube Video Drops</h3>
+          <p>First, we document the discovery — the beach walks, the local spots, the internet speed tests, the real cost of living.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Waitlist Opens</h3>
+          <p>Nomads sign up. We match interested people with vetted local property partners we've negotiated deals with.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Coliving Launches</h3>
+          <p>A curated group moves in together. WiFi, community, and a price point Bali can't touch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <h2>Stop paying Bali prices.</h2>
+    <p>Same beach lifestyle. A fraction of the cost. Coming 2026.</p>
+    <a href="#waitlist" class="btn-white">Join the Waitlist — Free</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>New Bali · Digital Nomad Coliving · Philippines 2026</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      const msg = document.getElementById('formMessage');
+      // Replace with your actual form handling (Formspree, SheetDB, etc.)
+      msg.textContent = '✓ You\'re on the list! We\'ll be in touch before launch.';
+      msg.style.color = '#0d9488';
+      document.getElementById('emailInput').value = '';
+    }
+    document.getElementById('videoThumb').addEventListener('click', function() {
+      alert('Video coming soon! Subscribe to be notified when it drops.');
+    });
+  </script>
+</body>
+</html>
