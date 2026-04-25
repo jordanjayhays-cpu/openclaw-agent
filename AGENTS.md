@@ -37,6 +37,7 @@
 - Log to memory files
 - Organize workspace
 - Proactive heartbeat checks (9am-6pm CET)
+- Use `planning-with-files` skill for any complex project (3+ steps) — create task_plan.md, progress.md, findings.md in project directory
 
 ## What Requires Jordan's Approval
 
