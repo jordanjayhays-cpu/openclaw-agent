@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProfileStack — Rent LinkedIn Profiles. Get Outreach at Scale.</title>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --border: #1f2937;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #22d3ee;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --green: #10b981;
+      --green-bg: #064e3b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .logo span { color: var(--accent); }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ---- HERO ---- */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .highlight { color: var(--accent); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* ---- HOW IT WORKS ---- */
+    .how {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 3.5rem;
+      padding: 0 1.5rem;
+    }
+    .how-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .how-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .how-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .how-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ---- STAT BAR ---- */
+    .stat-bar {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 2rem 1.5rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ---- DUAL FORM SECTION ---- */
+    .dual-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 680px) {
+      .dual-grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .card-owner { border-top: 3px solid var(--green); }
+    .card-business { border-top: 3px solid var(--primary); }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+    .card-owner h2 { color: var(--green); }
+    .card-business h2 { color: var(--primary); }
+    .card-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .card ul {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    .card ul li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      padding-left: 1.4rem;
+      position: relative;
+    }
+    .card ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+    .card-business ul li::before { color: var(--primary); }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .form-group textarea { resize: vertical; min-height: 70px; }
+
+    .btn {
+      width: 100%;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-green {
+      background: var(--green);
+      color: #fff;
+    }
+    .btn-green:hover { background: #059669; }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
+    /* ---- SUCCESS STATE ---- */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+    .success-msg .emoji { font-size: 3rem; margin-bottom: 1rem; }
+    .success-msg h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .success-msg p { color: var(--muted); font-size: 0.9rem; }
+
+    /* ---- IMAGE BANNER ---- */
+    .hero-img {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      display: block;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Profile<span>Stack</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#owner">Profile Owners</a>
+    <a href="#business">Businesses</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Now accepting early sign-ups</div>
+  <h1>
+    Your LinkedIn Profile.<br>
+    <span class="highlight">Earn €75–150/mo</span> While You Sleep.
+  </h1>
+  <p>
+    ProfileStack lets businesses rent professional LinkedIn profiles for outreach.
+    You keep full control — we handle everything else. No meetings. No selling.
+    Just passive income from your network.
+  </p>
+
+  <img
+    class="hero-img"
+    src="https://image.pollinations.ai/prompt/LinkedIn%20profile%20rental%20marketplace%20dashboard%20interface%20dark%20mode%20minimal%20design%20professional?width=800&height=450&nologo=true"
+    alt="ProfileStack dashboard concept"
+    onerror="this.style.display='none'"
+  />
+
+  <!-- STAT BAR -->
+  <div class="stat-bar">
+    <div class="stat">
+      <div class="stat-num">€75–150</div>
+      <div class="stat-label">Monthly per profile</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">€199</div>
+      <div class="stat-label">Per business / month</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Hours a month for you</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="max-width:900px; margin: 0 auto; padding: 0 1.5rem 3rem;">
+  <div class="how">
+    <div class="how-card">
+      <div class="how-icon">📋</div>
+      <h3>1. List your profile</h3>
+      <p>Tell us your industry, target audience, and years of experience. Takes 3 minutes.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🤝</div>
+      <h3>2. We match you</h3>
+      <p>Businesses browse and rent profiles that match their ideal customer. You approve every request.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">💰</div>
+      <h3>3. Get paid monthly</h3>
+      <p>They send outreach through our platform. You earn €75–150/month. Zero effort from your side.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL SIGNUP -->
+<section class="dual-section">
+
+  <!-- OWNER CARD -->
+  <div class="card card-owner" id="owner">
+    <h2>💼 I Have a LinkedIn Profile</h2>
+    <p class="card-sub">Turn your professional network into a passive income stream</p>
+    <ul>
+      <li>Earn €75–150/month per profile rented</li>
+      <li>Full control — you approve every business</li>
+      <li>We write and send all outreach messages</li>
+      <li>No meetings, calls, or sales work required</li>
+      <li>Get paid monthly via bank transfer</li>
+    </ul>
+    <form id="form-owner" onsubmit="handleOwner(event)">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" name="name" placeholder="Alex Johnson" required />
+      </div>
+      <div class="form-group">
+        <label>LinkedIn Profile URL</label>
+        <input type="url" name="linkedin" placeholder="https://linkedin.com/in/yourprofile" required />
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="alex@company.com" required />
+      </div>
+      <div class="form-group">
+        <label>Industry / Target Audience You Can Reach</label>
+        <select name="industry">
+          <option value="">Select your industry...</option>
+          <option>Tech / SaaS</option>
+          <option>Finance / Fintech</option>
+          <option>Healthcare / MedTech</option>
+          <option>Real Estate</option>
+          <option>E-commerce / Retail</option>
+          <option>Education / EdTech</option>
+          <option>Marketing / Agency</option>
+          <option>Consulting</option>
+          <option>HR / Recruitment</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Years of LinkedIn Experience</label>
+        <select name="experience">
+          <option value="">Select...</option>
+          <option>1-2 years</option>
+          <option>3-5 years</option>
+          <option>6-10 years</option>
+          <option>10+ years</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Anything else we should know? (optional)</label>
+        <textarea name="notes" placeholder="Current role, who you can reach, etc."></textarea>
+      </div>
+      <button type="submit" class="btn btn-green">Join as Profile Owner →</button>
+      <p class="form-note">Free to join. No commitment. Payout starts month 2.</p>
+    </form>
+    <div class="success-msg" id="success-owner">
+      <div class="emoji">🎉</div>
+      <h3>You're on the list!</h3>
+      <p>We'll be in touch within 24 hours to confirm your profile and get you earning.</p>
+    </div>
+  </div>
+
+  &nbsp;
+
+  <!-- BUSINESS CARD -->
+  <div class="card card-business" id="business">
+    <h2>🏢 I Need Outreach</h2>
+    <p class="card-sub">Get professional LinkedIn outreach at €199/mo — without hiring</p>
+    <ul>
+      <li>€199/month per outreach campaign</li>
+      <li>Choose from vetted professional profiles</li>
+      <li>We write and send all LinkedIn messages</li>
+      <li>Track replies and leads in your dashboard</li>
+      <li>No recruiter fees, no payroll, no contracts</li>
+    </ul>
+    <form id="form-business" onsubmit="handleBusiness(event)">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" name="name" placeholder="Sarah Chen" required />
+      </div>
+      <div class="form-group">
+        <label>Company</label>
+        <input type="text" name="company" placeholder="Acme Corp" required />
+      </div>
+      <div class="form-group">
+        <label>Work Email</label>
+        <input type="email" name="email" placeholder="sarah@acmecorp.com" required />
+      </div>
+      <div class="form-group">
+        <label>Who are you trying to reach?</label>
+        <textarea name="target" placeholder="e.g. VPs of Engineering at SaaS companies with 50-200 employees in the US" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>What's your main goal?</label>
+        <select name="goal">
+          <option value="">Select...</option>
+          <option>Book demos / sales calls</option>
+          <option>Generate leads</option>
+          <option>Build partnerships</option>
+          <option>Hire talent</option>
+          <option>Content distribution</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Join as Business →</button>
+      <p class="form-note">Launching soon. First 20 businesses get 50% off month 1.</p>
+    </form>
+    <div class="success-msg" id="success-business">
+      <div class="emoji">🚀</div>
+      <h3>You're on the list!</h3>
+      <p>We'll reach out within 24 hours to set up your campaign and match you with the right profile.</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>ProfileStack &copy; 2026 &nbsp;|&nbsp; <a href="#">Privacy</a> &nbsp;|&nbsp; Built for people who value their time</p>
+</footer>
+
+<script>
+  function handleOwner(e) {
+    e.preventDefault();
+    const form = document.getElementById('form-owner');
+    const data = new FormData(form);
+    const out = Object.fromEntries(data.entries());
+    console.log('Profile owner signup:', out);
+    // Replace form with success message
+    form.style.display = 'none';
+    document.querySelector('.card-owner .card-sub').style.display = 'none';
+    document.querySelector('.card-owner ul').style.display = 'none';
+    document.getElementById('success-owner').style.display = 'block';
+  }
+
+  function handleBusiness(e) {
+    e.preventDefault();
+    const form = document.getElementById('form-business');
+    const data = new FormData(form);
+    const out = Object.fromEntries(data.entries());
+    console.log('Business signup:', out);
+    form.style.display = 'none';
+    document.querySelector('.card-business .card-sub').style.display = 'none';
+    document.querySelector('.card-business ul').style.display = 'none';
+    document.getElementById('success-business').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
