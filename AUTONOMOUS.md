@@ -29,15 +29,42 @@
 - [ ] Buy MASSAGE-PASS domain (massagepass.com)
 - [ ] Set up Notion API for MASSAGE-PASS backend
 
-## System Setup (completed)
-- [x] MiroFish fully running: localhost:3001 (frontend), localhost:5001 (backend)
-- [x] OpenRouter key updated
-- [x] Felo web search configured
-- [x] ScrapeCreators API working (25,063 credits)
-- [x] LocalGraphBuilder built (no Zep API needed)
-- [x] GitHub sync fixed (branch protection on main, submodules removed)
-- [x] All API keys saved to .env files
-- [x] last30days skill installed and working
+## System Setup (completed 2026-04-25)
+- [x] MiroFish running: localhost:3001 (frontend), localhost:5001 (backend)
+- [x] OpenRouter key: sk-or-v1-f25c81e... (working)
+- [x] Felo web search: fk-AO9iq... (working)
+- [x] ScrapeCreators API: iBax9go... (25,063 credits, YouTube/TikTok/Reddit)
+- [x] LocalGraphBuilder: built, no Zep API needed
+- [x] GitHub sync: fixed, branch protection on main
+- [x] last30days skill: installed, runs on startup
+- [x] planning-with-files skill: installed, Manus-style project planning
+- [x] LinkedIn outreach skill: installed, 418-line DM template library
+- [x] Image generation: Pollinations.ai (free, no key needed)
+- [x] Email daily summary: installed
+
+## ⚠️ PENDING — Needs from Jordan
+| Item | Why | Status |
+|------|-----|--------|
+| **Vercel API token** | Deploy apps to his account on command | Waiting |
+| **Notion API key** | PISCO CRM, COMARE pipeline, IE MBA deadlines | Waiting |
+| **Supabase service_role key** | MASSAGE-PASS bookings/leads broken | Waiting |
+
+## Jordan Can Say "Build me an app for [X]" and I Will:
+1. Build the code (HTML/CSS/JS or React)
+2. Push to GitHub
+3. Deploy to Vercel
+4. Give Jordan the live URL
+
+**Requirements:** Just give me the Vercel API token first.
+
+## 🚨 THIS WEEK — Jordan's Action Items
+| # | Action | Project | Why |
+|---|--------|---------|-----|
+| 1 | LinkedIn DM Rachel King @ Spire Healthcare | PISCO | NHS precedent = instant credibility, 38 hospitals |
+| 2 | LinkedIn DM Victor Presa @ Meliá Hotels | PISCO | Warm contact, Spain market, 45% turnover |
+| 3 | WhatsApp Javier Estrada @ NH Hotel | PISCO | Follow-up due, he expects this |
+| 4 | Post LinkedIn for ProfileStack owners | ProfileStack | Need 50 owners before selling to businesses |
+| 5 | Ask COMARE owner for Smart Fit intro | COMARE | One warm intro > 100 cold emails |
 
 ## 🚨 OVERDUE — PISCO Outreach
 | Prospect | Was Due | Days Overdue |

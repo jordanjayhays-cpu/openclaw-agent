@@ -1,24 +1,51 @@
 ---
 name: notion
-description: Notion API for creating and managing pages, databases, and blocks.
+description: Notion API for Jordan's projects. Create pages for PISCO prospects, COMARE contacts, ProfileStack pipeline, IE MBA deadlines. Uses Jordan's Notion workspace.
 homepage: https://developers.notion.com
 metadata: {"clawdbot":{"emoji":"📝"}}
 ---
 
 # notion
 
-Use the Notion API to create/read/update pages, data sources (databases), and blocks.
+## ⚠️ Setup Required
 
-## Setup
+Jordan needs to provide his Notion API key. Steps:
 
-1. Create an integration at https://notion.so/my-integrations
-2. Copy the API key (starts with `ntn_` or `secret_`)
-3. Store it:
+1. Go to https://notion.so/my-integrations
+2. Create new integration → name it "Axton"
+3. Copy the API key (starts with `ntn_`)
+4. Share with Jordan: Send the key so it can be stored in `.env`
+
+## Jordan's Notion Use Cases
+
+### PISCO CRM
+Track HR director contacts at Spire, Meliá, NH Hotel, Iberostar with status and last contact.
+
+### COMARE Pipeline
+Track gym/pharmacy contacts in Mexico City.
+
+### ProfileStack
+- Supply side: track profile owners
+- Demand side: track business subscribers
+
+### IE MBA Deadlines
+Calendar of assignment deadlines (remaining 7 months).
+
+## API Setup
+
+Store the key:
 ```bash
-mkdir -p ~/.config/notion
-echo "ntn_your_key_here" > ~/.config/notion/api_key
+echo "NOTION_API_KEY=ntn_your_key_here" >> ~/.openclaw/workspace/.env
 ```
-4. Share target pages/databases with your integration (click "..." → "Connect to" → your integration name)
+
+## Test Connection
+
+```bash
+NOTION_KEY="your_key"
+curl -X GET "https://api.notion.com/v1/users/me" \
+  -H "Authorization: Bearer $NOTION_KEY" \
+  -H "Notion-Version: 2022-06-28"
+```
 
 ## API Basics
 
