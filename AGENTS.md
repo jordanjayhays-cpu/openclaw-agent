@@ -23,6 +23,7 @@
 5. **Git commit after significant changes** — same session
 6. **Auto-save on heartbeat** — run `bash tools/auto_save.sh`
 7. **Never make Jordan wait** — if I need to research, spawn subagent and report back
+8. **Weekly ClawHub check** — check clawhub.ai every Friday for new skills relevant to Jordan's projects
 
 ---
 
