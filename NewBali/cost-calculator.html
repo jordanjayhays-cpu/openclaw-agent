@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nomad Cost Calculator — Bantayan vs Bali vs Chiang Mai vs Medellín</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --teal: #0d9488;
+      --teal-dark: #0f766e;
+      --sand: #f5f0e8;
+      --dark: #1a1a2e;
+      --white: #fff;
+      --gray: #6b7280;
+      --bali: #e07a5f;
+      --chiang: #81b29a;
+      --medellin: #9b72aa;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--sand); color: var(--dark); line-height: 1.6; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: var(--white); border-bottom: 1px solid #e5e7eb; }
+    nav .logo { font-weight: 800; font-size: 1.1rem; color: var(--teal); }
+    nav .logo span { color: var(--dark); }
+    nav a { color: var(--teal); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    header { text-align: center; padding: 2rem 0 1.5rem; }
+    header .badge { display: inline-block; background: #ccfbf1; color: var(--teal-dark); padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.75rem; }
+    header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+    header p { color: var(--gray); max-width: 560px; margin: 0 auto; font-size: 0.95rem; }
+
+    /* Summary cards */
+    .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .summary-card { background: var(--white); border-radius: 12px; padding: 1.25rem; border: 2px solid transparent; transition: transform 0.2s, box-shadow 0.2s; }
+    .summary-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .summary-card.bantayan { border-color: var(--teal); }
+    .summary-card.bali { border-color: var(--bali); }
+    .summary-card.chiang { border-color: var(--chiang); }
+    .summary-card.medellin { border-color: var(--medellin); }
+    .summary-card .city { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; }
+    .summary-card.bantayan .city { color: var(--teal); }
+    .summary-card.bali .city { color: var(--bali); }
+    .summary-card.chiang .city { color: #166534; }
+    .summary-card.medellin .city { color: var(--medellin); }
+    .summary-card .total { font-size: 2rem; font-weight: 800; letter-spacing: -1px; }
+    .summary-card .monthly { font-size: 0.8rem; color: var(--gray); margin-bottom: 0.75rem; }
+    .summary-card .bar { height: 6px; border-radius: 3px; background: #e5e7eb; margin-bottom: 0.5rem; overflow: hidden; }
+    .summary-card .bar-fill { height: 100%; border-radius: 3px; }
+    .summary-card.bantayan .bar-fill { background: var(--teal); }
+    .summary-card.bali .bar-fill { background: var(--bali); }
+    .summary-card.chiang .bar-fill { background: var(--chiang); }
+    .summary-card.medellin .bar-fill { background: var(--medellin); }
+    .summary-card .verdict { font-size: 0.8rem; color: var(--gray); }
+    .summary-card .verdict strong { color: var(--dark); }
+
+    /* Savings callout */
+    .savings-callout { background: linear-gradient(135deg, var(--teal), #14b8a6); color: var(--white); border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2.5rem; text-align: center; }
+    .savings-callout .amount { font-size: 2.5rem; font-weight: 800; }
+    .savings-callout .label { font-size: 0.9rem; opacity: 0.9; }
+
+    /* Detailed breakdown table */
+    .breakdown-section { background: var(--white); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; border: 1px solid #e5e7eb; }
+    .breakdown-section h2 { font-size: 1.2rem; font-weight: 800; margin-bottom: 1.5rem; }
+    .breakdown-table { width: 100%; border-collapse: collapse; }
+    .breakdown-table th { text-align: left; padding: 0.6rem 1rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray); border-bottom: 2px solid #e5e7eb; }
+    .breakdown-table th:not(:first-child) { text-align: right; }
+    .breakdown-table td { padding: 0.6rem 1rem; font-size: 0.9rem; border-bottom: 1px solid #f3f4f6; }
+    .breakdown-table td:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+    .breakdown-table tr:last-child td { border-bottom: none; font-weight: 700; background: #f9fafb; }
+    .breakdown-table tr:hover td { background: #f9fafb; }
+    .bantayan-col { color: var(--teal); font-weight: 600; }
+    .bali-col { color: var(--bali); }
+    .chiang-col { color: #166534; }
+    .medellin-col { color: var(--medellin); }
+    .category-label { display: flex; align-items: center; gap: 0.5rem; }
+    .category-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+
+    /* Assumptions */
+    .assumptions { background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 1.5rem 2rem; margin-bottom: 2rem; }
+    .assumptions h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem; color: #92400e; }
+    .assumptions ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.4rem; list-style: none; }
+    .assumptions li { font-size: 0.85rem; color: #78350f; padding-left: 1.2rem; position: relative; }
+    .assumptions li::before { content: '✓'; position: absolute; left: 0; color: #92400e; font-weight: 700; }
+
+    /* CTA */
+    .cta { background: var(--dark); color: var(--white); border-radius: 12px; padding: 2rem; text-align: center; }
+    .cta h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .cta p { color: #9ca3af; margin-bottom: 1.25rem; font-size: 0.9rem; }
+    .cta a { display: inline-block; background: var(--teal); color: var(--white); padding: 0.75rem 1.75rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 0.95rem; transition: background 0.2s; }
+    .cta a:hover { background: var(--teal-dark); }
+
+    footer { text-align: center; padding: 2rem; color: var(--gray); font-size: 0.75rem; }
+
+    @media (max-width: 640px) {
+      .breakdown-table th, .breakdown-table td { padding: 0.5rem 0.6rem; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">New<span>Bali</span></div>
+  <a href="index.html">← Back to New Bali</a>
+</nav>
+
+<div class="container">
+  <header>
+    <div class="badge">Free Tool · Updated 2026</div>
+    <h1>Nomad Cost Calculator</h1>
+    <p>Real monthly costs for 4 top digital nomad destinations. Data sourced from Nomad List, Numbeo, and nomad field reports.</p>
+  </header>
+
+  <!-- Summary Cards -->
+  <div class="summary">
+    <div class="summary-card bantayan">
+      <div class="city">🏝️ Bantayan Island, PH</div>
+      <div class="total">$655</div>
+      <div class="monthly">/month all-in</div>
+      <div class="bar"><div class="bar-fill" style="width:35%"></div></div>
+      <div class="verdict"><strong>#1 Value.</strong> Best beach + lowest cost combo.</div>
+    </div>
+    <div class="summary-card chiang">
+      <div class="city">🌶️ Chiang Mai, Thailand</div>
+      <div class="total">$545</div>
+      <div class="monthly">/month all-in</div>
+      <div class="bar"><div class="bar-fill" style="width:29%"></div></div>
+      <div class="verdict"><strong>Cheapest.</strong> Incredible food, established scene.</div>
+    </div>
+    <div class="summary-card medellin">
+      <div class="city">🎶 Medellín, Colombia</div>
+      <div class="total">$1,100</div>
+      <div class="monthly">/month all-in</div>
+      <div class="bar"><div class="bar-fill" style="width:59%"></div></div>
+      <div class="verdict"><strong>Best weather.</strong> Spring temps year-round, great community.</div>
+    </div>
+    <div class="summary-card bali">
+      <div class="city">🏄 Canggu, Bali</div>
+      <div class="total">$1,650</div>
+      <div class="monthly">/month all-in</div>
+      <div class="bar"><div class="bar-fill" style="width:100%"></div></div>
+      <div class="verdict"><strong>Most popular.</strong> Great scene, but prices have exploded.</div>
+    </div>
+  </div>
+
+  <!-- Savings callout -->
+  <div class="savings-callout">
+    <div class="amount">Save ~$1,000/month → Bantayan over Bali</div>
+    <div class="label">Same beach lifestyle. 60% less cost. Real numbers below.</div>
+  </div>
+
+  <!-- Assumptions -->
+  <div class="assumptions">
+    <h3>📋 Assumptions (1 person, remote worker lifestyle)</h3>
+    <ul>
+      <li>1-bedroom furnished apartment or private room in a coliving/guesthouse</li>
+      <li>Working from home + 2–3 café/coworking days per week</li>
+      <li>Eating mostly local food + cooking at home 3–4×/week</li>
+      <li>Motorbike/scooter for transport; occasional Grab/gojek</li>
+      <li>1 speedboat ferry trip + occasional weekend travel per month</li>
+      <li>Fast WiFi (25+ Mbps) and 4G phone hotspot backup</li>
+      <li>Standard international sim card (Globe/Smart in PH)</li>
+    </ul>
+  </div>
+
+  <!-- Detailed Breakdown -->
+  <div class="breakdown-section">
+    <h2>Detailed Monthly Breakdown</h2>
+    <table class="breakdown-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>🏝️ Bantayan</th>
+          <th>🌶️ Chiang Mai</th>
+          <th>🎶 Medellín</th>
+          <th>🏄 Canggu Bali</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="category-label"><span class="category-dot" style="background:#0d9488"></span> Accommodation</span></td>
+          <td class="bantayan-col">$350</td>
+          <td class="chiang-col">$300</td>
+          <td class="medellin-col">$550</td>
+          <td class="bali-col">$850</td>
+        </tr>
+        <tr>
+          <td><span class="category-label"><span class="category-dot" style="background:#3b82f6"></span> WiFi + Phone Data</span></td>
+          <td class="bantayan-col">$30</td>
+          <td class="chiang-col">$25</td>
+          <td class="medellin-col">$35</td>
+          <td class="bali-col">$45</td>
+        </tr>
+        <tr>
+          <td><span class="category-label"><span class="category-dot" style="background:#f59e0b"></span> Food (restaurants + groceries)</span></td>
+          <td class="bantayan-col">$200</td>
+          <td class="chiang-col">$150</td>
+          <td class="medellin-col">$280</td>
+          <td class="bali-col">$380</td>
+        </tr>
+        <tr>
+          <td><span class="category-label"><span class="category-dot" style="background:#ec4899"></span> Transport (scooter + fuel)</span></td>
+          <td class="bantayan-col">$50</td>
+          <td class="chiang-col">$40</td>
+          <td class="medellin-col">$80</td>
+          <td class="bali-col">$120</td>
+        </tr>
+        <tr>
+          <td><span class="category-label"><span class="category-dot" style="background:#8b5cf6"></span> Entertainment + Leisure</span></td>
+          <td class="bantayan-col">$25</td>
+          <td class="chiang-col">$30</td>
+          <td class="medellin-col">$80</td>
+          <td class="bali-col">$130</td>
+        </tr>
+        <tr>
+          <td><span class="category-label"><span class="category-dot" style="background:#ef4444"></span> Misc (Visa, insurance, toiletries)</span></td>
+          <td class="bantayan-col">$0</td>
+          <td class="chiang-col">$0</td>
+          <td class="medellin-col">$55</td>
+          <td class="bali-col">$125</td>
+        </tr>
+        <tr>
+          <td><strong>TOTAL</strong></td>
+          <td class="bantayan-col"><strong>$655</strong></td>
+          <td class="chiang-col"><strong>$545</strong></td>
+          <td class="medellin-col"><strong>$1,100</strong></td>
+          <td class="bali-col"><strong>$1,650</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Key Differentiators -->
+  <div class="breakdown-section">
+    <h2>What You're Actually Paying For</h2>
+    <table class="breakdown-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>🏝️ Bantayan</th>
+          <th>🌶️ Chiang Mai</th>
+          <th>🎶 Medellín</th>
+          <th>🏄 Canggu Bali</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Avg. WiFi Speed</td>
+          <td>~25 Mbps</td>
+          <td>~40 Mbps</td>
+          <td>~35 Mbps</td>
+          <td>~30 Mbps</td>
+        </tr>
+        <tr>
+          <td>Beach Quality</td>
+          <td>★★★★★</td>
+          <td>—</td>
+          <td>—</td>
+          <td>★★☆☆☆</td>
+        </tr>
+        <tr>
+          <td>Nomad Community</td>
+          <td>★☆☆☆☆</td>
+          <td>★★★★★</td>
+          <td>★★★★☆</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>Coworking Options</td>
+          <td>☆☆☆☆☆</td>
+          <td>★★★★★</td>
+          <td>★★★★☆</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>English Speakers</td>
+          <td>★★★☆☆</td>
+          <td>★★★★★</td>
+          <td>★★★☆☆</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>Nightlife</td>
+          <td>★☆☆☆☆</td>
+          <td>★★★★☆</td>
+          <td>★★★★☆</td>
+          <td>★★★★★</td>
+        </tr>
+        <tr>
+          <td>Upside Potential</td>
+          <td style="color:var(--teal);font-weight:700;">★★★★★</td>
+          <td>★★☆☆☆</td>
+          <td>★★★☆☆</td>
+          <td>★☆☆☆☆</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>Bantayan is the move.</h2>
+    <p>Be first. Get early access to the New Bali coliving community before the island gets discovered.</p>
+    <a href="index.html#waitlist">Join the Waitlist →</a>
+  </div>
+</div>
+
+<footer>
+  <p>Data: Nomad List, Numbeo, Nomad Forum, field reports. Last updated: April 2026. Numbers are estimates — actual costs vary by lifestyle.</p>
+</footer>
+
+</body>
+</html>
