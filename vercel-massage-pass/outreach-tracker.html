@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Massage Pass — Outreach Tracker</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0f; color: #fff; min-height: 100vh; padding: 20px; }
+.wrap { max-width: 560px; margin: 0 auto; }
+h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.sub { color: #888; font-size: 13px; margin-bottom: 24px; }
+.add-form { background: #111; border: 1px solid #222; border-radius: 16px; padding: 16px; margin-bottom: 20px; }
+.add-form h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 12px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+input, select, textarea { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 10px; color: #fff; font-size: 14px; box-sizing: border-box; }
+input::placeholder { color: #555; }
+textarea { resize: none; height: 70px; }
+.btn { padding: 14px; background: #25D366; color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; width: 100%; margin-bottom: 20px; }
+.btn:hover { opacity: 0.9; }
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 24px; }
+.stat { background: #111; border: 1px solid #222; border-radius: 12px; padding: 14px; text-align: center; }
+.stat-n { font-size: 28px; font-weight: 700; }
+.stat-l { font-size: 10px; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+.stat.green .stat-n { color: #25D366; }
+.stat.amber .stat-n { color: #f59e0b; }
+.stat.red .stat-n { color: #f87171; }
+.section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 10px; }
+.entry { background: #111; border: 1px solid #1e1e2e; border-radius: 12px; padding: 14px; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+.status-dot.contacted { background: #f59e0b; }
+.status-dot.interested { background: #22c55e; }
+.status-dot.signed { background: #25D366; box-shadow: 0 0 8px #25D366; }
+.status-dot.no { background: #444; }
+.entry-info { flex: 1; }
+.entry-name { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+.entry-detail { font-size: 12px; color: #888; margin-bottom: 4px; }
+.entry-notes { font-size: 12px; color: #555; font-style: italic; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 10px; margin-right: 6px; }
+.tag-wa { background: rgba(37,211,102,0.15); color: #25D366; }
+.tag-phone { background: rgba(99,102,241,0.15); color: #6366f1; }
+.tag-pending { background: rgba(245,158,11,0.15); color: #f59e0b; }
+.tag-active { background: rgba(34,197,94,0.15); color: #22c55e; }
+.wa-btn { padding: 6px 12px; background: #25D366; color: #fff; border: none; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; flex-shrink: 0; }
+.wa-btn:hover { opacity: 0.9; }
+.empty { text-align: center; padding: 40px; color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>📋 Outreach Tracker</h1>
+<p class="sub">Massage Pass Studios — Madrid</p>
+
+<div class="stat-row">
+  <div class="stat">
+    <div class="stat-n" id="stat-total">0</div>
+    <div class="stat-l">Contacted</div>
+  </div>
+  <div class="stat amber">
+    <div class="stat-n" id="stat-interested">0</div>
+    <div class="stat-l">Interested</div>
+  </div>
+  <div class="stat green">
+    <div class="stat-n" id="stat-signed">0</div>
+    <div class="stat-l">Signed Up</div>
+  </div>
+  <div class="stat red">
+    <div class="stat-n" id="stat-no">0</div>
+    <div class="stat-l">No Reply</div>
+  </div>
+</div>
+
+<div class="add-form">
+  <h3>➕ Add Studio</h3>
+  <div class="row">
+    <input type="text" id="inName" placeholder="Studio name">
+    <input type="text" id="inPhone" placeholder="WhatsApp (34612345678)">
+  </div>
+  <div class="row">
+    <input type="text" id="inAddress" placeholder="Address">
+    <select id="inStatus">
+      <option value="contacted">📬 Contacted</option>
+      <option value="interested">🤔 Interested</option>
+      <option value="signed">✅ Signed Up</option>
+      <option value="no">❌ No Reply</option>
+    </select>
+  </div>
+  <input type="text" id="inNotes" placeholder="Notes (e.g. "called twice", "follow up Monday")">
+  <button class="btn" onclick="addEntry()">Add to Tracker</button>
+</div>
+
+<div class="section-title">Recent</div>
+<div id="entries">
+  <div class="empty">No studios yet — add your first one above</div>
+</div>
+</div>
+
+<script>
+let entries = JSON.parse(localStorage.getItem('mp_tracker') || '[]');
+
+function save() {
+  localStorage.setItem('mp_tracker', JSON.stringify(entries));
+  render();
+}
+
+function addEntry() {
+  const name = document.getElementById('inName').value.trim();
+  const phone = document.getElementById('inPhone').value.trim();
+  const address = document.getElementById('inAddress').value.trim();
+  const status = document.getElementById('inStatus').value;
+  const notes = document.getElementById('inNotes').value.trim();
+  
+  if (!name) { alert("Studio name required"); return; }
+  
+  const msg = phone 
+    ? `¡Hola! Me llamo Jordan — estoy搭建ando Massage Pass en Madrid. ¿Podemos charlar 5 minutos? 🙏`
+    : null;
+  
+  entries.unshift({ name, phone, address, status, notes, date: new Date().toLocaleDateString('es-ES') });
+  
+  // clear form
+  ['inName','inPhone','inAddress','inNotes'].forEach(id => document.getElementById(id).value = '');
+  
+  save();
+}
+
+function render() {
+  document.getElementById('stat-total').textContent = entries.filter(e => e.status === 'contacted' || e.status === 'interested').length;
+  document.getElementById('stat-interested').textContent = entries.filter(e => e.status === 'interested').length;
+  document.getElementById('stat-signed').textContent = entries.filter(e => e.status === 'signed').length;
+  document.getElementById('stat-no').textContent = entries.filter(e => e.status === 'no').length;
+  
+  if (!entries.length) {
+    document.getElementById('entries').innerHTML = '<div class="empty">No studios yet — add your first one above</div>';
+    return;
+  }
+  
+  const html = entries.map((e, i) => {
+    const dotClass = { contacted:'contacted', interested:'interested', signed:'signed', no:'no' }[e.status];
+    const waUrl = e.phone ? `https://wa.me/${e.phone.replace(/[^0-9]/g,'')}` : null;
+    return `<div class="entry">
+      <div class="status-dot ${dotClass}"></div>
+      <div class="entry-info">
+        <div class="entry-name">${e.name} <span class="tag tag-${e.status}">${e.status}</span></div>
+        <div class="entry-detail">${e.address || '—'} · ${e.date}</div>
+        ${e.notes ? `<div class="entry-notes">"${e.notes}"</div>` : ''}
+      </div>
+      ${waUrl ? `<a class="wa-btn" href="${waUrl}" target="_blank">📱 WhatsApp</a>` : ''}
+    </div>`;
+  }).join('');
+  
+  document.getElementById('entries').innerHTML = html;
+}
+
+render();
+</script>
+</body>
+</html>
