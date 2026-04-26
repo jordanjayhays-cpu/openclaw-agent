@@ -93,18 +93,26 @@
 - N8N_API_KEY (active)
 - OPENROUTER_API_KEY
 
-## Installed Skills (11 total)
-- agent-builder ✅ — build new agents
-- autonomous-tasks ✅ — self-driven worker
-- calendar ✅ — calendar management
-- cold-email ✅ — cold email sequences
-- memory-manager ✅ — never lose context
-- playwright-mcp ✅ — browser automation
-- playwright-scraper-skill ✅ — web scraping
-- research-agent ✅ — deep research
-- skill-hunter ✅ — find more skills on ClawHub
-- web-scraper ✅ — multi-strategy scraping
-- last30days-skill ✅
+## Installed Skills (19 total)
+- agent-builder — build new agents
+- agenticio-todo — personal task/reminder engine
+- autonomous-tasks — self-driven AI worker
+- caldav-calendar — sync iCloud/Google/Fastmail calendars
+- calendar — Google Calendar management
+- cold-email — personalized cold email sequences
+- csv-pipeline — process/transform CSV data
+- github-actions — GitHub Actions CI/CD
+- github-pages-auto-deploy — auto-deploy to GitHub Pages
+- google-sheets — read/write Google Sheets
+- memory-manager — never lose context
+- playwright-mcp — browser automation (Playwright MCP)
+- playwright-scraper-skill — web scraping
+- pushover-notify — push notifications to phone
+- research-agent — deep research
+- skill-hunter — find more skills on ClawHub
+- spreadsheet-automation — Google Sheets as database
+- web-scraper — multi-strategy scraping
+- last30days-skill
 - apify-openclaw-plugin ⚠️ (SDK version mismatch — broken)
 - synxton (on-demand only)
 - haxton (never fully built)
