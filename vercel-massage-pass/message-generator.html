@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Massage Pass — Message Generator</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0f; color: #fff; min-height: 100vh; padding: 20px; }
+.wrap { max-width: 480px; margin: 0 auto; }
+h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.sub { color: #888; font-size: 13px; margin-bottom: 24px; }
+label { font-size: 12px; color: #888; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+input, select, textarea { width: 100%; padding: 14px; background: #111; border: 1px solid #333; border-radius: 12px; color: #fff; font-size: 15px; margin-bottom: 16px; font-family: inherit; box-sizing: border-box; }
+textarea { resize: none; height: 140px; font-family: monospace; font-size: 13px; }
+.btn { width: 100%; padding: 16px; background: #25D366; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; text-decoration: none; display: block; text-align: center; margin-bottom: 12px; }
+.btn:hover { opacity: 0.9; }
+.outro { font-size: 12px; color: #555; text-align: center; margin-top: 20px; }
+.card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+.card-title { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.studio-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.studio-row input { margin-bottom: 0; font-size: 13px; padding: 10px; }
+.studio-row button { padding: 10px 14px; background: #222; color: #fff; border: 1px solid #333; border-radius: 8px; cursor: pointer; white-space: nowrap; font-size: 12px; }
+#preview { background: #0f1510; border: 1px solid #1a3020; border-radius: 12px; padding: 14px; font-family: monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; color: #a3d9a3; margin-bottom: 16px; }
+.copy-btn { background: #1a1a2e; color: #a78bfa; border: 1px solid #3b2d6b; margin-bottom: 12px; }
+.hint { font-size: 11px; color: #555; text-align: center; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>📱 Message Generator</h1>
+<p class="sub">For studios — send this via WhatsApp to onboard</p>
+
+<div class="card">
+  <div class="card-title">Quick Fill</div>
+  <div class="studio-row">
+    <input type="text" id="studioName" placeholder="Studio name (e.g. Siam Thai)">
+    <button onclick="fillPreview()">Generate</button>
+  </div>
+</div>
+
+<div id="preview" id="preview">Your message will appear here...</div>
+
+<button class="btn copy-btn" onclick="copyMessage()">📋 Copy Message</button>
+<a class="btn" id="waLink" href="#" target="_blank">📱 Open WhatsApp</a>
+
+<p class="hint">Tap a studio below to auto-fill → then tap Generate</p>
+
+<div id="quickList"></div>
+
+<p class="outro">Massage Pass · Madrid · Part of Jordan's Ventures</p>
+</div>
+
+<script>
+const STUDIOS = [
+  "Siam Thai Massage",
+  "Tailanda Center",
+  "Ben Thai Massage",
+  "Asian Spa Madrid",
+  "Lemon Thai Wellness",
+  "Masajes del Rey",
+  "Thai House Madrid",
+  "Spa Emperador",
+  "Shen Mao Masajes",
+  "Spa Mandala",
+  "Bamboo Spa"
+];
+
+const STUDIO_DATA = {
+  "Siam Thai Massage": { address: "Calle Fuencarral 57, Madrid", neighborhood: "Centro/Malasaña" },
+  "Tailanda Center": { address: "Calle Serrano 41, Madrid", neighborhood: "Salamanca" },
+  "Ben Thai Massage": { address: "Calle Montera 18, Madrid", neighborhood: "Centro" },
+  "Asian Spa Madrid": { address: "Calle Hortaleza 23, Madrid", neighborhood: "Chueca" },
+  "Lemon Thai Wellness": { address: "Calle Alberto Aguilera 12, Madrid", neighborhood: "Malasaña" },
+};
+
+let currentStudio = "";
+let currentMsg = "";
+
+function generateMsg(studio, address) {
+  return `¡Hola! 👋
+
+Me llamo Jordan — estoy搭建ando Massage Pass, una plataforma que conecta gente como tú con estudios de masaje en Madrid.
+
+Vi你们的工作室 y me gustaría hablaros sobre cómo podemos traeros más clientes nuevos. Sin comisiones, sin contratos largos — solo un flujo constante de clientes que reservan через WhatsApp.
+
+¿Podemos charlar 5 minutos? Envíame un mensaje y te cuento cómo funciona. 🙏`;
+}
+
+function fillPreview() {
+  const studio = document.getElementById('studioName').value.trim() || "Your Studio";
+  const data = STUDIO_DATA[studio] || {};
+  currentStudio = studio;
+  currentMsg = generateMsg(studio, data.address || "");
+  document.getElementById('preview').textContent = currentMsg;
+  
+  const phone = prompt("WhatsApp number for " + studio + "?\n(Enter full number with country code, e.g. 34612345678)", "");
+  if (phone) {
+    const cleanPhone = phone.replace(/[^0-9]/g, '');
+    const waUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(currentMsg)}`;
+    document.getElementById('waLink').href = waUrl;
+    document.getElementById('waLink').textContent = "📱 Open WhatsApp with " + studio;
+    document.getElementById('waLink').style.display = "block";
+  }
+}
+
+function copyMessage() {
+  if (!currentMsg) { alert("Generate a message first"); return; }
+  navigator.clipboard.writeText(currentMsg).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = "✅ Copied!";
+    setTimeout(() => btn.textContent = "📋 Copy Message", 1500);
+  });
+}
+
+function useStudio(name) {
+  document.getElementById('studioName').value = name;
+  fillPreview();
+}
+
+// Build quick list
+document.getElementById('quickList').innerHTML = STUDIOS.map(s => 
+  `<button onclick="useStudio('${s.replace(/'/g, "\\'")}')" style="
+    display:inline-block; margin:4px; padding:8px 12px;
+    background:#111; border:1px solid #333; border-radius:8px;
+    color:#888; font-size:12px; cursor:pointer;
+  ">${s}</button>`
+).join('');
+</script>
+</body>
+</html>
