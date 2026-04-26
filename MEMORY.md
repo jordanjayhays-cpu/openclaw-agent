@@ -182,3 +182,22 @@ All API keys saved to:
 ---
 
 *Update this file after every significant conversation. Jordan deserves an agent that never makes him repeat himself.*
+
+
+## April 26, 2026 — Massive Build Day
+
+### What's Live Now
+- massage-pass/index.html — full booking UI, OpenStreetMap, 12 studios
+- SUPPLY-FIRST.html — partner signup (needs Web3Forms key)
+- passport.html — loyalty stamp card + walk-in QR
+- PROJECTS/COMARE/gym-map.html — ICP-scored gym/pharmacy map
+- ProfileStack/calculator.html — profile valuation tool
+
+### Skills Installed Today
+- send-email-programmatically (besoeasy/open-skills GitHub)
+- free-geocoding-and-maps (Nominatim OSM - no API key)
+
+### Still Blocked
+- Web3Forms key (needed for partner form submissions)
+- Supabase service_role key (booking storage)
+- Jordan to approach 3 Madrid massage studios this week
