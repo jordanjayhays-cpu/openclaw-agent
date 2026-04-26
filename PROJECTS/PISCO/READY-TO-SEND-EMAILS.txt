@@ -1,62 +1,219 @@
-PISCO EMAIL SEQUENCE - Ready to Send
-==================================================
+# PISCO — 10 Ready-to-Send Emails
+## Spanish Hotels Outreach | April 26, 2026
+**Channel:** LinkedIn DM (primary) or Email (secondary)
+**Jordan:** IE Business School MBA student, Madrid
+**Hook:** NHS 3,000 Filipino nurses at 87% retention. Spanish hotels at 45% annual turnover.
 
-[WARM] EMAIL 1: Javier Estrada Gomez
-  Director RRHH @ NH Hotel Group Spain
-  Subject: Re: 87% retention - replicating NHS model for NH Hotel Group Spain
+---
 
-ERROR: HTTP Error 403: Forbidden
+## WARM CONTACTS (Send First — They Already Know You)
 
-[COLD] EMAIL 2: Miriam Garcia
-  Human Resources Director @ NH Collection Madrid Abascal
-  Subject: Re: 87% retention - replicating NHS model for NH Collection Madrid Abascal
+---
 
-ERROR: HTTP Error 403: Forbidden
+### EMAIL 1 — 🔥 Javier Estrada @ NH Hotel Group Spain
+**Title:** Director RRHH
+**Company:** NH Hotel Group Spain
+**Status:** WARM — contacted before, follow-up due
+**Why now:** Madrid proximity, he promised to follow up
 
-[WARM] EMAIL 3: Yolanda de la Plaza
-  National & International HRBP @ Room Mate Hotels
-  Subject: Re: 87% retention - replicating NHS model for Room Mate Hotels
+**Subject:** Re: 87% retention — following up on the pilot proposal
 
-ERROR: HTTP Error 403: Forbidden
+**Body:**
 
-[COLD] EMAIL 4: Luis Garcia
-  Human Resources @ Iberostar Hotels
-  Subject: Re: 87% retention - replicating NHS model for Iberostar Hotels
+Hey Javier — wanted to circle back on the Filipino staffing pilot. The NHS precedent keeps getting stronger: 3,000 Filipino nurses placed, 87% retention at 2 years. That's the kind of number that makes CFOs happy.
 
-ERROR: HTTP Error 403: Forbidden
+Spanish hotels are sitting at 45% annual turnover. The math is compelling. I've been refining the numbers specifically for NH — think it pencils out well.
 
-[COLD] EMAIL 5: Lola Chamorro Lopez
-  Global Head of Talent Acquisition @ Melia Hotels International
-  Subject: Re: 87% retention - replicating NHS model for Melia Hotels International
+Can we do 20 minutes this week? Even over coffee if you're near Plaza de España.
 
-ERROR: HTTP Error 403: Forbidden
+— Jordan
 
-[COLD] EMAIL 6: Carmen Oliver Molina
-  Group HR Director @ Barcelo Hotel Group
-  Subject: Re: 87% retention - replicating NHS model for Barcelo Hotel Group
+---
 
-ERROR: HTTP Error 403: Forbidden
+### EMAIL 2 — 🔥 Yolanda de la Plaza @ Room Mate Hotels
+**Title:** National & International HRBP
+**Company:** Room Mate Hotels
+**Status:** WARM — room Mate growing in Spain
+**Why now:** She knows the Room Mate context
 
-[COLD] EMAIL 7: Patricia Jaen de la Vega
-  Corporate Talent Director @ Palladium Hotel Group
-  Subject: Re: 87% retention - replicating NHS model for Palladium Hotel Group
+**Subject:** El modelo NHS para Room Mate — ¿hay 15 minutos?
 
-ERROR: HTTP Error 403: Forbidden
+Hola Yolanda — quick follow-up on our conversation about Filipino hospitality staff. Room Mate is growing fast in Spain, which usually means staffing pressure follows.
 
-[COLD] EMAIL 8: Virginia Garrido
-  Directora RRHH @ Barcelo Hotels & Resorts
-  Subject: Re: 87% retention - replicating NHS model for Barcelo Hotels & Resorts
+The NHS precedent: 3,000 Filipino nurses at 87% retention. For hotels, the parallel is direct — same staffing challenges, same solution.
 
-ERROR: HTTP Error 403: Forbidden
+Happy to walk through the numbers for Room Mate specifically. 15 minutes?
 
-[COLD] EMAIL 9: Concha Pardo Gomez
-  HR Director @ Melia Hotels International
-  Subject: Re: 87% retention - replicating NHS model for Melia Hotels International
+— Jordan
 
-ERROR: HTTP Error 403: Forbidden
+---
 
-[COLD] EMAIL 10: Gabriel Canaves
-  Chief HR Officer @ Melia Hotels International
-  Subject: Re: 87% retention - replicating NHS model for Melia Hotels International
+## COLD CONTACTS — All Spanish Hotels (Sorted by Priority)
 
-ERROR: HTTP Error 403: Forbidden
+---
+
+### EMAIL 3 — Luis Garcia @ Iberostar Hotels
+**Title:** Human Resources
+**Company:** Iberostar Hotels
+**Company Type:** Hotel Chain (100+ hotels globally)
+**Why:** Chief HR contact. Iberostar has major Spain presence.
+**Subject:** Quick question about staffing at Iberostar
+
+Hi Luis — I'm finishing my MBA at IE Business School and researching international staffing solutions for European hotels.
+
+One data point that stood out: the NHS placed 3,000 Filipino nurses at 87% retention. For European hotels dealing with 45% annual turnover, the parallel is obvious.
+
+Iberostar operates 100+ hotels globally. Curious if staffing costs are on your radar. Would 15 minutes to compare notes make sense?
+
+— Jordan Hays
+
+---
+
+### EMAIL 4 — Miriam Garcia @ NH Collection Madrid Abascal
+**Title:** Human Resources Director
+**Company:** NH Collection Madrid Abascal
+**Company Type:** Individual Property (Madrid)
+**Why:** Walking distance from IE, summer staffing crisis
+**Subject:** Quick question — NH Collection Madrid staffing
+
+Hi Miriam — I'm a student at IE Business School, live in Madrid, and researching staffing solutions for Spanish hotels.
+
+NH Collection Madrid Abascal came up as a property that faces the same summer staffing crunch every year. Curious if that's still the case.
+
+I have data on an international staffing model with 87% retention — might be relevant. 10 minutes?
+
+— Jordan Hays
+
+---
+
+### EMAIL 5 — Lola Chamorro Lopez @ Melia Hotels International
+**Title:** Global Head of Talent Acquisition & Employer Branding
+**Company:** Melia Hotels International
+**Company Type:** Hotel Chain (Spain flagship brand)
+**Why:** Victor Presa was warm, Lola is the talent acquisition lead
+**Subject:** Re: talent acquisition + Filipino staffing model
+
+Hi Lola — following up on a conversation Victor Presa and I had about Filipino hospitality staff placements.
+
+The model is gaining traction: NHS precedent with 3,000 placements, 87% retention. For Melia — a brand that competes hard on service quality — having staff who stay vs. churn could be a real differentiator.
+
+I know you're focused on employer branding. This might actually be a talent retention story as much as a staffing story. Worth 15 minutes?
+
+— Jordan
+
+---
+
+### EMAIL 6 — Gabriel Canaves @ Melia Hotels International
+**Title:** Chief HR Officer
+**Company:** Melia Hotels International
+**Company Type:** Hotel Chain (top decision maker)
+**Why:** Chief HR = can approve pilot without committee
+**Subject:** Chief HR question — international staffing pilot
+
+Hi Gabriel — I'm an MBA student at IE Business School working on international staffing solutions for European hotel chains.
+
+One data point: NHS placed 3,000 Filipino nurses, 87% retention. Melia has been considering the Spanish hotel market with similar dynamics. As Chief HR, you know better than anyone where the pressure points are.
+
+If there's a fit here, I'd love to show you the numbers. Would a 20-minute call make sense?
+
+— Jordan Hays
+
+---
+
+### EMAIL 7 — Carmen Oliver Molina @ Barcelo Hotel Group
+**Title:** Group HR Director
+**Company:** Barcelo Hotel Group
+**Company Type:** Hotel Chain (Major Spanish chain)
+**Why:** Group-level decision, major chain
+**Subject:** Staffing solution for Barcelo — MBA research
+
+Hi Carmen — I'm finishing my MBA at IE Business School and researching international staffing for major European hotel groups.
+
+Barcelo came up repeatedly as a chain dealing with the Spanish hospitality staffing challenge: 45% annual turnover, high training costs, quality consistency issues.
+
+I have a model that might be relevant: 87% retention, NHS-backed precedent. Would 15 minutes to compare notes make sense?
+
+— Jordan Hays
+
+---
+
+### EMAIL 8 — Patricia Jaen de la Vega @ Palladium Hotel Group
+**Title:** Corporate Talent & Culture Director
+**Company:** Palladium Hotel Group
+**Company Type:** Hotel Chain (Spain)
+**Why:** Talent and culture angle — unique entry point
+**Subject:** Talent + culture + staffing — quick question
+
+Hi Patricia — I'm an MBA student at IE Business School researching how hotel groups solve their talent pipeline problem.
+
+Palladium has a strong brand identity. I imagine staff retention and culture fit matter a lot. Curious if staffing consistency is a pressure point.
+
+I found a model that might be relevant: international placements with 87% retention. Might be a culture-plus-talent conversation. Worth 15 minutes?
+
+— Jordan Hays
+
+---
+
+### EMAIL 9 — Virginia Garrido @ Barcelo Hotels & Resorts
+**Title:** Directora RRHH
+**Company:** Barcelo Hotels & Resorts
+**Company Type:** Hotel Chain (secondary contact)
+**Why:** Secondary Barcelo contact — Carmen Oliver is primary, but two touchpoints are better
+**Subject:** Quick question — staffing at Barcelo
+
+Hola Virginia — I'm an MBA student at IE Business School researching staffing solutions for Spanish hotel chains.
+
+Barcelo came up as a group dealing with the same challenges as everyone else: 45% turnover, high agency costs. I know Carmen Oliver is the primary HR contact, but wanted to reach you directly too.
+
+I have a model that might be worth a conversation. 10 minutes?
+
+— Jordan Hays
+
+---
+
+### EMAIL 10 — Concha Pardo Gomez @ Melia Hotels International
+**Title:** HR Director
+**Company:** Melia Hotels International
+**Company Type:** Hotel Chain (Spain)
+**Why:** HR Director level — closer to operations than Chief HR
+**Subject:** HR Director question — international staffing
+
+Hi Concha — I'm finishing my MBA at IE Business School, researching international staffing for Spanish hotel chains.
+
+Melia is one of the brands I keep hearing about when it comes to staffing challenges. As HR Director, you probably see this more than anyone.
+
+I have data on an international placement model: 87% retention, NHS-backed. Might be relevant. Would 15 minutes to walk through it make sense?
+
+— Jordan Hays
+
+---
+
+## SEND ORDER
+
+| # | Who | Company | Status | Send |
+|---|-----|---------|--------|------|
+| 1 | Javier Estrada | NH Hotel | WARM | TODAY |
+| 2 | Yolanda de la Plaza | Room Mate | WARM | TODAY |
+| 3 | Luis Garcia | Iberostar | COLD | Tomorrow |
+| 4 | Miriam Garcia | NH Collection | COLD | Tomorrow |
+| 5 | Lola Chamorro Lopez | Melia | COLD | This week |
+| 6 | Gabriel Canaves | Melia (Chief HR) | COLD | This week |
+| 7 | Carmen Oliver Molina | Barcelo | COLD | This week |
+| 8 | Patricia Jaen de la Vega | Palladium | COLD | This week |
+| 9 | Virginia Garrido | Barcelo | COLD | Next week |
+| 10 | Concha Pardo Gomez | Melia | COLD | Next week |
+
+---
+
+## TRACKING
+
+Mark each send in PISCO CRM (pisco-crm.json):
+- `email_sent: true`
+- `email_sent_at: 2026-04-26`
+- `follow_ups_sent: 0`
+
+**Expected response rate:** 6% of cold = ~1 response from cold emails
+**Expected response rate:** 30-50% from warm (Javier + Yolanda)
+
+---
+_Generated: April 26, 2026 | 10 emails | Felo + manual_
