@@ -1,518 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Business Consulting | Growth & Harmony</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #0a0a0f;
-            --bg-card: #12121a;
-            --border: #1f1f2e;
-            --text: #e8e8f0;
-            --text-dim: #6b6b80;
-            --accent: #f59e0b;
-            --gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-        
-        .header {
-            background: var(--gradient);
-            padding: 48px 32px;
-            text-align: center;
-        }
-        .header h1 { font-size: 32px; font-weight: 800; color: var(--bg); }
-        .header p { color: rgba(10,10,15,0.7); margin-top: 8px; font-size: 16px; }
-        
-        .main { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
-        
-        .tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-        .tab {
-            padding: 12px 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        .tab:hover, .tab.active { border-color: var(--accent); color: var(--accent); }
-        
-        .section { display: none; }
-        .section.active { display: block; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.2s;
-        }
-        .card:hover { border-color: var(--accent); }
-        .card h3 { font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .card .tag { 
-            background: var(--accent); color: var(--bg); 
-            padding: 4px 10px; border-radius: 20px; 
-            font-size: 10px; font-weight: 700;
-        }
-        .card p { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
-        .card .meta { font-size: 11px; color: var(--text-dim); display: flex; gap: 16px; flex-wrap: wrap; }
-        .card .meta span { display: flex; align-items: center; gap: 4px; }
-        
-        .add-btn {
-            background: var(--gradient);
-            color: var(--bg);
-            border: none;
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-bottom: 24px;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal.active { display: flex; }
-        .modal-content {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            border: 1px solid var(--border);
-        }
-        .modal-content h3 { font-size: 20px; margin-bottom: 20px; color: var(--accent); }
-        .modal-content input, .modal-content select, .modal-content textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            margin-bottom: 12px;
-            font-size: 14px;
-        }
-        .modal-content textarea { min-height: 80px; resize: vertical; }
-        .btn-row { display: flex; gap: 12px; margin-top: 20px; }
-        .btn-cancel {
-            flex: 1;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 14px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .btn-save {
-            flex: 1;
-            background: var(--gradient);
-            border: none;
-            color: var(--bg);
-            padding: 14px;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        
-        .framework-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-        }
-        .framework-card h4 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
-        .framework-card ul { font-size: 13px; color: var(--text-dim); padding-left: 20px; }
-        .framework-card li { margin-bottom: 6px; }
-        
-        .opportunity-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .opportunity-item h4 { font-size: 14px; margin-bottom: 4px; }
-        .opportunity-item p { font-size: 12px; color: var(--text-dim); }
-        .opportunity-item .value { font-size: 14px; color: var(--accent); font-weight: 600; }
-        
-        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
-        .stat-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-        .stat-box .number { font-size: 32px; font-weight: 800; color: var(--accent); }
-        .stat-box .label { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
-        
-        .status-tag { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
-        .status-tag.prospect { background: #1e3a5f; color: #60a5fa; }
-        .status-tag.active { background: #14532d; color: #22c55e; }
-        .status-tag.completed { background: #3f3f46; color: #a1a1aa; }
-        
-        .intro-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-        .intro-card h2 { font-size: 20px; color: var(--accent); margin-bottom: 8px; }
-        .intro-card p { font-size: 14px; color: var(--text-dim); }
-        .intro-card .services { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
-        .intro-card .services span { background: var(--bg); padding: 8px 16px; border-radius: 8px; font-size: 13px; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProfileStack — Rent LinkedIn Profiles for Outbound Growth</title>
+  <meta name="description" content="Access established LinkedIn profiles. Multiply your HeyReach volume. Break into new markets. €199/month." />
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface2: #1a2234;
+      --border: #1f2937;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #22d3ee;
+      --green: #10b981;
+      --green-bg: #064e3b;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(10,14,26,0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .badge {
+      background: var(--green-bg);
+      color: var(--green);
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    .hero .badge { margin-bottom: 20px; display: inline-block; }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight { color: var(--accent); }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--surface2); }
+    .proof-bar {
+      background: var(--surface);
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .proof-bar .container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+    .proof-item { text-align: center; }
+    .proof-item .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .proof-item .label { font-size: 0.85rem; color: var(--muted); }
+    section { padding: 80px 0; }
+    .section-label {
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted);
+      max-width: 500px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .card .icon {
+      width: 48px;
+      height: 48px;
+      background: var(--surface2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+    .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    .dark-section { background: var(--surface); }
+    .pricing-card {
+      background: var(--bg);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      padding: 48px;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .pricing-card .price {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .pricing-card .price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+    .pricing-card .desc { color: var(--muted); margin-bottom: 32px; }
+    .pricing-card ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .pricing-card ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .pricing-card ul li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      .proof-bar .container { gap: 30px; }
+    }
+    .how-it-works {
+      background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .step {
+      text-align: center;
+      padding: 24px;
+    }
+    .step-num {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin: 0 auto 16px;
+    }
+    .step h3 { margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 0.9rem; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .faq-item h4 { margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); }
+    .cta-section {
+      background: var(--primary);
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta-section h2 { font-size: 2.5rem; margin-bottom: 16px; }
+    .cta-section p { opacity: 0.9; margin-bottom: 32px; }
+    .cta-section .btn {
+      background: white;
+      color: var(--primary);
+      font-size: 1.1rem;
+      padding: 16px 32px;
+    }
+    .cta-section .btn:hover { background: #f9fafb; }
+    footer {
+      background: var(--surface);
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    footer p { color: var(--muted); font-size: 0.85rem; }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <h1>🏢 Family Business Consulting</h1>
-        <p>Growth & Harmony for Multi-Generational Businesses</p>
-    </header>
-
-    <main class="main">
-        <div class="tabs">
-            <div class="tab active" onclick="switchTab('clients')">📋 Clients</div>
-            <div class="tab" onclick="switchTab('opportunities')">💰 Opportunities</div>
-            <div class="tab" onclick="switchTab('frameworks')">🧠 Frameworks</div>
-            <div class="tab" onclick="switchTab('notes')">📝 Notes</div>
-        </div>
-        
-        <!-- CLIENTS -->
-        <div class="section active" id="clients">
-            <div class="stats-row">
-                <div class="stat-box">
-                    <div class="number" id="total-clients">0</div>
-                    <div class="label">Total Clients</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="active-projects">0</div>
-                    <div class="label">Active Projects</div>
-                </div>
-                <div class="stat-box">
-                    <div class="number" id="potential-value">€0</div>
-                    <div class="label">Potential Value</div>
-                </div>
-            </div>
-            
-            <button class="add-btn" onclick="openModal('client-modal')">+ Add New Client</button>
-            
-            <div class="grid" id="clients-grid">
-                <div class="card" style="text-align: center; color: var(--text-dim);">
-                    <p>No clients yet. Add your first client to get started.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- OPPORTUNITIES -->
-        <div class="section" id="opportunities">
-            <button class="add-btn" onclick="openModal('opp-modal')">+ Add Opportunity</button>
-            <div id="opportunities-list">
-                <div class="opportunity-item" style="text-align: center; color: var(--text-dim);">
-                    <p>No opportunities yet.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- FRAMEWORKS -->
-        <div class="section" id="frameworks">
-            <h3 style="margin-bottom: 20px;">Family Business Growth Frameworks</h3>
-            
-            <div class="framework-card">
-                <h4>📊 Business Development Approach</h4>
-                <ul>
-                    <li><strong>Diagnose:</strong> Understand the family business lifecycle stage</li>
-                    <li><strong>Map:</strong> Identify key decision-makers and governance structure</li>
-                    <li><strong>Position:</strong> Frame your value proposition for family-owned context</li>
-                    <li><strong>Grow:</strong> Implement systems for sustainable scaling</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>⚖️ Conflict Management Framework</h4>
-                <ul>
-                    <li><strong>Identify:</strong> Map the conflict lines (family vs business? generation vs generation?)</li>
-                    <li><strong>Separate:</strong> Distinguish family issues from business issues</li>
-                    <li><strong>Structure:</strong> Establish clear governance and decision-making processes</li>
-                    <li><strong>Mediate:</strong> Facilitate productive conversations with defined outcomes</li>
-                    <li><strong>Document:</strong> Capture agreements and follow-up mechanisms</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>👨‍👩‍👧‍👦 Family Governance Models</h4>
-                <ul>
-                    <li><strong>Family Council:</strong> Formal family decision-making body</li>
-                    <li><strong>Board of Directors:</strong> External perspectives + family representation</li>
-                    <li><strong>Family Constitution:</strong> Written values, vision, and rules</li>
-                    <li><strong>Succession Protocol:</strong> Clear process for leadership transition</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>📈 Growth Levers for Family Businesses</h4>
-                <ul>
-                    <li><strong>Professionalize:</strong> Systems, processes, outside talent</li>
-                    <li><strong>Diversify:</strong> New markets, products, or revenue streams</li>
-                    <li><strong>Digitize:</strong> Modernize operations and customer experience</li>
-                    <li><strong>Restructure:</strong> Optimize organizational design</li>
-                    <li><strong>Brand:</strong> Build brand equity beyond founder reputation</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>🤝 Trust-Building with Family Businesses</h4>
-                <ul>
-                    <li>They value <strong>long-term relationships</strong> over quick wins</li>
-                    <li>Show understanding of <strong>emotional ownership</strong> (it's personal)</li>
-                    <li>Demonstrate <strong>discretion</strong> — confidentiality is critical</li>
-                    <li>Respect the <strong>founder's legacy</strong> while pushing for growth</li>
-                    <li>Be patient — <strong>consensus-building</strong> takes time</li>
-                </ul>
-            </div>
-            
-            <div class="framework-card">
-                <h4>💼 BD Playbook for Family Biz</h4>
-                <ul>
-                    <li><strong>Entry Point:</strong> Succession planning is the #1 hook — every family biz faces it</li>
-                    <li><strong>Pain Points:</strong> Sibling conflict, professionalizing without losing culture, exit planning</li>
-                    <li><strong>Starter Offer:</strong> "Family Business Health Check" — 2-hour assessment, €500-1000</li>
-                    <li><strong>Upsell:</strong> Implementation work, ongoing advisory retainer</li>
-                    <li><strong>Referrals:</strong> Accountants and lawyers are gold — they already work with family businesses</li>
-                </ul>
-            </div>
-        </div>
-        
-        <!-- NOTES -->
-        <div class="section" id="notes">
-            <button class="add-btn" onclick="openModal('note-modal')">+ Add Note</button>
-            <div id="notes-list">
-                <div class="card" style="text-align: center; color: var(--text-dim);">
-                    <p>No notes yet. Capture insights, meeting notes, or ideas.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- CLIENT MODAL -->
-    <div class="modal" id="client-modal">
-        <div class="modal-content">
-            <h3>Add New Client</h3>
-            <input type="text" id="client-name" placeholder="Business Name">
-            <input type="text" id="client-contact" placeholder="Key Contact Person">
-            <input type="text" id="client-industry" placeholder="Industry">
-            <input type="text" id="client-location" placeholder="Location">
-            <select id="client-stage">
-                <option value="">Business Stage</option>
-                <option value="founder">Founder-led (1st Generation)</option>
-                <option value="succession">In Succession (2nd Gen)</option>
-                <option value="sibling">Sibling Partnership (2nd Gen)</option>
-                <option value="cousins">Cousin Consortium (3rd+ Gen)</option>
-            </select>
-            <select id="client-status">
-                <option value="prospect">Prospect</option>
-                <option value="active">Active Client</option>
-            </select>
-            <textarea id="client-notes" placeholder="Notes on the business, family dynamics, challenges..."></textarea>
-            <div class="btn-row">
-                <button class="btn-cancel" onclick="closeModal('client-modal')">Cancel</button>
-                <button class="btn-save" onclick="saveClient()">Save Client</button>
-            </div>
-        </div>
+  <header>
+    <div class="container">
+      <div class="logo">Profile<span>Stack</span></div>
+      <div class="badge">Now in private beta</div>
     </div>
+  </header>
 
-    <!-- OPPORTUNITY MODAL -->
-    <div class="modal" id="opp-modal">
-        <div class="modal-content">
-            <h3>Add Opportunity</h3>
-            <input type="text" id="opp-client" placeholder="Client Name">
-            <input type="text" id="opp-project" placeholder="Project / Service">
-            <input type="text" id="opp-value" placeholder="Estimated Value (€)">
-            <select id="opp-stage">
-                <option value="">Sales Stage</option>
-                <option value="initial">Initial Call</option>
-                <option value="proposal">Proposal Sent</option>
-                <option value="negotiating">Negotiating</option>
-                <option value="contract">Contract</option>
-            </select>
-            <textarea id="opp-notes" placeholder="Notes..."></textarea>
-            <div class="btn-row">
-                <button class="btn-cancel" onclick="closeModal('opp-modal')">Cancel</button>
-                <button class="btn-save" onclick="saveOpportunity()">Save Opportunity</button>
-            </div>
-        </div>
+  <section class="hero">
+    <div class="container">
+      <div class="badge">For HeyReach users & outbound teams</div>
+      <h1>Rent LinkedIn profiles.<br/>Multiply your <span class="highlight">send volume.</span></h1>
+      <p>Access established professional profiles. Break into new markets. Scale your outbound without limits. Starting at €199/month.</p>
+      <div class="hero-cta">
+        <a href="#signup" class="btn btn-primary">Request early access →</a>
+        <a href="#how" class="btn btn-secondary">See how it works</a>
+      </div>
     </div>
+  </section>
 
-    <!-- NOTE MODAL -->
-    <div class="modal" id="note-modal">
-        <div class="modal-content">
-            <h3>Add Note</h3>
-            <input type="text" id="note-title" placeholder="Title">
-            <input type="text" id="note-client" placeholder="Related Client (optional)">
-            <textarea id="note-content" placeholder="Your note..."></textarea>
-            <div class="btn-row">
-                <button class="btn-cancel" onclick="closeModal('note-modal')">Cancel</button>
-                <button class="btn-save" onclick="saveNote()">Save Note</button>
-            </div>
-        </div>
+  <div class="proof-bar">
+    <div class="container">
+      <div class="proof-item">
+        <div class="number">50+</div>
+        <div class="label">Active profiles available</div>
+      </div>
+      <div class="proof-item">
+        <div class="number">€199</div>
+        <div class="label">per profile / month</div>
+      </div>
+      <div class="proof-item">
+        <div class="number">3×</div>
+        <div class="label">avg. send volume increase</div>
+      </div>
+      <div class="proof-item">
+        <div class="number">24h</div>
+        <div class="label">profile activation time</div>
+      </div>
     </div>
+  </div>
 
-    <script>
-        let clients = JSON.parse(localStorage.getItem('fb-clients') || '[]');
-        let opportunities = JSON.parse(localStorage.getItem('fb-opps') || '[]');
-        let notes = JSON.parse(localStorage.getItem('fb-notes') || '[]');
-        
-        function switchTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(tab).classList.add('active');
-            event.target.classList.add('active');
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="section-label">How it works</div>
+        <h2 class="section-title">Four steps to profile access</h2>
+        <p class="section-sub">No setup. No contracts. Just access to the profiles you need.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Browse profiles</h3>
+          <p>Filter by industry, seniority, geography. Find profiles that match your ICP.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Connect to HeyReach</h3>
+          <p>We give you browser extensions that link the rented profiles directly to your HeyReach account.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Launch your outreach</h3>
+          <p>Run campaigns under real profiles. Your messages land in inboxes — not spam.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Track & scale</h3>
+          <p>Monitor reply rates, optimize your sequences, add more profiles as you grow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <div class="section-label">The problem</div>
+          <h2 class="section-title">Your outreach is capped by your profile count.</h2>
+          <p style="color: var(--muted); margin-bottom: 20px;">Every HeyReach user hits the same wall: you have 2-3 profiles, you can only send X messages per day, and expanding into a new market means building entirely new profiles from scratch.</p>
+          <p style="color: var(--muted);">That's 6 months of work. Or you can rent profiles that are already established, already trusted, already reaching the people you need.</p>
+        </div>
+        <div>
+          <div class="section-label">The solution</div>
+          <h2 class="section-title">Profiles that work. You write. They deliver.</h2>
+          <p style="color: var(--muted); margin-bottom: 20px;">Profile owners write their own messages — you approve every send. No impersonation. No risk. You just get access to a real professional reputation that reaches people you can't reach.</p>
+          <p style="color: var(--muted);">And when you're done? Cancel anytime. No lock-in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-label">For agencies & sales teams</div>
+        <h2 class="section-title">Everything you need to scale outreach</h2>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">🌍</div>
+          <h3>Break into new markets</h3>
+          <p>Rent profiles in specific countries, industries, or seniority levels. Instant geo-expansion without building new networks from zero.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>Multiply send volume</h3>
+          <p>More profiles = more sending capacity = more replies. Scale from 50/day to 500/day without algorithmic friction.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>Full message control</h3>
+          <p>Profile owners review and approve every message. You write the copy, they validate it. Zero impersonation risk.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔒</div>
+          <h3>Dedicated profile manager</h3>
+          <p>Every rented profile has a named owner. You know exactly who's behind each inbox. No ghost accounts.</p>
+        </div>
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Activate in 24 hours</h3>
+          <p>Submit a request, get matched to an owner, receive your access — typically within one business day.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>Reply rate dashboard</h3>
+          <p>Track which profiles perform best. See open rates, reply rates, and positive reply rates per profile.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="signup">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="section-label">Early access</div>
+        <h2 class="section-title">Get started for €199/month</h2>
+        <p class="section-sub">First month free. Cancel anytime. No contracts.</p>
+      </div>
+      <div class="pricing-card">
+        <div class="price">€199<span>/mo per profile</span></div>
+        <p class="desc">Includes everything. No hidden fees.</p>
+        <ul>
+          <li>1 LinkedIn profile access</li>
+          <li>HeyReach browser extension</li>
+          <li>Message approval workflow</li>
+          <li>Reply rate analytics</li>
+          <li>Named profile manager</li>
+          <li>24h activation</li>
+          <li>Cancel anytime</li>
+        </ul>
+        <form id="access-form" style="display: flex; flex-direction: column; gap: 12px; text-align: left; max-width: 360px; margin: 0 auto;">
+          <input type="text" name="company" placeholder="Company name" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 1rem;">
+          <input type="email" name="email" placeholder="Work email" required style="padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 1rem;">
+          <input type="text" name="goal" placeholder="What are you trying to reach?" style="padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface2); color: var(--text); font-size: 1rem;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Request early access →</button>
+        </form>
+        <p id="form-success" style="display:none; color: var(--green); margin-top: 12px; font-weight: 600;">✅ Got it! We'll be in touch within 24 hours.</p>
+        <p id="form-error" style="display:none; color: #ef4444; margin-top: 12px; font-weight: 600;">Something went wrong. Email hello@profilestack.io</p>
+        <p style="color: var(--muted); font-size: 0.8rem; margin-top: 16px;">No credit card required. We'll match you within 24h.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 32px;">
+        <h2 class="section-title">Frequently asked</h2>
+      </div>
+      <div style="max-width: 700px; margin: 0 auto;">
+        <div class="faq-item">
+          <h4>Is this compliant with LinkedIn's terms?</h4>
+          <p>Profile owners actively participate — they write and approve every message. This is a rental agreement between a professional and a business, not account sharing. We recommend businesses use HeyReach's own infrastructure for sending.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Who writes the outreach messages?</h4>
+          <p>You do. Or your team. Profile owners aren't copywriters — they review messages for relevance and accuracy, then approve them. You maintain full control of the actual content.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How fast can I get access?</h4>
+          <p>Most profile matches happen within 24 hours of your request. You can be running outreach under a new profile by tomorrow.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What industries/geographies are available?</h4>
+          <p>We have profiles spanning tech, finance, healthcare, legal, and more — across Europe, US, and APAC. Filter by ICP when you submit your request.</p>
+        </div>
+        <div class="faq-item">
+          <h4>What if a profile owner goes inactive?</h4>
+          <p>We monitor active usage. If an owner becomes unresponsive, we match you to a replacement profile and offer a pro-rated credit for the downtime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Scale your outbound this week.</h2>
+      <p>Join 12 agencies already on the waitlist.</p>
+      <a href="#signup" class="btn">Request access →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 ProfileStack. Built for outbound teams who need more profiles.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('access-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const successEl = document.getElementById('form-success');
+      const errorEl = document.getElementById('form-error');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get('company'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        service_type: 'profile_rental',
+        message: formData.get('goal') || '',
+        source: 'profilestack-web',
+        status: 'pending'
+      };
+
+      try {
+        const res = await fetch('https://jglftdstrowwckwqmpue.supabase.co/rest/v1/leads', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg',
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          successEl.style.display = 'block';
+          form.reset();
+        } else {
+          errorEl.style.display = 'block';
         }
-        
-        function openModal(id) { document.getElementById(id).classList.add('active'); }
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-        
-        function saveClient() {
-            const name = document.getElementById('client-name').value;
-            if (!name) return alert('Please enter business name');
-            
-            clients.push({
-                name,
-                contact: document.getElementById('client-contact').value,
-                industry: document.getElementById('client-industry').value,
-                location: document.getElementById('client-location').value,
-                stage: document.getElementById('client-stage').value,
-                status: document.getElementById('client-status').value,
-                notes: document.getElementById('client-notes').value,
-                date: new Date().toISOString()
-            });
-            
-            localStorage.setItem('fb-clients', JSON.stringify(clients));
-            closeModal('client-modal');
-            renderClients();
-        }
-        
-        function saveOpportunity() {
-            const client = document.getElementById('opp-client').value;
-            if (!client) return alert('Please enter client name');
-            
-            opportunities.push({
-                client,
-                project: document.getElementById('opp-project').value,
-                value: document.getElementById('opp-value').value,
-                stage: document.getElementById('opp-stage').value,
-                notes: document.getElementById('opp-notes').value,
-                date: new Date().toISOString()
-            });
-            
-            localStorage.setItem('fb-opps', JSON.stringify(opportunities));
-            closeModal('opp-modal');
-            renderOpportunities();
-        }
-        
-        function saveNote() {
-            const title = document.getElementById('note-title').value;
-            if (!title) return alert('Please enter a title');
-            
-            notes.push({
-                title,
-                client: document.getElementById('note-client').value,
-                content: document.getElementById('note-content').value,
-                date: new Date().toISOString()
-            });
-            
-            localStorage.setItem('fb-notes', JSON.stringify(notes));
-            closeModal('note-modal');
-            renderNotes();
-        }
-        
-        function renderClients() {
-            const grid = document.getElementById('clients-grid');
-            document.getElementById('total-clients').textContent = clients.length;
-            document.getElementById('active-projects').textContent = clients.filter(c => c.status === 'active').length;
-            document.getElementById('potential-value').textContent = '€' + opportunities.reduce((sum, o) => sum + (parseInt(o.value) || 0), 0);
-            
-            if (clients.length === 0) {
-                grid.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No clients yet. Add your first client.</p></div>';
-                return;
-            }
-            
-            grid.innerHTML = clients.map(c => `
-                <div class="card">
-                    <h3>${c.name} <span class="tag">${c.status}</span></h3>
-                    <p>${c.notes || 'No notes'}</p>
-                    <div class="meta">
-                        <span>👤 ${c.contact || 'No contact'}</span>
-                        <span>📍 ${c.location || ''}</span>
-                        <span>🏭 ${c.industry || ''}</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        function renderOpportunities() {
-            const list = document.getElementById('opportunities-list');
-            if (opportunities.length === 0) {
-                list.innerHTML = '<div class="opportunity-item" style="text-align: center; color: var(--text-dim);"><p>No opportunities yet.</p></div>';
-                return;
-            }
-            
-            list.innerHTML = opportunities.map(o => `
-                <div class="opportunity-item">
-                    <div>
-                        <h4>${o.client}</h4>
-                        <p>${o.project || ''} • ${o.stage || ''}</p>
-                    </div>
-                    <div class="value">€${o.value || '0'}</div>
-                </div>
-            `).join('');
-        }
-        
-        function renderNotes() {
-            const list = document.getElementById('notes-list');
-            if (notes.length === 0) {
-                list.innerHTML = '<div class="card" style="text-align: center; color: var(--text-dim);"><p>No notes yet.</p></div>';
-                return;
-            }
-            
-            list.innerHTML = notes.map(n => `
-                <div class="card">
-                    <h3>${n.title} ${n.client ? '<span class="tag">' + n.client + '</span>' : ''}</h3>
-                    <p>${n.content}</p>
-                    <div class="meta"><span>📅 ${new Date(n.date).toLocaleDateString()}</span></div>
-                </div>
-            `).join('');
-        }
-        
-        renderClients();
-        renderOpportunities();
-        renderNotes();
-    </script>
+      } catch(err) {
+        errorEl.style.display = 'block';
+      }
+      btn.disabled = false;
+      btn.textContent = 'Request early access →';
+    });
+  </script>
 </body>
 </html>
-
-<hr style="border: 1px solid var(--border); margin: 40px 0;">
-<div style="text-align: center; padding: 20px;">
-    <h3 style="color: var(--accent); margin-bottom: 12px;">🏢 Family Business Consulting</h3>
-    <a href="family-biz-consulting/index.html" style="color: var(--accent); text-decoration: none; font-weight: 600;">
-        Open Dashboard →
-    </a>
-</div>
