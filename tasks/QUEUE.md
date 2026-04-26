@@ -1,5 +1,8 @@
 # Task Queue — Jordan's Projects
 
+## Installed Skills (11 total)
+- agent-builder, autonomous-tasks, calendar, cold-email, memory-manager, playwright-mcp, playwright-scraper-skill, research-agent, skill-hunter, web-scraper, last30days-skill
+
 ## Ready (can be picked up)
 
 ### Massage Pass

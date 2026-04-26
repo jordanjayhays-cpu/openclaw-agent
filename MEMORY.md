@@ -93,11 +93,20 @@
 - N8N_API_KEY (active)
 - OPENROUTER_API_KEY
 
-## Installed Skills
-- playwright-scraper-skill ✅
-- playwright-mcp ✅
+## Installed Skills (11 total)
+- agent-builder ✅ — build new agents
+- autonomous-tasks ✅ — self-driven worker
+- calendar ✅ — calendar management
+- cold-email ✅ — cold email sequences
+- memory-manager ✅ — never lose context
+- playwright-mcp ✅ — browser automation
+- playwright-scraper-skill ✅ — web scraping
+- research-agent ✅ — deep research
+- skill-hunter ✅ — find more skills on ClawHub
+- web-scraper ✅ — multi-strategy scraping
+- last30days-skill ✅
 - apify-openclaw-plugin ⚠️ (SDK version mismatch — broken)
-- synxton (on-demand only — runs when Jordan says "check n8n")
+- synxton (on-demand only)
 - haxton (never fully built)
 
 ## Self-Watcher
