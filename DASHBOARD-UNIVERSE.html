@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan's Dashboard Universe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;
+  --bg2:#0d1520;
+  --bg3:#111d2e;
+  --border:#1a2d42;
+  --text:#c8d8e8;
+  --text-dim:#5a7a8a;
+  --accent:#38bdf8;
+  --accent2:#818cf8;
+  --green:#4ade80;
+  --red:#f87171;
+  --yellow:#fbbf24;
+  --amber:#f59e0b;
+  --purple:#a78bfa;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:40px 20px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.subtitle{font-size:13px;color:var(--text-dim);margin-bottom:32px;letter-spacing:.3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .2s;cursor:pointer;text-decoration:none;color:var(--text);display:block}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.card-icon{font-size:20px;width:36px;height:36px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.card-title{font-weight:600;font-size:14px}
+.card-desc{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:14px}
+.card-link{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);display:flex;align-items:center;gap:6px}
+.card-link::before{content:'→'}
+.card-footer{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 8px;border-radius:4px;font-weight:600}
+.t-pisco{background:#0c1f30;color:#38bdf8}
+.t-comare{background:#0d2616;color:#4ade80}
+.t-massage{background:#2d1e08;color:#f59e0b}
+.t-profile{background:#1d0d2e;color:#a78bfa}
+.t-deals{background:#1d1d0d;color:#fbbf24}
+.t-neuro{background:#0d1f1d;color:#2dd4bf}
+.t-meta{background:#1a2030;color:#5a7a8a}
+.t-edu{background:#1d0d1d;color:#f472b6}
+.t-pk{background:#0d1d0d;color:#4ade80}
+.section{margin-bottom:32px}
+.section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>// JORDAN'S DASHBOARD UNIVERSE</h1>
+<p class="subtitle">Every project. Every page. Every tool. All in one place.</p>
+
+<!-- META DASHBOARDS -->
+<div class="section">
+<div class="section-title">🧭 Meta Dashboards</div>
+<div class="grid">
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/DASHBOARD.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🏠</div>
+<div class="card-title">Main DASHBOARD</div>
+</div>
+<div class="card-desc">Project overview, status tracker, quick links to everything. Updated daily.</div>
+<div class="card-link">DASHBOARD.html</div>
+<div class="card-footer">
+<span class="tag t-meta">Meta</span>
+<span class="tag t-pisco">PISCO</span>
+<span class="tag t-comare">COMARE</span>
+<span class="tag t-massage">Massage Pass</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/TECH-FLOW.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">⚙️</div>
+<div class="card-title">Technical Flows</div>
+</div>
+<div class="card-desc">Every tool, cost, and tech stack. Customer flow, partner flow, architecture, cost breakdown.</div>
+<div class="card-link">TECH-FLOW.html</div>
+<div class="card-footer">
+<span class="tag t-meta">Technical</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/massage-pass/workflows.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🔄</div>
+<div class="card-title">Workflow Diagrams</div>
+</div>
+<div class="card-desc">Visual workflow diagrams for Massage Pass — customer journey and partner onboarding.</div>
+<div class="card-link">massage-pass/workflows.html</div>
+<div class="card-footer">
+<span class="tag t-massage">Massage Pass</span>
+</div>
+</a>
+
+</div>
+</div>
+
+<!-- PISCO -->
+<div class="section">
+<div class="section-title">📧 PISCO — Filipino Staff Placement</div>
+<div class="grid">
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/PISCO-DECK.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">📊</div>
+<div class="card-title">PISCO Deck</div>
+</div>
+<div class="card-desc">Full business deck with partner deck, prospect list, email templates, and MIRO scripts.</div>
+<div class="card-link">PISCO-DECK.html</div>
+<div class="card-footer">
+<span class="tag t-pisco">PISCO</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/downloads/PISCO-Decision-Makers-Links.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🔗</div>
+<div class="card-title">Decision Makers Links</div>
+</div>
+<div class="card-desc">HR directors and decision-maker LinkedIn profiles for NH, Iberostar, Meliá, Room Mate.</div>
+<div class="card-link">PISCO-Decision-Makers-Links.html</div>
+<div class="card-footer">
+<span class="tag t-pisco">PISCO</span>
+</div>
+</a>
+
+</div>
+</div>
+
+<!-- MASSAGE PASS -->
+<div class="section">
+<div class="section-title">💆 Massage Pass</div>
+<div class="grid">
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/massage-pass/index.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🗺️</div>
+<div class="card-title">Customer Booking Platform</div>
+</div>
+<div class="card-desc">Madrid massage studio map, booking UI, loyalty stamps, OpenStreetMap integration.</div>
+<div class="card-link">massage-pass/index.html</div>
+<div class="card-footer">
+<span class="tag t-massage">Live</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/SUPPLY-FIRST.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🤝</div>
+<div class="card-title">Partner Signup Form</div>
+</div>
+<div class="card-desc">Supply-first onboarding for massage studios. Submit → Supabase database → Jordan closes via WhatsApp.</div>
+<div class="card-link">SUPPLY-FIRST.html</div>
+<div class="card-footer">
+<span class="tag t-massage">Partner</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/massage-pass/prospects.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">📋</div>
+<div class="card-title">Studio Prospects</div>
+</div>
+<div class="card-desc">Madrid massage studio prospect list with ICP scoring and contact status.</div>
+<div class="card-link">massage-pass/prospects.html</div>
+<div class="card-footer">
+<span class="tag t-massage">Prospects</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/passport.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">📯</div>
+<div class="card-title">Loyalty Passport</div>
+</div>
+<div class="card-desc">Digital stamp card — walk in, collect stamps, get a free massage. Loyalty system.</div>
+<div class="card-link">passport.html</div>
+<div class="card-footer">
+<span class="tag t-massage">Loyalty</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/massage-pass/book.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">📅</div>
+<div class="card-title">Booking Page</div>
+</div>
+<div class="card-desc">Simple booking form with studio selection, date/time picker, service options.</div>
+<div class="card-link">massage-pass/book.html</div>
+<div class="card-footer">
+<span class="tag t-massage">Booking</span>
+</div>
+</a>
+
+</div>
+</div>
+
+<!-- COMARE -->
+<div class="section">
+<div class="section-title">🔧 COMARE — Maintenance</div>
+<div class="grid">
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/PROJECTS/COMARE/gym-map.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🏋️</div>
+<div class="card-title">Gym Prospect Map</div>
+</div>
+<div class="card-desc">Gym and pharmacy prospect map in Madrid/Mexico City. ICP-scored with address and contact status.</div>
+<div class="card-link">PROJECTS/COMARE/gym-map.html</div>
+<div class="card-footer">
+<span class="tag t-comare">COMARE</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/docs/comare.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">📄</div>
+<div class="card-title">COMARE Doc</div>
+</div>
+<div class="card-desc">Full documentation on the COMARE maintenance company concept and go-to-market plan.</div>
+<div class="card-link">docs/comare.html</div>
+<div class="card-footer">
+<span class="tag t-comare">COMARE</span>
+</div>
+</a>
+
+</div>
+</div>
+
+<!-- PROFILESTACK -->
+<div class="section">
+<div class="section-title">📊 ProfileStack</div>
+<div class="grid">
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/ProfileStack/index.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">👤</div>
+<div class="card-title">ProfileStack Main</div>
+</div>
+<div class="card-desc">LinkedIn profile optimization service. €199/mo. Go-to-market research and launch plan.</div>
+<div class="card-link">ProfileStack/index.html</div>
+<div class="card-footer">
+<span class="tag t-profile">ProfileStack</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/ProfileStack/calculator.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🧮</div>
+<div class="card-title">Profile Value Calculator</div>
+</div>
+<div class="card-desc">Calculate your LinkedIn profile's market value based on engagement, industry, and conversion potential.</div>
+<div class="card-link">ProfileStack/calculator.html</div>
+<div class="card-footer">
+<span class="tag t-profile">Tool</span>
+</div>
+</a>
+
+</div>
+</div>
+
+<!-- OTHER PROJECTS -->
+<div class="section">
+<div class="section-title">🚀 Other Projects</div>
+<div class="grid">
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/NewBali/index.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🌴</div>
+<div class="card-title">New Bali</div>
+</div>
+<div class="card-desc">Cost calculator for Bali digital nomad lifestyle. Monthly budget breakdown.</div>
+<div class="card-link">NewBali/index.html</div>
+<div class="card-footer">
+<span class="tag t-meta">Lifestyle</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/PROJECTS.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">📁</div>
+<div class="card-title">All Projects</div>
+</div>
+<div class="card-desc">Full project list — PISCO, COMARE, Dealsmap, ProfileStack, Neurotech, NewBali, PK Music.</div>
+<div class="card-link">PROJECTS.html</div>
+<div class="card-footer">
+<span class="tag t-meta">Meta</span>
+</div>
+</a>
+
+<a class="card" href="https://jordanjayhays-cpu.github.io/openclaw-agent/downloads/COMARE-Decision-Makers-Links.html" target="_blank">
+<div class="card-top">
+<div class="card-icon">🔗</div>
+<div class="card-title">COMARE Decision Makers</div>
+</div>
+<div class="card-desc">Gym chain HR contacts and decision-maker links for COMARE outreach.</div>
+<div class="card-link">COMARE-Decision-Makers-Links.html</div>
+<div class="card-footer">
+<span class="tag t-comare">COMARE</span>
+</div>
+</a>
+
+</div>
+</div>
+
+</div>
+</body>
+</html>
