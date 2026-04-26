@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Much Is Your LinkedIn Worth? — ProfileStack Calculator</title>
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface2: #1a2234;
+      --border: #1f2937;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #22d3ee;
+      --green: #10b981;
+      --green-dim: #065f46;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --orange: #f59e0b;
+      --red: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .logo { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; margin-left: 1.2rem; }
+    .nav-links a:hover { color: var(--text); }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* ---- HEADER ---- */
+    .calc-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .calc-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .calc-header h1 .accent { color: var(--accent); }
+    .calc-header p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ---- LAYOUT ---- */
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .calc-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ---- FORM CARD ---- */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+    }
+    .form-card h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.75rem;
+    }
+    .form-card > p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .field-group {
+      margin-bottom: 1.25rem;
+    }
+    .field-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+    .field-group label .req {
+      color: var(--orange);
+      margin-left: 2px;
+    }
+    .field-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .range-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.3rem;
+    }
+    .range-val {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 700;
+      background: var(--surface2);
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+    }
+    .range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .field-group select,
+    .field-group input[type="text"],
+    .field-group input[type="url"] {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    .field-group input:focus,
+    .field-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .checkbox-item input[type="checkbox"] {
+      accent-color: var(--primary);
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+    }
+
+    .calculate-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .calculate-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    /* ---- RESULT CARD ---- */
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      position: sticky;
+      top: 1.5rem;
+    }
+
+    .result-placeholder {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+    }
+    .result-placeholder .icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      opacity: 0.4;
+    }
+    .result-placeholder h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .result-placeholder p {
+      font-size: 0.85rem;
+      max-width: 220px;
+      margin: 0 auto;
+    }
+
+    /* ---- RESULT CONTENT ---- */
+    .result-content { display: none; }
+
+    .result-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .badge-high { background: var(--green-dim); color: var(--green); }
+    .badge-mid { background: #1c2a1e; color: #6ee7a0; }
+    .badge-low { background: #2a1c1c; color: #fca5a5; }
+
+    .result-price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .result-price .per {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+    .result-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .result-breakdown {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .result-breakdown h4 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .breakdown-row:last-child { border-bottom: none; }
+    .breakdown-row .label { color: var(--muted); }
+    .breakdown-row .val { font-weight: 600; }
+    .breakdown-row .val.positive { color: var(--green); }
+    .breakdown-row .val.negative { color: var(--red); }
+
+    .tier-info {
+      background: var(--surface2);
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .tier-info .tier-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .tier-info .tier-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .score-bar-wrap {
+      margin-bottom: 1.5rem;
+    }
+    .score-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      margin-bottom: 0.4rem;
+    }
+    .score-bar-label .score-name { color: var(--muted); }
+    .score-bar-label .score-num { font-weight: 700; color: var(--accent); }
+    .score-bar {
+      height: 6px;
+      background: var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .score-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 999px;
+      transition: width 0.6s ease;
+    }
+
+    .cta-box {
+      background: var(--primary);
+      border-radius: 10px;
+      padding: 1.1rem;
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+    .cta-box h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .cta-box p {
+      font-size: 0.78rem;
+      opacity: 0.85;
+      margin-bottom: 0.75rem;
+    }
+    .cta-btn {
+      display: block;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.6rem;
+      border-radius: 8px;
+      transition: transform 0.1s;
+    }
+    .cta-btn:hover { transform: translateY(-1px); }
+    .cta-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.5rem;
+    }
+
+    .disclaimer {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    /* ---- ANIMATION ---- */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .result-content {
+      animation: slideUp 0.4s ease forwards;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Profile<span>Stack</span></div>
+  <div class="nav-links">
+    <a href="index.html">← Landing Page</a>
+    <a href="index.html#owner">Sign Up</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="calc-header">
+    <h1>How Much Is <span class="accent">Your LinkedIn</span> Worth?</h1>
+    <p>Enter your profile details and get an instant estimate of your monthly earning potential as a profile owner.</p>
+  </div>
+
+  <div class="calc-layout">
+
+    <!-- LEFT: Input Form -->
+    <div class="form-card">
+      <h2>Your Profile</h2>
+      <p>All fields help us estimate your earning potential more accurately.</p>
+
+      <div class="field-group">
+        <label>Industry You Operate In <span class="req">*</span></label>
+        <select id="industry">
+          <option value="">Select your industry...</option>
+          <option value="tech">Tech / SaaS</option>
+          <option value="finance">Finance / Fintech</option>
+          <option value="healthcare">Healthcare / MedTech</option>
+          <option value="realestate">Real Estate</option>
+          <option value="ecommerce">E-commerce / Retail</option>
+          <option value="education">Education / EdTech</option>
+          <option value="marketing">Marketing / Agency</option>
+          <option value="consulting">Consulting</option>
+          <option value="hr">HR / Recruitment</option>
+          <option value="legal">Legal / Compliance</option>
+          <option value="manufacturing">Manufacturing / Logistics</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Your Seniority Level <span class="req">*</span></label>
+        <select id="seniority">
+          <option value="">Select seniority...</option>
+          <option value="individual">Individual Contributor / Junior</option>
+          <option value="mid">Mid-Level / Specialist</option>
+          <option value="senior">Senior / Manager</option>
+          <option value="director">Director / VP</option>
+          <option value="exec">C-Suite / Founder</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>
+          Connection Count
+          <span id="conn-display" style="float:right; color: var(--accent); font-size: 0.85rem; font-weight: 700;">500</span>
+        </label>
+        <input type="range" id="connections" min="50" max="5000" step="50" value="500" oninput="document.getElementById('conn-display').textContent = this.value" />
+        <div class="range-labels"><span>50</span><span>5,000+</span></div>
+      </div>
+
+      <div class="field-group">
+        <label>
+          Years of LinkedIn Experience
+          <span id="years-display" style="float:right; color: var(--accent); font-size: 0.85rem; font-weight: 700;">5</span>
+        </label>
+        <input type="range" id="years" min="1" max="20" step="1" value="5" oninput="document.getElementById('years-display').textContent = this.value" />
+        <div class="range-labels"><span>1 yr</span><span>20+ yrs</span></div>
+      </div>
+
+      <div class="field-group">
+        <label>Average Post Engagement Rate</label>
+        <select id="engagement">
+          <option value="">Select...</option>
+          <option value="none">I don't post / Very rare</option>
+          <option value="low">Low (1-5 reactions/post)</option>
+          <option value="medium">Medium (5-20 reactions/post)</option>
+          <option value="high">High (20-50 reactions/post)</option>
+          <option value="veryhigh">Very High (50+ reactions/post)</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Who Can You Genuinely Reach? <span class="req">*</span></label>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="reach" value="founders" /> Founders / CEOs</label>
+          <label class="checkbox-item"><input type="checkbox" name="reach" value="vp" /> VPs / Directors</label>
+          <label class="checkbox-item"><input type="checkbox" name="reach" value="manager" /> Managers</label>
+          <label class="checkbox-item"><input type="checkbox" name="reach" value="individual" /> ICs / Developers</label>
+          <label class="checkbox-item"><input type="checkbox" name="reach" value="investors" /> Investors / VCs</label>
+          <label class="checkbox-item"><input type="checkbox" name="reach" value="recruiters" /> Recruiters</label>
+        </div>
+      </div>
+
+      <button class="calculate-btn" onclick="calculate()">Calculate My Value →</button>
+    </div>
+
+    <!-- RIGHT: Result -->
+    <div class="result-card">
+      <div class="result-placeholder" id="placeholder">
+        <div class="icon">📊</div>
+        <h3>Your estimated value</h3>
+        <p>Fill in the form and click calculate to see how much your LinkedIn is worth.</p>
+      </div>
+
+      <div class="result-content" id="result">
+        <span class="result-badge" id="tier-badge">Premium Profile</span>
+        <div class="result-price" id="price-display">€95<span class="per"> / month</span></div>
+        <div class="result-sub">estimated earning potential</div>
+
+        <div class="score-bar-wrap">
+          <div class="score-bar-label">
+            <span class="score-name">Profile Score</span>
+            <span class="score-num" id="score-num">78 / 100</span>
+          </div>
+          <div class="score-bar">
+            <div class="score-fill" id="score-fill" style="width: 78%"></div>
+          </div>
+        </div>
+
+        <div class="tier-info" id="tier-info">
+          <div class="tier-name" id="tier-name">Mid-Tier Profile</div>
+          <div class="tier-desc" id="tier-desc">Solid potential. Good for reaching managers and senior ICs. Consider expanding your network or cross-posting content to boost engagement.</div>
+        </div>
+
+        <div class="result-breakdown">
+          <h4>Value Breakdown</h4>
+          <div class="breakdown-row">
+            <span class="label">Industry multiplier</span>
+            <span class="val positive" id="bd-industry">+€15</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="label">Seniority multiplier</span>
+            <span class="val positive" id="bd-seniority">+€20</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="label">Connection bonus</span>
+            <span class="val positive" id="bd-connections">+€10</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="label">Engagement bonus</span>
+            <span class="val positive" id="bd-engagement">+€5</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="label">Network reach bonus</span>
+            <span class="val positive" id="bd-reach">+€10</span>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <h3>Ready to start earning?</h3>
+          <p>Join the first wave of profile owners. No commitment. No cost.</p>
+          <a href="index.html#owner" class="cta-btn">Claim My Spot →</a>
+          <p class="cta-note">Free to join · Payout starts month 2 · Cancel anytime</p>
+        </div>
+
+        <p class="disclaimer">Estimates based on market data and comparable rental rates. Actual earnings depend on demand, profile approvals, and business matching.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  ProfileStack &copy; 2026 &nbsp;|&nbsp; <a href="index.html" style="color: var(--muted);">Back to main site</a>
+</footer>
+
+<script>
+  function calculate() {
+    const industry = document.getElementById('industry').value;
+    const seniority = document.getElementById('seniority').value;
+    const connections = parseInt(document.getElementById('connections').value);
+    const years = parseInt(document.getElementById('years').value);
+    const engagement = document.getElementById('engagement').value;
+
+    const reachCheckboxes = document.querySelectorAll('input[name="reach"]:checked');
+    const reachCount = reachCheckboxes.length;
+
+    if (!industry || !seniority) {
+      alert('Please select your industry and seniority level.');
+      return;
+    }
+
+    // Base rate by industry
+    const industryRates = {
+      tech: { base: 85, label: 'Tech / SaaS', desc: 'High demand from B2B SaaS companies.' },
+      finance: { base: 90, label: 'Finance / Fintech', desc: 'Premium rates — finance audiences convert well.' },
+      healthcare: { base: 80, label: 'Healthcare / MedTech', desc: 'Strong demand for clinical and executive reach.' },
+      realestate: { base: 65, label: 'Real Estate', desc: 'Moderate demand; strong for luxury and commercial.' },
+      ecommerce: { base: 60, label: 'E-commerce / Retail', desc: 'Growing segment — DTC brands need warm outreach.' },
+      education: { base: 55, label: 'Education / EdTech', desc: 'Niche but consistent demand from L&D teams.' },
+      marketing: { base: 70, label: 'Marketing / Agency', desc: 'Good for agency and brand-side outreach.' },
+      consulting: { base: 95, label: 'Consulting', desc: 'High-value ICPs — executives and decision makers.' },
+      hr: { base: 60, label: 'HR / Recruitment', desc: 'Good for talent acquisition tools and HR tech.' },
+      legal: { base: 75, label: 'Legal / Compliance', desc: 'Niche but high-ticket B2B audiences.' },
+      manufacturing: { base: 65, label: 'Manufacturing / Logistics', desc: 'Underrated — strong for supply chain and ops.' },
+      other: { base: 50, label: 'Other', desc: 'Base rate — specific industries can command more.' }
+    };
+
+    // Seniority multiplier
+    const seniorityMultipliers = {
+      individual: { bonus: 0, label: 'Individual Contributor', tier: 'Starter', tierClass: 'badge-low' },
+      mid: { bonus: 15, label: 'Mid-Level', tier: 'Growth', tierClass: 'badge-mid' },
+      senior: { bonus: 30, label: 'Senior / Manager', tier: 'Professional', tierClass: 'badge-mid' },
+      director: { bonus: 50, label: 'Director / VP', tier: 'Premium', tierClass: 'badge-high' },
+      exec: { bonus: 70, label: 'C-Suite / Founder', tier: 'Elite', tierClass: 'badge-high' }
+    };
+
+    const iData = industryRates[industry] || industryRates.other;
+    const sData = seniorityMultipliers[seniority] || seniorityMultipliers.individual;
+
+    let base = iData.base;
+    let industryBonus = Math.round((base - 50) * 0.3);
+    let seniorityBonus = sData.bonus;
+    let connectionBonus = 0;
+    let engagementBonus = 0;
+    let reachBonus = 0;
+
+    // Connection bonus (diminishing returns)
+    if (connections >= 5000) connectionBonus = 35;
+    else if (connections >= 2000) connectionBonus = 20;
+    else if (connections >= 1000) connectionBonus = 12;
+    else if (connections >= 500) connectionBonus = 6;
+    else connectionBonus = 0;
+
+    // Engagement bonus
+    const engagementMap = { none: 0, low: 3, medium: 8, high: 15, veryhigh: 25 };
+    engagementBonus = engagementMap[engagement] || 0;
+
+    // Reach bonus (per audience type checked)
+    reachBonus = reachCount * 8;
+
+    // Years of experience subtle bonus
+    let yearsBonus = 0;
+    if (years >= 10) yearsBonus = 10;
+    else if (years >= 5) yearsBonus = 5;
+
+    const total = Math.max(45, base + seniorityBonus + connectionBonus + engagementBonus + reachBonus + yearsBonus);
+    const score = Math.min(100, Math.round(
+      (base / 100 * 25) +
+      (seniorityBonus / 70 * 25) +
+      (connectionBonus / 35 * 20) +
+      (engagementBonus / 25 * 15) +
+      (reachBonus / 48 * 15)
+    ));
+
+    // Build tier description
+    const tierDescriptions = {
+      'Starter': 'Newer to LinkedIn or targeting individual contributors. Low-maintenance profiles can still earn from niche businesses.',
+      'Growth': 'Solid mid-market profiles. Good for reaching managers and senior ICs. Consider expanding your network or cross-posting content to boost engagement.',
+      'Professional': 'Strong candidate. You can reach directors and VPs, making you attractive to B2B SaaS, consulting, and fintech companies.',
+      'Premium': 'High-value profile. Directors and VPs are among the most sought-after ICPs in B2B sales. You should be earning €100-130+/month.',
+      'Elite': 'Top-tier. C-suites and founders are rare and command the highest rates. You could be earning €130-150+/month. Apply early to get matched fast.'
+    };
+
+    const tierClass = sData.tierClass;
+    const tierName = `${sData.tier} Tier`;
+    const tierDesc = tierDescriptions[sData.tier] || tierDescriptions['Growth'];
+
+    // Update DOM
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+
+    document.getElementById('price-display').innerHTML = `€${total}<span class="per"> / month</span>`;
+    document.getElementById('tier-badge').textContent = tierName;
+    document.getElementById('tier-badge').className = `result-badge ${tierClass}`;
+    document.getElementById('tier-name').textContent = tierName;
+    document.getElementById('tier-desc').textContent = tierDesc;
+
+    document.getElementById('score-num').textContent = `${score} / 100`;
+    document.getElementById('score-fill').style.width = `${score}%`;
+
+    document.getElementById('bd-industry').textContent = `+€${industryBonus}`;
+    document.getElementById('bd-seniority').textContent = `+€${seniorityBonus}`;
+    document.getElementById('bd-connections').textContent = `+€${connectionBonus}`;
+    document.getElementById('bd-engagement').textContent = `+€${engagementBonus}`;
+    document.getElementById('bd-reach').textContent = `+€${reachBonus}`;
+
+    // Re-trigger animation
+    const result = document.getElementById('result');
+    result.style.animation = 'none';
+    result.offsetHeight; // reflow
+    result.style.animation = 'slideUp 0.4s ease forwards';
+  }
+</script>
+
+</body>
+</html>
