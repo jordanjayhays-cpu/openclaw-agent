@@ -38,6 +38,9 @@
 - Organize workspace
 - Proactive heartbeat checks (9am-6pm CET)
 - Use `planning-with-files` skill for any complex project (3+ steps) — create task_plan.md, progress.md, findings.md in project directory
+- **Always write a 1-page plan before starting any build project** (SOUL.md law)
+- **For 2+ independent tasks: dispatch subagents in parallel, not sequential** (SOUL.md law)
+- **Before claiming "done": run verification command and show evidence** (SOUL.md law)
 
 ## What Requires Jordan's Approval
 
