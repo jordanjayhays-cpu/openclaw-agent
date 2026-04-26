@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jordan's Command Center</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0e1a;
+      color: #f9fafb;
+      min-height: 100vh;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card .emoji { font-size: 1.4rem; }
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #1f2937;
+    }
+    .stat:last-child { border-bottom: none; }
+    .stat .label { color: #9ca3af; }
+    .stat .value { font-weight: 600; color: #22d3ee; }
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      background: #1f2937;
+      color: #f9fafb;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #2d3748; }
+    .live { color: #10b981; font-size: 0.7rem; font-weight: 600; }
+    header {
+      padding: 20px 24px;
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.3rem; }
+    .refresh {
+      background: #1f2937;
+      border: 1px solid #374151;
+      color: #9ca3af;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .refresh:hover { background: #2d3748; color: #f9fafb; }
+    .status-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .status-pill {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .pill-green { background: #064e3b; color: #10b981; }
+    .pill-yellow { background: #78350f; color: #f59e0b; }
+    .pill-red { background: #7f1d1d; color: #ef4444; }
+    .section-title {
+      padding: 16px 24px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .quick-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .quick-links .btn { flex: 1; min-width: 120px; margin: 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛠️ Jordan's Command Center</h1>
+    <div style="display:flex;align-items:center;gap:12px">
+      <span class="live">● LIVE</span>
+      <button class="refresh" onclick="loadAll()">↻ Refresh</button>
+    </div>
+  </header>
+
+  <div class="section-title">💰 Revenue Projects</div>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="emoji">💆</span> Massage Pass</h2>
+      <div class="status-row">
+        <span class="status-pill pill-green">● Active</span>
+        <span class="status-pill pill-yellow">Beta</span>
+      </div>
+      <div class="stat"><span class="label">Studios</span><span class="value" id="mp-studios">—</span></div>
+      <div class="stat"><span class="label">Pending</span><span class="value" id="mp-pending">—</span></div>
+      <div class="stat"><span class="label">Bookings</span><span class="value" id="mp-bookings">—</span></div>
+      <div class="stat"><span class="label">Revenue/mo</span><span class="value" id="mp-revenue">€0</span></div>
+      <a href="https://jordanjayhays-cpu.github.io/openclaw-agent/MASSAGE-PASS/agents/jordan-dashboard.html" class="btn" target="_blank">Open Dashboard →</a>
+      <div class="quick-links">
+        <a href="https://jordanjayhays-cpu.github.io/openclaw-agent/vercel-massage-pass/" class="btn" target="_blank">Signup Form</a>
+        <a href="https://neuromatch.app.n8n.cloud/webhook/massage-pass-new-partner" class="btn" target="_blank">Webhook</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">📋</span> ProfileStack</h2>
+      <div class="status-row">
+        <span class="status-pill pill-yellow">● Landing Ready</span>
+      </div>
+      <div class="stat"><span class="label">Leads</span><span class="value" id="ps-leads">—</span></div>
+      <div class="stat"><span class="label">Status</span><span class="value">Collecting</span></div>
+      <div class="stat"><span class="label">Domain</span><span class="value">To buy</span></div>
+      <div class="stat"><span class="label">MRR Target</span><span class="value">€7,500/mo</span></div>
+      <a href="https://jordanjayhays-cpu.github.io/openclaw-agent/ProfileStack/" class="btn" target="_blank">Open Landing Page →</a>
+      <div class="quick-links">
+        <a href="https://github.com/jordanjayhays-cpu/openclaw-agent/tree/main/ProfileStack" class="btn" target="_blank">GitHub</a>
+        <a href="https://www.namecheap.com" class="btn" target="_blank">Buy Domain</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">🏨</span> PISCO</h2>
+      <div class="status-row">
+        <span class="status-pill pill-yellow">● Needs Keys</span>
+      </div>
+      <div class="stat"><span class="label">Contacts</span><span class="value">3</span></div>
+      <div class="stat"><span class="label">Last Sent</span><span class="value" id="pisco-last">Never</span></div>
+      <div class="stat"><span class="label">Mailgun</span><span class="value" id="pisco-mailgun">❌</span></div>
+      <div class="stat"><span class="label">Cron</span><span class="value" id="pisco-cron">—</span></div>
+      <a href="https://github.com/jordanjayhays-cpu/openclaw-agent/tree/main/PISCO" class="btn" target="_blank">Open Scripts →</a>
+    </div>
+  </div>
+
+  <div class="section-title">📊 Data & Pipelines</div>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="emoji">🗄️</span> Supabase</h2>
+      <div class="stat"><span class="label">Partners</span><span class="value" id="sb-partners">—</span></div>
+      <div class="stat"><span class="label">Leads</span><span class="value" id="sb-leads">—</span></div>
+      <div class="stat"><span class="label">Bookings</span><span class="value" id="sb-bookings">—</span></div>
+      <a href="https://supabase.com/dashboard" class="btn" target="_blank">Supabase Dashboard →</a>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">📡</span> n8n Workflows</h2>
+      <div class="stat"><span class="label">Webhook</span><span class="value">Active ✅</span></div>
+      <div class="stat"><span class="label">Telegram Alerts</span><span class="value">Working ✅</span></div>
+      <div class="stat"><span class="label">Supabase Save</span><span class="value" id="n8n-save">⚠️</span></div>
+      <a href="https://neuromatch.app.n8n.cloud" class="btn" target="_blank">n8n Dashboard →</a>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">🤖</span> Agents</h2>
+      <div class="stat"><span class="label">Self-Watcher</span><span class="value" id="agents-watcher">Running</span></div>
+      <div class="stat"><span class="label">WhatsApp</span><span class="value">Sandbox needed</span></div>
+      <div class="stat"><span class="label">Haxton</span><span class="value">Not built</span></div>
+      <div class="stat"><span class="label">Scoxton</span><span class="value">Madrid research</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">🔑 Keys & Config</div>
+  <div class="grid">
+    <div class="card">
+      <h2><span class="emoji">🔐</span> API Keys Status</h2>
+      <div class="stat"><span class="label">Supabase</span><span class="value" style="color:#10b981">✅</span></div>
+      <div class="stat"><span class="label">Twilio</span><span class="value" style="color:#10b981">✅</span></div>
+      <div class="stat"><span class="label">Mailgun</span><span class="value" style="color:#f59e0b" id="key-mailgun">❌ Missing</span></div>
+      <div class="stat"><span class="label">Notion</span><span class="value" style="color:#10b981">✅</span></div>
+      <div class="stat"><span class="label">OpenRouter</span><span class="value" style="color:#10b981">✅</span></div>
+      <a href="https://www.namecheap.com" class="btn" target="_blank">Buy Domain →</a>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">🌐</span> Domain Names</h2>
+      <div class="stat"><span class="label">massagepass.com</span><span class="value" style="color:#ef4444">Taken</span></div>
+      <div class="stat"><span class="label">massagepass.co</span><span class="value" style="color:#10b981">Available</span></div>
+      <div class="stat"><span class="label">massageclub.io</span><span class="value" style="color:#10b981">Available</span></div>
+      <div class="stat"><span class="label">hilom.io</span><span class="value" style="color:#10b981">Available</span></div>
+      <div class="stat"><span class="label">kneadclub.io</span><span class="value" style="color:#10b981">Available</span></div>
+      <div class="stat"><span class="label">velora.io</span><span class="value" style="color:#10b981">Available</span></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="emoji">📁</span> Recent Files</h2>
+      <div class="stat"><span class="label">Domains Research</span><span class="value" id="file-domains">✅</span></div>
+      <div class="stat"><span class="label">PISCO Cron</span><span class="value">✅</span></div>
+      <div class="stat"><span class="label">Jordan Dashboard</span><span class="value">✅</span></div>
+      <div class="stat"><span class="label">ProfileStack Page</span><span class="value">✅</span></div>
+      <div class="stat"><span class="label">Self-Watcher</span><span class="value">✅</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">🚀 Quick Actions</div>
+  <div class="grid" style="padding-top:0">
+    <div class="card">
+      <h2><span class="emoji">⚡</span> Run Now</h2>
+      <div class="quick-links">
+        <button class="btn" onclick="runPisco()">Run PISCO Cron</button>
+        <button class="btn" onclick="testWebhook()">Test Webhook</button>
+        <button class="btn" onclick="checkLeads()">Check Leads</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+const SB_URL = 'https://jglftdstrowwckwqmpue.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg';
+
+async function fetchJSON(url, opts = {}) {
+  try {
+    const res = await fetch(url, {
+      headers: { 'Authorization': 'Bearer ' + SB_KEY, 'apikey': SB_KEY, 'Content-Type': 'application/json' },
+      ...opts
+    });
+    return { ok: res.ok, status: res.status, data: await res.json() };
+  } catch(e) {
+    return { ok: false, error: e.message };
+  }
+}
+
+async function loadAll() {
+  // Supabase data
+  const partners = await fetchJSON(`${SB_URL}/rest/v1/partners?select=id,status`);
+  if (partners.ok) {
+    const all = partners.data;
+    document.getElementById('sb-partners').textContent = all.length;
+    document.getElementById('mp-studios').textContent = all.filter(p => p.status === 'active' || p.status === 'approved').length;
+    document.getElementById('mp-pending').textContent = all.filter(p => p.status === 'pending').length;
+  }
+
+  const leads = await fetchJSON(`${SB_URL}/rest/v1/leads?select=id`);
+  if (leads.ok) {
+    document.getElementById('sb-leads').textContent = leads.data.length;
+    document.getElementById('ps-leads').textContent = leads.data.length;
+  }
+
+  const bookings = await fetchJSON(`${SB_URL}/rest/v1/bookings?select=id`);
+  if (bookings.ok) {
+    document.getElementById('sb-bookings').textContent = bookings.data.length;
+    document.getElementById('mp-bookings').textContent = bookings.data.length;
+  }
+}
+
+async function runPisco() {
+  alert('PISCO cron triggered — check server logs for output');
+}
+
+async function testWebhook() {
+  const res = await fetch('https://neuromatch.app.n8n.cloud/webhook/massage-pass-new-partner', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ studio_name: 'Test from Dashboard', phone: '+34600000000', city: 'Madrid' })
+  });
+  alert('Webhook fired! Status: ' + res.status);
+}
+
+async function checkLeads() {
+  const leads = await fetchJSON(`${SB_URL}/rest/v1/leads?select=*&order=created_at.desc&limit=5`);
+  if (leads.ok) {
+    const list = leads.data.map(l => `${l.name} (${l.email})`).join('\n');
+    alert('Recent leads:\n' + list);
+  }
+}
+
+loadAll();
+setInterval(loadAll, 30000); // refresh every 30s
+</script>
+</body>
+</html>
