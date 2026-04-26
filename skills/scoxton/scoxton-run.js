@@ -13,8 +13,8 @@ const path = require('path');
 const TASK = process.argv[2] || 'Research the top 10 co-working spaces in Madrid, find owner/manager names and email addresses';
 const OUTPUT_DIR = process.argv[3] || 'research';
 const DATE = new Date().toISOString().split('T')[0];
-const FELO_KEY = 'fk-AO9iq37Z3jWpsIox3vGeigoUF68xxgYDuTH6K2ngETO8laVf';
-const SCRAPE_KEY = 'iBax9goSYPF7FaoUPFhuDalYMdbV';
+const FELO_KEY = process.env.FELO_KEY || '';
+const SCRAPE_KEY = process.env.SCRAPE_KEY || '';
 
 const colors = {
   reset: '\x1b[0m',
