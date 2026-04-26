@@ -1,0 +1,62 @@
+PISCO EMAIL SEQUENCE - Ready to Send
+==================================================
+
+[WARM] EMAIL 1: Javier Estrada Gomez
+  Director RRHH @ NH Hotel Group Spain
+  Subject: Re: 87% retention - replicating NHS model for NH Hotel Group Spain
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 2: Miriam Garcia
+  Human Resources Director @ NH Collection Madrid Abascal
+  Subject: Re: 87% retention - replicating NHS model for NH Collection Madrid Abascal
+
+ERROR: HTTP Error 403: Forbidden
+
+[WARM] EMAIL 3: Yolanda de la Plaza
+  National & International HRBP @ Room Mate Hotels
+  Subject: Re: 87% retention - replicating NHS model for Room Mate Hotels
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 4: Luis Garcia
+  Human Resources @ Iberostar Hotels
+  Subject: Re: 87% retention - replicating NHS model for Iberostar Hotels
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 5: Lola Chamorro Lopez
+  Global Head of Talent Acquisition @ Melia Hotels International
+  Subject: Re: 87% retention - replicating NHS model for Melia Hotels International
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 6: Carmen Oliver Molina
+  Group HR Director @ Barcelo Hotel Group
+  Subject: Re: 87% retention - replicating NHS model for Barcelo Hotel Group
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 7: Patricia Jaen de la Vega
+  Corporate Talent Director @ Palladium Hotel Group
+  Subject: Re: 87% retention - replicating NHS model for Palladium Hotel Group
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 8: Virginia Garrido
+  Directora RRHH @ Barcelo Hotels & Resorts
+  Subject: Re: 87% retention - replicating NHS model for Barcelo Hotels & Resorts
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 9: Concha Pardo Gomez
+  HR Director @ Melia Hotels International
+  Subject: Re: 87% retention - replicating NHS model for Melia Hotels International
+
+ERROR: HTTP Error 403: Forbidden
+
+[COLD] EMAIL 10: Gabriel Canaves
+  Chief HR Officer @ Melia Hotels International
+  Subject: Re: 87% retention - replicating NHS model for Melia Hotels International
+
+ERROR: HTTP Error 403: Forbidden
