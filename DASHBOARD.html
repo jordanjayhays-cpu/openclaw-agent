@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jordan's Project Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a12;color:#e8e8f0;min-height:100vh;padding:24px}
+.container{max-width:1200px;margin:0 auto}
+h1{font-size:24px;font-weight:700;margin-bottom:4px}
+.sub{color:#888;font-size:13px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:32px}
+.card{background:#13131f;border:1px solid #22223a;border-radius:12px;padding:20px;position:relative}
+.card .badge{position:absolute;top:16px;right:16px;font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600}
+.badge🟢{background:#0d3320;color:#22D3A5}.badge🟡{background:#332a0d;color:#EAB308}.badge🔴{background:#331515;color:#F87171}
+.card h2{font-size:15px;font-weight:600;margin-bottom:8px;padding-right:60px}
+.card .desc{font-size:12px;color:#888;margin-bottom:12px;line-height:1.5}
+.card .stat{font-size:28px;font-weight:700;margin-bottom:4px}
+.card .stat-label{font-size:11px;color:#666;margin-bottom:12px}
+.card .action{background:#6B5CE7;color:white;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:12px;width:100%}
+.card .action:hover{background:#5B4FE8}
+.card .files{font-size:11px;color:#555;margin-top:10px}
+.card .files a{color:#6B5CE7;text-decoration:none}
+.card .priority{font-size:11px;color:#EAB308;margin-bottom:6px;font-weight:600}
+.card .next{font-size:12px;color:#aaa;margin-bottom:8px;padding:8px;background:#0d0d1a;border-radius:6px}
+hr{border:none;border-top:1px solid #1e1e30;margin:24px 0}
+.status-section{margin-bottom:24px}
+.status-section h3{font-size:13px;color:#666;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.status-row{display:flex;gap:8px;flex-wrap:wrap}
+.status-chip{background:#13131f;border:1px solid #22223a;border-radius:20px;padding:6px 12px;font-size:11px;color:#aaa}
+.status-chip.active{background:#0d3320;color:#22D3A5;border-color:#1a4d30}
+.status-chip.done{background:#1a1a2e;color:#666;text-decoration:line-through}
+.mt{margin-top:12px}
+.center{text-align:center;color:#666;font-size:13px;padding:40px}
+.alert{background:#1a1a2e;border:1px solid #6B5CE7;border-radius:8px;padding:12px 16px;font-size:13px;color:#aaa;margin-bottom:16px}
+.alert span{color:#6B5CE7;font-weight:600}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Jordan's Project Dashboard</h1>
+<p class="sub">5 projects · Generated April 26, 2026 · <span id="day"></span></p>
+
+<div class="alert">
+  ⚠️ <strong>Pending from Jordan:</strong> (1) OpenRouter billing check · (2) Supabase key · (3) Vercel API token · (4) Notion API key
+</div>
+
+<div class="grid">
+
+<!-- PISCO -->
+<div class="card">
+  <span class="badge badge🟢">Ready to Send</span>
+  <h2>PISCO</h2>
+  <p class="desc">Filipino BPO staff placements for European hotels & healthcare. 756 prospects, 3 warm contacts ready.</p>
+  <div class="stat">$2K/mo</div>
+  <div class="stat-label">Target: first client this month</div>
+  <p class="priority">⚡ TOP PRIORITY — Rachel King response expected within 3 days</p>
+  <div class="next">Next: Send Email 1 → Rachel King @ Spire Healthcare</div>
+  <button class="action" onclick="location.href='PISCO/PISCO-EMAILS-TO-SEND.md'">📋 View All 5 Emails</button>
+  <p class="files mt">Files: <a href="PISCO/PISCO-EMAILS-TO-SEND.md">emails</a> · <a href="PISCO/PISCO-STATUS.md">status</a> · <a href="PISCO-LINKEDIN-DMs.md">LinkedIn DMs</a></p>
+</div>
+
+<!-- ProfileStack -->
+<div class="card">
+  <span class="badge badge🟢">Ready to Post</span>
+  <h2>ProfileStack</h2>
+  <p class="desc">LinkedIn profile rental marketplace. Profile owners earn €75-150/mo. Businesses pay €199/mo.</p>
+  <div class="stat">€7.5K</div>
+  <div class="stat-label">MRR target by month 6</div>
+  <p class="priority">⚡ Need 50 profile owners BEFORE selling to businesses</p>
+  <div class="next">Next: Send 10 personal LinkedIn DMs to tech sales contacts</div>
+  <button class="action" onclick="location.href='ProfileStack/index.html'">🌐 View Landing Page</button>
+  <p class="files mt">Files: <a href="ProfileStack/linkedin-post.md">LinkedIn post</a> · <a href="ProfileStack-PREDICTION-REPORT.txt">prediction</a></p>
+</div>
+
+<!-- COMARE -->
+<div class="card">
+  <span class="badge badge🟢">Ready to Send</span>
+  <h2>COMARE</h2>
+  <p class="desc">Mexico City gym/maintenance BD. ICP: pharmacies. 200 prospects researched. $3-10K/month potential.</p>
+  <div class="stat">$3-10K</div>
+  <div class="stat-label">Monthly potential (10 clients)</div>
+  <p class="priority">⚡ One warm intro beats 100 cold emails — ask COMARE owner today</p>
+  <div class="next">Next: Ask COMARE owner for Smart Fit intro → then email Gabriel Zavala</div>
+  <button class="action" onclick="location.href='PROJECTS/COMARE/ACTION-PACKAGE.md'">📋 View Action Package</button>
+  <p class="files mt">Files: <a href="PROJECTS/COMARE/ACTION-PACKAGE.md">action package</a> · <a href="PROJECTS/COMARE/PROSPECTS-200.md">prospects</a></p>
+</div>
+
+<!-- Massage Pass -->
+<div class="card">
+  <span class="badge badge🟡">Fixed — Needs Key</span>
+  <h2>Massage Pass</h2>
+  <p class="desc">Aggregate Madrid massage shops. Customers book via platform. Partner portal for shops.</p>
+  <div class="stat">€TBD</div>
+  <div class="stat-label">Revenue model: platform commission</div>
+  <p class="priority">⚡ Supabase key INVALIDATED — Jordan needs to send new key</p>
+  <div class="next">Next: Send me the Supabase key (or Web3Forms key — free at web3forms.com)</div>
+  <button class="action" onclick="location.href='massage-pass-improved/MESSAGE-TO-JORDAN.md'">📋 See Fix Instructions</button>
+  <p class="files mt">Files: <a href="massage-pass-improved/RECOVERY-PLAN.md">recovery plan</a> · <a href="massage-pass-improved/MASSAGE-MADRID.html">improved page</a></p>
+</div>
+
+<!-- New Bali -->
+<div class="card">
+  <span class="badge badge🟢">Ready to Film</span>
+  <h2>New Bali</h2>
+  <p class="desc">Philippines coliving for digital nomads. Target: Bantayan Island (~€600-800/mo all-in).</p>
+  <div class="stat">€600</div>
+  <div class="stat-label">Monthly all-in cost (Bantayan Island)</div>
+  <p class="priority">⚡ Film YouTube video first — prove audience before pitching partners</p>
+  <div class="next">Next: Film 10-min YouTube video. iPhone + B-roll. Upload. Waitlist in description.</div>
+  <button class="action" onclick="location.href='NewBali/youtube-script.md'">🎬 View YouTube Script</button>
+  <p class="files mt">Files: <a href="NewBali/index.html">landing page</a> · <a href="NewBali/youtube-script.md">video script</a> · <a href="NewBali/thumbnail.jpg">thumbnail</a></p>
+</div>
+
+</div>
+
+<hr>
+
+<div class="status-section">
+  <h3>This Week's Checklist</h3>
+  <div class="status-row">
+    <span class="status-chip">PISCO Email 1 → Rachel King</span>
+    <span class="status-chip">PISCO Email 2 → Victor Presa</span>
+    <span class="status-chip">PISCO Email 3 → Javier Estrada</span>
+    <span class="status-chip">PISCO Email 4 → Luis Zamora</span>
+    <span class="status-chip">PISCO Email 5 → Yolanda Room Mate</span>
+    <span class="status-chip active">ProfileStack: 10 LinkedIn DMs</span>
+    <span class="status-chip active">COMARE: Ask for Smart Fit intro</span>
+    <span class="status-chip active">COMARE: Email Gabriel Zavala</span>
+    <span class="status-chip active">Massage Pass: Send Supabase key</span>
+    <span class="status-chip active">New Bali: Film YouTube video</span>
+  </div>
+</div>
+
+<div class="status-section">
+  <h3>System Status</h3>
+  <div class="status-row">
+    <span class="status-chip done">MiroFish backend: 5001</span>
+    <span class="status-chip done">MiroFish frontend: 3001</span>
+    <span class="status-chip done">OpenRouter LLM</span>
+    <span class="status-chip done">Felo web search</span>
+    <span class="status-chip done">ScrapeCreators API</span>
+    <span class="status-chip done">LinkedIn outreach skill</span>
+    <span class="status-chip done">Image generation (Pollinations)</span>
+    <span class="status-chip done">last30days skill</span>
+    <span class="status-chip done">planning-with-files skill</span>
+    <span class="status-chip done">Email daily summary skill</span>
+    <span class="status-chip done">MiroFish LocalGraphBuilder</span>
+    <span class="status-chip done">Weekly ClawHub check</span>
+    <span class="status-chip active">⚠️ OpenRouter billing check needed</span>
+    <span class="status-chip">⚠️ Vercel API token needed</span>
+    <span class="status-chip">⚠️ Supabase key needed</span>
+    <span class="status-chip">⚠️ Notion API key needed</span>
+  </div>
+</div>
+
+<div class="status-section">
+  <h3>Skills Available</h3>
+  <div class="status-row">
+    <span class="status-chip active">LinkedIn DMs</span>
+    <span class="status-chip active">Image generation</span>
+    <span class="status-chip active">Web research (last30days)</span>
+    <span class="status-chip active">Prediction engine (MiroFish)</span>
+    <span class="status-chip active">Project planning</span>
+    <span class="status-chip active">Outreach generation</span>
+  </div>
+</div>
+
+</div>
+<script>
+const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+document.getElementById('day').textContent=days[new Date().getDay()];
+</script>
+</body>
+</html>
