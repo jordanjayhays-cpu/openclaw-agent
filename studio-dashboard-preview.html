@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Massage Pass — Studio Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;--bg2:#0d1520;--bg3:#111d2e;--border:#1a2d42;
+  --text:#c8d8e8;--text-dim:#5a7a8a;--accent:#38bdf8;
+  --green:#4ade80;--red:#f87171;--amber:#f59e0b
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:20px}
+.wrap{max-width:480px;margin:0 auto}
+.logo{text-align:center;margin-bottom:24px}
+.logo span{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:2px;text-transform:uppercase}
+.logo h1{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700;color:#fff;margin:8px 0 4px}
+.logo p{font-size:12px;color:var(--text-dim)}
+.studio-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;text-align:center}
+.studio-icon{font-size:32px;margin-bottom:8px}
+.studio-name{font-size:16px;font-weight:600;color:#fff;margin-bottom:4px}
+.studio-addr{font-size:12px;color:var(--text-dim)}
+.status-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:600;margin-top:10px}
+.status-open{background:#0d2616;color:var(--green)}
+.status-closed{background:#2d1e08;color:var(--amber)}
+.section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px}
+.section-title{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.day-label{font-size:12px;font-weight:600;color:var(--text-dim);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.day-label span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--green)}
+.day-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin-bottom:16px}
+.hour-slot{aspect-ratio:1;background:var(--bg3);border-radius:6px;border:1px solid var(--border);cursor:pointer;transition:all .15s;font-size:9px;display:flex;align-items:center;justify-content:center;text-align:center;padding:2px;font-family:'IBM Plex Mono',monospace;color:var(--text-dim)}
+.hour-slot.available{background:#0d2616;border-color:#4ade80;color:var(--green)}
+.hour-slot.booked{background:#2d1e08;border-color:#f59e0b;color:var(--amber)}
+.hour-slot:hover{transform:scale(1.05)}
+.time-display{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);margin-top:4px}
+.bookings-list{display:flex;flex-direction:column;gap:10px}
+.booking-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px}
+.booking-time{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);min-width:50px}
+.booking-info{flex:1}
+.booking-service{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
+.booking-customer{font-size:11px;color:var(--text-dim)}
+.booking-code{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text-dim);background:var(--bg);padding:2px 6px;border-radius:4px}
+.confirm-btn{width:100%;padding:14px;background:var(--accent);color:#000;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px}
+.confirm-btn:hover{opacity:.9}
+.toggle-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.toggle-row:last-child{border-bottom:none}
+.toggle-label{font-size:13px;color:#fff}
+.toggle-label small{display:block;font-size:11px;color:var(--text-dim);margin-top:2px}
+.toggle{width:44px;height:24px;background:var(--bg3);border-radius:12px;position:relative;cursor:pointer;border:1px solid var(--border);transition:all .2s}
+.toggle.active{background:#4ade80;border-color:#4ade80}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:2px;left:2px;transition:all .2s}
+.toggle.active::after{left:22px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
+.stat-n{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;color:var(--accent)}
+.stat-l{font-size:10px;color:var(--text-dim);margin-top:4px}
+.hint{text-align:center;font-size:11px;color:var(--text-dim);margin-top:20px;line-height:1.6}
+.hint strong{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- LOGO -->
+<div class="logo">
+  <span>Massage Pass</span>
+  <h1>Studio Dashboard</h1>
+  <p>Preview — Jordan reviewing before going live</p>
+</div>
+
+<!-- STUDIO CARD -->
+<div class="studio-card">
+  <div class="studio-icon">💆</div>
+  <div class="studio-name">Kinuan Massage</div>
+  <div class="studio-addr">Madrid, Spain</div>
+  <div class="status-badge status-open">
+    <span>●</span> Open Now
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="section">
+  <div class="section-title">This Week</div>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n">3</div>
+      <div class="stat-l">Bookings</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">8</div>
+      <div class="stat-l">Hours Set</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0</div>
+      <div class="stat-l">No-shows</div>
+    </div>
+  </div>
+</div>
+
+<!-- AVAILABILITY -->
+<div class="section">
+  <div class="section-title">Set Your Hours — Tap to Toggle</div>
+  
+  <div class="day-label">Monday<span>9:00 - 18:00</span></div>
+  <div class="day-grid">
+    <div class="hour-slot">8</div>
+    <div class="hour-slot available">9</div>
+    <div class="hour-slot available">10</div>
+    <div class="hour-slot available">11</div>
+    <div class="hour-slot">12</div>
+    <div class="hour-slot available">14</div>
+    <div class="hour-slot available">15</div>
+    <div class="hour-slot available">16</div>
+    <div class="hour-slot available">17</div>
+    <div class="hour-slot">18</div>
+    <div class="hour-slot">19</div>
+    <div class="hour-slot">20</div>
+  </div>
+
+  <div class="day-label">Tuesday<span>10:00 - 19:00</span></div>
+  <div class="day-grid">
+    <div class="hour-slot">8</div>
+    <div class="hour-slot">9</div>
+    <div class="hour-slot available">10</div>
+    <div class="hour-slot available">11</div>
+    <div class="hour-slot available">12</div>
+    <div class="hour-slot">13</div>
+    <div class="hour-slot available">14</div>
+    <div class="hour-slot available">15</div>
+    <div class="hour-slot available">16</div>
+    <div class="hour-slot available">17</div>
+    <div class="hour-slot available">18</div>
+    <div class="hour-slot">19</div>
+  </div>
+
+  <div class="day-label">Wednesday<span>9:00 - 18:00</span></div>
+  <div class="day-grid">
+    <div class="hour-slot available">9</div>
+    <div class="hour-slot available">10</div>
+    <div class="hour-slot">11</div>
+    <div class="hour-slot available">12</div>
+    <div class="hour-slot">13</div>
+    <div class="hour-slot available">14</div>
+    <div class="hour-slot available">15</div>
+    <div class="hour-slot">16</div>
+    <div class="hour-slot">17</div>
+    <div class="hour-slot">18</div>
+    <div class="hour-slot">19</div>
+    <div class="hour-slot">20</div>
+  </div>
+
+  <div class="time-display">↑ Green = available · Tap to toggle · Changes save automatically</div>
+</div>
+
+<!-- CALENDAR INTEGRATION -->
+<div class="section">
+  <div class="section-title">📅 Calendar Integration</div>
+  
+  <div class="cal-field" style="margin-bottom:14px">
+    <label style="font-size:12px;color:var(--text-dim);display:block;margin-bottom:6px">Paste your Google Calendar or iCal URL here</label>
+    <input type="url" placeholder="https://calendar.google.com/..." 
+           style="width:100%;padding:10px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;font-family:'IBM Plex Mono',monospace;box-sizing:border-box">
+  </div>
+  
+  <div class="cal-status" style="display:flex;align-items:center;gap:8px;padding:10px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;margin-bottom:12px">
+    <div style="width:8px;height:8px;border-radius:50%;background:var(--green)"></div>
+    <span style="font-size:12px;color:var(--text-dim)">Connected: Kinuan Google Calendar</span>
+    <span style="margin-left:auto;font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--amber)">Synced 5 min ago</span>
+  </div>
+  
+  <div style="font-size:11px;color:var(--text-dim);background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px;line-height:1.6">
+    <strong style="color:var(--accent)">How it works:</strong><br>
+    • Paste your Google Calendar public URL or .ics link<br>
+    • Hours auto-populate from your calendar<br>
+    • Bookings block slots automatically<br>
+    • No manual entry needed<br><br>
+    <strong style="color:var(--text)">To get your Google Calendar URL:</strong><br>
+    Google Calendar → Settings → Integrate calendar → Public URL
+  </div>
+</div>
+
+<!-- UPCOMING BOOKINGS -->
+<div class="section">
+  <div class="section-title">Upcoming Bookings</div>
+  <div class="bookings-list">
+    <div class="booking-item">
+      <div class="booking-time">14:30</div>
+      <div class="booking-info">
+        <div class="booking-service">Swedish 60min</div>
+        <div class="booking-customer">María García · +34 600 111 222</div>
+      </div>
+      <div class="booking-code">MP-7829</div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-time">16:00</div>
+      <div class="booking-info">
+        <div class="booking-service">Thai Deep 75min</div>
+        <div class="booking-customer">Carlos Ruiz · +34 600 333 444</div>
+      </div>
+      <div class="booking-code">MP-7831</div>
+    </div>
+    <div class="booking-item" style="opacity:.5">
+      <div class="booking-time">10:00</div>
+      <div class="booking-info">
+        <div class="booking-service">Deep Tissue 60min</div>
+        <div class="booking-customer">Ana López · +34 600 555 666</div>
+      </div>
+      <div class="booking-code" style="color:var(--green)">DONE ✓</div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="section">
+  <div class="section-title">Settings</div>
+  <div class="toggle-row">
+    <div class="toggle-label">Accepting Bookings<small>Turn off to go into manual mode</small></div>
+    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+  </div>
+  <div class="toggle-row">
+    <div class="toggle-label">SMS Reminders<small>Send reminder 2h before</small></div>
+    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+  </div>
+  <div class="toggle-row">
+    <div class="toggle-label">Walk-in Mode<small>Allow unscheduled visits</small></div>
+    <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+  </div>
+</div>
+
+<button class="confirm-btn" onclick="window.location.reload()">Save Changes</button>
+
+<div class="hint">
+  <strong>This is the preview version.</strong><br>
+  Jordan reviews → approves → link sent to studio.<br>
+  Studio taps hours → bookings appear → customers book.
+</div>
+
+</div>
+<script>
+// Toggle hour slots on tap
+document.querySelectorAll('.hour-slot').forEach(slot => {
+  slot.addEventListener('click', () => {
+    slot.classList.toggle('available');
+  });
+});
+</script>
+</body>
+</html>
