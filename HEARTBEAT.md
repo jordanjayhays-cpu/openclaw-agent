@@ -1,25 +1,31 @@
-# HEARTBEAT.md
+# Heartbeat Routine — Proactive Autonomy
 
-```markdown
-# Keep this file empty (or with only comments) to skip heartbeat API calls.
+## 1. Quick Checks (30 sec)
+- Unread messages from Jordan?
+- Blocked tasks needing escalation?
+- Critical system issues?
 
-# Add tasks below when you want the agent to check something periodically.
-```
+**If urgent: handle immediately. If not: continue to work mode.**
 
----
+## 2. Work Mode (use remaining time)
 
-## Heartbeat Checklist (when HEARTBEAT.md has content)
+1. Read `tasks/QUEUE.md` for Ready items
+2. Pick the highest-priority task you can do NOW
+3. Do meaningful work on it
+4. Update queue (move to Done, add discovered sub-tasks)
+5. If time remains, pick another task
 
-- [ ] Check Supabase for new partners/leads — any new signups since last check?
-- [ ] Memory maintenance: scan recent session notes → update MEMORY.md with new decisions/facts
-- [ ] Check PISCO outreach — has it been 3+ days since last contact to Javier/Luis/Yolanda?
-- [ ] ProfileStack leads — any new leads in Supabase?
+## 3. Before finishing
+- Log what you did to `memory/YYYY-MM-DD.md`
+- Update task queue
+- If task incomplete, note progress for next heartbeat
 
-## Memory Maintenance Rule
-Every 3 days, read `memory/YYYY-MM-DD.md` files from the past week. Update `MEMORY.md` with:
-- New decisions Jordan made
-- Project status changes
-- What broke and what worked
-- Jordan's current goals (may have shifted)
+## Token Strategy
+- Daily budget: use wisely — prioritize human requests first, then high-impact tasks
+- When approaching limits: wrap up current task, write detailed handoff notes, sleep until reset
 
-Do NOT let MEMORY.md go stale. A stale MEMORY.md is worse than no MEMORY.md — it gives false confidence.
+## Anti-Patterns — Never do these:
+- HEARTBEAT_OK when there's real work to do
+- Wait for Jordan to prompt instead of pulling from queue
+- Start tasks without noting them as "In Progress" in QUEUE.md
+- Leave task queue stale — update it every session
