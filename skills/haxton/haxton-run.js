@@ -6,7 +6,7 @@
  * Types: email | linkedin | whatsapp | landing
  */
 
-const FELO_KEY = 'fk-AO9iq37Z3jWpsIox3vGeigoUF68xxgYDuTH6K2ngETO8laVf';
+const FELO_KEY = process.env.FELO_KEY || '';
 
 const colors = {
   reset: '\x1b[0m', cyan: '\x1b[36m', green: '\x1b[32m',
