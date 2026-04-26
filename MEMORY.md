@@ -123,6 +123,7 @@ All API keys saved to:
 - **OpenRouter:** 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
 - **Felo web search:** fk-AO9iq37Z3jWpsIox3vGeigoUF68xxgYDuTH6K2ngETO8laVf
 - **ScrapeCreators API:** iBax9goSYPF7FaoUPFhuDalYMdbV (25,063 credits remaining)
+- **Notion API:** [REDACTED — saved in .env]
 - **LocalGraphBuilder:** Built, no Zep API needed
 
 ---
