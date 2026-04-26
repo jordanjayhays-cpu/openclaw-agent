@@ -201,3 +201,54 @@ All API keys saved to:
 - Web3Forms key (needed for partner form submissions)
 - Supabase service_role key (booking storage)
 - Jordan to approach 3 Madrid massage studios this week
+
+## Supabase Key Saved: Sun Apr 26 08:06:46 UTC 2026
+- URL: https://jglftdstrowwckwqmpue.supabase.co
+- Service Role Key: saved to MASSAGE-PASS/.env
+- Partners table: needs creation via SUPABASE-SETUP.sql
+
+
+## April 26, 2026 — Supabase Key Received + Workflow Diagrams Built
+
+### Supabase Connected
+- URL: https://jglftdstrowwckwqmpue.supabase.co
+- Service Role Key: saved in MASSAGE-PASS/.env
+- Form: SUPPLY-FIRST.html updated to POST directly to Supabase partners table
+- Table setup SQL: SUPABASE-SETUP.sql (Jordan needs to paste into Supabase SQL Editor)
+
+### What's Live
+- massage-pass/index.html — booking platform (12 studios, OpenStreetMap, loyalty stamps)
+- massage-pass/workflows.html — visual workflow diagrams (customer + partner)
+- SUPPLY-FIRST.html — partner signup form (Subabase-connected)
+- PROJECTS/COMARE/gym-map.html — COMARE prospect map (16 prospects)
+- passport.html — digital stamp card
+- ProfileStack/calculator.html — profile valuation tool
+- Hourly cron job active → Jordan gets Telegram updates every hour
+
+### Partner Form Flow (Critical Path)
+1. Studio fills SUPPLY-FIRST.html
+2. Data POSTed to Supabase partners table
+3. Jordan checks dashboard (supabase.com)
+4. Jordan WhatsApps studio to close
+
+### Jordan's Blockers Remaining
+1. Paste SUPABASE-SETUP.sql into Supabase SQL Editor (ONE-TIME, 2 min)
+2. Approach 3 Madrid studios this week
+
+### Skills Built Today
+- send-email-programmatically (besoeasy/open-skills GitHub)
+- free-geocoding-and-maps (Nominatim OSM)
+
+
+## Sub-Agent Roster (Updated April 26, 2026)
+
+| Agent | Name | Role |
+|-------|------|------|
+| Axton | (me) | Main coordinator — decides, orchestrates, speaks to Jordan |
+| Claxton | (existing) | Code/engineering — writes code, ships files |
+| Scoxton | (new) | Research — prospect research, data mining, competitive intel |
+| Haxton | (pending build) | Outreach — emails, DMs, copy, sequences |
+| Synxton | (pending build) | Ops — automation, n8n, cron |
+
+Scoxton skill: skills/scoxton/SKILL.md + scoxton-run.js
+
