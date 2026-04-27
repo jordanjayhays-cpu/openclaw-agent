@@ -20,6 +20,14 @@
     input:focus,select:focus,textarea:focus{border-color:#6366f1}
     select option{background:#1a1a2e}
     textarea{min-height:80px}
+    .chip-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+    .chip{padding:6px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:20px;font-size:13px;color:#aaa;cursor:pointer;transition:all .15s;user-select:none}
+    .chip:hover{border-color:rgba(99,102,241,0.5);color:#fff}
+    .chip.selected{background:rgba(99,102,241,0.2);border-color:#6366f1;color:#818cf8}
+    .chip-other{background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.15);border-radius:20px;font-size:13px;color:#555;cursor:pointer;padding:6px 14px;transition:all .15s}
+    .chip-other:hover{color:#888;border-color:rgba(255,255,255,0.25)}
+    .other-box{margin-top:8px;display:none}
+    .other-box.show{display:block}
     .btn{width:100%;padding:14px;background:#6366f1;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:8px}
     .btn:hover{background:#4f46e5;transform:translateY(-1px)}
     .btn:active{transform:translateY(0)}
@@ -29,6 +37,7 @@
     .msg.err{background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#ef4444;display:block}
     .badge{background:rgba(99,102,241,0.15);color:#818cf8;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:16px}
     .footer{text-align:center;margin-top:16px;font-size:12px;color:#444}
+    .sel-count{font-size:11px;color:#555;margin-bottom:6px}
     @media(max-width:500px){.row{grid-template-columns:1fr}.card{padding:28px 24px}}
   </style>
 </head>
@@ -69,7 +78,38 @@
         </div>
         <div class="full">
           <label>Services You Offer</label>
-          <input name="services" placeholder="e.g. Thai Massage, Deep Tissue, Couples">
+          <p class="sel-count" id="selCount">Tap to select — as many as apply</p>
+          <div class="chip-grid" id="chipGrid">
+            <div class="chip" data-val="Swedish Massage">Swedish Massage</div>
+            <div class="chip" data-val="Deep Tissue Massage">Deep Tissue</div>
+            <div class="chip" data-val="Thai Massage">Thai Massage</div>
+            <div class="chip" data-val="Sports Massage">Sports Massage</div>
+            <div class="chip" data-val="Hot Stone Massage">Hot Stone</div>
+            <div class="chip" data-val="Aromatherapy">Aromatherapy</div>
+            <div class="chip" data-val="Shiatsu">Shiatsu</div>
+            <div class="chip" data-val="Reflexology">Reflexology</div>
+            <div class="chip" data-val="Prenatal Massage">Prenatal</div>
+            <div class="chip" data-val="Lymphatic Drainage">Lymphatic Drainage</div>
+            <div class="chip" data-val="Trigger Point Therapy">Trigger Point</div>
+            <div class="chip" data-val="Couples Massage">Couples Massage</div>
+            <div class="chip" data-val="Sports Recovery">Sports Recovery</div>
+            <div class="chip" data-val="Facial Massage">Facial Massage</div>
+            <div class="chip" data-val="Cupping Therapy">Cupping</div>
+            <div class="chip" data-val="Myofascial Release">Myofascial Release</div>
+            <div class="chip" data-val="Indian Head Massage">Indian Head Massage</div>
+            <div class="chip" data-val="Lomi Lomi">Lomi Lomi</div>
+            <div class="chip" data-val="Criotherapy / Cold Therapy">Criotherapy</div>
+            <div class="chip" data-val="Dry Needling">Dry Needling</div>
+            <div class="chip" data-val="Rehabilitation">Rehabilitation</div>
+            <div class="chip" data-val="Body Wraps">Body Wraps</div>
+            <div class="chip" data-val="Scalp Massage">Scalp Massage</div>
+            <div class="chip" data-val="Relaxation Massage">Relaxation</div>
+            <span class="chip-other" id="otherBtn">+ Other</span>
+          </div>
+          <div class="other-box" id="otherBox">
+            <input name="services_other" id="servicesOther" placeholder="Type any other services…">
+          </div>
+          <input type="hidden" name="services" id="servicesHidden">
         </div>
         <div class="full">
           <label>Anything else?</label>
@@ -88,6 +128,36 @@ const SB_U = 'https://jglftdstrowwckwqmpue.supabase.co';
 const SB_K = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg';
 const WEBHOOK = 'https://neuromatch.app.n8n.cloud/webhook/massage-pass-new-partner';
 
+let selected = [];
+
+document.querySelectorAll('.chip[data-val]').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const val = chip.dataset.val;
+    if (selected.includes(val)) {
+      selected = selected.filter(s => s !== val);
+      chip.classList.remove('selected');
+    } else {
+      selected.push(val);
+      chip.classList.add('selected');
+    }
+    updateCount();
+  });
+});
+
+document.getElementById('otherBtn').addEventListener('click', () => {
+  const box = document.getElementById('otherBox');
+  box.classList.add('show');
+  document.getElementById('servicesOther').focus();
+});
+
+function updateCount(){
+  const n = selected.length;
+  const countEl = document.getElementById('selCount');
+  if(n === 0) countEl.textContent = 'Tap to select — as many as apply';
+  else if(n === 1) countEl.textContent = '1 service selected';
+  else countEl.textContent = n + ' services selected';
+}
+
 function genUUID(){
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     const r = Math.random()*16|0;
@@ -97,7 +167,7 @@ function genUUID(){
 
 function extractDistrict(addr){
   if(!addr) return null;
-  const districts = ['Centro','Sol','Chamberí','Chueca','Salamanca','Retiro','Moncloa','Arganzuela','Lavapiés','Malasaña','Tetuán','Chamartín','Paseo de La Habana','Alonso Martínez','Gran Vía','Callao','Noviciado','Bilbao','Guzmán el Bueno','Alameda','Atocha','Barrio de Salamanca','Mirasierra','Las Tablas'];
+  const districts = ['Centro','Sol','Chamberí','Chueca','Salamanca','Retiro','Moncloa','Arganzuela','Lavapiés','Malasaña','Tetuán','Chamartín','Paseo de La Habana','Alonso Martínez','Gran Vía','Callao','Noviciado','Bilbao','Guzmán el Bueno','Alameda','Atocha','Mirasierra','Las Tablas'];
   for(const d of districts){
     if(addr.toLowerCase().includes(d.toLowerCase())) return d;
   }
@@ -109,20 +179,27 @@ async function submitForm(e){
   const btn = document.getElementById('btn');
   const msg = document.getElementById('msg');
   const form = document.getElementById('form');
+
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  msg.className = 'msg';
+  msg.style.display = 'none';
+
+  // Build services string
+  const otherText = document.getElementById('servicesOther').value.trim();
+  const allServices = [...selected];
+  if(otherText) allServices.push(otherText);
+  const servicesStr = allServices.join(', ');
+
   const fd = new FormData(form);
   const data = Object.fromEntries(fd.entries());
+  data.services = servicesStr;
 
   // Auto-detect district from address
   if(!data.district && data.address){
     const detected = extractDistrict(data.address);
     if(detected) data.district = detected;
   }
-
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-  msg.className = 'msg';
-  msg.textContent = '';
-  msg.style.display = 'none';
 
   const id = genUUID();
   const payload = {
@@ -157,20 +234,19 @@ async function submitForm(e){
     });
     if(!r.ok){
       const err = await r.json().catch(()=>({}));
-      // Duplicate = already submitted, not an error
       if(r.status === 409){
-        // already exists — that's fine
+        // already submitted — fine
       } else {
         ok = false;
-        errMsg = 'Supabase error: ' + (err.message || r.statusText || 'unknown');
+        errMsg = 'Error: ' + (err.message || r.statusText || 'try again');
       }
     }
   } catch(ex){
     ok = false;
-    errMsg = 'Network error reaching Supabase. Try again.';
+    errMsg = 'Network error. Check your connection and try again.';
   }
 
-  // 2. Fire n8n webhook (for Telegram alert — async, ignore errors)
+  // 2. Fire n8n webhook (async, best effort)
   try {
     fetch(WEBHOOK, {
       method: 'POST',
@@ -197,9 +273,13 @@ async function submitForm(e){
     msg.className = 'msg ok';
     msg.textContent = '✅ Application sent! We\'ll be in touch within 24 hours.';
     form.reset();
+    selected = [];
+    document.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
+    document.getElementById('otherBox').classList.remove('show');
+    updateCount();
   } else {
     msg.className = 'msg err';
-    msg.textContent = errMsg || 'Something went wrong. Please try again.';
+    msg.textContent = errMsg;
   }
 }
 </script>
