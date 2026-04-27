@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Your Studio — Massage Pass</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--purple:#6366f1;--purple-dark:#4f46e5;--green:#22c55e;--bg:#0a0a0f}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:#fff;min-height:100vh;display:flex;flex-direction:column}
+    header{background:linear-gradient(135deg,#1a1a2e,#0f0f1a);padding:28px 40px 24px;border-bottom:1px solid rgba(99,102,241,0.15);display:flex;align-items:center;gap:16px}
+    .logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+    .header-badge{background:rgba(99,102,241,0.15);color:#818cf8;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+    .progress-wrap{max-width:560px;margin:0 auto;width:100%;padding:0}
+    .progress-bar{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
+    .progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#a855f7);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}
+    .progress-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:#444;font-weight:600}
+    .progress-meta .step-active{color:#818cf8}
+    .progress-meta .step-total{color:#555}
+
+    main{flex:1;display:flex;flex-direction:column;align-items:center;padding:40px 20px 60px}
+    .step-card{max-width:560px;width:100%;animation:slideIn .35s cubic-bezier(.4,0,.2,1)}
+    @keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+    .step-counter{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#444;margin-bottom:10px}
+    .step-title{font-size:28px;font-weight:800;margin-bottom:6px;line-height:1.2}
+    .step-sub{color:#666;font-size:15px;margin-bottom:28px;line-height:1.5}
+    .step-field{margin-bottom:16px}
+    label{display:block;font-size:12px;color:#888;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+    input,textarea,select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:13px 16px;color:#fff;font-size:15px;outline:none;transition:border .2s;resize:vertical;font-family:inherit}
+    input::placeholder,textarea::placeholder{color:#444}
+    input:focus,textarea:focus,select:focus{border-color:var(--purple)}
+    select option{background:#1a1a2e}
+    textarea{min-height:90px}
+    .hint{font-size:12px;color:#444;margin-top:6px}
+
+    .chip-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+    .chip{padding:8px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;font-size:13px;color:#aaa;cursor:pointer;transition:all .15s;user-select:none}
+    .chip:hover{border-color:rgba(99,102,241,0.5);color:#fff}
+    .chip.selected{background:rgba(99,102,241,0.2);border-color:var(--purple);color:#818cf8}
+    .chip.selected::after{content:' ✓';color:var(--green)}
+    .chip-other{background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.15);color:#555;padding:8px 16px;border-radius:10px;font-size:13px;cursor:pointer;transition:all .15s}
+    .chip-other:hover{color:#888;border-color:rgba(255,255,255,0.25)}
+    .other-box{margin-top:8px;display:none}
+    .other-box.show{display:block}
+    .sel-count{font-size:12px;color:#555;margin-bottom:12px}
+
+    .price-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+    .price-row-item{padding:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
+    .price-row-item input{background:transparent;border:none;padding:0;font-size:15px;outline:none;width:100%}
+    .price-row-item input::placeholder{color:#444}
+    .price-row-item .chip{padding:0;background:none;border:none;font-size:12px;font-weight:700;color:#818cf8;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+    .add-price-btn{font-size:13px;color:#6366f1;cursor:pointer;padding:8px 0;display:flex;align-items:center;gap:6px;border:none;background:none;color:#6366f1;font-family:inherit;font-weight:600}
+    .add-price-btn:hover{color:#818cf8}
+    .add-price-btn::before{content:'+'}
+
+    .review-table{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;margin-bottom:20px}
+    .review-row{display:flex;align-items:flex-start;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .review-row:last-child{border-bottom:none}
+    .review-key{font-size:12px;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:.5px;width:120px;flex-shrink:0;padding-top:2px}
+    .review-val{font-size:14px;color:#ccc;flex:1}
+    .review-val.empty{color:#444;font-style:italic}
+    .review-val.services-list{display:flex;flex-wrap:wrap;gap:5px}
+    .review-val.services-list span{background:rgba(99,102,241,0.1);color:#818cf8;font-size:11px;padding:3px 8px;border-radius:8px}
+
+    .btn-row{display:flex;gap:12px;margin-top:auto;padding-top:20px}
+    .btn-next{flex:1;padding:15px;background:var(--purple);color:#fff;border:none;border-radius:13px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s}
+    .btn-next:hover{background:var(--purple-dark);transform:translateY(-1px)}
+    .btn-next:active{transform:translateY(0)}
+    .btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
+    .btn-back{padding:15px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:13px;color:#888;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s}
+    .btn-back:hover{background:rgba(255,255,255,0.08);color:#fff}
+    .btn-back:disabled{opacity:0;pointer-events:none}
+
+    .success-card{text-align:center;padding:40px 20px;animation:slideIn .35s ease}
+    .success-icon{font-size:64px;margin-bottom:16px}
+    .success-title{font-size:28px;font-weight:800;margin-bottom:10px}
+    .success-sub{color:#666;font-size:15px;line-height:1.6;margin-bottom:24px}
+    .success-sub a{color:#818cf8;text-decoration:none}
+
+    .error-msg{padding:12px 16px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:10px;color:#ef4444;font-size:13px;margin-bottom:16px;display:none}
+
+    @media(max-width:500px){.step-title{font-size:24px}.price-row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">Massage Pass</div>
+  <div class="header-badge">Studio Onboarding</div>
+</header>
+
+<div class="progress-wrap" style="padding:24px 20px 0;max-width:560px;margin:0 auto;width:100%">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-meta">
+    <span class="step-active" id="stepLabel">Step 1 of 7</span>
+    <span class="step-total" id="totalLabel">0% complete</span>
+  </div>
+</div>
+
+<main>
+  <div class="step-card" id="stepCard">
+
+    <!-- Step 1: Studio Name -->
+    <div class="step" id="step-1">
+      <div class="step-counter">Step 1 of 7</div>
+      <div class="step-title">What's your studio called?</div>
+      <div class="step-sub">This is how customers will find you on the map.</div>
+      <div class="step-field">
+        <label>Studio Name *</label>
+        <input type="text" id="s-name" placeholder="e.g. The Fix Room, Masajes Kinuan" maxlength="80">
+      </div>
+      <div class="step-field">
+        <label>Trading As / Brand Name <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
+        <input type="text" id="s-brand" placeholder="If different from legal name">
+      </div>
+    </div>
+
+    <!-- Step 2: Contact Info -->
+    <div class="step" id="step-2" style="display:none">
+      <div class="step-counter">Step 2 of 7</div>
+      <div class="step-title">Who should we contact?</div>
+      <div class="step-sub">We'll use this for your login and onboarding communications.</div>
+      <div class="step-field">
+        <label>Your Name *</label>
+        <input type="text" id="s-contact" placeholder="e.g. María García">
+      </div>
+      <div class="step-field">
+        <label>Email *</label>
+        <input type="email" id="s-email" placeholder="studio@email.com">
+      </div>
+      <div class="step-field">
+        <label>Phone / WhatsApp *</label>
+        <input type="tel" id="s-phone" placeholder="+34 600 000 000">
+      </div>
+    </div>
+
+    <!-- Step 3: Address -->
+    <div class="step" id="step-3" style="display:none">
+      <div class="step-counter">Step 3 of 7</div>
+      <div class="step-title">Where are you located?</div>
+      <div class="step-sub">Customers need this to find you.</div>
+      <div class="step-field">
+        <label>Street Address *</label>
+        <input type="text" id="s-address" placeholder="Calle Example 1, Madrid 28001">
+      </div>
+      <div class="step-field">
+        <label>District / Neighbourhood <span style="color:#444;font-weight:400;text-transform:none">(auto-detected from address)</span></label>
+        <input type="text" id="s-district" placeholder="e.g. Chamberí, Chueca, Sol">
+      </div>
+    </div>
+
+    <!-- Step 4: Services -->
+    <div class="step" id="step-4" style="display:none">
+      <div class="step-counter">Step 4 of 7</div>
+      <div class="step-title">What do you offer?</div>
+      <div class="step-sub">Select all that apply. You can add custom services below.</div>
+      <p class="sel-count" id="selCount">Tap to select — as many as apply</p>
+      <div class="chip-grid" id="chipGrid">
+        <div class="chip" data-val="Swedish Massage">Swedish</div>
+        <div class="chip" data-val="Deep Tissue Massage">Deep Tissue</div>
+        <div class="chip" data-val="Thai Massage">Thai Massage</div>
+        <div class="chip" data-val="Thai Oil Massage">Thai Oil</div>
+        <div class="chip" data-val="Sports Massage">Sports</div>
+        <div class="chip" data-val="Hot Stone Massage">Hot Stone</div>
+        <div class="chip" data-val="Aromatherapy">Aromatherapy</div>
+        <div class="chip" data-val="Shiatsu">Shiatsu</div>
+        <div class="chip" data-val="Reflexology">Reflexology</div>
+        <div class="chip" data-val="Foot Reflexology">Foot Reflexology</div>
+        <div class="chip" data-val="Lymphatic Drainage">Lymphatic Drainage</div>
+        <div class="chip" data-val="Couples Massage">Couples</div>
+        <div class="chip" data-val="Four Hands Massage">Four Hands</div>
+        <div class="chip" data-val="Facial Massage">Facial Massage</div>
+        <div class="chip" data-val="Kobido Facial Massage">Kobido Facial</div>
+        <div class="chip" data-val="Lomi Lomi">Lomi Lomi</div>
+        <div class="chip" data-val="Ayurvedic Massage">Ayurvedic</div>
+        <div class="chip" data-val="Relaxation Massage">Relaxation</div>
+        <div class="chip" data-val="Therapeutic Massage">Therapeutic</div>
+        <div class="chip" data-val="Prenatal Massage">Prenatal</div>
+        <div class="chip" data-val="Day Spa Packages">Day Spa</div>
+        <div class="chip" data-val="Decontracting Massage">Decontracting</div>
+        <div class="chip" data-val="Anti-stress Massage">Anti-stress</div>
+        <span class="chip-other" id="otherBtn">+ Custom service</span>
+      </div>
+      <div class="other-box" id="otherBox">
+        <input type="text" id="customService" placeholder="Type any other service you offer…" style="margin-bottom:8px">
+        <button class="add-price-btn" onclick="addCustomService()" style="background:none;border:none;color:#818cf8;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit">+ Add this service</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Prices -->
+    <div class="step" id="step-5" style="display:none">
+      <div class="step-counter">Step 5 of 7</div>
+      <div class="step-title">Set your prices.</div>
+      <div class="step-sub">Add each service with its price. Leave blank for services you don't offer.</div>
+      <div id="priceRows"></div>
+      <div class="step-field" style="margin-top:12px">
+        <label>General Price Range <span style="color:#444;font-weight:400;text-transform:none">(fallback)</span></label>
+        <input type="text" id="s-price-general" placeholder="e.g. €50-80/hour or from €45">
+      </div>
+    </div>
+
+    <!-- Step 6: Booking Details -->
+    <div class="step" id="step-6" style="display:none">
+      <div class="step-counter">Step 6 of 7</div>
+      <div class="step-title">How do customers book?</div>
+      <div class="step-sub">You can add more details after onboarding.</div>
+      <div class="step-field">
+        <label>Booking / Calendar URL <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
+        <input type="url" id="s-booking" placeholder="https://your-booking-page.com">
+      </div>
+      <div class="step-field">
+        <label>WhatsApp for Bookings <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
+        <input type="tel" id="s-wa" placeholder="+34 600 000 000">
+      </div>
+      <div class="step-field">
+        <label>Opening Hours <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
+        <input type="text" id="s-hours" placeholder="e.g. Mon-Fri 10-20h, Sat 10-15h">
+      </div>
+    </div>
+
+    <!-- Step 7: Review & Submit -->
+    <div class="step" id="step-7" style="display:none">
+      <div class="step-counter">Step 7 of 7</div>
+      <div class="step-title">Review your listing.</div>
+      <div class="step-sub">Make sure everything looks right before submitting.</div>
+      <div id="reviewContent"></div>
+    </div>
+
+    <!-- Success -->
+    <div class="step" id="step-success" style="display:none">
+      <div class="success-card">
+        <div class="success-icon">🎉</div>
+        <div class="success-title">You're in!</div>
+        <div class="success-sub">
+          Your studio is submitted for review.<br>
+          We'll be in touch within 24 hours to activate your listing.
+        </div>
+        <div style="color:#444;font-size:13px">Questions? <a href="mailto:jordan@jfhays.com" style="color:#818cf8;text-decoration:none">jordan@jfhays.com</a></div>
+      </div>
+    </div>
+
+    <div class="error-msg" id="errorMsg"></div>
+
+    <div class="btn-row" id="btnRow">
+      <button class="btn-back" id="btnBack" onclick="prevStep()" disabled>← Back</button>
+      <button class="btn-next" id="btnNext" onclick="nextStep()">Next →</button>
+    </div>
+
+  </div>
+</main>
+
+<script>
+const TOTAL_STEPS = 7;
+let currentStep = 1;
+let selectedServices = new Set();
+let customServices = [];
+let formData = {};
+
+// ── Chip selection ──
+document.querySelectorAll('#chipGrid .chip[data-val]').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const v = chip.dataset.val;
+    if (selectedServices.has(v)) {
+      selectedServices.delete(v);
+      chip.classList.remove('selected');
+    } else {
+      selectedServices.add(v);
+      chip.classList.add('selected');
+    }
+    updateSelCount();
+  });
+});
+
+document.getElementById('otherBtn').addEventListener('click', () => {
+  document.getElementById('otherBox').classList.add('show');
+  document.getElementById('customService').focus();
+});
+
+function addCustomService() {
+  const v = document.getElementById('customService').value.trim();
+  if (!v) return;
+  if (!customServices.includes(v)) {
+    customServices.push(v);
+    const chip = document.createElement('div');
+    chip.className = 'chip selected';
+    chip.dataset.val = v;
+    chip.textContent = v;
+    chip.addEventListener('click', () => {
+      selectedServices.delete(v);
+      customServices = customServices.filter(x => x !== v);
+      chip.remove();
+      updateSelCount();
+    });
+    document.getElementById('chipGrid').insertBefore(chip, document.getElementById('otherBtn'));
+    updateSelCount();
+  }
+  document.getElementById('customService').value = '';
+  document.getElementById('otherBox').classList.remove('show');
+}
+
+function updateSelCount() {
+  const n = selectedServices.size;
+  document.getElementById('selCount').textContent = n ? `${n} service${n > 1 ? 's' : ''} selected` : 'Tap to select — as many as apply';
+}
+
+// ── Progress bar ──
+function updateProgress() {
+  const pct = ((currentStep - 1) / (TOTAL_STEPS - 1)) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('stepLabel').textContent = `Step ${currentStep} of ${TOTAL_STEPS}`;
+  document.getElementById('totalLabel').textContent = Math.round(pct) + '% complete';
+}
+
+// ── Navigation ──
+function showStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+  const el = document.getElementById('step-' + n) || document.getElementById('step-success');
+  if (el) { el.style.display = 'block'; el.classList.add('step'); }
+  document.getElementById('btnBack').disabled = n === 1;
+  document.getElementById('btnNext').textContent = n === TOTAL_STEPS ? 'Submit Listing →' : 'Next →';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep() {
+  if (!validateStep(currentStep)) return;
+
+  if (currentStep === TOTAL_STEPS) {
+    submitForm();
+    return;
+  }
+
+  saveStep(currentStep);
+  currentStep++;
+  showStep(currentStep);
+
+  if (currentStep === 5) buildPriceRows();
+  if (currentStep === 7) buildReview();
+}
+
+function prevStep() {
+  if (currentStep <= 1) return;
+  saveStep(currentStep);
+  currentStep--;
+  showStep(currentStep);
+}
+
+function saveStep(n) {
+  if (n === 1) {
+    formData.name = document.getElementById('s-name').value.trim();
+    formData.brand = document.getElementById('s-brand').value.trim();
+  }
+  if (n === 2) {
+    formData.contact = document.getElementById('s-contact').value.trim();
+    formData.email = document.getElementById('s-email').value.trim();
+    formData.phone = document.getElementById('s-phone').value.trim();
+  }
+  if (n === 3) {
+    formData.address = document.getElementById('s-address').value.trim();
+    formData.district = document.getElementById('s-district').value.trim();
+    if (!formData.district && formData.address) {
+      const detected = extractDistrict(formData.address);
+      if (detected) formData.district = detected;
+      document.getElementById('s-district').value = detected || '';
+    }
+  }
+  if (n === 4) {
+    formData.services = [...selectedServices].join(', ');
+  }
+  if (n === 5) {
+    // Collect price rows
+    formData.priceItems = [];
+    document.querySelectorAll('.price-row-item').forEach(row => {
+      const svc = row.querySelector('.service-name').textContent;
+      const price = row.querySelector('input').value.trim();
+      if (price) formData.priceItems.push({ service: svc, price });
+    });
+    formData.priceGeneral = document.getElementById('s-price-general').value.trim();
+  }
+  if (n === 6) {
+    formData.booking = document.getElementById('s-booking').value.trim();
+    formData.whatsapp = document.getElementById('s-wa').value.trim();
+    formData.hours = document.getElementById('s-hours').value.trim();
+  }
+}
+
+function validateStep(n) {
+  if (n === 1) {
+    const v = document.getElementById('s-name').value.trim();
+    if (!v) { shake(document.getElementById('s-name')); return false; }
+  }
+  if (n === 2) {
+    const email = document.getElementById('s-email').value.trim();
+    const phone = document.getElementById('s-phone').value.trim();
+    if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { shake(document.getElementById('s-email')); return false; }
+    if (!phone) { shake(document.getElementById('s-phone')); return false; }
+  }
+  if (n === 3) {
+    const addr = document.getElementById('s-address').value.trim();
+    if (!addr) { shake(document.getElementById('s-address')); return false; }
+  }
+  if (n === 4) {
+    if (selectedServices.size === 0) {
+      showError('Please select at least one service.');
+      return false;
+    }
+  }
+  hideError();
+  return true;
+}
+
+function shake(el) {
+  el.style.borderColor = '#ef4444';
+  el.style.animation = 'shake 0.3s ease';
+  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 600);
+}
+
+// Build price rows dynamically
+function buildPriceRows() {
+  const allSvcs = [...selectedServices];
+  let html = '';
+  for (const svc of allSvcs) {
+    html += `<div class="price-row-item">
+      <span class="chip service-name">${svc}</span>
+      <input type="text" placeholder="e.g. €60 / 60min €80" data-service="${svc}">
+    </div>`;
+  }
+  document.getElementById('priceRows').innerHTML = html;
+}
+
+// Build review
+function buildReview() {
+  const items = formData.priceItems || [];
+  const priceStr = items.length ? items.map(p => `${p.service}: ${p.price}`).join('\n') : (formData.priceGeneral || 'Not set');
+  const svcList = formData.services ? formData.services.split(', ').map(s => `<span>${s}</span>`).join('') : '<span class="empty">None selected</span>';
+  const html = `
+    <div class="review-table">
+      <div class="review-row"><div class="review-key">Studio</div><div class="review-val">${formData.name || '—'}</div></div>
+      <div class="review-row"><div class="review-key">Contact</div><div class="review-val">${formData.contact || '—'}</div></div>
+      <div class="review-row"><div class="review-key">Email</div><div class="review-val">${formData.email || '—'}</div></div>
+      <div class="review-row"><div class="review-key">Phone</div><div class="review-val">${formData.phone || '—'}</div></div>
+      <div class="review-row"><div class="review-key">Address</div><div class="review-val">${formData.address || '—'}${formData.district ? '<br><span style="color:#818cf8;font-size:12px">'+formData.district+'</span>' : ''}</div></div>
+      <div class="review-row"><div class="review-key">Services</div><div class="review-val services-list">${svcList}</div></div>
+      <div class="review-row"><div class="review-key">Prices</div><div class="review-val" style="white-space:pre-line;font-size:13px">${priceStr}</div></div>
+      <div class="review-row"><div class="review-key">Booking URL</div><div class="review-val ${formData.booking ? '' : 'empty'}">${formData.booking || 'Not set'}</div></div>
+      <div class="review-row"><div class="review-key">WhatsApp</div><div class="review-val ${formData.whatsapp ? '' : 'empty'}">${formData.whatsapp || 'Not set'}</div></div>
+      <div class="review-row"><div class="review-key">Hours</div><div class="review-val ${formData.hours ? '' : 'empty'}">${formData.hours || 'Not set'}</div></div>
+    </div>`;
+  document.getElementById('reviewContent').innerHTML = html;
+}
+
+// District auto-detect
+const DISTRICTS = ['Centro','Sol','Chamberí','Chueca','Salamanca','Retiro','Moncloa','Arganzuela','Lavapiés','Malasaña','Tetuán','Chamartín','Paseo de La Habana','Alonso Martínez','Gran Vía','Callao','Noviciado','Bilbao','Guzmán el Bueno','Alameda','Atocha','Mirasierra','Las Tablas','La Latina'];
+function extractDistrict(addr) {
+  if (!addr) return null;
+  for (const d of DISTRICTS) {
+    if (addr.toLowerCase().includes(d.toLowerCase())) return d;
+  }
+  return null;
+}
+
+// ── Submission ──
+function submitForm() {
+  const btn = document.getElementById('btnNext');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  showError('');
+
+  // Build services string from price rows
+  const priceItems = formData.priceItems || [];
+  const servicesWithPrices = priceItems.map(p => `${p.service} ${p.price}`).join(', ');
+  const servicesStr = formData.services + (servicesWithPrices ? ' | Prices: ' + servicesWithPrices : '');
+
+  // Build notes from extra fields
+  const notes = [
+    formData.hours ? `Hours: ${formData.hours}` : '',
+    formData.booking ? `Booking: ${formData.booking}` : '',
+    formData.whatsapp ? `WhatsApp: ${formData.whatsapp}` : ''
+  ].filter(Boolean).join('\n');
+
+  const id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0;
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+  });
+
+  const payload = {
+    id,
+    studio_name: formData.name,
+    contact_name: formData.contact || null,
+    email: formData.email,
+    phone: formData.phone,
+    address: formData.address,
+    district: formData.district || null,
+    city: 'Madrid',
+    services: servicesStr || formData.services || null,
+    price_range: formData.priceGeneral || null,
+    notes: notes || null,
+    status: 'pending',
+    source: 'studio-wizard',
+    calendar_url: formData.booking || null,
+    whatsapp: formData.whatsapp || null
+  };
+
+  fetch('https://jglftdstrowwckwqmpue.supabase.co/rest/v1/partners', {
+    method: 'POST',
+    headers: {
+      apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg',
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(payload)
+  }).then(r => r.ok ? r.json() : r.json().then(e => Promise.reject(e)) )
+    .then(() => {
+      document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
+      document.getElementById('step-success').style.display = 'block';
+      document.getElementById('btnRow').style.display = 'none';
+      document.getElementById('progressFill').style.width = '100%';
+      document.getElementById('stepLabel').textContent = 'Done!';
+      document.getElementById('totalLabel').textContent = '100%';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(err => {
+      btn.disabled = false;
+      btn.textContent = 'Submit Listing →';
+      showError('Something went wrong: ' + (err.message || 'try again'));
+    });
+}
+
+function showError(msg) {
+  const el = document.getElementById('errorMsg');
+  el.textContent = msg;
+  el.style.display = msg ? 'block' : 'none';
+}
+function hideError() { showError(''); }
+
+showStep(1);
+</script>
+</body>
+</html>
