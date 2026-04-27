@@ -6,7 +6,13 @@
 - **Timezone**: Madrid (UTC+2)
 - **Language**: English (but targeting Spanish market for Massage Pass)
 
-## Active Projects
+## Permanent Lessons
+
+**GitHub push method:** Use `git push` from the workspace — already a git repo, token already in `.env`. Never grind through API blobs/trees workaround when git is right there.
+
+**GitHub research:** Never say "nothing found on GitHub" without checking properly. Use `git ls-tree -r origin/main` or API tree endpoint first.
+
+**This lesson is permanent.**
 
 ### 1. Massage Pass / Hilom
 **What it is**: SaaS platform — studios pay €69-99/month for a WhatsApp AI agent that handles bookings 24/7. Customer-facing app where customers discover studios and book via WhatsApp.
