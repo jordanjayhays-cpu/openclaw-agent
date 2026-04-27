@@ -37,6 +37,8 @@
     .btn-book:hover{background:#4f46e5}
     .btn-wa{padding:11px 14px;background:rgba(37,211,102,0.12);color:#25d366;border:1px solid rgba(37,211,102,0.25);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:all .2s;display:block}
     .btn-wa:hover{background:rgba(37,211,102,0.2)}
+    .btn-call{padding:11px 14px;background:rgba(99,102,241,0.1);color:#818cf8;border:1px solid rgba(99,102,241,0.2);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:all .2s;display:block}
+    .btn-call:hover{background:rgba(99,102,241,0.18)}
     .note{font-size:11px;color:#444;margin-top:10px}
     .footer{text-align:center;padding:40px;color:#333;font-size:13px}
     .footer a{color:#6366f1;text-decoration:none}
@@ -48,7 +50,7 @@
   <h1>Massage Pass</h1>
   <p>Book a massage studio in Madrid — real studios, instant booking</p>
   <div class="bar">
-    <span class="b">12 Studios</span>
+    <span class="b">14 Studios</span>
     <span class="b">All neighborhoods</span>
     <span class="b">WhatsApp + Book Direct</span>
   </div>
@@ -67,28 +69,107 @@
 <script>
 const SB_K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg';
 const SB_U='https://jglftdstrowwckwqmpue.supabase.co';
-const FALLBACK=[
-  {name:'The Fix Room',type:'Deep Tissue & Sports',category:'deep-tissue',address:'Calle Quiñones 13, Centro, Madrid 28015',whatsapp:'+34 622 217 737',district:'Centro',bookingUrl:'https://thefixroom.com',topPick:true},
-  {name:'The Nook Madrid',type:'Quiromasajes & Rituals',category:'wellness',address:'Calle Zurbarán 10, Chamberí, Madrid 28010',whatsapp:'+34 622 36 09 22',district:'Chamberí',bookingUrl:'https://thenookmadrid.com/reservas-thnook-masajes-madrid/',topPick:false},
-  {name:'PhilThai Massage',type:'Thai Blend',category:'thai',address:'Calle Barbieri 16, Chueca, Madrid',whatsapp:'+34 624 143 044',district:'Chueca',bookingUrl:'https://philthaimassage.com',topPick:true},
-  {name:'Esenzia Chamartín',type:'Wellness & Aesthetics',category:'wellness',address:'Calle Caleruega 18, Chamartín, Madrid 28033',whatsapp:'+34 656 31 21 08',district:'Chamartín',bookingUrl:'https://esenziachamartin.es',topPick:true},
-  {name:'Spazio Wellness',type:'Day Spa',category:'spa',address:'Calle de los Estudios 4, Centro, Madrid 28012',whatsapp:null,district:'Sol',bookingUrl:'https://spaziowellness.es/#reservas',topPick:false},
-  {name:'Madrid Day Spa by Nuilea',type:'Day Spa',category:'spa',address:'Calle Leon 4, Sol, Madrid 28014',whatsapp:'+34 910 66 38 15',district:'Sol',bookingUrl:'https://www.madrid-day-spa.com/es/reservas',topPick:false},
-  {name:'Masajes Kinuan',type:'Thai, Reflexology & Shiatsu',category:'thai',address:'Calle Gaztambide 17, Chamberí, Madrid 28015',whatsapp:'+34 639 130 235',district:'Chamberí',bookingUrl:'https://kinuan.com/reserva/',topPick:false},
-  {name:'Kirovital',type:'Wellness Center',category:'wellness',address:'Madrid',whatsapp:null,district:'Madrid',bookingUrl:'https://kirovital.es/es/reservas/',topPick:false},
-  {name:'Magical Hands 369',type:'Massage Studio',category:'deep-tissue',address:'Calle Juan Álvarez Mendizábal 34, Madrid',whatsapp:'+34 617 78 18 22',district:'Chueca',bookingUrl:null,topPick:false},
-  {name:'Aura Plena',type:'Wellness Space',category:'wellness',address:'Madrid',whatsapp:'+34 637 10 88 77',district:'Madrid',bookingUrl:null,topPick:false},
-  {name:'Chang Thai Massage',type:'Traditional Thai Massage',category:'thai',address:'Madrid',whatsapp:'+34 657 326 513',district:'Madrid',bookingUrl:null,topPick:false},
-  {name:'Chada Thai Massage',type:'Thai & Couples Massage',category:'thai',address:'Madrid',whatsapp:'+34 696 76 29 17',district:'Madrid',bookingUrl:null,topPick:false},
+
+// WhatsApp-enabled numbers (confirmed via research)
+const WA_CONFIRMED = [
+  '+34622217737','+34622360922','+34624143044','+34656312108',
+  '+34640746695','+34696762917','+34657326513'
 ];
-function waLink(p){if(!p)return null;const n=p.replace(/\\D/g,'');return'https://wa.me/'+(n.startsWith('34')?n:'34'+n);}
+
+function waLink(p){
+  if(!p)return null;
+  const n=p.replace(/\D/g,'');
+  const fmt='34'+n.replace(/^34/,'');
+  return'https://wa.me/'+fmt;
+}
+function telLink(p){
+  if(!p)return null;
+  return'tel:'+p.replace(/\s/g,'');
+}
+function hasWA(p){
+  if(!p)return false;
+  const n=p.replace(/\D/g,'');
+  return WA_CONFIRMED.includes('+'+n)||WA_CONFIRMED.includes('34'+n.replace(/^34/,''));
+}
 function cat(s){if(!s)return'wellness';const l=s.toLowerCase();if(l.includes('thai'))return'thai';if(l.includes('deep')||l.includes('therap'))return'deep-tissue';if(l.includes('spa')||l.includes('facial'))return'spa';return'wellness';}
 function topPick(n){if(!n)return false;return['The Fix Room','PhilThai','Esenzia','The Nook'].some(x=>n.includes(x));}
-async function load(){try{const r=await fetch(SB_U+'/rest/v1/partners?select=*&status=eq.active&not.isnull=district&order=studio_name',{headers:{apikey:SB_K,Authorization:'Bearer '+SB_K}});if(!r.ok)throw new Error('fail');const d=await r.json();if(d.length>0){window._s=d.map(s=>({name:s.studio_name,type:s.services||'Massage',category:cat(s.services),address:s.address,phone:s.phone,whatsapp:s.phone,district:s.district,bookingUrl:s.calendar_url,topPick:topPick(s.studio_name)}));render();}else{renderFallback();}}catch(e){renderFallback();}}
-function renderFallback(){window._s=FALLBACK;render();}
-function render(f='all',q=''){const g=document.getElementById('grid');const s=(window._s||[]).filter(x=>(f==='all'||x.category===f)&&(!q||x.name.toLowerCase().includes(q.toLowerCase())||(x.district||'').toLowerCase().includes(q.toLowerCase())||(x.type||'').toLowerCase().includes(q.toLowerCase())));if(!s.length){g.innerHTML='<div class=loading>No studios found.</div>';return;}g.innerHTML=s.map(x=>{const w=waLink(x.whatsapp);const t=(x.type||'').split(',').slice(0,4).map(z=>'<span class=ctag>'+z.trim()+'</span>').join('');return'<div class="card'+(x.topPick?' top':'')+'"><div class=cname>'+x.name+'</div><div class=ctype>'+(x.type||'Massage')+'</div>'+(x.district?'<div class=caddr><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>'+(x.address||x.district)+'</div>':'')+(t?'<div class=ctags>'+t+'</div>':'')+'<div class=cactions>'+(x.bookingUrl?'<a class=btn-book href="'+x.bookingUrl+'" target=_blank>Book Now</a>':'')+(w?'<a class=btn-wa href="'+w+'" target=_blank>WhatsApp</a>':'')+'</div></div>';}).join('');}
-document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.filter,document.getElementById('search').value);});});
-document.getElementById('search').addEventListener('input',e=>{render(document.querySelector('.fbtn.active').dataset.filter,e.target.value);});
+async function load(){
+  try{
+    const r=await fetch(SB_U+'/rest/v1/partners?select=*&status=eq.active&district=not.is.null&order=studio_name',{
+      headers:{apikey:SB_K,Authorization:'Bearer '+SB_K}
+    });
+    if(!r.ok)throw new Error('fail');
+    const d=await r.json();
+    if(d.length>0){
+      window._s=d.map(s=>({
+        name:s.studio_name,
+        type:s.services||'Massage',
+        category:cat(s.services),
+        address:s.address,
+        phone:s.phone,
+        district:s.district,
+        bookingUrl:s.calendar_url,
+        topPick:topPick(s.studio_name)
+      }));
+      render();
+    }else{renderFallback();}
+  }catch(e){renderFallback();}
+}
+function renderFallback(){
+  window._s=[
+    {name:'The Fix Room',type:'Deep Tissue & Sports',category:'deep-tissue',address:'Calle Quiñones 13, Centro, Madrid 28015',phone:'+34 622 217 737',district:'Centro',bookingUrl:'https://thefixroom.com',topPick:true},
+    {name:'The Nook Madrid',type:'Quiromasajes & Rituals',category:'wellness',address:'Calle Zurbarán 10, Chamberí, Madrid 28010',phone:'+34 622 36 09 22',district:'Chamberí',bookingUrl:'https://thenookmadrid.com/reservas-thnook-masajes-madrid/',topPick:false},
+    {name:'PhilThai Massage',type:'Thai Blend',category:'thai',address:'Calle Barbieri 16, Chueca, Madrid',phone:'+34 624 143 044',district:'Chueca',bookingUrl:'https://philthaimassage.com',topPick:true},
+    {name:'Esenzia Chamartín',type:'Wellness & Aesthetics',category:'wellness',address:'Calle Caleruega 18, Chamartín, Madrid 28033',phone:'+34 656 31 21 08',district:'Chamartín',bookingUrl:'https://esenziachamartin.es',topPick:true},
+    {name:'Spazio Wellness',type:'Day Spa',category:'spa',address:'Calle de los Estudios 4, Centro, Madrid 28012',phone:'+34 615 94 55 21',district:'Sol',bookingUrl:'https://spaziowellness.es/#reservas',topPick:false},
+    {name:'Madrid Day Spa by Nuilea',type:'Day Spa',category:'spa',address:'Calle Leon 4, Sol, Madrid 28014',phone:'+34 910 66 38 15',district:'Sol',bookingUrl:'https://www.madrid-day-spa.com/es/reservas',topPick:false},
+    {name:'Masajes Kinuan',type:'Thai, Reflexology & Shiatsu',category:'thai',address:'Calle Gaztambide 17, Chamberí, Madrid 28015',phone:'+34 639 130 235',district:'Chamberí',bookingUrl:'https://kinuan.com/reserva/',topPick:false},
+    {name:'Kirovital',type:'Wellness Center',category:'wellness',address:'Madrid',phone:'+34 615 94 55 21',district:'Madrid',bookingUrl:'https://kirovital.es/es/reservas/',topPick:false},
+    {name:'Magical Hands 369',type:'Massage Studio',category:'deep-tissue',address:'Calle Juan Álvarez Mendizábal 34, Madrid',phone:'+34 617 78 18 22',district:'Chueca',bookingUrl:null,topPick:false},
+    {name:'Aura Plena',type:'Wellness Space',category:'wellness',address:'Madrid',phone:'+34 637 10 88 77',district:'Madrid',bookingUrl:null,topPick:false},
+    {name:'Chang Thai Massage',type:'Traditional Thai Massage',category:'thai',address:'Madrid',phone:'+34 657 326 513',district:'Madrid',bookingUrl:null,topPick:false},
+    {name:'Chada Thai Massage',type:'Thai & Couples Massage',category:'thai',address:'Madrid',phone:'+34 696 76 29 17',district:'Madrid',bookingUrl:null,topPick:false},
+    {name:'Art Thai Massage',type:'Thai Massage & Deep Tissue',category:'thai',address:'Calle de Carranza 22, Chamberí, Madrid 28004',phone:'+34 640 746 695',district:'Chamberí',bookingUrl:'https://www.masajethaimadrid.com',topPick:false},
+    {name:'Kenika Thai Massage',type:'Thai Massage & Reflexology',category:'thai',address:'Paseo de La Habana 42, Chamartín, Madrid 28036',phone:'+34 912 792 081',district:'Chamartín',bookingUrl:'https://kenikathaimassage.es',topPick:false},
+  ];
+  render();
+}
+function render(f='all',q=''){
+  const g=document.getElementById('grid');
+  const s=(window._s||[]).filter(x=>
+    (f==='all'||x.category===f)&&
+    (!q||x.name.toLowerCase().includes(q.toLowerCase())||(x.district||'').toLowerCase().includes(q.toLowerCase())||(x.type||'').toLowerCase().includes(q.toLowerCase()))
+  );
+  if(!s.length){g.innerHTML='<div class=loading>No studios found.</div>';return;}
+  g.innerHTML=s.map(x=>{
+    const w=hasWA(x.phone)?waLink(x.phone):null;
+    const t=telLink(x.phone);
+    const tags=(x.type||'').split(',').slice(0,4).map(z=>'<span class=ctag>'+z.trim()+'</span>').join('');
+    const contactBtn=w
+      ?'<a class=btn-wa href="'+w+'" target=_blank>WhatsApp</a>'
+      :'<a class=btn-call href="'+t+'" target=_blank>📞 Call / Text</a>';
+    return'<div class="card'+(x.topPick?' top':'')+'">'+
+      '<div class=cname>'+x.name+'</div>'+
+      '<div class=ctype>'+(x.type||'Massage')+'</div>'+
+      (x.district?'<div class=caddr><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>'+(x.address||x.district)+'</div>':'')+
+      (tags?'<div class=ctags>'+tags+'</div>':'')+
+      '<div class=cactions>'+
+        (x.bookingUrl?'<a class=btn-book href="'+x.bookingUrl+'" target=_blank>Book Now</a>':'')+
+        contactBtn+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+document.querySelectorAll('.fbtn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    render(b.dataset.filter,document.getElementById('search').value);
+  });
+});
+document.getElementById('search').addEventListener('input',e=>{
+  render(document.querySelector('.fbtn.active').dataset.filter,e.target.value);
+});
 load();
 </script>
 </body>
