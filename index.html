@@ -4,17 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Massage Pass — Book a Studio in Madrid</title>
-  <meta name="description" content="Book massage studios in Madrid. Deep tissue, Thai, spa, and more.">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#fff;min-height:100vh}
-    header{background:linear-gradient(135deg,#1a1a2e 0%,#0f0f1a 100%);padding:50px 40px 35px;text-align:center;border-bottom:1px solid rgba(99,102,241,0.2)}
+    header{background:linear-gradient(135deg,#1a1a2e,#0f0f1a);padding:50px 40px 35px;text-align:center;border-bottom:1px solid rgba(99,102,241,0.2)}
     header h1{font-size:42px;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-1px}
     header p{color:#888;margin-top:10px;font-size:17px}
     .bar{display:flex;justify-content:center;gap:12px;margin-top:18px;flex-wrap:wrap}
     .b{background:rgba(99,102,241,0.15);color:#818cf8;padding:5px 16px;border-radius:20px;font-size:13px;font-weight:600}
     .filters{padding:20px 40px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05)}
-    .filters span{color:#555;font-size:14px}
     .fbtn{padding:7px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;color:#fff;font-size:13px;cursor:pointer;transition:all .2s}
     .fbtn:hover,.fbtn.active{background:#6366f1;border-color:#6366f1}
     .sw{margin-left:auto;display:flex;align-items:center;gap:8px}
@@ -22,7 +20,7 @@
     .sw input::placeholder{color:#444}
     .loading{text-align:center;padding:80px;color:#555;font-size:16px;grid-column:1/-1}
     .grid{padding:30px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px;max-width:1400px;margin:0 auto}
-    .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;transition:all .2s;position:relative;overflow:hidden}
+    .card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;transition:all .2s;position:relative}
     .card:hover{border-color:rgba(99,102,241,0.5);transform:translateY(-3px);box-shadow:0 12px 40px rgba(99,102,241,0.08)}
     .card.top{border-color:rgba(251,191,36,0.35)}
     .card.top::before{content:'TOP PICK';position:absolute;top:14px;right:14px;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:10px;font-weight:700;padding:3px 10px;border-radius:8px;letter-spacing:.5px}
@@ -33,13 +31,12 @@
     .ctags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
     .ctag{background:rgba(99,102,241,0.1);color:#818cf8;font-size:11px;padding:3px 10px;border-radius:10px}
     .cactions{display:flex;gap:10px}
-    .btn-book{flex:1;padding:11px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:all .2s;display:block}
+    .btn-book{flex:1;padding:11px;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;text-align:center;transition:all .2s;display:block}
     .btn-book:hover{background:#4f46e5}
-    .btn-wa{padding:11px 14px;background:rgba(37,211,102,0.12);color:#25d366;border:1px solid rgba(37,211,102,0.25);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:all .2s;display:block}
+    .btn-wa{padding:11px 14px;background:rgba(37,211,102,0.12);color:#25d366;border:1px solid rgba(37,211,102,0.25);border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;text-align:center;transition:all .2s;display:block}
     .btn-wa:hover{background:rgba(37,211,102,0.2)}
-    .btn-call{padding:11px 14px;background:rgba(99,102,241,0.1);color:#818cf8;border:1px solid rgba(99,102,241,0.2);border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;transition:all .2s;display:block}
+    .btn-call{padding:11px 14px;background:rgba(99,102,241,0.1);color:#818cf8;border:1px solid rgba(99,102,241,0.2);border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;text-align:center;transition:all .2s;display:block}
     .btn-call:hover{background:rgba(99,102,241,0.18)}
-    .note{font-size:11px;color:#444;margin-top:10px}
     .footer{text-align:center;padding:40px;color:#333;font-size:13px}
     .footer a{color:#6366f1;text-decoration:none}
     @media(max-width:600px){.grid{padding:16px}header{padding:30px 20px}.filters{padding:16px}}
@@ -52,11 +49,10 @@
   <div class="bar">
     <span class="b">14 Studios</span>
     <span class="b">All neighborhoods</span>
-    <span class="b">WhatsApp + Book Direct</span>
+    <span class="b">Book Direct + Contact</span>
   </div>
 </header>
 <div class="filters">
-  <span>Filter:</span>
   <button class="fbtn active" data-filter="all">All</button>
   <button class="fbtn" data-filter="thai">Thai Massage</button>
   <button class="fbtn" data-filter="deep-tissue">Deep Tissue</button>
@@ -70,29 +66,23 @@
 const SB_K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg';
 const SB_U='https://jglftdstrowwckwqmpue.supabase.co';
 
-// WhatsApp-enabled numbers (confirmed via research)
-const WA_CONFIRMED = [
+// WhatsApp numbers confirmed active (collected by Jordan during outreach)
+const WA_NUMS = new Set([
   '+34622217737','+34622360922','+34624143044','+34656312108',
   '+34640746695','+34696762917','+34657326513'
-];
+]);
 
 function waLink(p){
   if(!p)return null;
   const n=p.replace(/\D/g,'');
-  const fmt='34'+n.replace(/^34/,'');
+  const fmt=n.startsWith('34')?n:'34'+n;
   return'https://wa.me/'+fmt;
 }
-function telLink(p){
-  if(!p)return null;
-  return'tel:'+p.replace(/\s/g,'');
-}
-function hasWA(p){
-  if(!p)return false;
-  const n=p.replace(/\D/g,'');
-  return WA_CONFIRMED.includes('+'+n)||WA_CONFIRMED.includes('34'+n.replace(/^34/,''));
-}
+function telLink(p){if(!p)return null;return'tel:'+p.replace(/\s/g,'');}
+function hasWA(p){if(!p)return false;const n='+'+p.replace(/\D/g,'');return WA_NUMS.has(n)||WA_NUMS.has('+'+p.replace(/\D/g,'').replace(/^34/,''));}
 function cat(s){if(!s)return'wellness';const l=s.toLowerCase();if(l.includes('thai'))return'thai';if(l.includes('deep')||l.includes('therap'))return'deep-tissue';if(l.includes('spa')||l.includes('facial'))return'spa';return'wellness';}
 function topPick(n){if(!n)return false;return['The Fix Room','PhilThai','Esenzia','The Nook'].some(x=>n.includes(x));}
+
 async function load(){
   try{
     const r=await fetch(SB_U+'/rest/v1/partners?select=*&status=eq.active&district=not.is.null&order=studio_name',{
@@ -102,14 +92,9 @@ async function load(){
     const d=await r.json();
     if(d.length>0){
       window._s=d.map(s=>({
-        name:s.studio_name,
-        type:s.services||'Massage',
-        category:cat(s.services),
-        address:s.address,
-        phone:s.phone,
-        district:s.district,
-        bookingUrl:s.calendar_url,
-        topPick:topPick(s.studio_name)
+        name:s.studio_name,type:s.services||'Massage',category:cat(s.services),
+        address:s.address,phone:s.phone,district:s.district,
+        bookingUrl:s.calendar_url,topPick:topPick(s.studio_name)
       }));
       render();
     }else{renderFallback();}
@@ -129,7 +114,7 @@ function renderFallback(){
     {name:'Aura Plena',type:'Wellness Space',category:'wellness',address:'Madrid',phone:'+34 637 10 88 77',district:'Madrid',bookingUrl:null,topPick:false},
     {name:'Chang Thai Massage',type:'Traditional Thai Massage',category:'thai',address:'Madrid',phone:'+34 657 326 513',district:'Madrid',bookingUrl:null,topPick:false},
     {name:'Chada Thai Massage',type:'Thai & Couples Massage',category:'thai',address:'Madrid',phone:'+34 696 76 29 17',district:'Madrid',bookingUrl:null,topPick:false},
-    {name:'Art Thai Massage',type:'Thai Massage & Deep Tissue',category:'thai',address:'Calle de Carranza 22, Chamberí, Madrid 28004',phone:'+34 640 746 695',district:'Chamberí',bookingUrl:'https://www.masajethaimadrid.com',topPick:false},
+    {name:'Art Thai Massage',type:'Thai Massage & Deep Tissue',category:'thai',address:'Calle de Carranza 22, Chamberí, Madrid 28004',phone:'+34 640 746 695',district:'Chamberí',bookingUrl:'https://www.masajethaimassage.com',topPick:false},
     {name:'Kenika Thai Massage',type:'Thai Massage & Reflexology',category:'thai',address:'Paseo de La Habana 42, Chamartín, Madrid 28036',phone:'+34 912 792 081',district:'Chamartín',bookingUrl:'https://kenikathaimassage.es',topPick:false},
   ];
   render();
@@ -142,12 +127,11 @@ function render(f='all',q=''){
   );
   if(!s.length){g.innerHTML='<div class=loading>No studios found.</div>';return;}
   g.innerHTML=s.map(x=>{
-    const w=hasWA(x.phone)?waLink(x.phone):null;
-    const t=telLink(x.phone);
+    const isWA=hasWA(x.phone);
+    const contactBtn=isWA
+      ?'<a class=btn-wa href="'+waLink(x.phone)+'" target=_blank>WhatsApp</a>'
+      :'<a class=btn-call href="'+telLink(x.phone)+'">📞 Call / Text</a>';
     const tags=(x.type||'').split(',').slice(0,4).map(z=>'<span class=ctag>'+z.trim()+'</span>').join('');
-    const contactBtn=w
-      ?'<a class=btn-wa href="'+w+'" target=_blank>WhatsApp</a>'
-      :'<a class=btn-call href="'+t+'" target=_blank>📞 Call / Text</a>';
     return'<div class="card'+(x.topPick?' top':'')+'">'+
       '<div class=cname>'+x.name+'</div>'+
       '<div class=ctype>'+(x.type||'Massage')+'</div>'+
