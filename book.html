@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massage Pass — Book a Studio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #fff; min-height: 100vh; }
+    header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0f 100%); padding: 40px 40px 30px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: center; }
+    header h1 { font-size: 36px; font-weight: 700; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    header p { color: #888; margin-top: 8px; font-size: 16px; }
+    .badge-bar { display: flex; justify-content: center; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+    .badge { background: rgba(99,102,241,0.15); color: #818cf8; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+    .filters { padding: 24px 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .filters span { color: #666; font-size: 14px; }
+    .filter-btn { padding: 8px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: #fff; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: #6366f1; border-color: #6366f1; }
+    .search-wrap { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+    .search-wrap input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: #fff; padding: 8px 16px; font-size: 13px; outline: none; width: 200px; }
+    .studios { padding: 30px 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 1400px; margin: 0 auto; }
+    .studio-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; transition: all 0.2s; position: relative; overflow: hidden; }
+    .studio-card:hover { border-color: #6366f1; transform: translateY(-2px); }
+    .studio-card.top-pick { border-color: rgba(251,191,36,0.4); }
+    .studio-card.top-pick::before { content: 'TOP PICK'; position: absolute; top: 12px; right: 12px; background: rgba(251,191,36,0.15); color: #fbbf24; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px; }
+    .studio-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+    .studio-type { font-size: 12px; color: #6366f1; font-weight: 600; margin-bottom: 12px; }
+    .studio-address { font-size: 13px; color: #888; margin-bottom: 16px; line-height: 1.4; }
+    .studio-address svg { width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; fill: #555; }
+    .studio-services { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .service-tag { background: rgba(99,102,241,0.1); color: #818cf8; font-size: 11px; padding: 3px 10px; border-radius: 10px; }
+    .studio-actions { display: flex; gap: 10px; }
+    .btn-book { flex: 1; padding: 10px; background: #6366f1; color: #fff; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .btn-book:hover { background: #4f46e5; }
+    .btn-whatsapp { padding: 10px 14px; background: rgba(37,211,102,0.15); color: #25d366; border: 1px solid rgba(37,211,102,0.3); border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: all 0.2s; }
+    .btn-whatsapp:hover { background: rgba(37,211,102,0.25); }
+    .studio-rating { font-size: 12px; color: #fbbf24; margin-bottom: 8px; }
+    .studio-whatsapp-note { font-size: 11px; color: #555; margin-top: 8px; }
+    .no-results { text-align: center; padding: 80px; color: #555; font-size: 16px; grid-column: 1 / -1; }
+    .footer-note { text-align: center; padding: 30px; color: #444; font-size: 13px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Massage Pass</h1>
+  <p>Book a massage studio in Madrid — one subscription, unlimited access</p>
+  <div class="badge-bar">
+    <span class="badge">12 Studios</span>
+    <span class="badge">All neighborhoods</span>
+    <span class="badge">Instant booking</span>
+  </div>
+</header>
+<div class="filters">
+  <span>Filter:</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="thai">Thai Massage</button>
+  <button class="filter-btn" data-filter="deep-tissue">Deep Tissue</button>
+  <button class="filter-btn" data-filter="spa">Day Spa</button>
+  <button class="filter-btn" data-filter="wellness">Wellness</button>
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="Search studios...">
+  </div>
+</div>
+<div class="studios" id="studiosGrid"></div>
+<div class="footer-note">
+  Your studio not listed? <a href="mailto:jordan@jfhays.com" style="color:#6366f1">Get in touch</a> — new spots added weekly.
+</div>
+<script>
+const STUDIOS=[{name:"The Fix Room",type:"Deep Tissue & Sports",category:"deep-tissue",address:"Calle Quiñones 13, Centro, Madrid 28015",services:["Deep Tissue","Sports Massage","Trigger Points","Anti-stress"],rating:"4.9 stars",topPick:true,bookingUrl:"https://thefixroom.com",whatsapp:"34622217737",notes:"Well-reviewed near Malasaña. WhatsApp booking."},{name:"The Nook Madrid",type:"Quiromasajes & Rituals",category:"wellness",address:"Calle Zurbarán 10, Chamberí, Madrid 28010",services:["Quiromasajes","Ritual Therapies","Couple's Massage"],rating:"4.8 stars",topPick:false,bookingUrl:"https://thenookmadrid.com/reservas-thnook-masajes-madrid/",whatsapp:"34622360922",notes:"Individual + 2-person sessions. Own booking page."},{name:"PhilThai Massage",type:"Thai Blend",category:"thai",address:"Calle Barbieri 16, Chueca, Madrid",services:["Thai Massage","Deep Tissue","Aromatherapy"],rating:null,topPick:true,bookingUrl:"https://philthaimassage.com",whatsapp:"34624143044",notes:"Unique Thai blend in Chueca. WhatsApp booking."},{name:"Esenzia Chamartín",type:"Wellness & Aesthetics",category:"wellness",address:"Calle Caleruega 18, Chamartín, Madrid 28033",services:["Massage","Beauty","Aesthetics","Wellness"],rating:"5.0 stars",topPick:true,bookingUrl:"https://esenziachamartin.es",whatsapp:"34656312108",notes:"5-star reviews. Very close to IE. TOP CANDIDATE."},{name:"Spazio Wellness",type:"Day Spa",category:"spa",address:"Calle de los Estudios 4, Centro, Madrid 28012",services:["Massage","Facial","Body Treatments"],rating:null,topPick:false,bookingUrl:"https://spaziowellness.es/#reservas",whatsapp:null,notes:"Full day spa experience. Own booking page."},{name:"Madrid Day Spa by Nuilea",type:"Day Spa",category:"spa",address:"Calle Leon 4, Sol, Madrid 28014",services:["Day Spa","Couple's Massage","Packages"],rating:null,topPick:false,bookingUrl:"https://www.madrid-day-spa.com/es/reservas",whatsapp:"34910663815",notes:"Full spa with multiple rooms."},{name:"Masajes Kinuan",type:"Thai, Reflexology & Shiatsu",category:"thai",address:"Calle Gaztambide 17, Chamberí, Madrid 28015",services:["Thai Massage","Reflexology","Shiatsu"],rating:null,topPick:false,bookingUrl:"https://kinuan.com/reserva/",whatsapp:"34639130235",notes:"Oriental massage specialists in Chamberí."},{name:"Kirovital",type:"Wellness Center",category:"wellness",address:"Madrid",services:["Massage","Wellness","Therapies"],rating:null,topPick:false,bookingUrl:"https://kirovital.es/es/reservas/",whatsapp:null,notes:"Wellness center with booking on site."},{name:"Magical Hands 369",type:"Massage Studio",category:"deep-tissue",address:"Calle Juan Álvarez Mendizábal 34, Madrid",services:["Massage","Therapy"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34617781822",notes:"Independent neighborhood studio. WhatsApp booking."},{name:"Aura Plena",type:"Wellness Space",category:"wellness",address:"Madrid",services:["Wellness","Relaxation"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34637108877",notes:"Calm wellness space. WhatsApp direct."},{name:"Chang Thai Massage",type:"Traditional Thai Massage",category:"thai",address:"Madrid",services:["Thai Massage","Aromatherapy"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34657326513",notes:"Traditional Thai techniques. WhatsApp booking."},{name:"Chada Thai Massage",type:"Thai & Couples Massage",category:"thai",address:"Madrid",services:["Thai Massage","Couple's Massage"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34696762917",notes:"Thai specialist. Couple sessions available."}];
+function renderStudios(filter='all',search=''){
+  const grid=document.getElementById('studiosGrid');
+  const filtered=STUDIOS.filter(s=>{
+    const matchFilter=filter==='all'||s.category===filter;
+    const matchSearch=!search||s.name.toLowerCase().includes(search.toLowerCase())||s.address.toLowerCase().includes(search.toLowerCase())||s.services.some(sv=>sv.toLowerCase().includes(search.toLowerCase()));
+    return matchFilter&&matchSearch;
+  });
+  if(!filtered.length){grid.innerHTML='<div class="no-results">No studios match your search. More being added weekly.</div>';return;}
+  grid.innerHTML=filtered.map(s=>`
+    <div class="studio-card${s.topPick?' top-pick':''}">
+      <div class="studio-name">${s.name}</div>
+      <div class="studio-type">${s.type}</div>
+      ${s.rating?`<div class="studio-rating">${s.rating}</div>`:''}
+      <div class="studio-address"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>${s.address}</div>
+      <div class="studio-services">${s.services.map(sv=>`<span class="service-tag">${sv}</span>`).join('')}</div>
+      <div class="studio-actions">
+        ${s.bookingUrl?`<a class="btn-book" href="${s.bookingUrl}" target="_blank">Book Now</a>`:''}
+        ${s.whatsapp?`<a class="btn-whatsapp" href="https://wa.me/${s.whatsapp}" target="_blank">WhatsApp</a>`:''}
+      </div>
+      ${s.notes?`<div class="studio-whatsapp-note">${s.notes}</div>`:''}
+    </div>`).join('');
+}
+document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderStudios(btn.dataset.filter,document.getElementById('searchInput').value);});});
+document.getElementById('searchInput').addEventListener('input',e=>{renderStudios(document.querySelector('.filter-btn.active').dataset.filter,e.target.value);});
+renderStudios();
+</script>
+</body>
+</html>
