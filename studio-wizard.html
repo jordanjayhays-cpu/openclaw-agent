@@ -8,78 +8,86 @@
     *{margin:0;padding:0;box-sizing:border-box}
     :root{--purple:#6366f1;--purple-dark:#4f46e5;--green:#22c55e;--bg:#0a0a0f}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:#fff;min-height:100vh;display:flex;flex-direction:column}
-    header{background:linear-gradient(135deg,#1a1a2e,#0f0f1a);padding:28px 40px 24px;border-bottom:1px solid rgba(99,102,241,0.15);display:flex;align-items:center;gap:16px}
-    .logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+    header{background:linear-gradient(135deg,#1a1a2e,#0f0f1a);padding:20px 40px;border-bottom:1px solid rgba(99,102,241,0.15);display:flex;align-items:center;gap:16px}
+    .logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .header-badge{background:rgba(99,102,241,0.15);color:#818cf8;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
-    .progress-wrap{max-width:560px;margin:0 auto;width:100%;padding:0}
+    .progress-wrap{padding:20px 20px 0;max-width:560px;margin:0 auto;width:100%}
     .progress-bar{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden}
-    .progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#a855f7);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}
+    .progress-fill{height:100%;background:linear-gradient(90deg,#6366f1,#a855f7);border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
     .progress-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:#444;font-weight:600}
-    .progress-meta .step-active{color:#818cf8}
-    .progress-meta .step-total{color:#555}
-
-    main{flex:1;display:flex;flex-direction:column;align-items:center;padding:40px 20px 60px}
+    main{flex:1;display:flex;flex-direction:column;align-items:center;padding:32px 20px 60px}
     .step-card{max-width:560px;width:100%;animation:slideIn .35s cubic-bezier(.4,0,.2,1)}
-    @keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes slideIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
     .step-counter{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#444;margin-bottom:10px}
-    .step-title{font-size:28px;font-weight:800;margin-bottom:6px;line-height:1.2}
-    .step-sub{color:#666;font-size:15px;margin-bottom:28px;line-height:1.5}
-    .step-field{margin-bottom:16px}
-    label{display:block;font-size:12px;color:#888;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
-    input,textarea,select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:13px 16px;color:#fff;font-size:15px;outline:none;transition:border .2s;resize:vertical;font-family:inherit}
+    .step-title{font-size:26px;font-weight:800;margin-bottom:6px;line-height:1.2}
+    .step-sub{color:#666;font-size:14px;margin-bottom:24px;line-height:1.5}
+    .step-field{margin-bottom:14px}
+    label{display:block;font-size:11px;color:#888;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:7px}
+    input,textarea,select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 14px;color:#fff;font-size:14px;outline:none;transition:border .2s;resize:vertical;font-family:inherit}
     input::placeholder,textarea::placeholder{color:#444}
     input:focus,textarea:focus,select:focus{border-color:var(--purple)}
     select option{background:#1a1a2e}
-    textarea{min-height:90px}
-    .hint{font-size:12px;color:#444;margin-top:6px}
+    textarea{min-height:80px}
+    .hint{font-size:12px;color:#444;margin-top:5px}
 
-    .chip-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-    .chip{padding:8px 16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;font-size:13px;color:#aaa;cursor:pointer;transition:all .15s;user-select:none}
+    .chip-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+    .chip{padding:7px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;font-size:13px;color:#aaa;cursor:pointer;transition:all .15s;user-select:none}
     .chip:hover{border-color:rgba(99,102,241,0.5);color:#fff}
     .chip.selected{background:rgba(99,102,241,0.2);border-color:var(--purple);color:#818cf8}
     .chip.selected::after{content:' ✓';color:var(--green)}
-    .chip-other{background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.15);color:#555;padding:8px 16px;border-radius:10px;font-size:13px;cursor:pointer;transition:all .15s}
-    .chip-other:hover{color:#888;border-color:rgba(255,255,255,0.25)}
+    .chip-other{background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.15);color:#555;padding:7px 14px;border-radius:10px;font-size:13px;cursor:pointer}
+    .chip-other:hover{color:#888}
     .other-box{margin-top:8px;display:none}
     .other-box.show{display:block}
-    .sel-count{font-size:12px;color:#555;margin-bottom:12px}
+    .sel-count{font-size:12px;color:#555;margin-bottom:10px}
 
-    .price-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-    .price-row-item{padding:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px}
-    .price-row-item input{background:transparent;border:none;padding:0;font-size:15px;outline:none;width:100%}
-    .price-row-item input::placeholder{color:#444}
-    .price-row-item .chip{padding:0;background:none;border:none;font-size:12px;font-weight:700;color:#818cf8;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
-    .add-price-btn{font-size:13px;color:#6366f1;cursor:pointer;padding:8px 0;display:flex;align-items:center;gap:6px;border:none;background:none;color:#6366f1;font-family:inherit;font-weight:600}
-    .add-price-btn:hover{color:#818cf8}
-    .add-price-btn::before{content:'+'}
+    /* ── Service + Duration + Price rows ── */
+    .svc-block{margin-bottom:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden}
+    .svc-block-head{padding:12px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700}
+    .svc-block-head input.study-name{background:transparent;border:none;padding:0;font-size:14px;font-weight:700;color:#fff;width:100%;outline:none}
+    .svc-block-head input.study-name::placeholder{color:#555}
+    .durations-wrap{padding:12px 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+    .dur-row{display:flex;align-items:center;gap:6px;padding:8px 10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px}
+    .dur-row input.dur{width:44px;background:transparent;border:none;text-align:center;color:#818cf8;font-size:14px;font-weight:700;padding:0;outline:none}
+    .dur-row input.dur::placeholder{color:#555;font-size:12px;font-weight:400}
+    .dur-row span{color:#666;font-size:12px;font-weight:600;flex-shrink:0}
+    .dur-row input.price{flex:1;background:transparent;border:none;padding:0 6px;color:#fff;font-size:13px;outline:none}
+    .dur-row input.price::placeholder{color:#444;font-size:12px}
+    .dur-row .remove-dur{color:#444;font-size:16px;cursor:pointer;padding:0 2px;flex-shrink:0}
+    .dur-row .remove-dur:hover{color:#ef4444}
+    .add-dur-btn{font-size:12px;color:#6366f1;cursor:pointer;border:none;background:none;padding:6px 0;display:flex;align-items:center;gap:4px;font-weight:600;font-family:inherit}
+    .add-dur-btn:hover{color:#818cf8}
 
+    .gen-price{margin-top:16px}
+    .gen-price label{font-size:11px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;display:block}
+    .gen-price input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:11px 14px;color:#fff;font-size:14px;width:100%;font-family:inherit}
+
+    /* ── Review ── */
     .review-table{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;overflow:hidden;margin-bottom:20px}
-    .review-row{display:flex;align-items:flex-start;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .review-row{display:flex;align-items:flex-start;padding:13px 16px;border-bottom:1px solid rgba(255,255,255,0.05)}
     .review-row:last-child{border-bottom:none}
-    .review-key{font-size:12px;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:.5px;width:120px;flex-shrink:0;padding-top:2px}
+    .review-key{font-size:11px;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:.5px;width:110px;flex-shrink:0;padding-top:1px}
     .review-val{font-size:14px;color:#ccc;flex:1}
     .review-val.empty{color:#444;font-style:italic}
-    .review-val.services-list{display:flex;flex-wrap:wrap;gap:5px}
-    .review-val.services-list span{background:rgba(99,102,241,0.1);color:#818cf8;font-size:11px;padding:3px 8px;border-radius:8px}
-
-    .btn-row{display:flex;gap:12px;margin-top:auto;padding-top:20px}
-    .btn-next{flex:1;padding:15px;background:var(--purple);color:#fff;border:none;border-radius:13px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s}
-    .btn-next:hover{background:var(--purple-dark);transform:translateY(-1px)}
-    .btn-next:active{transform:translateY(0)}
-    .btn-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
-    .btn-back{padding:15px 20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:13px;color:#888;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s}
-    .btn-back:hover{background:rgba(255,255,255,0.08);color:#fff}
-    .btn-back:disabled{opacity:0;pointer-events:none}
+    .review-svc-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;margin-bottom:10px}
+    .review-svc{background:rgba(99,102,241,0.1);color:#818cf8;font-size:12px;padding:5px 10px;border-radius:8px;font-weight:600}
+    .review-svc-dur{font-size:11px;color:#666;margin-left:4px;font-weight:400}
 
     .success-card{text-align:center;padding:40px 20px;animation:slideIn .35s ease}
-    .success-icon{font-size:64px;margin-bottom:16px}
+    .success-icon{font-size:60px;margin-bottom:16px}
     .success-title{font-size:28px;font-weight:800;margin-bottom:10px}
     .success-sub{color:#666;font-size:15px;line-height:1.6;margin-bottom:24px}
-    .success-sub a{color:#818cf8;text-decoration:none}
 
-    .error-msg{padding:12px 16px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:10px;color:#ef4444;font-size:13px;margin-bottom:16px;display:none}
+    .error-msg{padding:12px 14px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:10px;color:#ef4444;font-size:13px;margin-bottom:14px;display:none}
 
-    @media(max-width:500px){.step-title{font-size:24px}.price-row{grid-template-columns:1fr}}
+    .btn-row{display:flex;gap:12px;margin-top:auto;padding-top:16px}
+    .btn-next{flex:1;padding:14px;background:var(--purple);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s}
+    .btn-next:hover{background:var(--purple-dark)}
+    .btn-next:disabled{opacity:.4;cursor:not-allowed}
+    .btn-back{padding:14px 18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#888;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
+    .btn-back:hover{background:rgba(255,255,255,0.08);color:#fff}
+    .btn-back:disabled{opacity:0;pointer-events:none}
+    @media(max-width:500px){.step-title{font-size:22px}}
   </style>
 </head>
 <body>
@@ -88,7 +96,7 @@
   <div class="header-badge">Studio Onboarding</div>
 </header>
 
-<div class="progress-wrap" style="padding:24px 20px 0;max-width:560px;margin:0 auto;width:100%">
+<div class="progress-wrap">
   <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
   <div class="progress-meta">
     <span class="step-active" id="stepLabel">Step 1 of 7</span>
@@ -97,9 +105,9 @@
 </div>
 
 <main>
-  <div class="step-card" id="stepCard">
+  <div class="step-card">
 
-    <!-- Step 1: Studio Name -->
+    <!-- Step 1 -->
     <div class="step" id="step-1">
       <div class="step-counter">Step 1 of 7</div>
       <div class="step-title">What's your studio called?</div>
@@ -108,17 +116,13 @@
         <label>Studio Name *</label>
         <input type="text" id="s-name" placeholder="e.g. The Fix Room, Masajes Kinuan" maxlength="80">
       </div>
-      <div class="step-field">
-        <label>Trading As / Brand Name <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
-        <input type="text" id="s-brand" placeholder="If different from legal name">
-      </div>
     </div>
 
-    <!-- Step 2: Contact Info -->
+    <!-- Step 2 -->
     <div class="step" id="step-2" style="display:none">
       <div class="step-counter">Step 2 of 7</div>
       <div class="step-title">Who should we contact?</div>
-      <div class="step-sub">We'll use this for your login and onboarding communications.</div>
+      <div class="step-sub">For your login and onboarding updates.</div>
       <div class="step-field">
         <label>Your Name *</label>
         <input type="text" id="s-contact" placeholder="e.g. María García">
@@ -133,7 +137,7 @@
       </div>
     </div>
 
-    <!-- Step 3: Address -->
+    <!-- Step 3 -->
     <div class="step" id="step-3" style="display:none">
       <div class="step-counter">Step 3 of 7</div>
       <div class="step-title">Where are you located?</div>
@@ -143,8 +147,8 @@
         <input type="text" id="s-address" placeholder="Calle Example 1, Madrid 28001">
       </div>
       <div class="step-field">
-        <label>District / Neighbourhood <span style="color:#444;font-weight:400;text-transform:none">(auto-detected from address)</span></label>
-        <input type="text" id="s-district" placeholder="e.g. Chamberí, Chueca, Sol">
+        <label>District / Neighbourhood</label>
+        <input type="text" id="s-district" placeholder="e.g. Chamberí — auto-detected if left blank">
       </div>
     </div>
 
@@ -152,7 +156,7 @@
     <div class="step" id="step-4" style="display:none">
       <div class="step-counter">Step 4 of 7</div>
       <div class="step-title">What do you offer?</div>
-      <div class="step-sub">Select all that apply. You can add custom services below.</div>
+      <div class="step-sub">Select all services you provide. You'll set duration and price next.</div>
       <p class="sel-count" id="selCount">Tap to select — as many as apply</p>
       <div class="chip-grid" id="chipGrid">
         <div class="chip" data-val="Swedish Massage">Swedish</div>
@@ -181,47 +185,43 @@
         <span class="chip-other" id="otherBtn">+ Custom service</span>
       </div>
       <div class="other-box" id="otherBox">
-        <input type="text" id="customService" placeholder="Type any other service you offer…" style="margin-bottom:8px">
-        <button class="add-price-btn" onclick="addCustomService()" style="background:none;border:none;color:#818cf8;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit">+ Add this service</button>
+        <input type="text" id="customService" placeholder="Type any other service…" style="margin-bottom:8px">
+        <button class="add-dur-btn" onclick="addCustomService()" style="background:none;border:none">+ Add</button>
       </div>
     </div>
 
-    <!-- Step 5: Prices -->
+    <!-- Step 5: Durations & Prices -->
     <div class="step" id="step-5" style="display:none">
       <div class="step-counter">Step 5 of 7</div>
-      <div class="step-title">Set your prices.</div>
-      <div class="step-sub">Add each service with its price. Leave blank for services you don't offer.</div>
-      <div id="priceRows"></div>
-      <div class="step-field" style="margin-top:12px">
-        <label>General Price Range <span style="color:#444;font-weight:400;text-transform:none">(fallback)</span></label>
-        <input type="text" id="s-price-general" placeholder="e.g. €50-80/hour or from €45">
-      </div>
+      <div class="step-title">Set durations & prices.</div>
+      <div class="step-sub">For each service — add session lengths you offer and their price. Leave rows blank to skip.</div>
+      <div id="svcBlocks"></div>
     </div>
 
-    <!-- Step 6: Booking Details -->
+    <!-- Step 6: Booking Info -->
     <div class="step" id="step-6" style="display:none">
       <div class="step-counter">Step 6 of 7</div>
-      <div class="step-title">How do customers book?</div>
-      <div class="step-sub">You can add more details after onboarding.</div>
+      <div class="step-title">How do clients book?</div>
+      <div class="step-sub">Add your booking link and contact details.</div>
       <div class="step-field">
-        <label>Booking / Calendar URL <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
-        <input type="url" id="s-booking" placeholder="https://your-booking-page.com">
+        <label>Calendar / Booking URL <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
+        <input type="url" id="s-booking" placeholder="https://calendly.com/your-studio or your website">
       </div>
       <div class="step-field">
-        <label>WhatsApp for Bookings <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
-        <input type="tel" id="s-wa" placeholder="+34 600 000 000">
-      </div>
-      <div class="step-field">
-        <label>Opening Hours <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
+        <label>Opening Hours <span style="color:#444;font-weight:400;text-transform:none">(e.g. Mon-Fri 10-20h, Sat 10-15h)</span></label>
         <input type="text" id="s-hours" placeholder="e.g. Mon-Fri 10-20h, Sat 10-15h">
+      </div>
+      <div class="step-field">
+        <label>WhatsApp <span style="color:#444;font-weight:400;text-transform:none">(for booking messages)</span></label>
+        <input type="tel" id="s-wa" placeholder="+34 600 000 000">
       </div>
     </div>
 
-    <!-- Step 7: Review & Submit -->
+    <!-- Step 7: Review -->
     <div class="step" id="step-7" style="display:none">
       <div class="step-counter">Step 7 of 7</div>
       <div class="step-title">Review your listing.</div>
-      <div class="step-sub">Make sure everything looks right before submitting.</div>
+      <div class="step-sub">Check everything before you submit.</div>
       <div id="reviewContent"></div>
     </div>
 
@@ -230,10 +230,7 @@
       <div class="success-card">
         <div class="success-icon">🎉</div>
         <div class="success-title">You're in!</div>
-        <div class="success-sub">
-          Your studio is submitted for review.<br>
-          We'll be in touch within 24 hours to activate your listing.
-        </div>
+        <div class="success-sub">Submitted for review. We'll activate your listing within 24 hours.</div>
         <div style="color:#444;font-size:13px">Questions? <a href="mailto:jordan@jfhays.com" style="color:#818cf8;text-decoration:none">jordan@jfhays.com</a></div>
       </div>
     </div>
@@ -244,15 +241,40 @@
       <button class="btn-back" id="btnBack" onclick="prevStep()" disabled>← Back</button>
       <button class="btn-next" id="btnNext" onclick="nextStep()">Next →</button>
     </div>
-
   </div>
 </main>
 
 <script>
+// ── Common durations per service type (minutes) ──
+const DURATIONS = {
+  'Swedish Massage': ['60','90','120'],
+  'Deep Tissue Massage': ['30','60','90'],
+  'Thai Massage': ['60','90','120'],
+  'Thai Oil Massage': ['60','90','120'],
+  'Sports Massage': ['30','60','90'],
+  'Hot Stone Massage': ['60','90'],
+  'Aromatherapy': ['30','60','90'],
+  'Shiatsu': ['60','90'],
+  'Reflexology': ['30','60'],
+  'Foot Reflexology': ['30','60'],
+  'Lymphatic Drainage': ['30','60','90'],
+  'Couples Massage': ['60','90','120'],
+  'Four Hands Massage': ['60','90','120'],
+  'Facial Massage': ['30','60'],
+  'Kobido Facial Massage': ['30','60'],
+  'Lomi Lomi': ['60','90','120'],
+  'Ayurvedic Massage': ['60','90','120'],
+  'Relaxation Massage': ['30','60','90','120'],
+  'Therapeutic Massage': ['30','60','90'],
+  'Prenatal Massage': ['60','90'],
+  'Day Spa Packages': ['60','90','120','180'],
+  'Decontracting Massage': ['30','60','90'],
+  'Anti-stress Massage': ['30','60','90','120'],
+};
+
 const TOTAL_STEPS = 7;
 let currentStep = 1;
 let selectedServices = new Set();
-let customServices = [];
 let formData = {};
 
 // ── Chip selection ──
@@ -277,32 +299,81 @@ document.getElementById('otherBtn').addEventListener('click', () => {
 
 function addCustomService() {
   const v = document.getElementById('customService').value.trim();
-  if (!v) return;
-  if (!customServices.includes(v)) {
-    customServices.push(v);
-    const chip = document.createElement('div');
-    chip.className = 'chip selected';
-    chip.dataset.val = v;
-    chip.textContent = v;
-    chip.addEventListener('click', () => {
-      selectedServices.delete(v);
-      customServices = customServices.filter(x => x !== v);
-      chip.remove();
-      updateSelCount();
-    });
-    document.getElementById('chipGrid').insertBefore(chip, document.getElementById('otherBtn'));
+  if (!v || selectedServices.has(v)) return;
+  selectedServices.add(v);
+  const chip = document.createElement('div');
+  chip.className = 'chip selected';
+  chip.dataset.val = v;
+  chip.textContent = v;
+  chip.addEventListener('click', () => {
+    selectedServices.delete(v);
+    chip.classList.remove('selected');
     updateSelCount();
-  }
+  });
+  document.getElementById('chipGrid').insertBefore(chip, document.getElementById('otherBtn'));
+  updateSelCount();
   document.getElementById('customService').value = '';
   document.getElementById('otherBox').classList.remove('show');
 }
 
 function updateSelCount() {
   const n = selectedServices.size;
-  document.getElementById('selCount').textContent = n ? `${n} service${n > 1 ? 's' : ''} selected` : 'Tap to select — as many as apply';
+  document.getElementById('selCount').textContent = n ? `${n} service${n>1?'s':''} selected — tap to deselect` : 'Tap to select — as many as apply';
 }
 
-// ── Progress bar ──
+// ── Build service duration/price blocks ──
+function buildSVCBlocks() {
+  const container = document.getElementById('svcBlocks');
+  container.innerHTML = '';
+  for (const svc of selectedServices) {
+    const defaults = DURATIONS[svc] || ['60'];
+    const block = document.createElement('div');
+    block.className = 'svc-block';
+
+    const durRows = defaults.map((d, i) => `
+      <div class="dur-row">
+        <input type="number" class="dur" value="${d}" min="15" max="240" step="15" data-svc="${svc}" data-idx="${i}">
+        <span>min</span>
+        <input type="text" class="price" placeholder="€${(i+1)*20}" data-svc="${svc}" data-idx="${i}">
+        <span class="remove-dur" onclick="removeDurRow(this)">×</span>
+      </div>`
+    ).join('');
+
+    block.innerHTML = `
+      <div class="svc-block-head">
+        <span style="color:#818cf8;font-size:12px">✦</span>
+        <input type="text" class="study-name" value="${svc}" data-svc="${svc}" placeholder="Service name…">
+      </div>
+      <div class="durations-wrap">
+        ${durRows}
+        <button class="add-dur-btn" onclick="addDurRow(this, '${svc.replace(/'/g,"\\'")}')">+ Add another duration</button>
+      </div>`;
+    container.appendChild(block);
+  }
+}
+
+function addDurRow(btn, svc) {
+  const wrap = btn.parentElement;
+  const rows = wrap.querySelectorAll('.dur-row');
+  const idx = rows.length;
+  const div = document.createElement('div');
+  div.className = 'dur-row';
+  div.innerHTML = `
+    <input type="number" class="dur" value="60" min="15" max="240" step="15" data-svc="${svc}" data-idx="${idx}">
+    <span>min</span>
+    <input type="text" class="price" placeholder="€" data-svc="${svc}" data-idx="${idx}">
+    <span class="remove-dur" onclick="removeDurRow(this)">×</span>`;
+  wrap.insertBefore(div, btn);
+}
+
+function removeDurRow(btn) {
+  const row = btn.closest('.dur-row');
+  const wrap = row.parentElement;
+  if (wrap.querySelectorAll('.dur-row').length > 1) row.remove();
+  else { row.querySelector('input.dur').value = ''; row.querySelector('input.price').value = ''; }
+}
+
+// ── Progress ──
 function updateProgress() {
   const pct = ((currentStep - 1) / (TOTAL_STEPS - 1)) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
@@ -314,26 +385,22 @@ function updateProgress() {
 function showStep(n) {
   document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
   const el = document.getElementById('step-' + n) || document.getElementById('step-success');
-  if (el) { el.style.display = 'block'; el.classList.add('step'); }
+  if (el) { el.style.display = 'block'; }
   document.getElementById('btnBack').disabled = n === 1;
   document.getElementById('btnNext').textContent = n === TOTAL_STEPS ? 'Submit Listing →' : 'Next →';
+  if (n === TOTAL_STEPS) document.getElementById('btnRow').style.display = 'none';
+  else document.getElementById('btnRow').style.display = 'flex';
   updateProgress();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function nextStep() {
   if (!validateStep(currentStep)) return;
-
-  if (currentStep === TOTAL_STEPS) {
-    submitForm();
-    return;
-  }
-
   saveStep(currentStep);
+  if (currentStep === TOTAL_STEPS) { submitForm(); return; }
   currentStep++;
   showStep(currentStep);
-
-  if (currentStep === 5) buildPriceRows();
+  if (currentStep === 5) buildSVCBlocks();
   if (currentStep === 7) buildReview();
 }
 
@@ -344,11 +411,17 @@ function prevStep() {
   showStep(currentStep);
 }
 
-function saveStep(n) {
-  if (n === 1) {
-    formData.name = document.getElementById('s-name').value.trim();
-    formData.brand = document.getElementById('s-brand').value.trim();
+// ── Save / Validate ──
+const DISTRICT_LIST = ['Centro','Sol','Chamberí','Chueca','Salamanca','Retiro','Moncloa','Arganzuela','Lavapiés','Malasaña','Tetuán','Chamartín','Paseo de La Habana','Alonso Martínez','Gran Vía','Callao','Noviciado','Bilbao','Guzmán el Bueno','Alameda','Atocha','Mirasierra','Las Tablas','La Latina'];
+function extractDistrict(addr) {
+  for (const d of DISTRICT_LIST) {
+    if (addr.toLowerCase().includes(d.toLowerCase())) return d;
   }
+  return null;
+}
+
+function saveStep(n) {
+  if (n === 1) { formData.name = document.getElementById('s-name').value.trim(); }
   if (n === 2) {
     formData.contact = document.getElementById('s-contact').value.trim();
     formData.email = document.getElementById('s-email').value.trim();
@@ -357,29 +430,32 @@ function saveStep(n) {
   if (n === 3) {
     formData.address = document.getElementById('s-address').value.trim();
     formData.district = document.getElementById('s-district').value.trim();
-    if (!formData.district && formData.address) {
-      const detected = extractDistrict(formData.address);
-      if (detected) formData.district = detected;
-      document.getElementById('s-district').value = detected || '';
+    if (!formData.district) {
+      const d = extractDistrict(formData.address);
+      if (d) { formData.district = d; document.getElementById('s-district').value = d; }
     }
   }
-  if (n === 4) {
-    formData.services = [...selectedServices].join(', ');
-  }
+  if (n === 4) { formData.services = [...selectedServices]; }
+
+  // Collect service/duration/price data
   if (n === 5) {
-    // Collect price rows
-    formData.priceItems = [];
-    document.querySelectorAll('.price-row-item').forEach(row => {
-      const svc = row.querySelector('.service-name').textContent;
-      const price = row.querySelector('input').value.trim();
-      if (price) formData.priceItems.push({ service: svc, price });
+    formData.servicePricing = [];
+    document.querySelectorAll('.svc-block').forEach(block => {
+      const svc = block.querySelector('.study-name').value.trim();
+      if (!svc) return;
+      const rows = [];
+      block.querySelectorAll('.dur-row').forEach(row => {
+        const dur = row.querySelector('.dur').value.trim();
+        const price = row.querySelector('.price').value.trim();
+        if (dur) rows.push({ duration: dur, price });
+      });
+      formData.servicePricing.push({ service: svc, durations: rows });
     });
-    formData.priceGeneral = document.getElementById('s-price-general').value.trim();
   }
   if (n === 6) {
     formData.booking = document.getElementById('s-booking').value.trim();
-    formData.whatsapp = document.getElementById('s-wa').value.trim();
     formData.hours = document.getElementById('s-hours').value.trim();
+    formData.whatsapp = document.getElementById('s-wa').value.trim();
   }
 }
 
@@ -395,43 +471,29 @@ function validateStep(n) {
     if (!phone) { shake(document.getElementById('s-phone')); return false; }
   }
   if (n === 3) {
-    const addr = document.getElementById('s-address').value.trim();
-    if (!addr) { shake(document.getElementById('s-address')); return false; }
+    if (!document.getElementById('s-address').value.trim()) { shake(document.getElementById('s-address')); return false; }
   }
   if (n === 4) {
-    if (selectedServices.size === 0) {
-      showError('Please select at least one service.');
-      return false;
-    }
+    if (selectedServices.size === 0) { showError('Select at least one service.'); return false; }
   }
-  hideError();
-  return true;
+  hideError(); return true;
 }
 
 function shake(el) {
   el.style.borderColor = '#ef4444';
-  el.style.animation = 'shake 0.3s ease';
-  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 600);
+  setTimeout(() => el.style.borderColor = '', 800);
 }
 
-// Build price rows dynamically
-function buildPriceRows() {
-  const allSvcs = [...selectedServices];
-  let html = '';
-  for (const svc of allSvcs) {
-    html += `<div class="price-row-item">
-      <span class="chip service-name">${svc}</span>
-      <input type="text" placeholder="e.g. €60 / 60min €80" data-service="${svc}">
-    </div>`;
-  }
-  document.getElementById('priceRows').innerHTML = html;
-}
-
-// Build review
+// ── Review ──
 function buildReview() {
-  const items = formData.priceItems || [];
-  const priceStr = items.length ? items.map(p => `${p.service}: ${p.price}`).join('\n') : (formData.priceGeneral || 'Not set');
-  const svcList = formData.services ? formData.services.split(', ').map(s => `<span>${s}</span>`).join('') : '<span class="empty">None selected</span>';
+  const pricing = formData.servicePricing || [];
+  let servicesHtml = '';
+  for (const p of pricing) {
+    if (!p.service) continue;
+    const durHtml = p.durations.filter(d => d.duration && d.price)
+      .map(d => `<span class="review-svc-dur">${d.duration}min → ${d.price}</span>`).join(' ');
+    servicesHtml += `<div class="review-svc">${p.service}${durHtml ? ' ' + durHtml : ''}</div>`;
+  }
   const html = `
     <div class="review-table">
       <div class="review-row"><div class="review-key">Studio</div><div class="review-val">${formData.name || '—'}</div></div>
@@ -439,43 +501,27 @@ function buildReview() {
       <div class="review-row"><div class="review-key">Email</div><div class="review-val">${formData.email || '—'}</div></div>
       <div class="review-row"><div class="review-key">Phone</div><div class="review-val">${formData.phone || '—'}</div></div>
       <div class="review-row"><div class="review-key">Address</div><div class="review-val">${formData.address || '—'}${formData.district ? '<br><span style="color:#818cf8;font-size:12px">'+formData.district+'</span>' : ''}</div></div>
-      <div class="review-row"><div class="review-key">Services</div><div class="review-val services-list">${svcList}</div></div>
-      <div class="review-row"><div class="review-key">Prices</div><div class="review-val" style="white-space:pre-line;font-size:13px">${priceStr}</div></div>
-      <div class="review-row"><div class="review-key">Booking URL</div><div class="review-val ${formData.booking ? '' : 'empty'}">${formData.booking || 'Not set'}</div></div>
-      <div class="review-row"><div class="review-key">WhatsApp</div><div class="review-val ${formData.whatsapp ? '' : 'empty'}">${formData.whatsapp || 'Not set'}</div></div>
-      <div class="review-row"><div class="review-key">Hours</div><div class="review-val ${formData.hours ? '' : 'empty'}">${formData.hours || 'Not set'}</div></div>
+      <div class="review-row"><div class="review-key">Services</div><div class="review-val"><div class="review-svc-row">${servicesHtml || '<span class=empty>None</span>'}</div></div></div>
+      <div class="review-row"><div class="review-key">Hours</div><div class="review-val ${formData.hours?'':'empty'}">${formData.hours || 'Not set'}</div></div>
+      <div class="review-row"><div class="review-key">WhatsApp</div><div class="review-val ${formData.whatsapp?'':'empty'}">${formData.whatsapp || 'Not set'}</div></div>
+      <div class="review-row"><div class="review-key">Booking URL</div><div class="review-val ${formData.booking?'':'empty'}">${formData.booking || 'Not set'}</div></div>
     </div>`;
   document.getElementById('reviewContent').innerHTML = html;
 }
 
-// District auto-detect
-const DISTRICTS = ['Centro','Sol','Chamberí','Chueca','Salamanca','Retiro','Moncloa','Arganzuela','Lavapiés','Malasaña','Tetuán','Chamartín','Paseo de La Habana','Alonso Martínez','Gran Vía','Callao','Noviciado','Bilbao','Guzmán el Bueno','Alameda','Atocha','Mirasierra','Las Tablas','La Latina'];
-function extractDistrict(addr) {
-  if (!addr) return null;
-  for (const d of DISTRICTS) {
-    if (addr.toLowerCase().includes(d.toLowerCase())) return d;
-  }
-  return null;
-}
-
-// ── Submission ──
+// ── Submit ──
 function submitForm() {
   const btn = document.getElementById('btnNext');
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
+  btn.disabled = true; btn.textContent = 'Sending…';
   showError('');
 
-  // Build services string from price rows
-  const priceItems = formData.priceItems || [];
-  const servicesWithPrices = priceItems.map(p => `${p.service} ${p.price}`).join(', ');
-  const servicesStr = formData.services + (servicesWithPrices ? ' | Prices: ' + servicesWithPrices : '');
-
-  // Build notes from extra fields
-  const notes = [
-    formData.hours ? `Hours: ${formData.hours}` : '',
-    formData.booking ? `Booking: ${formData.booking}` : '',
-    formData.whatsapp ? `WhatsApp: ${formData.whatsapp}` : ''
-  ].filter(Boolean).join('\n');
+  // Build services string with prices
+  const pricing = formData.servicePricing || [];
+  const servicesStr = pricing.map(p => {
+    const durs = p.durations.filter(d => d.duration && d.price)
+      .map(d => `${d.duration}min ${d.price}`).join(', ');
+    return `${p.service}${durs ? ' — ' + durs : ''}`;
+  }).join(' | ');
 
   const id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
     const r = Math.random() * 16 | 0;
@@ -491,11 +537,10 @@ function submitForm() {
     address: formData.address,
     district: formData.district || null,
     city: 'Madrid',
-    services: servicesStr || formData.services || null,
-    price_range: formData.priceGeneral || null,
-    notes: notes || null,
+    services: servicesStr || formData.services?.join(', ') || null,
+    notes: formData.hours ? `Hours: ${formData.hours}` : null,
     status: 'pending',
-    source: 'studio-wizard',
+    source: 'studio-wizard-v2',
     calendar_url: formData.booking || null,
     whatsapp: formData.whatsapp || null
   };
@@ -509,27 +554,23 @@ function submitForm() {
       'Prefer': 'return=representation'
     },
     body: JSON.stringify(payload)
-  }).then(r => r.ok ? r.json() : r.json().then(e => Promise.reject(e)) )
+  }).then(r => r.ok ? r.json() : r.json().then(e => Promise.reject(e)))
     .then(() => {
       document.querySelectorAll('.step').forEach(s => s.style.display = 'none');
       document.getElementById('step-success').style.display = 'block';
-      document.getElementById('btnRow').style.display = 'none';
       document.getElementById('progressFill').style.width = '100%';
       document.getElementById('stepLabel').textContent = 'Done!';
       document.getElementById('totalLabel').textContent = '100%';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     })
     .catch(err => {
-      btn.disabled = false;
-      btn.textContent = 'Submit Listing →';
-      showError('Something went wrong: ' + (err.message || 'try again'));
+      btn.disabled = false; btn.textContent = 'Submit Listing →';
+      showError('Error: ' + (err.message || 'try again'));
     });
 }
 
 function showError(msg) {
   const el = document.getElementById('errorMsg');
-  el.textContent = msg;
-  el.style.display = msg ? 'block' : 'none';
+  el.textContent = msg; el.style.display = msg ? 'block' : 'none';
 }
 function hideError() { showError(''); }
 
