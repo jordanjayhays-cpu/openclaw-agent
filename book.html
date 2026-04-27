@@ -3,95 +3,521 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Massage Pass — Book a Studio</title>
+  <title>Book — Massage Pass</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0f; color: #fff; min-height: 100vh; }
-    header { background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0f 100%); padding: 40px 40px 30px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: center; }
-    header h1 { font-size: 36px; font-weight: 700; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    header p { color: #888; margin-top: 8px; font-size: 16px; }
-    .badge-bar { display: flex; justify-content: center; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
-    .badge { background: rgba(99,102,241,0.15); color: #818cf8; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
-    .filters { padding: 24px 40px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); }
-    .filters span { color: #666; font-size: 14px; }
-    .filter-btn { padding: 8px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: #fff; font-size: 13px; cursor: pointer; transition: all 0.2s; }
-    .filter-btn:hover, .filter-btn.active { background: #6366f1; border-color: #6366f1; }
-    .search-wrap { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-    .search-wrap input { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; color: #fff; padding: 8px 16px; font-size: 13px; outline: none; width: 200px; }
-    .studios { padding: 30px 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 1400px; margin: 0 auto; }
-    .studio-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 24px; transition: all 0.2s; position: relative; overflow: hidden; }
-    .studio-card:hover { border-color: #6366f1; transform: translateY(-2px); }
-    .studio-card.top-pick { border-color: rgba(251,191,36,0.4); }
-    .studio-card.top-pick::before { content: 'TOP PICK'; position: absolute; top: 12px; right: 12px; background: rgba(251,191,36,0.15); color: #fbbf24; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px; }
-    .studio-name { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-    .studio-type { font-size: 12px; color: #6366f1; font-weight: 600; margin-bottom: 12px; }
-    .studio-address { font-size: 13px; color: #888; margin-bottom: 16px; line-height: 1.4; }
-    .studio-address svg { width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; fill: #555; }
-    .studio-services { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-    .service-tag { background: rgba(99,102,241,0.1); color: #818cf8; font-size: 11px; padding: 3px 10px; border-radius: 10px; }
-    .studio-actions { display: flex; gap: 10px; }
-    .btn-book { flex: 1; padding: 10px; background: #6366f1; color: #fff; border: none; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: all 0.2s; }
-    .btn-book:hover { background: #4f46e5; }
-    .btn-whatsapp { padding: 10px 14px; background: rgba(37,211,102,0.15); color: #25d366; border: 1px solid rgba(37,211,102,0.3); border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: all 0.2s; }
-    .btn-whatsapp:hover { background: rgba(37,211,102,0.25); }
-    .studio-rating { font-size: 12px; color: #fbbf24; margin-bottom: 8px; }
-    .studio-whatsapp-note { font-size: 11px; color: #555; margin-top: 8px; }
-    .no-results { text-align: center; padding: 80px; color: #555; font-size: 16px; grid-column: 1 / -1; }
-    .footer-note { text-align: center; padding: 30px; color: #444; font-size: 13px; }
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--purple:#6366f1;--purple-dark:#4f46e5;--green:#22c55e;--bg:#0a0a0f}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:#fff;min-height:100vh}
+    header{background:linear-gradient(135deg,#1a1a2e,#0f0f1a);padding:20px 30px;border-bottom:1px solid rgba(99,102,241,0.15);display:flex;align-items:center;gap:14px}
+    .logo{font-size:17px;font-weight:800;background:linear-gradient(135deg,#6366f1,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .back{font-size:13px;color:#555;text-decoration:none;margin-left:auto}
+    .back:hover{color:#fff}
+    .main-wrap{padding:24px 16px 60px;max-width:560px;margin:0 auto}
+
+    /* Studio header */
+    .studio-head{text-align:center;padding:24px 0 20px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:24px}
+    .studio-name{font-size:24px;font-weight:800;margin-bottom:6px}
+    .studio-addr{font-size:13px;color:#666;margin-bottom:8px}
+    .studio-services{font-size:12px;color:#818cf8;font-weight:600}
+
+    /* Step containers */
+    .step{display:none;animation:fadeIn .3s ease}
+    .step.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .step-title{font-size:20px;font-weight:700;margin-bottom:4px}
+    .step-sub{color:#666;font-size:13px;margin-bottom:20px}
+
+    /* Service cards */
+    .svc-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:16px;margin-bottom:10px;cursor:pointer;transition:all .15s;position:relative}
+    .svc-card:hover{border-color:rgba(99,102,241,0.5)}
+    .svc-card.selected{border-color:var(--purple);background:rgba(99,102,241,0.08)}
+    .svc-card input{opacity:0;position:absolute;pointer-events:none}
+    .svc-card-name{font-size:16px;font-weight:700;margin-bottom:8px}
+    .svc-dur-grid{display:flex;flex-wrap:wrap;gap:6px}
+    .dur-pill{padding:5px 12px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;font-size:12px;color:#aaa;cursor:pointer;transition:all .15s}
+    .dur-pill:hover{border-color:rgba(99,102,241,0.5);color:#fff}
+    .dur-pill.selected{border-color:var(--green);color:var(--green);background:rgba(34,197,94,0.1)}
+    .dur-pill input{opacity:0;position:absolute;pointer-events:none}
+
+    /* Calendar */
+    .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .cal-nav-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:#888;padding:7px 14px;font-size:13px;cursor:pointer;font-family:inherit;transition:all .15s}
+    .cal-nav-btn:hover{background:rgba(255,255,255,0.1);color:#fff}
+    .cal-month{font-size:16px;font-weight:700}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:6px}
+    .cal-dow{text-align:center;font-size:11px;color:#444;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:4px 0}
+    .cal-day{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer;transition:all .15s;background:rgba(255,255,255,0.04)}
+    .cal-day:hover:not(.disabled):not(.empty){border-color:rgba(99,102,241,0.5)}
+    .cal-day.today{border:1px solid rgba(99,102,241,0.4)}
+    .cal-day.selected{background:var(--purple)}
+    .cal-day.disabled{opacity:.2;cursor:not-allowed}
+    .cal-day.empty{background:none;cursor:default}
+    .cal-day.has-slots{position:relative}
+    .cal-day.has-slots::after{content:'';position:absolute;bottom:3px;width:4px;height:4px;background:var(--green);border-radius:50%;left:50%;transform:translateX(-50%)}
+
+    /* Time slots */
+    .time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}
+    .time-slot{padding:9px 4px;text-align:center;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;font-size:13px;color:#aaa;cursor:pointer;transition:all .15s}
+    .time-slot:hover:not(.taken){border-color:rgba(99,102,241,0.5);color:#fff}
+    .time-slot.selected{border-color:var(--purple);color:var(--purple);background:rgba(99,102,241,0.1)}
+    .time-slot.taken{opacity:.25;cursor:not-allowed}
+    .time-slot input{opacity:0;position:absolute;pointer-events:none}
+
+    /* Form */
+    .field{margin-bottom:14px}
+    label{display:block;font-size:11px;color:#888;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:7px}
+    input,select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:12px 14px;color:#fff;font-size:14px;outline:none;transition:border .2s;font-family:inherit}
+    input::placeholder{color:#444}
+    input:focus,select:focus{border-color:var(--purple)}
+    select option{background:#1a1a2e}
+    .hint{font-size:11px;color:#444;margin-top:5px}
+
+    /* Review */
+    .review-block{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;margin-bottom:12px}
+    .review-line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px}
+    .review-line:last-child{border-bottom:none}
+    .review-k{color:#888}
+    .review-v{font-weight:600;text-align:right}
+    .review-v.highlight{color:var(--green)}
+
+    /* Navigation */
+    .nav-row{display:flex;gap:10px;margin-top:20px}
+    .btn{flex:1;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit}
+    .btn-primary{background:var(--purple);color:#fff}
+    .btn-primary:hover{background:var(--purple-dark)}
+    .btn-primary:disabled{opacity:.4;cursor:not-allowed}
+    .btn-ghost{flex:1;padding:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;color:#888;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+    .btn-ghost:hover{background:rgba(255,255,255,0.08);color:#fff}
+
+    /* Success */
+    .success{text-align:center;padding:40px 20px;animation:fadeIn .4s ease}
+    .success-icon{font-size:56px;margin-bottom:14px}
+    .success-title{font-size:24px;font-weight:800;margin-bottom:8px}
+    .success-sub{color:#666;font-size:14px;line-height:1.6}
+
+    .error-msg{padding:11px 14px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:10px;color:#ef4444;font-size:13px;margin-bottom:14px;display:none}
+
+    /* Loading */
+    .loading-state{text-align:center;padding:60px;color:#444;font-size:14px}
+
+    /* Confirmation summary before submit */
+    .booking-summary{background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);border-radius:14px;padding:16px;margin-bottom:16px}
+    .booking-summary-title{font-size:14px;font-weight:700;color:#818cf8;margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px}
+    .booking-summary-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px}
+    .booking-summary-row .label{color:#888}
+    .booking-summary-row .val{font-weight:600}
+
+    @media(max-width:400px){.time-grid{grid-template-columns:repeat(3,1fr)}}  
   </style>
 </head>
 <body>
 <header>
-  <h1>Massage Pass</h1>
-  <p>Book a massage studio in Madrid — one subscription, unlimited access</p>
-  <div class="badge-bar">
-    <span class="badge">12 Studios</span>
-    <span class="badge">All neighborhoods</span>
-    <span class="badge">Instant booking</span>
-  </div>
+  <div class="logo">Massage Pass</div>
+  <a class="back" href="/openclaw-agent/">← All Studios</a>
 </header>
-<div class="filters">
-  <span>Filter:</span>
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="thai">Thai Massage</button>
-  <button class="filter-btn" data-filter="deep-tissue">Deep Tissue</button>
-  <button class="filter-btn" data-filter="spa">Day Spa</button>
-  <button class="filter-btn" data-filter="wellness">Wellness</button>
-  <div class="search-wrap">
-    <input type="text" id="searchInput" placeholder="Search studios...">
-  </div>
+
+<div class="main-wrap" id="app">
+  <div class="loading-state">Loading studio…</div>
 </div>
-<div class="studios" id="studiosGrid"></div>
-<div class="footer-note">
-  Your studio not listed? <a href="mailto:jordan@jfhays.com" style="color:#6366f1">Get in touch</a> — new spots added weekly.
-</div>
+
 <script>
-const STUDIOS=[{name:"The Fix Room",type:"Deep Tissue & Sports",category:"deep-tissue",address:"Calle Quiñones 13, Centro, Madrid 28015",services:["Deep Tissue","Sports Massage","Trigger Points","Anti-stress"],rating:"4.9 stars",topPick:true,bookingUrl:"https://thefixroom.com",whatsapp:"34622217737",notes:"Well-reviewed near Malasaña. WhatsApp booking."},{name:"The Nook Madrid",type:"Quiromasajes & Rituals",category:"wellness",address:"Calle Zurbarán 10, Chamberí, Madrid 28010",services:["Quiromasajes","Ritual Therapies","Couple's Massage"],rating:"4.8 stars",topPick:false,bookingUrl:"https://thenookmadrid.com/reservas-thnook-masajes-madrid/",whatsapp:"34622360922",notes:"Individual + 2-person sessions. Own booking page."},{name:"PhilThai Massage",type:"Thai Blend",category:"thai",address:"Calle Barbieri 16, Chueca, Madrid",services:["Thai Massage","Deep Tissue","Aromatherapy"],rating:null,topPick:true,bookingUrl:"https://philthaimassage.com",whatsapp:"34624143044",notes:"Unique Thai blend in Chueca. WhatsApp booking."},{name:"Esenzia Chamartín",type:"Wellness & Aesthetics",category:"wellness",address:"Calle Caleruega 18, Chamartín, Madrid 28033",services:["Massage","Beauty","Aesthetics","Wellness"],rating:"5.0 stars",topPick:true,bookingUrl:"https://esenziachamartin.es",whatsapp:"34656312108",notes:"5-star reviews. Very close to IE. TOP CANDIDATE."},{name:"Spazio Wellness",type:"Day Spa",category:"spa",address:"Calle de los Estudios 4, Centro, Madrid 28012",services:["Massage","Facial","Body Treatments"],rating:null,topPick:false,bookingUrl:"https://spaziowellness.es/#reservas",whatsapp:null,notes:"Full day spa experience. Own booking page."},{name:"Madrid Day Spa by Nuilea",type:"Day Spa",category:"spa",address:"Calle Leon 4, Sol, Madrid 28014",services:["Day Spa","Couple's Massage","Packages"],rating:null,topPick:false,bookingUrl:"https://www.madrid-day-spa.com/es/reservas",whatsapp:"34910663815",notes:"Full spa with multiple rooms."},{name:"Masajes Kinuan",type:"Thai, Reflexology & Shiatsu",category:"thai",address:"Calle Gaztambide 17, Chamberí, Madrid 28015",services:["Thai Massage","Reflexology","Shiatsu"],rating:null,topPick:false,bookingUrl:"https://kinuan.com/reserva/",whatsapp:"34639130235",notes:"Oriental massage specialists in Chamberí."},{name:"Kirovital",type:"Wellness Center",category:"wellness",address:"Madrid",services:["Massage","Wellness","Therapies"],rating:null,topPick:false,bookingUrl:"https://kirovital.es/es/reservas/",whatsapp:null,notes:"Wellness center with booking on site."},{name:"Magical Hands 369",type:"Massage Studio",category:"deep-tissue",address:"Calle Juan Álvarez Mendizábal 34, Madrid",services:["Massage","Therapy"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34617781822",notes:"Independent neighborhood studio. WhatsApp booking."},{name:"Aura Plena",type:"Wellness Space",category:"wellness",address:"Madrid",services:["Wellness","Relaxation"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34637108877",notes:"Calm wellness space. WhatsApp direct."},{name:"Chang Thai Massage",type:"Traditional Thai Massage",category:"thai",address:"Madrid",services:["Thai Massage","Aromatherapy"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34657326513",notes:"Traditional Thai techniques. WhatsApp booking."},{name:"Chada Thai Massage",type:"Thai & Couples Massage",category:"thai",address:"Madrid",services:["Thai Massage","Couple's Massage"],rating:null,topPick:false,bookingUrl:null,whatsapp:"34696762917",notes:"Thai specialist. Couple sessions available."}];
-function renderStudios(filter='all',search=''){
-  const grid=document.getElementById('studiosGrid');
-  const filtered=STUDIOS.filter(s=>{
-    const matchFilter=filter==='all'||s.category===filter;
-    const matchSearch=!search||s.name.toLowerCase().includes(search.toLowerCase())||s.address.toLowerCase().includes(search.toLowerCase())||s.services.some(sv=>sv.toLowerCase().includes(search.toLowerCase()));
-    return matchFilter&&matchSearch;
-  });
-  if(!filtered.length){grid.innerHTML='<div class="no-results">No studios match your search. More being added weekly.</div>';return;}
-  grid.innerHTML=filtered.map(s=>`
-    <div class="studio-card${s.topPick?' top-pick':''}">
-      <div class="studio-name">${s.name}</div>
-      <div class="studio-type">${s.type}</div>
-      ${s.rating?`<div class="studio-rating">${s.rating}</div>`:''}
-      <div class="studio-address"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>${s.address}</div>
-      <div class="studio-services">${s.services.map(sv=>`<span class="service-tag">${sv}</span>`).join('')}</div>
-      <div class="studio-actions">
-        ${s.bookingUrl?`<a class="btn-book" href="${s.bookingUrl}" target="_blank">Book Now</a>`:''}
-        ${s.whatsapp?`<a class="btn-whatsapp" href="https://wa.me/${s.whatsapp}" target="_blank">WhatsApp</a>`:''}
-      </div>
-      ${s.notes?`<div class="studio-whatsapp-note">${s.notes}</div>`:''}
-    </div>`).join('');
+// ── Parse "Service — 30min €50, 60min €75 | Service2 — 45min €65" ──
+function parseServices(servicesStr) {
+  if (!servicesStr) return [];
+  // Split by " | " separator between services
+  const serviceGroups = servicesStr.split(' | ');
+  return serviceGroups.map(group => {
+    // Service name is before " — "
+    const parts = group.split(' — ');
+    const name = parts[0].trim();
+    if (!name) return null;
+    // Parse "30min €50, 60min €75" dur/price pairs
+    const durations = [];
+    for (let i = 1; i < parts.length; i++) {
+      const seg = parts[i];
+      const matches = seg.matchAll(/(\d+)\s*min\s*([€\d\-]+)/gi);
+      for (const m of matches) {
+        durations.push({ minutes: parseInt(m[1]), price: m[2].trim() });
+      }
+    }
+    if (!durations.length) durations.push({ minutes: 60, price: 'Contact' });
+    return { name, durations };
+  }).filter(Boolean);
 }
-document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderStudios(btn.dataset.filter,document.getElementById('searchInput').value);});});
-document.getElementById('searchInput').addEventListener('input',e=>{renderStudios(document.querySelector('.filter-btn.active').dataset.filter,e.target.value);});
-renderStudios();
+
+function getStudioId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
+
+// ── Calendar ──
+function buildCalendar(year, month, hasSlots) {
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const dow = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  let html = `<div class="cal-grid">${dow.map(d => `<div class="cal-dow">${d}</div>`).join('')}`;
+  for (let i = 0; i < firstDay; i++) html += '<div class="cal-day empty"></div>';
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(year, month, d);
+    const isPast = date < today;
+    const isToday = date.getTime() === today.getTime();
+    const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const classes = ['cal-day'];
+    if (isPast) classes.push('disabled');
+    if (isToday) classes.push('today');
+    html += `<div class="${classes.join(' ')}" onclick="pickDate('${dateStr}',this)" data-date="${dateStr}">${d}</div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function calNav(year, month) {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `<div class="cal-nav">
+    <button class="cal-nav-btn" onclick="changeMonth(-1)">←</button>
+    <div class="cal-month">${months[month]} ${year}</div>
+    <button class="cal-nav-btn" onclick="changeMonth(1)">→</button>
+  </div>`;
+}
+
+// ── Time slots based on studio hours ──
+function generateTimeSlots(dateStr, openHour, closeHour) {
+  const slots = [];
+  for (let h = openHour; h < closeHour; h++) {
+    slots.push(`${String(h).padStart(2,'0')}:00`);
+    slots.push(`${String(h).padStart(2,'0')}:30`);
+  }
+  // Remove past slots if today
+  const today = new Date();
+  const [y,m,d] = dateStr.split('-').map(Number);
+  const sel = new Date(y,m,d);
+  if (sel.toDateString() === today.toDateString()) {
+    const nowH = today.getHours();
+    const nowM = today.getMinutes();
+    return slots.filter(s => {
+      const [sh,sm] = s.split(':').map(Number);
+      return sh > nowH || (sh === nowH && sm > nowM + 15);
+    });
+  }
+  return slots;
+}
+
+// ── State ──
+let state = {
+  studio: null,
+  services: [],
+  year: new Date().getFullYear(),
+  month: new Date().getMonth(),
+  selectedDate: null,
+  selectedService: null,
+  selectedDur: null,
+  selectedTime: null,
+  currentStep: 0,
+};
+
+// ── Steps ──
+const STEPS = ['service','datetime','details','review'];
+
+function render() {
+  const app = document.getElementById('app');
+  if (!state.studio) return;
+  const s = state.studio;
+
+  if (state.currentStep === 0) {
+    // Step 1: Service + Duration
+    app.innerHTML = `
+      <div class="studio-head">
+        <div class="studio-name">${s.studio_name}</div>
+        <div class="studio-addr">${s.address || s.district || ''}</div>
+        ${s.notes ? `<div class="studio-services">${s.notes.split('\n')[0]}</div>` : ''}
+      </div>
+      <div class="step active">
+        <div class="step-title">Choose a service</div>
+        <div class="step-sub">Select a service and session length</div>
+        ${state.services.map((svc, si) => `
+          <div class="svc-card${state.selectedService === si ? ' selected' : ''}" onclick="selectService(${si})">
+            <div class="svc-card-name">${svc.name}</div>
+            <div class="svc-dur-grid">
+              ${svc.durations.map((d, di) => `
+                <label class="dur-pill${state.selectedService === si && state.selectedDur === di ? ' selected' : ''}">
+                  <input type="radio" name="dur-${si}" ${state.selectedService === si && state.selectedDur === di ? 'checked' : ''}>
+                  ${d.minutes}min — ${d.price}
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+        <div class="nav-row">
+          <button class="btn btn-primary" onclick="goStep(1)" ${!state.selectedService && state.selectedDur === null ? 'disabled' : ''}>Next →</button>
+        </div>
+      </div>`;
+
+    // Rebind dur pills
+    document.querySelectorAll('.dur-pill').forEach(pill => {
+      pill.addEventListener('click', e => {
+        e.stopPropagation();
+        const card = pill.closest('.svc-card');
+        const si = [...document.querySelectorAll('.svc-card').indexOf(card)];
+        document.querySelectorAll('.dur-pill').forEach(p => p.classList.remove('selected'));
+        pill.classList.add('selected');
+        state.selectedService = si[0];
+        state.selectedDur = [...pill.parentElement.querySelectorAll('.dur-pill')].indexOf(pill);
+      });
+    });
+
+  } else if (state.currentStep === 1) {
+    // Step 2: Date + Time
+    const svc = state.services[state.selectedService];
+    const slotStr = s.notes?.match(/(\d+)h?\s*-\s*(\d+)h?/)?.[0] || '10:00-20:00';
+    const [openH] = slotStr.match(/\d+/g).map(Number);
+    const closeH = parseInt(slotStr.match(/\d+/g)[1]) || 20;
+    const times = generateTimeSlots(state.selectedDate || new Date().toISOString().split('T')[0], openH, closeH);
+
+    app.innerHTML = `
+      <div class="studio-head">
+        <div class="studio-name">${s.studio_name}</div>
+        <div class="studio-addr">${svc?.name}${state.selectedDur !== null && svc?.durations[state.selectedDur] ? ' — ' + svc.durations[state.selectedDur].minutes + 'min' : ''}</div>
+      </div>
+      <div class="step active">
+        <div class="step-title">Pick a date & time</div>
+        <div class="step-sub">Select when you'd like your appointment</div>
+        ${calNav(state.year, state.month)}
+        ${buildCalendar(state.year, state.month)}
+        ${state.selectedDate ? `
+          <div style="margin-top:16px">
+            <div class="step-sub" style="margin-bottom:10px">Available times for ${state.selectedDate}</div>
+            <div class="time-grid">
+              ${times.map(t => `
+                <div class="time-slot${state.selectedTime === t ? ' selected' : ''}" onclick="selectTime('${t}',this)">
+                  <input type="radio" name="time" ${state.selectedTime === t ? 'checked' : ''}>${t}
+                </div>
+              `).join('')}
+            </div>
+          </div>` : '<div style="margin-top:16px;color:#444;font-size:13px;text-align:center">Select a date above to see available times</div>'}
+        <div class="nav-row">
+          <button class="btn btn-ghost" onclick="goStep(0)">← Back</button>
+          <button class="btn btn-primary" onclick="goStep(2)" ${!state.selectedDate || !state.selectedTime ? 'disabled' : ''}>Next →</button>
+        </div>
+      </div>`;
+
+  } else if (state.currentStep === 2) {
+    // Step 3: Customer details
+    app.innerHTML = `
+      <div class="step active">
+        <div class="step-title">Your details</div>
+        <div class="step-sub">To confirm the booking</div>
+        <div class="field">
+          <label>Your Name *</label>
+          <input type="text" id="cust-name" placeholder="Your full name">
+        </div>
+        <div class="field">
+          <label>Email *</label>
+          <input type="email" id="cust-email" placeholder="you@email.com">
+        </div>
+        <div class="field">
+          <label>Phone *</label>
+          <input type="tel" id="cust-phone" placeholder="+34 600 000 000">
+        </div>
+        <div class="field">
+          <label>Notes <span style="color:#444;font-weight:400;text-transform:none">(optional)</span></label>
+          <input type="text" id="cust-notes" placeholder="Any requests or notes…">
+        </div>
+        <div class="nav-row">
+          <button class="btn btn-ghost" onclick="goStep(1)">← Back</button>
+          <button class="btn btn-primary" onclick="goStep(3)">Review →</button>
+        </div>
+      </div>`;
+
+  } else if (state.currentStep === 3) {
+    // Step 4: Review
+    const svc = state.services[state.selectedService];
+    const dur = svc?.durations[state.selectedDur];
+    app.innerHTML = `
+      <div class="step active">
+        <div class="step-title">Confirm booking</div>
+        <div class="step-sub">Check all details before submitting</div>
+        <div class="booking-summary">
+          <div class="booking-summary-title">Booking Details</div>
+          <div class="booking-summary-row"><span class="label">Studio</span><span class="val">${s.studio_name}</span></div>
+          <div class="booking-summary-row"><span class="label">Service</span><span class="val highlight">${svc?.name || '—'}</span></div>
+          <div class="booking-summary-row"><span class="label">Duration</span><span class="val">${dur ? dur.minutes + ' minutes' : '—'}</span></div>
+          <div class="booking-summary-row"><span class="label">Price</span><span class="val">${dur?.price || 'Contact studio'}</span></div>
+          <div class="booking-summary-row"><span class="label">Date</span><span class="val highlight">${state.selectedDate}</span></div>
+          <div class="booking-summary-row"><span class="label">Time</span><span class="val highlight">${state.selectedTime}</span></div>
+          <div class="booking-summary-row"><span class="label">Name</span><span class="val">${document.getElementById('cust-name')?.value || '—'}</span></div>
+          <div class="booking-summary-row"><span class="label">Email</span><span class="val">${document.getElementById('cust-email')?.value || '—'}</span></div>
+          <div class="booking-summary-row"><span class="label">Phone</span><span class="val">${document.getElementById('cust-phone')?.value || '—'}</span></div>
+        </div>
+        <div class="nav-row">
+          <button class="btn btn-ghost" onclick="goStep(2)">← Back</button>
+          <button class="btn btn-primary" id="submitBtn" onclick="submitBooking()">Confirm Booking →</button>
+        </div>
+      </div>
+      <div class="error-msg" id="errorMsg"></div>`;
+  }
+}
+
+function selectService(si) {
+  state.selectedService = si;
+  state.selectedDur = 0;
+  state.currentStep = 0;
+  render();
+  // Auto-scroll
+  document.querySelector('.step').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function pickDate(dateStr, el) {
+  if (el.classList.contains('disabled') || el.classList.contains('empty')) return;
+  state.selectedDate = dateStr;
+  state.selectedTime = null;
+  document.querySelectorAll('.cal-day.selected').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  // Re-render times
+  const timeSection = document.querySelector('.time-grid');
+  if (timeSection) {
+    const s = state.studio;
+    const slotStr = s.notes?.match(/(\d+)h?\s*-\s*(\d+)h?/)?.[0] || '10:00-20:00';
+    const openH = parseInt(slotStr.match(/\d+/g)?.[0]) || 10;
+    const closeH = parseInt(slotStr.match(/\d+/g)?.[1]) || 20;
+    const times = generateTimeSlots(dateStr, openH, closeH);
+    const container = document.querySelector('.step.active');
+    const timesDiv = document.createElement('div');
+    timesDiv.style.cssText = 'margin-top:16px';
+    timesDiv.innerHTML = `<div class="step-sub" style="margin-bottom:10px">Available times for ${dateStr}</div><div class="time-grid">${times.map(t => `<div class="time-slot" onclick="selectTime('${t}',this)">${t}</div>`).join('')}</div>`;
+    container.appendChild(timesDiv);
+  }
+}
+
+function selectTime(t, el) {
+  if (el.classList.contains('taken')) return;
+  state.selectedTime = t;
+  document.querySelectorAll('.time-slot.selected').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function changeMonth(dir) {
+  let m = state.month + dir;
+  let y = state.year;
+  if (m < 0) { m = 11; y--; }
+  if (m > 11) { m = 0; y++; }
+  state.month = m; state.year = y;
+  const calEl = document.querySelector('.step.active .cal-grid');
+  const navEl = document.querySelector('.cal-nav');
+  if (calEl) {
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.querySelector('.cal-month').textContent = months[m] + ' ' + y;
+    calEl.outerHTML = buildCalendar(y, m);
+  }
+}
+
+function goStep(n) {
+  if (n === 3) {
+    // Validate details before going to review
+    const name = document.getElementById('cust-name')?.value.trim();
+    const email = document.getElementById('cust-email')?.value.trim();
+    const phone = document.getElementById('cust-phone')?.value.trim();
+    if (!name || !email || !phone) {
+      const err = document.getElementById('errorMsg');
+      if (err) { err.textContent = 'Please fill in name, email and phone.'; err.style.display = 'block'; }
+      return;
+    }
+  }
+  state.currentStep = n;
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function submitBooking() {
+  const btn = document.getElementById('submitBtn');
+  if (!btn) return;
+  btn.disabled = true; btn.textContent = 'Sending…';
+  const name = document.getElementById('cust-name')?.value.trim();
+  const email = document.getElementById('cust-email')?.value.trim();
+  const phone = document.getElementById('cust-phone')?.value.trim();
+  const notes = document.getElementById('cust-notes')?.value.trim();
+  const svc = state.services[state.selectedService];
+  const dur = svc?.durations[state.selectedDur];
+  const serviceLabel = dur ? `${svc?.name} ${dur.minutes}min ${dur.price}` : svc?.name || '';
+
+  const id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0;
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+  });
+
+  const payload = {
+    id,
+    studio_id: state.studio.id,
+    customer_name: name,
+    customer_email: email,
+    customer_phone: phone,
+    service: serviceLabel,
+    date: state.selectedDate,
+    time: state.selectedTime,
+    notes: notes || null,
+    status: 'pending'
+  };
+
+  fetch('https://jglftdstrowwckwqmpue.supabase.co/rest/v1/bookings', {
+    method: 'POST',
+    headers: {
+      apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg',
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(payload)
+  }).then(r => r.ok ? r.json() : r.json().then(e => Promise.reject(e)))
+    .then(() => {
+      document.getElementById('app').innerHTML = `
+        <div class="success">
+          <div class="success-icon">✅</div>
+          <div class="success-title">Booking Request Sent!</div>
+          <div class="success-sub">${state.studio.studio_name} will confirm your appointment shortly. You'll hear from them by email or WhatsApp.</div>
+        </div>`;
+    })
+    .catch(err => {
+      btn.disabled = false; btn.textContent = 'Confirm Booking →';
+      const e = document.getElementById('errorMsg');
+      if (e) { e.textContent = 'Error: ' + (err.message || 'try again'); e.style.display = 'block'; }
+    });
+}
+
+// ── Init ──
+async function init() {
+  const studioId = getStudioId();
+  if (!studioId) {
+    document.getElementById('app').innerHTML = '<div class="loading-state">No studio selected. <a href="/openclaw-agent/" style="color:#818cf8">Browse studios →</a></div>';
+    return;
+  }
+  try {
+    const r = await fetch(
+      `https://jglftdstrowwckwqmpue.supabase.co/rest/v1/partners?id=eq.${studioId}&select=*`,
+      { headers: {
+        apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnbGZ0ZHN0cm93d2Nrd3FtcHVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5ODA2OTgsImV4cCI6MjA5MjU1NjY5OH0.BoqLEbyFqLl9hJ7bYq1WIEMlDRcqPck2EnZteA-LKgg'
+      }}
+    );
+    const d = await r.json();
+    if (!d?.length) throw new Error('Studio not found');
+    state.studio = d[0];
+    state.services = parseServices(state.studio.services);
+    if (!state.services.length) {
+      // Fallback: simple parse
+      state.services = (state.studio.services || '').split(',').map(s => ({
+        name: s.trim(),
+        durations: [{ minutes: 60, price: state.studio.price_range || 'Contact' }]
+      }));
+    }
+    document.title = `Book ${state.studio.studio_name} — Massage Pass`;
+    render();
+  } catch(e) {
+    document.getElementById('app').innerHTML = '<div class="loading-state">Studio not found. <a href="/openclaw-agent/" style="color:#818cf8">Browse studios →</a></div>';
+  }
+}
+
+init();
 </script>
 </body>
 </html>
