@@ -1,17 +1,18 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Serve static files from the dashboard directory
-app.use(express.static(path.join(__dirname)));
+const HTML_FILE = path.join(__dirname, 'index.html');
 
-// Serve dashboard/index.html for all routes
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.send(fs.readFileSync(HTML_FILE, 'utf8'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Dashboard running on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Dashboard running on http://0.0.0.0:${PORT}`);
 });
