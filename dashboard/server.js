@@ -161,6 +161,11 @@ app.get('/api/config', (req, res) => {
     res.json({ gatewayToken: token });
 });
 
+// Healthcheck endpoint for Railway
+app.get('/setup/healthz', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
+
 app.listen(PORT, () => {
     console.log(`🦞 Claw Dashboard running on port ${PORT}`);
 });
