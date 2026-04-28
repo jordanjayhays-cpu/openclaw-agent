@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jordan's Dashboard</title>
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <title>Mission Control</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -16,28 +17,27 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
-    }
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #6ee7f7, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    p {
-      color: #888;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-    .status {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
       text-align: center;
     }
-    .status .dot {
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: #22c55e;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+    }
+    .status-box {
+      background: #1a1a1a;
+      border: 1px solid #22c55e;
+      border-radius: 12px;
+      padding: 1.5rem 2.5rem;
+    }
+    .dot {
       display: inline-block;
       width: 10px;
       height: 10px;
@@ -48,16 +48,20 @@
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+      50% { opacity: 0.3; }
+    }
+    .status-text {
+      font-size: 1rem;
+      color: #cccccc;
     }
   </style>
 </head>
 <body>
   <h1>Mission Control</h1>
-  <p>Jordan's operational dashboard</p>
-  <div class="status">
+  <div class="subtitle">Dashboard Online</div>
+  <div class="status-box">
     <span class="dot"></span>
-    <strong>Dashboard online</strong> — port 8080
+    <span class="status-text">All systems operational</span>
   </div>
 </body>
 </html>
