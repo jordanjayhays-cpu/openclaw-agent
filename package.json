@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node dashboard/server.js & node telegram-bot.js",
+    "start": "sh -c 'node dashboard/server.js & node telegram-bot.js & wait'",
     "start:bot": "node telegram-bot.js"
   },
   "dependencies": {
