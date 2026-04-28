@@ -980,7 +980,7 @@
                             <div class="blocker-icon">✅</div>
                             <div class="blocker-content">
                                 <div class="blocker-title">Dashboard</div>
-                                <div class="blocker-meta">Live at openclaw-agent-flame.vercel.app</div>
+                                <div class="blocker-meta">Live at <span id="dashboard-url"></span></div>
                             </div>
                         </div>
                     </div>
@@ -1018,14 +1018,25 @@
             });
         });
         
-        // Quick command
-        function sendCommand(cmd) {
-            const msg = 'Command: ' + cmd;
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(msg);
-                alert('Command copied: ' + cmd + '\n\nPaste this in Telegram to execute.');
-            } else {
-                alert('Command: ' + cmd + '\n\nPaste this in Telegram to execute.');
+        // Populate dashboard URL dynamically from current origin
+        document.getElementById('dashboard-url').textContent = window.location.origin;
+
+        // Quick command — posts to the local /api/command endpoint
+        async function sendCommand(cmd) {
+            try {
+                const res = await fetch('/api/command', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: cmd })
+                });
+                const data = await res.json();
+                if (data.success) {
+                    alert('✅ Command queued: ' + cmd);
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Unknown error'));
+                }
+            } catch (err) {
+                alert('❌ Failed to send command: ' + err.message);
             }
         }
     </script>
