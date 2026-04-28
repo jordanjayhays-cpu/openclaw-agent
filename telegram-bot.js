@@ -29,6 +29,25 @@ const BOT_PORT = parseInt(process.env.BOT_PORT || '3001', 10);
 const WEBHOOK_URL = process.env.WEBHOOK_URL; // e.g. https://your-service.up.railway.app
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'openai/gpt-4o-mini';
 
+// ── Environment debug ────────────────────────────────────────────────────────
+
+console.log('[DEBUG] WEBHOOK_URL value:', process.env.WEBHOOK_URL);
+console.log('[DEBUG] WEBHOOK_URL type:', typeof process.env.WEBHOOK_URL);
+console.log('[DEBUG] WEBHOOK_URL length:', process.env.WEBHOOK_URL ? process.env.WEBHOOK_URL.length : 'N/A (undefined or empty)');
+
+const debugEnvKeys = Object.keys(process.env).filter(
+    (k) => /WEBHOOK|TELEGRAM|OPENROUTER/.test(k)
+);
+console.log('[DEBUG] Relevant environment variables:', JSON.stringify(
+    debugEnvKeys.reduce((acc, k) => {
+        // Mask sensitive values — show only first 6 chars for tokens/keys.
+        const val = process.env[k];
+        const isSensitive = /TOKEN|KEY/.test(k);
+        acc[k] = isSensitive ? `${val.slice(0, 6)}… (length=${val.length})` : val;
+        return acc;
+    }, {})
+));
+
 // ── Startup validation ───────────────────────────────────────────────────────
 
 if (!TELEGRAM_BOT_TOKEN) {
