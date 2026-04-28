@@ -26,7 +26,10 @@ app.use(express.json());
 // ── Static UI ────────────────────────────────────────────────────────────────
 
 app.get('/', (_req, res) => {
-  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
