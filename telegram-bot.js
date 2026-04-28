@@ -41,6 +41,9 @@ if (!OPENROUTER_API_KEY) {
     process.exit(1);
 }
 
+console.log(`[STARTUP] OPENROUTER_API_KEY is set (length=${OPENROUTER_API_KEY.length})`);
+console.log(`[STARTUP] Using model: ${OPENROUTER_MODEL}`);
+
 // ── OpenRouter API ───────────────────────────────────────────────────────────
 
 /**
@@ -64,6 +67,13 @@ async function askOpenRouter(userMessage) {
         ],
     });
 
+    console.log('[OPENROUTER] Sending request:', JSON.stringify({
+        model: OPENROUTER_MODEL,
+        endpoint: 'https://openrouter.ai/api/v1/chat/completions',
+        messageCount: 2,
+        userMessage,
+    }));
+
     return new Promise((resolve, reject) => {
         const options = {
             hostname: 'openrouter.ai',
@@ -82,6 +92,10 @@ async function askOpenRouter(userMessage) {
             let data = '';
             res.on('data', (chunk) => (data += chunk));
             res.on('end', () => {
+                console.log(`[OPENROUTER] Response status: ${res.statusCode}`);
+                console.log('[OPENROUTER] Response headers:', JSON.stringify(res.headers));
+                console.log('[OPENROUTER] Response body:', data);
+
                 try {
                     const json = JSON.parse(data);
 
@@ -142,36 +156,42 @@ app.get('/healthz', (_req, res) => {
 // ── Message handler ──────────────────────────────────────────────────────────
 
 bot.on('message', async (msg) => {
-    const chatId = msg.chat.id;
-    const userText = msg.text;
-
-    // Ignore non-text messages (photos, stickers, etc.)
-    if (!userText) {
-        return bot.sendMessage(
-            chatId,
-            "Sorry, I can only handle text messages right now."
-        );
-    }
-
-    console.log(`[MSG] chat=${chatId} user=${msg.from && msg.from.username} text="${userText}"`);
-
-    // Show a "typing…" indicator while we wait for OpenRouter.
     try {
-        await bot.sendChatAction(chatId, 'typing');
-    } catch (_) {
-        // Non-fatal — continue even if this fails.
-    }
+        const chatId = msg.chat.id;
+        const userText = msg.text;
 
-    try {
-        const reply = await askOpenRouter(userText);
-        await bot.sendMessage(chatId, reply);
-        console.log(`[REPLY] chat=${chatId} length=${reply.length}`);
+        // Ignore non-text messages (photos, stickers, etc.)
+        if (!userText) {
+            return bot.sendMessage(
+                chatId,
+                "Sorry, I can only handle text messages right now."
+            );
+        }
+
+        console.log(`[MSG] chat=${chatId} user=${msg.from && msg.from.username} text="${userText}"`);
+
+        // Show a "typing…" indicator while we wait for OpenRouter.
+        try {
+            await bot.sendChatAction(chatId, 'typing');
+        } catch (_) {
+            // Non-fatal — continue even if this fails.
+        }
+
+        try {
+            const reply = await askOpenRouter(userText);
+            await bot.sendMessage(chatId, reply);
+            console.log(`[REPLY] chat=${chatId} length=${reply.length}`);
+        } catch (err) {
+            console.error('[ERROR] OpenRouter call failed:', err.message);
+            console.error('[ERROR] Full stack:', err.stack);
+            await bot.sendMessage(
+                chatId,
+                "⚠️ Sorry, I couldn't get a response right now. Please try again in a moment."
+            );
+        }
     } catch (err) {
-        console.error('[ERROR] OpenRouter call failed:', err.message);
-        await bot.sendMessage(
-            chatId,
-            "⚠️ Sorry, I couldn't get a response right now. Please try again in a moment."
-        );
+        console.error('[ERROR] Unhandled exception in message handler:', err.message);
+        console.error('[ERROR] Full stack:', err.stack);
     }
 });
 
