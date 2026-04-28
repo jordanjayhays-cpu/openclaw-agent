@@ -1,8 +1,11 @@
 {
   "scripts": {
+    "start": "node dashboard/server.js",
     "start:bot": "node telegram-bot.js"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
     "node-telegram-bot-api": "^0.66.0",
     "playwright": "^1.58.2"
   }
