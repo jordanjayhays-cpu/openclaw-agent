@@ -9,7 +9,7 @@
  *   OPENROUTER_API_KEY  — API key from openrouter.ai
  *
  * Optional:
- *   PORT                — HTTP port for the webhook server (default: 3001)
+ *   BOT_PORT            — HTTP port for the webhook server (default: 3001)
  *   WEBHOOK_URL         — Public HTTPS URL Railway assigns to this service.
  *                         When set, the bot registers the webhook automatically
  *                         on startup. If omitted, register the webhook manually.
@@ -25,7 +25,7 @@ const express = require('express');
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const PORT = parseInt(process.env.PORT || '3001', 10);
+const BOT_PORT = parseInt(process.env.BOT_PORT || '3001', 10);
 const WEBHOOK_URL = process.env.WEBHOOK_URL; // e.g. https://your-service.up.railway.app
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'openai/gpt-4o-mini';
 
@@ -203,8 +203,8 @@ bot.on('webhook_error', (err) => console.error('[BOT WEBHOOK ERROR]', err.messag
 
 const server = http.createServer(app);
 
-server.listen(PORT, async () => {
-    console.log(`🤖 Telegram bot server listening on port ${PORT}`);
+server.listen(BOT_PORT, async () => {
+    console.log(`🤖 Telegram bot server listening on port ${BOT_PORT}`);
     console.log(`   Webhook path: ${WEBHOOK_PATH}`);
     console.log(`   Model: ${OPENROUTER_MODEL}`);
 
