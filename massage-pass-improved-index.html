@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Massage Pass | Madrid</title>
+    <meta name="description" content="Book massage studios in Madrid. Collect stamps, earn free massages. Walk-in friendly.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --primary-light: #EDE9FE;
+            --accent: #06B6D4;
+            --bg: #FFFBF5;
+            --bg-secondary: #F7F4EF;
+            --text: #1C1917;
+            --text-secondary: #78716C;
+            --text-light: #A8A29E;
+            --border: #E7E5E4;
+            --success: #10B981;
+            --success-light: #D1FAE5;
+            --orange: #F97316;
+            --card: #FFFFFF;
+            --shadow: 0 4px 24px rgba(139, 92, 246, 0.08);
+            --shadow-lg: 0 12px 48px rgba(139, 92, 246, 0.12);
+            --radius: 20px;
+            --radius-sm: 14px;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; }
+        
+        /* HERO */
+        .hero {
+            min-height: 100vh; display: flex; flex-direction: column;
+            background: linear-gradient(180deg, var(--primary-light) 0%, var(--bg) 100%);
+            padding: 60px 20px 40px; text-align: center;
+        }
+        .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--primary-light); border-radius: 20px; padding: 6px 14px; font-size: 11px; font-weight: 700; color: var(--primary); margin-bottom: 20px; box-shadow: var(--shadow); }
+        .hero h1 { font-size: clamp(36px, 8vw, 64px); font-weight: 900; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 18px; color: var(--text-secondary); max-width: 480px; margin: 0 auto 32px; line-height: 1.6; }
+        
+        .hero-cta { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-bottom: 40px; }
+        .btn-primary { background: var(--primary); color: white; border: none; border-radius: var(--radius-sm); padding: 16px 32px; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; max-width: 320px; box-shadow: 0 8px 24px rgba(139,92,246,0.3); transition: all 0.2s; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        .btn-secondary { background: transparent; color: var(--primary); border: 2px solid var(--primary); border-radius: var(--radius-sm); padding: 14px 32px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%; max-width: 320px; transition: all 0.2s; }
+        .btn-secondary:hover { background: var(--primary-light); }
+        
+        .hero-stats { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+        .hero-stat { text-align: center; }
+        .hero-stat .num { font-size: 28px; font-weight: 800; color: var(--primary); }
+        .hero-stat .label { font-size: 12px; color: var(--text-secondary); }
+        
+        /* HOW IT WORKS */
+        .section { padding: 60px 20px; max-width: 600px; margin: 0 auto; }
+        .section-title { font-size: 28px; font-weight: 800; text-align: center; margin-bottom: 8px; }
+        .section-sub { font-size: 15px; color: var(--text-secondary); text-align: center; margin-bottom: 40px; }
+        
+        .steps { display: flex; flex-direction: column; gap: 20px; }
+        .step { display: flex; gap: 16px; align-items: flex-start; background: var(--card); border-radius: var(--radius-sm); padding: 20px; box-shadow: var(--shadow); }
+        .step-num { width: 40px; height: 40px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+        .step-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .step-content p { font-size: 14px; color: var(--text-secondary); }
+        
+        /* STUDIOS */
+        .studios-section { background: var(--bg-secondary); padding: 60px 20px; }
+        .studios-inner { max-width: 600px; margin: 0 auto; }
+        .studio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+        .studio-card { background: var(--card); border-radius: var(--radius-sm); padding: 16px; box-shadow: var(--shadow); }
+        .studio-emoji { font-size: 28px; margin-bottom: 8px; }
+        .studio-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+        .studio-area { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+        .studio-price { font-size: 13px; font-weight: 600; color: var(--primary); }
+        
+        /* PASS CARD */
+        .pass-section { padding: 60px 20px; max-width: 600px; margin: 0 auto; }
+        .pass-card { background: linear-gradient(135deg, var(--primary) 0%, #6D28D9 100%); border-radius: var(--radius); padding: 28px; color: white; box-shadow: var(--shadow-lg); }
+        .pass-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+        .pass-logo { font-size: 22px; font-weight: 900; }
+        .pass-type { font-size: 11px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+        .stamps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
+        .stamp { width: 100%; aspect-ratio: 1; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .stamp.filled { background: rgba(255,255,255,0.2); border-color: white; }
+        .pass-footer { display: flex; justify-content: space-between; align-items: center; }
+        .pass-name { font-size: 14px; font-weight: 600; }
+        .pass-progress { font-size: 12px; opacity: 0.8; }
+        
+        /* PRICING */
+        .pricing-section { background: var(--bg-secondary); padding: 60px 20px; }
+        .pricing-inner { max-width: 600px; margin: 0 auto; }
+        .pricing-card { background: var(--card); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-lg); border: 2px solid var(--primary); text-align: center; }
+        .pricing-badge { display: inline-block; background: var(--primary); color: white; border-radius: 20px; padding: 4px 14px; font-size: 11px; font-weight: 700; margin-bottom: 16px; }
+        .pricing-price { font-size: 56px; font-weight: 900; color: var(--primary); line-height: 1; }
+        .pricing-period { font-size: 16px; color: var(--text-secondary); margin-bottom: 24px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 28px; }
+        .pricing-features li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; display: flex; align-items: center; gap: 10px; }
+        .pricing-features li:last-child { border-bottom: none; }
+        .check { color: var(--success); font-size: 16px; }
+        
+        /* CTA SECTION */
+        .cta-section { padding: 60px 20px; text-align: center; max-width: 600px; margin: 0 auto; }
+        .cta-section h2 { font-size: 32px; font-weight: 900; margin-bottom: 12px; }
+        .cta-section p { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; }
+        
+        /* FOOTER */
+        footer { background: var(--text); color: rgba(255,255,255,0.6); padding: 24px 20px; text-align: center; font-size: 13px; }
+        footer strong { color: white; }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <div class="hero-badge">💆 Madrid's Massage Network</div>
+        <h1>One Pass.<br><span>All Studios.</span></h1>
+        <p>Book any massage studio in Madrid, collect loyalty stamps, and earn free sessions. Walk-in friendly.</p>
+        
+        <div class="hero-cta">
+            <button class="btn-primary" onclick="document.querySelector('.pricing-section').scrollIntoView({behavior:'smooth'})">
+                Get Your Pass — €29/mo
+            </button>
+            <button class="btn-secondary" onclick="document.querySelector('.studios-section').scrollIntoView({behavior:'smooth'})">
+                Browse Studios
+            </button>
+        </div>
+        
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="num">12</div>
+                <div class="label">Studios</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">€29</div>
+                <div class="label">Per Month</div>
+            </div>
+            <div class="hero-stat">
+                <div class="num">10</div>
+                <div class="label">Stamps = Free</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Three simple steps to your first massage</p>
+    
+    <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h3>Get Your Pass</h3>
+                <p>Subscribe for €29/month. Instant access to all partner studios in Madrid.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h3>Book or Walk In</h3>
+                <p>Book online or just walk into any partner studio. Show your digital pass at the door.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h3>Collect Stamps</h3>
+                <p>Every visit earns a stamp. 10 stamps = 1 free massage. Stamps never expire.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STUDIOS -->
+<section class="studios-section">
+    <div class="studios-inner">
+        <h2 class="section-title">Partner Studios</h2>
+        <p class="section-sub">12 studios across Madrid — more joining weekly</p>
+        
+        <div class="studio-grid">
+            <div class="studio-card">
+                <div class="studio-emoji">🌿</div>
+                <div class="studio-name">Zen Madrid</div>
+                <div class="studio-area">Malasaña</div>
+                <div class="studio-price">From €35/session</div>
+            </div>
+            <div class="studio-card">
+                <div class="studio-emoji">💎</div>
+                <div class="studio-name">Relax & Co</div>
+                <div class="studio-area">Salamanca</div>
+                <div class="studio-price">From €45/session</div>
+            </div>
+            <div class="studio-card">
+                <div class="studio-emoji">🌸</div>
+                <div class="studio-name">Thai Touch</div>
+                <div class="studio-area">Chueca</div>
+                <div class="studio-price">From €40/session</div>
+            </div>
+            <div class="studio-card">
+                <div class="studio-emoji">⚡</div>
+                <div class="studio-name">Sport Massage</div>
+                <div class="studio-area">Chamberí</div>
+                <div class="studio-price">From €38/session</div>
+            </div>
+            <div class="studio-card">
+                <div class="studio-emoji">🏔️</div>
+                <div class="studio-name">Alpine Spa</div>
+                <div class="studio-area">Retiro</div>
+                <div class="studio-price">From €50/session</div>
+            </div>
+            <div class="studio-card">
+                <div class="studio-emoji">🌊</div>
+                <div class="studio-name">Ocean Wellness</div>
+                <div class="studio-area">Lavapiés</div>
+                <div class="studio-price">From €32/session</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PASS CARD PREVIEW -->
+<section class="pass-section">
+    <h2 class="section-title">Your Digital Pass</h2>
+    <p class="section-sub" style="margin-bottom:28px">Collect stamps at every visit</p>
+    
+    <div class="pass-card">
+        <div class="pass-header">
+            <div>
+                <div class="pass-logo">💆 Massage Pass</div>
+                <div class="pass-type">Madrid Network</div>
+            </div>
+            <div style="text-align:right">
+                <div style="font-size:11px;opacity:0.7">Member Since</div>
+                <div style="font-size:13px;font-weight:600">April 2026</div>
+            </div>
+        </div>
+        
+        <div class="stamps">
+            <div class="stamp filled">💆</div>
+            <div class="stamp filled">💆</div>
+            <div class="stamp filled">💆</div>
+            <div class="stamp">○</div>
+            <div class="stamp">○</div>
+            <div class="stamp">○</div>
+            <div class="stamp">○</div>
+            <div class="stamp">○</div>
+            <div class="stamp">○</div>
+            <div class="stamp" style="border-color:gold;color:gold">🎁</div>
+        </div>
+        
+        <div class="pass-footer">
+            <div class="pass-name">Jordan H.</div>
+            <div class="pass-progress">3/10 stamps · 7 to free massage</div>
+        </div>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+    <div class="pricing-inner">
+        <h2 class="section-title">Simple Pricing</h2>
+        <p class="section-sub" style="margin-bottom:28px">One subscription, all studios</p>
+        
+        <div class="pricing-card">
+            <div class="pricing-badge">Most Popular</div>
+            <div class="pricing-price">€29</div>
+            <div class="pricing-period">per month · cancel anytime</div>
+            
+            <ul class="pricing-features">
+                <li><span class="check">✓</span> Access to all 12 partner studios</li>
+                <li><span class="check">✓</span> Digital loyalty stamp card</li>
+                <li><span class="check">✓</span> Walk-in priority at partner studios</li>
+                <li><span class="check">✓</span> 10 stamps = 1 free massage (€35+ value)</li>
+                <li><span class="check">✓</span> New studios added monthly</li>
+                <li><span class="check">✓</span> Cancel anytime, no commitment</li>
+            </ul>
+            
+            <button class="btn-primary" style="max-width:100%">Start Your Pass Today</button>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Ready for Your First Massage?</h2>
+    <p>Join hundreds of Madrileños who've discovered the city's best massage studios.</p>
+    <button class="btn-primary" style="max-width:320px;margin:0 auto">Get Started — €29/mo</button>
+</section>
+
+<footer>
+    <strong>Massage Pass Madrid</strong> · Your city's massage network<br>
+    <span style="font-size:11px;margin-top:4px;display:block">© 2026 · hello@massagepass.es</span>
+</footer>
+
+</body>
+</html>

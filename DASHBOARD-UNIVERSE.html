@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan's Dashboard Universe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080c14;
+  --bg2:#0d1520;
+  --bg3:#111d2e;
+  --border:#1a2d42;
+  --text:#c8d8e8;
+  --text-dim:#5a7a8a;
+  --accent:#38bdf8;
+  --accent2:#818cf8;
+  --green:#4ade80;
+  --red:#f87171;
+  --yellow:#fbbf24;
+  --amber:#f59e0b;
+  --purple:#a78bfa;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:40px 20px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:4px}
+.subtitle{font-size:13px;color:var(--text-dim);margin-bottom:32px;letter-spacing:.3px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .2s;cursor:pointer;text-decoration:none;color:var(--text);display:block}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.card-icon{font-size:20px;width:36px;height:36px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center}
+.card-title{font-weight:600;font-size:14px}
+.card-desc{font-size:12px;color:var(--text-dim);line-height:1.5;margin-bottom:14px}
+.card-link{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);display:flex;align-items:center;gap:6px}
+.card-link::before{content:'→'}
+.card-footer{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 8px;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.tag-active{background:rgba(74,222,128,.15);color:var(--green)}
+.tag-building{background:rgba(56,189,248,.15);color:var(--accent)}
+.tag-planning{background:rgba(251,191,36,.15);color:var(--yellow)}
+.tag-research{background:rgba(167,139,250,.15);color:var(--purple)}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>🦞 JORDAN'S DASHBOARD UNIVERSE</h1>
+<p class="subtitle">All dashboards, tools, and project views in one place</p>
+
+<div class="section-label">🎯 Command Centers</div>
+<div class="grid">
+
+<a href="dashboard/index.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">⚡</div>
+    <div class="card-title">Main Dashboard</div>
+  </div>
+  <div class="card-desc">Primary command center. Send commands to the agent, view project status, quick actions.</div>
+  <div class="card-link">Open Dashboard</div>
+  <div class="card-footer"><span class="tag tag-active">Primary</span></div>
+</a>
+
+<a href="MISSION-CONTROL.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">🚀</div>
+    <div class="card-title">Mission Control</div>
+  </div>
+  <div class="card-desc">Kanban-style project tracker. See all projects in pipeline stages with priorities.</div>
+  <div class="card-link">Open Mission Control</div>
+  <div class="card-footer"><span class="tag tag-active">Kanban</span></div>
+</a>
+
+<a href="PROJECTS.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">📊</div>
+    <div class="card-title">Projects Overview</div>
+  </div>
+  <div class="card-desc">Detailed project cards with metrics, next steps, and file links for all active projects.</div>
+  <div class="card-link">View Projects</div>
+  <div class="card-footer"><span class="tag tag-active">Overview</span></div>
+</a>
+
+<a href="DASHBOARD.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">🎛️</div>
+    <div class="card-title">Simple Dashboard</div>
+  </div>
+  <div class="card-desc">Lightweight project dashboard with command input and quick action chips.</div>
+  <div class="card-link">Open Simple View</div>
+  <div class="card-footer"><span class="tag tag-building">Lite</span></div>
+</a>
+
+</div>
+
+<div class="section-label">🏨 PISCO — Hotel Staffing</div>
+<div class="grid">
+
+<a href="PROJECTS/PISCO/state/STATE.yaml" class="card">
+  <div class="card-top">
+    <div class="card-icon">📋</div>
+    <div class="card-title">PISCO State</div>
+  </div>
+  <div class="card-desc">Current project state, pipeline status, and next actions for PISCO.</div>
+  <div class="card-link">View State</div>
+  <div class="card-footer"><span class="tag tag-active">Active</span></div>
+</a>
+
+<a href="PROJECTS/PISCO/pisco-crm.json" class="card">
+  <div class="card-top">
+    <div class="card-icon">👥</div>
+    <div class="card-title">PISCO CRM</div>
+  </div>
+  <div class="card-desc">Contact database with hotel decision makers, outreach status, and follow-up dates.</div>
+  <div class="card-link">View CRM</div>
+  <div class="card-footer"><span class="tag tag-active">CRM</span></div>
+</a>
+
+<a href="PISCO-DECK.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">📑</div>
+    <div class="card-title">PISCO Pitch Deck</div>
+  </div>
+  <div class="card-desc">Full-screen presentation deck for PISCO hotel staffing solution.</div>
+  <div class="card-link">Open Deck</div>
+  <div class="card-footer"><span class="tag tag-active">Pitch</span></div>
+</a>
+
+<a href="PROJECTS/PISCO/HOTEL-PITCH.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">🏨</div>
+    <div class="card-title">Hotel Pitch Page</div>
+  </div>
+  <div class="card-desc">Landing page for hotel HR directors. Shows PISCO value proposition.</div>
+  <div class="card-link">View Pitch</div>
+  <div class="card-footer"><span class="tag tag-active">Landing</span></div>
+</a>
+
+</div>
+
+<div class="section-label">💆 Massage Pass — Madrid Platform</div>
+<div class="grid">
+
+<a href="PROJECTS/MASSAGE-PASS/index.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">💆</div>
+    <div class="card-title">Massage Pass App</div>
+  </div>
+  <div class="card-desc">Full booking platform with 12 Madrid studios, OpenStreetMap, loyalty stamps.</div>
+  <div class="card-link">Open Platform</div>
+  <div class="card-footer"><span class="tag tag-building">Live</span></div>
+</a>
+
+<a href="massage-pass-improved-index.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">✨</div>
+    <div class="card-title">Massage Pass v2</div>
+  </div>
+  <div class="card-desc">Improved version with better UX, hero section, and studio discovery flow.</div>
+  <div class="card-link">Open v2</div>
+  <div class="card-footer"><span class="tag tag-building">Improved</span></div>
+</a>
+
+<a href="passport.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">🎫</div>
+    <div class="card-title">Massage Passport</div>
+  </div>
+  <div class="card-desc">Digital loyalty stamp card. Collect stamps, earn free massages. Walk-in QR.</div>
+  <div class="card-link">Open Passport</div>
+  <div class="card-footer"><span class="tag tag-building">Loyalty</span></div>
+</a>
+
+<a href="studio-dashboard-preview.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">🏪</div>
+    <div class="card-title">Studio Dashboard</div>
+  </div>
+  <div class="card-desc">Preview of the studio-side dashboard. Shows bookings, stamps, revenue.</div>
+  <div class="card-link">View Preview</div>
+  <div class="card-footer"><span class="tag tag-building">Studio</span></div>
+</a>
+
+<a href="PROJECTS/MASSAGE-PASS/waitlist-dashboard.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">📋</div>
+    <div class="card-title">Waitlist Dashboard</div>
+  </div>
+  <div class="card-desc">Track waitlist signups, subscriber data, and launch readiness.</div>
+  <div class="card-link">View Waitlist</div>
+  <div class="card-footer"><span class="tag tag-planning">Waitlist</span></div>
+</a>
+
+</div>
+
+<div class="section-label">🔧 COMARE — Maintenance</div>
+<div class="grid">
+
+<a href="PROJECTS/COMARE/state/STATE.yaml" class="card">
+  <div class="card-top">
+    <div class="card-icon">📋</div>
+    <div class="card-title">COMARE State</div>
+  </div>
+  <div class="card-desc">Current project state for COMARE maintenance company.</div>
+  <div class="card-link">View State</div>
+  <div class="card-footer"><span class="tag tag-planning">Planning</span></div>
+</a>
+
+<a href="PROJECTS/COMARE/ICP-SCORING-DASHBOARD.md" class="card">
+  <div class="card-top">
+    <div class="card-icon">🎯</div>
+    <div class="card-title">ICP Scoring</div>
+  </div>
+  <div class="card-desc">Ideal customer profile scoring for pharmacies vs restaurants decision.</div>
+  <div class="card-link">View ICP</div>
+  <div class="card-footer"><span class="tag tag-planning">Research</span></div>
+</a>
+
+</div>
+
+<div class="section-label">👤 ProfileStack — LinkedIn Optimization</div>
+<div class="grid">
+
+<a href="ProfileStack/index.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">👤</div>
+    <div class="card-title">ProfileStack Landing</div>
+  </div>
+  <div class="card-desc">Landing page for LinkedIn profile optimization service. EUR 199/mo.</div>
+  <div class="card-link">View Landing</div>
+  <div class="card-footer"><span class="tag tag-planning">Landing</span></div>
+</a>
+
+<a href="ProfileStack/calculator.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">🧮</div>
+    <div class="card-title">Profile Value Calculator</div>
+  </div>
+  <div class="card-desc">Interactive tool to calculate LinkedIn profile value and ROI.</div>
+  <div class="card-link">Open Calculator</div>
+  <div class="card-footer"><span class="tag tag-planning">Tool</span></div>
+</a>
+
+</div>
+
+<div class="section-label">📊 Analytics & Intelligence</div>
+<div class="grid">
+
+<a href="PROJECTS/analytics/analytics.html" class="card">
+  <div class="card-top">
+    <div class="card-icon">📈</div>
+    <div class="card-title">Analytics Dashboard</div>
+  </div>
+  <div class="card-desc">Revenue projections, pipeline analytics, and business metrics.</div>
+  <div class="card-link">View Analytics</div>
+  <div class="card-footer"><span class="tag tag-research">Analytics</span></div>
+</a>
+
+<a href="PROJECTS/INTEL/daily-brief.md" class="card">
+  <div class="card-top">
+    <div class="card-icon">📰</div>
+    <div class="card-title">Daily Intelligence</div>
+  </div>
+  <div class="card-desc">Daily briefing with market intel, trends, and opportunities.</div>
+  <div class="card-link">Read Brief</div>
+  <div class="card-footer"><span class="tag tag-research">Intel</span></div>
+</a>
+
+</div>
+
+</div>
+</body>
+</html>
