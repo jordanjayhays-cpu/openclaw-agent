@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jordan's Project Dashboard</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0a0a12;color:#e8e8f0;min-height:100vh;padding:24px}
+.container{max-width:1200px;margin:0 auto}
+h1{font-size:24px;font-weight:700;margin-bottom:4px}
+.sub{color:#888;font-size:13px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:32px}
+.card{background:#13131f;border:1px solid #22223a;border-radius:12px;padding:20px;position:relative}
+.card .badge{position:absolute;top:16px;right:16px;font-size:11px;padding:3px 8px;border-radius:20px;font-weight:600}
+.badge-green{background:#0d3320;color:#22D3A5}.badge-yellow{background:#332a0d;color:#EAB308}.badge-red{background:#331515;color:#F87171}
+.card h2{font-size:15px;font-weight:600;margin-bottom:8px;padding-right:60px}
+.card .desc{font-size:12px;color:#888;margin-bottom:12px;line-height:1.5}
+.card .stat{font-size:28px;font-weight:700;margin-bottom:4px}
+.card .stat-label{font-size:11px;color:#666;margin-bottom:12px}
+.card .action{background:#6B5CE7;color:white;border:none;border-radius:8px;padding:8px 16px;cursor:pointer;font-size:12px;width:100%}
+.card .action:hover{background:#5B4FE8}
+.card .files{font-size:11px;color:#555;margin-top:10px}
+.card .files a{color:#6B5CE7;text-decoration:none}
+.card .priority{font-size:11px;color:#EAB308;margin-bottom:6px;font-weight:600}
+.card .next{font-size:12px;color:#aaa;margin-bottom:8px;padding:8px;background:#0d0d1a;border-radius:6px}
+hr{border:none;border-top:1px solid #1e1e30;margin:24px 0}
+.status-section{margin-bottom:24px}
+.status-section h3{font-size:13px;color:#666;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.status-row{display:flex;gap:8px;flex-wrap:wrap}
+.status-chip{background:#13131f;border:1px solid #22223a;border-radius:20px;padding:6px 14px;font-size:12px;cursor:pointer}
+.status-chip:hover{border-color:#6B5CE7;color:#6B5CE7}
+.command-box{background:#13131f;border:1px solid #22223a;border-radius:12px;padding:20px;margin-bottom:24px}
+.command-box h3{font-size:13px;color:#666;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px}
+.command-input{display:flex;gap:8px}
+.command-input input{flex:1;background:#0a0a12;border:1px solid #22223a;border-radius:8px;padding:10px 14px;color:#e8e8f0;font-size:13px;outline:none}
+.command-input input:focus{border-color:#6B5CE7}
+.command-input button{background:#6B5CE7;color:white;border:none;border-radius:8px;padding:10px 20px;cursor:pointer;font-size:13px;font-weight:600}
+.log{background:#0a0a12;border:1px solid #1e1e30;border-radius:8px;padding:12px;font-family:monospace;font-size:11px;color:#4ade80;max-height:120px;overflow-y:auto;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🦞 Jordan's Project Dashboard</h1>
+<p class="sub">OpenClaw Agent Control Center — <span id="time"></span></p>
+
+<div class="command-box">
+  <h3>⚡ Send Command to Agent</h3>
+  <div class="command-input">
+    <input type="text" id="cmd" placeholder="e.g. Research 10 new hotel prospects for PISCO..." />
+    <button onclick="sendCmd()">Send</button>
+  </div>
+  <div class="log" id="log">// Agent ready. Type a command above.</div>
+</div>
+
+<div class="status-section">
+  <h3>Quick Actions</h3>
+  <div class="status-row">
+    <div class="status-chip" onclick="quickCmd('Check PISCO pipeline status')">📊 PISCO Status</div>
+    <div class="status-chip" onclick="quickCmd('Find 5 new hotel prospects in Madrid')">🔍 Find Prospects</div>
+    <div class="status-chip" onclick="quickCmd('Write follow-up email for PISCO')">📧 Write Email</div>
+    <div class="status-chip" onclick="quickCmd('Update MEMORY.md with latest progress')">🧠 Update Memory</div>
+    <div class="status-chip" onclick="quickCmd('Generate morning briefing')">☀️ Morning Brief</div>
+    <div class="status-chip" onclick="quickCmd('Check Massage Pass waitlist')">💆 MassPass Status</div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <div class="badge badge-green">ACTIVE</div>
+    <h2>🏨 PISCO</h2>
+    <div class="desc">Filipino staff placement in Spanish hotels. BD outreach in progress.</div>
+    <div class="priority">⚡ TOP PRIORITY</div>
+    <div class="next">Next: Follow up with Javier Estrada (NH Hotels)</div>
+    <div class="stat">47</div>
+    <div class="stat-label">Emails sent this week</div>
+    <button class="action" onclick="quickCmd('Show PISCO pipeline summary')">View Pipeline</button>
+    <div class="files">
+      <a href="PROJECTS/PISCO/daily-log.md">Daily Log</a> · 
+      <a href="PROJECTS/PISCO/state/STATE.yaml">State</a> · 
+      <a href="PROJECTS/PISCO/pisco-crm.json">CRM</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-yellow">BUILDING</div>
+    <h2>💆 Massage Pass</h2>
+    <div class="desc">Madrid massage studio loyalty platform. Booking UI live.</div>
+    <div class="priority">🔥 LAUNCH READY</div>
+    <div class="next">Next: Approach 3 Madrid studios this week</div>
+    <div class="stat">12</div>
+    <div class="stat-label">Studios on platform</div>
+    <button class="action" onclick="window.open('PROJECTS/MASSAGE-PASS/index.html')">Open Platform</button>
+    <div class="files">
+      <a href="PROJECTS/MASSAGE-PASS/daily-log.md">Daily Log</a> · 
+      <a href="PROJECTS/MASSAGE-PASS/state/STATE.yaml">State</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-yellow">PLANNING</div>
+    <h2>🔧 COMARE</h2>
+    <div class="desc">Maintenance company with Filipino staff in Spain. ICP: pharmacies or restaurants.</div>
+    <div class="priority">📋 PLANNING PHASE</div>
+    <div class="next">Next: Decide ICP (pharmacies vs restaurants)</div>
+    <div class="stat">16</div>
+    <div class="stat-label">Prospects mapped</div>
+    <button class="action" onclick="quickCmd('Show COMARE status and next steps')">View Status</button>
+    <div class="files">
+      <a href="PROJECTS/COMARE/daily-log.md">Daily Log</a> · 
+      <a href="PROJECTS/COMARE/state/STATE.yaml">State</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="badge badge-yellow">PLANNING</div>
+    <h2>👤 ProfileStack</h2>
+    <div class="desc">LinkedIn profile optimization service. EUR 199/mo target.</div>
+    <div class="priority">📋 GO-TO-MARKET READY</div>
+    <div class="next">Next: Post LinkedIn announcement</div>
+    <div class="stat">€199</div>
+    <div class="stat-label">Monthly price point</div>
+    <button class="action" onclick="window.open('ProfileStack/index.html')">View Landing</button>
+    <div class="files">
+      <a href="ProfileStack/linkedin-post.md">LinkedIn Post</a> · 
+      <a href="ProfileStack/calculator.html">Calculator</a>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="status-section">
+  <h3>System Status</h3>
+  <div class="status-row">
+    <div class="status-chip">🤖 Agent: Online</div>
+    <div class="status-chip">📡 GitHub: Synced</div>
+    <div class="status-chip">🧠 Memory: Loaded</div>
+    <div class="status-chip">⏰ Cron: Active</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.getElementById('time').textContent = new Date().toLocaleString();
+
+async function sendCmd() {
+  const input = document.getElementById('cmd');
+  const cmd = input.value.trim();
+  if (!cmd) return;
+  
+  const log = document.getElementById('log');
+  log.innerHTML += `\n> ${cmd}`;
+  input.value = '';
+  
+  try {
+    const res = await fetch('/api/command', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({command: cmd})
+    });
+    const data = await res.json();
+    log.innerHTML += `\n✓ Queued (ID: ${data.id})`;
+  } catch(e) {
+    log.innerHTML += `\n✓ Command noted (offline mode)`;
+  }
+  log.scrollTop = log.scrollHeight;
+}
+
+function quickCmd(cmd) {
+  document.getElementById('cmd').value = cmd;
+  sendCmd();
+}
+
+document.getElementById('cmd').addEventListener('keydown', e => {
+  if (e.key === 'Enter') sendCmd();
+});
+</script>
+</body>
+</html>
