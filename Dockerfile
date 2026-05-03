@@ -14,8 +14,8 @@ RUN apt-get update \
 
 WORKDIR /app
 
-# Install OpenClaw globally FIRST
-ARG OPENCLAW_VERSION=v2026.2.9
+# Install OpenClaw globally FIRST - match Railway variable
+ARG OPENCLAW_VERSION=v2026.4.15
 RUN npm install -g "openclaw@${OPENCLAW_VERSION}"
 
 # Then install local dependencies
