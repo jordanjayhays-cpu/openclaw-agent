@@ -1,13 +1,8 @@
 #!/bin/bash
 set -e
 
-if [ -z "$OPENCLAW_VERSION" ]; then
-  echo "Error: OPENCLAW_VERSION environment variable is not set"
-  exit 1
-fi
-
-echo "Installing openclaw@v${OPENCLAW_VERSION}..."
-npm install -g "openclaw@v${OPENCLAW_VERSION}"
+# OpenClaw is already installed globally in Dockerfile
+# Just ensure data directory is set up
 
 chown -R openclaw:openclaw /data
 chmod 700 /data

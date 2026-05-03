@@ -14,13 +14,17 @@ RUN apt-get update \
 
 WORKDIR /app
 
+# Install OpenClaw globally FIRST
+ARG OPENCLAW_VERSION=v2026.2.9
+RUN npm install -g "openclaw@${OPENCLAW_VERSION}"
+
+# Then install local dependencies
 COPY package.json pnpm-lock.yaml ./
 RUN corepack enable && pnpm install --frozen-lockfile --prod
 
 COPY src ./src
 COPY entrypoint.sh ./entrypoint.sh
 RUN chmod +x ./entrypoint.sh
-
 
 RUN useradd -m -s /bin/bash openclaw \
   && chown -R openclaw:openclaw /app \
